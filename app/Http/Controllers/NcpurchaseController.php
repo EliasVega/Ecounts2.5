@@ -1,0 +1,260 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Ncpurchase;
+use App\Http\Requests\StoreNcpurchaseRequest;
+use App\Http\Requests\UpdateNcpurchaseRequest;
+use App\Models\BranchProduct;
+use App\Models\Kardex;
+use App\Models\NcpurchaseProduct;
+use App\Models\Product;
+use App\Models\ProductPurchase;
+use App\Models\Purchase;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+class NcpurchaseController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (request()->ajax()) {
+            //$ntccompras = Ntccompra::get();
+
+            $ncpurchases = Ncpurchase::from('ncpurchases AS ncp')
+            ->join('purchases AS pur', 'ncp.purchase_id', '=', 'pur.id')
+            ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
+            ->select('ncp.id', 'pur.id AS idP', 'pur.purchase', 'sup.name', 'ncp.totalPay', 'ncp.created_at')
+            ->get();
+
+            return datatables()
+            ->of($ncpurchases)
+            ->editColumn('created_at', function(Ncpurchase $ncpurchase){
+                return $ncpurchase->created_at->format('yy-m-d');
+            })
+            ->addColumn('edit', 'admin/ncpurchase/actions')
+            ->rawcolumns(['edit'])
+            ->toJson();
+        }
+        return view('admin.ncpurchase.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $purchases = Purchase::from('purchases AS pur')
+        ->join('suppliers as sup', 'pur.supplier_id', '=', 'sup.id')
+        ->select('pur.id', 'sup.id as idS', 'sup.name', 'pur.purchase', 'pur.status')
+        ->where('pur.id', '=', $request->session()->get('purchase'))->first();
+        if ($purchases->status == 'CREDIT_NOTE') {
+            return redirect("ncpurchase")->with('warning', 'Esta Compra ya tiene una Nota Credito');
+        }
+        $productPurchases = ProductPurchase::from('product_purchases AS pp')
+        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
+        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('pro.id', 'pp.purchase_id', 'pp.product_id', 'pp.quantity', 'pp.price', 'pro.name', 'pro.stock', 'cat.iva')
+        ->where('pp.purchase_id', '=', $request->session()->get('purchase'))->get();
+
+        $products = Product::from('products AS pro')
+        ->join('product_purchases AS pp', 'pp.product_id', '=', 'pro.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('pro.id', 'pro.name', 'pp.price', 'cat.iva')->get();
+
+        return view('admin.ncpurchase.create', compact('purchases', 'products', 'productPurchases'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreNcpurchaseRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreNcpurchaseRequest $request)
+    {
+        try{
+            DB::beginTransaction();
+
+            //methodo para crear Nota credito de compra
+            $ncpurchase = new Ncpurchase();
+            $ncpurchase->user_id = Auth::user()->id;
+            $ncpurchase->branch_id     = $request->session()->get('branch');
+            $ncpurchase->purchase_id = $request->session()->get('purchase');
+            $ncpurchase->supplier_id = $request->supplier_id;
+            $ncpurchase->purchase = $request->purchase;
+            $ncpurchase->total        = $request->total;
+            $ncpurchase->totalIva    = $request->totalIva;
+            $ncpurchase->totalPay  = $request->totalPay;
+            $ncpurchase->save();
+            /*
+            $productPurchase = ProductPurchase::where('purchase_id', '=', $ncpurchase->purchase_id)->get();
+
+            foreach($productPurchase AS $pp){
+
+                //Methodo para actualizar el estock de productos
+                $idp = $pp->product_id;
+                $quant = $pp->quantity;
+
+                $product = Product::findOrFail($idp);
+                $stock = $product->stock;
+                $stocknew = $stock - $quant;
+
+                $products = Product::findOrFail($idp);
+                $products->stock = $stocknew;
+                $products->update();
+
+
+                //Methodo para actualizar el stock de la sucursal
+                $branchp = BranchProduct::where('product_id', '=', $idp)
+                ->where('branch_id', '=', $ncpurchase->branch_id)
+                ->first();
+                $stockb = $branchp->stock;
+                $stocknews = $stockb - $quant;
+
+                $branchProduct = BranchProduct::where('id', '=', $branchp->id);
+                $branchProduct->stock = $stocknews;
+                $branchProduct->update();
+            }*/
+            //variables
+            $product_id = $request->product_id;
+            $quantity = $request->quantity;
+            $price = $request->price;
+            $stock = $request->stock;
+            $purch = $ncpurchase->purchase_id;
+            $cont = 0;
+
+
+            while($cont < count($product_id)){
+
+                //Methodo para crear la relacion NC compra con productos
+                $ncpurchaseProduct = new NcpurchaseProduct();
+                $ncpurchaseProduct->ncpurchase_id = $ncpurchase->id;
+                $ncpurchaseProduct->product_id = $product_id[$cont];
+                $ncpurchaseProduct->quantity = $quantity[$cont];
+                $ncpurchaseProduct->price = $price[$cont];
+                $ncpurchaseProduct->save();
+
+                //Metodo para actualizar la estok productos de la sucursal
+                $branchProducts = BranchProduct::from('branch_products AS bp')
+                ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
+                ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
+                ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
+                ->where('bp.product_id', '=', $ncpurchaseProduct->product_id)
+                ->where('bp.branch_id', '=', 1)
+                ->first();
+
+                $id = $branchProducts->idP;
+                $prestock = $branchProducts->stock;
+                $stock = $prestock + $ncpurchaseProduct->quantity;
+
+                $branchProduct = BranchProduct::findOrFail($id);
+                $branchProduct->stock = $stock;
+                $branchProduct->update();
+
+                //Metodo para actualizar Kardex
+                $products = Product::from('products AS pro')
+                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
+                ->where('pro.id', '=', $ncpurchaseProduct->product_id)
+                ->first();
+
+                $id = $products->id;
+                $stockardex = $products->stock;
+
+                $kardex = new Kardex();
+                $kardex->product_id = $id;
+                $kardex->branch_id = $ncpurchase->branch_id;
+                $kardex->operation = 'NC_COMPRA';
+                $kardex->number = $ncpurchase->id;
+                $kardex->quantity = $quantity[$cont];
+                $kardex->stock = $stockardex;
+                $kardex->save();
+
+                $cont++;
+            }
+
+            $purchase = Purchase::findOrFail($purch);
+            $purchase->status = 'CREDIT_NOTE';
+            $purchase->update();
+
+            DB::commit();
+        }
+        catch(Exception $e){
+            DB::rollback();
+        }
+        return redirect('purchase');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Ncpurchase  $ncpurchase
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $ncpurchases = Ncpurchase::from('ncpurchases AS ncp')
+        ->join('users as use', 'ncp.user_id', 'use.id')
+        ->join('purchases as pur', 'ncp.purchase_id', 'pur.id')
+        ->join('branches AS bra', 'ncp.branch_id', '=', 'bra.id')
+        ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
+        ->select('ncp.id', 'ncp.purchase', 'ncp.total', 'ncp.totalIva', 'ncp.totalPay', 'ncp.created_at', 'use.name', 'bra.name as nameB', 'sup.name as nameS')
+        ->where('ncp.id', '=', $id)
+        ->first();
+
+        /*mostrar detalles*/
+        $ncpurchaseProducts = NcpurchaseProduct::from('ncpurchase_products AS np')
+        ->join('products AS pro', 'np.product_id', '=', 'pro.id')
+        ->join('ncpurchases as ncp', 'np.ncpurchase_id', 'ncp.id')
+        ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
+        ->select('np.quantity', 'np.price', 'ncp.total', 'ncp.totalIva', 'ncp.totalPay', 'pro.name')
+        ->where('np.ncpurchase_id', '=', $id)
+        ->get();
+
+        return view('admin.ncpurchase.show', compact('ncpurchases', 'ncpurchaseProducts'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Ncpurchase  $ncpurchase
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Ncpurchase $ncpurchase)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateNcpurchaseRequest  $request
+     * @param  \App\Models\Ncpurchase  $ncpurchase
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateNcpurchaseRequest $request, Ncpurchase $ncpurchase)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Ncpurchase  $ncpurchase
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Ncpurchase $ncpurchase)
+    {
+        //
+    }
+}
