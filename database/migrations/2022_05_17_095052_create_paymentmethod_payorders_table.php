@@ -19,11 +19,11 @@ return new class extends Migration
             $table->decimal('payment', 10,2);
             $table->string('transaction', 20);
 
-            $table->foreignId('payOrder_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('payorder_id')->constrained()->onUpdate('cascade');
             $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
             $table->foreignId('bank_id')->constrained()->onUpdate('cascade');
             $table->foreignId('card_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('payEvent_id')->nullable()->constrained();
+            $table->foreignId('payevent_id')->nullable()->constrained();
 
             $table->timestamps();
         });

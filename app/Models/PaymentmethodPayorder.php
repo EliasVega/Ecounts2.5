@@ -12,11 +12,11 @@ class PaymentmethodPayorder extends Model
     protected $fillable = [
         'payment',
         'transaction',
-        'payOrder_id',
+        'payorder_id',
         'paymentMethod_id',
         'bank_id',
         'card_id',
-        'payEvent_id',
+        'payevent_id',
     ];
 
     public function banks()

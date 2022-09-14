@@ -12,11 +12,11 @@ class PayinvoicePaymentmethod extends Model
     protected $fillable = [
         'valor',
         'transaction',
-        'payInvoice_id',
-        'paymentMethod_id',
+        'payinvoice_id',
+        'payment_method_id',
         'bank_id',
         'card_id',
-        'payEvent_id'
+        'payevent_id'
     ];
 
     public function bank(){

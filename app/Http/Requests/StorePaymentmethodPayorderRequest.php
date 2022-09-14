@@ -26,11 +26,11 @@ class StorePaymentmethodPayorderRequest extends FormRequest
         return [
             'payment'          => 'required',
             'transaction'      => 'required',
-            'payOrder_id'      => '',
-            'paymentMethod_id' => '',
+            'payorder_id'      => '',
+            'payment_method_id' => '',
             'bank_id'          => '',
             'card_id'          => '',
-            'payEvent_id'      => ''
+            'payevent_id'      => ''
         ];
     }
 }

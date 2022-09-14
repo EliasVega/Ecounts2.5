@@ -183,11 +183,11 @@ class InvoiceController extends Controller
                     $payInvoice->save();
 
                     $payinvoicePaymethod                     = new PayinvoicePaymentmethod();
-                    $payinvoicePaymethod->payInvoice_id      = $payInvoice->id;
+                    $payinvoicePaymethod->payinvoice_id      = $payInvoice->id;
                     $payinvoicePaymethod->payment_method_id  = $request->payment_method_id;
                     $payinvoicePaymethod->bank_id            = $request->bank_id;
                     $payinvoicePaymethod->card_id            = $request->card_id;
-                    $payinvoicePaymethod->payEvent_id        = $request->payEvent_id;
+                    $payinvoicePaymethod->payevent_id        = $request->payEvent_id;
                     $payinvoicePaymethod->payment            = $request->pay;
                     $payinvoicePaymethod->transaction        = $request->transaction;
 

@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('payinvoice_paymentmethods', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('payInvoice_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('payinvoice_id')->constrained()->onUpdate('cascade');
             $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
             $table->foreignId('bank_id')->constrained()->onUpdate('cascade');
             $table->foreignId('card_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('payEvent_id')->nullable()->constrained();
+            $table->foreignId('payevent_id')->nullable()->constrained();
 
             $table->decimal('payment', 10,2);
             $table->string('transaction', 20);

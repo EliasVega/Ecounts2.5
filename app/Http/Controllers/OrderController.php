@@ -172,11 +172,11 @@ class OrderController extends Controller
                     $payOrder->save();
                     //Registrando la tabla de metodos de pago abono pedido
                     $paymentmethodPayorder = new PaymentmethodPayorder();
-                    $paymentmethodPayorder->payOrder_id        = $payOrder->id;
+                    $paymentmethodPayorder->payorder_id        = $payOrder->id;
                     $paymentmethodPayorder->payment_method_id  = $request->payment_method_id;
                     $paymentmethodPayorder->bank_id            = $request->bank_id;
                     $paymentmethodPayorder->card_id            = $request->card_id;
-                    $paymentmethodPayorder->payEvent_id        = $request->payEvent_id;
+                    $paymentmethodPayorder->payevent_id        = $request->payEvent_id;
                     $paymentmethodPayorder->payment            = $request->pay;
                     $paymentmethodPayorder->transaction        = $request->transaction;
                     $paymentmethodPayorder->save();
