@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Purchase;
-use App\Http\Requests\StorepurchaseRequest;
+use App\Http\Requests\StorePurchaseRequest;
 use App\Http\Requests\UpdatepurchaseRequest;
 use App\Models\BranchProduct;
 use App\Models\Department;
