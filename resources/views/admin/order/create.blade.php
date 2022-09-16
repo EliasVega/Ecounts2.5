@@ -29,6 +29,7 @@
 
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         @include('admin/order.formPay')
+                        <!--FormPay-->
                     </div>
                 </div>
             </form>
