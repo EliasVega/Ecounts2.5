@@ -434,6 +434,65 @@ class InvoiceController extends Controller
         //return $pdf->download("$invoicepdf.pdf");
     }
 
+    public function post(Request $request, $id)
+    {
+        $invoice = Invoice::from('invoices AS inv')
+        ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
+        ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
+        ->join('documents AS doc', 'cus.document_id', '=', 'doc.id')
+        ->join('regimes AS reg', 'cus.regime_id', '=', 'reg.id')
+        ->join('taxes AS tax', 'cus.tax_id', '=', 'tax.id')
+        ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
+        ->join('payment_forms AS pf', 'inv.payment_form_id', 'pf.id')
+        ->join('payment_methods AS pm', 'inv.payment_method_id', 'pm.id')
+        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initials', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->where('inv.id', '=', $id)->first();
+
+        $invoiceProducts = InvoiceProduct::from('invoice_products AS ip')
+        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
+        ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
+        ->where('ip.invoice_id', '=', $id)
+        ->get();
+
+        $invoicy = InvoiceProduct::from('invoice_products AS ip')
+        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
+        ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'inv.totalIva', 'inv.totalPay', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
+        ->where('ip.invoice_id', '=', $id)
+        ->first();
+
+        $company = Company::from('companies AS com')
+        ->join('departments AS dep', 'com.department_id', '=', 'dep.id')
+        ->join('municipalities AS mun', 'com.municipality_id', '=', 'mun.id')
+        ->join('liabilities AS lia', 'com.liability_id', '=', 'lia.id')
+        ->join('regimes AS reg', 'com.regime_id', '=', 'reg.id')
+        ->join('taxes AS tax', 'com.tax_id', '=', 'tax.id')
+        ->join('organizations AS org', 'com.organization_id', '=', 'org.id')
+        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO', 'tax.description')
+        ->where('com.id', '=', 1)
+        ->first();
+
+
+        $indicators = Indicator::from('indicators AS ind')
+        ->select('ind.prefix', 'ind.resolution', 'ind.from', 'ind.to')
+        ->where('ind.id', '=', 1)
+        ->first();
+
+        $days = $invoice->created_at->diffInDays($invoice->fecven);
+        $invoicepdf = "FACT-". $invoice->invoice;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoiceProducts', 'company', 'logo', 'invoicy', 'indicators'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper (array(0,0,226.76,497.64));
+
+        return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

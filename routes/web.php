@@ -149,6 +149,7 @@ Route::get('invoice/showNdinvoice/{id}', [InvoiceController::class, 'showNdinvoi
 Route::get('invoice/showPdfinvoice/{id}', [InvoiceController::class, 'showPdfinvoice'])->name('showPdfinvoice');
 Route::get('invoice/showPayinvoice/{id}', [InvoiceController::class, 'showPayinvoice'])->name('showPayinvoice');
 Route::get('invoice/create/{id}', [InvoiceController::class, 'getMunicipalities']);
+Route::get('invoice/post/{id}', [InvoiceController::class, 'post'])->name('post');
 
 Route::get('order/showfact/{id}', [orderController::class, 'showfact'])->name('showfact');
 Route::get('order/showPayOrder/{id}', [orderController::class, 'showPayOrder'])->name('showPayOrder');

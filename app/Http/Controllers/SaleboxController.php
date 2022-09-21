@@ -471,7 +471,7 @@ class SaleboxController extends Controller
      */
     public function edit($id)
     {
-        $salebox = Salebox::findOrFail($id);
+        $saleBox = Salebox::findOrFail($id);
         $users = User::where('id', '!=', 1)->get();
         return view('admin.saleBox.edit', compact('saleBox', 'users'));
     }

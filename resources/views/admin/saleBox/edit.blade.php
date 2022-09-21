@@ -7,7 +7,7 @@
     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Cerrando aja:&nbsp;&nbsp;&nbsp;&nbsp;  {{ $saleBox->created_at }}</h3>
+                <h3 class="box-title">Cerrando Caja:&nbsp;&nbsp;&nbsp;&nbsp;  {{ $saleBox->created_at }}</h3>
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">
