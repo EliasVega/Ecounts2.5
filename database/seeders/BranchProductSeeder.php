@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,58 +15,46 @@ class BranchProductSeeder extends Seeder
      */
     public function run()
     {
-        $branchProduct = new BranchProduct();
-
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = 1;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-
-        $branchProduct->save();
-
-        $branchProduct = new BranchProduct();
-
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = 2;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-
-        $branchProduct->save();
-
-        $branchProduct = new BranchProduct();
-
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = 3;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-
-        $branchProduct->save();
-
-        $branchProduct = new BranchProduct();
-
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = 4;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-
-        $branchProduct->save();
-
-        $branchProduct = new BranchProduct();
-
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = 5;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-
-        $branchProduct->save();
-
-        $branchProduct = new BranchProduct();
-
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = 6;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-
-        $branchProduct->save();
+        $branchs = [
+            [
+                'branch_id' => 1,
+                'product_id' => 1,
+                'stock' => 0,
+                'order_product' => 0,
+            ],
+            [
+                'branch_id' => 1,
+                'product_id' => 2,
+                'stock' => 0,
+                'order_product' => 0,
+            ],
+            [
+                'branch_id' => 1,
+                'product_id' => 3,
+                'stock' => 0,
+                'order_product' => 0,
+            ],
+            [
+                'branch_id' => 1,
+                'product_id' => 4,
+                'stock' => 0,
+                'order_product' => 0,
+            ],
+            [
+                'branch_id' => 1,
+                'product_id' => 5,
+                'stock' => 0,
+                'order_product' => 0,
+            ],
+            [
+                'branch_id' => 1,
+                'product_id' => 6,
+                'stock' => 0,
+                'order_product' => 0,
+            ],
+        ];
+        foreach ($branchs as $bra) {
+            Branch_product::create($bra);
+        }
     }
 }

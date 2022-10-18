@@ -26,7 +26,7 @@ class StoreDocumentRequest extends FormRequest
         return [
             'code'     => 'required',
             'name'     => 'required',
-            'initials' => 'required'
+            'initial' => 'required'
         ];
     }
 }

@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
 
@@ -18,7 +16,7 @@ class Supplier extends Model
         'phone',
         'email',
         'contact',
-        'phoneContact',
+        'phone_contact',
         'department_id',
         'municipality_id',
         'document_id',

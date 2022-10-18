@@ -60,7 +60,7 @@
                         <label class="form-control-label" for="product_id">Producto</label>
                             <select name="product_id" class="form-control selectpicker" id="product_id" data-live-search="true">
                                 <option value="0" disabled selected>Seleccionar el Producto</option>
-                                @foreach($invoiceProducts as $ip)
+                                @foreach($invoice_products as $ip)
                                     <option value="{{ $ip->id }}_{{ $ip->price }}_{{ $ip->stock }}_{{ $ip->quantity }}_{{ $ip->iva }}">{{ $ip->name }}</option>
                                 @endforeach
                             </select>
@@ -85,10 +85,16 @@
                             disabled pattern="[0-9]{0,15}">
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
-                        <button class="btn btn-success" type="button" id="add"><i class="fa fa-save"></i>&nbsp; Agregar Producto</button>
-                        <a href="{{url('invoice')}}" class="btn btn-danger"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
+                        <label class="form-control-label">Add</label><br>
+                        <button class="btn btn-grisb" type="button" id="add" data-toggle="tooltip" data-placement="top" title="adicionar"><i class="fas fa-check"></i>&nbsp; </button>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <div class="form-group">
+                        <label class="form-control-label" >Canc</label><br>
+                        <a href="{{url('purchase')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
                     </div>
                 </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -113,14 +119,14 @@
 
                                     <tr>
                                         <th colspan="5"><p align="right">TOTAL IVA:</p></th>
-                                        <th><p align="right"><span id="totalIva_html">$ 0.00</span>
-                                            <input type="hidden" name="totalIva" id="totalIva"></p></th>
+                                        <th><p align="right"><span id="total_iva_html">$ 0.00</span>
+                                            <input type="hidden" name="total_iva" id="total_iva"></p></th>
                                     </tr>
 
                                     <tr>
                                         <th  colspan="5"><p align="right">TOTAL PAGAR:</p></th>
-                                        <th><p align="right"><span align="right" id="totalPay_html">$ 0.00</span>
-                                            <input type="hidden" name="totalPay" id="totalPay"></p></th>
+                                        <th><p align="right"><span align="right" id="total_pay_html">$ 0.00</span>
+                                            <input type="hidden" name="total_pay" id="total_pay"></p></th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -158,7 +164,7 @@
         var cont=0;
         total=0;
         subtotal=[];
-        totalIva = 0;
+        total_iva = 0;
         $("#save").hide();
         $("#product_id").change(productValue);
 
@@ -192,7 +198,7 @@
                 subtotal[cont]=quantity*price;
                 total= total+subtotal[cont];
                 ivita= subtotal[cont]*iva/100;
-                totalIva=totalIva+ivita;
+                total_iva=total_iva+ivita;
 
                 if(parseInt(quantity) < parseInt(stock)){
                     var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="removefile('+cont+');"><i class="fa fa-times"></i></button></td><td><input type="hidden" name="stock[]"  value="'+stock+'">'+stock+'</td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>   <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" name="price[]"  value="'+price+'">'+price+'</td> <td>$'+subtotal[cont]+' </td></tr>';
@@ -202,6 +208,7 @@
 
                     assess();
                     $('#details').append(fila);
+                    $('#product_id option:selected').remove();
                     clean();
 
                 }else{
@@ -247,12 +254,12 @@
         $("#total_html").html("$ " + total.toFixed(2));
         $("#total").val(total.toFixed(2));
 
-        totalPay=total+totalIva;
-        $("#totalIva_html").html("$ " + totalIva.toFixed(2));
-        $("#totalIva").val(totalIva.toFixed(2));
+        total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
 
-        $("#totalPay_html").html("$ " + totalPay.toFixed(2));
-        $("#totalPay").val(totalPay.toFixed(2));
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
 
      }
      function assess(){
@@ -270,18 +277,18 @@
      function eliminar(index){
 
         total = total-subtotal[index];
-        totalIva= total*iva/100;
-        totalPay = total + totalIva;
+        total_iva= total*iva/100;
+        total_pay = total + total_iva;
 
         $("#total_html").html("$ " + total.toFixed(2));
         $("#total").val(total.toFixed(2));
 
-        totalPay=total+totalIva;
-        $("#totalIva_html").html("$ " + totalIva.toFixed(2));
-        $("#totalIva").val(totalIva.toFixed(2));
+        total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
 
-        $("#totalPay_html").html("$ " + totalPay.toFixed(2));
-        $("#totalPay").val(totalPay.toFixed(2));
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
 
         $("#fila" + index).remove();
         assess();

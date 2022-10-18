@@ -15,8980 +15,5620 @@ class MunicipalitySeeder extends Seeder
      */
     public function run()
     {
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05001';
-        $municipality->name = 'MEDELLIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05002';
-        $municipality->name = 'ABEJORRAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05004';
-        $municipality->name = 'ABRIAQUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05021';
-        $municipality->name = 'ALEJANDRIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05030';
-        $municipality->name = 'AMAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05031';
-        $municipality->name = 'AMALFI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05034';
-        $municipality->name = 'ANDES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05036';
-        $municipality->name = 'ANGELOPOLIS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05038';
-        $municipality->name = 'ANGOSTURA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05040';
-        $municipality->name = 'ANORI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05042';
-        $municipality->name = 'SANTAFE DE ANTIOQUIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05044';
-        $municipality->name = 'ANZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05045';
-        $municipality->name = 'APARTADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05051';
-        $municipality->name = 'ARBOLETES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05055';
-        $municipality->name = 'ARGELIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05059';
-        $municipality->name = 'ARMENIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05079';
-        $municipality->name = 'BARBOSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05086';
-        $municipality->name = 'BELMIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05088';
-        $municipality->name = 'BELLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05091';
-        $municipality->name = 'BETANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05093';
-        $municipality->name = 'BETULIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05101';
-        $municipality->name = 'CIUDAD BOLIVAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05107';
-        $municipality->name = 'BRICEÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05113';
-        $municipality->name = 'BURITICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05120';
-        $municipality->name = 'CACERES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05125';
-        $municipality->name = 'CAICEDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05129';
-        $municipality->name = 'CALDAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05134';
-        $municipality->name = 'CAMPAMENTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05138';
-        $municipality->name = 'CAÑASGORDAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05142';
-        $municipality->name = 'CARACOLI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05145';
-        $municipality->name = 'CARAMANTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05147';
-        $municipality->name = 'CAREPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05148';
-        $municipality->name = 'EL CARMEN DE VIBORAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05150';
-        $municipality->name = 'CAROLINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05154';
-        $municipality->name = 'CAUCASIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05172';
-        $municipality->name = 'CHIGORODO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05190';
-        $municipality->name = 'CISNEROS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05197';
-        $municipality->name = 'COCORNA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05206';
-        $municipality->name = 'CONCEPCION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05209';
-        $municipality->name = 'CONCORDIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05212';
-        $municipality->name = 'COPACABANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05234';
-        $municipality->name = 'DABEIBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05237';
-        $municipality->name = 'DON MATIAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05240';
-        $municipality->name = 'ABEJICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05250';
-        $municipality->name = 'EL BAGRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05264';
-        $municipality->name = 'ENTRERRIOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05266';
-        $municipality->name = 'ENVIGADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05282';
-        $municipality->name = 'FREDONIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05284';
-        $municipality->name = 'FRONTINO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05306';
-        $municipality->name = 'GIRALDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05308';
-        $municipality->name = 'GIRARDOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05310';
-        $municipality->name = 'GOMEZ PLATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05313';
-        $municipality->name = 'GRANADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05315';
-        $municipality->name = 'GUADALUPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05318';
-        $municipality->name = 'GUARNE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05321';
-        $municipality->name = 'GUATAPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05347';
-        $municipality->name = 'HELICONDIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05353';
-        $municipality->name = 'HISPANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05360';
-        $municipality->name = 'ITAGUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05361';
-        $municipality->name = 'ITUANGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05364';
-        $municipality->name = 'JARDIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05368';
-        $municipality->name = 'JERICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05376';
-        $municipality->name = 'LA CEJA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05380';
-        $municipality->name = 'LA ESTRELLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05390';
-        $municipality->name = 'LA PINTADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05400';
-        $municipality->name = 'LA UNION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05411';
-        $municipality->name = 'LIBORINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05425';
-        $municipality->name = 'MACEO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05440';
-        $municipality->name = 'MARINILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05467';
-        $municipality->name = 'MONTEBELLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05475';
-        $municipality->name = 'MURINDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05480';
-        $municipality->name = 'MUTATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05483';
-        $municipality->name = 'MNARIÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05490';
-        $municipality->name = 'NECLICLI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05495';
-        $municipality->name = 'NECHI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05501';
-        $municipality->name = 'OLAYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05541';
-        $municipality->name = 'PEÑOL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05543';
-        $municipality->name = 'PEQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05576';
-        $municipality->name = 'PUEBLORRICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05579';
-        $municipality->name = 'PUERTO BERRIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05585';
-        $municipality->name = 'PUERTO NARE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05591';
-        $municipality->name = 'PUERTO TRIUNFO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05604';
-        $municipality->name = 'REMEDIOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05607';
-        $municipality->name = 'RETIRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05615';
-        $municipality->name = 'RIONEGRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05628';
-        $municipality->name = 'SABANALARGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05631';
-        $municipality->name = 'SABANETA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05642';
-        $municipality->name = 'SALGAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05647';
-        $municipality->name = 'SAN ANDRES DE CUERQUIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05649';
-        $municipality->name = 'SAN CARLOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05652';
-        $municipality->name = 'SAN FRANCISCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05656';
-        $municipality->name = 'SAN JERONIMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05658';
-        $municipality->name = 'SAN JOSE DE LA MONTAÑA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05659';
-        $municipality->name = 'SAN JUAN DE URABA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05660';
-        $municipality->name = 'SAN LUIS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05664';
-        $municipality->name = 'SAN PEDRO DE LOS MILAGROS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05665';
-        $municipality->name = 'SAN PEDRO DE URABA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05667';
-        $municipality->name = 'SAN RAFAEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05670';
-        $municipality->name = 'SAN ROQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05674';
-        $municipality->name = 'SAN VICENTE FERRER';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05679';
-        $municipality->name = 'SANTA BARBARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05686';
-        $municipality->name = 'SANTA ROSA DE OSOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05690';
-        $municipality->name = 'SANTO DOMINGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05697';
-        $municipality->name = 'EL SANTUARIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05736';
-        $municipality->name = 'SEGOVIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05756';
-        $municipality->name = 'SONSON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05761';
-        $municipality->name = 'SOPETRAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05789';
-        $municipality->name = 'TAMESIS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05790';
-        $municipality->name = 'TARAZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05792';
-        $municipality->name = 'TARSO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05809';
-        $municipality->name = 'TITIRIBI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05819';
-        $municipality->name = 'TOLEDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05837';
-        $municipality->name = 'TURBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05842';
-        $municipality->name = 'URAMITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05847';
-        $municipality->name = 'URRAO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05854';
-        $municipality->name = 'VALDIVIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05856';
-        $municipality->name = 'VALPARAISO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05858';
-        $municipality->name = 'VEGACHI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05861';
-        $municipality->name = 'VENECIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05873';
-        $municipality->name = 'VIGIA DEL FUERTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05885';
-        $municipality->name = 'YALI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05887';
-        $municipality->name = 'YARUMAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05890';
-        $municipality->name = 'YOLOMBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05893';
-        $municipality->name = 'YONDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '1';
-        $municipality->code = '05895';
-        $municipality->name = 'ZARAGOZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08001';
-        $municipality->name = 'BARRANQUILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08078';
-        $municipality->name = 'BARANOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08137';
-        $municipality->name = 'CAMPO DE LA CRUZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08141';
-        $municipality->name = 'CANDELARIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08296';
-        $municipality->name = 'GALAPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08372';
-        $municipality->name = 'JUAN DE ACOSTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08421';
-        $municipality->name = 'BLURUACO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08433';
-        $municipality->name = 'MALAMBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08436';
-        $municipality->name = 'MANATI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08520';
-        $municipality->name = 'PALMAR DE VARELA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08549';
-        $municipality->name = 'PIOJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08558';
-        $municipality->name = 'POLONUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08560';
-        $municipality->name = 'PONEDERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08573';
-        $municipality->name = 'PUERTO COLOMBIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08606';
-        $municipality->name = 'REPELON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08634';
-        $municipality->name = 'SABANAGRANDE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08638';
-        $municipality->name = 'SABANA LARGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08675';
-        $municipality->name = 'SANTA LUCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08685';
-        $municipality->name = 'SANTO TOMAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08758';
-        $municipality->name = 'SOLEDAD';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08770';
-        $municipality->name = 'SUAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08832';
-        $municipality->name = 'TUBARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '2';
-        $municipality->code = '08849';
-        $municipality->name = 'USIACURI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '3';
-        $municipality->code = '11001';
-        $municipality->name = 'BOGOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13001';
-        $municipality->name = 'CARTAGENA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13006';
-        $municipality->name = 'ACHI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13030';
-        $municipality->name = 'ALTOS DEL ROSARIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13042';
-        $municipality->name = 'ARENAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13052';
-        $municipality->name = 'ARJONA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13062';
-        $municipality->name = 'ARROYOHONDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13074';
-        $municipality->name = 'BARRANCO DE LOBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13140';
-        $municipality->name = 'CALAMAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13160';
-        $municipality->name = 'CANTAGALLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13188';
-        $municipality->name = 'CICUCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13212';
-        $municipality->name = 'CORDOBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13222';
-        $municipality->name = 'CLEMENCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13244';
-        $municipality->name = 'EL CARMEN DE BOLIVAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13248';
-        $municipality->name = 'EL GUAMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13268';
-        $municipality->name = 'EL PEÑON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13300';
-        $municipality->name = 'HATILLO DE LOBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13430';
-        $municipality->name = 'MAGANGUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13433';
-        $municipality->name = 'MAHATES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13440';
-        $municipality->name = 'MARGARITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13442';
-        $municipality->name = 'MARIA LA BAJA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13458';
-        $municipality->name = 'MONTECRISTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13468';
-        $municipality->name = 'MOMPOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13473';
-        $municipality->name = 'MORALES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13490';
-        $municipality->name = 'MOROSI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13549';
-        $municipality->name = 'PINILLOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13580';
-        $municipality->name = 'REGIDOR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13600';
-        $municipality->name = 'RIO VIEJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13620';
-        $municipality->name = 'SAN CRISTOBAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13647';
-        $municipality->name = 'SAN ESTANISLAO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13650';
-        $municipality->name = 'SAN FERNANDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13654';
-        $municipality->name = 'SAN JACINTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13655';
-        $municipality->name = 'SAN JACINTO DEL CAUCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13657';
-        $municipality->name = 'SAN JUAN NEPOMUCENO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13667';
-        $municipality->name = 'SAN MARTIN DE LOBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13670';
-        $municipality->name = 'SAN PABLO SUR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13673';
-        $municipality->name = 'SANTA CATALINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13683';
-        $municipality->name = 'SANTA ROSA DE LIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13688';
-        $municipality->name = 'SANTA ROSA DEL SUR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13744';
-        $municipality->name = 'SIMITI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13760';
-        $municipality->name = 'SOPLAVIENTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13780';
-        $municipality->name = 'TALAIGUA NUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13810';
-        $municipality->name = 'TIQUISIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13836';
-        $municipality->name = 'TURBACO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13838';
-        $municipality->name = 'TURBANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13873';
-        $municipality->name = 'VILLANUEVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '4';
-        $municipality->code = '13894';
-        $municipality->name = 'ZAMBRANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15001';
-        $municipality->name = 'TUNJA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15022';
-        $municipality->name = 'ALMEIDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15047';
-        $municipality->name = 'AQUITANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15051';
-        $municipality->name = 'ARCABUCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15087';
-        $municipality->name = 'BELEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15090';
-        $municipality->name = 'BERBEO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15092';
-        $municipality->name = 'BETEITIVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15097';
-        $municipality->name = 'BOAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15104';
-        $municipality->name = 'BOYACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15106';
-        $municipality->name = 'BRICEÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15109';
-        $municipality->name = 'BUENAVISTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15114';
-        $municipality->name = 'BUSBANZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15131';
-        $municipality->name = 'CALDAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15135';
-        $municipality->name = 'CAMPOHERMOSO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15162';
-        $municipality->name = 'CERINZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15172';
-        $municipality->name = 'CHINAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15176';
-        $municipality->name = 'CHIQUINQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15180';
-        $municipality->name = 'CHISCAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15183';
-        $municipality->name = 'CHITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15185';
-        $municipality->name = 'CHITARAQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15187';
-        $municipality->name = 'CHIVATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15189';
-        $municipality->name = 'CIENAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15204';
-        $municipality->name = 'COMBITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15212';
-        $municipality->name = 'COPER';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15215';
-        $municipality->name = 'CORRALES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15218';
-        $municipality->name = 'COVARACHICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15223';
-        $municipality->name = 'CUBARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15224';
-        $municipality->name = 'CUCAITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15226';
-        $municipality->name = 'CUITIVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15232';
-        $municipality->name = 'CHIQUIZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15236';
-        $municipality->name = 'CHIVOR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15238';
-        $municipality->name = 'DUITAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15244';
-        $municipality->name = 'EL COCUY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15248';
-        $municipality->name = 'EL ESPINO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15272';
-        $municipality->name = 'FIRAVITOVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15276';
-        $municipality->name = 'FLORESTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15293';
-        $municipality->name = 'CACHANTIVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15296';
-        $municipality->name = 'GAMEZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15299';
-        $municipality->name = 'GARAGOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15317';
-        $municipality->name = 'GUACAMAYAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15322';
-        $municipality->name = 'GUATEQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15325';
-        $municipality->name = 'GUAYATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15332';
-        $municipality->name = 'GUICAN DE LA SIERRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15362';
-        $municipality->name = 'IZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15367';
-        $municipality->name = 'JENESANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15368';
-        $municipality->name = 'JERICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15377';
-        $municipality->name = 'LABRANZAGRANDE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15380';
-        $municipality->name = 'LA CAPILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15401';
-        $municipality->name = 'LA VICTORIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15403';
-        $municipality->name = 'LA UVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15407';
-        $municipality->name = 'VILLA DE LEYVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15425';
-        $municipality->name = 'MACANAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15442';
-        $municipality->name = 'MARIPI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15455';
-        $municipality->name = 'MIRAFLORES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15464';
-        $municipality->name = 'MONGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15466';
-        $municipality->name = 'MONGUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15469';
-        $municipality->name = 'MONIQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15476';
-        $municipality->name = 'MOTAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15480';
-        $municipality->name = 'MUZO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15491';
-        $municipality->name = 'NOBSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15494';
-        $municipality->name = 'NUEVO COLON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15500';
-        $municipality->name = 'OICATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15507';
-        $municipality->name = 'OTANCHE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15511';
-        $municipality->name = 'PACHAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15514';
-        $municipality->name = 'PAEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15516';
-        $municipality->name = 'PAIPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15518';
-        $municipality->name = 'PAJARITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15522';
-        $municipality->name = 'PANQUEBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15531';
-        $municipality->name = 'PAUNA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15533';
-        $municipality->name = 'PAYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15537';
-        $municipality->name = 'PAZ DE RIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15542';
-        $municipality->name = 'PESCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15550';
-        $municipality->name = 'PISBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15572';
-        $municipality->name = 'PUERTO BOYACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15580';
-        $municipality->name = 'QUIPAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15599';
-        $municipality->name = 'RAMIRIQUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15600';
-        $municipality->name = 'RAQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15621';
-        $municipality->name = 'RONDON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15632';
-        $municipality->name = 'SABOYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15638';
-        $municipality->name = 'SACHICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15646';
-        $municipality->name = 'SAMACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15660';
-        $municipality->name = 'SAN EDUARDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15664';
-        $municipality->name = 'SAN JOSE DE PARE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15667';
-        $municipality->name = 'SAN LUIS GACENO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15673';
-        $municipality->name = 'SAN MATEO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15676';
-        $municipality->name = 'SAN MIGUEL DE SEMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15681';
-        $municipality->name = 'SAN PABLO DE BORBUR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15686';
-        $municipality->name = 'SANTANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15690';
-        $municipality->name = 'SANTA MARIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15693';
-        $municipality->name = 'SANTA ROSA DE VITERBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15696';
-        $municipality->name = 'SANTA SOFIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15720';
-        $municipality->name = 'SANTIVANORTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15723';
-        $municipality->name = 'SANTIVASUR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15740';
-        $municipality->name = 'SIACHOQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15753';
-        $municipality->name = 'SOATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15755';
-        $municipality->name = 'SOCOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15757';
-        $municipality->name = 'SOCHA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15759';
-        $municipality->name = 'SOGAMOSO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15761';
-        $municipality->name = 'SOMONDOCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15762';
-        $municipality->name = 'SORA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15763';
-        $municipality->name = 'SOTAQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15764';
-        $municipality->name = 'SORACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15774';
-        $municipality->name = 'SUSACON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15776';
-        $municipality->name = 'SUTAMARCHAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15778';
-        $municipality->name = 'SUTATENZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15790';
-        $municipality->name = 'TASCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15798';
-        $municipality->name = 'TENZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15804';
-        $municipality->name = 'TIBANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15806';
-        $municipality->name = 'TIBASOSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15808';
-        $municipality->name = 'TINJACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15810';
-        $municipality->name = 'TIPACOQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15814';
-        $municipality->name = 'TOCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15816';
-        $municipality->name = 'TOGUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15820';
-        $municipality->name = 'TOPAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15822';
-        $municipality->name = 'TOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15832';
-        $municipality->name = 'TUNUNGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15835';
-        $municipality->name = 'TURMEQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15837';
-        $municipality->name = 'TUTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15839';
-        $municipality->name = 'TUTAZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15842';
-        $municipality->name = 'UMBITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15861';
-        $municipality->name = 'VENTAQUEMADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15879';
-        $municipality->name = 'VIRACACHA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '5';
-        $municipality->code = '15897';
-        $municipality->name = 'ZETAQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17001';
-        $municipality->name = 'MANIZALES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17013';
-        $municipality->name = 'AGUADAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17042';
-        $municipality->name = 'ANSERMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17050';
-        $municipality->name = 'ARANZAZU';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17088';
-        $municipality->name = 'BELALCAZAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17114';
-        $municipality->name = 'CHINCHINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17272';
-        $municipality->name = 'FILADELFIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17380';
-        $municipality->name = 'LA DORADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17388';
-        $municipality->name = 'LA MERCED';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17433';
-        $municipality->name = 'MANZANARES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17442';
-        $municipality->name = 'MARMATO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17444';
-        $municipality->name = 'MARQUETALIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17446';
-        $municipality->name = 'MARULANDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17486';
-        $municipality->name = 'NEIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17495';
-        $municipality->name = 'NORCASIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17513';
-        $municipality->name = 'PACORA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17524';
-        $municipality->name = 'PALESTINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17541';
-        $municipality->name = 'PENSILVANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17614';
-        $municipality->name = 'RIOSUCIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17616';
-        $municipality->name = 'RISARALDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17653';
-        $municipality->name = 'SALAMINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17662';
-        $municipality->name = 'SAMANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17665';
-        $municipality->name = 'SAN JOSE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17777';
-        $municipality->name = 'SUPIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17867';
-        $municipality->name = 'VICTORIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17873';
-        $municipality->name = 'VILLAMARIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '6';
-        $municipality->code = '17877';
-        $municipality->name = 'VITERBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18001';
-        $municipality->name = 'FLORENCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18029';
-        $municipality->name = 'ALBANZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18094';
-        $municipality->name = 'BELEN DE LOS ANDAQUIES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18150';
-        $municipality->name = 'CARTAGENA DEL CHAIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18205';
-        $municipality->name = 'CURILLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18247';
-        $municipality->name = 'EL DONCELLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18256';
-        $municipality->name = 'EL PAUJIL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18410';
-        $municipality->name = 'LA MONTAÑITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18460';
-        $municipality->name = 'MILAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18479';
-        $municipality->name = 'MORELIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18592';
-        $municipality->name = 'PUERTO RICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18610';
-        $municipality->name = 'SAN JOSE DEL FRAGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18753';
-        $municipality->name = 'SAN VICENTE DEL CAGUAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18756';
-        $municipality->name = 'SOLANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18785';
-        $municipality->name = 'SOLITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '7';
-        $municipality->code = '18860';
-        $municipality->name = 'VALPARAISO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19001';
-        $municipality->name = 'POPAYAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19022';
-        $municipality->name = 'ALMAGUER';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19050';
-        $municipality->name = 'ARGELIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19075';
-        $municipality->name = 'BALBOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19100';
-        $municipality->name = 'BOLIVAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19110';
-        $municipality->name = 'BUENOS AIRES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19130';
-        $municipality->name = 'CAJIBIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19137';
-        $municipality->name = 'CALDOMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19142';
-        $municipality->name = 'CALOTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19212';
-        $municipality->name = 'CORINTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19256';
-        $municipality->name = 'EL TAMBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19290';
-        $municipality->name = 'FLORENCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19300';
-        $municipality->name = 'GUACHENE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19318';
-        $municipality->name = 'GUAPI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19355';
-        $municipality->name = 'INZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19364';
-        $municipality->name = 'JAMBALO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19392';
-        $municipality->name = 'LA SIERRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19397';
-        $municipality->name = 'LA VEGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19418';
-        $municipality->name = 'LOPEZ DE MICAY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19450';
-        $municipality->name = 'MERCADERES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19455';
-        $municipality->name = 'MIRANDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19473';
-        $municipality->name = 'MORALES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19513';
-        $municipality->name = 'PADILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19517';
-        $municipality->name = 'PAEZ - BELALCAZAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19532';
-        $municipality->name = 'PATIA - EL BORDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19533';
-        $municipality->name = 'PIAMONTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19548';
-        $municipality->name = 'PIENDAMO -TUNIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19573';
-        $municipality->name = 'PUERTO TEJADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19585';
-        $municipality->name = 'PURACE - COCONUCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19622';
-        $municipality->name = 'ROSAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19693';
-        $municipality->name = 'SAN SEBASTIAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19698';
-        $municipality->name = 'SANTANDER DE QUILICHAO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19701';
-        $municipality->name = 'SANTA ROSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19743';
-        $municipality->name = 'SILVIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '19760';
-        $municipality->name = 'SOTARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19760';
-        $municipality->name = 'SUAREZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19785';
-        $municipality->name = 'SUCRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19807';
-        $municipality->name = 'TIMBIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19809';
-        $municipality->name = 'TIMBIQUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19821';
-        $municipality->name = 'TORIBIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19824';
-        $municipality->name = 'TOTORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '8';
-        $municipality->code = '19845';
-        $municipality->name = 'VILLA RICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20001';
-        $municipality->name = 'VALLEDUPAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20011';
-        $municipality->name = 'AGUACHICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20013';
-        $municipality->name = 'AGUSTIN CODAZZI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20032';
-        $municipality->name = 'ASTREA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20045';
-        $municipality->name = 'BECERRIL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20060';
-        $municipality->name = 'BOSCONIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20175';
-        $municipality->name = 'CHIMICHAGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20178';
-        $municipality->name = 'CHIRIGUANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20228';
-        $municipality->name = 'CURUMANI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20238';
-        $municipality->name = 'EL COPEY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20250';
-        $municipality->name = 'EL PASO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20295';
-        $municipality->name = 'GAMARRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20310';
-        $municipality->name = 'GONZALEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20383';
-        $municipality->name = 'LA GLORIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20400';
-        $municipality->name = 'LA JAGUA DE IBIRICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20443';
-        $municipality->name = 'MANAURE BALCON DEL CESAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20517';
-        $municipality->name = 'PAILITAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20550';
-        $municipality->name = 'PELAYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20570';
-        $municipality->name = 'PUEBLO BELLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20614';
-        $municipality->name = 'RIO DE ORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20621';
-        $municipality->name = 'LA PAZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20710';
-        $municipality->name = 'SAN ALBERTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20750';
-        $municipality->name = 'SAN DIEGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20770';
-        $municipality->name = 'SAN MARTIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '9';
-        $municipality->code = '20787';
-        $municipality->name = 'TAMALAMEQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23001';
-        $municipality->name = 'MONTERIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23068';
-        $municipality->name = 'AYAPEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23079';
-        $municipality->name = 'BUENAVISTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23090';
-        $municipality->name = 'CANALETE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23162';
-        $municipality->name = 'CERETE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23168';
-        $municipality->name = 'CHIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23182';
-        $municipality->name = 'CHINU';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23189';
-        $municipality->name = 'CIENAGA DE ORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23300';
-        $municipality->name = 'COTORRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23350';
-        $municipality->name = 'LA APARTADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23417';
-        $municipality->name = 'LORICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23419';
-        $municipality->name = 'LOS CORDOBAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23464';
-        $municipality->name = 'MOMIL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23466';
-        $municipality->name = 'MONTELIBANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23500';
-        $municipality->name = 'MOÑITOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23555';
-        $municipality->name = 'PLANETA RICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23570';
-        $municipality->name = 'PUEBLO NUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23574';
-        $municipality->name = 'PUERTO ESCONDIDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23580';
-        $municipality->name = 'PUERTO LIBERTADOR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23586';
-        $municipality->name = 'PURISIMA DE LA CONCEPCION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23660';
-        $municipality->name = 'SAHAGUN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23670';
-        $municipality->name = 'SAN ANDRES SOTAVENTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23672';
-        $municipality->name = 'SAN ANTERO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23675';
-        $municipality->name = 'SAN BERNARDO DEL VIENTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23678';
-        $municipality->name = 'SAN CARLOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '23682';
-        $municipality->name = 'SAN JOSE DE URE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23682';
-        $municipality->name = 'SAN PELAYO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23807';
-        $municipality->name = 'TIERRALTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23815';
-        $municipality->name = 'TUCHIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '10';
-        $municipality->code = '23855';
-        $municipality->name = 'VALENCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25001';
-        $municipality->name = 'AGUA DE DIOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25019';
-        $municipality->name = 'ALBAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25035';
-        $municipality->name = 'ANAPOIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25040';
-        $municipality->name = 'ANOLAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25053';
-        $municipality->name = 'ARBELAEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25086';
-        $municipality->name = 'BELTRAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25095';
-        $municipality->name = 'BITUIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25099';
-        $municipality->name = 'BOJACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25120';
-        $municipality->name = 'CABRERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25123';
-        $municipality->name = 'CACHIPAY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25126';
-        $municipality->name = 'CAJICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25148';
-        $municipality->name = 'CAPARRAPI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25151';
-        $municipality->name = 'CAQUEZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25154';
-        $municipality->name = 'CARMEN DE CARUPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25168';
-        $municipality->name = 'CHAGUANI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25175';
-        $municipality->name = 'CHIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25178';
-        $municipality->name = 'CHIPAQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25181';
-        $municipality->name = 'CHOACHI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25183';
-        $municipality->name = 'CHOCONTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25200';
-        $municipality->name = 'COGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25214';
-        $municipality->name = 'COTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25224';
-        $municipality->name = 'CUCUNUBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25245';
-        $municipality->name = 'EL COLEGIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25258';
-        $municipality->name = 'EL PEÑON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25260';
-        $municipality->name = 'EL ROSAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25269';
-        $municipality->name = 'FACACATIVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25279';
-        $municipality->name = 'FOMEQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25281';
-        $municipality->name = 'FOSCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25286';
-        $municipality->name = 'FUNZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25288';
-        $municipality->name = 'FUQUENE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25290';
-        $municipality->name = 'FUSAGASUGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25293';
-        $municipality->name = 'GACHALA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25295';
-        $municipality->name = 'GACHANCIPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25297';
-        $municipality->name = 'GACHETA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25299';
-        $municipality->name = 'GAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25307';
-        $municipality->name = 'GIRARDOT';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25312';
-        $municipality->name = 'GRANADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25317';
-        $municipality->name = 'GUACHETA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25320';
-        $municipality->name = 'GUADUAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25322';
-        $municipality->name = 'GUASCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25324';
-        $municipality->name = 'GUATAQUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25326';
-        $municipality->name = 'GUATAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25328';
-        $municipality->name = 'GUAYABAL DE SIQUIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25335';
-        $municipality->name = 'GUAYABETAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25339';
-        $municipality->name = 'GUTIERREZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25368';
-        $municipality->name = 'JERUSALEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25372';
-        $municipality->name = 'JUNIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25377';
-        $municipality->name = 'LA CALERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25386';
-        $municipality->name = 'LA MESA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25394';
-        $municipality->name = 'LA PALMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25398';
-        $municipality->name = 'LA PEÑA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25402';
-        $municipality->name = 'LA VEGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25407';
-        $municipality->name = 'LENGUAZAQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25426';
-        $municipality->name = 'MACHETA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25430';
-        $municipality->name = 'MADRID';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25436';
-        $municipality->name = 'MANTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25438';
-        $municipality->name = 'MEDINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25473';
-        $municipality->name = 'MOSQUERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25483';
-        $municipality->name = 'NARIÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25486';
-        $municipality->name = 'NEMOCON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25488';
-        $municipality->name = 'NILO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25489';
-        $municipality->name = 'NIMAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25491';
-        $municipality->name = 'NOCAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25506';
-        $municipality->name = 'VENECIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25513';
-        $municipality->name = 'PACHO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25518';
-        $municipality->name = 'PAIME';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25524';
-        $municipality->name = 'PANDI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25530';
-        $municipality->name = 'PARATEBUENO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25535';
-        $municipality->name = 'PASCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25572';
-        $municipality->name = 'PUERTO SALGAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25580';
-        $municipality->name = 'PULI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25592';
-        $municipality->name = 'QUEBRADANEGRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25594';
-        $municipality->name = 'QUETAME';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25596';
-        $municipality->name = 'QUIPELE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25599';
-        $municipality->name = 'APULO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25612';
-        $municipality->name = 'RICAURTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25645';
-        $municipality->name = 'SAN ANTONIO DEL TEQUENDAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25649';
-        $municipality->name = 'SAN BERNARDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25653';
-        $municipality->name = 'SAN CAYETANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25658';
-        $municipality->name = 'SAN FRANCISCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25662';
-        $municipality->name = 'SAN JUAN DE RIO SECO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25718';
-        $municipality->name = 'SASAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25736';
-        $municipality->name = 'SESQUILE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25740';
-        $municipality->name = 'SIBATE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25743';
-        $municipality->name = 'SILVANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25745';
-        $municipality->name = 'SIMIJACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25754';
-        $municipality->name = 'SOACHA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25758';
-        $municipality->name = 'SOPO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25769';
-        $municipality->name = 'SUBACHOQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25772';
-        $municipality->name = 'SUESCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25777';
-        $municipality->name = 'SUPATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25779';
-        $municipality->name = 'SUSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25781';
-        $municipality->name = 'SUTATAISA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25785';
-        $municipality->name = 'TABIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25793';
-        $municipality->name = 'TAUSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25797';
-        $municipality->name = 'TENA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25799';
-        $municipality->name = 'TENJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25805';
-        $municipality->name = 'TIBACUY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25807';
-        $municipality->name = 'TIBIRITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25815';
-        $municipality->name = 'TOCAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25817';
-        $municipality->name = 'TOCANCIPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25823';
-        $municipality->name = 'TOPAIPI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25839';
-        $municipality->name = 'UBALA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25841';
-        $municipality->name = 'UBAQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25843';
-        $municipality->name = 'VILLA DE SAN DIEGO DE UBATE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25845';
-        $municipality->name = 'UNE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25851';
-        $municipality->name = 'UTICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25862';
-        $municipality->name = 'VERGARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25867';
-        $municipality->name = 'VIANI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25871';
-        $municipality->name = 'VILLAGOMEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25873';
-        $municipality->name = 'VILLAPINZON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25875';
-        $municipality->name = 'VILLETA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25878';
-        $municipality->name = 'VIOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25885';
-        $municipality->name = 'YACOPI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25898';
-        $municipality->name = 'ZIPACON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '11';
-        $municipality->code = '25899';
-        $municipality->name = 'ZIPAQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27001';
-        $municipality->name = 'QUIBDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27006';
-        $municipality->name = 'ACANDI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27025';
-        $municipality->name = 'ALTO BAUDO (PIE DE PATO)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27050';
-        $municipality->name = 'ATRATO (YUTO)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27073';
-        $municipality->name = 'BAGADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27075';
-        $municipality->name = 'BAHIA SOLANO (MUTIS)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27077';
-        $municipality->name = 'BAJO BAUDO (PIZARRO)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27099';
-        $municipality->name = 'BOJAYA (BELLA VISTA)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27135';
-        $municipality->name = 'EL CANTON DEL SAN PABLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27150';
-        $municipality->name = 'CARMEN DEL DARIEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27160';
-        $municipality->name = 'CERTEGUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27205';
-        $municipality->name = 'CONDOTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27245';
-        $municipality->name = 'EL CARMEN DE ATRATO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27250';
-        $municipality->name = 'EL LITORAL DEL SAN JUAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27361';
-        $municipality->name = 'ISTMINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27372';
-        $municipality->name = 'JURADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27413';
-        $municipality->name = 'LLORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27425';
-        $municipality->name = 'MEDIO ATRATO (BETE)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27430';
-        $municipality->name = 'MEDIO BAUDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27450';
-        $municipality->name = 'MEDIO SAN JUAN (ANDAGOYA)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27491';
-        $municipality->name = 'NOVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27495';
-        $municipality->name = 'NUQUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27580';
-        $municipality->name = 'RIO IRO (SANTA RITA)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27600';
-        $municipality->name = 'RIO QUITO (PAIMADO)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27615';
-        $municipality->name = 'RIOSUCIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27660';
-        $municipality->name = 'SAN JOSE DEL PALMAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27745';
-        $municipality->name = 'SIPI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27787';
-        $municipality->name = 'TADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27800';
-        $municipality->name = 'UNGUIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '12';
-        $municipality->code = '27810';
-        $municipality->name = 'UNION PANAMERICANA (LAS ANIMAS)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41001';
-        $municipality->name = 'NEIVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41006';
-        $municipality->name = 'ACEVEDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41013';
-        $municipality->name = 'AGRADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41016';
-        $municipality->name = 'AIPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41020';
-        $municipality->name = 'ALGECIRAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41026';
-        $municipality->name = 'ALTAMIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41078';
-        $municipality->name = 'BARAYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41132';
-        $municipality->name = 'CAMPOALEGRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41206';
-        $municipality->name = 'COLOMBIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41244';
-        $municipality->name = 'ELIAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41298';
-        $municipality->name = 'GARZON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41306';
-        $municipality->name = 'GIGANTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41319';
-        $municipality->name = 'GUADALUPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41349';
-        $municipality->name = 'HOBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41357';
-        $municipality->name = 'IQUIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41359';
-        $municipality->name = 'ISNOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41378';
-        $municipality->name = 'LA ARGENTINA (LA PLATA VIEJA)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41396';
-        $municipality->name = 'LA PLATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41483';
-        $municipality->name = 'NATAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41503';
-        $municipality->name = 'OPORAPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41518';
-        $municipality->name = 'PAICOL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41524';
-        $municipality->name = 'PALERMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41530';
-        $municipality->name = 'PALESTINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41548';
-        $municipality->name = 'PITAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41551';
-        $municipality->name = 'PITALITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41615';
-        $municipality->name = 'RIVERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41660';
-        $municipality->name = 'SALADOBLANCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41668';
-        $municipality->name = 'SAN AGUSTIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41676';
-        $municipality->name = 'SANTA MARIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41770';
-        $municipality->name = 'SUAZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41791';
-        $municipality->name = 'TARQUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41797';
-        $municipality->name = 'TESALIA (CARNICERIAS)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41799';
-        $municipality->name = 'TELLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41801';
-        $municipality->name = 'TERUEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41807';
-        $municipality->name = 'TIMANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41872';
-        $municipality->name = 'VILLAVIEJA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '13';
-        $municipality->code = '41885';
-        $municipality->name = 'YAGUARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44001';
-        $municipality->name = 'RIOHACHA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44035';
-        $municipality->name = 'ALBANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44078';
-        $municipality->name = 'BARRANCAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44090';
-        $municipality->name = 'DIBULLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44098';
-        $municipality->name = 'DISTRACCION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44110';
-        $municipality->name = 'EL MOLINO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44279';
-        $municipality->name = 'FONSECA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44378';
-        $municipality->name = 'HATONUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44420';
-        $municipality->name = 'LA JAGUA DEL PILAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44430';
-        $municipality->name = 'MAICAO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44560';
-        $municipality->name = 'MANAURE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44650';
-        $municipality->name = 'SAN JUAN DEL CESAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44847';
-        $municipality->name = 'URIBIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44855';
-        $municipality->name = 'URUMITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '14';
-        $municipality->code = '44874';
-        $municipality->name = 'VILLANUEVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47001';
-        $municipality->name = 'SANTA MARTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47030';
-        $municipality->name = 'ALGARROBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47053';
-        $municipality->name = 'ARACATACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47058';
-        $municipality->name = 'ARIGUANI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47161';
-        $municipality->name = 'CERRO SAN ANTONIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47170';
-        $municipality->name = 'CHIBOLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47189';
-        $municipality->name = 'CIENAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47205';
-        $municipality->name = 'CONCORDIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47245';
-        $municipality->name = 'EL BANCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47258';
-        $municipality->name = 'EL PIÑON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47268';
-        $municipality->name = 'EL RETEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47288';
-        $municipality->name = 'FUNDACION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47318';
-        $municipality->name = 'GUAMAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47460';
-        $municipality->name = 'NUEVA GRANADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47541';
-        $municipality->name = 'PEDRAZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47545';
-        $municipality->name = 'PUIÑO DEL CARMEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47551';
-        $municipality->name = 'PIVIJAY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47555';
-        $municipality->name = 'PLATO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47570';
-        $municipality->name = 'PUEBLOVIEJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47605';
-        $municipality->name = 'REMOLINO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47660';
-        $municipality->name = 'SABANAS DE SAN MIGUEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47675';
-        $municipality->name = 'SALAMINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47692';
-        $municipality->name = 'SAN SEBASTIAN DE BUENAVISTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47703';
-        $municipality->name = 'SAN ZENON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47707';
-        $municipality->name = 'SANTA ANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47720';
-        $municipality->name = 'SANTA BARBARA DE PINTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47745';
-        $municipality->name = 'SITIONUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47798';
-        $municipality->name = 'TENERIFE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47960';
-        $municipality->name = 'ZAPAYAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '15';
-        $municipality->code = '47980';
-        $municipality->name = 'ZONA BANANERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50001';
-        $municipality->name = 'VILLAVICENCIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50006';
-        $municipality->name = 'ACACIAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50110';
-        $municipality->name = 'BARRANCA DE UPIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50124';
-        $municipality->name = 'CABUYARO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50150';
-        $municipality->name = 'CASTILLA LA NUEVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50223';
-        $municipality->name = 'CUBARRAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50226';
-        $municipality->name = 'CUMARAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50245';
-        $municipality->name = 'EL CALVARIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50251';
-        $municipality->name = 'EL CASTILLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50270';
-        $municipality->name = 'EL DORADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50287';
-        $municipality->name = 'FUENTE DE ORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50313';
-        $municipality->name = 'GRANADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50318';
-        $municipality->name = 'GUAMAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50325';
-        $municipality->name = 'MAPIRIPAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50330';
-        $municipality->name = 'MESETAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50350';
-        $municipality->name = 'LA MACARENA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50370';
-        $municipality->name = 'URIBE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50400';
-        $municipality->name = 'LEJANIAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50450';
-        $municipality->name = 'PUERTO CONCORDIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50568';
-        $municipality->name = 'PUERTO GAITAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50573';
-        $municipality->name = 'PUERTO LOPEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50577';
-        $municipality->name = 'PUERTO LLERAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50590';
-        $municipality->name = 'PUERTO RICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50606';
-        $municipality->name = 'RESTREPO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50680';
-        $municipality->name = 'SAN CARLOS DE GUAROA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50683';
-        $municipality->name = 'SAN JUAN DE ARAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50686';
-        $municipality->name = 'SAN JUANITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50689';
-        $municipality->name = 'SAN MARTIN DE LOS LLANOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '16';
-        $municipality->code = '50711';
-        $municipality->name = 'VISTA HERMOSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52001';
-        $municipality->name = 'PASTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52019';
-        $municipality->name = 'ALBAN (SAN JOSE)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52022';
-        $municipality->name = 'ALDANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52036';
-        $municipality->name = 'ANCUYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52051';
-        $municipality->name = 'ARBOLEDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52079';
-        $municipality->name = 'BARBACOAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52083';
-        $municipality->name = 'BELEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52110';
-        $municipality->name = 'BUESACO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52203';
-        $municipality->name = 'COLON (GENOVA)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52207';
-        $municipality->name = 'CONSACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52210';
-        $municipality->name = 'CONTEDERO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52215';
-        $municipality->name = 'CORDOBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52224';
-        $municipality->name = 'CUASPUD';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52227';
-        $municipality->name = 'CUMBAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52233';
-        $municipality->name = 'CUMBITARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52240';
-        $municipality->name = 'CHACHAGUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52250';
-        $municipality->name = 'EL CHARCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52254';
-        $municipality->name = 'EL PEÑOL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52256';
-        $municipality->name = 'EL ROSARIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52258';
-        $municipality->name = 'EL TABLON DE GOMEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52260';
-        $municipality->name = 'EL TAMBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52287';
-        $municipality->name = 'FUNES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52317';
-        $municipality->name = 'GUACHUCAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52320';
-        $municipality->name = 'GUAITARILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52323';
-        $municipality->name = 'GUALMATAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52352';
-        $municipality->name = 'ILES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52354';
-        $municipality->name = 'IMUES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52356';
-        $municipality->name = 'IPIALES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52378';
-        $municipality->name = 'LA CRUZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52381';
-        $municipality->name = 'LA FLORIDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52385';
-        $municipality->name = 'LA LLANADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52390';
-        $municipality->name = 'LA TOLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52399';
-        $municipality->name = 'LA UNION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52405';
-        $municipality->name = 'LEIVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52411';
-        $municipality->name = 'LINARES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52418';
-        $municipality->name = 'LOS ANDES (SOTOMAYOR)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52427';
-        $municipality->name = 'MAGUI (PAYAN)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52435';
-        $municipality->name = 'MALLAMA (PIEDRANCHA)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52473';
-        $municipality->name = 'MOSQUERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52480';
-        $municipality->name = 'NARIÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52490';
-        $municipality->name = 'OLAYA HERRERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52506';
-        $municipality->name = 'OSPINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52520';
-        $municipality->name = 'FRANCISCO PIZARRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52540';
-        $municipality->name = 'POLICARPA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52560';
-        $municipality->name = 'POTOSI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52565';
-        $municipality->name = 'PROVIDENCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52573';
-        $municipality->name = 'PUERRES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52585';
-        $municipality->name = 'PUPIALES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52612';
-        $municipality->name = 'RICAURTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52621';
-        $municipality->name = 'ROBERTO PAYAN (SAN JOSE)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52678';
-        $municipality->name = 'SAMANIEGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52683';
-        $municipality->name = 'SANDONA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52685';
-        $municipality->name = 'SAN BERNARDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52687';
-        $municipality->name = 'SAN LORENZO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52693';
-        $municipality->name = 'SAN PABLE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52694';
-        $municipality->name = 'SAN PEDRO DE CARTAGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52696';
-        $municipality->name = 'SANTA BARBARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52699';
-        $municipality->name = 'SANTACRUZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52720';
-        $municipality->name = 'SAPUYES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52786';
-        $municipality->name = 'TAMINANGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52788';
-        $municipality->name = 'TANGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52835';
-        $municipality->name = 'SAN ANDRES DE TUMACO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52838';
-        $municipality->name = 'TUQUERRES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '17';
-        $municipality->code = '52885';
-        $municipality->name = 'YACUANQUER';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54001';
-        $municipality->name = 'CUCUTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54003';
-        $municipality->name = 'ABREGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54051';
-        $municipality->name = 'ARBOLEDAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54099';
-        $municipality->name = 'BOCHALEMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54109';
-        $municipality->name = 'BUCARASICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54125';
-        $municipality->name = 'CACOTA DE VELASCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54128';
-        $municipality->name = 'CACHIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54172';
-        $municipality->name = 'CHINACOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54174';
-        $municipality->name = 'CHITAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54206';
-        $municipality->name = 'CONVENCION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54223';
-        $municipality->name = 'CUCUTILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54239';
-        $municipality->name = 'DURANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54245';
-        $municipality->name = 'EL CARMEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54250';
-        $municipality->name = 'EL TARRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54261';
-        $municipality->name = 'EL ZULIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54313';
-        $municipality->name = 'GRAMALOTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54344';
-        $municipality->name = 'HACARI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54347';
-        $municipality->name = 'HERRAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54377';
-        $municipality->name = 'LABATECA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54385';
-        $municipality->name = 'LA ESPERANZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54398';
-        $municipality->name = 'LA PLAYA DE BELEN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54405';
-        $municipality->name = 'LOS PATIOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54418';
-        $municipality->name = 'LOURDES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54480';
-        $municipality->name = 'MUTISCUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54498';
-        $municipality->name = 'OCAÑA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54518';
-        $municipality->name = 'PAMPLONA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54520';
-        $municipality->name = 'PAMPLINITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54553';
-        $municipality->name = 'PUERTO SANTANDER';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54599';
-        $municipality->name = 'RAGONVALIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54660';
-        $municipality->name = 'SALAZAR DE LAS PALMAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54670';
-        $municipality->name = 'SAN CALIXTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54673';
-        $municipality->name = 'SAN CAYETANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54680';
-        $municipality->name = 'SANTIAGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54720';
-        $municipality->name = 'SARDINATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54743';
-        $municipality->name = 'SANTO DOMINGO DE SILOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54800';
-        $municipality->name = 'TEORAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54810';
-        $municipality->name = 'TIBU';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54820';
-        $municipality->name = 'TOLEDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54871';
-        $municipality->name = 'VILLA CARO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '18';
-        $municipality->code = '54874';
-        $municipality->name = 'VILLA DEL ROSARIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63001';
-        $municipality->name = 'ARMENIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63111';
-        $municipality->name = 'BUENAVISTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63130';
-        $municipality->name = 'CALARCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63190';
-        $municipality->name = 'CIRCASIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63212';
-        $municipality->name = 'CORDOBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63272';
-        $municipality->name = 'FILANDIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63302';
-        $municipality->name = 'GENOVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63401';
-        $municipality->name = 'LA TEBAIDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63470';
-        $municipality->name = 'MONTENEGRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63548';
-        $municipality->name = 'PIJAO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63594';
-        $municipality->name = 'QUIMBAYA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '19';
-        $municipality->code = '63690';
-        $municipality->name = 'SALENTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66001';
-        $municipality->name = 'PEREIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66045';
-        $municipality->name = 'APIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66075';
-        $municipality->name = 'BALBOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66088';
-        $municipality->name = 'BELEN DE UMBRIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66170';
-        $municipality->name = 'DOSQUEBRADAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66318';
-        $municipality->name = 'GUATICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66383';
-        $municipality->name = 'LA CELIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66400';
-        $municipality->name = 'LA VIRGINIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66440';
-        $municipality->name = 'MARSELLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66456';
-        $municipality->name = 'MISTRATO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66572';
-        $municipality->name = 'PUEBLO RICO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66594';
-        $municipality->name = 'QUINCHIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66682';
-        $municipality->name = 'SANTA ROSA DE CABAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '20';
-        $municipality->code = '66687';
-        $municipality->name = 'SANTUARIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68001';
-        $municipality->name = 'BUCARAMANGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68013';
-        $municipality->name = 'AGUADA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68020';
-        $municipality->name = 'ALBANIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68051';
-        $municipality->name = 'ARATOCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68077';
-        $municipality->name = 'BARBOSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68079';
-        $municipality->name = 'BARICHARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68081';
-        $municipality->name = 'BARRANCABERMEJA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68092';
-        $municipality->name = 'BETULIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68101';
-        $municipality->name = 'BOLIVAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68121';
-        $municipality->name = 'CABRERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68132';
-        $municipality->name = 'CALIFORNIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68147';
-        $municipality->name = 'CAPITANEJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68152';
-        $municipality->name = 'CARCASI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68160';
-        $municipality->name = 'CEPITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68162';
-        $municipality->name = 'CERRITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68167';
-        $municipality->name = 'CHARALA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68169';
-        $municipality->name = 'CHARTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68176';
-        $municipality->name = 'CHIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68179';
-        $municipality->name = 'CHIPATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68190';
-        $municipality->name = 'CIMITARRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68207';
-        $municipality->name = 'CONCEPCION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68209';
-        $municipality->name = 'CONFINES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68211';
-        $municipality->name = 'CONTRATACION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68217';
-        $municipality->name = 'COROMORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68229';
-        $municipality->name = 'CURITI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68235';
-        $municipality->name = 'EL CARMEN DE CHUCURI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68245';
-        $municipality->name = 'EL GUACAMAYO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68250';
-        $municipality->name = 'EL PEÑON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68255';
-        $municipality->name = 'EL PLAYON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68264';
-        $municipality->name = 'ENCINO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68266';
-        $municipality->name = 'ENCISO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68271';
-        $municipality->name = 'FLORIAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68276';
-        $municipality->name = 'FLORIDABLANCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68296';
-        $municipality->name = 'GALAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68298';
-        $municipality->name = 'GAMBITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68307';
-        $municipality->name = 'GIRON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68318';
-        $municipality->name = 'GUACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68320';
-        $municipality->name = 'GUADALUPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68322';
-        $municipality->name = 'GUAPOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68324';
-        $municipality->name = 'GUAVATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68327';
-        $municipality->name = 'GUEPSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68344';
-        $municipality->name = 'HATO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68368';
-        $municipality->name = 'JESUS MARIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68370';
-        $municipality->name = 'JORDAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68377';
-        $municipality->name = 'LA BELLEZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68385';
-        $municipality->name = 'LANDAZURI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68397';
-        $municipality->name = 'LA PAZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68406';
-        $municipality->name = 'LEBRIJA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68418';
-        $municipality->name = 'LOS SANTOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68425';
-        $municipality->name = 'MACARAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68432';
-        $municipality->name = 'MALAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68444';
-        $municipality->name = 'MATANZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68464';
-        $municipality->name = 'MOGOTES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68468';
-        $municipality->name = 'MOLAGAVITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68498';
-        $municipality->name = 'OCAMONTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68500';
-        $municipality->name = 'OIBA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68502';
-        $municipality->name = 'ONZAGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68522';
-        $municipality->name = 'PALMAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68524';
-        $municipality->name = 'PALMAS DEL SOCORRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68533';
-        $municipality->name = 'PARAMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68547';
-        $municipality->name = 'PIEDECUESTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68549';
-        $municipality->name = 'PINCHOTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68572';
-        $municipality->name = 'PUENTE NACIONAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68573';
-        $municipality->name = 'PUERTO PARRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68575';
-        $municipality->name = 'PUERTO WILCHES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68615';
-        $municipality->name = 'RIONEGRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68655';
-        $municipality->name = 'SABANA DE TORRES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68669';
-        $municipality->name = 'SAN ANDRES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68673';
-        $municipality->name = 'SAN BENITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68679';
-        $municipality->name = 'SAN GIL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68682';
-        $municipality->name = 'SAN JOAQUIN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68684';
-        $municipality->name = 'SAN JOSE DE MIRANDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68686';
-        $municipality->name = 'SAN MIGUEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68689';
-        $municipality->name = 'SAN VICENTE DE CHUCURI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68705';
-        $municipality->name = 'SANTA BARBARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68720';
-        $municipality->name = 'SANTA HELENA DEL OPON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68745';
-        $municipality->name = 'SIMACOTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68755';
-        $municipality->name = 'SOCORRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68770';
-        $municipality->name = 'SUAITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68773';
-        $municipality->name = 'SUCRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68780';
-        $municipality->name = 'SURATA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68820';
-        $municipality->name = 'TONA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68855';
-        $municipality->name = 'VALLE DE SAN JOSE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68861';
-        $municipality->name = 'VELEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68867';
-        $municipality->name = 'VETAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68872';
-        $municipality->name = 'VILLANUEVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '21';
-        $municipality->code = '68895';
-        $municipality->name = 'ZAPATOCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70001';
-        $municipality->name = 'SINCELEJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70110';
-        $municipality->name = 'BUENAVISTA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70124';
-        $municipality->name = 'CAIMITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70204';
-        $municipality->name = 'COLOSO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70215';
-        $municipality->name = 'COROZAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70221';
-        $municipality->name = 'COVEÑAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70230';
-        $municipality->name = 'CHALAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70233';
-        $municipality->name = 'EL ROBLE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70235';
-        $municipality->name = 'GALERAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70265';
-        $municipality->name = 'GUARANDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70400';
-        $municipality->name = 'LA UNION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70418';
-        $municipality->name = 'LOS PALMITOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70429';
-        $municipality->name = 'MAJAGUAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70473';
-        $municipality->name = 'MORROA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70508';
-        $municipality->name = 'OVEJAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70523';
-        $municipality->name = 'PALMITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70670';
-        $municipality->name = 'SAMPUES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70678';
-        $municipality->name = 'SAN BENITO ABAD';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70702';
-        $municipality->name = 'SAN JUAN DE BETULIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70708';
-        $municipality->name = 'SAN MARCOS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70713';
-        $municipality->name = 'SAN ONOFRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70717';
-        $municipality->name = 'SAN PEDRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70742';
-        $municipality->name = 'SAN LUIS DE SINCE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70771';
-        $municipality->name = 'SUCRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70820';
-        $municipality->name = 'SANTIAGO DE TOLU';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '22';
-        $municipality->code = '70823';
-        $municipality->name = 'TOLU VIEJO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73001';
-        $municipality->name = 'IBAGUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73024';
-        $municipality->name = 'ALPUJARRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73026';
-        $municipality->name = 'ALVARADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73030';
-        $municipality->name = 'AMBALEMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73043';
-        $municipality->name = 'ANZOATEGUI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73055';
-        $municipality->name = 'ARMERO (GUAYABAL)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73067';
-        $municipality->name = 'ATACO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73124';
-        $municipality->name = 'CAJAMARCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73148';
-        $municipality->name = 'CARMEN DE APICALA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73152';
-        $municipality->name = 'CASABIANCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73168';
-        $municipality->name = 'CHAPARRAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73200';
-        $municipality->name = ' COELLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73217';
-        $municipality->name = 'COYAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73226';
-        $municipality->name = 'CUNDAY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73236';
-        $municipality->name = 'DOLORES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73268';
-        $municipality->name = 'ESPINAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73270';
-        $municipality->name = 'FALAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73275';
-        $municipality->name = 'FLANDES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73283';
-        $municipality->name = 'FRESNO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73319';
-        $municipality->name = 'GUAMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73347';
-        $municipality->name = 'HERVEO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73349';
-        $municipality->name = 'HONDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73352';
-        $municipality->name = 'ICONONZO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73408';
-        $municipality->name = 'LERIDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73411';
-        $municipality->name = 'LIBANO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73443';
-        $municipality->name = 'SAN SEBASTIAN DE MARIQUITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73449';
-        $municipality->name = 'MELGAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73461';
-        $municipality->name = 'MURILLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73483';
-        $municipality->name = 'NATAGAIMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73504';
-        $municipality->name = 'ORTEGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73520';
-        $municipality->name = 'PALOCABILDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73547';
-        $municipality->name = 'PIEDRAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73555';
-        $municipality->name = 'PLANADAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73563';
-        $municipality->name = 'PRADO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73585';
-        $municipality->name = 'PURIFICACION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73616';
-        $municipality->name = 'RIOBLANCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73622';
-        $municipality->name = 'RONCESVALLES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73624';
-        $municipality->name = 'ROVIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73671';
-        $municipality->name = 'SALDAÑA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73675';
-        $municipality->name = 'SAN ANTONIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73678';
-        $municipality->name = 'SAN LUIS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73686';
-        $municipality->name = 'SANTA ISABEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73770';
-        $municipality->name = 'SUAREZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73854';
-        $municipality->name = 'VALLE DE SAN JUAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73861';
-        $municipality->name = 'VENADILLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73870';
-        $municipality->name = 'VILLAHERMOSA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '23';
-        $municipality->code = '73873';
-        $municipality->name = 'VILLARRICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76001';
-        $municipality->name = 'CALI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76020';
-        $municipality->name = 'ALCALA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76036';
-        $municipality->name = 'ANDALUCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76041';
-        $municipality->name = 'ANSERMANUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76054';
-        $municipality->name = 'ARGELIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76100';
-        $municipality->name = 'BOLIVAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76109';
-        $municipality->name = 'BUENAVENTURA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76111';
-        $municipality->name = 'GUADALAJARA DE BUGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76113';
-        $municipality->name = 'BUGALAGRANDE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76122';
-        $municipality->name = 'CAICEDONIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76126';
-        $municipality->name = 'CALIMA (DARIEN)';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76130';
-        $municipality->name = 'CANDELARIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76147';
-        $municipality->name = 'CARTAGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76233';
-        $municipality->name = 'DAGUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76243';
-        $municipality->name = 'EL AGUILA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76246';
-        $municipality->name = 'EL CAIRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76248';
-        $municipality->name = 'EL CERRITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76250';
-        $municipality->name = 'EL DOVIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76275';
-        $municipality->name = 'FLORIDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76306';
-        $municipality->name = 'GINEBRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76318';
-        $municipality->name = 'GUACARI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76364';
-        $municipality->name = 'JAMUNDI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76377';
-        $municipality->name = 'LA CUMBRE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76400';
-        $municipality->name = 'LA UNION';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76403';
-        $municipality->name = 'LA VICTORIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76497';
-        $municipality->name = 'OBANDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76520';
-        $municipality->name = 'PALMIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76563';
-        $municipality->name = 'PRADERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76606';
-        $municipality->name = 'RESTREPO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76616';
-        $municipality->name = 'RIOFRIO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76622';
-        $municipality->name = 'ROLDANILLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76670';
-        $municipality->name = 'SAN PEDRO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76736';
-        $municipality->name = 'SEVILLA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76823';
-        $municipality->name = 'TORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76828';
-        $municipality->name = 'TRUJILLO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76834';
-        $municipality->name = 'TULUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76845';
-        $municipality->name = 'ULLOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76863';
-        $municipality->name = 'VERSALLES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76869';
-        $municipality->name = 'VIJES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76890';
-        $municipality->name = 'YOTOCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76892';
-        $municipality->name = 'YUMBO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '24';
-        $municipality->code = '76895';
-        $municipality->name = 'ZARZAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81001';
-        $municipality->name = 'ARAUCA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81065';
-        $municipality->name = 'ARAUQUITA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81220';
-        $municipality->name = 'CRAVO NORTE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81300';
-        $municipality->name = 'FORTUL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81591';
-        $municipality->name = 'PUERTO RONDON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81736';
-        $municipality->name = 'SARAVENA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '25';
-        $municipality->code = '81794';
-        $municipality->name = 'TAME';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85001';
-        $municipality->name = 'YOPAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85010';
-        $municipality->name = 'AGUAZUL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85015';
-        $municipality->name = 'CHAMEZA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85125';
-        $municipality->name = 'HATO COROZAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85136';
-        $municipality->name = 'LA SALINA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85139';
-        $municipality->name = 'MANI';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85162';
-        $municipality->name = 'MONTERREY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85225';
-        $municipality->name = 'NUNCHIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85230';
-        $municipality->name = 'OROCUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85250';
-        $municipality->name = 'PAZ DE ARIPORO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85263';
-        $municipality->name = 'PORE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85279';
-        $municipality->name = 'RECETOR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85300';
-        $municipality->name = 'SABANALARGA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85315';
-        $municipality->name = 'SACAMA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85325';
-        $municipality->name = 'SAN LUIS DE PALENQUE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85400';
-        $municipality->name = 'TAMARA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85410';
-        $municipality->name = 'TAURAMENA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85430';
-        $municipality->name = 'TRINIDAD';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '26';
-        $municipality->code = '85440';
-        $municipality->name = 'VILLANUEVA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86001';
-        $municipality->name = 'MOCOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86219';
-        $municipality->name = 'COLON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86320';
-        $municipality->name = 'ORITO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86568';
-        $municipality->name = 'PUERTO ASIS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86569';
-        $municipality->name = 'PUERTO CAICEDO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86571';
-        $municipality->name = 'PUERTO GUZMAN';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86573';
-        $municipality->name = 'LEGUIZAMO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86749';
-        $municipality->name = 'SIBUNDOY';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86755';
-        $municipality->name = 'SAN FRANCISCO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86757';
-        $municipality->name = 'SAN MIGUEL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86760';
-        $municipality->name = 'SANTIAGO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86865';
-        $municipality->name = 'VALLE DEL GUAMUEZ';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '27';
-        $municipality->code = '86885';
-        $municipality->name = 'VILLAGARZON';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '28';
-        $municipality->code = '88001';
-        $municipality->name = 'SAN ANDRES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '28';
-        $municipality->code = '88564';
-        $municipality->name = 'PROVIDENCIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91001';
-        $municipality->name = 'LETICIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91263';
-        $municipality->name = 'EL ENCANTO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91405';
-        $municipality->name = 'LA CHORRERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91407';
-        $municipality->name = 'LA PEDRERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91430';
-        $municipality->name = 'LA VICTORIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91460';
-        $municipality->name = 'MIRITI - PARANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91530';
-        $municipality->name = 'PUERTO ALEGRIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91536';
-        $municipality->name = 'PUERTO ARICA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91540';
-        $municipality->name = 'PUERTO NARIÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91669';
-        $municipality->name = 'PUERTO SANTANDER';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '29';
-        $municipality->code = '91798';
-        $municipality->name = 'TARAPACA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94001';
-        $municipality->name = 'INIRIDA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94343';
-        $municipality->name = 'BARRANCO MINAS';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94663';
-        $municipality->name = 'MAPIRIPANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94883';
-        $municipality->name = 'SAN FELIPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94884';
-        $municipality->name = 'PUERTO COLOMBIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94885';
-        $municipality->name = 'LA GUADALUPE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94886';
-        $municipality->name = 'CACAHUAL';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94887';
-        $municipality->name = 'PANA PANA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '30';
-        $municipality->code = '94888';
-        $municipality->name = 'MORICHAL NUEVO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '31';
-        $municipality->code = '95001';
-        $municipality->name = 'SAN JOSE DEL GUAVIARE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '31';
-        $municipality->code = '95015';
-        $municipality->name = 'CALAMAR';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '31';
-        $municipality->code = '95025';
-        $municipality->name = 'EL RETORNO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '31';
-        $municipality->code = '95200';
-        $municipality->name = 'MIRAFLORES';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '32';
-        $municipality->code = '97001';
-        $municipality->name = 'MITU';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '32';
-        $municipality->code = '97161';
-        $municipality->name = 'CARURU';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '32';
-        $municipality->code = '97511';
-        $municipality->name = 'PACOA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '32';
-        $municipality->code = '97666';
-        $municipality->name = 'TARAIRA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '32';
-        $municipality->code = '97777';
-        $municipality->name = 'PAPUNAUA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '32';
-        $municipality->code = '97889';
-        $municipality->name = 'YAVARATE';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '33';
-        $municipality->code = '99001';
-        $municipality->name = 'PUERTO CARREÑO';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '33';
-        $municipality->code = '99524';
-        $municipality->name = 'LA PRIMAVERA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '33';
-        $municipality->code = '99624';
-        $municipality->name = 'SANTA ROSALIA';
-
-        $municipality->save();
-
-        $municipality = new Municipality();
-
-        $municipality->department_id = '33';
-        $municipality->code = '99773';
-        $municipality->name = 'CUMARIBO';
-
-        $municipality->save();
+       $municipalities = [
+            [
+                'name' => 'MEDELLIN',
+                'code' => '05001',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ABEJORRAL',
+                'code' => '05002',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ABRIAQUI',
+                'code' => '05004',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ALEJANDRIA',
+                'code' => '05021',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'AMAGA',
+                'code' => '05002',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'AMALFI',
+                'code' => '05031',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ANDES',
+                'code' => '05034',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ANGELOPOLIS',
+                'code' => '05036',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ANGOSTURA',
+                'code' => '05038',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ANORI',
+                'code' => '05040',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SANTAFE DE ANTIOQUIA',
+                'code' => '05042',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ANZA',
+                'code' => '05044',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'APARTADO',
+                'code' => '05045',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ARBOLETES',
+                'code' => '05051',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ARGELIA',
+                'code' => '05055',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ARMENIA',
+                'code' => '05059',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BARBOSA',
+                'code' => '05079',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BELMIRA',
+                'code' => '05086',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BELLO',
+                'code' => '05088',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BETANIA',
+                'code' => '05091',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BETULIA',
+                'code' => '05093',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CIUDAD BOLIVAR',
+                'code' => '05101',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BRICEÑO',
+                'code' => '05107',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BURITICA',
+                'code' => '05113',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CACERES',
+                'code' => '05120',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CAICEDO',
+                'code' => '05125',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CALDAS',
+                'code' => '05129',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CAMPAMENTO',
+                'code' => '05134',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CAÑASGORDAS',
+                'code' => '05138',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CARACOLI',
+                'code' => '05142',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CARAMANTA',
+                'code' => '05145',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CAREPA',
+                'code' => '05147',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'EL CARMEN DE VIVORAL',
+                'code' => '05148',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CAROLINA',
+                'code' => '05150',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CAUCASIA',
+                'code' => '05154',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CHIGORODO',
+                'code' => '05172',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CISNEROS',
+                'code' => '05190',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'COCORNA',
+                'code' => '05197',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CONCEPCION',
+                'code' => '05206',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'CONCORDIA',
+                'code' => '05209',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'COPACABANA',
+                'code' => '05212',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'DABEIBA',
+                'code' => '05234',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'DON MATIAS',
+                'code' => '05237',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ABEJICO',
+                'code' => '05240',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'EL BAGRE',
+                'code' => '05250',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ENTRERRIOS',
+                'code' => '05264',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ENVIGADO',
+                'code' => '05266',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'FREDONIA',
+                'code' => '05282',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'FRONTINO',
+                'code' => '05284',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GIRALDO',
+                'code' => '05306',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GIRARDOTA',
+                'code' => '05308',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GOMEZ PLATA',
+                'code' => '05310',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GRANADA',
+                'code' => '05313',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GUADALUPE',
+                'code' => '05315',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GUARNE',
+                'code' => '05318',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'GUATAPE',
+                'code' => '05321',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'HELICONDIA',
+                'code' => '05347',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'HISPANIA',
+                'code' => '05353',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ITAGUI',
+                'code' => '05360',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ITUANGO',
+                'code' => '05361',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'JARDIN',
+                'code' => '05364',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'JERICO',
+                'code' => '05368',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'LA CEJA',
+                'code' => '05376',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'LA ESTRELLA',
+                'code' => '05380',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'LA PINTADA',
+                'code' => '05390',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'LA UNION',
+                'code' => '05400',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'LIBORINA',
+                'code' => '05411',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'MACEO',
+                'code' => '05425',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'MARINILLA',
+                'code' => '05440',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'MONTEBELLO',
+                'code' => '05467',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'MURINDO',
+                'code' => '05475',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'MUTATA',
+                'code' => '05480',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'NARIÑO',
+                'code' => '05483',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'NECOCLI',
+                'code' => '05490',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'NECHI',
+                'code' => '05495',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'OLAYA',
+                'code' => '05501',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'PEÑOL',
+                'code' => '05541',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'PEQUE',
+                'code' => '05543',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'PUEBLORRICO',
+                'code' => '05576',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'PUERTO BERRIO',
+                'code' => '05579',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'PUERTO NARE',
+                'code' => '05585',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'PUERTO TRIUNFO',
+                'code' => '05591',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'REMEDIOS',
+                'code' => '05604',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'RETIRO',
+                'code' => '05607',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'RIONEGRO',
+                'code' => '05615',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SABANALARGA',
+                'code' => '05628',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SABANETA',
+                'code' => '05631',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SALGAR',
+                'code' => '05642',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN ANDRES DE CUERQUIA',
+                'code' => '05647',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN CARLOS',
+                'code' => '05649',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN FRANCISCO',
+                'code' => '05652',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN JERONIMO',
+                'code' => '05656',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN JOSE DE LA MONTAÑA',
+                'code' => '05658',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN JUAN DE URABA',
+                'code' => '05659',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN LUIS',
+                'code' => '05660',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN PEDRO DE LOS MILAGROS',
+                'code' => '05664',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN PEDRO DE URABA',
+                'code' => '05665',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN RAFAEL',
+                'code' => '05667',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN ROQUE',
+                'code' => '05670',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SAN VICENTE FERRER',
+                'code' => '05674',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SANTA BARBARA',
+                'code' => '05679',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SANTA ROSA DE OSOS',
+                'code' => '05686',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SANTO DOMINGO',
+                'code' => '05690',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'EL SANTUARIO',
+                'code' => '05697',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SEGOVIA',
+                'code' => '05736',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SONSON',
+                'code' => '05756',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'SOPETRAN',
+                'code' => '05761',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'TAMESIS',
+                'code' => '05789',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'TARAZA',
+                'code' => '05790',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'TARSO',
+                'code' => '05792',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'TITIRIBI',
+                'code' => '05809',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'TOLEDO',
+                'code' => '05819',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'TURBO',
+                'code' => '05837',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'URAMITA',
+                'code' => '05842',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'URRAO',
+                'code' => '05847',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'VALDIVIA',
+                'code' => '05854',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'VALPARAISO',
+                'code' => '05856',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'VEGACHI',
+                'code' => '05858',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'VENECIA',
+                'code' => '05861',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'VIGIA DEL FUERTE',
+                'code' => '05873',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'YALI',
+                'code' => '05885',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'YARUMAL',
+                'code' => '05887',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'YOLOMBO',
+                'code' => '05890',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'YONDO',
+                'code' => '05893',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'ZARAGOSA',
+                'code' => '05895',
+                'department_id' => 1
+            ],
+            [
+                'name' => 'BARRANQUILLA',
+                'code' => '08001',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'BARANOA',
+                'code' => '08078',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'CAMPO DE LA CRUZ',
+                'code' => '08137',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'CANDELARIA',
+                'code' => '08141',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'GALAPA',
+                'code' => '08296',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'JUAN DE ACOSTA',
+                'code' => '08372',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'LURUACO',
+                'code' => '08421',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'MALAMBO',
+                'code' => '08433',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'MANATI',
+                'code' => '08436',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'PALMAR DE VARELA',
+                'code' => '08520',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'PIOJO',
+                'code' => '08549',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'POLO NUEVO',
+                'code' => '08558',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'PONEDERA',
+                'code' => '08560',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'PUERTO COLOMBIA',
+                'code' => '08573',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'REPELON',
+                'code' => '08606',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'SABANAGRANDE',
+                'code' => '08634',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'SABANALARGA',
+                'code' => '08638',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'SANTA LUCIA',
+                'code' => '08675',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'SANTO TOMAS',
+                'code' => '08685',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'SOLEDAD',
+                'code' => '08758',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'SUAN',
+                'code' => '08770',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'TUBARA',
+                'code' => '08832',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'USIACURI',
+                'code' => '08849',
+                'department_id' => 2
+            ],
+            [
+                'name' => 'BOGOTA',
+                'code' => '11001',
+                'department_id' => 3
+            ],
+            [
+                'name' => 'CARTAGENA',
+                'code' => '13001',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'ACHI',
+                'code' => '13006',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'ALTOS DEL ROSARIO',
+                'code' => '13030',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'ARENAL',
+                'code' => '13042',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'ARJONA',
+                'code' => '13052',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'ARROYOHONDO',
+                'code' => '13062',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'BARRANCO DE LOBA',
+                'code' => '13074',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'CALAMAR',
+                'code' => '13140',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'CANTAGALLO',
+                'code' => '13160',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'CICUCO',
+                'code' => '13188',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'CORDOBA',
+                'code' => '13212',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'CLEMENCIA',
+                'code' => '13222',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'EL CARMEN DE BOLIVAR',
+                'code' => '13244',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'EL GUAMO',
+                'code' => '13248',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'EL PEÑON',
+                'code' => '13268',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'HATILLO DE LOBA',
+                'code' => '13300',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MAGANGUE',
+                'code' => '13430',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MAHATES',
+                'code' => '13433',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MARGARITA',
+                'code' => '13440',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MARIA LA BAJA',
+                'code' => '13442',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MONTECRISTO',
+                'code' => '13458',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MOMPOS',
+                'code' => '13468',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MORALES',
+                'code' => '13473',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'MOROSI',
+                'code' => '13490',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'PINILLOS',
+                'code' => '13549',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'REGIDOR',
+                'code' => '13580',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'RIO VIEJO',
+                'code' => '13600',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN CRISTOBAL',
+                'code' => '13620',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN ESTANISLAO',
+                'code' => '13647',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN FERNANDO',
+                'code' => '13650',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN JACINTO',
+                'code' => '13654',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN JACINTO DEL CAUCA',
+                'code' => '13655',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN JUAN NEPOMUCENO',
+                'code' => '13657',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN MARTIN DE LOBA',
+                'code' => '13667',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SAN PABLO SUR',
+                'code' => '13670',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SANTA CATALINA',
+                'code' => '13673',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SANTA ROSA DE LIMA',
+                'code' => '13683',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SANTA ROSA DEL SUR',
+                'code' => '13688',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SIMITI',
+                'code' => '13744',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'SOPLAVIENTO',
+                'code' => '13760',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'TALAIGUA NUEVO',
+                'code' => '13780',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'TIQUISIO',
+                'code' => '13810',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'TURBACO',
+                'code' => '13836',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'TURBANA',
+                'code' => '13838',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'VILLANUEVA',
+                'code' => '13873',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'ZAMBRANO',
+                'code' => '13894',
+                'department_id' => 4
+            ],
+            [
+                'name' => 'TUNJA',
+                'code' => '15001',
+                'department_id' => 5
+            ],
+            [
+                'name' => ' ALMEIDA',
+                'code' => '15022',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'AQUITANIA',
+                'code' => '15047',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'ARCABUCO',
+                'code' => '15051',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BELEN',
+                'code' => '15087',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BERBEO',
+                'code' => '15090',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BETEITIVA',
+                'code' => '15092',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BOAVITA',
+                'code' => '15097',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BOYACA',
+                'code' => '15104',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BRICEÑO',
+                'code' => '15106',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BUENAVISTA',
+                'code' => '15109',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'BUSBANZA',
+                'code' => '15114',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CALDAS',
+                'code' => '15131',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CAMPOHERMOSO',
+                'code' => '15135',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CERINZA',
+                'code' => '15162',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHINAVITA',
+                'code' => '15172',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CUIQUINQUIRA',
+                'code' => '15176',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHISCAS',
+                'code' => '15180',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHITA',
+                'code' => '15183',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHITARAQUE',
+                'code' => '15185',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHIVATA',
+                'code' => '15187',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CIENAGA',
+                'code' => '15189',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'COMBITA',
+                'code' => '15204',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'COPER',
+                'code' => '15212',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CORRALES',
+                'code' => '15215',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'COVARACHICA',
+                'code' => '15218',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CUBARA',
+                'code' => '15223',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CUCAITA',
+                'code' => '15224',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CUITIVA',
+                'code' => '15226',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHIQUIZA',
+                'code' => '15232',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CHIVOR',
+                'code' => '15236',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'DUITAMA',
+                'code' => '15238',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'EL COCUY',
+                'code' => '15244',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'EL ESPINO',
+                'code' => '15248',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'FIRAVITOVA',
+                'code' => '15272',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'FLORESTA',
+                'code' => '15276',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'CACHANTIVA',
+                'code' => '15293',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'GAMEZA',
+                'code' => '15296',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'GARAGOA',
+                'code' => '15299',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'GUACAMAYAS',
+                'code' => '15317',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'GUATEQUE',
+                'code' => '15322',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'GUAYATA',
+                'code' => '15325',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'GUICAN DE LA SIERRA',
+                'code' => '15332',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'IZA',
+                'code' => '15362',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'JENESANO',
+                'code' => '15367',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'JERICO',
+                'code' => '15368',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'LABRANZAGRANDE',
+                'code' => '15377',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'LA CAPILLA',
+                'code' => '15380',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'LA VICTORIA',
+                'code' => '15401',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'LA UVITA',
+                'code' => '15403',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'VILLA DE LEIVA',
+                'code' => '15407',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MACANAL',
+                'code' => '15425',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MARIPI',
+                'code' => '15442',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MIRAFLORES',
+                'code' => '15455',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MONGUA',
+                'code' => '15464',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MONGUI',
+                'code' => '15466',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MONIQUIRA',
+                'code' => '15469',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MOTAVITA',
+                'code' => '15476',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MUZO',
+                'code' => '15480',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'NOBSA',
+                'code' => '15491',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'NUEVO COLON',
+                'code' => '15494',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'OICATA',
+                'code' => '15500',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'OTANCHE',
+                'code' => '15507',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PACHAVITA',
+                'code' => '15511',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PAEZ',
+                'code' => '15514',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PAIPA',
+                'code' => '15516',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PAJARITO',
+                'code' => '15518',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PANQUEVA',
+                'code' => '15522',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PAUNA',
+                'code' => '15531',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PAYA',
+                'code' => '15533',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PAZ DEL RIO',
+                'code' => '15537',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PESCA',
+                'code' => '15542',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PISBA',
+                'code' => '15550',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'PUERTO BOYACA',
+                'code' => '15572',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'QUIPAMA',
+                'code' => '15580',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'RAMIRIQUI',
+                'code' => '15599',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'RAQUIRA',
+                'code' => '15600',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'RONDON',
+                'code' => '15621',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SABOYA',
+                'code' => '15632',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SACHICA',
+                'code' => '15638',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAMACA',
+                'code' => '15646',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAN EDUARDO',
+                'code' => '15660',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAN JOSE DE PARE',
+                'code' => '15664',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAN LUIS GACENO',
+                'code' => '15667',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAN MATEO',
+                'code' => '15673',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAN MIGUEL DE SEMA',
+                'code' => '15676',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SAN PABLO DE BORBUR',
+                'code' => '15681',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SANTANA',
+                'code' => '15686',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SANTA MARIA',
+                'code' => '15690',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SANTA ROSA DE VITERBO',
+                'code' => '15693',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SANTA SOFIA',
+                'code' => '15696',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SANTIVANORTE',
+                'code' => '15720',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SANTIVASUR',
+                'code' => '15723',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SIACHOQUE',
+                'code' => '15740',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SOATA',
+                'code' => '15753',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SOCOTA',
+                'code' => '15755',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SOCHA',
+                'code' => '15757',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SOGAMOSO',
+                'code' => '15759',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SOMONDOCO',
+                'code' => '15761',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SORA',
+                'code' => '15762',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SOTAQUIRA',
+                'code' => '15763',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SORACA',
+                'code' => '15764',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SUSACON',
+                'code' => '15774',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SUTAMARCHAN',
+                'code' => '15776',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'SUTATENZA',
+                'code' => '15778',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TASCO',
+                'code' => '15790',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TENZA',
+                'code' => '15798',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TIBANA',
+                'code' => '15804',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TIBASOSA',
+                'code' => '15806',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TIMJACA',
+                'code' => '15808',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TIPACOQUE',
+                'code' => '15810',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TOCA',
+                'code' => '15814',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TOGUI',
+                'code' => '15816',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TOPAGA',
+                'code' => '15820',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TOTA',
+                'code' => '15822',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TUNUNGUA',
+                'code' => '15832',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TURMEQUE',
+                'code' => '15835',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TUTA',
+                'code' => '15837',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'TUTAZA',
+                'code' => '15839',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'UMBITA',
+                'code' => '15842',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'VENTAQUEMADA',
+                'code' => '15861',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'VIRACACHA',
+                'code' => '15879',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'ZETAQUIRA',
+                'code' => '15897',
+                'department_id' => 5
+            ],
+            [
+                'name' => 'MANIZALES',
+                'code' => '17001',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'AGUADAS',
+                'code' => '17013',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'ANSERMA',
+                'code' => '17042',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'ARANZAZU',
+                'code' => '17050',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'BELALCAZAR',
+                'code' => '17088',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'CHINCHINA',
+                'code' => '17114',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'FILADELFIA',
+                'code' => '17272',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'LA DORADA',
+                'code' => '17380',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'LA MERCED',
+                'code' => '17388',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'MANZANARES',
+                'code' => '17433',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'MARMATO',
+                'code' => '17442',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'MARQUETALIA',
+                'code' => '17444',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'MARULANDA',
+                'code' => '17446',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'NEIRA',
+                'code' => '17486',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'NORCASIA',
+                'code' => '17495',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'PACORA',
+                'code' => '17513',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'PALESTINA',
+                'code' => '17524',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'PENSILVANIA',
+                'code' => '17541',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'RIOSUCIO',
+                'code' => '17614',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'RISARALDA',
+                'code' => '17616',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'SALAMINA',
+                'code' => '17653',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'SAMANA',
+                'code' => '17662',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'SAN JOSE',
+                'code' => '17665',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'SUPIA',
+                'code' => '17777',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'VICTORIA',
+                'code' => '17867',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'VILLAMARIA',
+                'code' => '17873',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'VITERBO',
+                'code' => '17877',
+                'department_id' => 6
+            ],
+            [
+                'name' => 'FLORENCIA',
+                'code' => '18001',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'ALBANZA',
+                'code' => '18029',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'BELEN DE LOS ANDAQUIES',
+                'code' => '18094',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'CARTAGENA DEL CHAIRA',
+                'code' => '18150',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'CURILLO',
+                'code' => '18205',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'EL DONCELLO',
+                'code' => '18247',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'EL PAJUIL',
+                'code' => '18256',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'LA MONTAÑITA',
+                'code' => '18410',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'MILAN',
+                'code' => '18460',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'MORELIA',
+                'code' => '18479',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'PUERTO RICO',
+                'code' => '18592',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'SAN JOSE DEL FRAGUA',
+                'code' => '18610',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'SAN VICENTE DEL CAGUAN',
+                'code' => '18753',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'SOLANO',
+                'code' => '18756',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'SOLITA',
+                'code' => '18785',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'VALPARAISO',
+                'code' => '18860',
+                'department_id' => 7
+            ],
+            [
+                'name' => 'POPAYAN',
+                'code' => '19001',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'ALMAGUER',
+                'code' => '19022',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'ARGELIA',
+                'code' => '19050',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'BALBOA',
+                'code' => '19075',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'BOLIVAR',
+                'code' => '19100',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'BUENOS AIRES',
+                'code' => '19110',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'CAJIBIO',
+                'code' => '19130',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'CALDOMO',
+                'code' => '19137',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'CALOTO',
+                'code' => '19142',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'CORINTO',
+                'code' => '19212',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'EL TAMBO',
+                'code' => '19256',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'FLORENCIA',
+                'code' => '19290',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'GUACHENE',
+                'code' => '19300',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'GUAPI',
+                'code' => '19318',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'INZA',
+                'code' => '19355',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'JAMBALO',
+                'code' => '19364',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'LA SIERRA',
+                'code' => '19392',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'LA VEGA',
+                'code' => '19397',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'LOPEZ DE MICAY',
+                'code' => '19418',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'MERCADERES',
+                'code' => '19450',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'MIRANDA',
+                'code' => '19455',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'MORALES',
+                'code' => '19473',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PADILLA',
+                'code' => '19513',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PAEZ - BELALCAZAR',
+                'code' => '19517',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PATIA - EL BORDO',
+                'code' => '19532',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PIAMONTE',
+                'code' => '19533',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PIENDAMO - TUNIA',
+                'code' => '19548',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PUERTO TEJADA',
+                'code' => '19573',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'PURACE - COCONUCO',
+                'code' => '19585',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'ROSAS',
+                'code' => '19622',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SAN SEBASTIAN',
+                'code' => '19693',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SANTANDER DE QUILICHAO',
+                'code' => '19698',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SANTA ROSA',
+                'code' => '19701',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SILVIA',
+                'code' => '19743',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SOTARA',
+                'code' => '19760',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SUAREZ',
+                'code' => '19780',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'SUCRE',
+                'code' => '19785',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'TIMBIO',
+                'code' => '19807',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'TIMBIQUI',
+                'code' => '19809',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'TORIBIO',
+                'code' => '19821',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'TOTORO',
+                'code' => '19824',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'VILLA RICA',
+                'code' => '19845',
+                'department_id' => 8
+            ],
+            [
+                'name' => 'VALLEDUPAR',
+                'code' => '20001',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'AGUACHICA',
+                'code' => '20011',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'AGUSTIN CODAZI',
+                'code' => '20013',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'ASTREA',
+                'code' => '20032',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'BECERRIL',
+                'code' => '20045',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'BOSCONIA',
+                'code' => '20060',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'CHIMICHAGUA',
+                'code' => '20175',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'CHIRIGUANA',
+                'code' => '20178',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'CURUMANI',
+                'code' => '20228',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'EL COPEY',
+                'code' => '20238',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'EL PASO',
+                'code' => '20250',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'GAMARRA',
+                'code' => '20295',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'GONZALEZ',
+                'code' => '20310',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'LA GLORIA',
+                'code' => '20383',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'LA JAGUA DE IBIRICO',
+                'code' => '20400',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'MANAURE BALCON DEL CESAR',
+                'code' => '20443',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'PAILITAS',
+                'code' => '20517',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'PELAYA',
+                'code' => '20550',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'PUEBLO BELLO',
+                'code' => '20570',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'RIO DE ORO',
+                'code' => '20614',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'LA PAZ',
+                'code' => '20621',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'SAN ALBERTO',
+                'code' => '20710',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'SAN DIEGO',
+                'code' => '20750',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'SAN MARTIN',
+                'code' => '20770',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'TAMALAMEQUE',
+                'code' => '20787',
+                'department_id' => 9
+            ],
+            [
+                'name' => 'MONTERIA',
+                'code' => '23001',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'AYAPEL',
+                'code' => '23068',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'BUENAVISTA',
+                'code' => '23079',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'CANALETE',
+                'code' => '23090',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'CERETE',
+                'code' => '23162',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'CHIMA',
+                'code' => '23168',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'CHINU',
+                'code' => '23182',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'CIENAGA DE ORO',
+                'code' => '23189',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'COTORRA',
+                'code' => '23300',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'LA APARTADA',
+                'code' => '23350',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'LORICA',
+                'code' => '23417',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'LOS CORDOBAS',
+                'code' => '23419',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'MOMIL',
+                'code' => '23464',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'MONTELIBANO',
+                'code' => '23466',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'MOÑITOS',
+                'code' => '23500',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'PLANETA RICA',
+                'code' => '23555',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'PUEBLO NUEVO',
+                'code' => '23570',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'PUERTO ESCONDIDO',
+                'code' => '23574',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'PUERTO LIBERTADOR',
+                'code' => '23580',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'PURISIMA DE LA CONCEPCION',
+                'code' => '23586',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAHAGUN',
+                'code' => '23660',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAN ANDRES DE SOTAVENTO',
+                'code' => '23670',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAN ANTERO',
+                'code' => '23672',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAN BERNARDO DEL VIENTO',
+                'code' => '23675',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAN CARLOS',
+                'code' => '23678',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAN JOSE DE URE',
+                'code' => '23682',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'SAN PELAYO',
+                'code' => '23686',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'TIERRA ALTA',
+                'code' => '23807',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'TUCHIN',
+                'code' => '23815',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'VALENCIA',
+                'code' => '23855',
+                'department_id' => 10
+            ],
+            [
+                'name' => 'AGUA DE DIOS',
+                'code' => '25001',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'ALBAN',
+                'code' => '25019',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'ANAPOIMA',
+                'code' => '25035',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'ANOLAIMA',
+                'code' => '25040',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'ARBELAEZ',
+                'code' => '25053',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'BELTRAN',
+                'code' => '25086',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'BITUIMA',
+                'code' => '25095',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'BOJACA',
+                'code' => '25099',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CABRERA',
+                'code' => '25120',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CACHIPAY',
+                'code' => '25123',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CAJICA',
+                'code' => '25126',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CAPARRAPI',
+                'code' => '25148',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CAQUEZA',
+                'code' => '25151',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CARMEN DE CARUPA',
+                'code' => '25154',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CHAGUANI',
+                'code' => '25168',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CHIA',
+                'code' => '25175',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CHIPAQUE',
+                'code' => '25178',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'COACHI',
+                'code' => '25181',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CHOCONTA',
+                'code' => '25183',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'COGUA',
+                'code' => '25200',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'COTA',
+                'code' => '25214',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'CUCUNUBA',
+                'code' => '25224',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'EL COLEGIO',
+                'code' => '25245',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'EL PEÑON',
+                'code' => '25258',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'EL ROSAL',
+                'code' => '25260',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'FACACATIVA',
+                'code' => '25269',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'FOMEQUE',
+                'code' => '25279',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'FOSCA',
+                'code' => '25281',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'FUNZA',
+                'code' => '25286',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'FUQUENE',
+                'code' => '25288',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'FUSAGASUGA',
+                'code' => '25290',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GACHALA',
+                'code' => '25293',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GACJANCIPA',
+                'code' => '25295',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GACHETA',
+                'code' => '25297',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GAMA',
+                'code' => '25299',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GIRARDOT',
+                'code' => '25307',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GRANADA',
+                'code' => '25312',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUACHETA',
+                'code' => '25317',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUADUAS',
+                'code' => '25320',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUASCA',
+                'code' => '25322',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUATAQUI',
+                'code' => '25324',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUATAVITA',
+                'code' => '25326',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUAYABAL DE SIQUIMA',
+                'code' => '25328',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUAYABETAL',
+                'code' => '25335',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'GUTIERREZ',
+                'code' => '25339',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'JERUSALEN',
+                'code' => '25368',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'JUNIN',
+                'code' => '25372',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'LA CALERA',
+                'code' => '25377',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'LA MESA',
+                'code' => '25386',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'LA PALMA',
+                'code' => '25394',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'LA PEÑA',
+                'code' => '25398',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'LA VEGA',
+                'code' => '25402',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'LENGUAZAQUE',
+                'code' => '25407',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'MACHETA',
+                'code' => '25426',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'MADRID',
+                'code' => '25430',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'MANTA',
+                'code' => '25436',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'MEDINA',
+                'code' => '25438',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'MOSQUERA',
+                'code' => '25473',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'NARIÑO',
+                'code' => '25483',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'NEMOCON',
+                'code' => '25486',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'NILO',
+                'code' => '25488',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'NIMAIMA',
+                'code' => '25489',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'NOCAIMA',
+                'code' => '25491',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VENECIA',
+                'code' => '25506',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PACHO',
+                'code' => '25513',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PAIME',
+                'code' => '25518',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PANDI',
+                'code' => '25524',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PARATEBUENO',
+                'code' => '25530',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PASCA',
+                'code' => '25535',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PUERTO SALGAR',
+                'code' => '25572',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'PULI',
+                'code' => '25580',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'QUEBRADANEGRA',
+                'code' => '25592',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'QUETAME',
+                'code' => '25594',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'QUIPELE',
+                'code' => '25596',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'APULO',
+                'code' => '25599',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'RICAURTE',
+                'code' => '25612',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SAN ANTONIO DEL TEQUENDAMA',
+                'code' => '25645',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SAN BERNARDO',
+                'code' => '25649',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SAN CAYETANO',
+                'code' => '25653',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SAN FRANCISCO',
+                'code' => '25658',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SAN JUAN DE RIO SECO',
+                'code' => '25662',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SASAIMA',
+                'code' => '25718',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SESQUILE',
+                'code' => '25736',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SIBATE',
+                'code' => '25740',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SILVANIA',
+                'code' => '25743',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SIMIJACA',
+                'code' => '25745',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SOACHA',
+                'code' => '25754',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SOPO',
+                'code' => '25758',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SUBACHOQUE',
+                'code' => '25769',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SUESCA',
+                'code' => '25772',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SUPATA',
+                'code' => '25777',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SUSA',
+                'code' => '25779',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'SUTATAISA',
+                'code' => '25781',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TABIO',
+                'code' => '25785',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TAUSA',
+                'code' => '25793',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TENA',
+                'code' => '25797',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TENJO',
+                'code' => '25799',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TIBACUY',
+                'code' => '25805',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TIBIRITA',
+                'code' => '25807',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TOCAIMA',
+                'code' => '25815',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TOCANCIPA',
+                'code' => '25817',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'TOPAIPI',
+                'code' => '25823',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'UBALA',
+                'code' => '25839',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'UBAQUE',
+                'code' => '25841',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VILLA DE SAN DIEGO DE UBATE',
+                'code' => '25843',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'UNE',
+                'code' => '25845',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'UTICA',
+                'code' => '25851',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VERGARA',
+                'code' => '25862',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VIANI',
+                'code' => '25867',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VILLAGOMEZ',
+                'code' => '25871',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VILLAPINZON',
+                'code' => '25873',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VILLETA',
+                'code' => '25875',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'VIOTA',
+                'code' => '25878',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'YACOPI',
+                'code' => '25885',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'ZIPACON',
+                'code' => '25898',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'ZIPAQUIRA',
+                'code' => '25899',
+                'department_id' => 11
+            ],
+            [
+                'name' => 'QUIBDO',
+                'code' => '27001',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'ACANDI',
+                'code' => '27006',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'ALTO BAUDO',
+                'code' => '27025',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'ATRATO',
+                'code' => '27050',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'BAGADO',
+                'code' => '27073',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'BAHIA SOLANO',
+                'code' => '27075',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'BAJO BAUDO',
+                'code' => '27077',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'BOJAYA',
+                'code' => '27099',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'EL CANTON DE SAN PABLO',
+                'code' => '27135',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'CARMEN DEL DARIEN',
+                'code' => '27150',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'CERTEGUI',
+                'code' => '27160',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'CONDOTO',
+                'code' => '27205',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'EL CARMEN DE ATRATO',
+                'code' => '27245',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'EL LITORAL DE SAN JUAN',
+                'code' => '27250',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'ISTMINA',
+                'code' => '27361',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'JURADO',
+                'code' => '27372',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'LLORO',
+                'code' => '27413',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'MEDIO ATRATO',
+                'code' => '27425',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'MEDIO BAUDO',
+                'code' => '27430',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'MEDIO SAN JUAN',
+                'code' => '27450',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'NOVITA',
+                'code' => '27491',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'NUQUI',
+                'code' => '27495',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'RIO IRO',
+                'code' => '27580',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'RIO QUITO',
+                'code' => '27600',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'RIO SUCIO',
+                'code' => '27615',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'SAN JOSE DEL PALMAR',
+                'code' => '27660',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'SIPI',
+                'code' => '27745',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'TADO',
+                'code' => '27787',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'UNGUIA',
+                'code' => '27800',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'UNION PANAMERICANA',
+                'code' => '27810',
+                'department_id' => 12
+            ],
+            [
+                'name' => 'NEIVA',
+                'code' => '41001',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'ACEVEDO',
+                'code' => '41006',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'AGRADO',
+                'code' => '41013',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'AIPE',
+                'code' => '41016',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'ALGECIRAS',
+                'code' => '41020',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'ALTAMIRA',
+                'code' => '41026',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'BARAYA',
+                'code' => '41078',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'ACAMPOALEGRE',
+                'code' => '41132',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'COLOMBIA',
+                'code' => '41206',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'ELIAS',
+                'code' => '41244',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'GARZON',
+                'code' => '41298',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'GIGANTE',
+                'code' => '41306',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'GUADALUPE',
+                'code' => '41319',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'HOBO',
+                'code' => '41349',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'IQUIRA',
+                'code' => '41357',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'ISNOS',
+                'code' => '41359',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'LA ARGENTINA',
+                'code' => '41378',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'LA PLATA',
+                'code' => '41396',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'NATAGA',
+                'code' => '41483',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'OPORAPA',
+                'code' => '41503',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'PAICOL',
+                'code' => '41518',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'PALERMO',
+                'code' => '41524',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'PALESTINA',
+                'code' => '41530',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'PITAL',
+                'code' => '41548',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'PITALITO',
+                'code' => '41551',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'RIVERA',
+                'code' => '41615',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'SALADOBLANCO',
+                'code' => '41660',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'SAN AGUSTIN',
+                'code' => '41668',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'santa maria',
+                'code' => '41676',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'SUAZA',
+                'code' => '41770',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'TARQUI',
+                'code' => '41791',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'TESALIA',
+                'code' => '41797',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'TELLO',
+                'code' => '41799',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'TERUEL',
+                'code' => '41801',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'TIMANA',
+                'code' => '41807',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'VILLAVIEJA',
+                'code' => '41872',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'YAGUARA',
+                'code' => '41885',
+                'department_id' => 13
+            ],
+            [
+                'name' => 'RIOHACHA',
+                'code' => '44001',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'ALBANIA',
+                'code' => '44035',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'BARRANCAS',
+                'code' => '44078',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'DIBULLA',
+                'code' => '44090',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'DISTRACCION',
+                'code' => '44098',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'EL MOLINO',
+                'code' => '44110',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'FONSECA',
+                'code' => '44279',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'HATONUEVO',
+                'code' => '44378',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'LA JAGUA DEL PILAR',
+                'code' => '44420',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'MAICAO',
+                'code' => '44430',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'MANAURE',
+                'code' => '44560',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'SAN JUAN DEL CESAR',
+                'code' => '44650',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'URIBIA',
+                'code' => '44847',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'URUMITA',
+                'code' => '44855',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'VILLANUEVA',
+                'code' => '44874',
+                'department_id' => 14
+            ],
+            [
+                'name' => 'SANTA MARTA',
+                'code' => '47001',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'ALGARROBO',
+                'code' => '47030',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'ARACATACA',
+                'code' => '47053',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'ARIGUANI',
+                'code' => '47058',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'CERRO SAN ANTONIO',
+                'code' => '47161',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'CHIBOLO',
+                'code' => '47170',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'CIENEGA',
+                'code' => '47189',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'CONCORDIA',
+                'code' => '47205',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'EL BANCO',
+                'code' => '47245',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'EL PIÑON',
+                'code' => '47258',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'EL RETEN',
+                'code' => '47268',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'FUNDACION',
+                'code' => '47288',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'GUAMAL',
+                'code' => '47318',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'NUEVA GRANADA',
+                'code' => '47460',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'PEDRAZA',
+                'code' => '47541',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'PIJIÑO DEL CARMEN',
+                'code' => '47545',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'PIVIJAY',
+                'code' => '47551',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'PLATO',
+                'code' => '47555',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'PUEBLOVIEJO',
+                'code' => '47570',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'REMOLINO',
+                'code' => '47605',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SABANAS DE SAN MIGUEL',
+                'code' => '47660',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SALAMINA',
+                'code' => '47675',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SAN SEBASTIAN DE BUENA VISTA',
+                'code' => '47692',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SAN ZENON',
+                'code' => '47703',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SANTA ANA',
+                'code' => '47707',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SANTA BARBARA DE PINTO',
+                'code' => '47720',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'SITIO NUEVO',
+                'code' => '47745',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'TENERIFE',
+                'code' => '47798',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'ZAPAYAN',
+                'code' => '47960',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'ZONA BANANERA',
+                'code' => '47980',
+                'department_id' => 15
+            ],
+            [
+                'name' => 'VILLAVICENCIO',
+                'code' => '50001',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'ACACIAS',
+                'code' => '50006',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'BARRANCA DE UPIA',
+                'code' => '50110',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'CABUYARO',
+                'code' => '50124',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'CASTILLA LA NUEVA',
+                'code' => '50150',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'CUBARRAL',
+                'code' => '50223',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'CUMARAL',
+                'code' => '50226',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'EL CALVARIO',
+                'code' => '50245',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'EL CASTILLO',
+                'code' => '50251',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'EL DORADO',
+                'code' => '50270',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'FUENTE DE ORO',
+                'code' => '50287',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'GRANADA',
+                'code' => '50313',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'GUAMAL',
+                'code' => '50318',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'MAPIRIPAN',
+                'code' => '50325',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'MESETAS',
+                'code' => '50330',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'LA MACARENA',
+                'code' => '50350',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'URIBE',
+                'code' => '50370',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'LEJANIAS',
+                'code' => '50400',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'PUERTO CONCORDIA',
+                'code' => '50450',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'PUERTO GAITAN',
+                'code' => '50568',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'PUERTO LOPEZ',
+                'code' => '50573',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'PUERTO LLERAS',
+                'code' => '50577',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'PUERTO RICO',
+                'code' => '50590',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'RESTREPO',
+                'code' => '50606',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'SAN CARLOS DE GUAROA',
+                'code' => '50680',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'SAN JUAN DE ARAMA',
+                'code' => '50683',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'SAN JUANITO',
+                'code' => '50686',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'SAN MARTIN DE LLANOS',
+                'code' => '50689',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'VISTA HERMOSA',
+                'code' => '50711',
+                'department_id' => 16
+            ],
+            [
+                'name' => 'PASTO',
+                'code' => '52001',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'ALBAN',
+                'code' => '52019',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'ALDANA',
+                'code' => '52022',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'ANCUYA',
+                'code' => '52036',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'ARBOLEDA',
+                'code' => '52051',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'BARBACOAS',
+                'code' => '52079',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'BELEN',
+                'code' => '52083',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'BUESACO',
+                'code' => '52110',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'COLON',
+                'code' => '52203',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CONNSACA',
+                'code' => '52207',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CONTADERO',
+                'code' => '52210',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CORDOBA',
+                'code' => '52215',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CUASPUD',
+                'code' => '52224',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CUMBAL',
+                'code' => '52227',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CUMBITARA',
+                'code' => '52233',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CHACHAGUI',
+                'code' => '52240',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'EL CHARCO',
+                'code' => '52250',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'EL PEÑOL',
+                'code' => '52254',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'EL ROSARIO',
+                'code' => '52256',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'EL TABLON DE GOMEZ',
+                'code' => '52258',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'EL TAMBO',
+                'code' => '52260',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'FUNES',
+                'code' => '52287',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'GUACHUCAL',
+                'code' => '52317',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'GUAITARILLA',
+                'code' => '52320',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'GUALMATAN',
+                'code' => '52323',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'ILES',
+                'code' => '52352',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'IMUES',
+                'code' => '52354',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'IPIALES',
+                'code' => '52356',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LA CRUZ',
+                'code' => '52378',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LA FLORIDA',
+                'code' => '52381',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LA LLANADA',
+                'code' => '52385',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LA TOLA',
+                'code' => '52390',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LA UNION',
+                'code' => '52399',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LEIVA',
+                'code' => '52405',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LINARES',
+                'code' => '52411',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'LOS ANDES',
+                'code' => '52418',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'MAGUI',
+                'code' => '52427',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'MALLAMA',
+                'code' => '52435',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'MOSQUERA',
+                'code' => '52473',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'NARIÑO',
+                'code' => '52480',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'OLAYA HERRERA',
+                'code' => '52490',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'OSPINA',
+                'code' => '52506',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'FRANCISCO PIZARRO',
+                'code' => '52520',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'POLICARPA',
+                'code' => '52540',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'POTOSI',
+                'code' => '52560',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'PROVIDENCIA',
+                'code' => '52565',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'PUERRES',
+                'code' => '52573',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'PUPIALES',
+                'code' => '52585',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'RICAURTE',
+                'code' => '52612',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'ROBERTO PAYAN',
+                'code' => '52621',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAMANIEGO',
+                'code' => '52678',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SANDONA',
+                'code' => '52683',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAN BERNARDO',
+                'code' => '52685',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAN LORENZO',
+                'code' => '52687',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAN PABLO',
+                'code' => '52693',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAN PEDRO DE CARTAGO',
+                'code' => '52694',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SANTA BARBARA',
+                'code' => '52696',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SANTACRUZ',
+                'code' => '52699',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAPUYES',
+                'code' => '52720',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'TAMINANGO',
+                'code' => '52786',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'TANGUA',
+                'code' => '52788',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'SAN ANDRES DE TUMACO',
+                'code' => '52835',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'TUQUERRES',
+                'code' => '52838',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'YACUANQUER',
+                'code' => '52885',
+                'department_id' => 17
+            ],
+            [
+                'name' => 'CUCUTA',
+                'code' => '54001',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'ABREGO',
+                'code' => '54003',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'ARBOLEDAS',
+                'code' => '54051',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'BOCHALEMA',
+                'code' => '54099',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'BUCARASICA',
+                'code' => '54109',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'CACOTA DE VELAZCO',
+                'code' => '54125',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'CACHIRA',
+                'code' => '54128',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'CHINACOTA',
+                'code' => '54172',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'CHITAGA',
+                'code' => '54174',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'CONVENCION',
+                'code' => '54206',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'CUCUTILLA',
+                'code' => '54223',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'DURANIA',
+                'code' => '54239',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'EL CARMEN',
+                'code' => '54245',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'EL TARRA',
+                'code' => '54250',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'EL ZULIA',
+                'code' => '54261',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'GRAMALOTE',
+                'code' => '54313',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'HACARI',
+                'code' => '54344',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'HERRAN',
+                'code' => '54347',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'LABATECA',
+                'code' => '54377',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'LA ESPERANZA',
+                'code' => '54385',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'LA PLAYA DE BELEN',
+                'code' => '54398',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'LOS PATIOS',
+                'code' => '54405',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'LOURDES',
+                'code' => '54418',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'MUTISCUA',
+                'code' => '54480',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'OCAÑA',
+                'code' => '54498',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'PAMPLONA',
+                'code' => '54518',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'PAMPLONITA',
+                'code' => '54520',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'PUERTO SANTANDER',
+                'code' => '54553',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'RAGONVALIA',
+                'code' => '54599',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'SALAZAR DE LAS PALMAS',
+                'code' => '54660',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'SAN CALIXTO',
+                'code' => '54670',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'SAN CAYETANO',
+                'code' => '54673',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'SANTIAGO',
+                'code' => '54680',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'SARDINATA',
+                'code' => '54720',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'SANTO DOMINDO DE SILOS',
+                'code' => '54743',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'TEORAMA',
+                'code' => '54800',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'TIBU',
+                'code' => '54810',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'TOLEDO',
+                'code' => '54820',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'VILLA CARO',
+                'code' => '54871',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'VILLA DEL ROSARIO',
+                'code' => '54874',
+                'department_id' => 18
+            ],
+            [
+                'name' => 'ARMENIA',
+                'code' => '63001',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'BUENAVISTA',
+                'code' => '63111',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'CALARCA',
+                'code' => '63130',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'CIRCASIA',
+                'code' => '63190',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'CORDOBA',
+                'code' => '63212',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'FILANDIA',
+                'code' => '63272',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'GENOVA',
+                'code' => '63302',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'LA TEBAIDA',
+                'code' => '63401',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'MONTENEGRO',
+                'code' => '63470',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'PIJAO',
+                'code' => '63548',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'QUIMBAYA',
+                'code' => '63594',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'SALENTO',
+                'code' => '63690',
+                'department_id' => 19
+            ],
+            [
+                'name' => 'PEREIRA',
+                'code' => '66001',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'APIA',
+                'code' => '66045',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'BALBOA',
+                'code' => '66075',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'BELEN DE UMBRIA',
+                'code' => '66088',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'DOSQUEBRADAS',
+                'code' => '66170',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'GUATICA',
+                'code' => '66318',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'LA CELIA',
+                'code' => '66383',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'LA VIRGINIA',
+                'code' => '66400',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'MARSELLA',
+                'code' => '66440',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'MISTRATO',
+                'code' => '66456',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'PUEBLO RICO',
+                'code' => '66572',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'QUINCHIA',
+                'code' => '66594',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'SANTA ROSA DE CABAL',
+                'code' => '66682',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'SANTUARIO',
+                'code' => '66687',
+                'department_id' => 20
+            ],
+            [
+                'name' => 'BUCARAMANGA',
+                'code' => '68001',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'AGUADA',
+                'code' => '68013',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'ALBANIA',
+                'code' => '68020',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'ARATOCA',
+                'code' => '68051',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'BARBOSA',
+                'code' => '68077',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'BARICHARA',
+                'code' => '68079',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'BARRANCABERMEJA',
+                'code' => '68081',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'BETULIA',
+                'code' => '68092',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'BOLIVAR',
+                'code' => '68101',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CABRERA',
+                'code' => '68121',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CALIFORNIA',
+                'code' => '68132',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CAPITANEJO',
+                'code' => '68147',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CARCASI',
+                'code' => '68152',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CEPITA',
+                'code' => '68160',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CERRITO',
+                'code' => '68162',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CHARALA',
+                'code' => '68167',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CHARTA',
+                'code' => '68169',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CHIMA',
+                'code' => '68176',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CHIPATA',
+                'code' => '68179',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CIMITARRA',
+                'code' => '68001',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CONCEPCION',
+                'code' => '68207',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CONFINES',
+                'code' => '68209',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CONTRATACION',
+                'code' => '68211',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'COROMORO',
+                'code' => '68217',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'CURITI',
+                'code' => '68229',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'EL CARMEN DE CHUCURI',
+                'code' => '68235',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'EL GUACAMAYO',
+                'code' => '68245',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'EL PEÑON',
+                'code' => '68250',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'EL PLAYON',
+                'code' => '68255',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'ENCINO',
+                'code' => '68264',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'ENCISO',
+                'code' => '68266',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'FLORIAN',
+                'code' => '68271',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'FLORIDABLANCA',
+                'code' => '68276',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GALAN',
+                'code' => '68296',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GAMBITA',
+                'code' => '68298',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GIRON',
+                'code' => '68307',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GUACA',
+                'code' => '68318',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GUADALUPE',
+                'code' => '68320',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GUAPOTA',
+                'code' => '68322',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GUAVATA',
+                'code' => '68324',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'GUEPSA',
+                'code' => '68327',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'HATO',
+                'code' => '68344',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'JESUS MARIA',
+                'code' => '68368',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'JORDAN',
+                'code' => '68370',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'LA BELLEZA',
+                'code' => '68377',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'LANDAZURI',
+                'code' => '68385',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'LA PAZ',
+                'code' => '68397',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'LEBRIJA',
+                'code' => '68406',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'LOS SANTOS',
+                'code' => '68418',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'MACARAVITA',
+                'code' => '68425',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'MALAGA',
+                'code' => '68432',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'MATANZA',
+                'code' => '68444',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'MOGOTES',
+                'code' => '68464',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'MOLAGAVITA',
+                'code' => '68468',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'OCAMONTE',
+                'code' => '68498',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'OIBA',
+                'code' => '68500',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'ONZAGA',
+                'code' => '68502',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PALMAR',
+                'code' => '68522',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PALMAS DEL SOCORRO',
+                'code' => '68524',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PARAMO',
+                'code' => '68533',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PIEDECUESTA',
+                'code' => '68547',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PINCHOTE',
+                'code' => '68549',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PUENTE NACIONAL',
+                'code' => '68572',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PUERTO PARRA',
+                'code' => '68573',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'PUERTO WILCHES',
+                'code' => '68575',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'RIONEGRO',
+                'code' => '68615',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SABANA DE TORRES',
+                'code' => '68655',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN ANDRES',
+                'code' => '68669',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN BENITO',
+                'code' => '68673',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN GIL',
+                'code' => '68679',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN JOAQUIN',
+                'code' => '68682',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN JOSE DE MIRANDA',
+                'code' => '68684',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN MIGUEL',
+                'code' => '68686',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SAN VICENTE DE CHUCURI',
+                'code' => '68689',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SANTA BARBARA',
+                'code' => '68705',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SANTA HELENA DEL OPON',
+                'code' => '68720',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SIMACOTA',
+                'code' => '68745',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SOCORRO',
+                'code' => '68755',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SUAITA',
+                'code' => '68770',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SUCRE',
+                'code' => '68773',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SURATA',
+                'code' => '68780',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'TONA',
+                'code' => '68820',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'VALLE DE SAN JOSE',
+                'code' => '68855',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'VELEZ',
+                'code' => '68861',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'VETAS',
+                'code' => '68867',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'VILLANUEVA',
+                'code' => '68872',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'ZAPATOCA',
+                'code' => '68895',
+                'department_id' => 21
+            ],
+            [
+                'name' => 'SINCELEJO',
+                'code' => '70001',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'BUENAVISTA',
+                'code' => '70110',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'CAIMITO',
+                'code' => '70124',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'COLOSO',
+                'code' => '70204',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'COROZAL',
+                'code' => '70215',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'COVEÑAS',
+                'code' => '70221',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'CHALAN',
+                'code' => '70230',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'EL ROBLE',
+                'code' => '70233',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'GALERAS',
+                'code' => '70235',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'GUARANDA',
+                'code' => '70265',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'LA UNION',
+                'code' => '70400',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'LOS PALMITOS',
+                'code' => '70418',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'MAJAGUAL',
+                'code' => '70429',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'MORROA',
+                'code' => '70473',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'OVEJAS',
+                'code' => '70508',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'PALMITO',
+                'code' => '70523',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAMPUES',
+                'code' => '70670',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAN BENITO ABAD',
+                'code' => '70678',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAN JUAN DE BETULIA',
+                'code' => '70702',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAN MARCOS',
+                'code' => '70708',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAN ONOFRE',
+                'code' => '70713',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAN PEDRO',
+                'code' => '70717',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SAN LUIS DE SINCE',
+                'code' => '70742',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SUCRE',
+                'code' => '70771',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'SANTIAGO DE TOLU',
+                'code' => '70820',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'TOLU VIEJO',
+                'code' => '70823',
+                'department_id' => 22
+            ],
+            [
+                'name' => 'IBAGUE',
+                'code' => '73001',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ALPUJARRA',
+                'code' => '73024',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ALVARADO',
+                'code' => '73026',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ALBALEMA',
+                'code' => '73030',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ANZOATEGUI',
+                'code' => '73043',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ARMERO',
+                'code' => '73055',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ATACO',
+                'code' => '73067',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'CAJAMARCA',
+                'code' => '73124',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'CARMEN DE APICALA',
+                'code' => '73148',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'CASABIANCA',
+                'code' => '73152',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'CHAPARRAL',
+                'code' => '73168',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'COELLO',
+                'code' => '73200',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'COYAIMA',
+                'code' => '73217',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'CUNDAY',
+                'code' => '73226',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'DOLORES',
+                'code' => '73236',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ESPINAL',
+                'code' => '73268',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'FALAN',
+                'code' => '73270',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'FLANDES',
+                'code' => '73275',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'FRESNO',
+                'code' => '73283',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'GUAMO',
+                'code' => '73319',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'HERVEO',
+                'code' => '73347',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'HONDA',
+                'code' => '73349',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ICONONZO',
+                'code' => '73352',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'LERIDA',
+                'code' => '73408',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'LIBANO',
+                'code' => '73411',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'SAN SEBASTIAN DE MARIQUITA',
+                'code' => '73443',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'MELGAR',
+                'code' => '73449',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'MURILLO',
+                'code' => '73461',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'NATAGAIMA',
+                'code' => '73483',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ORTEGA',
+                'code' => '73504',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'PALOCABILDO',
+                'code' => '73520',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'PIEDRAS',
+                'code' => '73547',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'PLANADAS',
+                'code' => '73555',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'PRADO',
+                'code' => '73563',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'PURIFICACION',
+                'code' => '73585',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'RIOBLANCO',
+                'code' => '73616',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'RONCESVALLES',
+                'code' => '73622',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'ROBIRA',
+                'code' => '73624',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'SALDAÑA',
+                'code' => '73671',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'SAN ANTONIO',
+                'code' => '73675',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'SAN LUIS',
+                'code' => '73678',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'SANTA ISABEL',
+                'code' => '73686',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'SUAREZ',
+                'code' => '73770',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'VALLE DE SAN JUAN',
+                'code' => '73854',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'VENADILLO',
+                'code' => '73861',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'VILLAHERMOSA',
+                'code' => '73870',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'VILLARICA',
+                'code' => '73873',
+                'department_id' => 23
+            ],
+            [
+                'name' => 'CALI',
+                'code' => '76001',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ALCALA',
+                'code' => '76020',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ANDALUCIA',
+                'code' => '76036',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ANSERMANUEVO',
+                'code' => '76041',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ARGELIA',
+                'code' => '76054',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'BOLIVAR',
+                'code' => '76100',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'BUENAVENTURA',
+                'code' => '76109',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'GUADALAJARA DE BUGA',
+                'code' => '76111',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'BUGALAGRANDE',
+                'code' => '76113',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'CAICEDONIA',
+                'code' => '76122',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'CALIMA',
+                'code' => '76126',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'CANDELARIA',
+                'code' => '76130',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'CARTAGO',
+                'code' => '76147',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'DAGUA',
+                'code' => '76233',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'EL AGUILA',
+                'code' => '76243',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'EL CAIRO',
+                'code' => '76246',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'EL CERRITO',
+                'code' => '76001',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'EL DOVIO',
+                'code' => '76250',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'FLORIDA',
+                'code' => '76275',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'GINEBRA',
+                'code' => '76306',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'GUACARI',
+                'code' => '76318',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'JAMUNDI',
+                'code' => '76364',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'LA CUMBRE',
+                'code' => '76377',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'LA UNION',
+                'code' => '76400',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'LA VICTORIA',
+                'code' => '76403',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'OBANDO',
+                'code' => '76497',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'PALMIRA',
+                'code' => '76520',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'PRADERA',
+                'code' => '76563',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'RESTREPO',
+                'code' => '76606',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'RIOFRIO',
+                'code' => '76616',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'RONDANILLO',
+                'code' => '76622',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'SAN PEDRO',
+                'code' => '76670',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'SEVILLA',
+                'code' => '76736',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'TORO',
+                'code' => '76823',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'TRUJILLO',
+                'code' => '76828',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'TULUA',
+                'code' => '76834',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ULLOA',
+                'code' => '76845',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'VERSALLES',
+                'code' => '76863',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'VIJES',
+                'code' => '76869',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'YOTOCO',
+                'code' => '76890',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'YUMBO',
+                'code' => '76892',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ZARZAL',
+                'code' => '76895',
+                'department_id' => 24
+            ],
+            [
+                'name' => 'ARAUCA',
+                'code' => '81001',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'ARAUQUITA',
+                'code' => '81065',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'CRAVO NORTE',
+                'code' => '81220',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'FORTUL',
+                'code' => '81300',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'PUERTO RONDON',
+                'code' => '81591',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'SARAVENA',
+                'code' => '81736',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'TAME',
+                'code' => '81794',
+                'department_id' => 25
+            ],
+            [
+                'name' => 'YOPAL',
+                'code' => '85001',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'AGUAZUL',
+                'code' => '85010',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'CHAMEZA',
+                'code' => '85015',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'HATO COROZAL',
+                'code' => '85125',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'LA SALINA',
+                'code' => '85136',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'MANI',
+                'code' => '85139',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'MONTERREY',
+                'code' => '85162',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'NUNCHIA',
+                'code' => '85225',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'OROCUE',
+                'code' => '85230',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'PAZ DE ARIPORO',
+                'code' => '85250',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'PORE',
+                'code' => '85263',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'RECETOR',
+                'code' => '85279',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'SABANALARGA',
+                'code' => '85300',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'SACAMA',
+                'code' => '85315',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'SAN LUIS DE PALENQUE',
+                'code' => '85325',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'TAMARA',
+                'code' => '85400',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'TAURAMENA',
+                'code' => '85410',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'TRINIDAD',
+                'code' => '85430',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'VILLANUEVA',
+                'code' => '85440',
+                'department_id' => 26
+            ],
+            [
+                'name' => 'MOCOA',
+                'code' => '86001',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'COLON',
+                'code' => '86219',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'ORITO',
+                'code' => '86320',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'PUERTO ASIS',
+                'code' => '86568',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'PUERTO CAICEDO',
+                'code' => '86569',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'PUERTO GUZMAN',
+                'code' => '86571',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'LEGUIZAMO',
+                'code' => '86573',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'SIBUNDOY',
+                'code' => '86749',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'SAN FRANCISCO',
+                'code' => '86755',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'SANMIGUEL',
+                'code' => '86757',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'SANTIAGO',
+                'code' => '86760',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'VALLE DE GUAMUEZ',
+                'code' => '86865',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'VILLAGARZON',
+                'code' => '86885',
+                'department_id' => 27
+            ],
+            [
+                'name' => 'SAN ANDRES',
+                'code' => '88001',
+                'department_id' => 28
+            ],
+            [
+                'name' => 'PROVIDENCIA',
+                'code' => '88564',
+                'department_id' => 28
+            ],
+            [
+                'name' => 'LETICIA',
+                'code' => '91001',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'EL ENCANTO',
+                'code' => '91263',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'LA CHORRERA',
+                'code' => '91405',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'LA PEDRERA',
+                'code' => '91407',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'LA VICTORIA',
+                'code' => '91430',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'MIRITI - PARANA',
+                'code' => '91460',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'PUERTO ALEGRIA',
+                'code' => '91530',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'PUERTO ARICA',
+                'code' => '91536',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'PUERTO NARIÑO',
+                'code' => '91540',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'PUERTO SANTANDER',
+                'code' => '91669',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'TARAPACA',
+                'code' => '91798',
+                'department_id' => 29
+            ],
+            [
+                'name' => 'INIRIDA',
+                'code' => '94001',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'BARRANCO MINAS',
+                'code' => '94343',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'MAPIRIPANA',
+                'code' => '94663',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'SAN FELIPE',
+                'code' => '94883',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'PUERTO COLOMBIA',
+                'code' => '94884',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'LA GUADALUPE',
+                'code' => '94885',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'CACAHUAL',
+                'code' => '94886',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'PANA PANA',
+                'code' => '94887',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'MORICHAL NUEVO',
+                'code' => '94888',
+                'department_id' => 30
+            ],
+            [
+                'name' => 'SAN JOSE DE GUAVIARE',
+                'code' => '95001',
+                'department_id' => 31
+            ],
+            [
+                'name' => 'CALAMAR',
+                'code' => '95015',
+                'department_id' => 31
+            ],
+            [
+                'name' => 'EL RETORNO',
+                'code' => '95025',
+                'department_id' => 31
+            ],
+            [
+                'name' => 'MIRAFLORES',
+                'code' => '95200',
+                'department_id' => 31
+            ],
+            [
+                'name' => 'MITU',
+                'code' => '97001',
+                'department_id' => 32
+            ],
+            [
+                'name' => 'CARURU',
+                'code' => '97161',
+                'department_id' => 32
+            ],
+            [
+                'name' => 'PACOA',
+                'code' => '97511',
+                'department_id' => 32
+            ],
+            [
+                'name' => 'TARAIRA',
+                'code' => '97666',
+                'department_id' => 32
+            ],
+            [
+                'name' => 'PAPUNAUA',
+                'code' => '97777',
+                'department_id' => 32
+            ],
+            [
+                'name' => 'YAVARETE',
+                'code' => '97889',
+                'department_id' => 32
+            ],
+            [
+                'name' => 'PUERTO CARREÑO',
+                'code' => '99001',
+                'department_id' => 33
+            ],
+            [
+                'name' => 'LA PRIMAVERA',
+                'code' => '99524',
+                'department_id' => 33
+            ],
+            [
+                'name' => 'SANTA ROSALIA',
+                'code' => '99624',
+                'department_id' => 33
+            ],
+            [
+                'name' => 'CUMARIBO',
+                'code' => '99773',
+                'department_id' => 33
+            ],
+        ];
+        foreach ($municipalities as $municipality) {
+            Municipality::create($municipality);
+        }
     }
 }

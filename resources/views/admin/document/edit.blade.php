@@ -29,8 +29,8 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <label for="initials">Sigla</label>
-                            <input type="text" name="initials" class="form-control" value="{{ $document->initials }}">
+                            <label for="initial">Sigla</label>
+                            <input type="text" name="initial" class="form-control" value="{{ $document->initial }}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

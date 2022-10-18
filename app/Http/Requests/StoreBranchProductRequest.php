@@ -26,7 +26,7 @@ class StoreBranchProductRequest extends FormRequest
         return [
 
             'stock'          => '',
-            'orderProduct'   => '',
+            'order_product'   => '',
             'branch_id'      => '',
             'category_id'    => ''
         ];

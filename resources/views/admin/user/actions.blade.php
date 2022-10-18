@@ -4,7 +4,7 @@
 <a href="{{ route('status', $id) }}"
     class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Desactivar"><i class="fas fa-user"></i>
 </a>
-<a href="{{ route('showcode', $id) }}"
+<a href="{{ route('show_code', $id) }}"
     class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Autorizar"><i class="fas fa-key"></i>
 </a>
 

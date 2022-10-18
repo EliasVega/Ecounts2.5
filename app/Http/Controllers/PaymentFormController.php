@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PaymentForm;
+use App\Models\Payment_form;
 use App\Http\Requests\StorePaymentFormRequest;
 use App\Http\Requests\UpdatePaymentFormRequest;
 
@@ -16,15 +16,15 @@ class PaymentFormController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $paymentForms = PaymentForm::get();
+            $payment_forms = Payment_form::get();
 
             return datatables()
-            ->of($paymentForms)
-            ->addColumn('edit', 'admin/paymentForm/actions')
+            ->of($payment_forms)
+            ->addColumn('edit', 'admin/payment_form/actions')
             ->rawcolumns(['edit'])
             ->toJson();
         }
-        return view('admin.paymentForm.index');
+        return view('admin.payment_form.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class PaymentFormController extends Controller
      */
     public function create()
     {
-        return view('admin.paymentForm.create');
+        return view('admin.payment_form.create');
     }
 
     /**
@@ -45,11 +45,10 @@ class PaymentFormController extends Controller
      */
     public function store(StorePaymentFormRequest $request)
     {
-        $paymentForm = new PaymentForm();
-        $paymentForm->code = $request->code;
-        $paymentForm->name = $request->name;
-        $paymentForm->save();
-        return redirect('paymentForm');
+        $payment_form = new Payment_form();
+        $payment_form->name = $request->name;
+        $payment_form->save();
+        return redirect('payment_form');
     }
 
     /**
@@ -58,7 +57,7 @@ class PaymentFormController extends Controller
      * @param  \App\Models\PaymentForm  $paymentForm
      * @return \Illuminate\Http\Response
      */
-    public function show(PaymentForm $paymentForm)
+    public function show(Payment_form $payment_form)
     {
         //
     }
@@ -71,8 +70,8 @@ class PaymentFormController extends Controller
      */
     public function edit($id)
     {
-        $paymentForm = PaymentForm::findOrFail($id);
-        return view('admin.paymentForm.edit', compact('paymentForm'));
+        $paymentForm = Payment_form::findOrFail($id);
+        return view('admin.payment_form.edit', compact('payment_form'));
     }
 
     /**
@@ -84,11 +83,10 @@ class PaymentFormController extends Controller
      */
     public function update(UpdatePaymentFormRequest $request, $id)
     {
-        $paymentForm = PaymentForm::findOrFail($id);
-        $paymentForm->code = $request->code;
-        $paymentForm->name = $request->name;
-        $paymentForm->update();
-        return redirect('paymentForm');
+        $payment_form = Payment_form::findOrFail($id);
+        $payment_form->name = $request->name;
+        $payment_form->update();
+        return redirect('payment_form');
     }
 
     /**
@@ -97,7 +95,7 @@ class PaymentFormController extends Controller
      * @param  \App\Models\PaymentForm  $paymentForm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PaymentForm $paymentForm)
+    public function destroy(Payment_form $paymentForm)
     {
         //
     }

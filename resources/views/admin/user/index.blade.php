@@ -54,7 +54,7 @@
             [
                 {data: 'id'},
                 {data: 'name'},
-                {data: 'initials'},
+                {data: 'initial'},
                 {data: 'number'},
                 {data: 'address'},
                 {data: 'phone'},

@@ -28,7 +28,7 @@ class UpdateProductRequest extends FormRequest
             'code'        => 'required|max:20',
             'name'        => 'required|max:100',
             'price'       => 'required',
-            'salePrice'   => '',
+            'sale_price'  => '',
             'stock'       => '',
             'status'      => '',
             'image'       => '',

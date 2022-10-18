@@ -24,9 +24,9 @@ class StoreDepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'     => 'required|max:2',
             'name'     => 'required|max:45',
-            'codeISO' => 'required|max:3'
+            'dane_code'     => 'required|max:2',
+            'iso_code' => 'required|max:3'
         ];
     }
 }

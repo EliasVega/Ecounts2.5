@@ -28,7 +28,7 @@ class StoreProductBranchRequest extends FormRequest
             'quantity'         => 'required',
             'product_id'       => 'required',
             'branch_id'        => 'required',
-            'soriginBranch_id' => '',
+            'origin_branch_id' => '',
             'transfer_id'      => '',
         ];
     }

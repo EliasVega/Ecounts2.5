@@ -14,26 +14,26 @@ REPORTE DE CARTERA CON MAS DE TREINTA DIAS
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label for="cartera">Cartera Vencida</label>
-                <a href="{{ route('pastDuePortfolio') }}" class="btn btn-gris">{{ $pastDuePortfolio }}</a>
+                <a href="{{ route('past_due_portfolio') }}" class="btn btn-gris">{{ $past_due_portfolio }}</a>
             </div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label for="cartera">Cartera + 30 dias</label>
-                <a href="{{ route('portfolioThirty') }}" class="btn btn-gris">{{ $portfolioThirty }}</a>
+                <a href="{{ route('portfolio_thirty') }}" class="btn btn-gris">{{ $portfolio_thirty }}</a>
             </div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label for="cartera">Cartera + 60 dias</label>
-                <a href="{{ route('portfolioSixty') }}" class="btn btn-gris">{{ $portfolioSixty }}</a>
+                <a href="{{ route('portfolio_sixty') }}" class="btn btn-gris">{{ $portfolio_sixty }}</a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="portfolioThirty">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="portfolio_thirty">
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
@@ -55,19 +55,19 @@ REPORTE DE CARTERA CON MAS DE TREINTA DIAS
     <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#portfolioThirty').DataTable({
+        $('#portfolio_thirty').DataTable({
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
-            ajax: '{{ route('portfolioThirty') }}',
+            ajax: '{{ route('portfolio_thirty') }}',
             columns:
             [
                 {data: 'id'},
                 {data: 'name'},
                 {data: 'nameB'},
                 {data: 'nameC'},
-                {data: 'totalPay'},
+                {data: 'total_pay'},
                 {data: 'balance'},
                 {data: 'created_at'},
                 {data: 'due_date'},

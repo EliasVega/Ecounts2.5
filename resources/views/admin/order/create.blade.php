@@ -24,11 +24,11 @@
                 {{csrf_field()}}
                 <div class="row m-1">
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                        @include('admin/order.formOrder')
+                        @include('admin/order.form_order')
                     </div>
 
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        @include('admin/order.formpay')
+                        @include('admin/order.form_pay')
                         <!--FormPay-->
                     </div>
                 </div>

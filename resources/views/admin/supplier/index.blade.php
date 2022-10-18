@@ -52,7 +52,7 @@
                 {data: 'phone'},
                 {data: 'email'},
                 {data: 'contact'},
-                {data: 'phoneContact'},
+                {data: 'phone_contact'},
                 {data: 'edit'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',

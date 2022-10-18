@@ -11,7 +11,7 @@
             <div class="modal-body">
                 {!!Form::open(array('url'=>'customer', 'method'=>'Post', 'autocomplete'=>'off'))!!}
                 {!!Form::token()!!}
-                @include('admin/order.formcustomer')
+                @include('admin/order.form_customer')
                 {!!Form::close()!!}
             </div>
         </div>

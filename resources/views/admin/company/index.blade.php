@@ -63,12 +63,12 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div>
-            <a href="{{ route('paymentForm.index') }}"><button><img src="{{ asset('/img/paymentForm.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Forma de Pago" /></button></a>
+            <a href="{{ route('payment_form.index') }}"><button><img src="{{ asset('/img/paymentForm.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Forma de Pago" /></button></a>
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div>
-            <a href="{{ route('paymentMethod.index') }}"><button><img src="{{ asset('/img/paymentMethod.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Medios de Pago" /></button></a>
+            <a href="{{ route('payment_method.index') }}"><button><img src="{{ asset('/img/paymentMethod.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Medios de Pago" /></button></a>
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -83,7 +83,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div>
-            <a href="{{ route('codverif.index') }}"><button><img src="{{ asset('/img/autorization.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Autorization de Usuarios" /></button></a>
+            <a href="{{ route('cod_verif.index') }}"><button><img src="{{ asset('/img/autorization.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Autorization de Usuarios" /></button></a>
         </div>
     </div>
 

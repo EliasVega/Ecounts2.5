@@ -72,12 +72,12 @@
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $ndinvoices->totalIva }}</p></th>
+                                <th><p align="right">${{ $ndinvoices->total_iva }}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $ndinvoices->totalPay }}</p></th>
+                                <th><p align="right">${{ $ndinvoices->total_pay }}</p></th>
                             </tr>
 
                         </tfoot>

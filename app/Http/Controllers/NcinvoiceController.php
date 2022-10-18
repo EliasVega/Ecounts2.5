@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Ncinvoice;
 use App\Http\Requests\StoreNcinvoiceRequest;
 use App\Http\Requests\UpdateNcinvoiceRequest;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Invoice;
-use App\Models\InvoiceProduct;
+use App\Models\Invoice_product;
 use App\Models\Kardex;
-use App\Models\NcinvoiceProduct;
-use App\Models\Payevent;
+use App\Models\Ncinvoice_product;
+use App\Models\Pay_event;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +56,7 @@ class NcinvoiceController extends Controller
     {
         $invoices = Invoice::from('invoices AS inv')
         ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-        ->select('inv.id', 'cus.id as idC', 'cus.name', 'inv.invoice', 'inv.total', 'inv.totalIva', 'inv.totalPay', 'inv.status')
+        ->select('inv.id', 'cus.id as idC', 'cus.name', 'inv.invoice', 'inv.pay', 'inv.balance', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'inv.status')
         ->where('inv.id', '=', $request->session()->get('invoice'))
         ->first();
 
@@ -64,7 +64,7 @@ class NcinvoiceController extends Controller
             return redirect("invoice")->with('warning', 'Esta Compra ya tiene una Nota Credito O Debito');
         }
 
-        $invoiceProducts = InvoiceProduct::from('invoice_products AS ip')
+        $invoice_products = Invoice_product::from('invoice_products AS ip')
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -76,7 +76,7 @@ class NcinvoiceController extends Controller
         ->join('invoice_products AS ip', 'ip.product_id', '=', 'pro.id')
         ->select('pro.id', 'pro.name', 'ip.price')->get();
 
-        return view('admin.ncinvoice.create', compact('invoices', 'products', 'invoiceProducts'));
+        return view('admin.ncinvoice.create', compact('invoices', 'products', 'invoice_products'));
     }
 
     /**
@@ -97,38 +97,38 @@ class NcinvoiceController extends Controller
             $ncinvoice->branch_id   = $invoice->branch_id;
             $ncinvoice->invoice_id  = $invoice->id;
             $ncinvoice->customer_id = $invoice->customer_id;
-            $ncinvoice->invoice     = $invoice->invoice;
             $ncinvoice->total       = $invoice->total;
-            $ncinvoice->totalIva    = $invoice->totalIva;
-            $ncinvoice->totalPay    = $invoice->totalPay;
+            $ncinvoice->total_iva    = $invoice->total_iva;
+            $ncinvoice->total_pay    = $invoice->total_pay;
             $ncinvoice->save();
             //Seleccionar los productos de la venta
-            $invoiceProduct = InvoiceProduct::where('invoice_id', '=', $invoice->id)->get();
+            $invoice_product = Invoice_product::where('invoice_id', '=', $invoice->id)->get();
 
-            foreach($invoiceProduct as $ip){
+            foreach($invoice_product as $ip){
                 //Registrar la nota credito
-                $ncinvoiceProduct = new NcinvoiceProduct();
-                $ncinvoiceProduct->ncinvoice_id = $ncinvoice->id;
-                $ncinvoiceProduct->product_id = $ip->product_id;
-                $ncinvoiceProduct->quantity = $ip->quantity;
-                $ncinvoiceProduct->price = $ip->price;
-                $ncinvoiceProduct->save();
+                $ncinvoice_product = new Ncinvoice_product();
+                $ncinvoice_product->ncinvoice_id = $ncinvoice->id;
+                $ncinvoice_product->product_id = $ip->product_id;
+                $ncinvoice_product->quantity = $ip->quantity;
+                $ncinvoice_product->price = $ip->price;
+                $ncinvoice_product->save();
+
                 //Calcular el valor para actualizar Branch_products
-                $branchProducts = BranchProduct::from('branch_Products AS bp')
+                $branch_products = Branch_product::from('branch_Products AS bp')
                 ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
                 ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
                 ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
-                ->where('bp.product_id', '=', $ncinvoiceProduct->product_id)
-                ->where('bp.branch_id', '=', $request->session()->get('branch'))
+                ->where('bp.product_id', '=', $ncinvoice_product->product_id)
+                ->where('bp.branch_id', '=', $ncinvoice->branch_id)
                 ->first();
-
-                $id = $branchProducts->idP;
-                $prestock = $branchProducts->stock;
-                $stock = $prestock + $ncinvoiceProduct->quantity;
+                $id = $branch_products->idP;
+                $prestock = $branch_products->stock;
+                $stock = $prestock + $ncinvoice_product->quantity;
                 //Actualizar tabla Branch Products
-                $branchProduct = BranchProduct::findOrFail($id);
-                $branchProduct->stock = $stock;
-                $branchProduct->update();
+                $branch_product = Branch_product::where('branch_id', $ncinvoice->branch_id)->where('product_id', $ncinvoice_product->product_id)->first();
+                $branch_product->stock = $stock;
+                $branch_product->update();
+
                 //calcular valor para actualizar kardex
                 $products = Product::from('products AS pro')
                 ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -152,11 +152,11 @@ class NcinvoiceController extends Controller
             $invo = Invoice::findOrFail($invoice->id);
             //metodo para uso de abono a otra factura
             if($invo->balance > 0){
-                $payEvent = new Payevent();
-                $payEvent->origin = $invo->invoice;
-                $payEvent->destination = null;
-                $payEvent->document = 'FACTURA';
-                $payEvent->pay = $invo->pay;
+                $pay_event = new Pay_event();
+                $pay_event->origin = $invo->invoice;
+                $pay_event->destination = null;
+                $pay_event->document = 'FACTURA';
+                $pay_event->pay = $invo->pay;
             }
             //actualizando campo status de la factura
             $invoice = Invoice::findOrFail($invoice->id);
@@ -184,18 +184,18 @@ class NcinvoiceController extends Controller
         ->join('branches AS bra', 'nc.branch_id', '=', 'bra.id')
         ->join('customers AS cus', 'nc.customer_id', '=', 'cus.id')
         ->join('invoices as inv', 'nc.invoice_id', '=', 'inv.id')
-        ->select('nc.id', 'nc.invoice', 'inv.total', 'inv.totalIva', 'inv.totalPay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'inv.invoice as nf', 'use.name')
+        ->select('nc.id', 'nc.invoice', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'inv.invoice as nf', 'use.name')
         ->where('nc.id', '=', $id)->first();
 
         /*mostrar detalles*/
-        $ncinvoiceProducts = NcinvoiceProduct::from('ncinvoice_products AS np')
+        $ncinvoice_products = Ncinvoice_product::from('ncinvoice_products AS np')
         ->join('products AS pro', 'np.product_id', '=', 'pro.id')
         ->join('ncinvoices AS nci', 'np.ncinvoice_id', '=', 'nci.id')
-        ->select('np.quantity', 'np.price', 'nci.total', 'nci.totalIva', 'nci.totalPay', 'pro.name')
+        ->select('np.quantity', 'np.price', 'nci.total', 'nci.total_iva', 'nci.total_pay', 'pro.name')
         ->where('np.ncinvoice_id', '=', $id)
         ->get();
 
-        return view('admin.ncinvoice.show', compact('ncinvoices', 'ncinvoiceProducts'));
+        return view('admin.ncinvoice.show', compact('ncinvoices', 'ncinvoice_products'));
     }
 
     /**

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('phone', 20);
             $table->string('email', 45);
             $table->string('contact', 50);
-            $table->string('phoneContact', 20);
+            $table->string('phone_contact', 20);
 
             $table->foreignId('department_id')->constrained()->onUpdate('cascade');
             $table->foreignId('municipality_id')->constrained()->onUpdate('cascade');

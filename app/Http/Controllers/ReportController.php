@@ -15,17 +15,17 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        $invoiceTotal = Invoice::sum('totalPay');
+        $invoice_total = Invoice::sum('total_pay');
         $portfolio = Invoice::sum('balance');
-        $pastDuePortfolio = Invoice::from('invoices as inv')
+        $past_due_portfolio = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now())
         ->sum('inv.balance');
-        $portfolioThirty = Invoice::from('invoices as inv')
+        $portfolio_thirty = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(30))
         ->sum('inv.balance');
-        $portfolioSixty = Invoice::from('invoices as inv')
+        $portfolio_sixty = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(60))
         ->sum('inv.balance');
@@ -35,7 +35,7 @@ class ReportController extends Controller
                 ->join('users as use', 'inv.user_id', 'use.id')
                 ->join('branches as bra', 'inv.branch_id', 'bra.id')
                 ->join('customers as cus', 'inv.customer_id', 'cus.id')
-                ->select('inv.id', 'inv.totalPay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
+                ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
                 ->whereBetween('inv.created_at', [$request->start, $request->end])
                 ->get();
             } else {
@@ -43,7 +43,7 @@ class ReportController extends Controller
                 ->join('users as use', 'inv.user_id', 'use.id')
                 ->join('branches as bra', 'inv.branch_id', 'bra.id')
                 ->join('customers as cus', 'inv.customer_id', 'cus.id')
-                ->select('inv.id', 'inv.totalPay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
+                ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
                 ->get();
             }
             return DataTables()::of($invoices)
@@ -54,22 +54,22 @@ class ReportController extends Controller
             ->rawColumns(['editar'])
             ->toJson();
         }
-        return view('admin.report.index', compact('invoiceTotal', 'portfolio', 'pastDuePortfolio', 'portfolioThirty', 'portfolioSixty'));
+        return view('admin.report.index', compact('invoice_total', 'portfolio', 'portfolio_sixty', 'portfolio_thirty', 'portfolio_sixty'));
 
     }
 
     public function portfolio()
     {
         $portfolio = Invoice::sum('balance');
-        $pastDuePortfolio = Invoice::from('invoices as inv')
+        $past_due_portfolio = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now())
         ->sum('inv.balance');
-        $portfolioThirty = Invoice::from('invoices as inv')
+        $portfolio_thirty = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(30))
         ->sum('inv.balance');
-        $portfolioSixty = Invoice::from('invoices as inv')
+        $portfolio_sixty = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(60))
         ->sum('inv.balance');
@@ -79,7 +79,7 @@ class ReportController extends Controller
                 ->join('users as use', 'inv.user_id', 'use.id')
                 ->join('branches as bra', 'inv.branch_id', 'bra.id')
                 ->join('customers as cus', 'inv.customer_id', 'cus.id')
-                ->select('inv.id', 'inv.totalPay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
+                ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
                 ->where('inv.balance', '>', 0)
                 ->get();
 
@@ -89,20 +89,20 @@ class ReportController extends Controller
             })
             ->toJson();
         }
-        return view('admin.report.portfolio', compact('portfolio', 'pastDuePortfolio', 'portfolioThirty', 'portfolioSixty'));
+        return view('admin.report.portfolio', compact('portfolio', 'portfolio_sixty', 'portfolio_thirty', 'portfolio_sixty'));
     }
 
-    public function pastDuePortfolio()
+    public function portfolio_sixty()
     {
-        $pastDuePortfolio = invoice::from('invoices as inv')
+        $past_due_portfolio = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now())
         ->sum('inv.balance');
-        $portfolioThirty = invoice::from('invoices as inv')
+        $portfolio_thirty = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(30))
         ->sum('inv.balance');
-        $portfolioSixty = invoice::from('invoices as inv')
+        $portfolio_sixty = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(60))
         ->sum('inv.balance');
@@ -112,7 +112,7 @@ class ReportController extends Controller
             ->join('users as use', 'inv.user_id', 'use.id')
             ->join('branches as bra', 'inv.branch_id', 'bra.id')
             ->join('customers as cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.totalPay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
+            ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
             ->where('inv.balance', '>', 0)
             ->where('inv.due_date', '<', Carbon::now())
             ->get();
@@ -123,20 +123,20 @@ class ReportController extends Controller
             })
             ->toJson();
         }
-        return view('admin.report.pastDuePortfolio', compact('pastDuePortfolio', 'portfolioThirty', 'portfolioSixty'));
+        return view('admin.report.portfolio_sixty', compact('portfolio_sixty', 'portfolio_thirty', 'portfolio_sixty'));
     }
 
-    public function portfolioThirty()
+    public function portfolio_thirty()
     {
-        $pastDuePortfolio = Invoice::from('invoices as inv')
+        $past_due_portfolio = Invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now())
         ->sum('inv.balance');
-        $portfolioThirty = invoice::from('invoices as inv')
+        $portfolio_thirty = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(30))
         ->sum('inv.balance');
-        $portfolioSixty = invoice::from('invoices as inv')
+        $portfolio_sixty = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(60))
         ->sum('inv.balance');
@@ -146,7 +146,7 @@ class ReportController extends Controller
             ->join('users as use', 'inv.user_id', 'use.id')
             ->join('branches as bra', 'inv.branch_id', 'bra.id')
             ->join('customers as cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.totalPay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
+            ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
             ->where('inv.balance', '>', 0)
             ->where('inv.due_date', '<', Carbon::now()->subDays(30))
             ->get();
@@ -157,20 +157,20 @@ class ReportController extends Controller
             })
             ->toJson();
         }
-        return view('admin.report.portfolioThirty', compact('pastDuePortfolio', 'portfolioThirty', 'portfolioSixty'));
+        return view('admin.report.portfolio_thirty', compact('portfolio_sixty', 'portfolio_thirty', 'portfolio_sixty'));
     }
-
-    public function portfolioSixty()
+    /*
+    public function portfolio_sixty()
     {
-        $pastDuePortfolio = invoice::from('invoices as inv')
+        $past_due_portfolio = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now())
         ->sum('inv.balance');
-        $portfolioThirty = invoice::from('invoices as inv')
+        $portfolio_thirty = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(30))
         ->sum('inv.balance');
-        $portfolioSixty = invoice::from('invoices as inv')
+        $portfolio_sixty = invoice::from('invoices as inv')
         ->select('inv.due_date', 'inv.created_at', 'inv.balance')
         ->where('inv.due_date', '<', Carbon::now()->subDays(60))
         ->sum('inv.balance');
@@ -180,7 +180,7 @@ class ReportController extends Controller
             ->join('users as use', 'inv.user_id', 'use.id')
             ->join('branches as bra', 'inv.branch_id', 'bra.id')
             ->join('customers as cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.totalPay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
+            ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
             ->where('inv.balance', '>', 0)
             ->where('inv.due_date', '<', Carbon::now()->subDays(60))
             ->get();
@@ -191,8 +191,8 @@ class ReportController extends Controller
             })
             ->toJson();
         }
-        return view('admin.report.portfolioSixty', compact('pastDuePortfolio', 'portfolioThirty', 'portfolioSixty'));
-    }
+        return view('admin.report.portfolio_sixty', compact('portfolio_sixty', 'portfolio_thirty', 'portfolio_sixty'));
+    }*/
 
     /**
      * Show the form for creating a new resource.

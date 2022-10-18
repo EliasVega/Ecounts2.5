@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('invoice');
-            $table->string('tipdoc', 2);
-            $table->string('tipOpe', 2);
+            $table->bigInteger('invoice');
+            $table->string('type_document', 2);
+            $table->string('type_operation', 2);
             $table->date('due_date');
             $table->integer('items');
             $table->decimal('total', 20, 2);
-            $table->decimal('totalIva', 11, 2);
-            $table->decimal('totalPay', 20, 2);
+            $table->decimal('total_iva', 11, 2);
+            $table->decimal('total_pay', 20, 2);
             $table->decimal('pay',10,2);
             $table->decimal('balance',10,2);
             $table->decimal('retention',10,2)->nullable();

@@ -48,7 +48,7 @@
                 {data: 'id'},
                 {data: 'code'},
                 {data: 'name'},
-                {data: 'salePrice'},
+                {data: 'sale_price'},
                 {data: 'stock'},
                 {data: 'status'},
                 {data: 'edit'},

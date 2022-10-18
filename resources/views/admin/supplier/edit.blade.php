@@ -153,8 +153,8 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <label for="phoneContact">Telefono de Contacto</label>
-                            <input type="text" name="phoneContact" value="{{ $supplier->phoneContact }}" class="form-control" placeholder="Telefono del contacto">
+                            <label for="phone_contact">Telefono de Contacto</label>
+                            <input type="text" name="phone_contact" value="{{ $supplier->phone_contact }}" class="form-control" placeholder="Telefono del contacto">
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

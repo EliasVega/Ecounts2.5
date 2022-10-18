@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'due_date',
         'items',
         'total',
-        'totalIva',
-        'totalPay',
+        'total_iva',
+        'total_pay',
         'pay',
         'balance',
         'retention',

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
 
             $table->string('purchase', 20);
-            $table->decimal('total', 10, 2);
-            $table->decimal('totalIva', 10, 2);
-            $table->decimal('totalPay', 10, 2);
+            $table->decimal('total', 20, 2);
+            $table->decimal('total_iva', 10, 2);
+            $table->decimal('total_pay', 20, 2);
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

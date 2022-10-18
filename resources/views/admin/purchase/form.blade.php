@@ -2,7 +2,7 @@
     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group">
             <label for="name">Nombre del Proveedor</label>
-            <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Ingrese el nombre del proveedor">
+            <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Nombre del proveedor">
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -27,7 +27,7 @@
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="address">Direccion</label>
-            <input type="text" name="address" value="{{ old('address') }}" class="form-control" placeholder="Ingrese la direccion">
+            <input type="text" name="address" value="{{ old('address') }}" class="form-control" placeholder="direccion">
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -44,7 +44,7 @@
     <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="number">Numero</label>
-            <input type="text" name="number" value="{{ old('number') }}" class="form-control" placeholder="Ingrese el Numero de identificacion ">
+            <input type="text" name="number" value="{{ old('number') }}" class="form-control" placeholder="identificacion ">
         </div>
     </div>
     <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -56,26 +56,26 @@
     <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="phone">Telefono</label>
-            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Numero de telefono">
+            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Telefono">
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Ingrese el correo electronico">
+            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Correo electronico">
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="form-group">
             <label for="contact">Nombre de contacto</label>
-            <input type="text" name="contact" value="{{ old('contact') }}" class="form-control" placeholder="Nombre de contacto">
+            <input type="text" name="contact" value="{{ old('contact') }}" class="form-control" placeholder="Contacto">
         </div>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="form-group">
-            <label for="phoneContact">Telefono Contacto</label>
-            <input type="text" name="phoneContact" value="{{ old('phoneContact') }}" class="form-control" placeholder="Telefono del contacto">
+            <label for="phone_contact">Telefono Contacto</label>
+            <input type="text" name="phone_contact" value="{{ old('phone_contact') }}" class="form-control" placeholder="Tel contacto">
         </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">

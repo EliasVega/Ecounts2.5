@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('payment_forms', function (Blueprint $table) {
             $table->id();
-            $table->integer('code');
             $table->string('name', 20);
         });
     }

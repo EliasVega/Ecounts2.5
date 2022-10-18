@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Ndpurchase;
 use App\Http\Requests\StoreNdpurchaseRequest;
 use App\Http\Requests\UpdateNdpurchaseRequest;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Kardex;
-use App\Models\NdpurchaseProduct;
+use App\Models\Ndpurchase_product;
 use App\Models\Product;
-use App\Models\ProductPurchase;
+use App\Models\Product_purchase;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +29,7 @@ class NdpurchaseController extends Controller
             $ndpurchases = Ndpurchase::from('ndpurchases as ndp')
             ->join('purchases as pur', 'ndp.purchase_id', 'pur.id')
             ->join('suppliers as sup', 'ndp.supplier_id', 'sup.id')
-            ->select('ndp.id', 'ndp.purchase', 'ndp.totalPay', 'ndp.created_at', 'pur.id as idP', 'sup.name')
+            ->select('ndp.id', 'ndp.purchase', 'ndp.total_pay', 'ndp.created_at', 'pur.id as idP', 'sup.name')
             ->get();
 
             return datatables()
@@ -53,14 +53,14 @@ class NdpurchaseController extends Controller
     {
         $purchases = Purchase::from('purchases AS pur')
         ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->select('pur.id', 'sup.id as idS', 'sup.name', 'pur.purchase', 'pur.total', 'pur.totalIva', 'pur.totalPay', 'pur.status')
+        ->select('pur.id', 'sup.id as idS', 'sup.name', 'pur.purchase', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pur.status')
         ->where('pur.id', '=', $request->session()->get('purchase'))->first();
 
         if ($purchases->status == 'DEBIT_NOTE') {
             return redirect("ncpurchase")->with('warning', 'Esta Compra ya tiene una Nota Debito');
         }
 
-        $productPurchases = ProductPurchase::from('product_purchases AS pp')
+        $product_purchases = Product_purchase::from('product_purchases AS pp')
         ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -74,7 +74,7 @@ class NdpurchaseController extends Controller
 
 
         $cont = 0;
-        foreach($productPurchases as $pp){
+        foreach($product_purchases as $pp){
             $prod = Product::select('stock')->where('id', '=', $pp->product_id)->first();
             if($pp->quantity > $prod->stock){
                 $cont ++;
@@ -82,7 +82,7 @@ class NdpurchaseController extends Controller
         }
 
         if($cont == 0){
-            return view('admin.ndpurchase.create', compact('purchases', 'products', 'productPurchases'));
+            return view('admin.ndpurchase.create', compact('purchases', 'products', 'product_purchases'));
         }else{
             return view('admin.ndpurchase.error');
         }
@@ -107,8 +107,8 @@ class NdpurchaseController extends Controller
             $ndpurchase->supplier_id  = $purchase->supplier_id;
             $ndpurchase->purchase     = $purchase->purchase;
             $ndpurchase->total        = $request->total;
-            $ndpurchase->totalIva     = $request->totalIva;
-            $ndpurchase->totalPay     = $request->totalPay;
+            $ndpurchase->total_iva     = $request->total_iva;
+            $ndpurchase->total_pay     = $request->total_pay;
             $ndpurchase->save();
 
             $product_id = $request->product_id;
@@ -120,29 +120,46 @@ class NdpurchaseController extends Controller
             while($cont < count($product_id)){
 
                 //Methodo para crear la relacion NC compra con productos
-                $ndproductPurchase = new NdpurchaseProduct();
-                $ndproductPurchase->ndpurchase_id = $ndpurchase->id;
-                $ndproductPurchase->product_id = $product_id[$cont];
-                $ndproductPurchase->quantity = $quantity[$cont];
-                $ndproductPurchase->price = $price[$cont];
-                $ndproductPurchase->save();
+                $ndproduct_purchase = new Ndpurchase_product();
+                $ndproduct_purchase->ndpurchase_id = $ndpurchase->id;
+                $ndproduct_purchase->product_id = $product_id[$cont];
+                $ndproduct_purchase->quantity = $quantity[$cont];
+                $ndproduct_purchase->price = $price[$cont];
+                $ndproduct_purchase->save();
+
+                //selecciona el producto que viene del array
+                $products = Product::from('products AS pro')
+                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
+                ->where('pro.id', '=', $ndproduct_purchase->product_id)
+                ->first();
+
+                $id = $products->id;
+                $uti = $products->utility;
+                $pre = $products->price;
+                $stockardex = $products->stock;
+                $preven = $pre + ($pre * $uti / 100);
+                //Cambia el valor de venta del producto
+                $product = Product::findOrFail($id);
+                $product->sale_price = $preven;
+                $product->update();
 
                 //Metodo para actualizar la estok productos de la sucursal
-                $branchProducts = BranchProduct::from('branch_products AS bp')
+                $branch_products = Branch_product::from('branch_products AS bp')
                 ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
                 ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
                 ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
-                ->where('bp.product_id', '=', $ndproductPurchase->product_id)
+                ->where('bp.product_id', '=', $ndproduct_purchase->product_id)
                 ->where('bp.branch_id', '=', 1)
                 ->first();
 
-                $id = $branchProducts->idP;
-                $prestock = $branchProducts->stock;
-                $stock = $prestock - $ndproductPurchase->quantity;
+                $id = $branch_products->idP;
+                $prestock = $branch_products->stock;
+                $stock = $prestock - $ndproduct_purchase->quantity;
 
-                $branchProduct = BranchProduct::findOrFail($id);
-                $branchProduct->stock = $stock;
-                $branchProduct->update();
+                $branch_product = Branch_product::findOrFail($id);
+                $branch_product->stock = $stock;
+                $branch_product->update();
 
                 $products = Product::from('products AS pro')
                 ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -189,19 +206,19 @@ class NdpurchaseController extends Controller
             ->join('purchases as pur', 'ndp.purchase_id', 'pur.id')
             ->join('suppliers as sup', 'ndp.supplier_id', 'sup.id')
             ->join('branches as bra', 'ndp.branch_id', 'bra.id')
-            ->select('ndp.id', 'ndp.purchase', 'ndp.total', 'ndp.totalIva', 'ndp.totalPay', 'ndp.created_at', 'pur.id as idP', 'sup.name', 'bra.name as nameB')
+            ->select('ndp.id', 'ndp.purchase', 'ndp.total', 'ndp.total_iva', 'ndp.total_pay', 'ndp.created_at', 'pur.id as idP', 'sup.name', 'bra.name as nameB')
             ->where('ndp.id', '=', $id)
             ->first();
 
         /*mostrar detalles*/
-        $ndpurchaseProducts = NdpurchaseProduct::from('ndpurchase_products AS np')
+        $ndpurchase_products = Ndpurchase_product::from('ndpurchase_products AS np')
         ->join('products AS pro', 'np.product_id', '=', 'pro.id')
         ->join('ndpurchases AS nd', 'np.ndpurchase_id', '=', 'nd.id')
-        ->select('np.quantity', 'np.price', 'nd.total', 'nd.totalIva', 'nd.totalPay', 'pro.name')
+        ->select('np.quantity', 'np.price', 'nd.total', 'nd.total_iva', 'nd.total_pay', 'pro.name')
         ->where('np.ndpurchase_id', '=', $id)
         ->get();
 
-        return view('admin.ndpurchase.show', compact('ndpurchases', 'ndpurchaseProducts'));
+        return view('admin.ndpurchase.show', compact('ndpurchases', 'ndpurchase_products'));
     }
 
     /**

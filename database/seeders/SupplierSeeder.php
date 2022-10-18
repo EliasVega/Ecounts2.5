@@ -15,76 +15,70 @@ class SupplierSeeder extends Seeder
      */
     public function run()
     {
-        $supplier = new Supplier();
-
-        $supplier->department_id = 21;
-        $supplier->municipality_id = 846;
-        $supplier->document_id = 6;
-        $supplier->liability_id = 1;
-        $supplier->organization_id = 1;
-        $supplier->tax_id = 1;
-        $supplier->name = 'NEXANS COLOMBIA';
-        $supplier->number = '223456789-4';
-        $supplier->address = 'Centro empresarial chimita bodega 14';
-        $supplier->phone = '6374581';
-        $supplier->email = 'nexans@gmail.com';
-        $supplier->contact = 'LUIS EMILIO MILLAN';
-        $supplier->phoneContact = '3174576982';
-
-        $supplier->save();
-
-        $supplier = new Supplier();
-
-        $supplier->department_id = 21;
-        $supplier->municipality_id = 846;
-        $supplier->document_id = 6;
-        $supplier->liability_id = 1;
-        $supplier->organization_id = 1;
-        $supplier->tax_id = 1;
-        $supplier->name = 'BLACK&DECKER';
-        $supplier->number = '223456789-5';
-        $supplier->address = 'Centro empresarial chimita bodega 15';
-        $supplier->phone = '6374582';
-        $supplier->email = 'blackdecker@gmail.com';
-        $supplier->contact = 'LUIS ANTONIO MONROY';
-        $supplier->phoneContact = '3174576983';
-
-        $supplier->save();
-
-        $supplier = new Supplier();
-
-        $supplier->department_id = 21;
-        $supplier->municipality_id = 846;
-        $supplier->document_id = 6;
-        $supplier->liability_id = 1;
-        $supplier->organization_id = 1;
-        $supplier->tax_id = 1;
-        $supplier->name = 'ASUS IMPORTACIONES';
-        $supplier->number = '323456789-6';
-        $supplier->address = 'Centro empresarial chimita bodega 16';
-        $supplier->phone = '6371582';
-        $supplier->email = 'asus@gmail.com';
-        $supplier->contact = 'FABIAN CORRALES';
-        $supplier->phoneContact = '3174486983';
-
-        $supplier->save();
-
-        $supplier = new Supplier();
-
-        $supplier->department_id = 21;
-        $supplier->municipality_id = 846;
-        $supplier->document_id = 6;
-        $supplier->liability_id = 1;
-        $supplier->organization_id = 1;
-        $supplier->tax_id = 1;
-        $supplier->name = 'LENOVO COLOMBIA';
-        $supplier->number = '323456789-7';
-        $supplier->address = 'Centro empresarial chimita bodega 17';
-        $supplier->phone = '6373982';
-        $supplier->email = 'lenovo@gmail.com';
-        $supplier->contact = 'FANNY OSORIO';
-        $supplier->phoneContact = '3174476983';
-
-        $supplier->save();
+        $supplier = [
+            [
+                'department_id' => 21,
+                'municipality_id' => 846,
+                'document_id' => 6,
+                'liability_id' => 1,
+                'organization_id' => 1,
+                'tax_id' => 1,
+                'name' => 'NEXANS COLOMBIA',
+                'number' => '223456789-4',
+                'address' => 'Centro empresarial chimita bodega 14',
+                'phone' => '6374581',
+                'email' => 'nexans@gmail.com',
+                'contact' => 'LUIS EMILIO MILLAN',
+                'phone_contact' => '3174576982',
+            ],
+            [
+                'department_id' => 21,
+                'municipality_id' => 846,
+                'document_id' => 6,
+                'liability_id' => 1,
+                'organization_id' => 1,
+                'tax_id' => 1,
+                'name' => 'BLACK&DECKER',
+                'number' => '223456789-5',
+                'address' => 'Centro empresarial chimita bodega 15',
+                'phone' => '6374582',
+                'email' => 'blackdecker@gmail.com',
+                'contact' => 'LUIS ANTONIO MONROY',
+                'phone_contact' => '3174576983',
+            ],
+            [
+                'department_id' => 21,
+                'municipality_id' => 846,
+                'document_id' => 6,
+                'liability_id' => 1,
+                'organization_id' => 1,
+                'tax_id' => 1,
+                'name' => 'ASUS IMPORTACIONES',
+                'number' => '323456789-6',
+                'address' => 'Centro empresarial chimita bodega 16',
+                'phone' => '6371582',
+                'email' => 'asus@gmail.com',
+                'contact' => 'FABIAN CORRALES',
+                'phone_contact' => '3174486983',
+            ],
+            [
+                'department_id' => 21,
+                'municipality_id' => 846,
+                'document_id' => 6,
+                'liability_id' => 1,
+                'organization_id' => 1,
+                'tax_id' => 1,
+                'name' => 'LENOVO COLOMBIA',
+                'number' => '323456789-7',
+                'address' => 'Centro empresarial chimita bodega 17',
+                'phone' => '6373982',
+                'email' => 'lenovo@gmail.com',
+                'contact' => 'FANNY OSORIO',
+                'phone_contact' => '3174476983',
+            ],
+        ];
+        foreach($supplier as $sup){
+            Supplier::create($sup);
+        }
     }
 }

@@ -29,10 +29,20 @@
         });
     });
 
+    jQuery(document).ready(function($){
+        $(document).ready(function() {
+            $('#payment_method_id').select2({
+                theme: "classic",
+                width: "100%",
+            });
+        });
+    });
+
     $(document).ready(function(){
         $("#rtfon").click(function(){
             $("#retentiony").show();
             $("#rtferase").show();
+            $("#porcent").show();
         });
     });
 
@@ -40,6 +50,7 @@
         $("#rtfoff").click(function(){
             $("#retentiony").hide();
             $("#rtferase").hide();
+            $("#porcent").hide();
         });
     });
 
@@ -94,7 +105,7 @@
     var cont=0;
     total=0;
     subtotal=[];
-    totalIva=0;
+    total_iva=0;
     ret = 0;
     $("#save").hide();
     $("#retentiony").hide();
@@ -107,22 +118,17 @@
     $("#abvto").hide();
     $("#abpaymenty").hide();
     $("#idPro").hide();
+    $("#porcent").hide();
     $("#porcentage").val(0);
-
-
 
     $("#product_id").change(productValue);
 
     function productValue(){
         dataProduct = document.getElementById('product_id').value.split('_');
         $("#stock").val(dataProduct[1]);
-        dataProduct = document.getElementById('product_id').value.split('_');
-        $("#salePrice").val(dataProduct[2]);
-        dataProduct = document.getElementById('product_id').value.split('_');
+        $("#sale_price").val(dataProduct[2]);
         $("#iva").val(dataProduct[3]);
-        dataProduct = document.getElementById('product_id').value.split('_');
         $("#idP").val(dataProduct[4]);
-        dataProduct = document.getElementById('product_id').value.split('_');
         $("#suggested_price").val(dataProduct[2]);
     }
 
@@ -135,11 +141,11 @@
     }
 
 
-    $("#payEvent_id").change(DocumentValue);
+    $("#pay_event_id").change(DocumentValue);
 
     function documentValue(){
 
-        dataDocument = document.getElementById('payEvent_id').value.split('_');
+        dataDocument = document.getElementById('pay_event_id').value.split('_');
         $("#abv").val(dataDocument[0]);
         $("#pay").val(dataDocument[1]);
         $("#abpayment").val(dataDocument[2]);
@@ -151,7 +157,7 @@
         product_id= dataProduct[0];
         product= $("#product_id option:selected").text();
         quantity= $("#quantity").val();
-        price= $("#salePrice").val();
+        price= $("#sale_price").val();
         stock= $("#stock").val();
         iva= $("#iva").val();
         idp= $("#idP").val();
@@ -161,8 +167,8 @@
         dataRetention = document.getElementById('retention_id').value.split('_');
         retention_id= dataRetention[0];
         porcentage = $("#porcentage").val();
-        dataDocument = document.getElementById('payEvent_id').value.split('_');
-        payEvent_id= dataDocument[0];
+        dataDocument = document.getElementById('pay_event_id').value.split('_');
+        pay_event_id= dataDocument[0];
         pay = $("#pay").val();
         if(product_id !="" && quantity!="" && quantity>0  && price!="" && stock!="" && iva!=""){
 
@@ -179,7 +185,7 @@
                 subtotal[cont]= parseFloat(quantity) * parseFloat(price);
                 total= total+subtotal[cont];
                 ivita= subtotal[cont]*iva/100;
-                totalIva=totalIva+ivita;
+                total_iva=total_iva+ivita;
 
                 var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="idP[]" value="'+idp+'">'+idp+'</td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td> <td><input type="hidden" id="quantity" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" id="price" name="price[]" value="'+parseFloat(price).toFixed(2)+'">'+price+'</td> td> <td><input type="hidden" name="iva[]" value="'+iva+'">'+iva+'</td>  <td> $'+parseFloat(subtotal[cont]).toFixed(2)+'</td></tr>';
                 cont++;
@@ -208,7 +214,7 @@
     function clean(){
         $("#product_id").val("");
         $("#quantity").val("");
-        $("#salePrice").val("");
+        $("#sale_price").val("");
         $("#idP").val("");
 
     }
@@ -220,18 +226,18 @@
         $("#total_html").html("$ " + total.toFixed(2));
         $("#total").val(total.toFixed(2));
 
-        totalPay=total+totalIva;
-        $("#totalIva_html").html("$ " + totalIva.toFixed(2));
-        $("#totalIva").val(totalIva.toFixed(2));
+        total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
 
-        totalPay = totalPay - vrte;
+        total_pay = total_pay - vrte;
         $("#retention_html").html("$ " + vrte.toFixed(2));
         $("#retencion").val(vrte.toFixed(2));
 
-        $("#totalPay_html").html("$ " + totalPay.toFixed(2));
-        $("#totalPay").val(totalPay.toFixed(2));
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
 
-        $("#balance").val(totalPay.toFixed(2));
+        $("#balance").val(total_pay.toFixed(2));
     }
 
 
@@ -254,18 +260,18 @@
     function eliminar(index){
 
         total = total-subtotal[index];
-        totalIva= total*iva/100;
-        totalPay = total + totalIva;
+        total_iva= total*iva/100;
+        total_pay = total + total_iva;
 
         $("#total_html").html("$ " + total.toFixed(2));
         $("#total").val(total.toFixed(2));
 
-        totalPay=total+totalIva;
-        $("#totalIva_html").html("$ " + totalIva.toFixed(2));
-        $("#totalIva").val(totalIva.toFixed(2));
+        total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
 
-        $("#totalPay_html").html("$ " + totalPay.toFixed(2));
-        $("#totalPay").val(totalPay.toFixed(2));
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
 
         $("#fila" + index).remove();
         assess();
@@ -347,7 +353,7 @@
     }
 
     function payment(){
-        ttp = parseFloat($("#totalPay").val())
+        ttp = parseFloat($("#total_pay").val())
         abn = parseFloat($("#pay").val())
         balancey = ttp - abn;
         if (ttp >= abn) {

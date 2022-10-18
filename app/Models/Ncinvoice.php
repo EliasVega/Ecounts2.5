@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ncinvoice extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'invoice',
         'total',
-        'totalIva',
-        'totalPay',
+        'total_iva',
+        'total_pay',
         'user_id',
         'branch_id',
         'invoice_id',

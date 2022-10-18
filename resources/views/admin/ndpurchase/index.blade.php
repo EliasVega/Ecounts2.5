@@ -7,8 +7,6 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Listado de Notas Debito Compras
-
-                <a href="ndpurchase/create"><button class="btn btn-success"><i class="fa fa-plus mr-2"></i> Agregar Nota Debito</button></a>
                 <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h3>
 
             </h3>
@@ -51,7 +49,7 @@
                 {data: 'name'},
                 {data: 'idP'},
                 {data: 'purchase'},
-                {data: 'totalPay'},
+                {data: 'total_pay'},
                 {data: 'created_at'},
                 {data: 'edit'},
             ],

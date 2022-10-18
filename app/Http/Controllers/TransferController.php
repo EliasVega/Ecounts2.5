@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transfer;
 use App\Http\Requests\StoreTransferRequest;
 use App\Http\Requests\UpdateTransferRequest;
-use App\Models\ProductBranch;
+use App\Models\Product_branch;
 
 class TransferController extends Controller
 {
@@ -20,8 +20,8 @@ class TransferController extends Controller
             $transfers = Transfer::from('transfers AS tra')
             ->join('users AS use', 'tra.user_id', '=', 'use.id')
             ->join('branches AS bra', 'tra.branch_id', '=', 'bra.id')
-            ->join('branches AS branch', 'tra.originBranch_id', '=', 'branch.id')
-            ->select('tra.id', 'branch.name AS originBranch', 'bra.name AS branch', 'tra.created_at', 'use.name')
+            ->join('branches AS branch', 'tra.origin_branch_id', '=', 'branch.id')
+            ->select('tra.id', 'branch.name AS origin_branch', 'bra.name AS branch', 'tra.created_at', 'use.name')
             ->get();
 
             return datatables()
@@ -68,21 +68,21 @@ class TransferController extends Controller
         $transfers = transfer::from('transfers AS tra')
             ->join('users AS use', 'tra.user_id', '=', 'use.id')
             ->join('branches AS bra', 'tra.branch_id', '=', 'bra.id')
-            ->join('branches AS branch', 'tra.originBranch_id', '=', 'branch.id')
-            ->select('tra.id', 'branch.name AS originBranch', 'bra.name AS branch', 'tra.created_at', 'use.name')
+            ->join('branches AS branch', 'tra.origin_branch_id', '=', 'branch.id')
+            ->select('tra.id', 'branch.name AS origin_branch', 'bra.name AS branch', 'tra.created_at', 'use.name')
             ->where('tra.id', '=', $id)
             ->first();
-        $productBranches = ProductBranch::from('product_branches AS pb')
+        $product_branches = Product_branch::from('product_branches AS pb')
             ->join('users AS use', 'pb.user_id', '=', 'use.id')
             ->join('products AS pro', 'pb.product_id', '=', 'pro.id')
             ->join('transfers AS tra', 'pb.transfer_id', '=', 'tra.id')
             ->join('branches AS bra', 'pb.branch_id', '=', 'bra.id')
-            ->join('branches AS branch', 'pb.originBranch_id', '=', 'branch.id')
-            ->select('pb.id', 'pb.quantity', 'pb.branch_id', 'pro.name AS nameP', 'bra.name AS nameB', 'pb.created_at', 'branch.name AS originBranch', 'use.name', 'tra.id AS idT')
+            ->join('branches AS branch', 'pb.origin_branch_id', '=', 'branch.id')
+            ->select('pb.id', 'pb.quantity', 'pb.branch_id', 'pro.name AS nameP', 'bra.name AS nameB', 'pb.created_at', 'branch.name AS origin_branch', 'use.name', 'tra.id AS idT')
             ->where('tra.id', '=', $id)
             ->get();
 
-            return view('admin.transfer.show', compact('productBranches', 'transfers'));
+            return view('admin.transfer.show', compact('product_branches', 'transfers'));
     }
 
     /**

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payinvoice;
+use App\Models\Pay_invoice;
 use App\Http\Requests\StorePayinvoiceRequest;
 use App\Http\Requests\UpdatePayinvoiceRequest;
 use App\Models\Bank;
 use App\Models\Card;
 use App\Models\Invoice;
-use App\Models\Payevent;
-use App\Models\PayinvoicePaymentmethod;
-use App\Models\PaymentMethod;
-use App\Models\Salebox;
+use App\Models\Pay_event;
+use App\Models\Pay_invoice_payment_method;
+use App\Models\Payment_method;
+use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +28,7 @@ class PayinvoiceController extends Controller
         $user = Auth::user()->role_id;
         if (request()->ajax()) {
             if ($user == 1 || $user == 2) {
-                $payInvoices = Payinvoice::from('payinvoices AS pay')
+                $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
                 ->join('users AS use', 'pay.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
                 ->join('invoices AS inv', 'pay.invoice_id', 'inv.id')
@@ -36,7 +36,7 @@ class PayinvoiceController extends Controller
                 ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'inv.id AS idI', 'inv.balance', 'inv.totalPay', 'cus.name as nameC', 'pay.created_at')
                 ->get();
             } else {
-                $payInvoices = Payinvoice::from('payinvoices AS pay')
+                $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
                 ->join('users AS use', 'pay.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
                 ->join('invoices AS inv', 'pay.invoice_id', 'inv.id')
@@ -47,15 +47,15 @@ class PayinvoiceController extends Controller
             }
 
             return datatables()
-            ->of($payInvoices)
-            ->editColumn('created_at', function(Payinvoice $pay){
+            ->of($pay_invoices)
+            ->editColumn('created_at', function(Pay_invoice $pay){
                 return $pay->created_at->format('yy-m-d: h:m');
             })
-            ->addColumn('btn', 'admin/payInvoice/actions')
+            ->addColumn('btn', 'admin/pay_invoice/actions')
             ->rawcolumns(['btn'])
             ->toJson();
         }
-        return view('admin.payInvoice.index');
+        return view('admin.pay_invoice.index');
     }
 
     /**
@@ -66,9 +66,9 @@ class PayinvoiceController extends Controller
     public function create(Request $request)
     {
         $banks = Bank::get();
-        $paymentMethods = PaymentMethod::get();
+        $payment_methods = Payment_method::get();
         $cards = Card::get();
-        $payEvents = Payevent::where('status', '=', 'PENDIENTE')->get();
+        $pay_events = Pay_event::where('status', '=', 'PENDIENTE')->get();
 
         $invoices = Invoice::from('invoices AS inv')
         ->join('customers AS cus', 'inv.customer_id', 'cus.id')
@@ -76,7 +76,7 @@ class PayinvoiceController extends Controller
         ->where('inv.id', '=', $request->session()->get('invoice'))
         ->first();
 
-        return view('admin.payInvoice.create', compact('invoices', 'banks', 'paymentMethods', 'cards', 'payEvents'));
+        return view('admin.pay_invoice.create', compact('invoices', 'banks', 'payment_methods', 'cards', 'pay_events'));
     }
 
     /**
@@ -93,19 +93,19 @@ class PayinvoiceController extends Controller
             $invoice = Invoice::where('id', '=', $request->session()->get('invoice'))->first();
             $balance = $invoice->balance;
 
-            $payInvoice = new Payinvoice();
-            $payInvoice->user_id    = Auth::user()->id;
-            $payInvoice->branch_id  = $request->session()->get('branch');
-            $payInvoice->invoice_id = $invoice->id;
-            $payInvoice->pay        = 0;
-            $payInvoice->balanceInvoice = 0;
-            $payInvoice->save();
+            $pay_invoice = new Pay_invoice();
+            $pay_invoice->user_id    = Auth::user()->id;
+            $pay_invoice->branch_id  = $request->session()->get('branch');
+            $pay_invoice->invoice_id = $invoice->id;
+            $pay_invoice->pay        = 0;
+            $pay_invoice->balance_invoice = 0;
+            $pay_invoice->save();
 
             $cont = 0;
             $payment_method = $request->payment_method_id;
             $bank           = $request->bank_id;
             $card           = $request->card_id;
-            $payEvent       = $request->payEvent_id;
+            $pay_event       = $request->pay_event_id;
             $pay            = $request->pay;
             $transaction    = $request->transaction;
             $payu           = 0;
@@ -113,36 +113,36 @@ class PayinvoiceController extends Controller
             while($cont < count($payment_method)){
                 $pay = $pay[$cont];
 
-                $payinvoicePaymentMethod = new PayinvoicePaymentmethod();
-                $payinvoicePaymentMethod->payInvoice_id      = $payInvoice->id;
-                $payinvoicePaymentMethod->payment_method_id  = $payment_method[$cont];
-                $payinvoicePaymentMethod->bank_id            = $bank[$cont];
-                $payinvoicePaymentMethod->card_id            = $card[$cont];
-                $payinvoicePaymentMethod->payEvent_id        = null;
-                $payinvoicePaymentMethod->payment            = $pay;
-                $payinvoicePaymentMethod->transaction        = $transaction[$cont];
-                $payinvoicePaymentMethod->save();
+                $pay_invoice_payment_method = new Pay_invoice_payment_method();
+                $pay_invoice_payment_method->pay_invoice_id      = $pay_invoice->id;
+                $pay_invoice_payment_method->payment_method_id  = $payment_method[$cont];
+                $pay_invoice_payment_method->bank_id            = $bank[$cont];
+                $pay_invoice_payment_method->card_id            = $card[$cont];
+                $pay_invoice_payment_method->payEvent_id        = null;
+                $pay_invoice_payment_method->payment            = $pay;
+                $pay_invoice_payment_method->transaction        = $transaction[$cont];
+                $pay_invoice_payment_method->save();
 
                 $payu = $payu + $pay;
 
                 $mp = $request->payment_method_id;
 
-                $boxy = Salebox::where('user_id', '=', Auth::user()->id)
+                $boxy = Sale_box::where('user_id', '=', Auth::user()->id)
                 ->where('status', '=', 'ABIERTA')
                 ->first();
-                $inPay = $boxy->inPay + $pay;
-                $inPayCash = $boxy->inPayCash;
+                $in_pay = $boxy->in_pay + $pay;
+                $in_pay_cash = $boxy->in_pay_cash;
                 $cash = $boxy->cash;
                 if($mp == 1){
-                    $inPayCash += $pay;
+                    $in_pay_cash += $pay;
                     $cash += $pay;
                 }
 
-                $salebox = Salebox::findOrFail($boxy->id);
-                $salebox->inPayCash = $inPayCash;
-                $salebox->inPay = $inPay;
-                $salebox->cash = $cash;
-                $salebox->update();
+                $sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->in_pay_cash = $in_pay_cash;
+                $sale_box->in_pay = $in_pay;
+                $sale_box->cash = $cash;
+                $sale_box->update();
 
                 $cont++;
             }
@@ -153,28 +153,28 @@ class PayinvoiceController extends Controller
             $invoic->balance = $balance;
             $invoic->update();
 
-            $payInvoices = Payinvoice::findOrFail($payInvoice->id);
-            $payInvoices->pay = $payu;
-            $payInvoices->balanceInvoice = $invoice->balance;
-            $payInvoices->update();
+            $pay_invoices = Pay_invoice::findOrFail($pay_invoice->id);
+            $pay_invoices->pay = $payu;
+            $pay_invoices->balanceInvoice = $invoice->balance;
+            $pay_invoices->update();
 
             DB::commit();
         }
         catch(Exception $e){
             DB::rollback();
         }
-        return redirect('payInvoice');
+        return redirect('pay_invoice');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Payinvoice  $payinvoice
+     * @param  \App\Models\Pay_invoice  $pay_invoice
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $payInvoices = Payinvoice::from('payinvoices AS pay')
+        $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
         ->join('users AS use', 'pay.user_id', '=', 'use.id')
         ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
         ->join('invoices AS inv', 'pay.invoice_id', '=', 'inv.id')
@@ -182,8 +182,8 @@ class PayinvoiceController extends Controller
         ->select('pay.id', 'pay.pay', 'use.name', 'bra.name', 'inv.id AS idI', 'inv.due_date', 'cus.name AS nameC')
         ->where('pay.id', '=', $id)
         ->first();
-        $payinvoicePaymentMethods = PayinvoicePaymentmethod::from('payinvoice_paymentMethod AS pp')
-        ->join('payivoices AS pay', 'pp.payInvoice_id', '=', 'pay.id')
+        $pay_invoice_payment_methods = Pay_invoice_payment_method::from('pay_invoice_payment_methods AS pp')
+        ->join('pay_ivoices AS pay', 'pp.pay_invoice_id', '=', 'pay.id')
         ->join('payment_methods AS pm', 'pp.payment_method_id', '=', 'pm.id')
         ->join('banks AS ban', 'pp.bank_id', '=', 'ban.id')
         ->join('cards AS car', 'pp.crad_id', '=', 'car.id')
@@ -191,16 +191,16 @@ class PayinvoiceController extends Controller
         ->where('pay.id', '=', $id)
         ->get();
 
-        return view('admin.payInvoice.show', compact('payInvoices', 'payinvoicePaymentMethods'));
+        return view('admin.pay_invoice.show', compact('pay_invoices', 'pay_invoice_payment_methods'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Payinvoice  $payinvoice
+     * @param  \App\Models\Pay_invoice  $pay_invoice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payinvoice $payinvoice)
+    public function edit(Pay_invoice $pay_invoice)
     {
         //
     }
@@ -209,10 +209,10 @@ class PayinvoiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatePayinvoiceRequest  $request
-     * @param  \App\Models\Payinvoice  $payinvoice
+     * @param  \App\Models\Pay_invoice  $pay_invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePayinvoiceRequest $request, Payinvoice $payinvoice)
+    public function update(UpdatePayinvoiceRequest $request, Pay_invoice $pay_invoice)
     {
         //
     }
@@ -220,10 +220,10 @@ class PayinvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Payinvoice  $payinvoice
+     * @param  \App\Models\Pay_invoice  $pay_invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payinvoice $payinvoice)
+    public function destroy(Pay_invoice $pay_invoice)
     {
         //
     }

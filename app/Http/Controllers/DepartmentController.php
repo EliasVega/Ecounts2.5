@@ -45,9 +45,9 @@ class DepartmentController extends Controller
     public function store(StoreDepartmentRequest $request)
     {
         $department = new department;
-        $department->code = $request->code;
         $department->name = $request->name;
-        $department->codeISO = $request->codeISO;
+        $department->dane_code = $request->dane_code;
+        $department->iso_code = $request->iso_code;
         $department->save();
         return redirect('department');
     }
@@ -86,9 +86,9 @@ class DepartmentController extends Controller
     public function update(UpdateDepartmentRequest $request, $department)
     {
         $department = department::findOrFail($department);
-        $department->code = $request->code;
         $department->name = $request->name;
-        $department->codeISO = $request->codeISO;
+        $department->dane_code = $request->dane_code;
+        $department->iso_code = $request->iso_code;
         $department->update();
         return redirect('department');
     }

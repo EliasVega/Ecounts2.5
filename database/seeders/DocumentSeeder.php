@@ -15,92 +15,60 @@ class DocumentSeeder extends Seeder
      */
     public function run()
     {
-        $document = new Document();
-
-        $document->code = 11;
-        $document->name = 'Registro civil';
-        $document->initials = 'R.C.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 12;
-        $document->name = 'Tarjeta de Identidad';
-        $document->initials = 'T.I.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 13;
-        $document->name = 'Cedula de Ciudadania';
-        $document->initials = 'C.C.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 21;
-        $document->name = 'Tarjeta de extrangeria';
-        $document->initials = 'T.E.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 22;
-        $document->name = 'Cedula de extranjeria';
-        $document->initials = 'C.E.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 31;
-        $document->name = 'NIT';
-        $document->initials = 'NIT';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 41;
-        $document->name = 'Pasaporte';
-        $document->initials = 'PAS';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 42;
-        $document->name = 'Documento de identificacion extranjero';
-        $document->initials = 'D.I.E.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 47;
-        $document->name = 'PEP';
-        $document->initials = 'PEP';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 50;
-        $document->name = 'NIT de otro pais';
-        $document->initials = 'N.E.';
-
-        $document->save();
-
-        $document = new Document();
-
-        $document->code = 91;
-        $document->name = 'NUIP';
-        $document->initials = 'NUIP';
-
-        $document->save();
+        $documents = [
+            [
+                'code' => 11,
+                'name' =>'Registro civil',
+                'initial' => 'R.C.'
+            ],
+            [
+                'code' => 12,
+                'name' =>'Tarjeta de Identidad',
+                'initial' => 'T.I.'
+            ],
+            [
+                'code' => 13,
+                'name' =>'Cedula de Ciudadania',
+                'initial' => 'C.C.'
+            ],
+            [
+                'code' => 21,
+                'name' =>'Tarjeta de extranjeria',
+                'initial' => 'T.E.'
+            ],
+            [
+                'code' => 22,
+                'name' =>'Cedula de Extranjeria',
+                'initial' => 'C.C.'
+            ],
+            [
+                'code' => 31,
+                'name' =>'NIT',
+                'initial' => 'NIT'
+            ],
+            [
+                'code' => 41,
+                'name' =>'Pasaporte',
+                'initial' => 'PAS'
+            ],
+            [
+                'code' => 47,
+                'name' =>'PEP',
+                'initial' => 'PEP'
+            ],
+            [
+                'code' => 50,
+                'name' =>'NIT de otro pais',
+                'initial' => 'D.E'
+            ],
+            [
+                'code' => 91,
+                'name' =>'NUIP',
+                'initial' => 'NUIP'
+            ],
+        ];
+        foreach ($documents as $document) {
+            Document::create($document);
+        }
     }
 }

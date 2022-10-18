@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -54,7 +54,7 @@ class ProductController extends Controller
         $product->code = $request->code;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->salePrice = 0;
+        $product->sale_price = 0;
         $product->stock = 0;
         $product->status = 1;
 
@@ -76,12 +76,12 @@ class ProductController extends Controller
             $product->image=$fileNameToStore;
         $product->save();
             //metodo para agregar producto a la sede
-        $branchProduct = new BranchProduct();
-        $branchProduct->branch_id = 1;
-        $branchProduct->product_id = $product->id;
-        $branchProduct->stock = 0;
-        $branchProduct->orderProduct = 0;
-        $branchProduct->save();
+        $branch_product = new Branch_product();
+        $branch_product->branch_id = 1;
+        $branch_product->product_id = $product->id;
+        $branch_product->stock = 0;
+        $branch_product->order_product = 0;
+        $branch_product->save();
 
         return redirect('product');
     }
@@ -128,7 +128,7 @@ class ProductController extends Controller
         $product->code = $request->code;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->salePrice = $product->salePrice;
+        $product->sale_price = $product->sale_price;
         $product->stock = $product->stock;
         $product->status = 1;
 

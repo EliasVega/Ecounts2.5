@@ -48,7 +48,7 @@ class DocumentController extends Controller
         $document = new Document();
         $document->code = $request->code;
         $document->name = $request->name;
-        $document->initials = $request->initials;
+        $document->initial = $request->initial;
         $document->save();
         return redirect("document");
     }
@@ -88,7 +88,7 @@ class DocumentController extends Controller
         $document = Document::findOrFail($id);
         $document->code = $request->code;
         $document->name = $request->name;
-        $document->initials = $request->initials;
+        $document->initial = $request->initial;
         $document->update();
         return redirect('document');
     }

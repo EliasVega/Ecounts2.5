@@ -23,8 +23,8 @@
             <div class="box-body row">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-group">
-                        <label for="code">Codigo</label>
-                        <input type="text" name="code" value="{{ $department->code }}" class="form-control">
+                        <label for="dane_code">Codigo</label>
+                        <input type="text" name="dane_code" value="{{ $department->dane_code }}" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12">
@@ -36,8 +36,8 @@
 
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-group">
-                        <label for="codeISO">Codigo ISO</label>
-                        <input type="text" name="codeISO" value="{{ $department->codeISO }}" class="form-control">
+                        <label for="iso_code">Codigo ISO</label>
+                        <input type="text" name="iso_code" value="{{ $department->iso_code }}" class="form-control">
                     </div>
                 </div>
 

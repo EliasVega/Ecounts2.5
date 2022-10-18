@@ -24,27 +24,27 @@ class UpdateSaleboxRequest extends FormRequest
     public function rules()
     {
         return [
-            'cashbox'       => '',
-            'inOrderCash'   => '',
-            'inOrder'       => '',
-            'inInvoiceCash' => '',
-            'inInvoice'     => '',
-            'inPayCash'     => '',
-            'inPay'         => '',
-            'inPayEvent'    => '',
-            'outCash'       => '',
-            'cash'          => '',
-            'out'           => '',
-            'total'         => '',
-            'sale'          => '',
-            'order'         => '',
-            'codverifOpen'  => '',
-            'codverifClose' => '',
-            'status'        => '',
-            'user_id'       => '',
-            'branch_id'     => '',
-            'userOpen_id'   => '',
-            'userClose_id'  => ''
+            'cash_box'        => '',
+            'in_order_cash'   => '',
+            'in_order'        => '',
+            'in_invoice_cash' => '',
+            'in_invoice'      => '',
+            'in_pay_cash'     => '',
+            'in_pay'          => '',
+            'in_pay_event'    => '',
+            'out_cash'        => '',
+            'cash'            => '',
+            'out'             => '',
+            'total'           => '',
+            'sale'            => '',
+            'order'           => '',
+            'cod_verif_open'  => '',
+            'cod_verif_close' => '',
+            'status'          => '',
+            'user_id'         => '',
+            'branch_id'       => '',
+            'user_open_id'    => '',
+            'user_close_id'   => ''
         ];
     }
 }

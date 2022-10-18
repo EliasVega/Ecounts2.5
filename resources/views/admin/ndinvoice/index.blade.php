@@ -48,7 +48,7 @@
                 {data: 'id'},
                 {data: 'nameC'},
                 {data: 'idI'},
-                {data: 'totalPay'},
+                {data: 'total_pay'},
                 {data: 'name'},
                 {data: 'created_at'},
                 {data: 'edit'},

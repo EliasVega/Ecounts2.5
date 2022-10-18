@@ -83,7 +83,7 @@
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $orders->totalIva }}</p></th>
+                                <th><p align="right">${{ $orders->total_iva }}</p></th>
                             </tr>
 
                             <tr>
@@ -93,12 +93,12 @@
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $orders->totalPay }}</p></th>
+                                <th><p align="right">${{ $orders->total_pay }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($orderProducts as $op)
+                            @foreach($order_products as $op)
                                 <tr>
                                     <td>{{ $op->name }}</td>
                                     <td>${{ $op->price }}</td>

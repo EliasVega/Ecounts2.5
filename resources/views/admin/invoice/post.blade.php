@@ -28,7 +28,7 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->nameL }} -- <br> R. fiscal. {{ $company->nameR }} <br> {{ $company->description }} -- {{ $company->nameO }} <br>Resolucion N°. {{ $indicators->resolution }} Prefijo: {{ $indicators->prefix }} Rango {{ $indicators->from }} <br> al {{ $indicators->to }} -- Vigencia: desde {{ $indicators->ddate_from }} hasta {{ $indicators->date_to }} <br> {{ $invoice->direcionB }} {{ $company->nameM }} -- {{ $company->nameD }} <br> Email: {{ $invoice->email }}
+                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->nameL }} -- <br> R. fiscal. {{ $company->nameR }} <br> {{ $company->description }} -- {{ $company->nameO }} <br>Resolucion N°. {{ $indicators->resolution }} Prefijo: {{ $indicators->prefix }} Rango {{ $indicators->from }} <br> al {{ $indicators->to }} -- Vigencia: desde {{ $indicators->date_from }} hasta {{ $indicators->date_to }} <br> {{ $invoice->direcionB }} {{ $company->nameM }} -- {{ $company->nameD }} <br> Email: {{ $invoice->email }}
                     </p>
             </div>
             <!--DATOS FACTURA -->
@@ -124,12 +124,12 @@
 
                             <tr>
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($invoicy->totalIva,2)}}</strong> </td>
+                                <td class="footder"><strong>${{number_format($invoicy->total_iva,2)}}</strong> </td>
                             </tr>
 
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($invoicy->totalPay,2)}}</strong></td>
+                                <td class="footder"><strong id="total">${{number_format($invoicy->total_pay,2)}}</strong></td>
                             </tr>
                         </tfoot>
                     </table>

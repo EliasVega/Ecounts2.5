@@ -51,7 +51,7 @@
                 {data: 'id'},
                 {data: 'nameS'},
                 {data: 'purchase'},
-                {data: 'totalPay'},
+                {data: 'total_pay'},
                 {data: 'created_at'},
                 {data: 'name'},
                 {data: 'status'},

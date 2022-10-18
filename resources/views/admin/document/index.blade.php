@@ -43,7 +43,7 @@ $(document).ready(function ()
                 {data: 'id'},
                 {data: 'code'},
                 {data: 'name'},
-                {data: 'initials'},
+                {data: 'initial'},
                 {data: 'edit'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',

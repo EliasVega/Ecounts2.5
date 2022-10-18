@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payorder;
+use App\Models\Pay_order;
 use App\Http\Requests\StorePayorderRequest;
 use App\Http\Requests\UpdatePayorderRequest;
 use App\Models\Bank;
 use App\Models\Card;
 use App\Models\Order;
-use App\Models\Payevent;
-use App\Models\PaymentMethod;
-use App\Models\PaymentmethodPayorder;
-use App\Models\Salebox;
+use App\Models\Pay_event;
+use App\Models\Payment_method;
+use App\Models\Payment_method_pay_order;
+use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,20 +28,20 @@ class PayorderController extends Controller
         $user = Auth::user()->role_id;
         if (request()->ajax()) {
             if ($user == 1 || $user == 2) {
-                $payOrders = Payorder::from('payorders AS pay')
+                $pay_orders = Pay_order::from('pay_orders AS pay')
                 ->join('users AS use', 'pay.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
                 ->join('orders AS ord', 'pay.order_id', 'ord.id')
                 ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-                ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'ord.id AS idO', 'cus.name as nameC', 'ord.balance', 'ord.totalPay', 'pay.created_at')
+                ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'ord.id AS idO', 'cus.name as nameC', 'ord.balance', 'ord.total_pay', 'pay.created_at')
                 ->get();
             } else {
-                $payOrders = Payorder::from('payorders AS pay')
+                $pay_orders = Pay_order::from('pay_orders AS pay')
                 ->join('users AS use', 'pay.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
                 ->join('orders AS ord', 'pay.order_id', 'ord.id')
                 ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-                ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'ord.id AS idO', 'cus.name as nameC', 'ord.balance', 'ord.totalPay', 'pay.created_at')
+                ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'ord.id AS idO', 'cus.name as nameC', 'ord.balance', 'ord.total_pay', 'pay.created_at')
                 ->where('pay.user_id', '=', Auth::user()->id)
                 ->get();
             }
@@ -49,15 +49,15 @@ class PayorderController extends Controller
 
 
             return datatables()
-            ->of($payOrders)
-            ->editColumn('created_at', function(Payorder $pay){
+            ->of($pay_orders)
+            ->editColumn('created_at', function(Pay_order $pay){
                 return $pay->created_at->format('yy-m-d: h:m');
             })
-            ->addColumn('btn', 'admin/payOrder/actions')
+            ->addColumn('btn', 'admin/pay_order/actions')
             ->rawcolumns(['btn'])
             ->toJson();
         }
-        return view('admin.payOrder.index');
+        return view('admin.pay_order.index');
     }
 
     /**
@@ -68,16 +68,16 @@ class PayorderController extends Controller
     public function create(Request $request)
     {
         $banks = Bank::get();
-        $paymentMethods = PaymentMethod::get();
+        $payment_methods = Payment_method::get();
         $cards = Card::get();
-        $payEvents = Payevent::where('status', '=', 'PENDIENTE');
+        $pay_events = Pay_event::where('status', '=', 'PENDIENTE');
         $orders = Order::from('orders AS ord')
         ->join('customers AS cus', 'ord.customer_id', 'cus.id')
         ->select('ord.id', 'ord.balance', 'cus.name', 'ord.created_at')
         ->where('ord.id', '=', $request->session()->get('order'))
         ->first();
 
-        return view('admin.payOrder.create', compact('orders', 'banks', 'paymentMethods', 'cards', 'payEvents'));
+        return view('admin.pay_order.create', compact('orders', 'banks', 'payment_methods', 'cards', 'pay_events'));
     }
 
     /**
@@ -94,19 +94,19 @@ class PayorderController extends Controller
             $order = Order::where('id', '=', $request->session()->get('order'))->first();
             $balance = $order->balance;
 
-            $payOrder = new Payorder();
-            $payOrder->user_id = Auth::user()->id;
-            $payOrder->branch_id = $request->session()->get('branch');
-            $payOrder->order_id = $order->id;
-            $payOrder->pay = 0;
-            $payOrder->balanceOrder = 0;
-            $payOrder->save();
+            $pay_order = new Pay_order();
+            $pay_order->user_id = Auth::user()->id;
+            $pay_order->branch_id = $request->session()->get('branch');
+            $pay_order->order_id = $order->id;
+            $pay_order->pay = 0;
+            $pay_order->balance_order = 0;
+            $pay_order->save();
 
             $cont = 0;
             $payment_method   = $request->payment_method_id;
             $bank       = $request->bank_id;
             $card     = $request->card_id;
-            $payEvent  = $request->payEvent_id;
+            $pay_event  = $request->pay_event_id;
             $payment       = $request->pay;
             $transaction = $request->transaction;
             $pay     = 0;
@@ -114,36 +114,36 @@ class PayorderController extends Controller
 
                 $id = $order->id;
                 $payment = $payment[$cont];
-                $paymentmethodPayorder                = new PaymentmethodPayorder();
-                $paymentmethodPayorder->payOrder_id   = $payOrder->id;
-                $paymentmethodPayorder->payment_method_id  = $payment_method[$cont];
-                $paymentmethodPayorder->bank_id      = $bank[$cont];
-                $paymentmethodPayorder->card_id    = $card[$cont];
-                $paymentmethodPayorder->payEvent_id = null;
-                $paymentmethodPayorder->payment         = $payment;
-                $paymentmethodPayorder->transaction   = $transaction[$cont];
-                $paymentmethodPayorder->save();
+                $payment_method_pay_order                = new Payment_method_pay_order();
+                $payment_method_pay_order->pay_order_id   = $pay_order->id;
+                $payment_method_pay_order->payment_method_id  = $payment_method[$cont];
+                $payment_method_pay_order->bank_id      = $bank[$cont];
+                $payment_method_pay_order->card_id    = $card[$cont];
+                $payment_method_pay_order->pay_event_id = null;
+                $payment_method_pay_order->payment         = $payment;
+                $payment_method_pay_order->transaction   = $transaction[$cont];
+                $payment_method_pay_order->save();
 
                 $payu = $pay + $payment;
 
                 $mp = $request->payment_method_id;
-                $boxy = Salebox::where('user_id', '=', Auth::user()->id)
+                $boxy = Sale_box::where('user_id', '=', Auth::user()->id)
                 ->where('status', '=', 'ABIERTA')
                 ->first();
                 //$cajita = Caja::findOrFail($id);
-                $inPay = $boxy->inPay + $payment;
-                $inPayCash = $boxy->inPayCash;
+                $in_pay = $boxy->in_pay + $payment;
+                $in_pay_cash = $boxy->in_pay_cash;
                 $cash = $boxy->cash;
                 if($mp == 1){
-                    $inPayCash += $payment;
+                    $in_pay_cash += $payment;
                     $cash += $payment;
                 }
 
-                $salebox = Salebox::findOrFail($boxy->id);
-                $salebox->inPayCash = $inPayCash;
-                $salebox->inPay = $inPay;
-                $salebox->cash = $cash;
-                $salebox->update();
+                $sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->in_pay_cash = $in_pay_cash;
+                $sale_box->in_pay = $in_pay;
+                $sale_box->cash = $cash;
+                $sale_box->update();
 
                 $cont++;
             }
@@ -154,28 +154,28 @@ class PayorderController extends Controller
             $order->balance = $balanc;
             $order->update();
 
-            $payOrders = Payorder::findOrFail($payOrder->id);
-            $payOrders->pay = $payu;
-            $payOrders->balanceOrder = $balanc;
-            $payOrders->update();
+            $pay_orders = Pay_order::findOrFail($pay_order->id);
+            $pay_orders->pay = $payu;
+            $pay_orders->balance_order = $balanc;
+            $pay_orders->update();
 
             DB::commit();
         }
         catch(Exception $e){
             DB::rollback();
         }
-        return redirect('payOrder');
+        return redirect('pay_order');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Payorder  $payorder
+     * @param  \App\Models\Pay_order  $pay_order
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $payOrders = Payorder::from('payorders AS pay')
+        $pay_orders = Pay_order::from('pay_orders AS pay')
         ->join('users AS use', 'pay.user_id', '=', 'use.id')
         ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
         ->join('orders AS ord', 'pay.order_id', '=', 'ord.id')
@@ -183,8 +183,8 @@ class PayorderController extends Controller
         ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'ord.id AS idO', 'ord.due_date', 'cus.name as nameC')
         ->where('pay.id', '=', $id)
         ->first();
-        $paymentmethodPayorders = PaymentmethodPayorder::from('paymentmethod_payorders AS pp')
-        ->join('payorders AS pay', 'pp.payOrder_id', '=', 'pay.id')
+        $payment_method_pay_orders = Payment_method_pay_order::from('payment_method_pay_orders AS pp')
+        ->join('pay_orders AS pay', 'pp.pay_order_id', '=', 'pay.id')
         ->join('payment_methods AS pm', 'pp.payment_method_id', '=', 'pm.id')
         ->join('banks AS ban', 'pp.bank_id', '=', 'ban.id')
         ->join('cards AS car', 'pp.card_id', '=', 'car.id')
@@ -192,16 +192,16 @@ class PayorderController extends Controller
         ->where('pay.id', '=', $id)
         ->get();
 
-        return view('admin.payOrder.show', compact('payOrders', 'paymentmethodPayorders'));
+        return view('admin.pay_order.show', compact('pay_orders', 'payment_method_pay_orders'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Payorder  $payorder
+     * @param  \App\Models\Pay_order  $pay_order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payorder $payorder)
+    public function edit(Pay_order $pay_order)
     {
         //
     }
@@ -213,7 +213,7 @@ class PayorderController extends Controller
      * @param  \App\Models\Payorder  $payorder
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePayorderRequest $request, Payorder $payorder)
+    public function update(UpdatePayorderRequest $request, Pay_order $pay_order)
     {
         //
     }
@@ -224,7 +224,7 @@ class PayorderController extends Controller
      * @param  \App\Models\Payorder  $payorder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payorder $payorder)
+    public function destroy(Pay_order $pay_order)
     {
         //
     }

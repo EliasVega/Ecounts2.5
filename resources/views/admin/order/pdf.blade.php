@@ -96,7 +96,7 @@
                             </tr>
                         </thead>
                         <tbody class="detalle">
-                            @foreach ($orderProduct as $op)
+                            @foreach ($order_product as $op)
                             <tr>
                                 <td id="ccent">{{ number_format($op->quantity) }}</td>
                                 <td>{{ $op->name }}</td>
@@ -114,12 +114,12 @@
 
                             <tr>
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($ordery->totalIva,2)}}</strong> </td>
+                                <td class="footder"><strong>${{number_format($ordery->total_iva,2)}}</strong> </td>
                             </tr>
 
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($ordery->totalPay,2)}}</strong></td>
+                                <td class="footder"><strong id="total">${{number_format($ordery->total_pay,2)}}</strong></td>
                             </tr>
                         </tfoot>
                     </table>

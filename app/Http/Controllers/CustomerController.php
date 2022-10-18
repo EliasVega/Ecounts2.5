@@ -89,7 +89,8 @@ class CustomerController extends Controller
         $customer->save();
         if($branch > 0)
         {
-            return redirect("invoice/create");
+            return back();
+            //return redirect("invoice/create");
         }
         else{
             return redirect("customer");

@@ -15,20 +15,22 @@ class CardSeeder extends Seeder
      */
     public function run()
     {
-        $card = new Card();
-        $card->name = 'No Aplica';
-        $card->save();
-
-        $card = new Card();
-        $card->name = 'VISA';
-        $card->save();
-
-        $card = new Card();
-        $card->name = 'MASTER CARD';
-        $card->save();
-
-        $card = new Card();
-        $card->name = 'AMERICAN ESPRESS';
-        $card->save();
+        $cards = [
+            [
+                'name' =>'No Aplica',
+            ],
+            [
+                'name' =>'VISA',
+            ],
+            [
+                'name' =>'MASTER CARD',
+            ],
+            [
+                'name' =>'AMERICAN ESPRESS',
+            ],
+        ];
+        foreach ($cards as $card) {
+            Card::create($card);
+        }
     }
 }

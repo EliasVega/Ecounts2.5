@@ -96,7 +96,7 @@
                             </tr>
                         </thead>
                         <tbody class="detalle">
-                            @foreach ($invoiceProducts as $ip)
+                            @foreach ($invoice_products as $ip)
                             <tr>
                                 <td id="ccent">{{ number_format($ip->quantity) }}</td>
                                 <td>{{ $ip->name }}</td>
@@ -114,12 +114,12 @@
 
                             <tr>
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($invoicy->totalIva,2)}}</strong> </td>
+                                <td class="footder"><strong>${{number_format($invoicy->total_iva,2)}}</strong> </td>
                             </tr>
 
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($invoicy->totalPay,2)}}</strong></td>
+                                <td class="footder"><strong id="total">${{number_format($invoicy->total_pay,2)}}</strong></td>
                             </tr>
                         </tfoot>
                     </table>

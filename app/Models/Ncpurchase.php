@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ncpurchase extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
 
         'purchase',
         'total',
-        'totalIva',
-        'totalPay',
+        'total_iva',
+        'total_pay',
         'user_id',
         'branch_id',
         'purchase_id',

@@ -16,11 +16,9 @@ return new class extends Migration
         Schema::create('ncinvoices', function (Blueprint $table) {
             $table->id();
 
-
-            $table->string('invoice', 20);
             $table->decimal('total', 20, 2);
-            $table->decimal('totalIva', 11, 2);
-            $table->decimal('totalPay', 20, 2);
+            $table->decimal('total_iva', 11, 2);
+            $table->decimal('total_pay', 20, 2);
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

@@ -15,18 +15,18 @@ class RegimeSeeder extends Seeder
      */
     public function run()
     {
-        $regime = new Regime();
-
-        $regime->code = 48;
-        $regime->name = 'Responsable de IVA';
-
-        $regime->save();
-
-        $regime = new Regime();
-
-        $regime->code = 49;
-        $regime->name = 'No Responsable de IVA';
-
-        $regime->save();
+        $regimes = [
+            [
+                'code' => 48,
+                'name' => 'Responsable de IVA'
+            ],
+            [
+                'code' => 49,
+                'name' => 'No Responsable de IVA'
+            ],
+        ];
+        foreach($regimes as $reg){
+            Regime::create($reg);
+        }
     }
 }

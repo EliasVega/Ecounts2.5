@@ -26,7 +26,7 @@ class UpdateDocumentRequest extends FormRequest
         return [
             'code'     => 'required',
             'name'     => 'required',
-            'initials' => 'required'
+            'initial' => 'required'
         ];
     }
 }

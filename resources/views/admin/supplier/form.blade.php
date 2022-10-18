@@ -69,8 +69,8 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label for="phoneContact">Telefono Contacto</label>
-                        <input type="text" name="phoneContact" value="{{ old('phoneContact') }}" class="form-control" placeholder="Telefono del contacto">
+                        <label for="phone_contact">Telefono Contacto</label>
+                        <input type="text" name="phone_contact" value="{{ old('phone_contact') }}" class="form-control" placeholder="Telefono del contacto">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">

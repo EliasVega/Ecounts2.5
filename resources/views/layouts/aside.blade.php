@@ -46,13 +46,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('codverif') }}" class="nav-link">
+                            <a href="{{ url('cod_verif') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Autorizaciones</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('saleBox') }}" class="nav-link">
+                            <a href="{{ url('sale_box') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Caja</p>
                             </a>
@@ -64,19 +64,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('payOrder') }}" class="nav-link">
+                            <a href="{{ url('pay_order') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Abonos Pedidos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('payInvoice') }}" class="nav-link">
+                            <a href="{{ url('pay_invoice') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Abonos Facturas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('apayEvent') }}" class="nav-link">
+                            <a href="{{ url('pay_event') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Abonos Pendientes</p>
                             </a>
@@ -100,13 +100,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('paymentForm') }}" class="nav-link">
+                            <a href="{{ url('payment_form') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Forma Pagos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('paymentMethod') }}" class="nav-link">
+                            <a href="{{ url('payment_method') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Medios Pagos</p>
                             </a>
@@ -215,7 +215,7 @@
                         @endif
                         @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
                         <li class="nav-item">
-                            <a href="{{ url('productBranch') }}" class="nav-link">
+                            <a href="{{ url('product_branch') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Traslados</p>
                             </a>
@@ -285,7 +285,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('saleBox') }}" class="nav-link">
+                            <a href="{{ url('sale_box') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Caja</p>
                             </a>
@@ -297,7 +297,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('payOrder') }}" class="nav-link">
+                            <a href="{{ url('pay_order') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Abonos</p>
                             </a>

@@ -38,7 +38,9 @@
     </div><br>
     <div class="box-body row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Detalle de la compra</h3>
+            <h3>Detalle de la Nota Credito
+                <a href="{{ route('ncpurchase.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+            </h3>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -59,17 +61,17 @@
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IMPUESTO (20%):</p></th>
-                                <th><p align="right">${{number_format($ncpurchases->totalIva,2)}}</p></th>
+                                <th><p align="right">${{number_format($ncpurchases->total_iva,2)}}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{number_format($ncpurchases->totalPay,2)}}</p></th>
+                                <th><p align="right">${{number_format($ncpurchases->total_pay,2)}}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($ncpurchaseProducts as $np)
+                            @foreach($ncpurchase_products as $np)
                                 <tr>
                                     <td>{{ $np->name }}</td>
                                     <td>${{ $np->price }}</td>

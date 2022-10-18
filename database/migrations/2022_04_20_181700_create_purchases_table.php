@@ -20,8 +20,8 @@ return new class extends Migration
 
             $table->string('purchase', 20);
             $table->decimal('total', 20, 2);
-            $table->decimal('totalIva', 11, 2);
-            $table->decimal('totalPay', 20, 2);
+            $table->decimal('total_iva', 11, 2);
+            $table->decimal('total_pay', 20, 2);
             $table->enum('status',['ACTIVE', 'DEBIT_NOTE', 'CREDIT_NOTE'])->default('ACTIVE');
 
             $table->foreignId('user_id')->constrained();

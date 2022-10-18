@@ -25,8 +25,8 @@ class UpdateNdpurchaseRequest extends FormRequest
     {
         return [
             'total'       => 'required',
-            'totalIva'    => 'required',
-            'totalPay'    => 'required',
+            'total_iva'   => 'required',
+            'total_pay'   => 'required',
             'branch_id'   => '',
             'purchase_id' => '',
             'product_id'  => ''

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Codverif;
+use App\Models\Cod_verif;
 use App\Http\Requests\StoreCodverifRequest;
 use App\Http\Requests\UpdateCodverifRequest;
 use App\Models\User;
@@ -17,20 +17,20 @@ class CodverifController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $codverifs = Codverif::from('codverifs as cod')
+            $cod_verifs = Cod_verif::from('cod_verifs as cod')
             ->join('users as use', 'cod.user_id', 'use.id')
             ->select('cod.id', 'use.name', 'use.status', 'cod.code')
             ->where('use.status', '=', 'ACTIVO')
             ->get();
 
             return datatables()
-            ->of($codverifs)
-            ->addColumn('btn', 'admin/codverif/actions')
-            ->addColumn('accesos', 'admin/codverif/eliminar')
+            ->of($cod_verifs)
+            ->addColumn('btn', 'admin/cod_verif/actions')
+            ->addColumn('accesos', 'admin/cod_verif/eliminar')
             ->rawcolumns(['btn', 'accesos'])
             ->toJson();
         }
-        return view('admin.codverif.index');
+        return view('admin.cod_verif.index');
     }
 
     /**
@@ -41,7 +41,7 @@ class CodverifController extends Controller
     public function create()
     {
         $users = User::where('id', '!=', 1)->get();
-        return view('admin.codverif.create', compact('users'));
+        return view('admin.cod_verif.create', compact('users'));
     }
 
     /**
@@ -52,31 +52,31 @@ class CodverifController extends Controller
      */
     public function store(StoreCodverifRequest $request)
     {
-        $codverif = Codverif::get();
+        $cod_verif = Cod_verif::get();
         $id = $request->user_id;
         $cont = 0;
-        foreach ($codverif as $key) {
+        foreach ($cod_verif as $key) {
             if($key->user_id == $id)
             $cont ++;
         }
         if ($cont > 0) {
-            return redirect('codverif')->with('warning', 'Este Usuario Ya tiene Asignado un Codigo');
+            return redirect('cod_verif')->with('warning', 'Este Usuario Ya tiene Asignado un Codigo');
         } else {
-            $codverif = new Codverif();
-            $codverif->user_id = $request->user_id;
-            $codverif->code = $request->code;
-            $codverif->save();
+            $cod_verif = new Cod_verif();
+            $cod_verif->user_id = $request->user_id;
+            $cod_verif->code = $request->code;
+            $cod_verif->save();
         }
-        return redirect('codverif')->with('success', 'Autorizacion creada Satisfactoriamente');
+        return redirect('cod_verif')->with('success', 'Autorizacion creada Satisfactoriamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Codverif  $codverif
+     * @param  \App\Models\Cod_verif  $cod_verif
      * @return \Illuminate\Http\Response
      */
-    public function show(Codverif $codverif)
+    public function show(Cod_verif $cod_verif)
     {
         //
     }
@@ -84,41 +84,41 @@ class CodverifController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Codverif  $codverif
+     * @param  \App\Models\Cod_verif  $cod_verif
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $codverif = Codverif::findOrFail($id);
-        $user = User::where('id', '=', $codverif->user_id)->first();
-        return view('admin.codverif.edit', compact('codverif', 'user'));
+        $cod_verif = Cod_verif::findOrFail($id);
+        $user = User::where('id', '=', $cod_verif->user_id)->first();
+        return view('admin.cod_verif.edit', compact('cod_verif', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCodverifRequest  $request
-     * @param  \App\Models\Codverif  $codverif
+     * @param  \App\Models\Cod_verif  $cod_verif
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCodverifRequest $request, $id)
     {
-        $codverif = Codverif::findOrFail($id);
-        $codverif->code = $request->code;
-        $codverif->update();
-        return redirect('codverif');
+        $cod_verif = Cod_verif::findOrFail($id);
+        $cod_verif->code = $request->code;
+        $cod_verif->update();
+        return redirect('cod_verif');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Codverif  $codverif
+     * @param  \App\Models\Cod_verif  $cod_verif
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $codverif = Codverif::findOrFail($id);
-        $codverif->delete();
-        return redirect('codverif');
+        $cod_verif = Cod_verif::findOrFail($id);
+        $cod_verif->delete();
+        return redirect('cod_verif');
     }
 }

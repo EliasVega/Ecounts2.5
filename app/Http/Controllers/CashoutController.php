@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cashout;
+use App\Models\Cash_out;
 use App\Http\Requests\StoreCashoutRequest;
 use App\Http\Requests\UpdateCashoutRequest;
-use App\Models\Codverif;
-use App\Models\Salebox;
+use App\Models\Cod_verif;
+use App\Models\Sale_box;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +20,8 @@ class CashoutController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $cashOuts = Cashout::from('cashouts AS cas')
-            ->join('saleboxes AS sal', 'cas.salebox_id', 'sal.id')
+            $cash_outs = Cash_out::from('cash_outs AS cas')
+            ->join('sale_boxes AS sal', 'cas.sale_box_id', 'sal.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
             ->join('users AS usa', 'cas.admin_id', 'usa.id')
             ->join('branches as bra', 'cas.branch_id', 'bra.id')
@@ -30,12 +30,12 @@ class CashoutController extends Controller
             ->get();
 
             return datatables()
-            ->of($cashOuts)
-            ->addColumn('edit', 'admin/cashOut/actions')
+            ->of($cash_outs)
+            ->addColumn('edit', 'admin/cash_out/actions')
             ->rawcolumns(['edit'])
             ->toJson();
         }
-        return view('admin.cashOut.index');
+        return view('admin.cash_out.index');
     }
 
     /**
@@ -46,9 +46,9 @@ class CashoutController extends Controller
     public function create()
     {
         $users = User::where('id', '!=', 1)->get();
-        $saleBox = Salebox::where('user_id', '=', Auth::user()->id)->where('status', '=', 'ABIERTA')->first();
-        $cash = $saleBox->cash;
-        return view("admin.cashOut.create", compact('users', 'saleBox', 'cash'));
+        $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'ABIERTA')->first();
+        $cash = $sale_box->cash;
+        return view("admin.cash_out.create", compact('users', 'sale_box', 'cash'));
     }
 
     /**
@@ -63,43 +63,43 @@ class CashoutController extends Controller
         $admin_id = $request->admin_id;
         $verific = $request->admin;
         $payment = $request->payment;
-        $codverif = Codverif::select('id', 'code')->where('user_id', '=', $admin_id)->first();
-        $boxOpen = Salebox::where('user_id', '=', $users)->where('status', '=', 'ABIERTA')->first();
+        $cod_verif = Cod_verif::select('id', 'code')->where('user_id', '=', $admin_id)->first();
+        $box_open = Sale_box::where('user_id', '=', $users)->where('status', '=', 'ABIERTA')->first();
 
-        if($codverif == null){
-            return redirect("cashOut")->with('warning', 'Usuario No autorizado para ejercer como administrador');
+        if($cod_verif == null){
+            return redirect("cash_out")->with('warning', 'Usuario No autorizado para ejercer como administrador');
         }
 
-        if ($codverif->code != $verific) {
-            return redirect("cashOut")->with('warning', 'Error en codigo de verificacion');
+        if ($cod_verif->code != $verific) {
+            return redirect("cash_out")->with('warning', 'Error en codigo de verificacion');
         } else {
-            $id = $boxOpen->id;
-            $cashOut           = new Cashout();
-            $cashOut->user_id  = $users;
-            $cashOut->saleBox_id  = $id;
-            $cashOut->branch_id  = $request->session()->get('branch');
-            $cashOut->admin_id = $request->admin_id;
-            $cashOut->payment    = $payment;
-            $cashOut->admin    = $request->admin;
-            $cashOut->save();
+            $id = $box_open->id;
+            $cash_out           = new cash_out();
+            $cash_out->user_id  = $users;
+            $cash_out->sale_box_id  = $id;
+            $cash_out->branch_id  = $request->session()->get('branch');
+            $cash_out->admin_id = $request->admin_id;
+            $cash_out->payment    = $payment;
+            $cash_out->admin    = $request->admin;
+            $cash_out->save();
 
-            $boxy = Salebox::findOrFail($id);
-            $out = $boxy->outCash + $payment;
+            $boxy = Sale_box::findOrFail($id);
+            $out = $boxy->out_cash + $payment;
 
-            $saleBox = Salebox::findOrFail($id);
-            $saleBox->outCash = $out;
-            $saleBox->update();
+            $sale_box = Sale_box::findOrFail($id);
+            $sale_box->out_cash = $out;
+            $sale_box->update();
         }
-        return redirect("cashOut")->with('success', 'Salida creada Satisfactoriamente');
+        return redirect("cash_out")->with('success', 'Salida creada Satisfactoriamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cashout  $cashout
+     * @param  \App\Models\cash_out  $cash_out
      * @return \Illuminate\Http\Response
      */
-    public function show(Cashout $cashout)
+    public function show(cash_out $cash_out)
     {
         //
     }
@@ -107,10 +107,10 @@ class CashoutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cashout  $cashout
+     * @param  \App\Models\cash_out  $cash_out
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cashout $cashout)
+    public function edit(cash_out $cash_out)
     {
         //
     }
@@ -119,10 +119,10 @@ class CashoutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCashoutRequest  $request
-     * @param  \App\Models\Cashout  $cashout
+     * @param  \App\Models\cash_out  $cash_out
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCashoutRequest $request, Cashout $cashout)
+    public function update(UpdateCashoutRequest $request, cash_out $cash_out)
     {
         //
     }
@@ -130,10 +130,10 @@ class CashoutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cashout  $cashout
+     * @param  \App\Models\cash_out  $cash_out
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cashout $cashout)
+    public function destroy(cash_out $cash_out)
     {
         //
     }

@@ -24,7 +24,7 @@ class UserController extends Controller
             ->join('branches AS bra', 'use.branch_id', 'bra.id')
             ->join('documents AS doc', 'use.document_id', 'doc.id')
             ->join('roles AS rol', 'use.role_id', 'rol.id')
-            ->select('use.id', 'use.name', 'doc.initials', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
+            ->select('use.id', 'use.name', 'doc.initial', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
             ->where('use.status', '=', 'ACTIVO')
             ->get();
 
@@ -44,7 +44,7 @@ class UserController extends Controller
             ->join('branches AS bra', 'use.branch_id', 'bra.id')
             ->join('documents AS doc', 'use.document_id', 'doc.id')
             ->join('roles AS rol', 'use.role_id', 'rol.id')
-            ->select('use.id', 'use.name', 'doc.initials', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
+            ->select('use.id', 'use.name', 'doc.initial', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
             ->where('use.status', '=', 'INACTIVO')
             ->get();
 
@@ -125,13 +125,13 @@ class UserController extends Controller
         return redirect('user');
     }
 
-    public function showcode($id)
+    public function show_code($id)
     {
         $user = User::findOrFail($id);
         \Session::put('user', $user->id, 60 * 24 * 365);
         \Session::put('name', $user->name, 60 * 24 * 365);
 
-        return redirect('codverif');
+        return redirect('cod_verif');
     }
 
     /**

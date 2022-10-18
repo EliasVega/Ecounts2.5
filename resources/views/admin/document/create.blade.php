@@ -29,8 +29,8 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label for="initials">Sigla</label>
-                        <input type="text" name="initials" value="{{ old('initials') }}" class="form-control" placeholder="Sigla">
+                        <label for="initial">Sigla</label>
+                        <input type="text" name="initial" value="{{ old('initial') }}" class="form-control" placeholder="Sigla">
                     </div>
                 </div>
 

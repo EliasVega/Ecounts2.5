@@ -24,9 +24,9 @@ class UpdateTransferRequest extends FormRequest
     public function rules()
     {
         return [
-            'branch_id'       => '',
-            'originBranch_id' => '',
-            'user_id'         => ''
+            'branch_id'        => '',
+            'origin_branch_id' => '',
+            'user_id'          => ''
         ];
     }
 }

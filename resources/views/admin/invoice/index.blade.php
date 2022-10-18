@@ -50,7 +50,7 @@
                 {data: 'id'},
                 {data: 'nameB'},
                 {data: 'name'},
-                {data: 'totalPay'},
+                {data: 'total_pay'},
                 {data: 'balance'},
                 {data: 'created_at'},
                 {data: 'status'},

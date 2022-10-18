@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained();
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('originBranch_id')
+            $table->foreignId('origin_branch_id')
             ->references('id')
             ->on('branches')
             ->onUpdate('cascade');

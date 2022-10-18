@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateBranchRequest;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Municipality;
-use App\Models\Salebox;
+use App\Models\sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -49,7 +49,7 @@ class BranchController extends Controller
             return datatables()
             ->of($branches)
             ->addColumn('btn', 'admin/branch/actions')
-            ->addColumn('accesos', 'admin/branch/actionsaccesos')
+            ->addColumn('accesos', 'admin/branch/accesos')
             ->rawcolumns(['btn', 'accesos'])
             ->toJson();
         }
@@ -104,7 +104,7 @@ class BranchController extends Controller
         return view('admin.branch.show', compact('branch'));
     }
     //funcion para redirigir a compras
-    public function showPurchase($id)
+    public function show_purchase($id)
     {
         $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
@@ -117,13 +117,13 @@ class BranchController extends Controller
         return redirect('purchase');
     }
     //funcion para redirigir a ventas
-    public function showInvoice($id)
+    public function show_invoice($id)
     {
-        $saleBox = Salebox::select('id')
+        $sale_box = sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'ABIERTA')
         ->first();
-        if($saleBox == null){
+        if($sale_box == null){
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
         }
         $branch = Branch::findOrFail($id);
@@ -133,14 +133,14 @@ class BranchController extends Controller
         return redirect('invoice');
     }
 
-    public function showOrder($id)
+    public function show_order($id)
     {
         //funcion para redirigir a pedidos
-        $saleBox = Salebox::select('id')
+        $sale_box = sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'ABIERTA')
         ->first();
-        if($saleBox == null){
+        if($sale_box == null){
             return redirect("branch")->with('warning', 'Debes tener una cash Abierta para realizar pedidos');
         }
 
@@ -153,26 +153,26 @@ class BranchController extends Controller
         return redirect('order');
     }
     //funcion para redirigir a productos sucursal
-    public function showProduct($id)
+    public function show_product($id)
     {
         $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
-        return redirect('branchProduct');
+        return redirect('branch_product');
     }
     //funcion para redirigir a
-    public function showProductBranch($id)
+    public function show_product_branch($id)
     {
         //
         $branch = branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
-        return redirect('productBranch');
+        return redirect('product_branch');
     }
     //funcion para redirigir a caja
-    public function showSaleBox($id)
+    public function show_sale_box($id)
     {
         //
         $branch = branch::findOrFail($id);
@@ -185,7 +185,7 @@ class BranchController extends Controller
             if($branch->id == 1){
                 return redirect("branch")->with('warning', 'Esta Sucursal No autorizada para tener caja');
             }
-            return redirect('saleBox');
+            return redirect('sale_box');
         } else {
             return redirect("branch")->with('warning', 'Usuario no autorizado en esta sucursal');
         }

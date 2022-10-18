@@ -2,22 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
 
         'invoice',
-        'tipDoc',
-        'tipOpe',
+        'type_document',
+        'type_operation',
         'due_date',
         'total',
-        'totalIva',
-        'totalPay',
+        'total_iva',
+        'total_pay',
         'pay',
         'balance',
         'retention',

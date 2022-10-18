@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('code');
             $table->string('name', 40);
-            $table->string('initials', 6);
+            $table->string('initial', 6);
         });
     }
 

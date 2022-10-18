@@ -26,8 +26,8 @@ class StoreNcinvoiceRequest extends FormRequest
         return [
             'invoice'     => '',
             'total'       => 'required',
-            'totalIva'    => 'required',
-            'totalPay'    => 'required',
+            'total_iva'   => 'required',
+            'total_pay'   => 'required',
             'branch_id'   => '',
             'invoice_id'  => '',
             'customer_id' => ''

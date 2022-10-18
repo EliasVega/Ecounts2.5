@@ -15,132 +15,91 @@ class TaxSeeder extends Seeder
      */
     public function run()
     {
-        $tax = new Tax();
+        $taxes = [
 
-        $tax->code = 1;
-        $tax->name = 'IVA';
-        $tax->description = 'Impuesto sobre las ventas';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 2;
-        $tax->name = 'IC';
-        $tax->description = 'Impuesto al Consumo Departamental Nominal';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 3;
-        $tax->name = 'ICA';
-        $tax->description = 'Impuesto de Industria, Comercio y Aviso';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 4;
-        $tax->name = 'INC';
-        $tax->description = 'Impuesto Nacional al Consumo';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 5;
-        $tax->name = 'ReteIVA';
-        $tax->description = 'Retención sobre el IVA';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 6;
-        $tax->name = 'ReteRenta';
-        $tax->description = 'Retención sobre Renta';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 7;
-        $tax->name = 'ReteICA';
-        $tax->description = 'Retención sobre el ICA';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 8;
-        $tax->name = 'IC Porcentual';
-        $tax->description = 'Impuesto al consumo Departamental Porcentual';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 20;
-        $tax->name = 'FtoHorticultura';
-        $tax->description = 'Cuota de Fomento Hortifrutícula';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 21;
-        $tax->name = 'Timbre';
-        $tax->description = 'Impuesto al Timbre';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 22;
-        $tax->name = 'INC Bolsas';
-        $tax->description = 'Impueto nacional al consumo de bolsas plasticas';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 23;
-        $tax->name = 'INCarbono';
-        $tax->description = 'Impuesto nacional al Carbono';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 24;
-        $tax->name = 'INCombustibles';
-        $tax->description = 'Impuesto nacional a los combustibles';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 25;
-        $tax->name = 'Sobretasa Combustibles';
-        $tax->description = 'Sobretasa a los combustibles';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 26;
-        $tax->name = 'Sordicom';
-        $tax->description = 'Contribucion minoristas (combustibles)';
-
-        $tax->save();
-
-        $tax = new Tax();
-
-        $tax->code = 30;
-        $tax->name = 'IC Datos';
-        $tax->description = 'Impuesto al consumo de datos';
-
-        $tax->save();
+            [
+                'code' => '01',
+                'name' => 'IVA',
+                'description' => 'Impuesto sobre las ventas'
+            ],
+            [
+                'code' => '02',
+                'name' => 'IC',
+                'description' => 'Impuesto al Consumo Departamental Nominal',
+            ],
+            [
+                'code' => '03',
+                'name' => 'ICA',
+                'description' => 'Impuesto de Industria, Comercio y Aviso',
+            ],
+            [
+                'code' => '04',
+                'name' => 'INC',
+                'description' => 'Impuesto Nacional al Consumo',
+            ],
+            [
+                'code' => '05',
+                'name' => 'ReteIVA',
+                'description' => 'Retención sobre el IVA',
+            ],
+            [
+                'code' => '06',
+                'name' => 'ReteRenta',
+                'description' => 'Retención sobre Renta',
+            ],
+            [
+                'code' => '07',
+                'name' => 'ReteICA',
+                'description' => 'Retención sobre el ICA',
+            ],
+            [
+                'code' => '08',
+                'name' => 'IC Porcentual',
+                'description' => 'Impuesto al consumo Departamental Porcentual',
+            ],
+            [
+                'code' => '20',
+                'name' => 'FtoHorticultura',
+                'description' => 'Cuota de Fomento Hortifrutícula',
+            ],
+            [
+                'code' => '21',
+                'name' => 'Timbre',
+                'description' => 'Impuesto al Timbre',
+            ],
+            [
+                'code' => '22',
+                'name' => 'INC Bolsas',
+                'description' => 'Impueto nacional al consumo de bolsas plasticas',
+            ],
+            [
+                'code' => '23',
+                'name' => 'INCarbono',
+                'description' => 'Impuesto nacional al Carbono',
+            ],
+            [
+                'code' => '24',
+                'name' => 'INCombustibles',
+                'description' => 'Impuesto nacional a los combustibles',
+            ],
+            [
+                'code' => '25',
+                'name' => 'Sobretasa Combustibles',
+                'description' => 'Sobretasa a los combustibles',
+            ],
+            [
+                'code' => '26',
+                'name' => 'Sordicom',
+                'description' => 'Contribucion minoristas (combustibles)',
+            ],
+            [
+                'code' => '30',
+                'name' => 'IC Datos',
+                'description' => 'Impuesto al consumo de datos',
+            ],
+        ];
+        foreach($taxes as $tax){
+            Tax::create($tax);
+        }
     }
 }

@@ -24,11 +24,11 @@ class StorePayinvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'pay'            => '',
-            'balanceInvoice' => '',
-            'user_id'        => '',
-            'branch_id'      => '',
-            'invoice_id'     => ''
+            'pay'             => '',
+            'balance_invoice' => '',
+            'user_id'         => '',
+            'branch_id'       => '',
+            'invoice_id'      => ''
         ];
     }
 }

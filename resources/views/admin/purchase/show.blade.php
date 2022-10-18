@@ -58,17 +58,17 @@
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $purchases->totalIva }}</p></th>
+                                <th><p align="right">${{ $purchases->total_iva }}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $purchases->totalPay }}</p></th>
+                                <th><p align="right">${{ $purchases->total_pay }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($productPurchases as $pp)
+                            @foreach($product_purchases as $pp)
                                 <tr>
                                     <td>{{ $pp->name }}</td>
                                     <td>${{ $pp->price }}</td>

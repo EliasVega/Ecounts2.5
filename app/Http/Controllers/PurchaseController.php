@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Purchase;
 use App\Http\Requests\StorePurchaseRequest;
 use App\Http\Requests\UpdatepurchaseRequest;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Department;
 use App\Models\Document;
 use App\Models\Kardex;
@@ -13,7 +13,7 @@ use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Product;
-use App\Models\ProductPurchase;
+use App\Models\Product_purchase;
 use App\Models\Supplier;
 use App\Models\Tax;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class PurchaseController extends Controller
             $purchases = Purchase::from('purchases AS pur')
             ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
             ->join('users AS use', 'pur.user_id', '=', 'use.id')
-            ->select('pur.id', 'sup.name as nameS', 'pur.purchase', 'pur.totalPay', 'pur.created_at', 'pur.status', 'use.name')
+            ->select('pur.id', 'sup.name as nameS', 'pur.purchase', 'pur.total_pay', 'pur.created_at', 'pur.status', 'use.name')
             ->get();
 
             return datatables()
@@ -65,7 +65,7 @@ class PurchaseController extends Controller
         $suppliers = Supplier::get();
         $products = Product::from('products AS pro')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pro.id', 'pro.name', 'pro.salePrice', 'pro.stock', 'cat.iva', 'pro.price')
+        ->select('pro.id', 'pro.name', 'pro.sale_price', 'pro.stock', 'cat.iva', 'pro.price')
         ->where('pro.status', '=', 'ACTIVE')
         ->get();
 
@@ -89,8 +89,8 @@ class PurchaseController extends Controller
             $purchase->supplier_id = $request->supplier_id;
             $purchase->purchase    = $request->purchase;
             $purchase->total       = $request->total;
-            $purchase->totalIva    = $request->totalIva;
-            $purchase->totalPay    = $request->totalPay;
+            $purchase->total_iva    = $request->total_iva;
+            $purchase->total_pay    = $request->total_pay;
             $purchase->status      = 'ACTIVE';
             $purchase->save();
             //Toma el Request del array
@@ -100,17 +100,17 @@ class PurchaseController extends Controller
             $cont = 0;
             //Ingresa los productos que vienen en el array
             while($cont < count($product_id)){
-                $productpurchase = new ProductPurchase();
-                $productpurchase->purchase_id   = $purchase->id;
-                $productpurchase->product_id = $product_id[$cont];
-                $productpurchase->quantity    = $quantity[$cont];
-                $productpurchase->price      = $price[$cont];
-                $productpurchase->save();
+                $product_purchase = new Product_purchase();
+                $product_purchase->purchase_id   = $purchase->id;
+                $product_purchase->product_id = $product_id[$cont];
+                $product_purchase->quantity    = $quantity[$cont];
+                $product_purchase->price      = $price[$cont];
+                $product_purchase->save();
                 //selecciona el producto que viene del array
                 $products = Product::from('products AS pro')
                 ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
                 ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $productpurchase->product_id)
+                ->where('pro.id', '=', $product_purchase->product_id)
                 ->first();
 
                 $id = $products->id;
@@ -118,26 +118,26 @@ class PurchaseController extends Controller
                 $pre = $products->price;
                 $stockardex = $products->stock;
                 $preven = $pre + ($pre * $uti / 100);
-                //Cambia el valor del venta del producto
+                //Cambia el valor de venta del producto
                 $product = Product::findOrFail($id);
-                $product->salePrice = $preven;
+                $product->sale_price = $preven;
                 $product->update();
                 //selecciona el producto de la sucursal que se el mismo del array
-                $branchProducts = BranchProduct::from('branch_products AS bp')
+                $branch_products = Branch_product::from('branch_products AS bp')
                 ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
                 ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
                 ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'bra.id')
-                ->where('bp.product_id', '=', $productpurchase->product_id)
+                ->where('bp.product_id', '=', $product_purchase->product_id)
                 ->where('bp.branch_id', '=', 1)
                 ->first();
 
-                $id = $branchProducts->idP;
-                $prestock = $branchProducts->stock;
-                $stock = $prestock + $productpurchase->quantity;
+                $id = $branch_products->idP;
+                $prestock = $branch_products->stock;
+                $stock = $prestock + $product_purchase->quantity;
                 //Ingresa la cantidad de ese producto a la sucursal Bodega
-                $branchProduct = BranchProduct::findOrFail($id);
-                $branchProduct->stock = $stock;
-                $branchProduct->update();
+                $branch_product = Branch_product::findOrFail($id);
+                $branch_product->stock = $stock;
+                $branch_product->update();
 
                 //Actualiza la tabla del Kardex
                 $kardex = new Kardex();
@@ -171,23 +171,23 @@ class PurchaseController extends Controller
         $purchases = Purchase::from('purchases AS pur')
         ->join('branches AS bra', 'pur.branch_id', '=', 'bra.id')
         ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->select('pur.id', 'pur.total', 'pur.totalIva', 'pur.totalPay', 'pur.created_at', 'bra.name as nameB', 'sup.name')
+        ->select('pur.id', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pur.created_at', 'bra.name as nameB', 'sup.name')
         ->where('pur.id', '=', $id)
         ->first();
 
         /*mostrar detalles*/
-        $productPurchases = ProductPurchase::from('product_purchases AS pp')
+        $product_purchases = Product_purchase::from('product_purchases AS pp')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
         ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
         ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->select('pp.quantity', 'pp.price', 'pur.total', 'pur.totalIva', 'pur.totalPay', 'pro.name')
+        ->select('pp.quantity', 'pp.price', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pro.name')
         ->where('pp.purchase_id', '=', $id)
         ->get();
 
-        return view('admin.purchase.show', compact('purchases', 'productPurchases'));
+        return view('admin.purchase.show', compact('purchases', 'product_purchases'));
     }
 
-    public function showncPurchase($id)
+    public function show_ncpurchase($id)
      {
         $purchase = Purchase::findOrFail($id);
         \session()->put('purchase', $purchase->id, 60 * 24 * 365);
@@ -204,7 +204,7 @@ class PurchaseController extends Controller
         }
      }
 
-     public function showndPurchase($id)
+     public function show_ndpurchase($id)
      {
         $purchase = Purchase::findOrFail($id);
         \session()->put('purchase', $purchase->id, 60 * 24 * 365);

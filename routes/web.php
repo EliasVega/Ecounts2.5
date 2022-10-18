@@ -40,8 +40,6 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\UserController;
-use App\Models\Category;
-use App\Models\Company;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,13 +81,13 @@ Route::resource('bank', BankController::class);
 Route::resource('card', CardController::class);
 Route::resource('company', CompanyController::class);
 Route::resource('branch', BranchController::class);
-Route::resource('paymentForm', PaymentFormController::class);
-Route::resource('paymentMethod', PaymentMethodController::class);
+Route::resource('payment_form', PaymentFormController::class);
+Route::resource('payment_method', PaymentMethodController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('product', ProductController::class);
-Route::resource('branchProduct', BranchProductController::class);
+Route::resource('branch_product', BranchProductController::class);
 Route::resource('transfer', TransferController::class);
-Route::resource('productBranch', ProductBranchController::class);
+Route::resource('product_branch', ProductBranchController::class);
 Route::resource('retention', RetentionController::class);
 Route::resource('supplier', SupplierController::class);
 Route::resource('purchase', PurchaseController::class);
@@ -100,31 +98,31 @@ Route::resource('invoice', InvoiceController::class);
 Route::resource('ncinvoice', NcinvoiceController::class);
 Route::resource('ndinvoice', NdinvoiceController::class);
 Route::resource('order', OrderController::class);
-Route::resource('payOrder', PayorderController::class);
-Route::resource('payInvoice', PayinvoiceController::class);
-Route::resource('orderProduct', OrderProductController::class);
-Route::resource('saleBox', SaleboxController::class);
-Route::resource('codverif', CodverifController::class);
-Route::resource('cashOut', CashoutController::class);
+Route::resource('pay_order', PayorderController::class);
+Route::resource('pay_invoice', PayinvoiceController::class);
+Route::resource('order_product', OrderProductController::class);
+Route::resource('sale_box', SaleboxController::class);
+Route::resource('cod_verif', CodverifController::class);
+Route::resource('cash_out', CashoutController::class);
 Route::resource('kardex', KardexController::class);
-Route::resource('payEvent', PayeventController::class);
+Route::resource('pay_event', PayeventController::class);
 Route::resource('report', ReportController::class);
 
 
 Route::get('company/create/{id}', [CompanyController::class, 'getMunicipalities']);
-Route::post('company/logout', [CompanyController::class, 'logout'])->name('logoutCompany');
+Route::post('company/logout', [CompanyController::class, 'logout'])->name('logout_company');
 
 Route::get('branch/create/{id}', [BranchController::class, 'getMunicipalities']);
-Route::get('showPurchase/{id}', [BranchController::class, 'showPurchase'])->name('showPurchase');
-Route::get('showInvoice/{id}', [BranchController::class, 'showInvoice'])->name('showInvoice');
-Route::get('showOrder/{id}', [BranchController::class, 'showOrder'])->name('showOrder');
-Route::get('showProduct/{id}', [BranchController::class, 'showProduct'])->name('showProduct');
-Route::get('showProductBranch/{id}', [BranchController::class, 'showProductBranch'])->name('showProductBranch');
-Route::get('showSaleBox/{id}', [BranchController::class, 'showSaleBox'])->name('showSaleBox');
-Route::post('branch/logout', [BranchController::class, 'logout'])->name('logoutBranch');
+Route::get('show_purchase/{id}', [BranchController::class, 'show_purchase'])->name('show_purchase');
+Route::get('show_invoice/{id}', [BranchController::class, 'show_invoice'])->name('show_invoice');
+Route::get('show_order/{id}', [BranchController::class, 'show_order'])->name('show_order');
+Route::get('show_product/{id}', [BranchController::class, 'show_product'])->name('show_product');
+Route::get('show_product_branch/{id}', [BranchController::class, 'show_product_branch'])->name('show_product_branch');
+Route::get('show_sale_box/{id}', [BranchController::class, 'show_sale_box'])->name('show_sale_box');
+Route::post('branch/logout', [BranchController::class, 'logout'])->name('logout_branch');
 
-Route::get('showndPurchase/{id}', [PurchaseController::class, 'showndPurchase'])->name('showndPurchase');
-Route::get('showncPurchase/{id}', [PurchaseController::class, 'showncPurchase'])->name('showncPurchase');
+Route::get('show_ndpurchase/{id}', [PurchaseController::class, 'show_ndpurchase'])->name('show_ndpurchase');
+Route::get('show_ncpurchase/{id}', [PurchaseController::class, 'show_ncpurchase'])->name('show_ncpurchase');
 Route::get('purchase/create/{id}', [PurchaseController::class, 'getMunicipalities']);
 
 Route::get('prosuc/crate/{id}', [ProductBranchController::class, 'getProducts']);
@@ -139,28 +137,28 @@ Route::get('inactive', [UserController::class, 'inactive'])->name('inactive');
 
 Route::get('supplier/create/{id}', [SupplierController::class, 'getMunicipalities']);
 
-Route::post('user/logout', [UserController::class, 'logout'])->name('logoutUser');
-Route::get('user/showcode/{id}', [UserController::class, 'showcode'])->name('showcode');
+Route::post('user/logout', [UserController::class, 'logout'])->name('logout_user');
+Route::get('user/show_code/{id}', [UserController::class, 'show_code'])->name('show_code');
 Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('delete');
 
-Route::get('invoice/showNcinvoice/{id}', [InvoiceController::class, 'showNcinvoice'])->name('showNcinvoice');
-Route::get('invoice/showNdinvoice/{id}', [InvoiceController::class, 'showNdinvoice'])->name('showNdinvoice');
+Route::get('invoice/show_ncinvoice/{id}', [InvoiceController::class, 'show_ncinvoice'])->name('show_ncinvoice');
+Route::get('invoice/show_ndinvoice/{id}', [InvoiceController::class, 'show_ndinvoice'])->name('show_ndinvoice');
 //Route::get('invoice/showfact/{id}', [InvoiceController::class, 'showfact'])->name('showfactura');
-Route::get('invoice/showPdfinvoice/{id}', [InvoiceController::class, 'showPdfinvoice'])->name('showPdfinvoice');
-Route::get('invoice/showPayinvoice/{id}', [InvoiceController::class, 'showPayinvoice'])->name('showPayinvoice');
+Route::get('invoice/show_pdf_invoice/{id}', [InvoiceController::class, 'show_pdf_invoice'])->name('show_pdf_invoice');
+Route::get('invoice/show_pay_invoice/{id}', [InvoiceController::class, 'show_pay_invoice'])->name('show_pay_invoice');
 Route::get('invoice/create/{id}', [InvoiceController::class, 'getMunicipalities']);
 Route::get('invoice/post/{id}', [InvoiceController::class, 'post'])->name('post');
 
-Route::get('order/showfact/{id}', [orderController::class, 'showfact'])->name('showfact');
-Route::get('order/showPayOrder/{id}', [orderController::class, 'showPayOrder'])->name('showPayOrder');
-Route::get('order/showPdfOrder/{id}', [orderController::class, 'showPdfOrder'])->name('showPdfOrder');
+//Route::get('order/show_invoice/{id}', [orderController::class, 'show_invoice'])->name('show_invoice');
+Route::get('order/show_pay_order/{id}', [orderController::class, 'show_pay_order'])->name('show_pay_order');
+Route::get('order/show_pdf_order/{id}', [orderController::class, 'show_pdf_order'])->name('show_pdf_order');
 Route::get('order/eliminar/{id}', [orderController::class, 'eliminar'])->name('eliminar');
 Route::get('order/create/{id}', [OrderController::class, 'getMunicipalities']);
 
-Route::get('salebox/showOut/{id}', [saleboxController::class, 'showOut'])->name('showOut');
-Route::get('salebox/showPos/{id}', [saleboxController::class, 'showPos'])->name('showPos');
+Route::get('sale_box/show_out/{id}', [saleboxController::class, 'show_out'])->name('show_out');
+Route::get('sale_box/show_pos/{id}', [saleboxController::class, 'show_pos'])->name('show_pos');
 
 Route::get('portfolio', [ReportController::class, 'portfolio'])->name('portfolio');
-Route::get('pastDuePortfolio', [ReportController::class, 'pastDuePortfolio'])->name('pastDuePortfolio');
-Route::get('portfolioThirty', [ReportController::class, 'portfolioThirty'])->name('portfolioThirty');
-Route::get('portfolioSixty', [ReportController::class, 'portfolioSixty'])->name('portfolioSixty');
+Route::get('past_due_portfolio', [ReportController::class, 'past_due_portfolio'])->name('past_due_portfolio');
+Route::get('portfolio_thirty', [ReportController::class, 'portfolio_thirty'])->name('portfolio_thirty');
+Route::get('portfolio_sixty', [ReportController::class, 'portfolio_sixty'])->name('portfolio_sixty');

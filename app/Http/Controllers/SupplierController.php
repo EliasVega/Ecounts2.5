@@ -30,7 +30,7 @@ class SupplierController extends Controller
             ->join('liabilities AS lia', 'sup.liability_id', '=', 'lia.id')
             ->join('organizations AS org', 'sup.organization_id', '=', 'org.id')
             ->join('taxes AS tax', 'sup.tax_id', '=', 'tax.id')
-            ->select('sup.id', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'org.name AS nameO', 'tax.name AS nameT', 'sup.name', 'sup.number', 'sup.address', 'sup.phone', 'sup.email', 'sup.contact', 'sup.phoneContact')
+            ->select('sup.id', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'org.name AS nameO', 'tax.name AS nameT', 'sup.name', 'sup.number', 'sup.address', 'sup.phone', 'sup.email', 'sup.contact', 'sup.phone_contact')
             ->get();
 
             return datatables()
@@ -82,7 +82,7 @@ class SupplierController extends Controller
         $supplier->phone = $request->phone;
         $supplier->email = $request->email;
         $supplier->contact = $request->contact;
-        $supplier->phoneContact = $request->phoneContact;
+        $supplier->phone_contact = $request->phone_contact;
         $supplier->save();
 
         if($branch > 0)
@@ -146,7 +146,7 @@ class SupplierController extends Controller
         $supplier->phone = $request->phone;
         $supplier->email = $request->email;
         $supplier->contact = $request->contact;
-        $supplier->phoneContact = $request->phoneContact;
+        $supplier->phone_contact = $request->phone_contact;
         $supplier->update();
         return redirect('supplier');
     }

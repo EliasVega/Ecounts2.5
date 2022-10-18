@@ -127,14 +127,14 @@
 
                                     <tr>
                                         <th colspan="5"><p align="right">TOTAL IVA:</p></th>
-                                        <th><p align="right"><span id="totalIva_html">$ 0.00</span>
-                                            <input type="hidden" name="totalIva" id="totalIva"></p></th>
+                                        <th><p align="right"><span id="total_iva_html">$ 0.00</span>
+                                            <input type="hidden" name="total_iva" id="total_iva"></p></th>
                                     </tr>
 
                                     <tr>
                                         <th  colspan="5"><p align="right">TOTAL PAGAR:</p></th>
-                                        <th><p align="right"><span align="right" id="totalPay_html">$ 0.00</span>
-                                            <input type="hidden" name="totalPay" id="totalPay"></p></th>
+                                        <th><p align="right"><span align="right" id="total_pay_html">$ 0.00</span>
+                                            <input type="hidden" name="total_pay" id="total_pay"></p></th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -209,7 +209,7 @@
                 $("#municipality_id").empty();
                 $("#municipality_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
                 for(i = 0; i < response.length; i++){
-                    $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].nombre + "</option>");
+                    $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
                 }
             });
         });
@@ -223,7 +223,7 @@
         var cont=0;
         total=0;
         subtotal=[];
-        totalIva=0;
+        total_iva=0;
         $("#save").hide();
         $("#product_id").change(productvalue);
 
@@ -257,7 +257,7 @@
              subtotal[cont]=quantity*price;
              total= total+subtotal[cont];
              ivita= subtotal[cont]*iva/100;
-             totalIva=totalIva+ivita;
+             total_iva=total_iva+ivita;
 
              var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="removefile('+cont+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td> <td><input type="hidden" name="price[]"value="'+price+'">'+price+'</td><td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" name="iva[]" value="'+iva+'">'+iva+'</td> <td>$'+subtotal[cont]+' </td></tr>';
              cont++;
@@ -298,12 +298,12 @@
         $("#total_html").html("$ " + total.toFixed(2));
         $("#total").val(total.toFixed(2));
 
-        totalPay=total+totalIva;
-        $("#totalIva_html").html("$ " + totalIva.toFixed(2));
-        $("#totalIva").val(totalIva.toFixed(2));
+        total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
 
-        $("#totalPay_html").html("$ " + totalPay.toFixed(2));
-        $("#totalPay").val(totalPay.toFixed(2));
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
      }
 
 
@@ -323,18 +323,18 @@
      function removefile(index){
 
         total = total-subtotal[index];
-        totalIva= total*iva/100;
-        totalPay = total + totalIva;
+        total_iva= total*iva/100;
+        total_pay = total + total_iva;
 
         $("#total_html").html("$ " + total.toFixed(2));
         $("#total").val(total.toFixed(2));
 
-        //totalPay=total+total_iva;
-        $("#totalIva_html").html("$ " + totalIva.toFixed(2));
-        $("#totalIva").val(totalIva.toFixed(2));
+        //total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
 
-        $("#totalPay_html").html("$ " + totalPay.toFixed(2));
-        $("#totalPay").val(totalPay.toFixed(2));
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
 
         $("#fila" + index).remove();
 

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Ncpurchase;
 use App\Http\Requests\StoreNcpurchaseRequest;
 use App\Http\Requests\UpdateNcpurchaseRequest;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Kardex;
-use App\Models\NcpurchaseProduct;
+use App\Models\Ncpurchase_product;
 use App\Models\Product;
-use App\Models\ProductPurchase;
+use App\Models\Product_purchase;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +30,7 @@ class NcpurchaseController extends Controller
             $ncpurchases = Ncpurchase::from('ncpurchases AS ncp')
             ->join('purchases AS pur', 'ncp.purchase_id', '=', 'pur.id')
             ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
-            ->select('ncp.id', 'pur.id AS idP', 'pur.purchase', 'sup.name', 'ncp.totalPay', 'ncp.created_at')
+            ->select('ncp.id', 'pur.id AS idP', 'pur.purchase', 'sup.name', 'ncp.total_pay', 'ncp.created_at')
             ->get();
 
             return datatables()
@@ -52,6 +52,7 @@ class NcpurchaseController extends Controller
      */
     public function create(Request $request)
     {
+        $proba = $request->session()->get('purchase');
         $purchases = Purchase::from('purchases AS pur')
         ->join('suppliers as sup', 'pur.supplier_id', '=', 'sup.id')
         ->select('pur.id', 'sup.id as idS', 'sup.name', 'pur.purchase', 'pur.status')
@@ -59,7 +60,7 @@ class NcpurchaseController extends Controller
         if ($purchases->status == 'CREDIT_NOTE') {
             return redirect("ncpurchase")->with('warning', 'Esta Compra ya tiene una Nota Credito');
         }
-        $productPurchases = ProductPurchase::from('product_purchases AS pp')
+        $product_purchases = Product_purchase::from('product_purchases AS pp')
         ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -71,7 +72,7 @@ class NcpurchaseController extends Controller
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
         ->select('pro.id', 'pro.name', 'pp.price', 'cat.iva')->get();
 
-        return view('admin.ncpurchase.create', compact('purchases', 'products', 'productPurchases'));
+        return view('admin.ncpurchase.create', compact('purchases', 'products', 'product_purchases'));
     }
 
     /**
@@ -93,8 +94,8 @@ class NcpurchaseController extends Controller
             $ncpurchase->supplier_id = $request->supplier_id;
             $ncpurchase->purchase = $request->purchase;
             $ncpurchase->total        = $request->total;
-            $ncpurchase->totalIva    = $request->totalIva;
-            $ncpurchase->totalPay  = $request->totalPay;
+            $ncpurchase->total_iva    = $request->total_iva;
+            $ncpurchase->total_pay  = $request->total_pay;
             $ncpurchase->save();
             /*
             $productPurchase = ProductPurchase::where('purchase_id', '=', $ncpurchase->purchase_id)->get();
@@ -137,27 +138,44 @@ class NcpurchaseController extends Controller
             while($cont < count($product_id)){
 
                 //Methodo para crear la relacion NC compra con productos
-                $ncpurchaseProduct = new NcpurchaseProduct();
-                $ncpurchaseProduct->ncpurchase_id = $ncpurchase->id;
-                $ncpurchaseProduct->product_id = $product_id[$cont];
-                $ncpurchaseProduct->quantity = $quantity[$cont];
-                $ncpurchaseProduct->price = $price[$cont];
-                $ncpurchaseProduct->save();
+                $ncpurchase_product = new Ncpurchase_product();
+                $ncpurchase_product->ncpurchase_id = $ncpurchase->id;
+                $ncpurchase_product->product_id = $product_id[$cont];
+                $ncpurchase_product->quantity = $quantity[$cont];
+                $ncpurchase_product->price = $price[$cont];
+                $ncpurchase_product->save();
+
+                //selecciona el producto que viene del array
+                $products = Product::from('products AS pro')
+                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
+                ->where('pro.id', '=', $ncpurchase_product->product_id)
+                ->first();
+
+                $id = $products->id;
+                $uti = $products->utility;
+                $pre = $products->price;
+                $stockardex = $products->stock;
+                $preven = $pre + ($pre * $uti / 100);
+                //Cambia el valor de venta del producto
+                $product = Product::findOrFail($id);
+                $product->sale_price = $preven;
+                $product->update();
 
                 //Metodo para actualizar la estok productos de la sucursal
-                $branchProducts = BranchProduct::from('branch_products AS bp')
+                $branch_products = Branch_product::from('branch_products AS bp')
                 ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
                 ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
                 ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
-                ->where('bp.product_id', '=', $ncpurchaseProduct->product_id)
+                ->where('bp.product_id', '=', $ncpurchase_product->product_id)
                 ->where('bp.branch_id', '=', 1)
                 ->first();
 
-                $id = $branchProducts->idP;
-                $prestock = $branchProducts->stock;
-                $stock = $prestock + $ncpurchaseProduct->quantity;
+                $id = $branch_products->idP;
+                $prestock = $branch_products->stock;
+                $stock = $prestock + $ncpurchase_product->quantity;
 
-                $branchProduct = BranchProduct::findOrFail($id);
+                $branchProduct = Branch_product::findOrFail($id);
                 $branchProduct->stock = $stock;
                 $branchProduct->update();
 
@@ -165,7 +183,7 @@ class NcpurchaseController extends Controller
                 $products = Product::from('products AS pro')
                 ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
                 ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $ncpurchaseProduct->product_id)
+                ->where('pro.id', '=', $ncpurchase_product->product_id)
                 ->first();
 
                 $id = $products->id;
@@ -208,20 +226,20 @@ class NcpurchaseController extends Controller
         ->join('purchases as pur', 'ncp.purchase_id', 'pur.id')
         ->join('branches AS bra', 'ncp.branch_id', '=', 'bra.id')
         ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
-        ->select('ncp.id', 'ncp.purchase', 'ncp.total', 'ncp.totalIva', 'ncp.totalPay', 'ncp.created_at', 'use.name', 'bra.name as nameB', 'sup.name as nameS')
+        ->select('ncp.id', 'ncp.purchase', 'ncp.total', 'ncp.total_iva', 'ncp.total_pay', 'ncp.created_at', 'use.name', 'bra.name as nameB', 'sup.name as nameS')
         ->where('ncp.id', '=', $id)
         ->first();
 
         /*mostrar detalles*/
-        $ncpurchaseProducts = NcpurchaseProduct::from('ncpurchase_products AS np')
+        $ncpurchase_products = Ncpurchase_product::from('ncpurchase_products AS np')
         ->join('products AS pro', 'np.product_id', '=', 'pro.id')
         ->join('ncpurchases as ncp', 'np.ncpurchase_id', 'ncp.id')
         ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
-        ->select('np.quantity', 'np.price', 'ncp.total', 'ncp.totalIva', 'ncp.totalPay', 'pro.name')
+        ->select('np.quantity', 'np.price', 'ncp.total', 'ncp.total_iva', 'ncp.total_pay', 'pro.name')
         ->where('np.ncpurchase_id', '=', $id)
         ->get();
 
-        return view('admin.ncpurchase.show', compact('ncpurchases', 'ncpurchaseProducts'));
+        return view('admin.ncpurchase.show', compact('ncpurchases', 'ncpurchase_products'));
     }
 
     /**

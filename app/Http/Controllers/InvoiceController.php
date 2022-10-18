@@ -7,28 +7,28 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Bank;
 use App\Models\Branch;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Card;
 use App\Models\Company;
 use App\Models\Customer;
 use App\Models\Department;
 use App\Models\Document;
 use App\Models\Indicator;
-use App\Models\InvoiceProduct;
+use App\Models\Invoice_product;
 use App\Models\Kardex;
 use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
-use App\Models\Payevent;
-use App\Models\Payinvoice;
-use App\Models\PayinvoicePaymentmethod;
-use App\Models\PaymentForm;
-use App\Models\PaymentMethod;
+use App\Models\Pay_event;
+use App\Models\Pay_invoice;
+use App\Models\Pay_invoice_Payment_method;
+use App\Models\Payment_form;
+use App\Models\Payment_method;
 use App\Models\Product;
-use App\Models\ProductBranch;
+use App\Models\Product_branch;
 use App\Models\Regime;
 use App\Models\Retention;
-use App\Models\Salebox;
+use App\Models\Sale_box;
 use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,14 +51,14 @@ class InvoiceController extends Controller
                 $invoices = Invoice::from('Invoices AS inv')
                 ->join('branches AS bra', 'inv.brach_id', '=', 'bra.id')
                 ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-                ->select('inv.id', 'inv.totalPay', 'inv.balance','inv.status', 'inv.created_at', 'inv.status', 'cus.name', 'bra.name AS nameB')
+                ->select('inv.id', 'inv.total_pay', 'inv.balance','inv.status', 'inv.created_at', 'inv.status', 'cus.name', 'bra.name AS nameB')
                 ->get();
             } else {
                 $invoices = Invoice::from('invoices AS inv')
                 ->join('users AS use', 'inv.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
                 ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-                ->select('inv.id', 'inv.totalPay', 'inv.balance','inv.status', 'inv.created_at',  'cus.name', 'bra.name AS nameB')
+                ->select('inv.id', 'inv.total_pay', 'inv.balance','inv.status', 'inv.created_at',  'cus.name', 'bra.name AS nameB')
                 ->where('inv.branch_id', '=', $request->session()->get('branch'))
                 ->where('use.id', '=', Auth::user()->id)
                 ->where('use.status', '=', 'ACTIVO')
@@ -95,22 +95,22 @@ class InvoiceController extends Controller
         $organizations = Organization::get();
         $regimes = Regime::get();
         $taxes = Tax::get();
-        $paymentForms = PaymentForm::get();
-        $paymentMethods = PaymentMethod::get();
+        $payment_forms = Payment_form::get();
+        $payment_methods = Payment_method::get();
         $retentions = Retention::get();
         $banks = Bank::get();
         $cards = Card::get();
         $branch = $request->session()->get('branch');
-        $payEvents   = Payevent::where('status', '=', 'PENDIENTE')->get();
-        $branchProducts = BranchProduct::from('branch_products as bp')
+        $pay_events   = Pay_event::where('status', '=', 'PENDIENTE')->get();
+        $branch_products = Branch_product::from('branch_products as bp')
         ->join('products as pro', 'bp.product_id', 'pro.id')
         ->join('categories as cat', 'pro.category_id', 'cat.id')
-        ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.salePrice', 'pro.name', 'cat.iva')
+        ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
         ->where('bp.branch_id', '=', $request->session()->get('branch'))
         ->where('bp.stock', '>', 0)
         ->where('pro.status', '=', 'ACTIVE')
         ->get();
-        return view('admin.invoice.create', compact('customers', 'branchProducts', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regimes', 'paymentForms', 'paymentMethods', 'retentions', 'banks', 'cards', 'payEvents'));
+        return view('admin.invoice.create', compact('customers', 'branch_products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regimes', 'payment_forms', 'payment_methods', 'retentions', 'banks', 'cards', 'pay_events'));
     }
 
     /**
@@ -148,77 +148,77 @@ class InvoiceController extends Controller
             $invoice->payment_method_id = $request->payment_method_id;
             $invoice->retention_id      = $request->retention_id;
             $invoice->invoice           = $invoicey;
-            $invoice->tipDoc            = '01';
-            $invoice->tipOpe            = '10';
+            $invoice->type_document     = '01';
+            $invoice->type_operation    = '10';
             $invoice->due_date          = $request->due_date;
             $invoice->items             = count($product_id);
             $invoice->total             = $request->total;
-            $invoice->totalIva          = $request->totalIva;
-            $invoice->totalPay          = $request->totalPay;
+            $invoice->total_iva         = $request->total_iva;
+            $invoice->total_pay         = $request->total_pay;
             $invoice->pay               = $pay;
-            $invoice->balance           = $request->totalPay;
+            $invoice->balance           = $request->total_pay;
             $invoice->retention         = $request->retention;
             $invoice->save();
             if($pay > 0){
-                $payEven = $request->abv;
-                if ($payEven != 0) {
-                    $payEvent              = Payevent::findOrFail($payEven);
-                    $payEvent->destination = $invoice->invoice;
-                    $payEvent->status      = 'APLICADO';
-                    $payEvent->update();
+                $pay_event = $request->abv;
+                if ($pay_event != 0) {
+                    $pay_event              = Pay_event::findOrFail($pay_event);
+                    $pay_event->destination = $invoice->invoice;
+                    $pay_event->status      = 'APLICADO';
+                    $pay_event->update();
 
-                    $boxy = Salebox::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
-                    $inPayEvent = $boxy->inPayEvent + $pay;
+                    $boxy = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
+                    $in_pay_event = $boxy->in_pay_event + $pay;
 
-                    $saleBox = Salebox::findOrFail($boxy->id);
-                    $saleBox->inPayEvent = $inPayEvent;
-                    $saleBox->update();
+                    $sale_box = Sale_box::findOrFail($boxy->id);
+                    $sale_box->in_Pay_event = $in_pay_event;
+                    $sale_box->update();
                 } else {
-                    $payInvoice             = new Payinvoice();
-                    $payInvoice->pay        = $pay;
-                    $payInvoice->balanceInvoice = $invoice->balance;
-                    $payInvoice->user_id    = $invoice->user_id;
-                    $payInvoice->branch_id  = $invoice->branch_id;
-                    $payInvoice->invoice_id = $invoice->id;
-                    $payInvoice->save();
+                    $pay_invoice             = new Pay_invoice();
+                    $pay_invoice->pay        = $pay;
+                    $pay_invoice->balance_invoice = $invoice->balance;
+                    $pay_invoice->user_id    = $invoice->user_id;
+                    $pay_invoice->branch_id  = $invoice->branch_id;
+                    $pay_invoice->invoice_id = $invoice->id;
+                    $pay_invoice->save();
 
-                    $payinvoicePaymethod                     = new PayinvoicePaymentmethod();
-                    $payinvoicePaymethod->payinvoice_id      = $payInvoice->id;
-                    $payinvoicePaymethod->payment_method_id  = $request->payment_method_id;
-                    $payinvoicePaymethod->bank_id            = $request->bank_id;
-                    $payinvoicePaymethod->card_id            = $request->card_id;
-                    $payinvoicePaymethod->payevent_id        = $request->payEvent_id;
-                    $payinvoicePaymethod->payment            = $request->pay;
-                    $payinvoicePaymethod->transaction        = $request->transaction;
+                    $pay_invoice_Pay_method                     = new Pay_invoice_payment_method();
+                    $pay_invoice_Pay_method->pay_invoice_id      = $pay_invoice->id;
+                    $pay_invoice_Pay_method->payment_method_id  = $request->payment_method_id;
+                    $pay_invoice_Pay_method->bank_id            = $request->bank_id;
+                    $pay_invoice_Pay_method->card_id            = $request->card_id;
+                    $pay_invoice_Pay_method->pay_event_id        = $request->pay_event_id;
+                    $pay_invoice_Pay_method->payment            = $request->pay;
+                    $pay_invoice_Pay_method->transaction        = $request->transaction;
 
-                    $payinvoicePaymethod->save();
+                    $pay_invoice_Pay_method->save();
 
                 }
 
                 $mp = $request->payment_method_id;
 
-                $boxy = Salebox::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
-                $inInvoice = $boxy->inInvoice + $pay;
-                $inInvoiceCash = $boxy->inInvoiceCash;
-                $inPayCash = $boxy->inPayCash;
-                $inPay = $boxy->inPay + $pay;
+                $boxy = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
+                $in_invoice = $boxy->in_invoice + $pay;
+                $in_invoice_cash = $boxy->in_invoice_cash;
+                $in_pay_cash = $boxy->in_pay_cash;
+                $in_pay = $boxy->in_pay + $pay;
                 $cash = $boxy->cash;
-                $out = $boxy->outCash;
+                $out = $boxy->out_cash;
                 if($mp == 1){
-                    $inInvoiceCash += $pay;
-                    $inPayCash += $pay;
+                    $in_invoice_cash += $pay;
+                    $in_pay_cash += $pay;
                     $cash += $pay;
                 }
                 $totale = $cash - $out;
 
-                $saleBox = Salebox::findOrFail($boxy->id);
-                $saleBox->inInvoiceCash = $inInvoiceCash;
-                $saleBox->inInvoice = $inInvoice;
-                $saleBox->inPayCash = $inPayCash;
-                $saleBox->inPay = $inPay;
-                $saleBox->cash = $cash;
-                $saleBox->total = $totale;
-                $saleBox->update();
+                $sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->in_invoice_cash = $in_invoice_cash;
+                $sale_box->in_invoice = $in_invoice;
+                $sale_box->in_pay_cash = $in_pay_cash;
+                $sale_box->in_pay = $in_pay;
+                $sale_box->cash = $cash;
+                $sale_box->total = $totale;
+                $sale_box->update();
             }
 
             $cont = 0;
@@ -230,30 +230,30 @@ class InvoiceController extends Controller
                 $item = $cont + 1;
                 $prodid = $product_id[$cont];
 
-                $invoiceProduct = new InvoiceProduct();
-                $invoiceProduct->invoice_id    = $invoice->id;
-                $invoiceProduct->product_id = $idP[$cont];
-                $invoiceProduct->quantity    = $quantity[$cont];
-                $invoiceProduct->price      = $price[$cont];
-                $invoiceProduct->iva         = $iva[$cont];
-                $invoiceProduct->subtotal = $subtotal;
-                $invoiceProduct->ivasubt = $ivasub;
-                $invoiceProduct->item = $item;
-                $invoiceProduct->save();
+                $invoice_product = new Invoice_product();
+                $invoice_product->invoice_id    = $invoice->id;
+                $invoice_product->product_id = $idP[$cont];
+                $invoice_product->quantity    = $quantity[$cont];
+                $invoice_product->price      = $price[$cont];
+                $invoice_product->iva         = $iva[$cont];
+                $invoice_product->subtotal = $subtotal;
+                $invoice_product->ivasubt = $ivasub;
+                $invoice_product->item = $item;
+                $invoice_product->save();
 
-                $branchProducts = BranchProduct::findOrFail($prodid);
-                $id = $branchProducts->id;
-                $prestock = $branchProducts->stock;
-                $stock = $prestock - $invoiceProduct->quantity;
+                $branch_products = Branch_product::findOrFail($prodid);
+                $id = $branch_products->id;
+                $prestock = $branch_products->stock;
+                $stock = $prestock - $invoice_product->quantity;
 
-                $branchProduct = BranchProduct::findOrFail($id);
-                $branchProduct->stock = $stock;
-                $branchProduct->update();
+                $branch_product = Branch_product::findOrFail($id);
+                $branch_product->stock = $stock;
+                $branch_product->update();
 
                 $products = Product::from('products AS pro')
                 ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
                 ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $invoiceProduct->product_id)
+                ->where('pro.id', '=', $invoice_product->product_id)
                 ->first();
 
                 $id = $products->id;
@@ -270,14 +270,14 @@ class InvoiceController extends Controller
 
                 $cont++;
             }
-            $boxy = Salebox::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
+            $boxy = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
             $inv = $boxy->sale;
-            $tpv = $invoice->totalPay;
+            $tpv = $invoice->total_pay;
             $ninv = $inv + $tpv;
 
-            $saleBox = Salebox::findOrFail($boxy->id);
-            $saleBox->sale = $ninv;
-            $saleBox->update();
+            $sale_box = Sale_box::findOrFail($boxy->id);
+            $sale_box->sale = $ninv;
+            $sale_box->update();
 
 
             DB::commit();
@@ -302,44 +302,31 @@ class InvoiceController extends Controller
         ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
         ->join('payment_forms AS pf', 'inv.payment_form_id', '=', 'pf.id')
         ->join('payment_methods as pm', 'inv.payment_method_id', '=', 'pm.id')
-        ->select('inv.invoice', 'inv.due_date', 'inv.total', 'inv.totalIva', 'inv.retention', 'inv.totalPay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'pf.name as namePF', 'pm.name as namePM', 'use.name')
+        ->select('inv.invoice', 'inv.due_date', 'inv.total', 'inv.total_iva', 'inv.retention', 'inv.total_pay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'pf.name as namePF', 'pm.name as namePM', 'use.name')
         ->where('inv.id', '=', $id)->first();
 
         /*mostrar detalles*/
-        $invoiceProducts = InvoiceProduct::from('invoice_products AS ip')
+        $invoice_products = Invoice_product::from('invoice_products AS ip')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-        ->select('ip.quantity', 'ip.price', 'ip.subtotal', 'inv.id', 'inv.total', 'inv.totalIva', 'inv.totalPay', 'pro.name', 'cus.name AS nameC')
+        ->select('ip.quantity', 'ip.price', 'ip.subtotal', 'inv.id', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'pro.name', 'cus.name AS nameC')
         ->where('ip.invoice_id', '=', $id)
         ->get();
 
-        return view('admin.invoice.show', compact('invoices', 'invoiceProducts'));
+        return view('admin.invoice.show', compact('invoices', 'invoice_products'));
     }
 
-    public function showInvoice($id)
+    public function show_invoice($id)
      {
 
         $invoices = Invoice::findOrFail($id);
         \session()->put('invoice', $invoices->id, 60 * 24 * 365);
         \session()->put('company_id', $invoices->company_id, 60 * 24 *365);
-        /*
-        \session()->put('sede_id', $invoices->sede_id, 60 * 24 *365);
-        \session()->put('cliente_id', $invoices->cliente_id, 60 * 24 *365);
-        \session()->put('formapago_id', $invoices->formapago_id, 60 * 24 *365);
-        \session()->put('mediopago_id', $invoices->mediopago_id, 60 * 24 *365);
-        \session()->put('numFac', $invoices->numFac, 60 * 24 *365);
-        \session()->put('tipDoc', $invoices->tipDoc, 60 * 24 *365);
-        \session()->put('tipOpe', $invoices->tipOpe, 60 * 24 *365);
-        \session()->put('fecVen', $invoices->fecVen, 60 * 24 *365);
-        \session()->put('total', $invoices->total, 60 * 24 *365);
-        \session()->put('total_iva', $invoices->total_iva, 60 * 24 *365);
-        \session()->put('total_pagar', $invoices->total_pagar, 60 * 24 *365);
-        \session()->put('estado', $invoices->estado, 60 * 24 *365);*/
         return redirect('admin/factura/show');
      }
 
-     public function showNdinvoice($id)
+     public function show_ndinvoice($id)
      {
         $invoices = Invoice::findOrFail($id);
         \session()->put('invoice', $invoices->id, 60 * 24 * 365);
@@ -350,7 +337,7 @@ class InvoiceController extends Controller
         return redirect('ndinvoice/create');
      }
 
-     public function showNcinvoice($id)
+     public function show_ncinvoice($id)
      {
         $invoices = Invoice::findOrFail($id);
         \session()->put('invoice', $invoices->id, 60 * 24 * 365);
@@ -361,21 +348,21 @@ class InvoiceController extends Controller
         return redirect('ncinvoice/create');
      }
 
-     public function showPayinvoice($id)
+     public function show_pay_invoice($id)
      {
 
         $invoices = Invoice::findOrFail($id);
         \session()->put('invoice', $invoices->id, 60 * 24 * 365);
         \session()->put('due_date', $invoices->due_date, 60 * 24 *365);
         \session()->put('total', $invoices->total, 60 * 24 *365);
-        \session()->put('totalIva', $invoices->totalIva, 60 * 24 *365);
-        \session()->put('totalPayr', $invoices->total_Pay, 60 * 24 *365);
+        \session()->put('total_iva', $invoices->total_iva, 60 * 24 *365);
+        \session()->put('total_pay', $invoices->total_Pay, 60 * 24 *365);
         \session()->put('status', $invoices->status, 60 * 24 *365);
 
         return redirect('payInvoice');
      }
 
-     public function showPdfinvoice(Request $request, $id)
+     public function show_pdf_invoice(Request $request, $id)
     {
         $invoice = Invoice::from('invoices AS inv')
         ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
@@ -386,10 +373,10 @@ class InvoiceController extends Controller
         ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
         ->join('payment_forms AS pf', 'inv.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'inv.payment_method_id', 'pm.id')
-        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initials', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initial', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('inv.id', '=', $id)->first();
 
-        $invoiceProducts = InvoiceProduct::from('invoice_products AS ip')
+        $invoice_products = Invoice_product::from('invoice_products AS ip')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -397,11 +384,11 @@ class InvoiceController extends Controller
         ->where('ip.invoice_id', '=', $id)
         ->get();
 
-        $invoicy = InvoiceProduct::from('invoice_products AS ip')
+        $invoicy = Invoice_product::from('invoice_products AS ip')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'inv.totalIva', 'inv.totalPay', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
+        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
         ->where('ip.invoice_id', '=', $id)
         ->first();
 
@@ -425,13 +412,13 @@ class InvoiceController extends Controller
         $days = $invoice->created_at->diffInDays($invoice->fecven);
         $invoicepdf = "FACT-". $invoice->invoice;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.invoice.pdf', compact('invoice', 'days', 'invoiceProducts', 'company', 'logo', 'invoicy', 'indicators'))->render();
+        $view = \view('admin.invoice.pdf', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'invoicy', 'indicators'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
-        return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
-        //return $pdf->download("$invoicepdf.pdf");
+        //return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
+        return $pdf->download("$invoicepdf.pdf");
     }
 
     public function post(Request $request, $id)
@@ -445,10 +432,10 @@ class InvoiceController extends Controller
         ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
         ->join('payment_forms AS pf', 'inv.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'inv.payment_method_id', 'pm.id')
-        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initials', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initial', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('inv.id', '=', $id)->first();
 
-        $invoiceProducts = InvoiceProduct::from('invoice_products AS ip')
+        $invoice_products = Invoice_product::from('invoice_products AS ip')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -456,11 +443,11 @@ class InvoiceController extends Controller
         ->where('ip.invoice_id', '=', $id)
         ->get();
 
-        $invoicy = InvoiceProduct::from('invoice_products AS ip')
+        $invoicy = Invoice_product::from('invoice_products AS ip')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'inv.totalIva', 'inv.totalPay', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
+        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
         ->where('ip.invoice_id', '=', $id)
         ->first();
 
@@ -484,7 +471,7 @@ class InvoiceController extends Controller
         $days = $invoice->created_at->diffInDays($invoice->fecven);
         $invoicepdf = "FACT-". $invoice->invoice;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoiceProducts', 'company', 'logo', 'invoicy', 'indicators'))->render();
+        $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'invoicy', 'indicators'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64));

@@ -26,8 +26,8 @@ class UpdateNdinvoiceRequest extends FormRequest
         return [
 
             'total'       => 'required',
-            'totalIva'    => 'required',
-            'totalPay'    => 'required',
+            'total_iva'   => 'required',
+            'total_pay'   => 'required',
             'pay'         => '',
             'balance'     => '',
             'status'      => '',

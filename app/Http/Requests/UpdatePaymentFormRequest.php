@@ -24,7 +24,6 @@ class UpdatePaymentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
             'name' => 'required|string|max:20'
         ];
     }

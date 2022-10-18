@@ -15,44 +15,38 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $category = new Category();
-
-        $category->name = 'Electricos';
-        $category->description = 'Todo lo relacionado con insumos electricos';
-        $category->iva = 19;
-        $category->utility = 30;
-        $category->status = 1;
-
-        $category->save();
-
-        $category = new Category();
-
-        $category->name = 'Ferreteria';
-        $category->description = 'Todo lo relacionado con Herramientas de Ferreteria';
-        $category->iva = 19;
-        $category->utility = 30;
-        $category->status = 1;
-
-        $category->save();
-
-        $category = new Category();
-
-        $category->name = 'Computadores';
-        $category->description = 'Todo lo relacionado con Computacion';
-        $category->iva = 19;
-        $category->utility = 30;
-        $category->status = 1;
-
-        $category->save();
-
-        $category = new Category();
-
-        $category->name = 'tablet';
-        $category->description = 'Todo lo relacionado con tablets';
-        $category->iva = 19;
-        $category->utility = 30;
-        $category->status = 1;
-
-        $category->save();
+        $category = [
+            [
+                'name'        => 'Electricos',
+                'description' => 'Todo lo relacionado con insumos electricos',
+                'iva'         => 19,
+                'utility'     => 30,
+                'status'      => 1,
+            ],
+            [
+                'name'        => 'Ferreteria',
+                'description' => 'Todo lo relacionado con Herramientas de Ferreteria',
+                'iva'         => 19,
+                'utility'     => 30,
+                'status'      => 1,
+            ],
+            [
+                'name'        => 'Computadores',
+                'description' => 'Todo lo relacionado con Computacion',
+                'iva'         => 19,
+                'utility'     => 30,
+                'status'      => 1,
+            ],
+            [
+                'name'        => 'tablet',
+                'description' => 'Todo lo relacionado con tablets',
+                'iva'         => 19,
+                'utility'     => 30,
+                'status'      => 1,
+            ],
+        ];
+        foreach ($category as $cat) {
+            Category::create($cat);
+        }
     }
 }

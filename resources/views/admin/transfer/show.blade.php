@@ -8,7 +8,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label">SEDE ORIGEN</label>
-                <h4>{{ $transfers->originBranch }}</h4>
+                <h4>{{ $transfers->origin_branch }}</h4>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
                         <tfoot>
                         </tfoot>
                         <tbody>
-                            @foreach($productBranches as $pb)
+                            @foreach($product_branches as $pb)
                                 <tr>
                                     <td>{{ $pb->id }}</td>
                                     <td>{{ $pb->idT }}</td>

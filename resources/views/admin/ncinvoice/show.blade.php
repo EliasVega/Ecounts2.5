@@ -72,17 +72,17 @@
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $ncinvoices->totalIva }}</p></th>
+                                <th><p align="right">${{ $ncinvoices->total_iva }}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $ncinvoices->totalPay }}</p></th>
+                                <th><p align="right">${{ $ncinvoices->total_pay }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($ncinvoiceProducts as $nc)
+                            @foreach($ncinvoice_products as $nc)
                                 <tr>
                                     <td>{{ $nc->name }}</td>
                                     <td>${{ $nc->price }}</td>

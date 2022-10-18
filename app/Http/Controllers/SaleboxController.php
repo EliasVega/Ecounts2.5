@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Salebox;
+use App\Models\Sale_box;
 use App\Http\Requests\StoreSaleboxRequest;
 use App\Http\Requests\UpdateSaleboxRequest;
 use App\Models\Branch;
-use App\Models\Cashout;
-use App\Models\Codverif;
+use App\Models\Cash_out;
+use App\Models\Cod_verif;
 use App\Models\Invoice;
 use App\Models\Ncinvoice;
 use App\Models\Ndinvoice;
 use App\Models\Order;
-use App\Models\Payinvoice;
-use App\Models\Payorder;
+use App\Models\Pay_invoice;
+use App\Models\Pay_order;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,30 +29,30 @@ class SaleboxController extends Controller
         $user = Auth::user()->role_id;
         if (request()->ajax()) {
             if ($user == 1 || $user == 2) {
-                $saleboxes = Salebox::from('saleboxes AS sal')
+                $sale_boxes = Sale_box::from('sale_boxes AS sal')
                 ->join('users AS use', 'sal.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'sal.branch_id', '=', 'bra.id')
-                ->select('sal.id', 'sal.cashbox', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
+                ->select('sal.id', 'sal.cash_box', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
                 ->get();
             } else {
-                $saleboxes = Salebox::from('saleboxes AS sal')
+                $sale_boxes = Sale_box::from('sale_boxes AS sal')
                 ->join('users AS use', 'sal.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'sal.branch_id', '=', 'bra.id')
-                ->select('sal.id', 'sal.cashbox', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
+                ->select('sal.id', 'sal.cash_box', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
                 ->where('sal.user_id', '=', Auth::user()->id)
                 ->get();
             }
             return datatables()
-            ->of($saleboxes)
-            ->editColumn('created_at', function(Salebox $salebox){
-                return $salebox->created_at->format('yy-m-d: h:m');
+            ->of($sale_boxes)
+            ->editColumn('created_at', function(Sale_box $sale_box){
+                return $sale_box->created_at->format('yy-m-d: h:m');
             })
-            ->addColumn('btn', 'admin/saleBox/actions')
+            ->addColumn('btn', 'admin/sale_box/actions')
             ->rawcolumns(['btn'])
             ->toJson();
         }
 
-            return view('admin.saleBox.index');
+            return view('admin.sale_box.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class SaleboxController extends Controller
         $users = User::where('id', '!=', 1)->get();
         $branches = Branch::get();
 
-        return view("admin.saleBox.create", compact('users', 'branches'));
+        return view("admin.sale_box.create", compact('users', 'branches'));
     }
 
     /**
@@ -78,50 +78,50 @@ class SaleboxController extends Controller
     {
         $user = Auth::user()->id;
         $branch = $request->session()->get('branch');
-        $open = $request->userOpen_id;
-        $verify = $request->codVerifOpen;
-        $codVerif = Codverif::select('id', 'code')->where('user_id', '=', $open)->first();
-        $openBox = Salebox::where('user_id', '=', $user)->where('status', '=', 'ABIERTA')->first();
+        $open = $request->user_open_id;
+        $verify = $request->cod_verif_open;
+        $cod_verif = Cod_verif::select('id', 'code')->where('user_id', '=', $open)->first();
+        $open_box = Sale_box::where('user_id', '=', $user)->where('status', '=', 'ABIERTA')->first();
 
-        if($codVerif == null){
-            return redirect("saleBox")->with('warning', 'Usuario No autorizado para ejercer como administrador');
+        if($cod_verif == null){
+            return redirect("sale_box")->with('warning', 'Usuario No autorizado para ejercer como administrador');
         }
 
-        if ($codVerif->code != $verify) {
-            return redirect("saleBox")->with('warning', 'Error en codigo de verificacion');
-        } elseif($openBox) {
-            return redirect("saleBox")->with('warning', 'Usuario ya tiene una salebox Abierta');
+        if ($cod_verif->code != $verify) {
+            return redirect("sale_box")->with('warning', 'Error en codigo de verificacion');
+        } elseif($open_box) {
+            return redirect("sale_box")->with('warning', 'Usuario ya tiene una sale_box Abierta');
         } else {
-            $salebox = new Salebox();
-            $salebox->user_id       = $user;
-            $salebox->userOpen_id   = $request->userOpen_id;
-            $salebox->userClose_id  = $request->userClose_id;
-            $salebox->branch_id     = $branch;
-            $salebox->cashBox       = $request->cashBox;
-            $salebox->inOrderCash   = 0;
-            $salebox->inOrder       = 0;
-            $salebox->inInvoiceCash = 0;
-            $salebox->inInvoice     = 0;
-            $salebox->inPayCash     = 0;
-            $salebox->inPay         = 0;
-            $salebox->inPayEvent    = 0;
-            $salebox->outCash       = 0;
-            $salebox->cash          = $request->cashBox;
-            $salebox->out           = 0;
-            $salebox->total         = $request->cashBox;
-            $salebox->sale          = 0;
-            $salebox->order         = 0;
-            $salebox->codVerifOpen  = $request->codVerifOpen;
-            $salebox->codVerifClose = null;
-            $salebox->save();
+            $sale_box = new Sale_box();
+            $sale_box->user_id       = $user;
+            $sale_box->user_open_id   = $request->user_open_id;
+            $sale_box->user_close_id  = $request->user_close_id;
+            $sale_box->branch_id     = $branch;
+            $sale_box->cash_box       = $request->cash_box;
+            $sale_box->in_order_cash   = 0;
+            $sale_box->in_order       = 0;
+            $sale_box->in_invoice_cash = 0;
+            $sale_box->in_invoice     = 0;
+            $sale_box->in_pay_cash     = 0;
+            $sale_box->in_pay         = 0;
+            $sale_box->in_pay_event    = 0;
+            $sale_box->out_cash       = 0;
+            $sale_box->cash          = $request->cash_box;
+            $sale_box->out           = 0;
+            $sale_box->total         = $request->cash_box;
+            $sale_box->sale          = 0;
+            $sale_box->order         = 0;
+            $sale_box->cod_verif_open  = $request->cod_verif_open;
+            $sale_box->cod_verif_close = null;
+            $sale_box->save();
         }
-        return redirect("saleBox")->with('success', 'Caja creada Satisfactoriamente');
+        return redirect("sale_box")->with('success', 'Caja creada Satisfactoriamente');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Salebox  $salebox
+     * @param  \App\Models\Sale_box  $sale_box
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -129,31 +129,31 @@ class SaleboxController extends Controller
         $users = Auth::user()->role_id;
         $user = Auth::user()->id;
         $cause = Auth::user()->name;
-        $saleBox = Salebox::findOrFail($id);
-        $from = $saleBox->created_at;
-        $to = $saleBox->updated_at;
+        $sale_box = Sale_box::findOrFail($id);
+        $from = $sale_box->created_at;
+        $to = $sale_box->updated_at;
 
         if ($users == 1 || $users == 2) {
             $invoices = Invoice::from('invoices AS inv')
             ->join('users AS use', 'inv.user_id', 'use.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.totalPay', 'inv.created_at', 'cus.name')
-            ->where('inv.user_id', '=', $saleBox->user_id)
+            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.total_pay', 'inv.created_at', 'cus.name')
+            ->where('inv.user_id', '=', $sale_box->user_id)
             ->whereBetween('inv.created_at', [$from, $to])
             ->get();
             $orders = Order::from('orders AS ord')
             ->join('users AS use', 'ord.user_id', 'use.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.totalPay', 'ord.created_at', 'cus.name')
-            ->where('ord.user_id', '=', $saleBox->user_id)
+            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.total_pay', 'ord.created_at', 'cus.name')
+            ->where('ord.user_id', '=', $sale_box->user_id)
             ->whereBetween('ord.created_at', [$from, $to])
             ->get();
 
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.totalPay', 'ni.created_at', 'cus.name')
-            ->where('ni.user_id', '=', $saleBox->user_id)
+            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
+            ->where('ni.user_id', '=', $sale_box->user_id)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
 
@@ -161,53 +161,53 @@ class SaleboxController extends Controller
             ->join('users AS use', 'nd.user_id', 'use.id')
             ->join('customers AS cus', 'nd.customer_id', 'cus.id')
             ->join('invoices AS inv', 'nd.invoice_id', 'inv.id')
-            ->select('nd.id', 'inv.invoice', 'nd.totalPay', 'nd.created_at', 'cus.name')
-            ->where('nd.user_id', '=', $saleBox->user_id)
+            ->select('nd.id', 'inv.invoice', 'nd.total_pay', 'nd.created_at', 'cus.name')
+            ->where('nd.user_id', '=', $sale_box->user_id)
             ->whereBetween('nd.created_at', [$from, $to])
             ->get();
             $totalnd = 0;
             foreach($ndinvoices AS $nd){
-                $totalnd += $nd->totalPay;
+                $totalnd += $nd->total_pay;
             }
 
-            $payOrders = Payorder::from('payorders AS pay')
+            $pay_orders = Pay_order::from('pay_orders AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('orders AS ord', 'pay.order_id', 'ord.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
             ->select('pay.id', 'pay.pay', 'pay.created_at', 'ord.id AS idO', 'cus.name')
-            ->where('pay.user_id', '=', $saleBox->user_id)
+            ->where('pay.user_id', '=', $sale_box->user_id)
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
 
-            $payInvoices = Payinvoice::from('payinvoices AS pay')
+            $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('invoices AS inv', 'pay.invoice_id', 'inv.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
             ->select('pay.id', 'pay.pay', 'pay.created_at', 'inv.invoice', 'cus.name')
-            ->where('pay.user_id', '=', $saleBox->user_id)
+            ->where('pay.user_id', '=', $sale_box->user_id)
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
 
-            $cashOuts = Cashout::from('cashouts AS cas')
-            ->join('saleboxes AS sai', 'cas.salebox_id', 'sai.id')
+            $cash_outs = Cash_out::from('cash_outs AS cas')
+            ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
             ->join('users AS usa', 'cas.admin_id', 'usa.id')
             ->select('cas.id', 'cas.payment', 'cas.created_at', 'usa.name')
-            ->where('cas.user_id', '=', $saleBox->user_id)
+            ->where('cas.user_id', '=', $sale_box->user_id)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
         } else {
             $invoices = Invoice::from('invoices AS inv')
             ->join('users AS use', 'inv.user_id', 'use.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.totalPay', 'inv.created_at', 'cus.name')
+            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.total_pay', 'inv.created_at', 'cus.name')
             ->where('inv.user_id', '=', $user)
             ->whereBetween('inv.created_at', [$from, $to])
             ->get();
             $orders = Order::from('orders AS ord')
             ->join('users AS use', 'ord.user_id', 'use.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.totalPay', 'ord.created_at', 'cus.name')
+            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.total_pay', 'ord.created_at', 'cus.name')
             ->where('ord.user_id', '=', $user)
             ->whereBetween('ord.created_at', [$from, $to])
             ->get();
@@ -215,7 +215,7 @@ class SaleboxController extends Controller
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.totalPay', 'ni.created_at', 'cus.name')
+            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
             ->where('ni.user_id', '=', $user)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
@@ -224,16 +224,16 @@ class SaleboxController extends Controller
             ->join('users AS use', 'nd.user_id', 'use.id')
             ->join('customers AS cus', 'nd.customer_id', 'cus.id')
             ->join('invoices AS inv', 'nd.invoice_id', 'inv.id')
-            ->select('nd.id', 'inv.invoice', 'nd.totalPay', 'nd.created_at', 'cus.name')
+            ->select('nd.id', 'inv.invoice', 'nd.total_pay', 'nd.created_at', 'cus.name')
             ->where('nd.user_id', '=', $user)
             ->whereBetween('nd.created_at', [$from, $to])
             ->get();
             $totalnd = 0;
             foreach($ndinvoices AS $nd){
-                $totalnd += $nd->totalPay;
+                $totalnd += $nd->total_pay;
             }
 
-            $payOrders = Payorder::from('payorders AS pay')
+            $pay_orders = Pay_order::from('pay_orders AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('orders AS ord', 'pay.order_id', 'ord.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
@@ -242,7 +242,7 @@ class SaleboxController extends Controller
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
 
-            $payInvoices = Payinvoice::from('payinvoices AS pay')
+            $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('invoices AS inv', 'pay.invoice_id', 'inv.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
@@ -251,8 +251,8 @@ class SaleboxController extends Controller
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
 
-            $cashOuts = Cashout::from('cashouts AS cas')
-            ->join('saleboxes AS sai', 'cas.salebox_id', 'sai.id')
+            $cash_outs = Cash_out::from('cash_outs AS cas')
+            ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
             ->join('users AS usa', 'cas.admin_id', 'usa.id')
             ->select('cas.id', 'cas.payment', 'cas.created_at', 'usa.name')
@@ -261,152 +261,152 @@ class SaleboxController extends Controller
             ->get();
         }
 
-        return view('admin.saleBox.show', compact('saleBox', 'invoices', 'orders', 'ncinvoices', 'ndinvoices', 'totalnd', 'payOrders', 'payInvoices', 'cashOuts'));
+        return view('admin.sale_box.show', compact('sale_box', 'invoices', 'orders', 'ncinvoices', 'ndinvoices', 'totalnd', 'pay_orders', 'pay_invoices', 'cash_outs'));
     }
 
-    public function showPos($id)
+    public function show_pos($id)
     {
         $user = Auth::user()->id;
         $users = User::findOrFail($user);
         $cause = Auth::user()->name;
         $admins = $users->role_id;
-        $saleBox = Salebox::findOrFail($id);
-        $from = $saleBox->created_at;
-        $to = $saleBox->updated_at;
-        $totalInvoice = 0;
-        $totalOrder = 0;
-        $totalNcinv = 0;
-        $totalNdinv = 0;
-        $totalPayOrder = 0;
-        $totalPayInv = 0;
-        $totalOut = 0;
+        $sale_box = Sale_box::findOrFail($id);
+        $from = $sale_box->created_at;
+        $to = $sale_box->updated_at;
+        $total_invoice = 0;
+        $total_order = 0;
+        $total_ncinv = 0;
+        $total_ndinv = 0;
+        $total_pay_order = 0;
+        $total_pay_inv = 0;
+        $total_out = 0;
 
         if ($admins == 1 || $admins == 2) {
             $invoices = Invoice::from('invoices AS inv')
             ->join('users AS use', 'inv.user_id', 'use.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.totalPay', 'inv.created_at', 'cus.name')
-            ->where('inv.user_id', '=', $saleBox->user_id)
+            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.total_pay', 'inv.created_at', 'cus.name')
+            ->where('inv.user_id', '=', $sale_box->user_id)
             ->whereBetween('inv.created_at', [$from, $to])
             ->get();
             foreach($invoices AS $inv){
-                $totalInvoice += $inv->totalPay;
+                $total_invoice += $inv->total_pay;
             }
             $orders = Order::from('orders AS ord')
             ->join('users AS use', 'ord.user_id', 'use.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.totalPay', 'ord.created_at', 'cus.name')
-            ->where('ord.user_id', '=', $saleBox->user_id)
+            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.total_pay', 'ord.created_at', 'cus.name')
+            ->where('ord.user_id', '=', $sale_box->user_id)
             ->whereBetween('ord.created_at', [$from, $to])
             ->get();
             foreach($orders AS $ord){
-                $totalOrder += $ord->totalPay;
+                $total_order += $ord->total_pay;
             }
 
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.totalPay', 'ni.created_at', 'cus.name')
-            ->where('ni.user_id', '=', $saleBox->user_id)
+            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
+            ->where('ni.user_id', '=', $sale_box->user_id)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
             foreach($ncinvoices AS $nci){
-                $totalNcinv += $nci->totalPay;
+                $total_ncinv += $nci->total_pay;
             }
 
             $ndinvoices = Ndinvoice::from('ndinvoices AS nd')
             ->join('users AS use', 'nd.user_id', 'use.id')
             ->join('customers AS cus', 'nd.customer_id', 'cus.id')
             ->join('invoices AS inv', 'nd.invoice_id', 'inv.id')
-            ->select('nd.id', 'inv.invoice', 'nd.totalPay', 'nd.created_at', 'cus.name')
-            ->where('nd.user_id', '=', $saleBox->user_id)
+            ->select('nd.id', 'inv.invoice', 'nd.total_pay', 'nd.created_at', 'cus.name')
+            ->where('nd.user_id', '=', $sale_box->user_id)
             ->whereBetween('nd.created_at', [$from, $to])
             ->get();
             $totalnd = 0;
             foreach($ndinvoices AS $ndi){
-                $totalNdinv += $ndi->totalPay;
+                $total_ndinv += $ndi->total_pay;
             }
 
-            $payOrders = Payorder::from('payorders AS pay')
+            $pay_orders = Pay_order::from('pay_orders AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('orders AS ord', 'pay.order_id', 'ord.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
             ->select('pay.id', 'pay.pay', 'pay.created_at', 'ord.id AS idO', 'cus.name')
-            ->where('pay.user_id', '=', $saleBox->user_id)
+            ->where('pay.user_id', '=', $sale_box->user_id)
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
-            foreach($payOrders AS $pay){
-                $totalPayOrder += $pay->payment;
+            foreach($pay_orders AS $pay){
+                $total_pay_order += $pay->payment;
             }
 
-            $payInvoices = Payinvoice::from('payinvoices AS pay')
+            $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('invoices AS inv', 'pay.invoice_id', 'inv.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
             ->select('pay.id', 'pay.pay', 'pay.created_at', 'inv.invoice', 'cus.name')
-            ->where('pay.user_id', '=', $saleBox->user_id)
+            ->where('pay.user_id', '=', $sale_box->user_id)
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
-            foreach($payInvoices AS $pinv){
-                $totalPayInv += $pinv->Pay;
+            foreach($pay_invoices AS $pinv){
+                $total_pay_inv += $pinv->Pay;
             }
 
-            $cashOuts = Cashout::from('cashouts AS cas')
-            ->join('saleboxes AS sai', 'cas.salebox_id', 'sai.id')
+            $cash_outs = Cash_out::from('cash_outs AS cas')
+            ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
             ->join('users AS usa', 'cas.admin_id', 'usa.id')
             ->select('cas.id', 'cas.payment', 'cas.created_at', 'usa.name')
-            ->where('cas.user_id', '=', $saleBox->user_id)
+            ->where('cas.user_id', '=', $sale_box->user_id)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
-            foreach($cashOuts AS $cas){
-                $totalOut += $cas->payment;
+            foreach($cash_outs AS $cas){
+                $total_out += $cas->payment;
             }
         } else {
             $invoices = Invoice::from('invoices AS inv')
             ->join('users AS use', 'inv.user_id', 'use.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
-            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.totalPay', 'inv.created_at', 'cus.name')
+            ->select('inv.id', 'inv.invoice', 'inv.status', 'inv.pay', 'inv.balance', 'inv.total_pay', 'inv.created_at', 'cus.name')
             ->where('inv.user_id', '=', $user)
             ->whereBetween('inv.created_at', [$from, $to])
             ->get();
             foreach($invoices AS $inv){
-                $totalInvoice += $inv->totalPay;
+                $total_invoice += $inv->total_pay;
             }
             $orders = Order::from('orders AS ord')
             ->join('users AS use', 'ord.user_id', 'use.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.totalPay', 'ord.created_at', 'cus.name')
+            ->select('ord.id', 'ord.status', 'ord.pay', 'ord.balance', 'ord.total_pay', 'ord.created_at', 'cus.name')
             ->where('ord.user_id', '=', $user)
             ->whereBetween('ord.created_at', [$from, $to])
             ->get();
             foreach($orders AS $ord){
-                $totalOrder += $ord->totalPay;
+                $total_order += $ord->total_pay;
             }
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.totalPay', 'ni.created_at', 'cus.name')
+            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
             ->where('ni.user_id', '=', $user)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
             foreach($ncinvoices AS $nci){
-                $totalNcinv += $nci->totalPay;
+                $total_ncinv += $nci->total_pay;
             }
             $ndinvoices = Ndinvoice::from('ndinvoices AS nd')
             ->join('users AS use', 'nd.user_id', 'use.id')
             ->join('customers AS cus', 'nd.customer_id', 'cus.id')
             ->join('invoices AS inv', 'nd.invoice_id', 'inv.id')
-            ->select('nd.id', 'inv.invoice', 'nd.totalPay', 'nd.created_at', 'cus.name')
+            ->select('nd.id', 'inv.invoice', 'nd.total_pay', 'nd.created_at', 'cus.name')
             ->where('nd.user_id', '=', $user)
             ->whereBetween('nd.created_at', [$from, $to])
             ->get();
-            $totalnNdinv = 0;
+            $total_ndinv = 0;
             foreach($ndinvoices AS $ndi){
-                $totalNdinv += $ndi->totalPay;
+                $total_ndinv += $ndi->total_pay;
             }
 
-            $payOrders = Payorder::from('payorders AS pay')
+            $pay_orders = Pay_order::from('pay_orders AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('orders AS ord', 'pay.order_id', 'ord.id')
             ->join('customers AS cus', 'ord.customer_id', 'cus.id')
@@ -414,10 +414,10 @@ class SaleboxController extends Controller
             ->where('pay.user_id', '=', $user)
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
-            foreach($payOrders AS $pay){
-                $totalPayOrder += $pay->payment;
+            foreach($pay_orders AS $pay){
+                $total_pay_order += $pay->payment;
             }
-            $payInvoices = Payinvoice::from('payinvoices AS pay')
+            $pay_invoices = Pay_invoice::from('pay_invoices AS pay')
             ->join('users AS use', 'pay.user_id', 'use.id')
             ->join('invoices AS inv', 'pay.invoice_id', 'inv.id')
             ->join('customers AS cus', 'inv.customer_id', 'cus.id')
@@ -425,96 +425,96 @@ class SaleboxController extends Controller
             ->where('pay.user_id', '=', $user)
             ->whereBetween('pay.created_at', [$from, $to])
             ->get();
-            foreach($payInvoices AS $pinv){
-                $totalPayInv += $pinv->Pay;
+            foreach($pay_invoices AS $pinv){
+                $total_pay_inv += $pinv->Pay;
             }
-            $cashOuts = Cashout::from('cashouts AS cas')
-            ->join('saleboxes AS sai', 'cas.salebox_id', 'sai.id')
+            $cash_outs = Cash_out::from('cash_outs AS cas')
+            ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
             ->join('users AS usa', 'cas.admin_id', 'usa.id')
             ->select('cas.id', 'cas.payment', 'cas.created_at', 'usa.name')
             ->where('cas.user_id', '=', $user)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
-            foreach($cashOuts AS $cas){
-                $totalOut += $cas->payment;
+            foreach($cash_outs AS $cas){
+                $total_out += $cas->payment;
             }
         }
 
-        $view = \view('admin.saleBox.showpos', compact('saleBox', 'invoices', 'orders', 'ncinvoices', 'ndinvoices', 'totalNdinv', 'payOrders', 'payInvoices', 'cashOuts', 'users', 'totalInvoice', 'totalOrder', 'totalNcinv', 'totalNdinv', 'totalPayOrder', 'totalPayInv', 'totalOut', 'payOrders', 'payInvoices', 'cashOuts'))->render();
+        $view = \view('admin.sale_box.showpos', compact('sale_box', 'invoices', 'orders', 'ncinvoices', 'ndinvoices', 'total_ndinv', 'pay_orders', 'pay_invoices', 'cash_outs', 'users', 'total_invoice', 'total_order', 'total_ncinv', 'total_ndinv', 'total_pay_order', 'total_pay_inv', 'total_out', 'pay_orders', 'pay_invoices', 'cash_outs'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64));
 
-        return $pdf->stream('reporteCaja.pdf');
+        return $pdf->stream('reporte_caja.pdf');
     }
 
-    public function showOut( $id)
+    public function show_out( $id)
     {
-        $saleBox = Salebox::findOrFail($id);
-        \Session::put('saleBox', $saleBox->id, 60 * 24 * 365);
-        \Session::put('branch', $saleBox->branch_id, 60 * 24 * 365);
-        \Session::put('user', $saleBox->user_id, 60 * 24 * 365);
+        $sale_box = Sale_box::findOrFail($id);
+        \Session::put('sale_box', $sale_box->id, 60 * 24 * 365);
+        \Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
+        \Session::put('user', $sale_box->user_id, 60 * 24 * 365);
 
-        if($saleBox->status == 'CERRADA'){
-            return redirect("saleBox")->with('warning', 'Esta Caja ya esta cerrada');
+        if($sale_box->status == 'CERRADA'){
+            return redirect("sale_box")->with('warning', 'Esta Caja ya esta cerrada');
         }
 
-        return redirect('cashOut');
+        return redirect('cash_out');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Salebox  $salebox
+     * @param  \App\Models\Sale_box  $sale_box
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $saleBox = Salebox::findOrFail($id);
+        $sale_box = Sale_box::findOrFail($id);
         $users = User::where('id', '!=', 1)->get();
-        return view('admin.saleBox.edit', compact('saleBox', 'users'));
+        return view('admin.sale_box.edit', compact('sale_box', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateSaleboxRequest  $request
-     * @param  \App\Models\Salebox  $salebox
+     * @param  \App\Models\Sale_box  $sale_box
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSaleboxRequest $request, $id)
     {
-        $close = $request->userclose_id;
-        $verific = $request->codverclose;
-        $codverif = Codverif::select('id', 'code')->where('user_id', '=', $close)->first();
-        $boxClose = Salebox::select('status')->where('id', '=', $id)->first();
+        $close = $request->user_close_id;
+        $verific = $request->cod_ver_close;
+        $cod_verif = Cod_verif::select('id', 'code')->where('user_id', '=', $close)->first();
+        $box_close = Sale_box::select('status')->where('id', '=', $id)->first();
 
-        if($codverif == null){
-            return redirect("saleBox")->with('warning', 'Usuario No autorizado para ejercer como administrador');
+        if($cod_verif == null){
+            return redirect("sale_box")->with('warning', 'Usuario No autorizado para ejercer como administrador');
         }
 
-        if ($codverif->code != $verific) {
-            return redirect("saleBox")->with('warning', 'Error en codigo de verificacion');
-        } elseif ($boxClose->status == 'CERRADA') {
-            return redirect("saleBox")->with('warning', 'Esta caja ya fue cerrada Anteriormente');
+        if ($cod_verif->code != $verific) {
+            return redirect("sale_box")->with('warning', 'Error en codigo de verificacion');
+        } elseif ($box_close->status == 'CERRADA') {
+            return redirect("sale_box")->with('warning', 'Esta caja ya fue cerrada Anteriormente');
         } else {
-            $saleBox = Salebox::findOrFail($id);
-            $saleBox->userClose_id  = $request->userClose_id;
-            $saleBox->codVerClose   = $request->codVerClose;
-            $saleBox->status         = 'CERRADA';
-            $saleBox->update();
+            $sale_box = Sale_box::findOrFail($id);
+            $sale_box->user_close_id  = $request->userClose_id;
+            $sale_box->cod_ver_close   = $request->cod_ver_close;
+            $sale_box->status         = 'CERRADA';
+            $sale_box->update();
         }
-        return redirect("saleBox")->with('success', 'Caja cerrada Satisfactoriamente');
+        return redirect("sale_box")->with('success', 'Caja cerrada Satisfactoriamente');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Salebox  $salebox
+     * @param  \App\Models\Sale_box  $sale_box
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Salebox $salebox)
+    public function destroy(Sale_box $sale_box)
     {
         //
     }

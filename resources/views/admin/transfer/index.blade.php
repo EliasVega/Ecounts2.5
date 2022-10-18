@@ -6,7 +6,7 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Traslados  <a href="productBranch/create"><button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar Traslado</button></a>
+            <h3>Listado de Traslados  <a href="product_branch/create"><button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar Traslado</button></a>
                 <a href="{{ route('branch.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
         </div>
     </div>
@@ -44,7 +44,7 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'originBranch'},
+                {data: 'origin_branch'},
                 {data: 'branch'},
                 {data: 'name'},
                 {data: 'created_at'},

@@ -18,20 +18,20 @@ REPORTE GENERAL DE CARTERA
         </div>
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label for="pastDuePortfolio">Cartera Vencida</label>
-                <a href="{{ route('pastDuePortfolio') }}" class="btn btn-gris">{{ $pastDuePortfolio }}</a>
+                <label for="past_due_portfolio">Cartera Vencida</label>
+                <a href="{{ route('past_due_portfolio') }}" class="btn btn-gris">{{ $past_due_portfolio }}</a>
             </div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label for="portfolioThirty">Cartera + 30 dias</label>
-                <a href="{{ route('portfolioThirty') }}" class="btn btn-gris">{{ $portfolioThirty }}</a>
+                <label for="portfolio_thirty">Cartera + 30 dias</label>
+                <a href="{{ route('portfolio_thirty') }}" class="btn btn-gris">{{ $portfolio_thirty }}</a>
             </div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label for="portfolioSixty">Cartera + 60 dias</label>
-                <a href="{{ route('portfolioSixty') }}" class="btn btn-gris">{{ $portfolioSixty }}</a>
+                <label for="portfolio_sixty">Cartera + 60 dias</label>
+                <a href="{{ route('portfolio_sixty') }}" class="btn btn-gris">{{ $portfolio_sixty }}</a>
             </div>
         </div>
 
@@ -73,7 +73,7 @@ REPORTE GENERAL DE CARTERA
                 {data: 'name'},
                 {data: 'nameB'},
                 {data: 'nameC'},
-                {data: 'totalPay'},
+                {data: 'total_pay'},
                 {data: 'balance'},
                 {data: 'created_at'},
                 {data: 'due_date'},

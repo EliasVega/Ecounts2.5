@@ -15,39 +15,31 @@ class LiabilitySeeder extends Seeder
      */
     public function run()
     {
-        $liability = new Liability();
+        $liabilities = [
 
-        $liability->code = '0-13';
-        $liability->name = 'Gran contribuyente';
-
-        $liability->save();
-
-        $liability = new Liability();
-
-        $liability->code = '0-15';
-        $liability->name = 'Autoretenedor';
-
-        $liability->save();
-
-        $liability = new Liability();
-
-        $liability->code = '0-23';
-        $liability->name = 'Agente de retencion IVA';
-
-        $liability->save();
-
-        $liability = new Liability();
-
-        $liability->code = '0-47';
-        $liability->name = 'Regimen simple de tributacion';
-
-        $liability->save();
-
-        $liability = new Liability();
-
-        $liability->code = 'R-99-PN';
-        $liability->name = 'No aplica - Otros';
-
-        $liability->save();
+            [
+                'code' => '0-13',
+                'name' => 'Gran contribuyente',
+            ],
+            [
+                'code' => '0-15',
+                'name' => 'Autoretenedor',
+            ],
+            [
+                'code' => '0-23',
+                'name' => 'Agente de retencion IVA',
+            ],
+            [
+                'code' => '0-47',
+                'name' => 'Regimen simple de tributacion',
+            ],
+            [
+                'code' => 'R-99-PN',
+                'name' => 'No aplica - Otros',
+            ],
+        ];
+        foreach ($liabilities as $liability) {
+           Liability::create($liability);
+        }
     }
 }

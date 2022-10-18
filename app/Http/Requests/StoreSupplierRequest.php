@@ -32,7 +32,7 @@ class StoreSupplierRequest extends FormRequest
             'phone'           => 'required|max:20',
             'email'           => 'required|max:45',
             'contact'         => 'required|max:50',
-            'phoneContact'    => 'required|max:20',
+            'phone_contact'   => 'required|max:20',
             'department_id'   => 'required',
             'municipality_id' => 'required',
             'document_id'     => 'required',

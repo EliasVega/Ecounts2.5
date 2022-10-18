@@ -27,8 +27,8 @@ class StorepurchaseRequest extends FormRequest
 
             'purchase'    => 'required|max:20',
             'total'       => 'required',
-            'totalIva'    => 'required',
-            'totalPay'    => 'required',
+            'total_iva'   => 'required',
+            'total_pay'   => 'required',
             'status'      => '',
             'branch_id'   => '',
             'supplier_id' => 'required'

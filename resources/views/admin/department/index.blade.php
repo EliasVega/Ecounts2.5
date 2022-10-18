@@ -16,8 +16,8 @@
                 <thead>
                     <tr class="bg-success">
                         <th>Id</th>
-                        <th>Codigo</th>
                         <th>Departamento</th>
+                        <th>Codigo</th>
                         <th>Codigo ISO</th>
                         <th>Acciones</th>
                     </tr>
@@ -39,9 +39,9 @@
         ajax: '{{ route('department.index') }}',
         columns: [
         {data: 'id'},
-        {data: 'code'},
         {data: 'name'},
-        {data: 'codeISO'},
+        {data: 'dane_code'},
+        {data: 'iso_code'},
         {data: 'editar'},
         ],
         dom: 'Bfrtilp',

@@ -46,11 +46,11 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="form-group">
-                    <label for="actividadEconomica_id">Actividades Economicas</label>
+                    <label for="actividad_economica_id">Actividades Economicas</label>
                     <div class="select">
-                        <select name="actividadEconomica_id" id="actividadEconomica_id" class="form-control selectpicker" data-live-search="true"  required>
-                            <option value="{{ old('actividadEconomica') }}" disabled selected>Seleccionar.</option>
-                            @foreach($actividadEconomicas as $act)
+                        <select name="actividad_economica_id" id="actividad_economica_id" class="form-control selectpicker" data-live-search="true"  required>
+                            <option value="{{ old('actividad_economica') }}" disabled selected>Seleccionar.</option>
+                            @foreach($actividad_economicas as $act)
                             <option value="{{ $act->codigo }}">{{ $act->codigo }}&nbsp;  {{ $act->descripcion }}</option>
                             @endforeach
                         </select>

@@ -83,7 +83,7 @@
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $invoices->totalIva }}</p></th>
+                                <th><p align="right">${{ $invoices->total_iva }}</p></th>
                             </tr>
 
                             <tr>
@@ -93,12 +93,12 @@
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $invoices->totalPay }}</p></th>
+                                <th><p align="right">${{ $invoices->total_pay }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($invoiceProducts as $ip)
+                            @foreach($invoice_products as $ip)
                                 <tr>
                                     <td>{{ $ip->name }}</td>
                                     <td>${{ $ip->price }}</td>

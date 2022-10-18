@@ -15,18 +15,19 @@ class OrganizationSeeder extends Seeder
      */
     public function run()
     {
-        $organization = new Organization();
+        $organizations = [
+            [
+                'code' => 1,
+                'name' =>'Persona Juridica y Asimiladas',
+            ],
+            [
+                'code' => 2,
+                'name' =>'Persona Natural y Asimiladas',
+            ],
 
-        $organization->code = 1;
-        $organization->name = 'Persona Juridica y Asimiladas';
-
-        $organization->save();
-
-        $organization = new Organization();
-
-        $organization->code = 2;
-        $organization->name = 'Persona Natural y Asimiladas';
-
-        $organization->save();
+        ];
+        foreach ($organizations as $org) {
+            Organization::create($org);
+        }
     }
 }

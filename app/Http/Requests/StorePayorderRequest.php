@@ -28,7 +28,7 @@ class StorePayorderRequest extends FormRequest
             'branch_id'    => '',
             'order_id'     => '',
             'pay'          => '',
-            'balanceOrder' => ''
+            'balance_order' => ''
         ];
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Bank;
 use App\Models\Branch;
-use App\Models\BranchProduct;
+use App\Models\Branch_product;
 use App\Models\Card;
 use App\Models\Company;
 use App\Models\Customer;
@@ -15,16 +15,16 @@ use App\Models\Department;
 use App\Models\Document;
 use App\Models\Liability;
 use App\Models\Municipality;
-use App\Models\OrderProduct;
+use App\Models\Order_product;
 use App\Models\Organization;
-use App\Models\Payevent;
-use App\Models\PaymentForm;
-use App\Models\PaymentMethod;
-use App\Models\PaymentmethodPayorder;
-use App\Models\Payorder;
+use App\Models\Pay_event;
+use App\Models\Payment_form;
+use App\Models\Payment_method;
+use App\Models\Payment_method_pay_order;
+use App\Models\Pay_order;
 use App\Models\Regime;
 use App\Models\Retention;
-use App\Models\Salebox;
+use App\Models\Sale_box;
 use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,14 +46,14 @@ class OrderController extends Controller
                 $orders = Order::from('orders AS ord')
                 ->join('branches AS bra', 'ord.branch_id', '=', 'bra.id')
                 ->join('customer AS cus', 'ord.customer_id', '=', 'cus.id')
-                ->select('ord.id', 'cus.name', 'ord.totalPay', 'ord.balance', 'ord.status', 'ord.created_at', 'bra.name AS nameB')
+                ->select('ord.id', 'cus.name', 'ord.total_pay', 'ord.balance', 'ord.status', 'ord.created_at', 'bra.name AS nameB')
                 ->get();
             } else {
                 $orders = Order::from('orders AS ord')
                 ->join('users AS use', 'ord.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'ord.branch_id', '=', 'bra.id')
                 ->join('customers AS cus', 'ord.customer_id', '=', 'cus.id')
-                ->select('ord.id', 'cus.name', 'ord.totalPay', 'ord.balance', 'ord.status', 'ord.created_at', 'bra.name AS nameB')
+                ->select('ord.id', 'cus.name', 'ord.total_pay', 'ord.balance', 'ord.status', 'ord.created_at', 'bra.name AS nameB')
                 ->where('bra.id', '=', $request->session()->get('branch'))
                 ->where('use.id', '=', Auth::user()->id)
                 ->where('use.status', '=', 'ACTIVO')
@@ -92,23 +92,23 @@ class OrderController extends Controller
         $organizations  = Organization::get();
         $regimes        = Regime::get();
         $taxes          = Tax::get();
-        $paymentForms   = PaymentForm::get();
-        $paymentMethods = PaymentMethod::get();
+        $payment_forms   = Payment_form::get();
+        $payment_methods = Payment_method::get();
         $banks          = Bank::get();
         $cards          = Card::get();
         $branch         = $request->session()->get('branch');
         $retentions     = Retention::get();
-        $payEvents      = Payevent::where('status', '=', 'PENDIENTE')->get();
+        $pay_events      = Pay_event::where('status', '=', 'PENDIENTE')->get();
 
-        $branchProducts = BranchProduct::from('branch_products as bp')
+        $branch_products = Branch_product::from('branch_products as bp')
         ->join('products as pro', 'bp.product_id', 'pro.id')
         ->join('categories as cat', 'pro.category_id', 'cat.id')
-        ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.salePrice', 'pro.name', 'cat.iva')
+        ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
         ->where('bp.branch_id', '=', $request->session()->get('branch'))
         ->where('bp.stock', '>', 0)
         ->where('pro.status', '=', 'ACTIVE')
         ->get();
-        return view('admin.order.create', compact('customers', 'branchProducts', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regimes', 'paymentForms', 'paymentMethods', 'retentions', 'banks', 'cards', 'payEvents'));
+        return view('admin.order.create', compact('customers', 'branch_products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regimes', 'payment_forms', 'payment_methods', 'retentions', 'banks', 'cards', 'pay_events'));
     }
 
     /**
@@ -140,10 +140,10 @@ class OrderController extends Controller
             $order->due_date          = $request->due_date;
             $order->items             = count($product_id);
             $order->total             = $request->total;
-            $order->totalIva          = $request->totalIva;
-            $order->totalPay          = $request->totalPay;
+            $order->total_iva          = $request->total_iva;
+            $order->total_pay          = $request->total_pay;
             $order->pay               = $pay;
-            $order->balance           = $request->totalPay;
+            $order->balance           = $request->total_pay;
             $order->retention         = $request->retention;
             $order->save();
             //si hay Abono registra abono
@@ -151,62 +151,62 @@ class OrderController extends Controller
                 $payEven = $request->abv;
                 if ($payEven != 0) {
                     //si el abono es un abono de otro documento aplica abono evento
-                    $payEvent = Payevent::findOrFail($payEven);
-                    $payEvent->destination = $order->id;
-                    $payEvent->status      = 'APLICADO';
-                    $payEvent->update();
-                    $boxy = Salebox::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-                    $inPayEvent = $boxy->inPayEvent + $pay;
+                    $pay_event = Pay_event::findOrFail($payEven);
+                    $pay_event->destination = $order->id;
+                    $pay_event->status      = 'APLICADO';
+                    $pay_event->update();
+                    $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
+                    $in_pay_event = $boxy->in_pay_event + $pay;
 
-                    $saleBox = Salebox::findOrFail($boxy->id);
-                    $saleBox->inPayEvent = $inPayEvent;
-                    $saleBox->update();
+                    $sale_box = Sale_box::findOrFail($boxy->id);
+                    $sale_box->in_pay_event = $in_pay_event;
+                    $sale_box->update();
                 } else {
                     //si es un abono nuevo aplica abono pedido
-                    $payOrder = new Payorder();
-                    $payOrder->pay       = $pay;
-                    $payOrder->balanceOrder = $order->balance;
-                    $payOrder->user_id   = $order->user_id;
-                    $payOrder->branch_id = $order->branch_id;
-                    $payOrder->order_id  = $order->id;
-                    $payOrder->save();
+                    $pay_order = new Pay_order();
+                    $pay_order->pay       = $pay;
+                    $pay_order->balance_order = $order->balance;
+                    $pay_order->user_id   = $order->user_id;
+                    $pay_order->branch_id = $order->branch_id;
+                    $pay_order->order_id  = $order->id;
+                    $pay_order->save();
                     //Registrando la tabla de metodos de pago abono pedido
-                    $paymentmethodPayorder = new PaymentmethodPayorder();
-                    $paymentmethodPayorder->payorder_id        = $payOrder->id;
-                    $paymentmethodPayorder->payment_method_id  = $request->payment_method_id;
-                    $paymentmethodPayorder->bank_id            = $request->bank_id;
-                    $paymentmethodPayorder->card_id            = $request->card_id;
-                    $paymentmethodPayorder->payevent_id        = $request->payEvent_id;
-                    $paymentmethodPayorder->payment            = $request->pay;
-                    $paymentmethodPayorder->transaction        = $request->transaction;
-                    $paymentmethodPayorder->save();
+                    $payment_method_pay_order = new Payment_method_pay_order();
+                    $payment_method_pay_order->pay_order_id        = $pay_order->id;
+                    $payment_method_pay_order->payment_method_id  = $request->payment_method_id;
+                    $payment_method_pay_order->bank_id            = $request->bank_id;
+                    $payment_method_pay_order->card_id            = $request->card_id;
+                    $payment_method_pay_order->pay_event_id        = $request->pay_event_id;
+                    $payment_method_pay_order->payment            = $request->pay;
+                    $payment_method_pay_order->transaction        = $request->transaction;
+                    $payment_method_pay_order->save();
                 }
                 //extrayendo variables
                 $mp = $request->paiment_method_id;
-                $boxy = Salebox::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-                $inOrder = $boxy->inOrder + $pay;
-                $inOrderCash = $boxy->inOrderCash;
-                $inPayCash = $boxy->inPayCash;
-                $inPay = $boxy->inPay + $pay;
-                $out = $boxy->outCash;
+                $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
+                $in_order = $boxy->inOrder + $pay;
+                $in_order_cash = $boxy->in_order_cash;
+                $in_pay_cash = $boxy->in_pay_cash;
+                $in_pay = $boxy->in_pay + $pay;
+                $out = $boxy->out_cash;
 
                 $cash = $boxy->cash;
                 //si hay medio de pago
                 if($mp == 1){
-                    $inOrderCash += $pay;
-                    $inPayCash += $pay;
+                    $in_order_cash += $pay;
+                    $in_pay_cash += $pay;
                     $cash += $pay;
                 }
                 $totale = $cash - $out;
                 //Actualizando la caja
-                $salebox = Salebox::findOrFail($boxy->id);
-                $salebox->inOrderCash = $inOrderCash;
-                $salebox->inOrder     = $inOrder;
-                $salebox->inPayCash   = $inPayCash;
-                $salebox->inPay       = $inPay;
-                $salebox->cash        = $cash;
-                $salebox->total       = $totale;
-                $salebox->update();
+                $sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->in_order_cash = $in_order_cash;
+                $sale_box->in_order     = $in_order;
+                $sale_box->in_pay_cash   = $in_pay_cash;
+                $sale_box->in_pay       = $in_pay;
+                $sale_box->cash        = $cash;
+                $sale_box->total       = $totale;
+                $sale_box->update();
             }
             $cont = 0;
 
@@ -215,39 +215,39 @@ class OrderController extends Controller
                 $subtotal = $quantity[$cont] * $price[$cont];
                 $ivasub   = $subtotal * $iva[$cont]/100;
 
-                $orderProduct = new OrderProduct();
-                $orderProduct->order_id   = $order->id;
-                $orderProduct->product_id = $idP[$cont];
-                $orderProduct->quantity   = $quantity[$cont];
-                $orderProduct->price      = $price[$cont];
-                $orderProduct->iva        = $iva[$cont];
-                $orderProduct->subtotal   = $subtotal;
-                $orderProduct->ivasubt    = $ivasub;
-                $orderProduct->save();
+                $order_product = new Order_product();
+                $order_product->order_id   = $order->id;
+                $order_product->product_id = $idP[$cont];
+                $order_product->quantity   = $quantity[$cont];
+                $order_product->price      = $price[$cont];
+                $order_product->iva        = $iva[$cont];
+                $order_product->subtotal   = $subtotal;
+                $order_product->ivasubt    = $ivasub;
+                $order_product->save();
                 //obteniendo datos de sucursal
-                $branchProducts = BranchProduct::where('product_id', '=', $orderProduct->product_id)
+                $branch_products = Branch_product::where('product_id', '=', $order_product->product_id)
                 ->where('branch_id', '=', $order->branch_id)
                 ->first();
 
-                $id = $branchProducts->id;
-                $orderProducts = $branchProducts->orderProduct + $orderProduct->quantity;
+                $id = $branch_products->id;
+                $order_products = $branch_products->orderProduct + $order_product->quantity;
                 //Actualizando la tabla sucursal productos
-                $branchPro = BranchProduct::findOrFail($id);
-                $branchPro->orderProduct = $orderProducts;
+                $branchPro = Branch_product::findOrFail($id);
+                $branchPro->order_product = $order_products;
                 $branchPro->update();
 
                 $cont++;
             }
 
             //obteniendo datos de la caja
-            $boxy = Salebox::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
+            $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
             $ord = $boxy->order;
-            $tpv = $order->totalPay;
+            $tpv = $order->total_pay;
             $nord = $ord + $tpv;
             //Actualizando caja
-            $salebox = Salebox::findOrFail($boxy->id);
-            $salebox->order = $nord;
-            $salebox->update();
+            $sale_box = Sale_box::findOrFail($boxy->id);
+            $sale_box->order = $nord;
+            $sale_box->update();
 
             DB::commit();
         }
@@ -271,22 +271,22 @@ class OrderController extends Controller
         ->join('customers AS cus', 'ord.customer_id', 'cus.id')
         ->join('payment_forms AS pf', 'ord.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'ord.payment_method_id', 'pm.id')
-        ->select('ord.id', 'ord.due_date', 'ord.items', 'ord.total', 'ord.totalIva', 'ord.totalPay', 'ord.pay', 'ord.balance', 'ord.retention', 'ord.status', 'ord.created_at', 'use.name', 'bra.name AS nameB', 'cus.name AS nameC', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->select('ord.id', 'ord.due_date', 'ord.items', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'ord.pay', 'ord.balance', 'ord.retention', 'ord.status', 'ord.created_at', 'use.name', 'bra.name AS nameB', 'cus.name AS nameC', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('ord.id', '=', $id)
         ->first();
 
         /*mostrar detalles*/
-        $orderProducts = OrderProduct::from('order_products AS op')
+        $order_products = Order_product::from('order_products AS op')
         ->join('products AS pro', 'op.product_id', '=', 'pro.id')
         ->join('orders AS ord', 'op.order_id', '=', 'ord.id')
-        ->select('op.quantity', 'op.price', 'op.subtotal', 'ord.id', 'ord.total', 'ord.totalIva', 'ord.totalPay', 'pro.name')
+        ->select('op.quantity', 'op.price', 'op.subtotal', 'ord.id', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'pro.name')
         ->where('op.order_id', '=', $id)
         ->get();
 
-        return view('admin.order.show', compact('orders', 'orderProducts'));
+        return view('admin.order.show', compact('orders', 'order_products'));
     }
 
-    public function showfact($id)
+    public function show_invoice($id)
      {
         $orders = Order::findOrFail($id);
         \session()->put('order', $orders->id, 60 * 24 * 365);
@@ -297,13 +297,13 @@ class OrderController extends Controller
         \session()->put('retention_id', $orders->retention_id, 60 * 24 *365);
         \session()->put('due_date', $orders->due_date, 60 * 24 *365);
         \session()->put('total', $orders->total, 60 * 24 *365);
-        \session()->put('totalIva', $orders->totalIva, 60 * 24 *365);
-        \session()->put('totalPay', $orders->totalPay, 60 * 24 *365);
+        \session()->put('total_iva', $orders->total_iva, 60 * 24 *365);
+        \session()->put('total_pay', $orders->total_pay, 60 * 24 *365);
         \session()->put('status', $orders->estado, 60 * 24 *365);
-        return redirect('orderProduct/create');
+        return redirect('order_product/create');
      }
 
-     public function showPayOrder($id)
+     public function show_pay_order($id)
      {
 
         $orders = Order::findOrFail($id);
@@ -312,13 +312,13 @@ class OrderController extends Controller
         \session()->put('customer_id', $orders->customer_id, 60 * 24 *365);
         \session()->put('due_date', $orders->due_date, 60 * 24 *365);
         \session()->put('total', $orders->total, 60 * 24 *365);
-        \session()->put('balance', $orders->totalPay, 60 * 24 *365);
+        \session()->put('balance', $orders->total_pay, 60 * 24 *365);
         \session()->put('status', $orders->estado, 60 * 24 *365);
 
-        return redirect('payOrder');
+        return redirect('pay_order');
      }
 
-     public function showPdfOrder(Request $request,$id)
+     public function show_pdf_order(Request $request,$id)
     {
         $ordery = Order::from('orders AS ord')
         ->join('branches AS bra', 'ord.branch_id', '=', 'bra.id')
@@ -329,10 +329,10 @@ class OrderController extends Controller
         ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
         ->join('payment_forms AS pf', 'ord.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'ord.payment_method_id', 'pm.id')
-        ->select('ord.id', 'ord.created_at', 'ord.due_date', 'ord.total', 'bra.name AS nameB', 'bra.address as addressB', 'bra.phone', 'bra.mobile', 'cus.name AS nameC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.phone', 'cus.email', 'doc.initials', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->select('ord.id', 'ord.created_at', 'ord.due_date', 'ord.total', 'bra.name AS nameB', 'bra.address as addressB', 'bra.phone', 'bra.mobile', 'cus.name AS nameC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.phone', 'cus.email', 'doc.initial', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('ord.id', '=', $id)->first();
 
-        $orderProduct = OrderProduct::from('order_products AS op')
+        $order_product = Order_product::from('order_products AS op')
         ->join('products AS pro', 'op.product_id', '=', 'pro.id')
         ->join('orders AS ord', 'op.order_id', '=', 'ord.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -344,7 +344,7 @@ class OrderController extends Controller
         ->join('order_products AS op', 'op.order_id', '=', 'ord.id')
         ->join('products AS pro', 'op.product_id', '=', 'pro.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('ord.id', 'ord.total', 'ord.totalIva', 'ord.totalPay', 'cat.iva')
+        ->select('ord.id', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'cat.iva')
         ->where('ord.id', '=', $id)
         ->first();
 
@@ -362,7 +362,7 @@ class OrderController extends Controller
         $days = $ordery->created_at->diffInDays($ordery->due_date);
         $orderpdf = "PEDIDO-". $ordery->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.order.pdf', compact('order', 'days', 'orderProduct', 'company', 'logo', 'ordery'))->render();
+        $view = \view('admin.order.pdf', compact('order', 'days', 'order_product', 'company', 'logo', 'ordery'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
@@ -378,16 +378,16 @@ class OrderController extends Controller
         }
 
         if($order->balance > 0){
-            $payEvent = new Payevent();
-            $payEvent->origin = $order->id;
-            $payEvent->destination = null;
-            $payEvent->document = 'PEDIDO';
-            $payEvent->pay = $order->pay;
-            $payEvent->save();
+            $pay_event = new Pay_event();
+            $pay_event->origin = $order->id;
+            $pay_event->destination = null;
+            $pay_event->document = 'PEDIDO';
+            $pay_event->pay = $order->pay;
+            $pay_event->save();
         }
 
         $order = Order::findOrFail($id);
-        $order->totalPay = 0;
+        $order->total_pay = 0;
         $order->pay       = 0;
         $order->balance       = 0;
         $order->status      = 'ANULADO';
