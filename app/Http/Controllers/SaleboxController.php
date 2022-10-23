@@ -152,7 +152,8 @@ class SaleboxController extends Controller
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
+            ->join('invoices AS inv', 'ni.invoice_id', 'inv.id')
+            ->select('ni.id', 'ni.total_pay', 'inv.invoice', 'ni.created_at', 'cus.name')
             ->where('ni.user_id', '=', $sale_box->user_id)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
@@ -215,7 +216,8 @@ class SaleboxController extends Controller
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
+            ->join('invoices AS inv', 'ni.invoice_id', 'inv.id')
+            ->select('ni.id', 'ni.total_pay', 'inv.invoice', 'ni.created_at', 'cus.name')
             ->where('ni.user_id', '=', $user)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
@@ -306,7 +308,8 @@ class SaleboxController extends Controller
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
+            ->join('invoices AS inv', 'ni.invoice_id', 'inv.id')
+            ->select('ni.id', 'ni.total_pay', 'inv.invoice', 'ni.created_at', 'cus.name')
             ->where('ni.user_id', '=', $sale_box->user_id)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();
@@ -386,7 +389,8 @@ class SaleboxController extends Controller
             $ncinvoices = Ncinvoice::from('ncinvoices AS ni')
             ->join('users AS use', 'ni.user_id', 'use.id')
             ->join('customers AS cus', 'ni.customer_id', 'cus.id')
-            ->select('ni.id', 'ni.invoice', 'ni.total_pay', 'ni.created_at', 'cus.name')
+            ->join('invoices as inv', 'ni.invoice_id', 'inv.id')
+            ->select('ni.id', 'ni.total_pay', 'inv.invoice', 'ni.created_at', 'cus.name')
             ->where('ni.user_id', '=', $user)
             ->whereBetween('ni.created_at', [$from, $to])
             ->get();

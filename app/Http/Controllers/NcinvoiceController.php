@@ -9,6 +9,7 @@ use App\Models\Branch_product;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
 use App\Models\Kardex;
+use App\Models\Nc_discrepancy;
 use App\Models\Ncinvoice_product;
 use App\Models\Pay_event;
 use App\Models\Product;
@@ -68,7 +69,7 @@ class NcinvoiceController extends Controller
         ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
         ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pro.id', 'inv.id as idI', 'pro.id as idP', 'ip.quantity', 'ip.price', 'pro.name', 'pro.stock', 'cat.iva')
+        ->select('pro.id', 'inv.id as idI', 'pro.id as idP', 'ip.quantity', 'ip.price', 'ip.subtotal', 'pro.name', 'pro.stock', 'cat.iva')
         ->where('inv.id', '=', $request->session()->get('invoice'))
         ->get();
 
@@ -76,7 +77,9 @@ class NcinvoiceController extends Controller
         ->join('invoice_products AS ip', 'ip.product_id', '=', 'pro.id')
         ->select('pro.id', 'pro.name', 'ip.price')->get();
 
-        return view('admin.ncinvoice.create', compact('invoices', 'products', 'invoice_products'));
+        $discrepancies = Nc_discrepancy::get();
+
+        return view('admin.ncinvoice.create', compact('invoices', 'products', 'invoice_products', 'discrepancies'));
     }
 
     /**
@@ -87,69 +90,110 @@ class NcinvoiceController extends Controller
      */
     public function store(StoreNcinvoiceRequest $request)
     {
+        $invoice = $request->session()->get('invoice');
+            $inv = Invoice::findOrFail($invoice);
+            $branch = $request->session()->get('branch');
+            $discrepancy = $request->nc_discrepancy_id;
+            $total = $inv->total;
+            $totaly = $request->total;
+            $totality = $total - $totaly;
+            if ($discrepancy != 2 && $totality < 0) {
+                return redirect("invoice")->with('warning', 'El valor de NC supera el valor de la factura');
+            }
         try{
             DB::beginTransaction();
-            //Seleccionar la factura para hacer Nota Credito
-            $invoice = Invoice::where('id', '=', $request->session()->get('invoice'))->first();
             //Registrar tabla Nota Credito
-            $ncinvoice              = new Ncinvoice();
-            $ncinvoice->user_id     = Auth::user()->id;
-            $ncinvoice->branch_id   = $invoice->branch_id;
-            $ncinvoice->invoice_id  = $invoice->id;
-            $ncinvoice->customer_id = $invoice->customer_id;
-            $ncinvoice->total       = $invoice->total;
-            $ncinvoice->total_iva    = $invoice->total_iva;
-            $ncinvoice->total_pay    = $invoice->total_pay;
+            $ncinvoice = new Ncinvoice();
+            $ncinvoice->user_id           = Auth::user()->id;
+            $ncinvoice->branch_id         = $branch;
+            $ncinvoice->invoice_id        = $invoice;
+            $ncinvoice->customer_id       = $request->customer_id;
+            $ncinvoice->nc_discrepancy_id = $request->nc_discrepancy_id;
+            if ($discrepancy == 2) {
+                $ncinvoice->total             = $inv->total;
+                $ncinvoice->total_iva         = $inv->total_iva;
+                $ncinvoice->total_pay         = $inv->total_pay;
+            } else {
+                $ncinvoice->total             = $request->total;
+                $ncinvoice->total_iva         = $request->total_iva;
+                $ncinvoice->total_pay         = $request->total_pay;
+            }
             $ncinvoice->save();
             //Seleccionar los productos de la venta
-            $invoice_product = Invoice_product::where('invoice_id', '=', $invoice->id)->get();
+            $invoice_products = Invoice_product::where('invoice_id', $invoice)->get();
+            if ($discrepancy == 2) {
+                foreach ($invoice_products as $ip) {
+                    $id = $ip->product_id;
+                    $quantity = $ip->quantity;
+                    $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
+                    $stk = $branch_product->stock;
+                    $stky = $stk + $quantity;
+                    $branch_product->stock = $stky;
+                    $branch_product->update();
 
-            foreach($invoice_product as $ip){
-                //Registrar la nota credito
-                $ncinvoice_product = new Ncinvoice_product();
-                $ncinvoice_product->ncinvoice_id = $ncinvoice->id;
-                $ncinvoice_product->product_id = $ip->product_id;
-                $ncinvoice_product->quantity = $ip->quantity;
-                $ncinvoice_product->price = $ip->price;
-                $ncinvoice_product->save();
+                    $ncinvoice_product = new Ncinvoice_product();
+                    $ncinvoice_product->ncinvoice_id = $ncinvoice->id;
+                    $ncinvoice_product->product_id = $ip->product_id;
+                    $ncinvoice_product->quantity = $ip->quantity;
+                    $ncinvoice_product->price = $ip->price;
+                    $ncinvoice_product->save();
 
-                //Calcular el valor para actualizar Branch_products
-                $branch_products = Branch_product::from('branch_Products AS bp')
-                ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
-                ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
-                ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
-                ->where('bp.product_id', '=', $ncinvoice_product->product_id)
-                ->where('bp.branch_id', '=', $ncinvoice->branch_id)
-                ->first();
-                $id = $branch_products->idP;
-                $prestock = $branch_products->stock;
-                $stock = $prestock + $ncinvoice_product->quantity;
-                //Actualizar tabla Branch Products
-                $branch_product = Branch_product::where('branch_id', $ncinvoice->branch_id)->where('product_id', $ncinvoice_product->product_id)->first();
-                $branch_product->stock = $stock;
-                $branch_product->update();
+                }
+            } else {
+                $product_id     = $request->product_id;
+                $quantity       = $request->quantity;
+                $price          = $request->price;
+                $stock          = $request->stock;
 
-                //calcular valor para actualizar kardex
-                $products = Product::from('products AS pro')
-                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $ip->product_id)
-                ->first();
+                $cont = 0;
+                while($cont < count($product_id)){
+                    if ($discrepancy == 1) {
+                        $ncinvoice_product = new Ncinvoice_product();
+                        $ncinvoice_product->ncinvoice_id = $ncinvoice->id;
+                        $ncinvoice_product->product_id = $product_id[$cont];
+                        $ncinvoice_product->quantity = $quantity[$cont];
+                        $ncinvoice_product->price = $price[$cont];
+                        $ncinvoice_product->save();
+                        //Calcular el valor para actualizar Branch_products
+                        $branch_products = Branch_product::where('branch_id', $ncinvoice-> branch_id)->where('product_id', $product_id[$cont])->first();
+                        $id = $branch_products->product_id;
+                        $prestock = $branch_products->stock;
+                        $stock = $prestock + $ncinvoice_product->quantity;
+                        //Actualizar tabla Branch Products
+                        $branch_products->stock = $stock;
+                        $branch_products->update();
 
-                $id = $products->id;
-                $stockardex = $products->stock;
-                //Actualizar Kardex
-                $kardex = new Kardex();
-                $kardex->product_id = $id;
-                $kardex->branch_id = $ncinvoice->branch_id;
-                $kardex->operation = 'NC_VENTA';
-                $kardex->number = $ncinvoice->id;
-                $kardex->quantity = $ip->quantity;
-                $kardex->stock = $stockardex;
-                $kardex->save();
+                        //calcular valor para actualizar kardex
+                        $products = Product::where('id', $product_id[$cont])->first();
+
+                        $id = $products->id;
+                        $stockardex = $products->stock;
+                        //Actualizar Kardex
+                        $kardex = new Kardex();
+                        $kardex->product_id = $id;
+                        $kardex->branch_id = $ncinvoice->branch_id;
+                        $kardex->operation = 'NC_VENTA';
+                        $kardex->number = $ncinvoice->id;
+                        $kardex->quantity = $product_id[$cont];
+                        $kardex->stock = $stockardex;
+                        $kardex->save();
+
+                    }else {
+                        //Registrar la nota credito
+                        $ncinvoice_product = new Ncinvoice_product();
+                        $ncinvoice_product->ncinvoice_id = $ncinvoice->id;
+                        $ncinvoice_product->product_id = $product_id[$cont];
+                        $ncinvoice_product->quantity = $quantity[$cont];
+                        $ncinvoice_product->price = $price[$cont];
+                        $ncinvoice_product->save();
+                    }
+
+                    $cont++;
+                }
             }
 
-            $invo = Invoice::findOrFail($invoice->id);
+
+            $invo = Invoice::findOrFail($invoice);
             //metodo para uso de abono a otra factura
             if($invo->balance > 0){
                 $pay_event = new Pay_event();
@@ -159,7 +203,7 @@ class NcinvoiceController extends Controller
                 $pay_event->pay = $invo->pay;
             }
             //actualizando campo status de la factura
-            $invoice = Invoice::findOrFail($invoice->id);
+            $invoice = Invoice::findOrFail($invoice);
             $invoice->status = 'CREDIT_NOTE';
             $invoice->update();
 
@@ -184,7 +228,7 @@ class NcinvoiceController extends Controller
         ->join('branches AS bra', 'nc.branch_id', '=', 'bra.id')
         ->join('customers AS cus', 'nc.customer_id', '=', 'cus.id')
         ->join('invoices as inv', 'nc.invoice_id', '=', 'inv.id')
-        ->select('nc.id', 'nc.invoice', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'inv.invoice as nf', 'use.name')
+        ->select('nc.id', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'inv.invoice as nf', 'use.name')
         ->where('nc.id', '=', $id)->first();
 
         /*mostrar detalles*/

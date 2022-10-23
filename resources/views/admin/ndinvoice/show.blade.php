@@ -82,7 +82,7 @@
 
                         </tfoot>
                         <tbody>
-                            @foreach($ndinvoiceProducts as $nd)
+                            @foreach($ndinvoice_products as $nd)
                                 <tr>
                                     <td>{{ $nd->name }}</td>
                                     <td>${{ $nd->price }}</td>

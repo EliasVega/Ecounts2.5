@@ -86,6 +86,23 @@ class NcpurchaseController extends Controller
         try{
             DB::beginTransaction();
 
+            $product_id = $request->product_id;
+            $quantity = $request->quantity;
+            $price = $request->price;
+            $stock = $request->stock;
+            $purch = $ncpurchase->purchase_id;
+            $cont = 0;
+
+            $purchase = Purchase::findOrFail($purch);
+            $purchase->status = 'CREDIT_NOTE';
+            $vp = $purchase->total_pay;
+            $vn = $request->total_pay;
+            if ($vp > $vn) {
+                return redirect("purchase")->with('success', 'El valor de la nota credito no puede ser menor a la compra');
+            } else {
+                $purchase->update();
+            }
+
             //methodo para crear Nota credito de compra
             $ncpurchase = new Ncpurchase();
             $ncpurchase->user_id = Auth::user()->id;
@@ -127,12 +144,7 @@ class NcpurchaseController extends Controller
                 $branchProduct->update();
             }*/
             //variables
-            $product_id = $request->product_id;
-            $quantity = $request->quantity;
-            $price = $request->price;
-            $stock = $request->stock;
-            $purch = $ncpurchase->purchase_id;
-            $cont = 0;
+
 
 
             while($cont < count($product_id)){
@@ -144,7 +156,7 @@ class NcpurchaseController extends Controller
                 $ncpurchase_product->quantity = $quantity[$cont];
                 $ncpurchase_product->price = $price[$cont];
                 $ncpurchase_product->save();
-
+                /*
                 //selecciona el producto que viene del array
                 $products = Product::from('products AS pro')
                 ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -160,8 +172,8 @@ class NcpurchaseController extends Controller
                 //Cambia el valor de venta del producto
                 $product = Product::findOrFail($id);
                 $product->sale_price = $preven;
-                $product->update();
-
+                $product->update();*/
+                /*
                 //Metodo para actualizar la estok productos de la sucursal
                 $branch_products = Branch_product::from('branch_products AS bp')
                 ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
@@ -196,14 +208,12 @@ class NcpurchaseController extends Controller
                 $kardex->number = $ncpurchase->id;
                 $kardex->quantity = $quantity[$cont];
                 $kardex->stock = $stockardex;
-                $kardex->save();
+                $kardex->save();*/
 
                 $cont++;
             }
 
-            $purchase = Purchase::findOrFail($purch);
-            $purchase->status = 'CREDIT_NOTE';
-            $purchase->update();
+
 
             DB::commit();
         }

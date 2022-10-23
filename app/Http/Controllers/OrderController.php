@@ -286,7 +286,7 @@ class OrderController extends Controller
         return view('admin.order.show', compact('orders', 'order_products'));
     }
 
-    public function show_invoice($id)
+    public function show_invoicy($id)
      {
         $orders = Order::findOrFail($id);
         \session()->put('order', $orders->id, 60 * 24 * 365);

@@ -1,4 +1,4 @@
-<a href="{{ route('show_invoice', $id) }}">
+<a href="{{ route('show_invoicy', $id) }}">
     <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Facturar Pedido"><i class="fas fa-receipt"></i></button>
 </a>
 <a href="{{ route('order.show', $id) }}">

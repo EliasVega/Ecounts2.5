@@ -16,6 +16,7 @@ class Ncinvoice extends Model
         'branch_id',
         'invoice_id',
         'customer_id',
+        'nc_discrepancy_id'
     ];
 
     public function user(){

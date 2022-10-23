@@ -143,13 +143,12 @@ Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('delete'
 
 Route::get('invoice/show_ncinvoice/{id}', [InvoiceController::class, 'show_ncinvoice'])->name('show_ncinvoice');
 Route::get('invoice/show_ndinvoice/{id}', [InvoiceController::class, 'show_ndinvoice'])->name('show_ndinvoice');
-//Route::get('invoice/showfact/{id}', [InvoiceController::class, 'showfact'])->name('showfactura');
 Route::get('invoice/show_pdf_invoice/{id}', [InvoiceController::class, 'show_pdf_invoice'])->name('show_pdf_invoice');
 Route::get('invoice/show_pay_invoice/{id}', [InvoiceController::class, 'show_pay_invoice'])->name('show_pay_invoice');
 Route::get('invoice/create/{id}', [InvoiceController::class, 'getMunicipalities']);
 Route::get('invoice/post/{id}', [InvoiceController::class, 'post'])->name('post');
 
-//Route::get('order/show_invoice/{id}', [orderController::class, 'show_invoice'])->name('show_invoice');
+Route::get('order/show_invoicy/{id}', [orderController::class, 'show_invoicy'])->name('show_invoicy');
 Route::get('order/show_pay_order/{id}', [orderController::class, 'show_pay_order'])->name('show_pay_order');
 Route::get('order/show_pdf_order/{id}', [orderController::class, 'show_pdf_order'])->name('show_pdf_order');
 Route::get('order/eliminar/{id}', [orderController::class, 'eliminar'])->name('eliminar');

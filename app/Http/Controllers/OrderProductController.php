@@ -52,7 +52,7 @@ class OrderProductController extends Controller
         ->get();
         $products = Product::from('products AS pro')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pro.id', 'pro.name', 'pro.salePrice', 'pro.stock', 'cat.iva')
+        ->select('pro.id', 'pro.name', 'pro.sale_price', 'pro.stock', 'cat.iva')
         ->where('pro.status', '=', 'ACTIVO')
         ->get();
 
@@ -109,13 +109,13 @@ class OrderProductController extends Controller
 
             $invoice                    = new Invoice();
             $invoice->invoice           = $nunfact;
-            $invoice->tipDoc            = '01';
-            $invoice->tipOpe            = '10';
+            $invoice->type_document     = '01';
+            $invoice->type_operation    = '10';
             $invoice->due_date          = $orders->due_date;
             $invoice->items             = $orders->items;
             $invoice->total             = $orders->total;
-            $invoice->total_iva          = $orders->total_iva;
-            $invoice->total_pay          = $orders->total_pay;
+            $invoice->total_iva         = $orders->total_iva;
+            $invoice->total_pay         = $orders->total_pay;
             $invoice->pay               = $orders->pay;
             $invoice->balance           = $orders->total_pay;
             $invoice->retention         = $orders->retention;

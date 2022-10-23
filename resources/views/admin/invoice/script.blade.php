@@ -121,6 +121,7 @@
     $("#porcent").hide();
     $("#porcentage").val(0);
 
+
     $("#product_id").change(productValue);
 
     function productValue(){

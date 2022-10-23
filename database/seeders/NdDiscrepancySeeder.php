@@ -34,7 +34,7 @@ class NdDiscrepancySeeder extends Seeder
 
         ];
         foreach($nd_discrepancies as $ndd){
-            Nd_discrepancy::created($ndd);
+            Nd_discrepancy::create($ndd);
         }
     }
 }

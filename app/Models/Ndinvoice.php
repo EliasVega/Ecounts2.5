@@ -18,7 +18,8 @@ class Ndinvoice extends Model
         'user_id',
         'branch_id',
         'invoice_id',
-        'customer_id'
+        'customer_id',
+        'nd_discrepancy_id'
     ];
 
     public function customer(){

@@ -8,17 +8,12 @@
         <title>Factura de venta</title>
 
     </head>
+
     <header id="header">
         <!-- LOGGO -->
-        <div class="box-body row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                <div class="form-group row">
-                    <div class="center">
-                        <div id="logo">
-                            <img src="{{ public_path('images/logos/'.$company->logo) }}" alt="{{ $company->name }}" width="300px" height="50px" class="app-logo">
-                        </div>
-                    </div>
-                </div>
+        <div class="center">
+            <div id="logo">
+                <img src="{{ public_path('images/logos/'.$company->logo) }}" alt="{{ $company->name }}">
             </div>
         </div>
 
@@ -28,38 +23,28 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->nameL }} -- <br> R. fiscal. {{ $company->nameR }} <br> {{ $company->description }} -- {{ $company->nameO }} <br>Resolucion N°. {{ $indicators->resolution }} Prefijo: {{ $indicators->prefix }} Rango {{ $indicators->from }} <br> al {{ $indicators->to }} -- Vigencia: desde {{ $indicators->date_from }} hasta {{ $indicators->date_to }} <br> {{ $invoice->direcionB }} {{ $company->nameM }} -- {{ $company->nameD }} <br> Email: {{ $invoice->email }}
+                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} R. fiscal: {{ $company->nameR }} {{ $company->description }} {{ $company->nameO }}  {{ $invoice->direcionB }} {{ $company->nameM }} {{ $company->nameD }} <br> Email: {{ $invoice->email }}
                     </p>
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> <h4>FACTURA ELECTRONICA <br> DE VENTA <br> <strong id="numfact">N°.{{ $indicators->prefijo }} - {{ $invoice->invoice }}</strong>  </h4>
-
-                </p>
-                <p> <h4>FECHA DE EMISION <br> <strong id="detosfact">{{ date('d-m-Y', strtotime($invoice->created_at)) }}</strong>  </h4>
+                <p> POST: <strong id="numfact">N°.{{ $indicators->prefijo }} - {{ $invoice->invoice }}</strong> <br>
+                    FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($invoice->created_at)) }}</strong>
                 </p>
             </div>
         </div>
     </header>
+    <div class="clearfix"></div>
     <body>
-        <!--DATOS CLIENTE -->
         <div class="content">
+            <!--DATOS CLIENTE -->
+            <p id="titulo">DATOS DEL CLIENTE</p>
             <div class="center">
-                <div id="tcliente">
-                    <span id="titulo"><strong>DATOS DEL CLIENTE</strong></span>
-                </div>
-            </div>
-            <div class="center">
-                <!--CODIGO QR -->
-                <div id="qr">
-                    <img src="{{ public_path('images/qr.jpg') }}" alt="qr">
-                </div>
                 <div id="cliente">
                     <!--DATOS CLIENTE -->
                     <div id="titc">
                         <span id="tc">CC o NIT: </span><br>
                         <span id="tc">NOMBRE:   </span><br>
-                        <span id="tc">REGIMEN:  </span><br>
                         <span id="tc">DIRECCION:</span><br>
                         <span id="tc">CIUDAD:   </span><br>
                         <span id="tc">TELEFONO: </span><br>
@@ -68,74 +53,52 @@
                     <div id="titd">
                         <span id="td">{{ $invoice->number }}</span><br>
                         <span id="td">{{ $invoice->nameC }}</span><br>
-                        <span id="td">{{ $invoice->description }}</span><br>
                         <span id="td">{{ $invoice->address }}</span><br>
                         <span id="td">{{ $invoice->nameM }}</span><br>
                         <span id="td">{{ $invoice->phone }}</span><br>
                         <span id="td">{{ $invoice->email }}</span><br>
                     </div>
                 </div>
-                <div id="fpago">
-                    <!--FORMA DE PAGO-->
-                    <div id="tfpago">
-                        <span id="tc">F. pago: </span><br>
-                        <span id="tc">M. pago:   </span><br>
-                        <span id="tc">Vence:</span><br>
-                    </div>
-                    <div id="dfpago">
-                        <span id="td">{{ $invoice->namePF }}</span><br>
-                        <span id="td">{{ $invoice->namePM }}</span><br>
-                        <span id="td">{{ $invoice->due_date }}</span><br>
-                    </div>
-                </div>
-
             </div>
+            <div class="clearfix"></div>
+            <table class="tabla">
+                <!--DETALLE DE VENTA -->
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Cant.</th>
+                        <th>Valor</th>
+                        <th>SubTotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($invoice_products as $ip)
+                    <tr>
+                        <td>{{ $ip->name }}</td>
+                        <td id="ccent">{{ number_format($ip->quantity) }}</td>
+                        <td class="tdder">${{ number_format($ip->price)}}</td>
+                        <td class="tdder">${{number_format($ip->quantity * $ip->price)}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <!--DATOS FTOTALES -->
+                    <tr>
+                        <th colspan="2" class="footder">TOTAL:</th>
+                        <td colspan="2" class="footder"><strong>${{number_format($invoicy->total,2)}}</strong></td>
+                    </tr>
 
-        </div>
-        <div class="contenido">
-            <div class="center">
-                <div id="ttabla">
-                    <table class="tabla">
-                        <!--DETALLE DE VENTA -->
-                        <thead>
-                            <tr>
-                                <th id="uno">Cant.</th>
-                                <th id="dos">Descripcion del producto</th>
-                                <th>Valor</th>
-                                <th>SubTotal ($)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="detalle">
-                            @foreach ($invoiceProducts as $ip)
-                            <tr>
-                                <td id="ccent">{{ number_format($ip->quantity) }}</td>
-                                <td>{{ $ip->name }}</td>
-                                <td class="tdder">${{ number_format($ip->price)}}</td>
-                                <td class="tdder">${{number_format($ip->quantity * $ip->price)}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <!--DATOS FTOTALES -->
-                            <tr>
-                               <th colspan="3" class="footder">TOTAL:</th>
-                               <td class="footder"><strong>${{number_format($invoicy->total,2)}}</strong></td>
-                            </tr>
+                    <tr>
+                        <th colspan="2" class="footder">TOTAL IVA:</th>
+                        <td colspan="2" class="footder"><strong>${{number_format($invoicy->total_iva,2)}}</strong> </td>
+                    </tr>
 
-                            <tr>
-                                <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($invoicy->total_iva,2)}}</strong> </td>
-                            </tr>
-
-                            <tr>
-                                <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($invoicy->total_pay,2)}}</strong></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-
-            </div>
+                    <tr>
+                        <th  colspan="2" class="footder">TOTAL PAGAR:</th>
+                        <td colspan="2" class="footder"><strong>${{number_format($invoicy->total_pay,2)}}</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
         <br>
         <br>
@@ -143,6 +106,7 @@
             Impreso por Ecounts S.A.S. derechos reservados
         </footer>
     </body>
+
 </html>
 
 

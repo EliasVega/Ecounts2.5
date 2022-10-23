@@ -30,7 +30,8 @@ class UpdateNcinvoiceRequest extends FormRequest
             'total_pay'   => 'required',
             'branch_id'   => '',
             'invoice_id'  => '',
-            'customer_id' => ''
+            'customer_id' => '',
+            'nc_discrepancy_id' => ''
         ];
     }
 }

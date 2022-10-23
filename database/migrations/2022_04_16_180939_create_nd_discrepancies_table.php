@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::unprepared('
-            CREATE TRIGGER upd_stock_ncpurchase AFTER INSERT ON ncpurchase_products
-            FOR EACH ROW
-            BEGIN
-                UPDATE products SET stock = stock + NEW.quantity
-                WHERE products.id = NEW.product_id;
-            END
-        ');
+        Schema::create('nd_discrepancies', function (Blueprint $table) {
+            $table->id();
+            $table->string('description');
+        });
     }
 
     /**
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::unprepared('DROP TRIGGER `upd_stock_ncpurchase`');
+        Schema::dropIfExists('nd_discrepancies');
     }
 };

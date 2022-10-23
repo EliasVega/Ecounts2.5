@@ -15,7 +15,7 @@
                 </ul>
             </div>
             @endif
-            <form action="{{route('orderProduct.store')}}" method="POST">
+            <form action="{{route('order_product.store')}}" method="POST">
                 {{csrf_field()}}
                 <div class="box-body row">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -110,7 +110,7 @@
 
                                 </tfoot>
                                 <tbody>
-                                    @foreach($orderProducts as $op)
+                                    @foreach($order_products as $op)
                                         <tr>
                                             <td>{{ $op->name }}</td>
                                             <td>${{ $op->precio }}</td>

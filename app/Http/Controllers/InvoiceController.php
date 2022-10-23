@@ -87,6 +87,8 @@ class InvoiceController extends Controller
      */
     public function create(Request $request)
     {
+        $branch = $request->session()->get('branch');
+
         $departments = Department::get();
         $municipalities = Municipality::get();
         $documents = Document::get();
@@ -100,13 +102,13 @@ class InvoiceController extends Controller
         $retentions = Retention::get();
         $banks = Bank::get();
         $cards = Card::get();
-        $branch = $request->session()->get('branch');
+
         $pay_events   = Pay_event::where('status', '=', 'PENDIENTE')->get();
         $branch_products = Branch_product::from('branch_products as bp')
         ->join('products as pro', 'bp.product_id', 'pro.id')
         ->join('categories as cat', 'pro.category_id', 'cat.id')
         ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
-        ->where('bp.branch_id', '=', $request->session()->get('branch'))
+        ->where('bp.branch_id', $branch)
         ->where('bp.stock', '>', 0)
         ->where('pro.status', '=', 'ACTIVE')
         ->get();
@@ -362,7 +364,7 @@ class InvoiceController extends Controller
         return redirect('payInvoice');
      }
 
-     public function show_pdf_invoice(Request $request, $id)
+    public function show_pdf_invoice(Request $request, $id)
     {
         $invoice = Invoice::from('invoices AS inv')
         ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
@@ -432,7 +434,7 @@ class InvoiceController extends Controller
         ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
         ->join('payment_forms AS pf', 'inv.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'inv.payment_method_id', 'pm.id')
-        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initial', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->select('inv.id', 'inv.invoice', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS nameC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initial', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('inv.id', '=', $id)->first();
 
         $invoice_products = Invoice_product::from('invoice_products AS ip')
@@ -474,7 +476,7 @@ class InvoiceController extends Controller
         $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'invoicy', 'indicators'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64));
+        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
         //return $pdf->download("$invoicepdf.pdf");

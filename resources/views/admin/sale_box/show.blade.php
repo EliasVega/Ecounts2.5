@@ -275,7 +275,7 @@
                     <tfoot>
                     </tfoot>
                     <tbody>
-                        @foreach($payOrders as $pay)
+                        @foreach($pay_orders as $pay)
                             <tr>
                                 <td>{{ $pay->created_at }}</td>
                                 <td>{{ $pay->id }}</td>
@@ -312,7 +312,7 @@
                     <tfoot>
                     </tfoot>
                     <tbody>
-                        @foreach($payInvoices as $pi)
+                        @foreach($pay_invoices as $pi)
                             <tr>
                                 <td>{{ $pi->created_at }}</td>
                                 <td>{{ $pi->id }}</td>
@@ -348,7 +348,7 @@
                     <tfoot>
                     </tfoot>
                     <tbody>
-                        @foreach($cashOuts as $cas)
+                        @foreach($cash_outs as $cas)
                             <tr>
                                 <td>{{ $cas->created_at }}</td>
                                 <td>{{ $cas->id }}</td>

@@ -33,7 +33,8 @@ class UpdateNdinvoiceRequest extends FormRequest
             'status'      => '',
             'branch_id'   => '',
             'invoice_id'  => '',
-            'customer_id' => ''
+            'customer_id' => '',
+            'nd_discrepancy_id' => ''
         ];
     }
 }

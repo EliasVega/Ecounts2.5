@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h4 class="box-title">Agregar Nota Credito</h4>
+                <h4 class="box-title">Agregar Nota Debito Venta</h4>
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">
@@ -18,11 +18,17 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{route('ncinvoice.store')}}" method="POST">
+            <form action="{{route('ndinvoice.store')}}" method="POST">
                 {{csrf_field()}}
             <div class="box-body row">
-
-                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+                    <div class="form-group">
+                        <label for="customer_id">Id_Cli.</label>
+                        <input type="text" name="customer_id" value="{{ $invoices->customer_id }}"
+                            class="form-control" placeholder="" readonly>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <div class="form-group">
                         <label for="">Proveedor</label>
                         <input type="text" name="" value="{{ $invoices->name }}"
@@ -37,50 +43,40 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
                         <label class="form-control-label" for="stock">Stock</label>
                         <input type="number" id="stock" name="stock" class="form-control" placeholder="Stock"
                             disabled pattern="[0-9]{0,15}">
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
-                    <div class="form-group">
-                        <label class="form-control-label" for="pay">Abono</label>
-                        <input type="number" id="pay" name="stock" value="{{ $invoices->pay }}" class="form-control" placeholder="Abono"
-                            disabled pattern="[0-9]{0,15}">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
-                    <div class="form-group">
-                        <label class="form-control-label" for="balance">Saldo</label>
-                        <input type="number" id="balance" name="balance" class="form-control" placeholder="Saldo"
-                            disabled pattern="[0-9]{0,15}">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="box-danger">
                         <label class="form-control-label"><h4>Agregar products</h4></label>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group row">
+                        <label class="form-control-label" for="nd_discrepancy_id">Discrepancia</label>
+                            <select name="nd_discrepancy_id" class="form-control selectpicker" id="nd_discrepancy_id" data-live-search="true">
+                                <option value="0" disabled selected>Seleccionar...</option>
+                                @foreach($discrepancies as $dis)
+                                    <option value="{{ $dis->id }}">{{ $dis->description }}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                     <div class="form-group">
                         <label class="form-control-label" for="quantityI">Und/vendidas</label>
                         <input type="number" id="quantityI" name="quantityI" class="form-control" readonly>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                     <div class="form-group">
                         <label class="form-control-label" for="price">Precio</label>
                         <input type="number" id="price" name="price" class="form-control" placeholder="Precio"
                             disabled pattern="[0-9]{0,15}">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
-                    <div class="form-group" id="custom">
-                        <label for="customer_id">Id_Cli.</label>
-                        <input type="text" name="customer_id" value="{{ $invoices->idC }}"
-                            class="form-control" placeholder="" readonly>
                     </div>
                 </div>
 
@@ -99,10 +95,9 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
                         <label class="form-control-label" for="quantity">Cantidad</label>
-                        <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
+                        <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Ingrese la cantidad" pattern="[0-9]{0,15}">
                     </div>
                 </div>
-
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
                         <label class="form-control-label">Add</label><br>
@@ -112,7 +107,7 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
                         <label class="form-control-label" >Canc</label><br>
-                        <a href="{{url('invoice')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
+                        <a href="{{url('purchase')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
                     </div>
                 </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -121,6 +116,7 @@
                                 <thead class="bg-info">
                                     <tr>
                                         <th>Eliminar</th>
+                                        <th>Stock</th>
                                         <th>Producto</th>
                                         <th>Cantidad</th>
                                         <th>precio ($)</th>
@@ -129,19 +125,19 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th  colspan="4"><p align="right">TOTAL:</p></th>
+                                        <th  colspan="5"><p align="right">TOTAL:</p></th>
                                         <th><p align="right"><span id="total_html">$ 0.00</span>
                                             <input type="hidden" name="total" id="total"> </p></th>
                                     </tr>
 
                                     <tr>
-                                        <th colspan="4"><p align="right">TOTAL IVA:</p></th>
+                                        <th colspan="5"><p align="right">TOTAL IVA:</p></th>
                                         <th><p align="right"><span id="total_iva_html">$ 0.00</span>
                                             <input type="hidden" name="total_iva" id="total_iva"></p></th>
                                     </tr>
 
                                     <tr>
-                                        <th  colspan="4"><p align="right">TOTAL PAGAR:</p></th>
+                                        <th  colspan="5"><p align="right">TOTAL PAGAR:</p></th>
                                         <th><p align="right"><span align="right" id="total_pay_html">$ 0.00</span>
                                             <input type="hidden" name="total_pay" id="total_pay"></p></th>
                                     </tr>
@@ -183,7 +179,6 @@
         subtotal=[];
         total_iva = 0;
         $("#save").hide();
-        $("#custom").hide();
         $("#product_id").change(productValue);
 
         function productValue(){
@@ -202,6 +197,7 @@
         }
 
         function add(){
+
             dataProduct = document.getElementById('product_id').value.split('_');
             product_id= dataProduct[0];
             product= $("#product_id option:selected").text();
@@ -210,7 +206,6 @@
             quantityI= $("#quantityI").val();
             stock= $("#stock").val();
             iva= $("#iva").val();
-
             if(product_id !="" && quantity!="" && quantity>0 && price!="" && stock>"" && iva!= ""){
 
                 subtotal[cont]=quantity*price;
@@ -218,9 +213,8 @@
                 ivita= subtotal[cont]*iva/100;
                 total_iva=total_iva+ivita;
 
-                if(parseInt(quantity) <= parseInt(quantityI) && parseInt(quantity) > 0){
-
-                    var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td> <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" id="price[]" name="price[]"  value="'+price+'">'+price+'</td> <td>$'+subtotal[cont]+' </td></tr>';
+                if(parseInt(quantity) < parseInt(stock)){
+                    var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="removefile('+cont+');"><i class="fa fa-times"></i></button></td><td><input type="hidden" name="stock[]"  value="'+stock+'">'+stock+'</td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>   <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" name="price[]"  value="'+price+'">'+price+'</td> <td>$'+subtotal[cont]+' </td></tr>';
                     cont++;
 
                     totals();
@@ -238,7 +232,7 @@
                     Swal.fire({
                         type: 'error',
                         //title: 'Oops...',
-                        text: 'La cantidad supera las unidades vendidas o es negativa',
+                        text: 'La cantidad a facturar supera el stock',
 
                     })
                 }
@@ -281,9 +275,6 @@
         $("#total_pay").val(total_pay.toFixed(2));
 
      }
-
-
-
      function assess(){
 
          if(total>=0){
