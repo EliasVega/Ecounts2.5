@@ -5,36 +5,50 @@
 @section('content')
 <main class="main">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="id"><h4>Nota Debito No.</h4></label>
-                <h5>{{ $ndpurchases->id }}</h5>
+                <label class="form-control-label" for="company">RESPONSABLE</label>
+                <h4>{{ $ndpurchases->name }}</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="sede"><h4>SEDE</h4></label>
-                <h5>{{ $ndpurchases->nameB }}</h5>
+                <label class="form-control-label" for="company">SUCURSAL</label>
+                <h4>{{ $ndpurchases->nameB }}</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="proveedore"><h4>PROVEEDOR</h4></label>
-                <h5>{{ $ndpurchases->name }}</h5>
+                <label class="form-control-label" for="nombre">PROVEEDOR</label>
+                <h4>{{ $ndpurchases->nameC }}</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="documento"><h4>FECHA EMISION</h4></label>
-                <h5>{{ $ndpurchases->created_at }}</h5>
+                <label class="form-control-label" for="nc#">NOTA DEBITO N°.</label>
+                <h4>{{ $ndpurchases->id }}</h4>
             </div>
         </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="purchase">APLICA COMPRAQ No.</label>
+                <h4>{{ $ndpurchases->nf }}</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="Fecha">FECHA EMISION</label>
+                <h4>{{ $ndpurchases->created_at }}</h4>
+            </div>
+        </div>
+
     </div><br>
     <div class="box-body row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <h3>Detalle de la Nota Debito
+                    <h3>Detalle de la Nota DEBITO
                         <a href="{{ route('ndpurchase.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
                 </div>
             </div>
@@ -68,12 +82,12 @@
 
                         </tfoot>
                         <tbody>
-                            @foreach($ndpurchase_products as $np)
+                            @foreach($ndpurchase_products as $nc)
                                 <tr>
-                                    <td>{{ $np->name }}</td>
-                                    <td>${{ $np->price }}</td>
-                                    <td>{{ $np->quantity }}</td>
-                                    <td>${{ number_format($np->quantity*$np->price,2) }}</td>
+                                    <td>{{ $nc->name }}</td>
+                                    <td>${{ $nc->price }}</td>
+                                    <td>{{ $nc->quantity }}</td>
+                                    <td>${{ number_format($nc->quantity*$nc->price,2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

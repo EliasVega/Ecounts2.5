@@ -5,28 +5,53 @@
 @section('content')
 <main class="main">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="id"><h4>Compra No.</h4></label>
-                <h5>{{ $purchases->id }}</h5>
+                <label class="form-control-label" for="company">RESPONSABLE</label>
+                <h4>{{ $purchases->name }}</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="sede"><h4>SEDE</h4></label>
-                <h5>{{ $purchases->nameB }}</h5>
+                <label class="form-control-label" for="company">SUCURSAL</label>
+                <h4>{{ $purchases->nameB }}</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="proveedore"><h4>PROVEEDOR</h4></label>
-                <h5>{{ $purchases->name }}</h5>
+                <label class="form-control-label" for="paymentForm">FORMA DE PAGO</label>
+                <h4>{{ $purchases->namePF }}</h4>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="documento"><h4>FECHA EMISION</h4></label>
-                <h5>{{ $purchases->created_at }}</h5>
+                <label class="form-control-label" for="paymentMethod">SALDO A PAGAR</label>
+                <h4>{{ $purchases->balance }}</h4>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="nombre">PROVEEDOR</label>
+                <h4>{{ $purchases->nameC }}</h4>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="purchase">COMPRA No.</label>
+                <h4>{{ $purchases->id }}</h4>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="Fecha">FECHA EMISION</label>
+                <h4>{{ $purchases->created_at }}</h4>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="due_date">VENCE</label>
+                <h4>{{ $purchases->due_date }}</h4>
             </div>
         </div>
     </div><br>
@@ -34,7 +59,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <h3>Detalle de la Compra
+                    <h3>Detalle de la venta
                         <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
                 </div>
             </div>
@@ -68,12 +93,12 @@
 
                         </tfoot>
                         <tbody>
-                            @foreach($product_purchases as $pp)
+                            @foreach($product_purchases as $PP)
                                 <tr>
-                                    <td>{{ $pp->name }}</td>
-                                    <td>${{ $pp->price }}</td>
-                                    <td>{{ $pp->quantity }}</td>
-                                    <td>${{ number_format($pp->quantity*$pp->price,2) }}</td>
+                                    <td>{{ $PP->name }}</td>
+                                    <td>${{ $PP->price }}</td>
+                                    <td>{{ $PP->quantity }}</td>
+                                    <td class="tdder">{{ $PP->subtotal }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

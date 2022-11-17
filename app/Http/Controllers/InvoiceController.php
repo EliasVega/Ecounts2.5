@@ -361,7 +361,7 @@ class InvoiceController extends Controller
         \session()->put('total_pay', $invoices->total_Pay, 60 * 24 *365);
         \session()->put('status', $invoices->status, 60 * 24 *365);
 
-        return redirect('payInvoice');
+        return redirect('pay_invoice');
      }
 
     public function show_pdf_invoice(Request $request, $id)

@@ -16,8 +16,12 @@ return new class extends Migration
         Schema::create('product_purchases', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('quantity');
-            $table->integer('price');
+            $table->decimal('quantity', 10, 2);
+            $table->decimal('price', 11, 2);
+            $table->decimal('iva', 10, 2);
+            $table->decimal('subtotal', 11, 2);
+            $table->decimal('ivasubt', 11, 2);
+            $table->integer('item');
 
             $table->foreignId('purchase_id')->constrained()->onUpdate('restrict');
             $table->foreignId('product_id')->constrained()->onUpdate('restrict');

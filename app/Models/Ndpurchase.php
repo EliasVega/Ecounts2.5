@@ -16,7 +16,8 @@ class Ndpurchase extends Model
         'user_id',
         'branch_id',
         'purchase_id',
-        'supplier_id'
+        'supplier_id',
+        'nc_discrepancy_id'
     ];
 
     public function branch(){
@@ -33,5 +34,9 @@ class Ndpurchase extends Model
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+
+    public function nc_discrepancy(){
+        return $this->belongsTo(Nc_discrepancy::class);
     }
 }

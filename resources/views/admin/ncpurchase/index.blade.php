@@ -6,10 +6,9 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Notas Credito Compras
+            <h3>Listado de Notas Credito de Compras
 
                     <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h3>
-
 
             </h3>
         </div>
@@ -22,9 +21,9 @@
                         <tr class="bg-info">
                             <th>Id</th>
                             <th>Proveedor</th>
-                            <th>compra</th>
-                            <th>N°_Factura</th>
+                            <th>Compra N°</th>
                             <th>V/Total</th>
+                            <th>Responsable</th>
                             <th>Fecha_NC</th>
                             <th>editar</th>
                         </tr>
@@ -46,12 +45,11 @@
             ajax: '{{ route('ncpurchase.index') }}',
             columns:
             [
-
                 {data: 'id'},
                 {data: 'name'},
                 {data: 'idP'},
-                {data: 'purchase'},
                 {data: 'total_pay'},
+                {data: 'nameU'},
                 {data: 'created_at'},
                 {data: 'edit'},
             ],
@@ -71,7 +69,7 @@
                     10, 25, 50, -1
                 ],
                 [
-                    '10 rows', '25 rows', '50 rows', 'Show all'
+                    '10 ', '25 ', '50 ', 'Show all'
                 ]
             ],
             "language":

@@ -6,13 +6,13 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Compras <a href="purchase/create"><button class="btn btn-success"><i class="fa fa-plus mr-2"></i>Agregar Compra</button></a>
+            <h3>Listado de Compras <a href="purchase/create" class="btn btn-success"><i class="fa fa-plus mr-2"></i> Agregar Compra</a>
                 <a href="{{ route('branch.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
-                <a href="{{ route('product.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Productos</a>
                 <a href="{{ route('supplier.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Proveedores</a>
                 <a href="{{ route('ncpurchase.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
-                <a href="{{ route('ndpurchase.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.D.</a></h3>
+                <a href="{{ route('ndpurchase.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.D.</a></h3></h3>
         </div>
+
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -22,10 +22,10 @@
                         <tr class="bg-info">
                             <th>Id</th>
                             <th>Proveedor</th>
-                            <th>N° Factura</th>
+                            <th>#Fac_Compra</th>
                             <th>Valor</th>
+                            <th>Saldo</th>
                             <th>Fecha</th>
-                            <th>Comprador</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -47,13 +47,12 @@
             ajax: '{{ route('purchase.index') }}',
             columns:
             [
-
                 {data: 'id'},
                 {data: 'nameS'},
                 {data: 'purchase'},
                 {data: 'total_pay'},
+                {data: 'balance'},
                 {data: 'created_at'},
-                {data: 'name'},
                 {data: 'status'},
                 {data: 'btn'},
             ],
@@ -105,7 +104,6 @@
 @endpush
 </main>
 @endsection
-
 
 
 

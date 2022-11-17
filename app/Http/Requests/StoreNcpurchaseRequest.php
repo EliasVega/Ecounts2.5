@@ -25,13 +25,17 @@ class StoreNcpurchaseRequest extends FormRequest
     {
         return [
 
-            'purchase'    => 'required|max:20',
+            'purchase'    => '',
             'total'       => 'required',
             'total_iva'   => 'required',
             'total_pay'   => 'required',
+            'pay'         => '',
+            'balance'     => '',
+            'status'      => '',
             'branch_id'   => '',
             'purchase_id' => '',
             'product_id'  => '',
+            'nd_discrepancy_id' => 'required'
         ];
     }
 }

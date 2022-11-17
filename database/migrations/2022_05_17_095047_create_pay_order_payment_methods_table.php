@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_method_pay_orders', function (Blueprint $table) {
+        Schema::create('pay_order_payment_methods', function (Blueprint $table) {
             $table->id();
 
             $table->decimal('payment', 10,2);
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_method_pay_orders');
+        Schema::dropIfExists('pay_order_payment_methods');
     }
 };

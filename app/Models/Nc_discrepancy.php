@@ -11,4 +11,12 @@ class Nc_discrepancy extends Model
     protected $fillable = [
         'description'
     ];
+
+    public function ncinvoices(){
+        return $this->HasMany(Ncinvoice::class);
+    }
+
+    public function Ndpurchase(){
+        return $this->HasMany(Ndpurchase::class);
+    }
 }

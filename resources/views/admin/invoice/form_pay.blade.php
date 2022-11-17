@@ -23,7 +23,7 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
-            <button class="btn" type="button" id="transfer" data-toggle="tooltip" data-placement="top" title="Tranferencia Bamcaria"><img src="{{ asset('img/trans.jpg') }}" height="150" width="80" alt="Transferencia"></button>
+            <button class="btn" type="button" id="transfer" data-toggle="tooltip" data-placement="top" title="Tranferencia Bancaria"><img src="{{ asset('img/trans.jpg') }}" height="150" width="80" alt="Transferencia"></button>
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

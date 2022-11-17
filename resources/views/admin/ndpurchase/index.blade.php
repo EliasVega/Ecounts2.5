@@ -6,13 +6,13 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Notas Debito Compras
-                <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h3>
+            <h3>Listado de Notas Credito
+
+                    <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a>
 
             </h3>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
@@ -20,12 +20,11 @@
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
-                            <th>Proveedor</th>
-                            <th>N°_Compra</th>
-                            <th>N°_Factura</th>
+                            <th>Cliente</th>
+                            <th>Venta</th>
                             <th>V/Total</th>
-                            <th>Fecha_NC</th>
-                            <th>Ver</th>
+                            <th>Fecha_ND</th>
+                            <th>editar</th>
                         </tr>
                     </thead>
                 </table>
@@ -45,11 +44,11 @@
             ajax: '{{ route('ndpurchase.index') }}',
             columns:
             [
+
                 {data: 'id'},
                 {data: 'name'},
-                {data: 'idP'},
-                {data: 'purchase'},
-                {data: 'total_pay'},
+                {data: 'idI'},
+                {data: 'total'},
                 {data: 'created_at'},
                 {data: 'edit'},
             ],

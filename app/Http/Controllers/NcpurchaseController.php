@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateNcpurchaseRequest;
 use App\Models\Branch_product;
 use App\Models\Kardex;
 use App\Models\Ncpurchase_product;
+use App\Models\Nd_discrepancy;
 use App\Models\Product;
 use App\Models\Product_purchase;
 use App\Models\Purchase;
@@ -30,7 +31,8 @@ class NcpurchaseController extends Controller
             $ncpurchases = Ncpurchase::from('ncpurchases AS ncp')
             ->join('purchases AS pur', 'ncp.purchase_id', '=', 'pur.id')
             ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
-            ->select('ncp.id', 'pur.id AS idP', 'pur.purchase', 'sup.name', 'ncp.total_pay', 'ncp.created_at')
+            ->join('users as use', 'ncp.user_id', 'use.id')
+            ->select('ncp.id', 'pur.id AS idP', 'pur.purchase', 'sup.name', 'ncp.total_pay', 'ncp.created_at', 'use.name as nameU')
             ->get();
 
             return datatables()
@@ -57,9 +59,11 @@ class NcpurchaseController extends Controller
         ->join('suppliers as sup', 'pur.supplier_id', '=', 'sup.id')
         ->select('pur.id', 'sup.id as idS', 'sup.name', 'pur.purchase', 'pur.status')
         ->where('pur.id', '=', $request->session()->get('purchase'))->first();
+
         if ($purchases->status == 'CREDIT_NOTE') {
             return redirect("ncpurchase")->with('warning', 'Esta Compra ya tiene una Nota Credito');
         }
+
         $product_purchases = Product_purchase::from('product_purchases AS pp')
         ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
@@ -72,7 +76,9 @@ class NcpurchaseController extends Controller
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
         ->select('pro.id', 'pro.name', 'pp.price', 'cat.iva')->get();
 
-        return view('admin.ncpurchase.create', compact('purchases', 'products', 'product_purchases'));
+        $discrepancies = Nd_discrepancy::get();
+
+        return view('admin.ncpurchase.create', compact('purchases', 'products', 'product_purchases', 'discrepancies'));
     }
 
     /**
@@ -83,6 +89,126 @@ class NcpurchaseController extends Controller
      */
     public function store(StoreNcpurchaseRequest $request)
     {
+        try{
+            DB::beginTransaction();
+
+            $pay = $request->pay;
+            $purchase = $request->session()->get('purchase');
+            $branch = $request->session()->get('branch');
+            //crear tabla nota debito venta
+
+            $ncpurchase = new Ncpurchase();
+            $ncpurchase->purchase          = $request->purchase;
+            $ncpurchase->user_id           = Auth::user()->id;
+            $ncpurchase->branch_id         = $branch;
+            $ncpurchase->purchase_id       = $purchase;
+            $ncpurchase->supplier_id       = $request->supplier_id;
+            $ncpurchase->nd_discrepancy_id = $request->nd_discrepancy_id;
+            $ncpurchase->total             = $request->total;
+            $ncpurchase->total_iva         = $request->total_iva;
+            $ncpurchase->total_pay         = $request->total_pay;
+            $ncpurchase->pay               = 0;
+            $ncpurchase->balance           = $request->total_pay;
+            $ncpurchase->save();
+
+            $products_purchase = Product_purchase::where('purchase_id', $purchase)->get();
+            /*
+            foreach ($invoice_products as $ip) {
+                $id = $ip->product_id;
+                $quantity = $ip->quantity;
+                $products = Product::findOrFail($id);
+                $stock = $products->stock;
+                $products->stock = $stock + $quantity;
+                $products->update();
+                $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
+                $stk = $branch_product->stock;
+                $stky = $stk + $quantity;
+                $branch_product->stock = $stky;
+                $branch_product->update();
+            }*/
+
+            $product_id     = $request->product_id;
+            $quantity       = $request->quantity;
+            $price          = $request->price;
+            //$stock          = $request->stock;
+            //$invo = $request->session()->get('invoice');
+
+
+            $cont = 0;
+
+            while($cont < count($product_id)){
+
+                //crear registro tabla ndinvoice_products
+                $ncpurchase_product = new Ncpurchase_product();
+                $ncpurchase_product->ncpurchase_id = $ncpurchase->id;
+                $ncpurchase_product->product_id = $product_id[$cont];
+                $ncpurchase_product->quantity = $quantity[$cont];
+                $ncpurchase_product->price = $price[$cont];
+                $ncpurchase_product->save();
+                /*
+                //calcular valores para registro kardex
+                $products = Product::from('products as pro')
+                ->join('categories as cat', 'pro.category_id', 'cat.id')
+                ->select('pro.id', 'pro.price', 'pro.stock', 'cat.utility')
+                ->where('pro.id', '=', $ndinvoice_product->product_id)
+                ->first();
+
+                //Calcular el valor para actualizar Branch_products
+                $branch_products = Branch_product::from('branch_Products AS bp')
+                ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
+                ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
+                ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
+                ->where('bp.product_id', '=', $ndinvoice_product->product_id)
+                ->where('bp.branch_id', '=', $ndinvoice->branch_id)
+                ->first();
+                $id = $branch_products->idP;
+                $prestock = $branch_products->stock;
+                $stock = $prestock - $ndinvoice_product->quantity;
+                //Actualizar tabla Branch Products
+                $branch_product = Branch_product::where('branch_id', $ndinvoice->branch_id)->where('product_id', $ndinvoice_product->product_id)->first();
+                $branch_product->stock = $stock;
+                $branch_product->update();
+
+                $id = $products->id;
+                $stockardex = $products->stock;
+                //crear registro en la tabla kardex
+                $kardex = new Kardex();
+                $kardex->product_id = $id;
+                $kardex->branch_id  = $ndinvoice->branch_id;
+                $kardex->operation  = 'ND_VENTA';
+                $kardex->number     = $ndinvoice->id;
+                $kardex->quantity   = $quantity[$cont];
+                $kardex->stock      = $stockardex;
+                $kardex->save();*/
+
+                $cont++;
+
+            }
+            /*
+            $boxy = Sale_box::where('user_id', '=', $ndinvoice->user_id)->where('status', '=', 'ABIERTA')->first();*/
+            /*$invoicy = Invoice::where('id', '=', $request->session()->get('invoice'))->first();
+            $total_pay = $invoicy->total_pay;*/
+            /*$sale = $boxy->sale;
+            $tpv = $ndinvoice->total_pay;
+            $ninv = $sale + $tpv;
+
+            $saleBox = Sale_box::findOrFail($boxy->id);
+            $saleBox->sale = $ninv;
+            $saleBox->update();*/
+
+            $purchase = Purchase::findOrFail($purchase);
+            $purchase->status = 'CREDIT_NOTE';
+            $purchase->update();
+
+
+
+            DB::commit();
+        }
+        catch(Exception $e){
+            DB::rollback();
+        }
+        return redirect('ncpurchase');
+        /*
         try{
             DB::beginTransaction();
 
@@ -113,7 +239,7 @@ class NcpurchaseController extends Controller
             $ncpurchase->total        = $request->total;
             $ncpurchase->total_iva    = $request->total_iva;
             $ncpurchase->total_pay  = $request->total_pay;
-            $ncpurchase->save();
+            $ncpurchase->save();*/
             /*
             $productPurchase = ProductPurchase::where('purchase_id', '=', $ncpurchase->purchase_id)->get();
 
@@ -146,7 +272,7 @@ class NcpurchaseController extends Controller
             //variables
 
 
-
+            /*
             while($cont < count($product_id)){
 
                 //Methodo para crear la relacion NC compra con productos
@@ -155,7 +281,7 @@ class NcpurchaseController extends Controller
                 $ncpurchase_product->product_id = $product_id[$cont];
                 $ncpurchase_product->quantity = $quantity[$cont];
                 $ncpurchase_product->price = $price[$cont];
-                $ncpurchase_product->save();
+                $ncpurchase_product->save();*/
                 /*
                 //selecciona el producto que viene del array
                 $products = Product::from('products AS pro')
@@ -209,7 +335,7 @@ class NcpurchaseController extends Controller
                 $kardex->quantity = $quantity[$cont];
                 $kardex->stock = $stockardex;
                 $kardex->save();*/
-
+                /*
                 $cont++;
             }
 
@@ -220,7 +346,7 @@ class NcpurchaseController extends Controller
         catch(Exception $e){
             DB::rollback();
         }
-        return redirect('purchase');
+        return redirect('purchase');*/
     }
 
     /**
@@ -236,7 +362,7 @@ class NcpurchaseController extends Controller
         ->join('purchases as pur', 'ncp.purchase_id', 'pur.id')
         ->join('branches AS bra', 'ncp.branch_id', '=', 'bra.id')
         ->join('suppliers AS sup', 'ncp.supplier_id', '=', 'sup.id')
-        ->select('ncp.id', 'ncp.purchase', 'ncp.total', 'ncp.total_iva', 'ncp.total_pay', 'ncp.created_at', 'use.name', 'bra.name as nameB', 'sup.name as nameS')
+        ->select('ncp.id', 'ncp.purchase', 'ncp.total', 'ncp.total_iva', 'ncp.total_pay', 'ncp.created_at', 'use.name', 'bra.name as nameB', 'sup.name as nameS', 'pur.purchase')
         ->where('ncp.id', '=', $id)
         ->first();
 

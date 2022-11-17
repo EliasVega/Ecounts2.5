@@ -124,11 +124,11 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label for="tax_id">Regimen o Tributo</label>
-                        <select name="tax_id" class="form-control selectpicker" data-live-search="true" id="tax_id" required>
-                            <option value="{{ old('tax_id') }}" disabled selected>Seleccionar.</option>
-                            @foreach($taxes as $tax)
-                                <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                        <label for="regime_id">Regimen o Tributo</label>
+                        <select name="regime_id" class="form-control selectpicker" data-live-search="true" id="regime_id" required>
+                            <option value="{{ old('regime_id') }}" disabled selected>Seleccionar.</option>
+                            @foreach($regimes as $reg)
+                                <option value="{{ $reg->id }}">{{ $reg->name }}</option>
                             @endforeach
                         </select>
                     </div>

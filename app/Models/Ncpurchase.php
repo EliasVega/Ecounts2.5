@@ -13,10 +13,14 @@ class Ncpurchase extends Model
         'total',
         'total_iva',
         'total_pay',
+        'pay',
+        'balance',
+        'status',
         'user_id',
         'branch_id',
         'purchase_id',
-        'supplier_id'
+        'supplier_id',
+        'nd_discrepancy_id'
     ];
 
     public function branch()
@@ -28,7 +32,15 @@ class Ncpurchase extends Model
         return $this->belongsTo(Purchase::class);
     }
 
+    public function supplier(){
+        return $this->belongsTo(Supplier::class);
+    }
+
     public function products(){
         return $this->belongsToMany(Product::class);
+    }
+
+    public function nd_discrepancy(){
+        return $this->belongsTo(Nd_discrepancy::class);
     }
 }

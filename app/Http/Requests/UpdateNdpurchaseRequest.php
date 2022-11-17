@@ -24,12 +24,15 @@ class UpdateNdpurchaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'total'       => 'required',
-            'total_iva'   => 'required',
-            'total_pay'   => 'required',
-            'branch_id'   => '',
-            'purchase_id' => '',
-            'product_id'  => ''
+            'purchase'          => '',
+            'total'             => '',
+            'total_iva'         => '',
+            'total_pay'         => '',
+            'branch_id'         => '',
+            'purchase_id'       => '',
+            'product_id'        => '',
+            'supplier_id'       => '',
+            'nd_discrepancy_id' => ''
         ];
     }
 }

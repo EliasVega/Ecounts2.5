@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');
             $table->foreignId('purchase_id')->constrained()->onUpdate('cascade');
             $table->foreignId('supplier_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('nc_discrepancy_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

@@ -10,7 +10,7 @@ use App\Models\Document;
 use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
-use App\Models\Tax;
+use App\Models\Regime;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -24,13 +24,13 @@ class SupplierController extends Controller
     {
         if (request()->ajax()) {
             $suppliers = Supplier::from('suppliers AS sup')
-            ->join('departments AS dep', 'sup.department_id', '=', 'dep.id')
-            ->join('municipalities AS mun', 'sup.municipality_id', '=', 'mun.id')
-            ->join('documents AS doc', 'sup.document_id', '=', 'doc.id')
-            ->join('liabilities AS lia', 'sup.liability_id', '=', 'lia.id')
-            ->join('organizations AS org', 'sup.organization_id', '=', 'org.id')
-            ->join('taxes AS tax', 'sup.tax_id', '=', 'tax.id')
-            ->select('sup.id', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'org.name AS nameO', 'tax.name AS nameT', 'sup.name', 'sup.number', 'sup.address', 'sup.phone', 'sup.email', 'sup.contact', 'sup.phone_contact')
+            ->join('departments AS dep', 'sup.department_id', 'dep.id')
+            ->join('municipalities AS mun', 'sup.municipality_id', 'mun.id')
+            ->join('documents AS doc', 'sup.document_id', 'doc.id')
+            ->join('liabilities AS lia', 'sup.liability_id', 'lia.id')
+            ->join('organizations AS org', 'sup.organization_id', 'org.id')
+            ->join('regimes AS reg', 'sup.regime_id', 'reg.id')
+            ->select('sup.id', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'org.name AS nameO', 'reg.name AS nameT', 'sup.name', 'sup.number', 'sup.address', 'sup.phone', 'sup.email', 'sup.contact', 'sup.phone_contact')
             ->get();
 
             return datatables()
@@ -54,8 +54,8 @@ class SupplierController extends Controller
         $documents = Document::get();
         $liabilities = Liability::get();
         $organizations = Organization::get();
-        $taxes = Tax::get();
-        return view('admin.supplier.create', compact('departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes'));
+        $regimes = Regime::get();
+        return view('admin.supplier.create', compact('departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'regimes'));
     }
 
     /**
@@ -74,7 +74,7 @@ class SupplierController extends Controller
         $supplier->document_id = $request->document_id;
         $supplier->liability_id = $request->liability_id;
         $supplier->organization_id = $request->organization_id;
-        $supplier->tax_id = $request->tax_id;
+        $supplier->regime_id = $request->regime_id;
         $supplier->name = $request->name;
         $supplier->number = $request->number;
         $supplier->dv = $request->dv;
@@ -119,8 +119,8 @@ class SupplierController extends Controller
         $documents = Document::get();
         $liabilities = Liability::get();
         $organizations = Organization::get();
-        $taxes = Tax::get();
-        return view('admin.supplier.edit', compact('supplier', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes'));
+        $regimes = Regime::get();
+        return view('admin.supplier.edit', compact('supplier', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'regimes'));
     }
 
     /**
@@ -138,7 +138,7 @@ class SupplierController extends Controller
         $supplier->document_id = $request->document_id;
         $supplier->liability_id = $request->liability_id;
         $supplier->organization_id = $request->organization_id;
-        $supplier->tax_id = $request->tax_id;
+        $supplier->regime_id = $request->regime_id;
         $supplier->name = $request->name;
         $supplier->number = $request->number;
         $supplier->dv = $request->dv;

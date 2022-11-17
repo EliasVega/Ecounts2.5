@@ -24,8 +24,8 @@ return new class extends Migration
             $table->decimal('total', 20, 2);
             $table->decimal('total_iva', 11, 2);
             $table->decimal('total_pay', 20, 2);
-            $table->decimal('pay',10,2);
-            $table->decimal('balance',10,2);
+            $table->decimal('pay',20,2);
+            $table->decimal('balance',20,2);
             $table->decimal('retention',10,2)->nullable();
             $table->enum('status',['ACTIVE', 'CREDIT_NOTE', 'DEBIT_NOTE'])->default('ACTIVE');
 

@@ -34,4 +34,12 @@ class Ncinvoice extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
+
+    public function nc_discrepancy(){
+        return $this->belongsTo(Nc_discrepancy::class);
+    }
+
+    public function Nd_discrepancy(){
+        return $this->HasMany(Nd_discrepancy::class);
+    }
 }

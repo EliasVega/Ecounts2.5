@@ -155,7 +155,7 @@ class PayinvoiceController extends Controller
 
             $pay_invoices = Pay_invoice::findOrFail($pay_invoice->id);
             $pay_invoices->pay = $payu;
-            $pay_invoices->balanceInvoice = $invoice->balance;
+            $pay_invoices->balance_invoice = $invoice->balance;
             $pay_invoices->update();
 
             DB::commit();

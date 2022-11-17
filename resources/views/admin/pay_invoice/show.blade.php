@@ -9,25 +9,25 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="name">CLIENTE</label>
-                <p>{{ $payInvoice->nameC }}</p>
+                <p>{{ $pay_invoice->nameC }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="factura">Venta #</label>
-                <p>{{ $payInvoice->idI }}</p>
+                <p>{{ $pay_invoice->idI }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="pay">ABONO</label>
-                <p>{{ $payInvoice->pay }}</p>
+                <p>{{ $pay_invoice->pay }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="vece">VENCE</label>
-                <p>{{ $payInvoice->due_date }}</p>
+                <p>{{ $pay_invoice->due_date }}</p>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
 
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('payInvoice.index') }}" class="btn btn-success"><i class="fa fa-plus mr-2"></i>Regresar</a>
+                <a href="{{ route('pay_invoice.index') }}" class="btn btn-success"><i class="fa fa-plus mr-2"></i>Regresar</a>
 
         </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -60,7 +60,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($payinvoicePaymethods as $pp)
+                            @foreach($pay_invoice_payment_methods as $pp)
                                 <tr>
                                     <td>{{ $pp->nameM }}</td>
                                     <td>{{ $pp->nameB }}</td>

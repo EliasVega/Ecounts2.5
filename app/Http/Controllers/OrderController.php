@@ -20,8 +20,8 @@ use App\Models\Organization;
 use App\Models\Pay_event;
 use App\Models\Payment_form;
 use App\Models\Payment_method;
-use App\Models\Payment_method_pay_order;
 use App\Models\Pay_order;
+use App\Models\Pay_order_payment_method;
 use App\Models\Regime;
 use App\Models\Retention;
 use App\Models\Sale_box;
@@ -171,15 +171,15 @@ class OrderController extends Controller
                     $pay_order->order_id  = $order->id;
                     $pay_order->save();
                     //Registrando la tabla de metodos de pago abono pedido
-                    $payment_method_pay_order = new Payment_method_pay_order();
-                    $payment_method_pay_order->pay_order_id        = $pay_order->id;
-                    $payment_method_pay_order->payment_method_id  = $request->payment_method_id;
-                    $payment_method_pay_order->bank_id            = $request->bank_id;
-                    $payment_method_pay_order->card_id            = $request->card_id;
-                    $payment_method_pay_order->pay_event_id        = $request->pay_event_id;
-                    $payment_method_pay_order->payment            = $request->pay;
-                    $payment_method_pay_order->transaction        = $request->transaction;
-                    $payment_method_pay_order->save();
+                    $pay_order_payment_method = new Pay_order_payment_method();
+                    $pay_order_payment_method->pay_order_id        = $pay_order->id;
+                    $pay_order_payment_method->payment_method_id  = $request->payment_method_id;
+                    $pay_order_payment_method->bank_id            = $request->bank_id;
+                    $pay_order_payment_method->card_id            = $request->card_id;
+                    $pay_order_payment_method->pay_event_id        = $request->pay_event_id;
+                    $pay_order_payment_method->payment            = $request->pay;
+                    $pay_order_payment_method->transaction        = $request->transaction;
+                    $pay_order_payment_method->save();
                 }
                 //extrayendo variables
                 $mp = $request->paiment_method_id;

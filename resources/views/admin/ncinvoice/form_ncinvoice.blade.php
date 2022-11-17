@@ -9,7 +9,7 @@
     </div>
     <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
         <div class="form-group">
-            <label for="">Proveedor</label>
+            <label for="">Cliente</label>
             <input type="text" name="" value="{{ $invoices->name }}"
                 class="form-control" placeholder="" readonly>
         </div>

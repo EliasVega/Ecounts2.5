@@ -38,7 +38,7 @@ class UpdateSupplierRequest extends FormRequest
             'document_id'     => 'required',
             'liability_id'    => 'required',
             'organization_id' => 'required',
-            'tax_id'          => 'required'
+            'regime_id'       => 'required'
         ];
     }
 }

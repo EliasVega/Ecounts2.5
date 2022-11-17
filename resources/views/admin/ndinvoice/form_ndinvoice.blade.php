@@ -8,7 +8,7 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-5 col-xs-12">
         <div class="form-group">
-            <label for="">Proveedor</label>
+            <label for="">Cliente</label>
             <input type="text" name="" value="{{ $invoices->name }}"
                 class="form-control" placeholder="" readonly>
         </div>
@@ -60,7 +60,7 @@
     <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" >Canc</label><br>
-            <a href="{{url('purchase')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
+            <a href="{{url('invoice')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
         </div>
     </div>
 

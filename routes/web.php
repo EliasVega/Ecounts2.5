@@ -28,6 +28,7 @@ use App\Http\Controllers\PayinvoiceController;
 use App\Http\Controllers\PaymentFormController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PayorderController;
+use App\Http\Controllers\PayPurchaseController;
 use App\Http\Controllers\ProductBranchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
@@ -97,6 +98,7 @@ Route::resource('customer', CustomerController::class);
 Route::resource('invoice', InvoiceController::class);
 Route::resource('ncinvoice', NcinvoiceController::class);
 Route::resource('ndinvoice', NdinvoiceController::class);
+Route::resource('pay_purchase', PayPurchaseController::class);
 Route::resource('order', OrderController::class);
 Route::resource('pay_order', PayorderController::class);
 Route::resource('pay_invoice', PayinvoiceController::class);
@@ -123,7 +125,10 @@ Route::post('branch/logout', [BranchController::class, 'logout'])->name('logout_
 
 Route::get('show_ndpurchase/{id}', [PurchaseController::class, 'show_ndpurchase'])->name('show_ndpurchase');
 Route::get('show_ncpurchase/{id}', [PurchaseController::class, 'show_ncpurchase'])->name('show_ncpurchase');
-Route::get('purchase/create/{id}', [PurchaseController::class, 'getMunicipalities']);
+Route::get('create/{id}', [PurchaseController::class, 'getMunicipalities']);
+Route::get('show_pdf_purchase/{id}', [PurchaseController::class, 'show_pdf_purchase'])->name('show_pdf_purchase');
+Route::get('show_pay_purchase/{id}', [PurchaseController::class, 'show_pay_purchase'])->name('show_pay_purchase');
+Route::get('post_purchase/{id}', [PurchaseController::class, 'post_purchase'])->name('post_purchase');
 
 Route::get('prosuc/crate/{id}', [ProductBranchController::class, 'getProducts']);
 

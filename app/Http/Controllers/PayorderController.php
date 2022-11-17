@@ -10,7 +10,7 @@ use App\Models\Card;
 use App\Models\Order;
 use App\Models\Pay_event;
 use App\Models\Payment_method;
-use App\Models\Payment_method_pay_order;
+use App\Models\Pay_order_payment_method;
 use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -114,15 +114,15 @@ class PayorderController extends Controller
 
                 $id = $order->id;
                 $payment = $payment[$cont];
-                $payment_method_pay_order                = new Payment_method_pay_order();
-                $payment_method_pay_order->pay_order_id   = $pay_order->id;
-                $payment_method_pay_order->payment_method_id  = $payment_method[$cont];
-                $payment_method_pay_order->bank_id      = $bank[$cont];
-                $payment_method_pay_order->card_id    = $card[$cont];
-                $payment_method_pay_order->pay_event_id = null;
-                $payment_method_pay_order->payment         = $payment;
-                $payment_method_pay_order->transaction   = $transaction[$cont];
-                $payment_method_pay_order->save();
+                $pay_order_payment_method                = new Pay_order_payment_method();
+                $pay_order_payment_method->pay_order_id   = $pay_order->id;
+                $pay_order_payment_method->payment_method_id  = $payment_method[$cont];
+                $pay_order_payment_method->bank_id      = $bank[$cont];
+                $pay_order_payment_method->card_id    = $card[$cont];
+                $pay_order_payment_method->pay_event_id = null;
+                $pay_order_payment_method->payment         = $payment;
+                $pay_order_payment_method->transaction   = $transaction[$cont];
+                $pay_order_payment_method->save();
 
                 $payu = $pay + $payment;
 
@@ -183,7 +183,7 @@ class PayorderController extends Controller
         ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'ord.id AS idO', 'ord.due_date', 'cus.name as nameC')
         ->where('pay.id', '=', $id)
         ->first();
-        $payment_method_pay_orders = Payment_method_pay_order::from('payment_method_pay_orders AS pp')
+        $pay_order_payment_methods = Pay_order_payment_method::from('pay_order_payment_methods AS pp')
         ->join('pay_orders AS pay', 'pp.pay_order_id', '=', 'pay.id')
         ->join('payment_methods AS pm', 'pp.payment_method_id', '=', 'pm.id')
         ->join('banks AS ban', 'pp.bank_id', '=', 'ban.id')
@@ -192,7 +192,7 @@ class PayorderController extends Controller
         ->where('pay.id', '=', $id)
         ->get();
 
-        return view('admin.pay_order.show', compact('pay_orders', 'payment_method_pay_orders'));
+        return view('admin.pay_order.show', compact('pay_orders', 'pay_order_payment_methods'));
     }
 
     /**

@@ -7,6 +7,8 @@ use App\Http\Requests\StoreNdpurchaseRequest;
 use App\Http\Requests\UpdateNdpurchaseRequest;
 use App\Models\Branch_product;
 use App\Models\Kardex;
+use App\Models\Nc_discrepancy;
+use App\Models\Ncpurchase_product;
 use App\Models\Ndpurchase_product;
 use App\Models\Product;
 use App\Models\Product_purchase;
@@ -72,6 +74,7 @@ class NdpurchaseController extends Controller
         ->select('pro.id', 'pro.name', 'pp.price')
         ->get();
 
+        $discrepancies = Nc_discrepancy::get();
 
         $cont = 0;
         foreach($product_purchases as $pp){
@@ -82,7 +85,7 @@ class NdpurchaseController extends Controller
         }
 
         if($cont == 0){
-            return view('admin.ndpurchase.create', compact('purchases', 'products', 'product_purchases'));
+            return view('admin.ndpurchase.create', compact('purchases', 'products', 'product_purchases', 'discrepancies'));
         }else{
             return view('admin.ndpurchase.error');
         }
@@ -96,6 +99,162 @@ class NdpurchaseController extends Controller
      */
     public function store(StoreNdpurchaseRequest $request)
     {
+        $purchase = $request->session()->get('purchase');
+        $pur = Purchase::findOrFail($purchase);
+        $branch = $request->session()->get('branch');
+        $discrepancy = $request->nc_discrepancy_id;
+        $total = $pur->total;
+        $totaly = $request->total;
+        $totality = $total - $totaly;
+        if ($discrepancy != 2 && $totality < 0) {
+            return redirect("purchase")->with('warning', 'El valor de ND supera el valor de la Compra');
+        }
+        try{
+            DB::beginTransaction();
+            //Registrar tabla Nota Credito
+            $ndpurchase = new Ndpurchase();
+            $ndpurchase->purchase              = $pur->purchase;
+            $ndpurchase->user_id               = Auth::user()->id;
+            $ndpurchase->branch_id             = $branch;
+            $ndpurchase->purchase_id           = $purchase;
+            $ndpurchase->supplier_id           = $request->supplier_id;
+
+            $ndpurchase->nc_discrepancy_id     = $request->nc_discrepancy_id;
+            if ($discrepancy == 2) {
+                $ndpurchase->total             = $pur->total;
+                $ndpurchase->total_iva         = $pur->total_iva;
+                $ndpurchase->total_pay         = $pur->total_pay;
+            } else {
+                $ndpurchase->total             = $request->total;
+                $ndpurchase->total_iva         = $request->total_iva;
+                $ndpurchase->total_pay         = $request->total_pay;
+            }
+            $ndpurchase->save();
+
+            //Seleccionar los productos de la compra
+            $product_purchases = Product_purchase::where('purchase_id', $purchase)->get();
+            if ($discrepancy == 2) {
+                foreach ($product_purchases as $pp) {
+                    $id = $pp->product_id;
+                    $quantity = $pp->quantity;
+                    $price = $pp->price;
+                    $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
+                    $stk = $branch_product->stock;
+                    $stky = $stk - $quantity;
+                    $branch_product->stock = $stky;
+                    $branch_product->update();
+
+                    $prod = Product::findOrFail($id);
+                    $stka = $prod->stock;
+                    $pricea = $prod->price;
+                    $quan = $pp->quantity;
+                    $pricep = $pp->price;
+                    $stocknew = $stka - $quan;
+                    if ($stocknew > 0) {
+                        $prod->price = ($stka * $pricea - $quan * $pricep) / ($stocknew);
+                    } else {
+                        $prod->price = $pricep;
+                    }
+                    $prod->update();
+
+                    $ndpurchase_product = new Ndpurchase_product();
+                    $ndpurchase_product->ndpurchase_id = $ndpurchase->id;
+                    $ndpurchase_product->product_id = $id;
+                    $ndpurchase_product->quantity = $quantity;
+                    $ndpurchase_product->price = $pp->price;
+                    $ndpurchase_product->save();
+
+                    $products = Product::findOrFail($id);
+
+                        $id = $products->id;
+                        $stockardex = $products->stock;
+                        //Actualizar Kardex
+                        $kardex = new Kardex();
+                        $kardex->product_id = $id;
+                        $kardex->branch_id = $ndpurchase->branch_id;
+                        $kardex->operation = 'ND_COMPRA';
+                        $kardex->number = $ndpurchase->id;
+                        $kardex->quantity = $quantity;
+                        $kardex->stock = $stockardex;
+                        $kardex->save();
+                }
+            } else {
+                $product_id     = $request->product_id;
+                $quantity       = $request->quantity;
+                $price          = $request->price;
+                $stock          = $request->stock;
+
+                $cont = 0;
+                while($cont < count($product_id)){
+                    if ($discrepancy == 1) {
+                        $ndpurchase_product = new Ndpurchase_product();
+                        $ndpurchase_product->ndpurchase_id = $ndpurchase->id;
+                        $ndpurchase_product->product_id = $product_id[$cont];
+                        $ndpurchase_product->quantity = $quantity[$cont];
+                        $ndpurchase_product->price = $price[$cont];
+                        $ndpurchase_product->save();
+                        //Calcular el valor para actualizar Branch_products
+                        $branch_products = Branch_product::where('branch_id', $ndpurchase->branch_id)->where('product_id', $product_id[$cont])->first();
+                        $id = $branch_products->product_id;
+                        $prestock = $branch_products->stock;
+                        $stock = $prestock - $ndpurchase_product->quantity;
+                        //Actualizar tabla Branch Products
+                        $branch_products->stock = $stock;
+                        $branch_products->update();
+
+                        //calcular valor para actualizar kardex
+                        $products = Product::where('id', $product_id[$cont])->first();
+
+                        $id = $products->id;
+                        $stockardex = $products->stock;
+                        //Actualizar Kardex
+                        $kardex = new Kardex();
+                        $kardex->product_id = $id;
+                        $kardex->branch_id = $ndpurchase->branch_id;
+                        $kardex->operation = 'ND_COMPRA';
+                        $kardex->number = $ndpurchase->id;
+                        $kardex->quantity = $quantity[$cont];
+                        $kardex->stock = $stockardex;
+                        $kardex->save();
+
+                    }else {
+                        //Registrar la nota credito
+                        $ndpurchase_product = new Ndpurchase_product();
+                        $ndpurchase_product->ndpurchase_id = $ndpurchase->id;
+                        $ndpurchase_product->product_id = $product_id[$cont];
+                        $ndpurchase_product->quantity = $quantity[$cont];
+                        $ndpurchase_product->price = $price[$cont];
+                        $ndpurchase_product->save();
+                    }
+
+                    $cont++;
+                }
+            }
+
+            /*
+            $invo = Invoice::findOrFail($invoice);
+            //metodo para uso de abono a otra factura
+            if($invo->balance > 0){
+                $pay_event = new Pay_event();
+                $pay_event->origin = $invo->invoice;
+                $pay_event->destination = null;
+                $pay_event->document = 'FACTURA';
+                $pay_event->pay = $invo->pay;
+            }*/
+            //actualizando campo status de la factura
+            $purchase = Purchase::findOrFail($purchase);
+            $purchase->status = 'DEBIT_NOTE';
+            $purchase->update();
+
+            DB::commit();
+        }
+        catch(Exception $e){
+            DB::rollback();
+        }
+        return redirect('purchase');
+
+
+        /*
         try{
             DB::beginTransaction();
             $purchase = purchase::where('id', '=', $request->session()->get('purchase'))->first();
@@ -191,7 +350,7 @@ class NdpurchaseController extends Controller
         catch(Exception $e){
             DB::rollback();
         }
-        return redirect('ndpurchase');
+        return redirect('ndpurchase');*/
     }
 
     /**
