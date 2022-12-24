@@ -13,6 +13,7 @@ class Cash_out extends Model
         'branch_id',
         'admin_id',
         'payment',
+        'reason',
         'admin'
     ];
 

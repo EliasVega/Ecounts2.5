@@ -46,8 +46,8 @@
             [
 
                 {data: 'id'},
-                {data: 'name'},
-                {data: 'idI'},
+                {data: 'customer'},
+                {data: 'invoice_id'},
                 {data: 'total'},
                 {data: 'created_at'},
                 {data: 'edit'},

@@ -34,7 +34,7 @@ class RoleSeeder extends Seeder
             ],
             [
                 'role' => 'Ventas',
-                'description' => 'EEjerce funciones como vendedor de la empresa',
+                'description' => 'Ejerce funciones como vendedor de la empresa',
             ],
         ];
         foreach($role as $rol){

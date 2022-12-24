@@ -126,7 +126,7 @@ class OrderController extends Controller
             $quantity     = $request->quantity;
             $price        = $request->price;
             $iva          = $request->iva;
-            $idP        = $request->idP;
+            $idP          = $request->idP;
             $pay          = $request->pay;
 
             //registro en la tabla Order
@@ -140,8 +140,8 @@ class OrderController extends Controller
             $order->due_date          = $request->due_date;
             $order->items             = count($product_id);
             $order->total             = $request->total;
-            $order->total_iva          = $request->total_iva;
-            $order->total_pay          = $request->total_pay;
+            $order->total_iva         = $request->total_iva;
+            $order->total_pay         = $request->total_pay;
             $order->pay               = $pay;
             $order->balance           = $request->total_pay;
             $order->retention         = $request->retention;
@@ -158,17 +158,17 @@ class OrderController extends Controller
                     $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
                     $in_pay_event = $boxy->in_pay_event + $pay;
 
-                    $sale_box = Sale_box::findOrFail($boxy->id);
+                    $sale_box               = Sale_box::findOrFail($boxy->id);
                     $sale_box->in_pay_event = $in_pay_event;
                     $sale_box->update();
                 } else {
                     //si es un abono nuevo aplica abono pedido
                     $pay_order = new Pay_order();
-                    $pay_order->pay       = $pay;
-                    $pay_order->balance_order = $order->balance;
-                    $pay_order->user_id   = $order->user_id;
-                    $pay_order->branch_id = $order->branch_id;
-                    $pay_order->order_id  = $order->id;
+                    $pay_order->pay           = $pay;
+                    $pay_order->balance_order = $order->balance - $pay;
+                    $pay_order->user_id       = $order->user_id;
+                    $pay_order->branch_id     = $order->branch_id;
+                    $pay_order->order_id      = $order->id;
                     $pay_order->save();
                     //Registrando la tabla de metodos de pago abono pedido
                     $pay_order_payment_method = new Pay_order_payment_method();
@@ -182,30 +182,30 @@ class OrderController extends Controller
                     $pay_order_payment_method->save();
                 }
                 //extrayendo variables
-                $mp = $request->paiment_method_id;
-                $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-                $in_order = $boxy->inOrder + $pay;
+                $mp            = $request->payment_method_id;
+                $boxy          = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
+                $in_order      = $boxy->in_order + $pay;
                 $in_order_cash = $boxy->in_order_cash;
-                $in_pay_cash = $boxy->in_pay_cash;
-                $in_pay = $boxy->in_pay + $pay;
-                $out = $boxy->out_cash;
+                $in_pay_cash   = $boxy->in_pay_cash;
+                $in_pay        = $boxy->in_pay + $pay;
+                $out           = $boxy->out_cash;
 
                 $cash = $boxy->cash;
                 //si hay medio de pago
                 if($mp == 1){
                     $in_order_cash += $pay;
-                    $in_pay_cash += $pay;
-                    $cash += $pay;
+                    $in_pay_cash   += $pay;
+                    $cash          += $pay;
                 }
                 $totale = $cash - $out;
                 //Actualizando la caja
                 $sale_box = Sale_box::findOrFail($boxy->id);
                 $sale_box->in_order_cash = $in_order_cash;
-                $sale_box->in_order     = $in_order;
+                $sale_box->in_order      = $in_order;
                 $sale_box->in_pay_cash   = $in_pay_cash;
-                $sale_box->in_pay       = $in_pay;
-                $sale_box->cash        = $cash;
-                $sale_box->total       = $totale;
+                $sale_box->in_pay        = $in_pay;
+                $sale_box->cash          = $cash;
+                $sale_box->total         = $totale;
                 $sale_box->update();
             }
             $cont = 0;
@@ -241,11 +241,11 @@ class OrderController extends Controller
 
             //obteniendo datos de la caja
             $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-            $ord = $boxy->order;
-            $tpv = $order->total_pay;
+            $ord  = $boxy->order;
+            $tpv  = $order->total_pay;
             $nord = $ord + $tpv;
             //Actualizando caja
-            $sale_box = Sale_box::findOrFail($boxy->id);
+            $sale_box        = Sale_box::findOrFail($boxy->id);
             $sale_box->order = $nord;
             $sale_box->update();
 
@@ -376,13 +376,16 @@ class OrderController extends Controller
         if($order->status == 'ANULADO'){
             return redirect("order")->with('warning', 'Pedido Anulado Anteriormente');
         }
+        $balance = $order->balance;
+        $valor = $order->total_pay;
+        $total = $valor - $balance;
 
-        if($order->balance > 0){
+        if($balance != $valor){
             $pay_event = new Pay_event();
             $pay_event->origin = $order->id;
             $pay_event->destination = null;
             $pay_event->document = 'PEDIDO';
-            $pay_event->pay = $order->pay;
+            $pay_event->pay = $total;
             $pay_event->save();
         }
 

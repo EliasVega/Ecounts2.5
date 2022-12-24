@@ -23,7 +23,7 @@
             <div class="box-body row">
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group">
-                        <label for="name">name del Banco</label>
+                        <label for="name">nombre del Banco</label>
                         <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Banco">
                     </div>
                 </div>

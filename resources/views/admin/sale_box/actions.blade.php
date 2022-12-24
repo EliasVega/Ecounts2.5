@@ -10,3 +10,6 @@
 <a href="{{ route('show_pos', $id) }}"
     class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Reporte Caja"><i class="fas fa-newspaper"></i>
 </a>
+<a href="{{ route('show_close', $id) }}"
+    class="btn btn-gris" data-toggle="tooltip" data-placement="top" title="Cierre de caja"><i class="fas fa-newspaper"></i>
+</a>

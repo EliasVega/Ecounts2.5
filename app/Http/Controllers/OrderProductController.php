@@ -9,6 +9,7 @@ use App\Models\Branch_product;
 use App\Models\Indicator;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
+use App\Models\Kardex;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -34,7 +35,6 @@ class OrderProductController extends Controller
      */
     public function create(Request $request)
     {
-
         $orders = Order::from('orders AS ord')
         ->join('users AS use', 'ord.user_id', 'use.id')
         ->join('branches AS bra', 'ord.branch_id', 'bra.id')
@@ -68,7 +68,7 @@ class OrderProductController extends Controller
         if ($cont > 0) {
             return redirect('order')->with('warning', 'La venta de algunos productos supera el stock');
         } else {
-            return view('admin.order_product.create', compact('orders', 'products', 'order_products'));
+            return view('admin.order_product.create', compact('orders', 'products', 'order_products', 'ordersis'));
         }
     }
 
@@ -147,13 +147,17 @@ class OrderProductController extends Controller
                 $invoice_product->item       = $item;
                 $invoice_product->save();
 
+                $idp = $invoice_product->product_id;
+                $branch_products = Branch_product::where('product_id', $idp)
+                    ->where('branch_id', $branch)->first();
+                    /*
                 $branch_products = Branch_product::from('branch_products AS bp')
                 ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
                 ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
                 ->select('bp.id', 'bp.stock', 'pro.id AS idP', 'bra.id as idB')
                 ->where('bp.product_id', '=', $invoice_product->product_id)
                 ->where('bp.branch_id', '=', $branch)
-                ->first();
+                ->first();*/
 
                 $id = $branch_products->id;
                 $prestock = $branch_products->stock;
@@ -162,6 +166,26 @@ class OrderProductController extends Controller
                 $branch_product = Branch_product::findOrFail($id);
                 $branch_product->stock = $stock;
                 $branch_product->update();
+
+                $products = Product::findOrFail($idp);
+                /*
+                $products = Product::from('products AS pro')
+                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
+                ->where('pro.id', '=', $invoice_product->product_id)
+                ->first();*/
+
+                //$id = $products->id;
+                $stockardex = $products->stock;
+
+                $kardex = new Kardex();
+                $kardex->product_id = $idp;
+                $kardex->branch_id = $invoice->branch_id;
+                $kardex->operation = 'VENTA';
+                $kardex->number = $invoice->invoice;
+                $kardex->quantity = $orp->quantity;
+                $kardex->stock = $stockardex;
+                $kardex->save();
 
                 $cont++;
             }

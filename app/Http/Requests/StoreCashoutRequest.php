@@ -24,12 +24,13 @@ class StoreCashoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'admin_id'   => 'required',
-            'payment'    => 'required',
-            'admin'      => 'required',
-            'cashbox_id' => '',
-            'user_id'    => '',
-            'branch_id'  => ''
+            'admin'       => 'required',
+            'reason'      => 'required',
+            'payment'     => 'required',
+            'admin_id'    => 'required',
+            'sale_box_id' => '',
+            'user_id'     => '',
+            'branch_id'   => ''
         ];
     }
 }

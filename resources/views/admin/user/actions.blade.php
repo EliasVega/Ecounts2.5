@@ -7,4 +7,3 @@
 <a href="{{ route('show_code', $id) }}"
     class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Autorizar"><i class="fas fa-key"></i>
 </a>
-

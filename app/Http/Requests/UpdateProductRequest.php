@@ -25,14 +25,15 @@ class UpdateProductRequest extends FormRequest
     {
         return [
 
-            'code'        => 'required|max:20',
-            'name'        => 'required|max:100',
-            'price'       => 'required',
-            'sale_price'  => '',
-            'stock'       => '',
-            'status'      => '',
-            'image'       => '',
-            'category_id' => ''
+            'code'            => 'required|max:20',
+            'name'            => 'required|max:100',
+            'price'           => 'required',
+            'sale_price'      => '',
+            'stock'           => '',
+            'status'          => '',
+            'image'           => '',
+            'category_id'     => 'required',
+            'unit_measure_id' => 'required'
         ];
     }
 }

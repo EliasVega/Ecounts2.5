@@ -15,11 +15,7 @@ class Pay_event extends Model
         'status'
     ];
 
-    public function payinvoicePaymenmethod(){
-        return $this->BelongsToMany(PayinvoicePaymentmethod::class);
-    }
-
-    public function paymenmethodPayorder(){
-        return $this->BelongsToMany(PayinvoicePaymentmethod::class);
+    public function Payment_methods(){
+        return $this->belongsToMany(Payment_method::class);
     }
 }

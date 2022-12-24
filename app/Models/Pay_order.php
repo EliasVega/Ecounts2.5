@@ -27,7 +27,7 @@ class Pay_order extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function paymentMethods(){
-        return $this->belongsToMany(PaymentMethod::class);
+    public function Payment_methods(){
+        return $this->belongsToMany(Payment_method::class);
     }
 }

@@ -29,6 +29,13 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-control-label" for="reason">Razon Salida</label>
+                            <input type="text" id="reason" name="reason" value="" class="form-control"
+                                placeholder="Motivo">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group" id="cajetilla">
                             <label class="form-control-label" for="boxy">Efectivo Caja</label>
                             <input type="number" id="boxy" name="boxy" value="{{ $cash }}" class="form-control"
@@ -59,7 +66,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group" id="save">
                             <button class="btn btn-primary btn-md" type="submit"><i class="fa fa-save"></i>&nbsp; Aceptar</button>
-                            <a href="{{url('cashOut')}}" class="btn btn-danger"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
+                            <a href="{{url('cash_out')}}" class="btn btn-danger"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
                         </div>
                     </div>
                 </div>
@@ -92,8 +99,9 @@
 
     function valuing(){
 
-        boxy = $("#boxy").val();
-        payment = $("#payment").val();
+        boxy = parseFloat($("#boxy").val());
+        payment = parseFloat($("#payment").val());
+
         if(payment > boxy){
             //alert("Rellene todos los campos del detalle de la venta");
             Swal.fire({

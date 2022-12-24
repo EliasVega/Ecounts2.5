@@ -19,12 +19,17 @@ return new class extends Migration
             $table->decimal('total', 20, 2);
             $table->decimal('total_iva', 11, 2);
             $table->decimal('total_pay', 20, 2);
+            $table->decimal('pay',10,2);
+            $table->decimal('balance',10,2);
+            $table->enum('status',['APROBADA', 'CANCELADA'])->default('APROBADA');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');
             $table->foreignId('invoice_id')->constrained()->onUpdate('cascade');
             $table->foreignId('customer_id')->constrained()->onUpdate('cascade');
             $table->foreignId('nc_discrepancy_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('payment_form_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

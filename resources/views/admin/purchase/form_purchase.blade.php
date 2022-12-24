@@ -1,5 +1,6 @@
 <div class="box-body row">
-    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group row">
             <label for="supplier_id">Proveedor  <button class="btn btn-codesR btn-sm" type="button" data-toggle="modal" data-target="#supplier"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar Proveedor</button></label>
             <select name="supplier_id" class="form-control selectpicker" id="supplier_id"
@@ -11,50 +12,28 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="purchase">N°Factura</label>
             <input type="text" id="purchase" name="purchase" value="{{ old('purchase') }}" class="form-control" placeholder="Numero de la factura" required pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="due_date">Vencimiento</label>
             <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
         </div>
     </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group" id="fpago">
-            <label for="payment_form_id">F/Pago</label>
-            <select name="payment_form_id" class="form-control selectpicker" id="payment_form_id"
-                data-live-search="true" required>
-                <option value="" disabled selected>Seleccionar...</option>
-                @foreach($payment_forms as $pf)
-                <option value="{{ $pf->id }}">{{ $pf->name }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group" id="mpay">
-            <label for="payment_method_id">Med/pago</label>
-            <select name="payment_method_id" class="form-control selectpicker" id="payment_method_id"
-                data-live-search="true" required>
-                <option value="" disabled selected>Seleccionar...</option>
-                @foreach($payment_methods as $pm)
-                <option value="{{ $pm->id }}">{{ $pm->name }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <!--
+    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
         <div class="box-danger">
             <label class="form-control-label">
                 <h4>Agregar Productos</h4>
             </label>
         </div>
     </div>
-<!--
+
     <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
         <div class="form-group" id="idPro">
             <label class="form-control-label" for="idP">ID Producto</label>
@@ -63,6 +42,17 @@
         </div>
     </div>
 -->
+    <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group row">
+            <label class="form-control-label" for="branch_id">Sucursal Destino</label>
+                <select name="branch_id" class="form-control selectpicker" id="branch_id" data-live-search="true">
+                    <option value="0" disabled selected>Seleccionar Sucursal</option>
+                    @foreach($branchs as $bra)
+                        <option value="{{ $bra->id }}">{{ $bra->name }}</option>
+                    @endforeach
+                </select>
+        </div>
+    </div>
     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="stock">Stock</label>

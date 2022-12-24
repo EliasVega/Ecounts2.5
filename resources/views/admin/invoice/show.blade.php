@@ -102,8 +102,8 @@
                                 <tr>
                                     <td>{{ $ip->name }}</td>
                                     <td>${{ $ip->price }}</td>
-                                    <td>{{ $ip->quantity }}</td>
-                                    <td>{{ $ip->subtotal }}</td>
+                                    <td class="tdder">{{ $ip->quantity }}</td>
+                                    <td class="tdder">{{ $ip->subtotal }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

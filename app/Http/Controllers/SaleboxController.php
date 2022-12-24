@@ -9,11 +9,13 @@ use App\Models\Branch;
 use App\Models\Cash_out;
 use App\Models\Cod_verif;
 use App\Models\Invoice;
+use App\Models\Invoice_product;
 use App\Models\Ncinvoice;
 use App\Models\Ndinvoice;
 use App\Models\Order;
 use App\Models\Pay_invoice;
 use App\Models\Pay_order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,12 +31,14 @@ class SaleboxController extends Controller
         $user = Auth::user()->role_id;
         if (request()->ajax()) {
             if ($user == 1 || $user == 2) {
+                $sale_boxes = Sale_box::get();
                 $sale_boxes = Sale_box::from('sale_boxes AS sal')
                 ->join('users AS use', 'sal.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'sal.branch_id', '=', 'bra.id')
                 ->select('sal.id', 'sal.cash_box', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
                 ->get();
             } else {
+                $sale_boxes = Sale_box::where('user_id', Auth::user()->id)->get();
                 $sale_boxes = Sale_box::from('sale_boxes AS sal')
                 ->join('users AS use', 'sal.user_id', '=', 'use.id')
                 ->join('branches AS bra', 'sal.branch_id', '=', 'bra.id')
@@ -93,26 +97,28 @@ class SaleboxController extends Controller
             return redirect("sale_box")->with('warning', 'Usuario ya tiene una sale_box Abierta');
         } else {
             $sale_box = new Sale_box();
-            $sale_box->user_id       = $user;
-            $sale_box->user_open_id   = $request->user_open_id;
-            $sale_box->user_close_id  = $request->user_close_id;
-            $sale_box->branch_id     = $branch;
-            $sale_box->cash_box       = $request->cash_box;
-            $sale_box->in_order_cash   = 0;
-            $sale_box->in_order       = 0;
-            $sale_box->in_invoice_cash = 0;
-            $sale_box->in_invoice     = 0;
-            $sale_box->in_pay_cash     = 0;
-            $sale_box->in_pay         = 0;
-            $sale_box->in_pay_event    = 0;
-            $sale_box->out_cash       = 0;
-            $sale_box->cash          = $request->cash_box;
-            $sale_box->out           = 0;
-            $sale_box->total         = $request->cash_box;
-            $sale_box->sale          = 0;
-            $sale_box->order         = 0;
-            $sale_box->cod_verif_open  = $request->cod_verif_open;
-            $sale_box->cod_verif_close = null;
+            $sale_box->user_id           = $user;
+            $sale_box->user_open_id      = $request->user_open_id;
+            $sale_box->user_close_id     = $request->user_close_id;
+            $sale_box->branch_id         = $branch;
+            $sale_box->cash_box          = $request->cash_box;
+            $sale_box->in_order_cash     = 0;
+            $sale_box->in_order          = 0;
+            $sale_box->in_invoice_cash   = 0;
+            $sale_box->in_invoice        = 0;
+            $sale_box->in_ndinvoice_cash = 0;
+            $sale_box->in_ndinvoice      = 0;
+            $sale_box->in_pay_cash       = 0;
+            $sale_box->in_pay            = 0;
+            $sale_box->in_pay_event      = 0;
+            $sale_box->out_cash          = 0;
+            $sale_box->cash              = $request->cash_box;
+            $sale_box->out               = 0;
+            $sale_box->total             = $request->cash_box;
+            $sale_box->sale              = 0;
+            $sale_box->order             = 0;
+            $sale_box->cod_verif_open    = $request->cod_verif_open;
+            $sale_box->cod_verif_close   = null;
             $sale_box->save();
         }
         return redirect("sale_box")->with('success', 'Caja creada Satisfactoriamente');
@@ -124,6 +130,81 @@ class SaleboxController extends Controller
      * @param  \App\Models\Sale_box  $sale_box
      * @return \Illuminate\Http\Response
      */
+    public function show_close($id)
+    {
+        $users    = Auth::user()->role_id;
+        $user     = Auth::user()->id;
+        $cause    = Auth::user()->name;
+        $sale_box = Sale_box::findOrFail($id);
+        $from     = $sale_box->created_at;
+        $to       = $sale_box->updated_at;
+        $produc = [];
+        $cont = 0;
+        $products = Product::all();
+        foreach ($products as $key => $product ) {
+            $invoice_products = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->join('products as pro', 'ip.product_id', 'pro.id')
+            ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->where('ip.product_id', $product->id)
+            ->sum('quantity');
+
+            $iva = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->join('products as pro', 'ip.product_id', 'pro.id')
+            ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->where('ip.product_id', $product->id)
+            ->sum('ivasubt');
+
+            if ($invoice_products) {
+                $produc[$cont] = Product::findOrFail($product->id);
+                $produc[$cont]->stock = $invoice_products;
+                $produc[$cont]->price = $iva;
+                $cont++;
+            }
+        }
+        $sumtotal = Invoice_product::from('invoice_products as ip')
+        ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+        ->select('ip.subtotal', 'ip.created_at')
+        ->where('inv.user_id', $sale_box->user_id)
+        ->whereBetween('ip.created_at', [$from, $to])
+        ->sum('subtotal');
+
+        $ivasubt = Invoice_product::from('invoice_products as ip')
+        ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+        ->select('ip.subtotal', 'ip.created_at')
+        ->where('inv.user_id', $sale_box->user_id)
+        ->whereBetween('ip.created_at', [$from, $to])
+        ->sum('ivasubt');
+
+        $invoices = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $invbalance = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
+        $invpay = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
+        $orders = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $ordbalance = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
+        $ordpay = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
+        $ncinvoices = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $totalnc = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+
+        $ndinvoices = Ndinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $totalnd = Ndinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+
+        $pay_orders = Pay_order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $sum_pay_orders = Pay_order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+        $pay_invoices = Pay_invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $sum_pay_invoices = Pay_invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+        $cash_outs = Cash_out::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $sum_pay_cashs = Cash_out::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('payment');
+
+
+        return view('admin.sale_box.show_close', compact('sale_box', 'invoices', 'orders', 'ncinvoices', 'ndinvoices', 'totalnd', 'pay_orders', 'pay_invoices', 'cash_outs', 'products', 'sumtotal', 'ivasubt', 'produc', 'invpay', 'invbalance', 'ordpay', 'ordbalance', 'totalnc', 'sum_pay_orders', 'sum_pay_invoices', 'sum_pay_cashs'));
+    }
     public function show($id)
     {
         $users = Auth::user()->role_id;

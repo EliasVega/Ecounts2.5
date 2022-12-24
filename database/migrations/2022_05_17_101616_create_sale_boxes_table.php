@@ -21,6 +21,8 @@ return new class extends Migration
             $table->decimal('in_order',10,2);//ing total de pedidos
             $table->decimal('in_invoice_cash',10,2);//ing ventas efectivo
             $table->decimal('in_invoice',10,2);//ing total de ventas
+            $table->decimal('in_ndinvoice_cash',10,2);
+            $table->decimal('in_ndinvoice',10,2);
             $table->decimal('in_pay_cash',10,2);//ing abonos en efectivo
             $table->decimal('in_pay',10,2);//ing total de abonos
             $table->decimal('in_pay_event', 10,2);//ing abonos por eventos

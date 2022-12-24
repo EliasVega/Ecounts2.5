@@ -37,6 +37,14 @@
             });
         });
     });
+    jQuery(document).ready(function($){
+        $(document).ready(function() {
+            $('#branch_id').select2({
+                theme: "classic",
+                width: "100%",
+            });
+        });
+    });
 
     $(document).ready(function(){
         $("#add").click(function(){

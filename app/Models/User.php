@@ -130,4 +130,8 @@ class User extends Authenticatable
     public function payorders(){
         return $this->hasMany(Payorder::class);
     }
+
+    public function cod_verif(){
+        return $this->hasOne(Cod_verif::class);
+    }
 }

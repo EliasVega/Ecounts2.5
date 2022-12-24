@@ -7,7 +7,7 @@
     <div class="row">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>Listado de Abonos <a href="payInvoice/create" class="btn btn-success"><i class="fa fa-plus mr-2"></i> Agregar Abono</a>
+                <h3>Listado de Abonos </a>
                     <a href="{{ route('invoice.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
             </div>
         </div>
@@ -46,10 +46,10 @@
             ajax: '{{ route('pay_invoice.index') }}',
             columns:
             [
-                {data: 'idI'},
-                {data: 'nameC'},
-                {data: 'nameB'},
-                {data: 'name'},
+                {data: 'id'},
+                {data: 'customer'},
+                {data: 'branch'},
+                {data: 'user'},
                 {data: 'total_pay'},
                 {data: 'pay'},
                 {data: 'balance'},

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Branch_product;
 use App\Models\Category;
+use App\Models\Unit_measure;
 
 class ProductController extends Controller
 {
@@ -37,8 +38,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::select('id', 'name')->get();
+        $measures = Unit_measure::get();
 
-        return view("admin.product.create", compact('categories'));
+        return view("admin.product.create", compact('categories', 'measures'));
     }
 
     /**
@@ -51,6 +53,7 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->category_id = $request->category_id;
+        $product->unit_measure_id = $request->unit_measure_id;
         $product->code = $request->code;
         $product->name = $request->name;
         $product->price = $request->price;

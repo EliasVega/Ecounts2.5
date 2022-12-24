@@ -40,6 +40,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-5 col-md-5 col-sm-8 col-xs-12">
+                    <div class="form-group">
+                        <label for="unit_measure_id">U/medida</label>
+                        <div class="select">
+                            <select name="unit_measure_id" class="form-control selectpicker" data-live-search="true" id="unit_measure_id" required>
+                                <option value="" disabled selected>Seleccionar.</option>
+                                @foreach($measures as $mea)
+                                <option value="{{ $mea->id }}">{{ $mea->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                     <div class="form-group">
                         <label for="code">Codigo</label>

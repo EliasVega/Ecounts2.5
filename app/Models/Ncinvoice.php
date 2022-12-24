@@ -8,15 +8,19 @@ class Ncinvoice extends Model
 {
 
     protected $fillable = [
-        'invoice',
         'total',
         'total_iva',
         'total_pay',
+        'pay',
+        'balance',
+        'status',
         'user_id',
         'branch_id',
         'invoice_id',
         'customer_id',
-        'nc_discrepancy_id'
+        'nc_discrepancy_id',
+        'payment_method_id',
+        'payment_form_id'
     ];
 
     public function user(){

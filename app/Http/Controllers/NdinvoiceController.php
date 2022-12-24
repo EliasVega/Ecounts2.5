@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Ndinvoice;
 use App\Http\Requests\StoreNdinvoiceRequest;
 use App\Http\Requests\UpdateNdinvoiceRequest;
+use App\Models\Bank;
 use App\Models\Branch_product;
+use App\Models\Card;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
 use App\Models\Kardex;
 use App\Models\Nd_discrepancy;
 use App\Models\Ndinvoice_product;
 use App\Models\Pay_event;
-use App\Models\Pay_invoice;
-use App\Models\Pay_invoice_Payment_method;
+use App\Models\pay_ndinvoice;
+use App\Models\pay_ndinvoice_Payment_method;
+use App\Models\Payment_form;
+use App\Models\Payment_method;
 use App\Models\Product;
 use App\Models\Product_branch;
 use App\Models\Sale_box;
@@ -30,24 +34,21 @@ class NdinvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        if (request()->ajax()) {
-
-            $ndinvoices = Ndinvoice::from('ndinvoices as ndi')
-            ->join('users as use', 'ndi.user_id', 'use.id')
-            ->join('invoices as inv', 'ndi.invoice_id', 'inv.id')
-            ->join('customers as cus', 'ndi.customer_id', 'cus.id')
-            ->select('ndi.id', 'inv.id as idI', 'cus.name as nameC', 'ndi.total_pay', 'ndi.created_at', 'use.name')
-            ->where('ndi.branch_id', '=', $request->session()->get('branch'))
-            ->get();
+        if ($request->ajax()) {
+            $ndinvoices = Ndinvoice::with('customer')->get();
 
             return datatables()
             ->of($ndinvoices)
-            ->editColumn('created_at', function(Ndinvoice $ndinvoice){
-                return $ndinvoice->created_at->format('yy-m-d');
+            ->addIndexColumn()
+            ->addColumn('customer', function ($ndinvoices) {
+                return $ndinvoices->customer->name;
+            })
+            ->editColumn('created_at', function($ncinvoices){
+                return $ncinvoices->created_at->format('yy-m-d');
             })
             ->addColumn('edit', 'admin/ndinvoice/actions')
             ->rawcolumns(['edit'])
-            ->toJson();
+            ->make(true);
         }
         return view('admin.ndinvoice.index');
     }
@@ -59,10 +60,19 @@ class NdinvoiceController extends Controller
      */
     public function create(Request $request)
     {
+        $branch = $request->session()->get('branch');
+
+        $payment_forms = Payment_form::get();
+        $payment_methods = Payment_method::get();
+        $banks = Bank::get();
+        $cards = Card::get();
+
+        $invoices = Invoice::where('id', $request->session()->get('invoice'))->first();
+        /*
         $invoices = Invoice::from('invoices AS inv')
         ->join('customers AS cus', 'inv.customer_id', 'cus.id')
         ->select('inv.id', 'inv.customer_id', 'cus.name', 'inv.status')
-        ->where('inv.id', '=', $request->session()->get('invoice'))->first();
+        ->where('inv.id', '=', $request->session()->get('invoice'))->first();*/
         if ($invoices->status != 'ACTIVE') {
             return redirect("invoice")->with('warning', 'Esta Compra ya tiene una Nota Debito o Credito');
         }
@@ -80,7 +90,7 @@ class NdinvoiceController extends Controller
 
         $discrepancies = Nd_discrepancy::get();
 
-        return view('admin.ndinvoice.create', compact('invoices', 'products', 'invoice_products', 'discrepancies'));
+        return view('admin.ndinvoice.create', compact('invoices', 'products', 'invoice_products', 'discrepancies', 'payment_forms', 'payment_methods', 'banks', 'cards'));
     }
 
     /**
@@ -97,111 +107,97 @@ class NdinvoiceController extends Controller
             $pay = $request->pay;
             $invoice = $request->session()->get('invoice');
             $branch = $request->session()->get('branch');
-            //crear tabla nota debito venta
 
+            //variables que vienen en el request
+            $product_id     = $request->product_id;
+            $quantity       = $request->quantity;
+            $price          = $request->price;
+            $iva            = $request->iva;
+            $pay            = $request->pay;
+            $cont = 0;
+
+            //crear tabla nota debito venta
             $ndinvoice = new Ndinvoice();
             $ndinvoice->user_id           = Auth::user()->id;
             $ndinvoice->branch_id         = $branch;
             $ndinvoice->invoice_id        = $invoice;
             $ndinvoice->customer_id       = $request->customer_id;
             $ndinvoice->nd_discrepancy_id = $request->nd_discrepancy_id;
+            $ndinvoice->payment_method_id = $request->payment_method_id;
+            $ndinvoice->payment_form_id   = $request->payment_form_id;
             $ndinvoice->total             = $request->total;
             $ndinvoice->total_iva         = $request->total_iva;
             $ndinvoice->total_pay         = $request->total_pay;
-            $ndinvoice->pay               = 0;
+            $ndinvoice->pay               = $pay;
             $ndinvoice->balance           = $request->total_pay;
             $ndinvoice->save();
+            if($pay > 0){
 
-            $invoice_products = Invoice_product::where('invoice_id', $invoice)->get();
-            /*
-            foreach ($invoice_products as $ip) {
-                $id = $ip->product_id;
-                $quantity = $ip->quantity;
-                $products = Product::findOrFail($id);
-                $stock = $products->stock;
-                $products->stock = $stock + $quantity;
-                $products->update();
-                $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
-                $stk = $branch_product->stock;
-                $stky = $stk + $quantity;
-                $branch_product->stock = $stky;
-                $branch_product->update();
-            }*/
+                $pay_ndinvoice                    = new Pay_ndinvoice();
+                $pay_ndinvoice->pay               = $pay;
+                $pay_ndinvoice->balance_ndinvoice = $ndinvoice->balance - $pay;
+                $pay_ndinvoice->user_id           = $ndinvoice->user_id;
+                $pay_ndinvoice->branch_id         = $ndinvoice->branch_id;
+                $pay_ndinvoice->invoice_id        = $ndinvoice->invoice_id;
 
-            $product_id     = $request->product_id;
-            $quantity       = $request->quantity;
-            $price          = $request->price;
-            //$stock          = $request->stock;
-            //$invo = $request->session()->get('invoice');
+                $pay_ndinvoice->save();
+
+                $pay_ndinvoice_Pay_method                     = new Pay_ndinvoice_payment_method();
+                $pay_ndinvoice_Pay_method->pay_ndinvoice_id   = $pay_ndinvoice->id;
+                $pay_ndinvoice_Pay_method->payment_method_id  = $request->payment_method_id;
+                $pay_ndinvoice_Pay_method->bank_id            = $request->bank_id;
+                $pay_ndinvoice_Pay_method->card_id            = $request->card_id;
+                $pay_ndinvoice_Pay_method->payment            = $request->pay;
+                $pay_ndinvoice_Pay_method->transaction        = $request->transaction;
+                $pay_ndinvoice_Pay_method->save();
 
 
-            $cont = 0;
+                $mp = $request->payment_method_id;
+
+                $boxy = Sale_box::where('user_id', '=', $ndinvoice->user_id)->where('status', '=', 'ABIERTA')->first();
+                $in_ndinvoice      = $boxy->in_ndinvoice + $pay;
+                $in_ndinvoice_cash = $boxy->in_ndinvoice_cash;
+                $in_pay_cash     = $boxy->in_pay_cash;
+                $in_pay          = $boxy->in_pay + $pay;
+                $cash            = $boxy->cash;
+                $out             = $boxy->out_cash;
+                if($mp == 1){
+                    $in_ndinvoice_cash += $pay;
+                    $in_pay_cash       += $pay;
+                    $cash              += $pay;
+                }
+                $totale = $cash - $out;
+
+                $sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->in_ndinvoice_cash = $in_ndinvoice_cash;
+                $sale_box->in_ndinvoice      = $in_ndinvoice;
+                $sale_box->in_pay_cash       = $in_pay_cash;
+                $sale_box->in_pay            = $in_pay;
+                $sale_box->cash              = $cash;
+                $sale_box->total             = $totale;
+                $sale_box->update();
+            }
 
             while($cont < count($product_id)){
 
                 //crear registro tabla ndinvoice_products
                 $ndinvoice_product = new Ndinvoice_product();
                 $ndinvoice_product->ndinvoice_id = $ndinvoice->id;
-                $ndinvoice_product->product_id = $product_id[$cont];
-                $ndinvoice_product->quantity = $quantity[$cont];
-                $ndinvoice_product->price = $price[$cont];
+                $ndinvoice_product->product_id   = $product_id[$cont];
+                $ndinvoice_product->quantity     = $quantity[$cont];
+                $ndinvoice_product->price        = $price[$cont];
                 $ndinvoice_product->save();
-                /*
-                //calcular valores para registro kardex
-                $products = Product::from('products as pro')
-                ->join('categories as cat', 'pro.category_id', 'cat.id')
-                ->select('pro.id', 'pro.price', 'pro.stock', 'cat.utility')
-                ->where('pro.id', '=', $ndinvoice_product->product_id)
-                ->first();
-
-                //Calcular el valor para actualizar Branch_products
-                $branch_products = Branch_product::from('branch_Products AS bp')
-                ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
-                ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
-                ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id AS idP', 'bra.id')
-                ->where('bp.product_id', '=', $ndinvoice_product->product_id)
-                ->where('bp.branch_id', '=', $ndinvoice->branch_id)
-                ->first();
-                $id = $branch_products->idP;
-                $prestock = $branch_products->stock;
-                $stock = $prestock - $ndinvoice_product->quantity;
-                //Actualizar tabla Branch Products
-                $branch_product = Branch_product::where('branch_id', $ndinvoice->branch_id)->where('product_id', $ndinvoice_product->product_id)->first();
-                $branch_product->stock = $stock;
-                $branch_product->update();
-
-                $id = $products->id;
-                $stockardex = $products->stock;
-                //crear registro en la tabla kardex
-                $kardex = new Kardex();
-                $kardex->product_id = $id;
-                $kardex->branch_id  = $ndinvoice->branch_id;
-                $kardex->operation  = 'ND_VENTA';
-                $kardex->number     = $ndinvoice->id;
-                $kardex->quantity   = $quantity[$cont];
-                $kardex->stock      = $stockardex;
-                $kardex->save();*/
 
                 $cont++;
-
             }
-
             $boxy = Sale_box::where('user_id', '=', $ndinvoice->user_id)->where('status', '=', 'ABIERTA')->first();
-            /*$invoicy = Invoice::where('id', '=', $request->session()->get('invoice'))->first();
-            $total_pay = $invoicy->total_pay;*/
-            $sale = $boxy->sale;
-            $tpv = $ndinvoice->total_pay;
-            $ninv = $sale + $tpv;
+            $inv  = $boxy->sale;
+            $tpv  = $ndinvoice->total_pay;
+            $ninv = $inv + $tpv;
 
-            $saleBox = Sale_box::findOrFail($boxy->id);
-            $saleBox->sale = $ninv;
-            $saleBox->update();
-
-            $invoice = Invoice::findOrFail($invoice);
-            $invoice->status = 'DEBIT_NOTE';
-            $invoice->update();
-
-
+            $sale_box = Sale_box::findOrFail($boxy->id);
+            $sale_box->sale = $ninv;
+            $sale_box->update();
 
             DB::commit();
         }

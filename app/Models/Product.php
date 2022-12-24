@@ -15,7 +15,8 @@ class Product extends Model
         'stock',
         'status',
         'image',
-        'category_id'
+        'category_id',
+        'unit_measure_id'
     ];
 
     public function category(){
@@ -37,11 +38,11 @@ class Product extends Model
     public function ndpurchase(){
         return $this->belongsToMany(Ndpurchase::class);
     }
-    /*
-    public function productPurchases(){
-        return $this->hasMany(ProductPurchase::class);
-    }
 
+    public function unit_measure(){
+        return $this->hasOne(Unit_measure::class);
+    }
+    /*
     public function Productoventas(){
         return $this->hasMany(ProductoVenta::class);
     }*/

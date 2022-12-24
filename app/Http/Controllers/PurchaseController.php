@@ -6,6 +6,7 @@ use App\Models\Purchase;
 use App\Http\Requests\StorePurchaseRequest;
 use App\Http\Requests\UpdatepurchaseRequest;
 use App\Models\Bank;
+use App\Models\Branch;
 use App\Models\Branch_product;
 use App\Models\Card;
 use App\Models\Company;
@@ -20,6 +21,7 @@ use App\Models\Pay_purchase_payment_method;
 use App\Models\Payment_form;
 use App\Models\Payment_method;
 use App\Models\Product;
+use App\Models\Product_branch;
 use App\Models\Product_purchase;
 use App\Models\Regime;
 use App\Models\Supplier;
@@ -78,13 +80,14 @@ class PurchaseController extends Controller
         $payment_methods = Payment_method::get();
         $banks = Bank::get();
         $cards = Card::get();
+        $branchs = Branch::get();
         $products = Product::from('products AS pro')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
         ->select('pro.id', 'pro.name', 'pro.sale_price', 'pro.stock', 'cat.iva', 'pro.price')
         ->where('pro.status', '=', 'ACTIVE')
         ->get();
 
-        return view('admin.purchase.create', compact('suppliers', 'products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'suppliers', 'regimes', 'payment_forms', 'payment_methods', 'banks', 'cards'));
+        return view('admin.purchase.create', compact('suppliers', 'products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'suppliers', 'regimes', 'payment_forms', 'payment_methods', 'banks', 'cards', 'branchs'));
     }
     /**
      * Store a newly created resource in storage.
@@ -103,10 +106,11 @@ class PurchaseController extends Controller
             $price      = $request->price;
             $iva        = $request->iva;
             $pay        = $request->pay;
+            $branch     = $request->branch_id[0];
 
             $purchase = new Purchase();
             $purchase->user_id     = Auth::user()->id;
-            $purchase->branch_id   = 1;
+            $purchase->branch_id   = $branch;
             $purchase->supplier_id = $request->supplier_id;
             $purchase->payment_form_id = $request->payment_form_id;
             $purchase->payment_method_id = $request->payment_method_id;
@@ -149,15 +153,16 @@ class PurchaseController extends Controller
                 $ivasub = $subtotal * $iva[$cont]/100;
                 $item = $cont + 1;
                 $prodid = $product_id[$cont];
+
                 $product_purchase = new Product_purchase();
-                $product_purchase->purchase_id   = $purchase->id;
-                $product_purchase->product_id = $product_id[$cont];
+                $product_purchase->purchase_id = $purchase->id;
+                $product_purchase->product_id  = $product_id[$cont];
                 $product_purchase->quantity    = $quantity[$cont];
-                $product_purchase->price      = $price[$cont];
+                $product_purchase->price       = $price[$cont];
                 $product_purchase->iva         = $iva[$cont];
-                $product_purchase->subtotal = $subtotal;
-                $product_purchase->ivasubt = $ivasub;
-                $product_purchase->item = $item;
+                $product_purchase->subtotal    = $subtotal;
+                $product_purchase->ivasubt     = $ivasub;
+                $product_purchase->item        = $item;
                 $product_purchase->save();
                 //selecciona el producto que viene del array
                 $products = Product::from('products AS pro')
@@ -175,22 +180,27 @@ class PurchaseController extends Controller
                 $product = Product::findOrFail($id);
                 $product->sale_price = $preven;
                 $product->update();
-                //selecciona el producto de la sucursal que se el mismo del array
-                $branch_products = Branch_product::from('branch_products AS bp')
-                ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
-                ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
-                ->select('bp.id', 'bp.product_id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'bra.id')
-                ->where('bp.product_id', '=', $product_purchase->product_id)
-                ->where('bp.branch_id', '=', 1)
+
+                //selecciona el producto de la sucursal que sea el mismo del array
+                $branch_products = Branch_product::where('product_id', '=', $product_purchase->product_id)
+                ->where('branch_id', '=', $branch)
                 ->first();
 
-                $id = $branch_products->idP;
-                $prestock = $branch_products->stock;
-                $stock = $prestock + $product_purchase->quantity;
-                //Ingresa la cantidad de ese producto a la sucursal Bodega
-                $branch_product = Branch_product::findOrFail($id);
-                $branch_product->stock = $stock;
-                $branch_product->update();
+                if (isset($branch_products)) {
+                    $id = $branch_products->id;
+                    $stock = $branch_products->stock + $product_purchase->quantity;
+                    $branch_product = Branch_product::findOrFail($id);
+                    $branch_product->stock = $stock;
+                    $branch_product->update();
+                } else {
+                    //metodo para crear el producto en la sucursal y asignar stock
+                    $branch_product = new Branch_product();
+                    $branch_product->branch_id = $branch;
+                    $branch_product->product_id = $product_purchase->product_id;
+                    $branch_product->stock = $product_purchase->quantity;
+                    $branch_product->order_product = 0;
+                    $branch_product->save();
+                }
 
                 //Actualiza la tabla del Kardex
                 $kardex = new Kardex();

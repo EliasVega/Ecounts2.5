@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('product_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('transfer_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('transfer_id')->nullable()->constrained()->onUpdate('cascade');
             $table->foreignId('origin_branch_id')
             ->references('id')
             ->on('branches')

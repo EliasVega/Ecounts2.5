@@ -28,6 +28,8 @@ return new class extends Migration
             $table->foreignId('invoice_id')->constrained()->onUpdate('cascade');
             $table->foreignId('customer_id')->constrained()->onUpdate('cascade');
             $table->foreignId('nd_discrepancy_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('payment_form_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

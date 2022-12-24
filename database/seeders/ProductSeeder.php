@@ -18,6 +18,7 @@ class ProductSeeder extends Seeder
         $product = [
             [
                 'category_id' => 1,
+                'unit_measure_id' => 70,
                 'code' => '2301',
                 'name' => 'CABLE DUPLEX #12',
                 'price' => 15000,
@@ -28,6 +29,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'category_id' => 2,
+                'unit_measure_id' => 70,
                 'code' => '2302',
                 'name' => 'Taladro Electrico MK',
                 'price' => 200000,
@@ -38,6 +40,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'category_id' => 2,
+                'unit_measure_id' => 70,
                 'code' => '2303',
                 'name' => 'Pulidora SWITH',
                 'price' => 150000,
@@ -48,6 +51,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'category_id' => 3,
+                'unit_measure_id' => 70,
                 'code' => '2304',
                 'name' => 'Lenovo 360',
                 'price' => 1500000,
@@ -58,6 +62,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'category_id' => 3,
+                'unit_measure_id' => 70,
                 'code' => '2305',
                 'name' => 'ASUS',
                 'price' => 1900000,
@@ -68,6 +73,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'category_id' => 4,
+                'unit_measure_id' => 70,
                 'code' => '2306',
                 'name' => 'SANSUMG',
                 'price' => 1500000,

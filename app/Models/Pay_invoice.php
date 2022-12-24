@@ -27,11 +27,7 @@ class Pay_invoice extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function paymentMethod(){
-        return $this->hasMany(Mediopago::class);
-    }
-
-    public function payinvoices(){
-        return $this->hasMany(Payinvoice::class);
+    public function Payment_methods(){
+        return $this->belongsToMany(Payment_method::class);
     }
 }

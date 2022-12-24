@@ -9,7 +9,7 @@
     <div class="col-lg-4 col-md-6 col-sm-5 col-xs-12">
         <div class="form-group">
             <label for="">Cliente</label>
-            <input type="text" name="" value="{{ $invoices->name }}"
+            <input type="text" name="" value="{{ $invoices->customer->name }}"
                 class="form-control" placeholder="" readonly>
         </div>
     </div>
@@ -28,11 +28,7 @@
                 disabled pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="box-danger">
-            <label class="form-control-label"><h4>Agregar products</h4></label>
-        </div>
-    </div>
+
     <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
         <div class="form-group" id="price_v">
             <label class="form-control-label" for="price_sale">Precio Facturado</label>
@@ -97,7 +93,6 @@
                     <thead class="bg-info">
                         <tr>
                             <th>Eliminar</th>
-                            <th>Stock</th>
                             <th>Producto</th>
                             <th>Cantidad</th>
                             <th>precio ($)</th>
@@ -106,19 +101,19 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th  colspan="5"><p align="right">TOTAL:</p></th>
+                            <th  colspan="4"><p align="right">TOTAL:</p></th>
                             <th><p align="right"><span id="total_html">$ 0.00</span>
                                 <input type="hidden" name="total" id="total"> </p></th>
                         </tr>
 
                         <tr>
-                            <th colspan="5"><p align="right">TOTAL IVA:</p></th>
+                            <th colspan="4"><p align="right">TOTAL IVA:</p></th>
                             <th><p align="right"><span id="total_iva_html">$ 0.00</span>
                                 <input type="hidden" name="total_iva" id="total_iva"></p></th>
                         </tr>
 
                         <tr>
-                            <th  colspan="5"><p align="right">TOTAL PAGAR:</p></th>
+                            <th  colspan="4"><p align="right">TOTAL PAGAR:</p></th>
                             <th><p align="right"><span align="right" id="total_pay_html">$ 0.00</span>
                                 <input type="hidden" name="total_pay" id="total_pay"></p></th>
                         </tr>

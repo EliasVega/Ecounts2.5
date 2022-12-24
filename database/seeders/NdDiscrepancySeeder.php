@@ -26,9 +26,6 @@ class NdDiscrepancySeeder extends Seeder
                 'description' => 'Cambio de valor'
             ],
             [
-                'description' => 'Gastos por cobrar'
-            ],
-            [
                 'description' => 'Otros'
             ],
 

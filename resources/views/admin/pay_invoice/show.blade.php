@@ -9,25 +9,25 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="name">CLIENTE</label>
-                <p>{{ $pay_invoice->nameC }}</p>
+                <p>{{ $pay_invoices->nameC }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="factura">Venta #</label>
-                <p>{{ $pay_invoice->idI }}</p>
+                <p>{{ $pay_invoices->idI }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="pay">ABONO</label>
-                <p>{{ $pay_invoice->pay }}</p>
+                <p>{{ $pay_invoices->pay }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="vece">VENCE</label>
-                <p>{{ $pay_invoice->due_date }}</p>
+                <p>{{ $pay_invoices->due_date }}</p>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $pay_invoice->pay }}</p></th>
+                                <th><p align="right">${{ $pay_invoices->pay }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -66,7 +66,7 @@
                                     <td>{{ $pp->nameB }}</td>
                                     <td>{{ $pp->nameT }}</td>
                                     <td>{{ $pp->transaction }}</td>
-                                    <td>$ {{ $pp->balance }}</td>
+                                    <td class="tdder">$ {{ $pp->payment }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

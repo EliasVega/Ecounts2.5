@@ -25,10 +25,11 @@ class UpdateCashoutRequest extends FormRequest
     {
         return [
 
-            'admin_id'    => 'required',
-            'payment'     => 'required',
             'admin'       => 'required',
-            'cash_box_id' => '',
+            'reason'      => 'required',
+            'payment'     => 'required',
+            'admin_id'    => 'required',
+            'sale_box_id' => '',
             'user_id'     => '',
             'branch_id'   => ''
         ];

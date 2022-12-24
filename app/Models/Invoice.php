@@ -33,12 +33,12 @@ class Invoice extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function paymentForm(){
-        return $this->belongsTo(PaymentForm::class);
+    public function payment_form(){
+        return $this->belongsTo(Payment_form::class);
     }
 
-    public function paymentMethod(){
-        return $this->belongsTo(PaymentMethod::class);
+    public function payment_method(){
+        return $this->belongsTo(Payment_method::class);
     }
 
     public function products()

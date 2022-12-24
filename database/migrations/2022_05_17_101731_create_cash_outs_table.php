@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('cash_outs', function (Blueprint $table) {
             $table->id();
 
+
             $table->decimal('payment',10,2);
+            $table->string('reason', 50);
             $table->string('admin',20);
 
             $table->foreignId('sale_box_id')->constrained();

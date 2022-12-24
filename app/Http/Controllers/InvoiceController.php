@@ -158,7 +158,7 @@ class InvoiceController extends Controller
             $invoice->total_iva         = $request->total_iva;
             $invoice->total_pay         = $request->total_pay;
             $invoice->pay               = $pay;
-            $invoice->balance           = $request->total_pay;
+            $invoice->balance           = $request->total_pay - $pay;
             $invoice->retention         = $request->retention;
             $invoice->save();
             if($pay > 0){
@@ -176,20 +176,20 @@ class InvoiceController extends Controller
                     $sale_box->in_Pay_event = $in_pay_event;
                     $sale_box->update();
                 } else {
-                    $pay_invoice             = new Pay_invoice();
-                    $pay_invoice->pay        = $pay;
-                    $pay_invoice->balance_invoice = $invoice->balance;
-                    $pay_invoice->user_id    = $invoice->user_id;
-                    $pay_invoice->branch_id  = $invoice->branch_id;
-                    $pay_invoice->invoice_id = $invoice->id;
+                    $pay_invoice                  = new Pay_invoice();
+                    $pay_invoice->pay             = $pay;
+                    $pay_invoice->balance_invoice = $invoice->balance - $pay;
+                    $pay_invoice->user_id         = $invoice->user_id;
+                    $pay_invoice->branch_id       = $invoice->branch_id;
+                    $pay_invoice->invoice_id      = $invoice->id;
                     $pay_invoice->save();
 
                     $pay_invoice_Pay_method                     = new Pay_invoice_payment_method();
-                    $pay_invoice_Pay_method->pay_invoice_id      = $pay_invoice->id;
+                    $pay_invoice_Pay_method->pay_invoice_id     = $pay_invoice->id;
                     $pay_invoice_Pay_method->payment_method_id  = $request->payment_method_id;
                     $pay_invoice_Pay_method->bank_id            = $request->bank_id;
                     $pay_invoice_Pay_method->card_id            = $request->card_id;
-                    $pay_invoice_Pay_method->pay_event_id        = $request->pay_event_id;
+                    $pay_invoice_Pay_method->pay_event_id       = $request->pay_event_id;
                     $pay_invoice_Pay_method->payment            = $request->pay;
                     $pay_invoice_Pay_method->transaction        = $request->transaction;
 
@@ -200,26 +200,26 @@ class InvoiceController extends Controller
                 $mp = $request->payment_method_id;
 
                 $boxy = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'ABIERTA')->first();
-                $in_invoice = $boxy->in_invoice + $pay;
+                $in_invoice      = $boxy->in_invoice + $pay;
                 $in_invoice_cash = $boxy->in_invoice_cash;
-                $in_pay_cash = $boxy->in_pay_cash;
-                $in_pay = $boxy->in_pay + $pay;
-                $cash = $boxy->cash;
-                $out = $boxy->out_cash;
+                $in_pay_cash     = $boxy->in_pay_cash;
+                $in_pay          = $boxy->in_pay + $pay;
+                $cash            = $boxy->cash;
+                $out             = $boxy->out_cash;
                 if($mp == 1){
                     $in_invoice_cash += $pay;
-                    $in_pay_cash += $pay;
-                    $cash += $pay;
+                    $in_pay_cash     += $pay;
+                    $cash            += $pay;
                 }
                 $totale = $cash - $out;
 
                 $sale_box = Sale_box::findOrFail($boxy->id);
                 $sale_box->in_invoice_cash = $in_invoice_cash;
-                $sale_box->in_invoice = $in_invoice;
-                $sale_box->in_pay_cash = $in_pay_cash;
-                $sale_box->in_pay = $in_pay;
-                $sale_box->cash = $cash;
-                $sale_box->total = $totale;
+                $sale_box->in_invoice      = $in_invoice;
+                $sale_box->in_pay_cash     = $in_pay_cash;
+                $sale_box->in_pay          = $in_pay;
+                $sale_box->cash            = $cash;
+                $sale_box->total           = $totale;
                 $sale_box->update();
             }
 
@@ -228,19 +228,19 @@ class InvoiceController extends Controller
             while($cont < count($product_id)){
 
                 $subtotal = $quantity[$cont] * $price[$cont];
-                $ivasub = $subtotal * $iva[$cont]/100;
-                $item = $cont + 1;
-                $prodid = $product_id[$cont];
+                $ivasub   = $subtotal * $iva[$cont]/100;
+                $item     = $cont + 1;
+                $prodid   = $product_id[$cont];
 
                 $invoice_product = new Invoice_product();
-                $invoice_product->invoice_id    = $invoice->id;
+                $invoice_product->invoice_id = $invoice->id;
                 $invoice_product->product_id = $idP[$cont];
-                $invoice_product->quantity    = $quantity[$cont];
+                $invoice_product->quantity   = $quantity[$cont];
                 $invoice_product->price      = $price[$cont];
-                $invoice_product->iva         = $iva[$cont];
-                $invoice_product->subtotal = $subtotal;
-                $invoice_product->ivasubt = $ivasub;
-                $invoice_product->item = $item;
+                $invoice_product->iva        = $iva[$cont];
+                $invoice_product->subtotal   = $subtotal;
+                $invoice_product->ivasubt    = $ivasub;
+                $invoice_product->item       = $item;
                 $invoice_product->save();
 
                 $branch_products = Branch_product::findOrFail($prodid);
@@ -361,7 +361,7 @@ class InvoiceController extends Controller
         \session()->put('total_pay', $invoices->total_Pay, 60 * 24 *365);
         \session()->put('status', $invoices->status, 60 * 24 *365);
 
-        return redirect('pay_invoice');
+        return redirect('pay_invoice/create');
      }
 
     public function show_pdf_invoice(Request $request, $id)

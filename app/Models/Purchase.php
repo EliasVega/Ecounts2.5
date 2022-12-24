@@ -44,4 +44,8 @@ class Purchase extends Model
     public function ndpurchase(){
         return $this->hasOne(Ndpurchase::class);
     }
+
+    public function generation(){
+        return $this->hasOne(Generation::class);
+    }
 }

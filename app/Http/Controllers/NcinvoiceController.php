@@ -26,24 +26,22 @@ class NcinvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        if (request()->ajax()) {
-            //$ntccompras = Ntccompra::get();
 
-            $ncinvoices = Ncinvoice::from('ncinvoices AS nci')
-            ->join('invoices AS inv', 'nci.invoice_id', '=', 'inv.id')
-            ->join('customers AS cus', 'nci.customer_id', '=', 'cus.id')
-            ->select('nci.id', 'inv.id AS idI', 'cus.name', 'nci.total', 'nci.created_at')
-            //->where('nci.branch_id', '=', $request->session()->get('branch'))
-            ->get();
+        if ($request->ajax()) {
+            $ncinvoices = Ncinvoice::with('customer')->get();
 
             return datatables()
             ->of($ncinvoices)
-            ->editColumn('created_at', function(Ncinvoice $ncinvoice){
-                return $ncinvoice->created_at->format('yy-m-d');
+            ->addIndexColumn()
+            ->addColumn('customer', function ($ncinvoices) {
+                return $ncinvoices->customer->name;
+            })
+            ->editColumn('created_at', function($ncinvoices){
+                return $ncinvoices->created_at->format('yy-m-d');
             })
             ->addColumn('edit', 'admin/ncinvoice/actions')
             ->rawcolumns(['edit'])
-            ->toJson();
+            ->make(true);
         }
         return view('admin.ncinvoice.index');
     }
@@ -91,18 +89,19 @@ class NcinvoiceController extends Controller
     public function store(StoreNcinvoiceRequest $request)
     {
         $invoice = $request->session()->get('invoice');
-            $inv = Invoice::findOrFail($invoice);
-            $branch = $request->session()->get('branch');
-            $discrepancy = $request->nc_discrepancy_id;
-            $total = $inv->total;
-            $totaly = $request->total;
-            $totality = $total - $totaly;
-            if ($discrepancy != 2 && $totality < 0) {
-                return redirect("invoice")->with('warning', 'El valor de NC supera el valor de la factura');
-            }
+        $inv = Invoice::findOrFail($invoice);
+        $branch = $request->session()->get('branch');
+        $discrepancy = $request->nc_discrepancy_id;
+        $total = $inv->total;
+        $totaly = $request->total;
+        $totality = $total - $totaly;
+        if ($discrepancy != 2 && $totality < 0) {
+            return redirect("invoice")->with('warning', 'El valor de NC supera el valor de la factura');
+        }
         try{
             DB::beginTransaction();
             //Registrar tabla Nota Credito
+
             $ncinvoice = new Ncinvoice();
             $ncinvoice->user_id           = Auth::user()->id;
             $ncinvoice->branch_id         = $branch;
@@ -118,7 +117,23 @@ class NcinvoiceController extends Controller
                 $ncinvoice->total_iva         = $request->total_iva;
                 $ncinvoice->total_pay         = $request->total_pay;
             }
+            $ncinvoice->payment_method_id = $request->payment_method_id;
+            $ncinvoice->payment_form_id   = $request->payment_form_id;
+            $ncinvoice->pay               = $request->total_pay;
+            $ncinvoice->balance           = 0;
             $ncinvoice->save();
+
+            //metodo para crear un pay evento
+
+
+            $pay_event = new Pay_event();
+            $pay_event->origin = $inv->invoice;
+            $pay_event->destination = null;
+            $pay_event->document = 'FACTURA';
+            $pay_event->pay = $ncinvoice->total_pay;
+            $pay_event->status = 'PENDIENTE';
+            $pay_event->save();
+
             //Seleccionar los productos de la venta
             $invoice_products = Invoice_product::where('invoice_id', $invoice)->get();
             if ($discrepancy == 2) {
@@ -182,25 +197,35 @@ class NcinvoiceController extends Controller
                         //Registrar la nota credito
                         $ncinvoice_product = new Ncinvoice_product();
                         $ncinvoice_product->ncinvoice_id = $ncinvoice->id;
-                        $ncinvoice_product->product_id = $product_id[$cont];
-                        $ncinvoice_product->quantity = $quantity[$cont];
-                        $ncinvoice_product->price = $price[$cont];
+                        $ncinvoice_product->product_id   = $product_id[$cont];
+                        $ncinvoice_product->quantity     = $quantity[$cont];
+                        $ncinvoice_product->price        = $price[$cont];
                         $ncinvoice_product->save();
                     }
 
                     $cont++;
                 }
             }
+            //metodo para crear un pay evento
+            $pay_event = new Pay_event();
+            $pay_event->origin = $inv->invoice;
+            $pay_event->destination = null;
+            $pay_event->document = 'FACTURA';
+            $pay_event->pay = $ncinvoice->total_pay;
+            $pay_event->status = 'PENDIENTE';
+            $pay_event->save();
 
 
-            $invo = Invoice::findOrFail($invoice);
+
             //metodo para uso de abono a otra factura
-            if($invo->balance > 0){
-                $pay_event = new Pay_event();
-                $pay_event->origin = $invo->invoice;
+            if($inv->balance > 0){
+                $pay_event = Pay_event::findOrFail($pay_event->id);
+                $pay_event->origin = $inv->invoice;
                 $pay_event->destination = null;
                 $pay_event->document = 'FACTURA';
-                $pay_event->pay = $invo->pay;
+                $pay_event->pay = $request->total_pay;
+                $pay_event->status = 'PENDIENTE';
+                $pay_event->save();
             }
             //actualizando campo status de la factura
             $invoice = Invoice::findOrFail($invoice);
@@ -240,6 +265,20 @@ class NcinvoiceController extends Controller
         ->get();
 
         return view('admin.ncinvoice.show', compact('ncinvoices', 'ncinvoice_products'));
+    }
+
+    public function show_pay_ncinvoice($id)
+    {
+        $ncinvoice = Ncinvoice::findOrFail($id);
+        if ($ncinvoice->balance == 0) {
+            return redirect("ncinvoice")->with('warning', 'Esta Nota Debito ya esta vancelada');
+        } else {
+            # code...
+        }
+
+        \Session::put('ncinvoice', $ncinvoice->id, 60 * 24 * 365);
+
+        return redirect('cash_out');
     }
 
     /**

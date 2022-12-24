@@ -19,7 +19,9 @@ class Ndinvoice extends Model
         'branch_id',
         'invoice_id',
         'customer_id',
-        'nd_discrepancy_id'
+        'nd_discrepancy_id',
+        'payment_method_id',
+        'payment_form_id'
     ];
 
     public function customer(){
@@ -32,5 +34,11 @@ class Ndinvoice extends Model
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+    public function Payment_Method(){
+        return $this->hasMany(Payment_method::class);
+    }
+    public function Payment_form(){
+        return $this->hasMany(Payment_form::class);
     }
 }

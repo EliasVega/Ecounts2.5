@@ -7,8 +7,8 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title"><strong class="titulo-mostrar mr-3">Ecounts:</strong>
-                  @if (Session::has('sede'))
-                  {{ Session::get('nombre') }}
+                  @if (Session::has('branch'))
+                  {{ Session::get('name') }}
                   @endif
                 </h3>
                   <div class="card-tools">

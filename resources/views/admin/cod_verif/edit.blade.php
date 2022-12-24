@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             @endif
-            {!!Form::model($cod_verif, ['method'=>'PATCH','route'=>['cod_verif.update', $codverif->id]])!!}
+            {!!Form::model($cod_verif, ['method'=>'PATCH','route'=>['cod_verif.update', $cod_verif->id]])!!}
             {!!Form::token()!!}
             <div class="box-body row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -31,7 +31,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="code">Codigo</label>
-                        <input type="text" name="code" value="{{ $codverif->code }}" class="form-control">
+                        <input type="text" name="code" value="{{ $cod_verif->code }}" class="form-control">
                     </div>
                 </div>
 

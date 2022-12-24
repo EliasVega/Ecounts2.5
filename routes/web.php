@@ -34,12 +34,16 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RegimeController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ResolutionController;
 use App\Http\Controllers\RetentionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaleboxController;
+use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\TransferController;
+use App\Http\Controllers\TypeDocumentController;
+use App\Http\Controllers\UnitMeasureController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -109,6 +113,10 @@ Route::resource('cash_out', CashoutController::class);
 Route::resource('kardex', KardexController::class);
 Route::resource('pay_event', PayeventController::class);
 Route::resource('report', ReportController::class);
+Route::resource('type_document', TypeDocumentController::class);
+Route::resource('unit_measure', UnitMeasureController::class);
+Route::resource('resolution', ResolutionController::class);
+Route::resource('software', SoftwareController::class);
 
 
 Route::get('company/create/{id}', [CompanyController::class, 'getMunicipalities']);
@@ -159,10 +167,13 @@ Route::get('order/show_pdf_order/{id}', [orderController::class, 'show_pdf_order
 Route::get('order/eliminar/{id}', [orderController::class, 'eliminar'])->name('eliminar');
 Route::get('order/create/{id}', [OrderController::class, 'getMunicipalities']);
 
-Route::get('sale_box/show_out/{id}', [saleboxController::class, 'show_out'])->name('show_out');
-Route::get('sale_box/show_pos/{id}', [saleboxController::class, 'show_pos'])->name('show_pos');
+Route::get('show_out/{id}', [saleboxController::class, 'show_out'])->name('show_out');
+Route::get('show_pos/{id}', [saleboxController::class, 'show_pos'])->name('show_pos');
+Route::get('show_close/{id}', [SaleboxController::class, 'show_close'])->name('show_close');
 
 Route::get('portfolio', [ReportController::class, 'portfolio'])->name('portfolio');
 Route::get('past_due_portfolio', [ReportController::class, 'past_due_portfolio'])->name('past_due_portfolio');
 Route::get('portfolio_thirty', [ReportController::class, 'portfolio_thirty'])->name('portfolio_thirty');
 Route::get('portfolio_sixty', [ReportController::class, 'portfolio_sixty'])->name('portfolio_sixty');
+
+Route::get('show_pay_ncinvoice/{id}', [NcinvoiceController::class, 'show_pay_ncinvoice'])->name('show_pay_ncinvoice');

@@ -23,7 +23,6 @@
                             <th>Cliente</th>
                             <th>Venta</th>
                             <th>V/Total</th>
-                            <th>Responsable</th>
                             <th>Fecha_ND</th>
                             <th>editar</th>
                         </tr>
@@ -46,10 +45,9 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'nameC'},
-                {data: 'idI'},
+                {data: 'customer'},
+                {data: 'invoice_id'},
                 {data: 'total_pay'},
-                {data: 'name'},
                 {data: 'created_at'},
                 {data: 'edit'},
             ],

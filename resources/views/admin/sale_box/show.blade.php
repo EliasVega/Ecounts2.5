@@ -117,9 +117,9 @@
                                 <td>{{ $inv->invoice }}</td>
                                 <td>{{ $inv->name }}</td>
                                 <td>{{ $inv->status }}</td>
-                                <td>$ {{ $inv->pay }}</td>
-                                <td>$ {{ $inv->balance }}</td>
-                                <td>$ {{ $inv->total_pay }}</td>
+                                <td class="tdder">$ {{ $inv->pay }}</td>
+                                <td class="tdder">$ {{ $inv->balance }}</td>
+                                <td class="tdder">$ {{ $inv->total_pay }}</td>
 
 
                             </tr>
@@ -163,9 +163,9 @@
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->name }}</td>
                                 <td>{{ $order->status }}</td>
-                                <td>$ {{ $order->pay }}</td>
-                                <td>$ {{ $order->balance }}</td>
-                                <td>$ {{ $order->total_pay }}</td>
+                                <td class="tdder">$ {{ $order->pay }}</td>
+                                <td class="tdder">$ {{ $order->balance }}</td>
+                                <td class="tdder">$ {{ $order->total_pay }}</td>
 
                             </tr>
                         @endforeach
@@ -207,7 +207,7 @@
                                 <td>{{ $nd->id }}</td>
                                 <td>{{ $nd->invoice }}</td>
                                 <td>{{ $nd->name }}</td>
-                                <td>$ {{ $nd->total_pay }}</td>
+                                <td class="tdder">$ {{ $nd->total_pay }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -244,7 +244,7 @@
                                 <td>{{ $nc->id }}</td>
                                 <td>{{ $nc->invoice }}</td>
                                 <td>{{ $nc->name }}</td>
-                                <td>$ {{ $nc->total_pay }}</td>
+                                <td class="tdder">$ {{ $nc->total_pay }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -281,7 +281,7 @@
                                 <td>{{ $pay->id }}</td>
                                 <td>{{ $pay->idP }}</td>
                                 <td>{{ $pay->name }}</td>
-                                <td>$ {{ $pay->pay }}</td>
+                                <td class="tdder">$ {{ $pay->pay }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -318,7 +318,7 @@
                                 <td>{{ $pi->id }}</td>
                                 <td>{{ $pi->invoice }}</td>
                                 <td>{{ $pi->name }}</td>
-                                <td>$ {{ $pi->pay }}</td>
+                                <td class="tdder">$ {{ $pi->pay }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -353,7 +353,7 @@
                                 <td>{{ $cas->created_at }}</td>
                                 <td>{{ $cas->id }}</td>
                                 <td>{{ $cas->name }}</td>
-                                <td>$ {{ $cas->payment }}</td>
+                                <td class="tdder">$ {{ $cas->payment }}</td>
                             </tr>
                         @endforeach
                     </tbody>

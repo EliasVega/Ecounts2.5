@@ -74,20 +74,23 @@ class CashoutController extends Controller
             return redirect("cash_out")->with('warning', 'Error en codigo de verificacion');
         } else {
             $id = $box_open->id;
-            $cash_out           = new cash_out();
-            $cash_out->user_id  = $users;
-            $cash_out->sale_box_id  = $id;
-            $cash_out->branch_id  = $request->session()->get('branch');
-            $cash_out->admin_id = $request->admin_id;
-            $cash_out->payment    = $payment;
-            $cash_out->admin    = $request->admin;
+            $cash_out = new cash_out();
+            $cash_out->user_id     = $users;
+            $cash_out->sale_box_id = $id;
+            $cash_out->branch_id   = $request->session()->get('branch');
+            $cash_out->admin_id    = $request->admin_id;
+            $cash_out->payment     = $payment;
+            $cash_out->reason      = $request->reason;
+            $cash_out->admin       = $request->admin;
             $cash_out->save();
 
             $boxy = Sale_box::findOrFail($id);
             $out = $boxy->out_cash + $payment;
+            $totale = $boxy->total - $payment;
 
             $sale_box = Sale_box::findOrFail($id);
             $sale_box->out_cash = $out;
+            $sale_box->total    = $totale;
             $sale_box->update();
         }
         return redirect("cash_out")->with('success', 'Salida creada Satisfactoriamente');

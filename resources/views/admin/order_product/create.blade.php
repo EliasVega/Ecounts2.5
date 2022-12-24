@@ -113,9 +113,9 @@
                                     @foreach($order_products as $op)
                                         <tr>
                                             <td>{{ $op->name }}</td>
-                                            <td>${{ $op->precio }}</td>
-                                            <td>{{ $op->cantidad }}</td>
-                                            <td>{{ $op->subtotal }}</td>
+                                            <td class="tdder">${{ $op->price }}</td>
+                                            <td class="tdder">{{ $op->quantity }}</td>
+                                            <td class="tdder">{{ $op->subtotal }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

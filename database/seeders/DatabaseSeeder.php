@@ -35,9 +35,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(SupplierSeeder::class);
+        $this->call(UnitMeasureSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(RetentionSeeder::class);
         $this->call(BranchProductSeeder::class);
         $this->call(CustomerSeeder::class);
+        $this->call(TypeGenerationSeeder::class);
+        $this->call(TypeDocumentSeeder::class);
     }
 }

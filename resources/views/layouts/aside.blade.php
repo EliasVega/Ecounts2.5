@@ -111,6 +111,18 @@
                                 <p>Medios Pagos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('resolution') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Resoluciones</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('software') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Software</p>
+                            </a>
+                        </li>
                         @endif
 
                     </ul>
@@ -183,6 +195,18 @@
                             <a href="{{ url('retention') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Retefuentes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('type_document') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipo Doc. Dian</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('unit_measure') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Unidades de Medida</p>
                             </a>
                         </li>
                     </ul>

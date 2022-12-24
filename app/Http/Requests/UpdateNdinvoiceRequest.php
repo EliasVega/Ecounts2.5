@@ -25,16 +25,18 @@ class UpdateNdinvoiceRequest extends FormRequest
     {
         return [
 
-            'total'       => 'required',
-            'total_iva'   => 'required',
-            'total_pay'   => 'required',
-            'pay'         => '',
-            'balance'     => '',
-            'status'      => '',
-            'branch_id'   => '',
-            'invoice_id'  => '',
-            'customer_id' => '',
-            'nd_discrepancy_id' => ''
+            'total'             => 'required',
+            'total_iva'         => 'required',
+            'total_pay'         => 'required',
+            'pay'               => '',
+            'balance'           => '',
+            'status'            => '',
+            'branch_id'         => '',
+            'invoice_id'        => '',
+            'customer_id'       => '',
+            'nd_discrepancy_id' => '',
+            'payment_method_id' => '',
+            'payment_form_id'   => ''
         ];
     }
 }

@@ -51,10 +51,10 @@
             [
                 {data: 'btn'},
                 {data: 'id'},
-                {data: 'nameD'},
-                {data: 'nameM'},
+                {data: 'department'},
+                {data: 'municipality'},
                 {data: 'name'},
-                {data: 'nit'},
+                {data: 'company'},
                 {data: 'accesos'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',

@@ -86,8 +86,8 @@
                                 <tr>
                                     <td>{{ $nd->name }}</td>
                                     <td>${{ $nd->price }}</td>
-                                    <td>{{ $nd->quantity }}</td>
-                                    <td>${{ number_format($nd->quantity*$nd->price,2) }}</td>
+                                    <td class="tdder">{{ $nd->quantity }}</td>
+                                    <td class="tdder">${{ number_format($nd->quantity*$nd->price,2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

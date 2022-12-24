@@ -23,7 +23,7 @@ class Payment_method extends Model
     }
 
     public function payevents(){
-        return $this->belongsToMany(Payevent::class);
+        return $this->hasMany(Payevent::class);
     }
 
     public function orders(){
@@ -31,10 +31,14 @@ class Payment_method extends Model
     }
 
     public function payOrder(){
-        return $this->belongsToMany(Payorder::class);
+        return $this->hasMany(Payorder::class);
     }
 
     public function payInvoice(){
-        return $this->belongsToMany(Payinvoice::class);
+        return $this->hasMany(Payinvoice::class);
+    }
+
+    public function Pay_ndinvoices(){
+        return $this->hasMany(Pay_ndinvoice::class);
     }
 }

@@ -17,12 +17,12 @@ class Payment_form extends Model
         return $this->hasMany(Invoice::class);
     }
 
-    public function payorders(){
-        return $this->belongsToMany(Payorder::class);
+    public function pay_orders(){
+        return $this->belongsToMany(Pay_order::class);
     }
 
-    public function payevents(){
-        return $this->belongsToMany(Payevent::class);
+    public function pay_events(){
+        return $this->belongsToMany(Pay_event::class);
     }
 
     public function orders(){

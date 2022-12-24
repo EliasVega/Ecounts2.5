@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('image', 255);
 
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('unit_measure_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

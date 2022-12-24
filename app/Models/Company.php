@@ -57,4 +57,12 @@ class Company extends Model
     {
         return $this->belongsTo(Regime::class);
     }
+
+    public function resolutions(){
+        return $this->hasMany(Resolution::class);
+    }
+
+    public function software(){
+        return $this->hasOne(Software::class);
+    }
 }
