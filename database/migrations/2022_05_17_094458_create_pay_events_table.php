@@ -18,9 +18,9 @@ return new class extends Migration
 
             $table->integer('origin');
             $table->integer('destination')->nullable();
-            $table->enum('document', ['FACTURA', 'PEDIDO']);
+            $table->enum('document', ['factura', 'pedido']);
             $table->decimal('pay',10,2);
-            $table->enum('status',['PENDIENTE', 'APLICADO'])->default('PENDIENTE');
+            $table->enum('status',['pendiente', 'aolicado'])->default('pendiente');
 
             $table->timestamps();
         });

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ 'css/post.css' }}">
-        <title>Factura de venta</title>
+        <title>Factura de compra</title>
 
     </head>
 
@@ -28,7 +28,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> POST: <strong id="numfact">N°.{{ $indicators->prefijo }} - {{ $purchase->id }}</strong> <br>
+                <p> POST: <strong id="numfact">N°.{{ $purchase->id }}</strong> <br>
                     FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($purchase->created_at)) }}</strong>
                 </p>
             </div>
@@ -38,7 +38,7 @@
     <body>
         <div class="content">
             <!--DATOS CLIENTE -->
-            <p id="titulo">DATOS DEL CLIENTE</p>
+            <p id="titulo">DATOS DEL PROVEEDOR</p>
             <div class="center">
                 <div id="cliente">
                     <!--DATOS CLIENTE -->
@@ -51,12 +51,12 @@
                         <span id="tc">EMAIL:    </span><br>
                     </div>
                     <div id="titd">
-                        <span id="td">{{ $purchase->number }}</span><br>
-                        <span id="td">{{ $purchase->nameC }}</span><br>
-                        <span id="td">{{ $purchase->address }}</span><br>
-                        <span id="td">{{ $purchase->nameM }}</span><br>
-                        <span id="td">{{ $purchase->phone }}</span><br>
-                        <span id="td">{{ $purchase->email }}</span><br>
+                        <span id="td">{{ $purchase->supplier->number }}</span><br>
+                        <span id="td">{{ $purchase->supplier->name }}</span><br>
+                        <span id="td">{{ $purchase->supplier->address }}</span><br>
+                        <span id="td">{{ $purchase->supplier->municipality->name }}</span><br>
+                        <span id="td">{{ $purchase->supplier->phone }}</span><br>
+                        <span id="td">{{ $purchase->supplier->email }}</span><br>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($product_purchase as $ip)
+                    @foreach ($product_purchases as $ip)
                     <tr>
                         <td>{{ $ip->name }}</td>
                         <td id="ccent">{{ number_format($ip->quantity) }}</td>

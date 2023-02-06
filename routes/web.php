@@ -1,13 +1,19 @@
 <?php
 
+use App\Http\Controllers\AdvanceController;
+use App\Http\Controllers\AuxiliaryAccountController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BranchProductController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CashoutController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CoCountryController;
+use App\Http\Controllers\CoDepartmentController;
 use App\Http\Controllers\CodverifController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CoMunicipalityController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DocumentController;
@@ -25,6 +31,7 @@ use App\Http\Controllers\OrderProductController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PayeventController;
 use App\Http\Controllers\PayinvoiceController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentFormController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PayorderController;
@@ -39,12 +46,16 @@ use App\Http\Controllers\RetentionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaleboxController;
 use App\Http\Controllers\SoftwareController;
+use App\Http\Controllers\SubaccountController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UnitMeasureController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationCodeController;
+use App\Models\Subaccount;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -108,7 +119,7 @@ Route::resource('pay_order', PayorderController::class);
 Route::resource('pay_invoice', PayinvoiceController::class);
 Route::resource('order_product', OrderProductController::class);
 Route::resource('sale_box', SaleboxController::class);
-Route::resource('cod_verif', CodverifController::class);
+Route::resource('verification_code', VerificationCodeController::class);
 Route::resource('cash_out', CashoutController::class);
 Route::resource('kardex', KardexController::class);
 Route::resource('pay_event', PayeventController::class);
@@ -117,7 +128,17 @@ Route::resource('type_document', TypeDocumentController::class);
 Route::resource('unit_measure', UnitMeasureController::class);
 Route::resource('resolution', ResolutionController::class);
 Route::resource('software', SoftwareController::class);
+Route::resource('subaccount', SubaccountController::class);
+Route::resource('auxiliary_account', AuxiliaryAccountController::class);
+Route::resource('country', CountryController::class);
+Route::resource('co_country', CoCountryController::class);
+Route::resource('co_department', CoDepartmentController::class);
+Route::resource('co_municipality', CoMunicipalityController::class);
+Route::resource('advance', AdvanceController::class);
+Route::resource('payment', PaymentController::class);
 
+Route::get('advance/advancePdf/{id}', [AdvanceController::class, 'advancePdf'])->name('advancePdf');
+Route::get('payment/paymentPdf/{id}', [PaymentController::class, 'paymentPdf'])->name('paymentPdf');
 
 Route::get('company/create/{id}', [CompanyController::class, 'getMunicipalities']);
 Route::post('company/logout', [CompanyController::class, 'logout'])->name('logout_company');
@@ -160,6 +181,10 @@ Route::get('invoice/show_pdf_invoice/{id}', [InvoiceController::class, 'show_pdf
 Route::get('invoice/show_pay_invoice/{id}', [InvoiceController::class, 'show_pay_invoice'])->name('show_pay_invoice');
 Route::get('invoice/create/{id}', [InvoiceController::class, 'getMunicipalities']);
 Route::get('invoice/post/{id}', [InvoiceController::class, 'post'])->name('post');
+Route::get('invoice/getAdvance/{id}', [InvoiceController::class, 'getAdvances'])->name('getAdvance');
+
+Route::get('purchase/create/{id}', [PurchaseController::class, 'getMunicipalities']);
+Route::get('purchase/getPayment/{id}', [PurchaseController::class, 'getPayments'])->name('getPayment');
 
 Route::get('order/show_invoicy/{id}', [orderController::class, 'show_invoicy'])->name('show_invoicy');
 Route::get('order/show_pay_order/{id}', [orderController::class, 'show_pay_order'])->name('show_pay_order');
@@ -177,3 +202,17 @@ Route::get('portfolio_thirty', [ReportController::class, 'portfolio_thirty'])->n
 Route::get('portfolio_sixty', [ReportController::class, 'portfolio_sixty'])->name('portfolio_sixty');
 
 Route::get('show_pay_ncinvoice/{id}', [NcinvoiceController::class, 'show_pay_ncinvoice'])->name('show_pay_ncinvoice');
+
+Route::get('subaccount/getAccountGroup/{id}', [SubaccountController::class, 'getAccountGroups'])->name('getAccountGroup');
+Route::get('subaccount/getAccount/{id}', [ SubaccountController::class, 'getAccounts'])->name('getAccount');
+Route::get('subaccount/getSubaccount/{id}', [SubaccountController::class, 'getSubaccounts'])->name('getSubaccount');
+
+Route::get('auxiliary_account/AccountGroup/{id}', [AuxiliaryAccountController::class, 'AccountGroups'])->name('AccountGroups');
+Route::get('auxiliary_account/Account/{id}', [AuxiliaryAccountController::class, 'Accounts'])->name('Accounts');
+Route::get('auxiliary_account/Subaccount/{id}', [AuxiliaryAccountController::class, 'Subaccounts'])->name('Subaccount');
+Route::get('auxiliary_account/AuxAccount/{id}', [AuxiliaryAccountController::class, 'AuxAccounts'])->name('AuxAccount');
+
+Route::get('pdf_pay_invoice/{id}', [PayinvoiceController::class, 'pdf_pay_invoice'])->name('pdf_pay_invoice');
+
+Route::get('co_municipality/co_department/{id}', [CoMunicipalityController::class, 'getCoDepartment'])->name('co_department');
+

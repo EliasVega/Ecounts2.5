@@ -13,6 +13,7 @@ use App\Models\Organization;
 use App\Models\Regime;
 use App\Models\Tax;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CustomerController extends Controller
 {
@@ -24,20 +25,40 @@ class CustomerController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $customers = Customer::from('customers AS cus')
+            $customers = Customer::get();
+            /*$customers = Customer::from('customers AS cus')
             ->join('departments AS dep', 'cus.department_id', '=', 'dep.id')
             ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
             ->join('documents AS doc', 'cus.document_id', '=', 'doc.id')
             ->join('liabilities AS lia', 'cus.liability_id', '=', 'lia.id')
             ->join('organizations AS org', 'cus.organization_id', '=', 'org.id')
             ->join('taxes AS tax', 'cus.tax_id', '=', 'tax.id')
-            ->select('cus.id', 'dep.name AS nameD', 'mun.name AS nameM', 'cus.name', 'doc.initials', 'lia.name AS nameL', 'org.name AS nameO', 'tax.name AS nameT', 'cus.number', 'cus.address', 'cus.phone', 'cus.email', 'cus.credit_limit', 'cus.used', 'cus.available')->get();
+            ->select('cus.id', 'dep.name AS nameD', 'mun.name AS nameM', 'cus.name', 'doc.initials', 'lia.name AS nameL', 'org.name AS nameO', 'tax.name AS nameT', 'cus.number', 'cus.address', 'cus.phone', 'cus.email', 'cus.credit_limit', 'cus.used', 'cus.available')->get();*/
 
-            return datatables()
-            ->of($customers)
-            ->addColumn('edit', 'admin/customer/actions')
-            ->rawcolumns(['edit'])
-            ->toJson();
+            return DataTables::of($customers)
+                ->addIndexColumn()
+                ->addColumn('department', function (Customer $customer) {
+                    return $customer->department->name;
+                })
+                ->addColumn('municipality', function (Customer $customer) {
+                    return $customer->municipality->name;
+                })
+                ->addColumn('document', function (Customer $customer) {
+                    return $customer->document->initial;
+                })
+                ->addColumn('liability', function (Customer $customer) {
+                    return $customer->liability->name;
+                })
+                ->addColumn('organization', function (Customer $customer) {
+                    return $customer->organization->name;
+                })
+                ->addColumn('regime', function (Customer $customer) {
+                    return $customer->regime->name;
+                })
+
+                ->addColumn('edit', 'admin/customer/actions')
+                ->rawcolumns(['edit'])
+                ->make(true);
         }
         return view('admin.customer.index');
     }
@@ -124,7 +145,7 @@ class CustomerController extends Controller
         $organizations = Organization::get();
         $taxes = Tax::get();
         $regimes = Regime::get();
-        return view('admin.customer.create', compact('departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regime'));
+        return view('admin.customer.create', compact('departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regimes'));
     }
 
     /**

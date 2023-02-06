@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('total_pay', 20, 2);
             $table->decimal('pay',10,2);
             $table->decimal('balance',10,2);
-            $table->enum('status',['APROBADA', 'CANCELADA'])->default('APROBADA');
+            $table->enum('status',['aprobada', 'cancelada'])->default('aprobada');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

@@ -83,7 +83,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div>
-            <a href="{{ route('cod_verif.index') }}"><button><img src="{{ asset('/img/autorization.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Autorization de Usuarios" /></button></a>
+            <a href="{{ route('verification_code.index') }}"><button><img src="{{ asset('/img/autorization.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Autorization de Usuarios" /></button></a>
         </div>
     </div>
 

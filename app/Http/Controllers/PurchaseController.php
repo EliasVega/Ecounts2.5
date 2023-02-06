@@ -18,17 +18,22 @@ use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Pay_purchase;
 use App\Models\Pay_purchase_payment_method;
+use App\Models\Payment;
 use App\Models\Payment_form;
 use App\Models\Payment_method;
+use App\Models\Percentage;
 use App\Models\Product;
 use App\Models\Product_branch;
 use App\Models\Product_purchase;
 use App\Models\Regime;
+use App\Models\Retention;
+use App\Models\Sale_box;
 use App\Models\Supplier;
 use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class PurchaseController extends Controller
 {
@@ -41,21 +46,29 @@ class PurchaseController extends Controller
     {
         if (request()->ajax()) {
             //Muestra todas las compras de la empresa
+            $purchases = Purchase::get();
+            /*
             $purchases = Purchase::from('purchases AS pur')
             ->join('branches as bra', 'pur.branch_id', 'bra.id')
             ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
             ->join('users AS use', 'pur.user_id', '=', 'use.id')
-            ->select('pur.id', 'bra.name as nameB', 'sup.name as nameS', 'pur.purchase', 'pur.total_pay', 'pur.balance', 'pur.created_at', 'pur.status', 'use.name')
-            ->get();
+            ->select('pur.id', 'bra.name as nameB', 'sup.name as nameS', 'pur.document', 'pur.total_pay', 'pur.balance', 'pur.created_at', 'pur.status', 'use.name')
+            ->get();*/
 
-            return datatables()
-            ->of($purchases)
+            return DataTables::of($purchases)
+            ->addIndexColumn()
+            ->addColumn('supplier', function (Purchase $purchase) {
+                return $purchase->supplier->name;
+            })
+            ->addColumn('branch', function (Purchase $purchase) {
+                return $purchase->branch->name;
+            })
             ->editColumn('created_at', function(Purchase $purchase){
                 return $purchase->created_at->format('yy-m-d: h:m');
             })
             ->addColumn('btn', 'admin/purchase/actions')
             ->rawColumns(['btn'])
-            ->toJson();
+            ->make(true);
         }
         return view('admin.purchase.index');
     }
@@ -81,13 +94,10 @@ class PurchaseController extends Controller
         $banks = Bank::get();
         $cards = Card::get();
         $branchs = Branch::get();
-        $products = Product::from('products AS pro')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pro.id', 'pro.name', 'pro.sale_price', 'pro.stock', 'cat.iva', 'pro.price')
-        ->where('pro.status', '=', 'ACTIVE')
-        ->get();
-
-        return view('admin.purchase.create', compact('suppliers', 'products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'suppliers', 'regimes', 'payment_forms', 'payment_methods', 'banks', 'cards', 'branchs'));
+        $percentages = Percentage::get();
+        $payments = Payment::where('status', '!=', 'aplicado')->get();
+        $products = Product::where('status', 'activo')->get();
+        return view('admin.purchase.create', compact('suppliers', 'products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'suppliers', 'regimes', 'payment_forms', 'payment_methods', 'banks', 'cards', 'branchs', 'payments', 'percentages'));
     }
     /**
      * Store a newly created resource in storage.
@@ -114,18 +124,36 @@ class PurchaseController extends Controller
             $purchase->supplier_id = $request->supplier_id;
             $purchase->payment_form_id = $request->payment_form_id;
             $purchase->payment_method_id = $request->payment_method_id;
-            $purchase->purchase    = $request->purchase;
+            $purchase->percentage_id = $request->percentage_id;
+            $purchase->document    = $request->document;
             $purchase->due_date    = $request->due_date;
             $purchase->items       = count($product_id);
             $purchase->total       = $request->total;
             $purchase->total_iva    = $request->total_iva;
             $purchase->total_pay    = $request->total_pay;
-            $purchase->status      = 'ACTIVE';
+            $purchase->status      = 'active';
             $purchase->pay         = $pay;
             $purchase->balance     = $request->total_pay - $pay;
+            $purchase->retention   = $request->retention;
             $purchase->save();
-
             if($pay > 0){
+                $paym = $request->payment;
+                if ($paym > 0) {
+                    $payment              = Payment::findOrFail( $request->payment_id);
+                    if ($payment->pay > $payment->balance) {
+                        $payment->destination = $payment->destination . '<->' . $purchase->document;
+                    } else {
+                        $payment->destination = $purchase->document;
+                    }
+                    $paym_total = $payment->balance - $paym;
+                    if ($paym_total == 0) {
+                        $payment->status      = 'aplicado';
+                    } else {
+                        $payment->status      = 'parcial';
+                    }
+                    $payment->balance = $paym_total;
+                    $payment->update();
+                } else {
                     $pay_purchase                   = new Pay_purchase();
                     $pay_purchase->pay              = $pay;
                     $pay_purchase->balance_purchase = $purchase->balance;
@@ -139,10 +167,12 @@ class PurchaseController extends Controller
                     $pay_purchase_Payment_method->payment_method_id  = $request->payment_method_id;
                     $pay_purchase_Payment_method->bank_id            = $request->bank_id;
                     $pay_purchase_Payment_method->card_id            = $request->card_id;
+                    $pay_purchase_Payment_method->payment_id         = $request->payment_id;
                     $pay_purchase_Payment_method->payment            = $request->pay;
                     $pay_purchase_Payment_method->transaction        = $request->transaction;
                     $pay_purchase_Payment_method->save();
                 }
+            }
 
             //Toma el Request del array
 
@@ -165,21 +195,17 @@ class PurchaseController extends Controller
                 $product_purchase->item        = $item;
                 $product_purchase->save();
                 //selecciona el producto que viene del array
-                $products = Product::from('products AS pro')
-                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $product_purchase->product_id)
-                ->first();
+                $products = Product::where('id', $product_purchase->product_id)->first();
 
-                $id = $products->id;
-                $uti = $products->utility;
-                $pre = $products->price;
+                //$id = $products->id;
+                $utility = $products->category->utility;
+                $priceProduct = $products->price;
                 $stockardex = $products->stock;
-                $preven = $pre + ($pre * $uti / 100);
+                $priceSale = $priceProduct + ($priceProduct * $utility / 100);
                 //Cambia el valor de venta del producto
-                $product = Product::findOrFail($id);
-                $product->sale_price = $preven;
-                $product->update();
+                //$product = Product::findOrFail($id);
+                $products->sale_price = $priceSale;
+                $products->update();
 
                 //selecciona el producto de la sucursal que sea el mismo del array
                 $branch_products = Branch_product::where('product_id', '=', $product_purchase->product_id)
@@ -204,9 +230,9 @@ class PurchaseController extends Controller
 
                 //Actualiza la tabla del Kardex
                 $kardex = new Kardex();
-                $kardex->product_id = $id;
+                $kardex->product_id = $product_id[$cont];
                 $kardex->branch_id = $purchase->branch_id;
-                $kardex->operation = 'COMPRA';
+                $kardex->operation = 'compra';
                 $kardex->number = $purchase->id;
                 $kardex->quantity = $quantity[$cont];
                 $kardex->stock = $stockardex;
@@ -229,25 +255,29 @@ class PurchaseController extends Controller
      * @param  \App\Models\purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Purchase $purchase)
     {
+        $purchases = Purchase::where('id', $purchase->id)->first();
+        /*
         $purchases = Purchase::from('purchases AS pur')
         ->join('users as use', 'pur.user_id', 'use.id')
         ->join('branches AS bra', 'pur.branch_id', '=', 'bra.id')
         ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
         ->join('payment_forms AS pf', 'pur.payment_form_id', '=', 'pf.id')
         ->join('payment_methods as pm', 'pur.payment_method_id', '=', 'pm.id')
-        ->select('pur.id', 'pur.purchase', 'pur.due_date', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pur.balance', 'pur.created_at', 'bra.name as nameB', 'sup.name as nameC', 'pf.name as namePF', 'pm.name as namePM', 'use.name')
-        ->where('pur.id', '=', $id)->first();
+        ->select('pur.id', 'pur.document', 'pur.due_date', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pur.balance', 'pur.created_at', 'bra.name as nameB', 'sup.name as nameC', 'pf.name as namePF', 'pm.name as namePM', 'use.name')
+        ->where('pur.id', '=', $id)->first();*/
 
         /*mostrar detalles*/
+        $product_purchases = Product_purchase::where('purchase_id', $purchase->id)->get();
+        /*
         $product_purchases = product_purchase::from('product_purchases AS pp')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
         ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
         ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
         ->select('pp.quantity', 'pp.price', 'pp.subtotal', 'pur.id', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pro.name', 'sup.name AS nameC')
         ->where('pp.purchase_id', '=', $id)
-        ->get();
+        ->get();*/
 
         return view('admin.purchase.show', compact('purchases', 'product_purchases'));
     }
@@ -257,7 +287,7 @@ class PurchaseController extends Controller
         $purchase = Purchase::findOrFail($id);
         \session()->put('purchase', $purchase->id, 60 * 24 * 365);
         \session()->put('supplier_id', $purchase->supplier_id, 60 * 24 *365);
-        \session()->put('purchase', $purchase->purchase, 60 * 24 *365);
+        \session()->put('purchase', $purchase->document, 60 * 24 *365);
         \session()->put('iva', $purchase->iva, 60 * 24 *365);
         \session()->put('total', $purchase->total, 60 * 24 *365);
         \session()->put('status', $purchase->status, 60 * 24 *365);
@@ -274,7 +304,7 @@ class PurchaseController extends Controller
         $purchase = Purchase::findOrFail($id);
         \session()->put('purchase', $purchase->id, 60 * 24 * 365);
         \session()->put('supplier_id', $purchase->supplier_id, 60 * 24 *365);
-        \session()->put('purchase', $purchase->purchase, 60 * 24 *365);
+        \session()->put('purchase', $purchase->document, 60 * 24 *365);
         \session()->put('iva', $purchase->iva, 60 * 24 *365);
         \session()->put('total', $purchase->total, 60 * 24 *365);
         \session()->put('status', $purchase->status, 60 * 24 *365);
@@ -310,7 +340,7 @@ class PurchaseController extends Controller
         ->join('municipalities AS mun', 'sup.municipality_id', '=', 'mun.id')
         ->join('payment_forms AS pf', 'pur.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'pur.payment_method_id', 'pm.id')
-        ->select('pur.id', 'pur.purchase', 'pur.created_at', 'pur.due_date',  'pur.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'sup.name AS nameS', 'sup.document_id', 'sup.number', 'sup.address', 'sup.email', 'doc.initial', 'pur.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->select('pur.id', 'pur.document', 'pur.created_at', 'pur.due_date',  'pur.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'sup.name AS nameS', 'sup.document_id', 'sup.number', 'sup.address', 'sup.email', 'doc.initial', 'pur.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('pur.id', '=', $id)->first();
 
         $product_purchases = Product_purchase::from('product_purchases AS pp')
@@ -354,17 +384,18 @@ class PurchaseController extends Controller
 
     public function post_purchase(Request $request, $id)
     {
+        $purchase = Purchase::where('id', $id)->first();
+        /*
         $purchase = Purchase::from('purchases AS pur')
         ->join('branches AS bra', 'pur.branch_id', '=', 'bra.id')
         ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
         ->join('documents AS doc', 'sup.document_id', '=', 'doc.id')
         ->join('regimes AS reg', 'sup.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'sup.tax_id', '=', 'tax.id')
         ->join('municipalities AS mun', 'sup.municipality_id', '=', 'mun.id')
         ->join('payment_forms AS pf', 'pur.payment_form_id', 'pf.id')
         ->join('payment_methods AS pm', 'pur.payment_method_id', 'pm.id')
-        ->select('pur.id', 'pur.purchase', 'pur.created_at', 'pur.due_date',  'pur.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'sup.name AS nameC', 'sup.document_id', 'sup.number', 'sup.address', 'sup.email', 'doc.initial', 'pur.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
-        ->where('pur.id', '=', $id)->first();
+        ->select('pur.id', 'pur.document', 'pur.created_at', 'pur.due_date',  'pur.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'sup.name AS nameC', 'sup.document_id', 'sup.number', 'sup.address', 'sup.email', 'doc.initial', 'pur.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
+        ->where('pur.id', '=', $id)->first();*/
 
         $product_purchases = Product_purchase::from('product_purchases AS pp')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
@@ -374,7 +405,7 @@ class PurchaseController extends Controller
         ->where('pp.purchase_id', '=', $id)
         ->get();
 
-        $purchases = Product_purchase::from('purchase_products AS pp')
+        $purchases = Product_purchase::from('product_purchases AS pp')
         ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
         ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
@@ -394,9 +425,9 @@ class PurchaseController extends Controller
         ->first();
 
         $days = $purchase->created_at->diffInDays($purchase->fecven);
-        $purchasepdf = "FACT-". $purchase->purchase;
+        $purchasepdf = "FACT-". $purchase->document;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.purchase.post', compact('purchase', 'days', 'product_purchases', 'company', 'logo', 'purchases', 'indicators'))->render();
+        $view = \view('admin.purchase.post_purchase', compact('purchase', 'days', 'product_purchases', 'company', 'logo', 'purchases'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
@@ -450,6 +481,38 @@ class PurchaseController extends Controller
             $municipalities = Municipality::where('department_id', '=', $id)->get();
 
             return response()->json($municipalities);
+        }
+    }
+
+    public function pdf_payinvoice(Request $request, $id)
+    {
+        $purchase = Purchase::where('id', $id)->first();
+        $company = Company::where('id', 1)->first();
+        $user = auth::user();
+        $product_purchases = Product_purchase::from('product_purchases as pp')
+        ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+        ->join('products as pro', 'pp.product_id', 'pro.id')
+        ->select('pp.quantity', 'pp.price', 'pro.name')
+        ->where('pp.pay_invoice_id', $id)
+        ->get();
+        $purchasepdf = "FACT-". $purchase->id;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.pay_invoice.pdf', compact('payInvoice_paymentMethods', 'company', 'logo', 'payinvoice', 'user'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
+    }
+
+    public function getPayments(Request $request, $id)
+    {
+        if($request)
+        {
+            $payments = Payment::where('supplier_id', '=', $id)->where('status', '!=', 'aplicado')->get();
+
+            return response()->json($payments);
         }
     }
 }

@@ -181,6 +181,7 @@
                 for(i = 0; i < response.length; i++){
                     $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
                 }
+                $("#municipality_id").selectpicker('refresh');
             });
         });
 

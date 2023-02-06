@@ -7,9 +7,13 @@ use App\Http\Requests\StorePayinvoiceRequest;
 use App\Http\Requests\UpdatePayinvoiceRequest;
 use App\Models\Bank;
 use App\Models\Card;
+use App\Models\Company;
+use App\Models\Indicator;
 use App\Models\Invoice;
+use App\Models\Invoice_product;
 use App\Models\Pay_event;
 use App\Models\Pay_invoice_payment_method;
+use App\Models\pay_ncinvoice;
 use App\Models\Payment_method;
 use App\Models\Sale_box;
 use Illuminate\Http\Request;
@@ -180,7 +184,7 @@ class PayinvoiceController extends Controller
 
             $pay_invoices = Pay_invoice::findOrFail($pay_invoice->id);
             $pay_invoices->pay = $payu;
-            $pay_invoices->balance_invoice = $invoice->balance;
+            $pay_invoices->balance_invoice = $balance;
             $pay_invoices->update();
 
             DB::commit();
@@ -251,5 +255,27 @@ class PayinvoiceController extends Controller
     public function destroy(Pay_invoice $pay_invoice)
     {
         //
+    }
+
+    public function pdf_payinvoice(Request $request, $id)
+    {
+        $payinvoice = Pay_invoice::where('id', $id)->first();
+        $company = Company::where('id', 1)->first();
+        $user = auth::user();
+        $payInvoice_paymentMethods = Pay_invoice_payment_method::from('Pay_invoice_payment_methods as pp')
+        ->join('payment_methods as pm', 'pp.payment_method_id', 'pm.id')
+        ->join('pay_invoices as pi', 'pp.pay_invoice_id', 'pi.id')
+        ->select('pm.name', 'pp.transaction', 'pp.payment')
+        ->where('pp.pay_invoice_id', $id)
+        ->get();
+        $payinvoicepdf = "FACT-". $payinvoice->id;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.pay_invoice.pdf', compact('payInvoice_paymentMethods', 'company', 'logo', 'payinvoice', 'user'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$payinvoicepdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
     }
 }

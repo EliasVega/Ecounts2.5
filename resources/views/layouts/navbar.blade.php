@@ -16,7 +16,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <a href="{{ route('logout') }}" class="btn btn-loglimon" onclick="event.preventDefault();
+                <a href="{{ route('logout') }}" class="btn btn-celeste" onclick="event.preventDefault();
                                             this.closest('form').submit();">
                     {{ __('Cerrar Sesion') }}
                 </a>
@@ -29,7 +29,7 @@
                                                 this.closest('form').submit();">
                         {{ __('Salir Empresa') }}
                     </a>
-                    <a href="{{ route('logout') }}" class="btn btn-loglimon" onclick="event.preventDefault();
+                    <a href="{{ route('logout') }}" class="btn btn-celeste" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                         {{ __('Cerrar Sesion') }}
                     </a>
@@ -42,7 +42,7 @@
                     this.closest('form').submit();">
                         {{ __('Salir Sucursal') }}
                     </a>
-                    <a href="{{ route('logout') }}" class="btn btn-loglimon" onclick="event.preventDefault();
+                    <a href="{{ route('logout') }}" class="btn btn-celeste" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                         {{ __('Cerrar Sesion') }}
                     </a>

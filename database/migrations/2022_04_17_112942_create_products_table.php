@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('price', 10,2); //precio de compra
             $table->decimal('sale_price', 11,2);
             $table->integer('stock');
-            $table->enum('status', ['ACTIVE', 'INACTIVE'])->default('ACTIVE');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->string('image', 255);
 
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

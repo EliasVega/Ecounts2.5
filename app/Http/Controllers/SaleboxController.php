@@ -7,7 +7,7 @@ use App\Http\Requests\StoreSaleboxRequest;
 use App\Http\Requests\UpdateSaleboxRequest;
 use App\Models\Branch;
 use App\Models\Cash_out;
-use App\Models\Cod_verif;
+use App\Models\Verification_code;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
 use App\Models\Ncinvoice;
@@ -83,18 +83,18 @@ class SaleboxController extends Controller
         $user = Auth::user()->id;
         $branch = $request->session()->get('branch');
         $open = $request->user_open_id;
-        $verify = $request->cod_verif_open;
-        $cod_verif = Cod_verif::select('id', 'code')->where('user_id', '=', $open)->first();
-        $open_box = Sale_box::where('user_id', '=', $user)->where('status', '=', 'ABIERTA')->first();
+        $verify = $request->verification_code_open;
+        $verification_code = Verification_code::select('id', 'code')->where('user_id', '=', $open)->first();
+        $open_box = Sale_box::where('user_id', '=', $user)->where('status', '=', 'open')->first();
 
-        if($cod_verif == null){
+        if($verification_code == null){
             return redirect("sale_box")->with('warning', 'Usuario No autorizado para ejercer como administrador');
         }
 
-        if ($cod_verif->code != $verify) {
+        if ($verification_code->code != $verify) {
             return redirect("sale_box")->with('warning', 'Error en codigo de verificacion');
         } elseif($open_box) {
-            return redirect("sale_box")->with('warning', 'Usuario ya tiene una sale_box Abierta');
+            return redirect("sale_box")->with('warning', 'Usuario ya tiene una Caja Abierta');
         } else {
             $sale_box = new Sale_box();
             $sale_box->user_id           = $user;
@@ -110,15 +110,16 @@ class SaleboxController extends Controller
             $sale_box->in_ndinvoice      = 0;
             $sale_box->in_pay_cash       = 0;
             $sale_box->in_pay            = 0;
-            $sale_box->in_pay_event      = 0;
+            $sale_box->in_advance        = 0;
+            $sale_box->out_payment       = 0;
             $sale_box->out_cash          = 0;
             $sale_box->cash              = $request->cash_box;
             $sale_box->out               = 0;
             $sale_box->total             = $request->cash_box;
             $sale_box->sale              = 0;
             $sale_box->order             = 0;
-            $sale_box->cod_verif_open    = $request->cod_verif_open;
-            $sale_box->cod_verif_close   = null;
+            $sale_box->verification_code_open    = $request->verification_code_open;
+            $sale_box->verification_code_close   = null;
             $sale_box->save();
         }
         return redirect("sale_box")->with('success', 'Caja creada Satisfactoriamente');
@@ -572,14 +573,14 @@ class SaleboxController extends Controller
     {
         $close = $request->user_close_id;
         $verific = $request->cod_ver_close;
-        $cod_verif = Cod_verif::select('id', 'code')->where('user_id', '=', $close)->first();
+        $verification_code = Verification_code::select('id', 'code')->where('user_id', '=', $close)->first();
         $box_close = Sale_box::select('status')->where('id', '=', $id)->first();
 
-        if($cod_verif == null){
+        if($verification_code == null){
             return redirect("sale_box")->with('warning', 'Usuario No autorizado para ejercer como administrador');
         }
 
-        if ($cod_verif->code != $verific) {
+        if ($verification_code->code != $verific) {
             return redirect("sale_box")->with('warning', 'Error en codigo de verificacion');
         } elseif ($box_close->status == 'CERRADA') {
             return redirect("sale_box")->with('warning', 'Esta caja ya fue cerrada Anteriormente');

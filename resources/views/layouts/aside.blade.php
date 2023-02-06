@@ -123,6 +123,18 @@
                                 <p>Software</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('subaccount') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Subcuentas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('auxiliary_account') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cuentas Auxiliares</p>
+                            </a>
+                        </li>
                         @endif
 
                     </ul>
@@ -141,6 +153,24 @@
                             <a href="{{ url('indicator') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Indicadores</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('co_country') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Paises</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('co_department') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Departamentos2 </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('co_municipality') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Municipios2 </p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -295,6 +325,12 @@
                                 <p>ND Compra</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('payment') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Anticipo a Proveedores</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @endif
@@ -354,6 +390,12 @@
                             <a href="{{ url('ndinvoice') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>ND Venta</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('advance') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Anticipo de clientes</p>
                             </a>
                         </li>
                     </ul>

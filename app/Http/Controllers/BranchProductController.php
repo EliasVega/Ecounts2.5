@@ -18,7 +18,7 @@ class BranchProductController extends Controller
     {
         if (request()->ajax()) {
             //Mostrar los productos de una sucursal especifica
-            $Branch_products = Branch_product::from('branch_products AS bp')
+            $branch_products = Branch_product::from('branch_products AS bp')
             ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
             ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
             ->select('pro.id', 'pro.code', 'pro.name', 'pro.sale_price', 'bp.stock', 'bp.order_product', 'pro.status')
@@ -27,10 +27,10 @@ class BranchProductController extends Controller
             ->get();
 
             return datatables()
-            ->of($Branch_products)
+            ->of($branch_products)
             ->toJson();
         }
-        return view('admin.Branch_product.index');
+        return view('admin.branch_product.index');
     }
 
     /**

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('pay',10,2);
             $table->decimal('balance',10,2);
             $table->decimal('retention',10,2)->nullable();
-            $table->enum('status', ['PENDIENTE', 'FACTURADO', 'ANULADO'])->default('PENDIENTE');
+            $table->enum('status', ['pendiente', 'facturado', 'anulado'])->default('pendiente');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

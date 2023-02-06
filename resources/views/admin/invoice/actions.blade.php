@@ -11,7 +11,7 @@
     <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Nota Debito"><i class="fas fa-notes-medical"></i></button>
 </a>
 <a href="{{ route('show_ncinvoice', $id) }}">
-    <button class="btn btn-verde" data-toggle="tooltip" data-placement="top" title="Nota Credito"><i class="far fa-clipboard"></i></button>
+    <button class="btn btn-verde" data-toggle="tooltip" data-placement="top" title="Nota Credito"><i class="fas fa-clipboard"></i></button>
 </a>
 <a href="{{ route('show_pay_invoice', $id) }}">
     <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Agregar Abono" ><i class="fas fa-file-invoice-dollar"></i></button>

@@ -25,16 +25,17 @@ return new class extends Migration
             $table->decimal('in_ndinvoice',10,2);
             $table->decimal('in_pay_cash',10,2);//ing abonos en efectivo
             $table->decimal('in_pay',10,2);//ing total de abonos
-            $table->decimal('in_pay_event', 10,2);//ing abonos por eventos
+            $table->decimal('in_advance', 10,2);//ing abonos por eventos
+            $table->decimal('out_payment',10,2);
             $table->decimal('out_cash',10,2);//salidas de efectivo
             $table->decimal('cash',10,2);//total efectivo
             $table->decimal('out',10,2);//total salidas efectivo
             $table->decimal('total',10,2);//total efectivo menos salidas
             $table->decimal('sale',10,2);//total de ventas
             $table->decimal('order',10,2);//total de pedidos
-            $table->string('cod_verif_open',12);//codigo verif apertura de caja
-            $table->string('cod_verif_close',12)->nullable();//cod verif cierre de caja
-            $table->enum('status', ['ABIERTA', 'CERRADA'])->default('ABIERTA');
+            $table->string('verification_code_open',12);//codigo verif apertura de caja
+            $table->string('verification_code_close',12)->nullable();//cod verif cierre de caja
+            $table->enum('status', ['open', 'close'])->default('open');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
 

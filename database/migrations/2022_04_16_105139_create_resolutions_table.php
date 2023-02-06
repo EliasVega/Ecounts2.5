@@ -24,7 +24,7 @@ return new class extends Migration
             $table->bigInteger('end_number');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->enum('status', ['ACTIVA', 'INACTIVA'])->default('ACTIVA');
+            $table->enum('status', ['activa', 'inactiva'])->default('activa');
             $table->foreignId('company_id')->constrained();
             $table->foreignId('type_document_id')->constrained();
 

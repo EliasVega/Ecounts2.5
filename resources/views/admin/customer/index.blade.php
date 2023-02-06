@@ -22,13 +22,13 @@
                             <th>Municipio</th>
                             <th>Nombre</th>
                             <th>DOC.</th>
-                            <th>R.Fiscal</th>
-                            <th>T.Organizacion</th>
-                            <th>Regimen</th>
                             <th>Numero</th>
                             <th>Direccion</th>
                             <th>Telefono</th>
                             <th>Email</th>
+                            <th>R.Fiscal</th>
+                            <th>T.Organizacion</th>
+                            <th>Regimen</th>
                             <th>editar</th>
                         </tr>
                     </thead>
@@ -49,19 +49,18 @@
             ajax: '{{ route('customer.index') }}',
             columns:
             [
-
                 {data: 'id'},
-                {data: 'nameD'},
-                {data: 'nameM'},
+                {data: 'department'},
+                {data: 'municipality'},
                 {data: 'name'},
-                {data: 'initials'},
-                {data: 'nameL'},
-                {data: 'nameO'},
-                {data: 'nameT'},
+                {data: 'document'},
                 {data: 'number'},
                 {data: 'address'},
                 {data: 'phone'},
                 {data: 'email'},
+                {data: 'liability'},
+                {data: 'organization'},
+                {data: 'regime'},
                 {data: 'edit'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',

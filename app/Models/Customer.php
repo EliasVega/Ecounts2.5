@@ -27,9 +27,7 @@ class Customer extends Model
         'regime_id',
     ];
 
-    public function document(){
-        return $this->belongsTo(Document::class);
-    }
+
 
     public function department()
     {
@@ -39,6 +37,10 @@ class Customer extends Model
     public function municipality()
     {
         return $this->belongsTo(Municipality::class);
+    }
+
+    public function document(){
+        return $this->belongsTo(Document::class);
     }
 
     public function liability()
@@ -56,7 +58,7 @@ class Customer extends Model
         return $this->belongsTo(Tax::class);
     }
 
-    public function regimen()
+    public function regime()
     {
         return $this->belongsTo(Regime::class);
     }
@@ -80,5 +82,7 @@ class Customer extends Model
         return $this->hasMany(Order::class);
     }
 
-
+    public function advances(){
+        return $this->hasMany(Customer::class);
+    }
 }

@@ -44,8 +44,8 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group" id="valorcito">
-                            <label class="form-control-label" for="cod_verif_open">Codigo de verificacion</label>
-                            <input type="password" id="cod_verif_open" name="cod_verif_open" value="" class="form-control"
+                            <label class="form-control-label" for="verification_code_open">Codigo de verificacion</label>
+                            <input type="password" id="verification_code_open" name="verification_code_open" value="" class="form-control"
                                 placeholder="Codigo Verificacion">
                         </div>
                     </div>

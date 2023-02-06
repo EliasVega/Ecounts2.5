@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Municipality;
 use App\Http\Requests\StoreMunicipalityRequest;
 use App\Http\Requests\UpdateMunicipalityRequest;
+use App\Models\Country;
 use App\Models\Department;
+use Illuminate\Http\Request;
 
 class MunicipalityController extends Controller
 {
@@ -18,11 +20,12 @@ class MunicipalityController extends Controller
     {
         if (request()->ajax())
         {
-            $municipalities = municipality::from('municipalities AS mun')
-            ->join('departments AS dep', 'mun.department_id', '=', 'dep.id')
-            ->select('mun.id', 'mun.code', 'mun.name', 'dep.name AS nameD')
-            ->get();
+            $municipalities = Municipality::get();
             return DataTables()::of($municipalities)
+            ->addIndexColumn()
+            ->addColumn('department', function (Municipality $municipality) {
+                return $municipality->department->name;
+            })
             ->addColumn('editar', 'admin/municipality/actions')
             ->rawColumns(['editar'])
             ->toJson();
@@ -38,7 +41,7 @@ class MunicipalityController extends Controller
     public function create()
     {
         $departments = Department::get();
-        return view("admin.municipality.create", ["departments" => $departments]);
+        return view("admin.municipality.create", compact('departments'));
     }
 
     /**
@@ -63,9 +66,8 @@ class MunicipalityController extends Controller
      * @param  \App\Models\Municipality  $municipality
      * @return \Illuminate\Http\Response
      */
-    public function show($municipality)
+    public function show(Municipality $municipality)
     {
-        $municipality = municipality::findOrFail($municipality);
         return view("admin.municipality.show", compact('municipality'));
     }
 
@@ -75,9 +77,8 @@ class MunicipalityController extends Controller
      * @param  \App\Models\Municipality  $municipality
      * @return \Illuminate\Http\Response
      */
-    public function edit($municipality)
+    public function edit(Municipality $municipality)
     {
-        $municipality = municipality::findOrFail($municipality);
         $departments = department::get();
 
         return view("admin.municipality.edit", compact('municipality', 'departments'));
@@ -90,9 +91,8 @@ class MunicipalityController extends Controller
      * @param  \App\Models\Municipality  $municipality
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMunicipalityRequest $request, $municipality)
+    public function update(UpdateMunicipalityRequest $request, Municipality $municipality)
     {
-        $municipality = municipality::findOrFail($municipality);
         $municipality->department_id = $request->department_id;
         $municipality->code = $request->code;
         $municipality->name = $request->name;
@@ -109,5 +109,15 @@ class MunicipalityController extends Controller
     public function destroy(Municipality $municipality)
     {
         //
+    }
+
+    public function getDepartment(Request $request, $id)
+    {
+        if($request)
+        {
+            $departments = Department::where('country_id', '=', $id)->get();
+
+            return response()->json($departments);
+        }
     }
 }

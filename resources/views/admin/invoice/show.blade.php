@@ -39,7 +39,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="invoice">FACTURA No.</label>
-                <h4>{{ $invoices->invoice }}</h4>
+                <h4>{{ $invoices->document }}</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

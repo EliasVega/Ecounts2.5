@@ -1,49 +1,18 @@
 <div class="box-body row">
-
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group row">
-            <label for="supplier_id">Proveedor  <button class="btn btn-codesR btn-sm" type="button" data-toggle="modal" data-target="#supplier"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar Proveedor</button></label>
+        <div class="form-group">
+            <label for="supplier_id">Proveedor  <button class="btn btn-celeste btn-sm" type="button" data-toggle="modal" data-target="#supplier"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar</button></label>
             <select name="supplier_id" class="form-control selectpicker" id="supplier_id"
                 data-live-search="true" required>
                 <option value="" disabled selected>Seleccionar el Proveedor</option>
                 @foreach($suppliers as $sup)
-                <option value="{{ $sup->id }}">{{ $sup->name }}</option>
+                <option value="{{ $sup->id }}">{{ $sup->number }} - {{ $sup->name }}</option>
                 @endforeach
             </select>
         </div>
     </div>
-
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="purchase">N°Factura</label>
-            <input type="text" id="purchase" name="purchase" value="{{ old('purchase') }}" class="form-control" placeholder="Numero de la factura" required pattern="[0-9]{0,15}">
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="due_date">Vencimiento</label>
-            <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
-        </div>
-    </div>
-    <!--
-    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-        <div class="box-danger">
-            <label class="form-control-label">
-                <h4>Agregar Productos</h4>
-            </label>
-        </div>
-    </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-        <div class="form-group" id="idPro">
-            <label class="form-control-label" for="idP">ID Producto</label>
-            <input type="number" id="idP" name="idP" class="form-control" placeholder="Id Prod." disabled
-                pattern="[0-9]{0,15}">
-        </div>
-    </div>
--->
     <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
-        <div class="form-group row">
+        <div class="form-group">
             <label class="form-control-label" for="branch_id">Sucursal Destino</label>
                 <select name="branch_id" class="form-control selectpicker" id="branch_id" data-live-search="true">
                     <option value="0" disabled selected>Seleccionar Sucursal</option>
@@ -53,24 +22,72 @@
                 </select>
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label" for="document">N°Factura</label>
+            <input type="text" id="document" name="document" value="{{ old('document') }}" class="form-control" placeholder="Numero de la factura" required pattern="[0-9]{0,15}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label" for="due_date">Vencimiento</label>
+            <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="percentage" value="1" id="rtfon">
+            <label class="form-check-label" for="retefte">
+                Retenciones
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="percentage" value="0" id="rtfoff" checked>
+            <label class="form-check-label" for="retefte">
+                No Retenciones
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="percentagey">
+        <div class="form-group row">
+            <label class="form-control-label" for="percentage_id">Porcentaje</label>
+            <select name="percentage_id" class="form-control selectpicker" id="percentage_id"
+                data-live-search="true">
+                <option value="1" disabled selected>Seleccionar.</option>
+                @foreach($percentages as $per)
+                <option
+                    value="{{ $per->id }}_{{ $per->percentage }}">{{ $per->percentage }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="stock">Stock</label>
             <input type="number" id="stock" name="stock" value="{{ old('stock') }}" class="form-control"
                 placeholder="stock" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
             <input type="number" id="iva" name="iva" class="form-control" placeholder="Iva" disabled
                 pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+    <div class="col-lg-3 col-md-2 col-sm-4 col-xs-12">
         <div class="form-group">
             <label for="vprice">V/Actual</label>
             <input type="number" name="vprice" id="vprice"  class="form-control" readonly>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12" id="percent">
+        <div class="form-group">
+            <label class="form-control-label" for="percentage">% Ret</label>
+            <input type="number" id="percentage" name="percentage" value="0" class="form-control"
+                placeholder="V impuesto" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
     <div class="clearfix"></div>
@@ -81,7 +98,7 @@
                 <select name="product_id" class="form-control selectpicker" id="product_id" data-live-search="true">
                     <option value="0" disabled selected>Seleccionar el Producto</option>
                     @foreach($products as $pro)
-                        <option value="{{ $pro->id }}_{{ $pro->iva }}_{{ $pro->stock }}_{{ $pro->price }}">{{ $pro->name }}</option>
+                        <option value="{{ $pro->id }}_{{ $pro->stock }}_{{ $pro->price }}_{{ $pro->category->iva }}">{{ $pro->name }}</option>
                     @endforeach
                 </select>
         </div>
@@ -100,13 +117,6 @@
                 class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
         </div>
     </div>
-    <!--
-    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="price">Valor</label>
-            <input type="number" id="price" name="price" value="{{ old('price') }}"  class="form-control" placeholder="Precio de Compra" pattern="[0-9]{0,15}">
-        </div>
-    </div>-->
     <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
         <div class="form-group">
             <label class="form-control-label">Add</label><br>
@@ -145,6 +155,11 @@
                             <input type="hidden" name="total_iva" id="total_iva">
                         </td>
                     </tr>
+                    <tr id="rtferase">
+                        <th colspan="5" class="footder">RETENCION:</th>
+                        <td class="footder"><strong id="retention_html">$ 0.00</strong>
+                            <input type="hidden" name="retention" id="retention"></td>
+                    </tr>
                     <tr>
                         <th colspan="5" class="footder">TOTAL PAGAR:</th>
                         <td class="footder"><strong id="total_pay_html">$ 0.00</strong>
@@ -158,9 +173,9 @@
     </div>
     <div class="modal-footer" id="save">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group row">
+            <div class="form-group">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>&nbsp;
+                <button class="btn btn-celeste" type="submit"><i class="fa fa-save"></i>&nbsp;
                     Registrar</button>
             </div>
         </div>

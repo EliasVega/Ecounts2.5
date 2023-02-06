@@ -65,4 +65,8 @@ class Supplier extends Model
     public function ndpurchases(){
         return $this->belongsToMany(Ndpurchase::class);
     }
+
+    public function advances(){
+        return $this->morphMany(Advance::class, 'advanceable');
+    }
 }

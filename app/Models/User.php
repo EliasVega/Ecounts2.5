@@ -115,7 +115,7 @@ class User extends Authenticatable
         return $this->hasMany(Ndinvoice::class);
     }
 
-    public function invoice(){
+    public function invoices(){
         return $this->belongsToMany(Invoice::class);
     }
 

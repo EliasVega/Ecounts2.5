@@ -26,7 +26,6 @@ class CompanyController extends Controller
         \Session::forget('company');
             $companies = company::where('id', '=', 1)->get();
 
-
         return view('admin.company.index', compact('companies'));
     }
 
@@ -94,9 +93,8 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show($company)
+    public function show(Company $company)
     {
-        $company = Company::findOrFail($company);
         \Session::put('company', $company->id, 60 * 24 * 365);
         \Session::put('name', $company->name, 60 * 24 * 365);
 
@@ -109,9 +107,8 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit($company)
+    public function edit(Company $company)
     {
-        $company        = Company::findOrfail($company);
         $departments    = Department::get();
         $municipalities = Municipality::get();
         $liabilities    = Liability::get();
@@ -130,7 +127,6 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        $company = company::findOrFail($company);
         $company->department_id   = $request->department_id;
         $company->municipality_id = $request->municipality_id;
         $company->liability_id    = $request->liability_id;

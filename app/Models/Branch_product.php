@@ -37,16 +37,14 @@ class Branch_product extends Model
     public function ndpurchases(){
         return $this->hasMany(Ndpurchase::class);
     }
-
-
-
     public function Productoventas(){
         return $this->hasMany(ProductoVenta::class);
     }
-
-
-
     public function ntcventa(){
         return $this->belongsToMany(Ntcventa::class);
     }
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
 }

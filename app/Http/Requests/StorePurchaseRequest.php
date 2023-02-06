@@ -25,19 +25,23 @@ class StorepurchaseRequest extends FormRequest
     {
         return [
 
-            'purchase'          => 'required|max:20',
+            'document'          => 'required|max:20',
             'due_date'          => 'required',
-            'items'             => '',
-            'total'             => 'required',
-            'total_iva'         => 'required',
-            'total_pay'         => 'required',
-            'pay'               => '',
-            'balance'           => '',
+            'items'             => 'numeric',
+            'total'             => 'required|numeric',
+            'total_iva'         => 'required|numeric',
+            'total_pay'         => 'required|numeric',
+            'pay'               => 'numeric',
+            'balance'           => 'numeric',
+            'retention'         => 'numeric',
             'status'            => '',
-            'branch_id'         => '',
-            'supplier_id'       => 'required',
-            'payment_form_id'   => '',
-            'payment_method_id' => ''
+            'document_type'     => '',
+            'branch_id'         => 'integer',
+            'supplier_id'       => 'required|integer',
+            'payment_form_id'   => 'required|integer',
+            'payment_method_id' => 'required|integer',
+            'percentage_id'     => 'integer',
+            'type_generation_id' => 'integer'
         ];
     }
 }

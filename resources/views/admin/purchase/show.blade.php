@@ -7,39 +7,38 @@
     <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
+                <label class="form-control-label" for="id">COMPRA #</label>
+                <h4>{{ $purchases->id }}</h4>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="form-group">
                 <label class="form-control-label" for="company">RESPONSABLE</label>
-                <h4>{{ $purchases->name }}</h4>
+                <h4>{{ $purchases->user->name }}</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="company">SUCURSAL</label>
-                <h4>{{ $purchases->nameB }}</h4>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="paymentForm">FORMA DE PAGO</label>
-                <h4>{{ $purchases->namePF }}</h4>
+                <h4>{{ $purchases->branch->name }}</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="paymentMethod">SALDO A PAGAR</label>
-                <h4>{{ $purchases->balance }}</h4>
+                <label class="form-control-label" for="balance">SALDO A PAGAR</label>
+                <h4>{{ number_format($purchases->balance, 2) }}</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="nombre">PROVEEDOR</label>
-                <h4>{{ $purchases->nameC }}</h4>
+                <h4>{{ $purchases->supplier->name }}</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="purchase">COMPRA No.</label>
-                <h4>{{ $purchases->id }}</h4>
+                <label class="form-control-label" for="document">DOCUMENTO No.</label>
+                <h4>{{ $purchases->document }}</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -78,24 +77,29 @@
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $purchases->total }}</p></th>
+                                <th><p align="right">${{ number_format($purchases->total, 2) }}</p></th>
                             </tr>
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $purchases->total_iva }}</p></th>
+                                <th><p align="right">${{ number_format($purchases->total_iva, 2) }}</p></th>
+                            </tr>
+
+                            <tr>
+                                <th colspan="3"><p align="right">RETENCION:</p></th>
+                                <th><p align="right">${{ number_format($purchases->retention, 2) }}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $purchases->total_pay }}</p></th>
+                                <th><p align="right">${{ number_format($purchases->total_pay, 2) }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
                             @foreach($product_purchases as $PP)
                                 <tr>
-                                    <td>{{ $PP->name }}</td>
+                                    <td>{{ $PP->product->name }}</td>
                                     <td>${{ $PP->price }}</td>
                                     <td>{{ $PP->quantity }}</td>
                                     <td class="tdder">{{ $PP->subtotal }}</td>

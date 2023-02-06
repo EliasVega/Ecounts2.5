@@ -10,9 +10,11 @@ use App\Models\Card;
 use App\Models\Pay_purchase_payment_method;
 use App\Models\Payment_method;
 use App\Models\Purchase;
+use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class PayPurchaseController extends Controller
 {
@@ -26,34 +28,40 @@ class PayPurchaseController extends Controller
         $user = Auth::user()->role_id;
         if (request()->ajax()) {
             if ($user == 1 || $user == 2) {
-                $pay_purchases = Pay_purchase::from('pay_purchases AS pay')
-                ->join('users AS use', 'pay.user_id', '=', 'use.id')
-                ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
-                ->join('purchases AS pur', 'pay.purchase_id', 'pur.id')
-                ->join('suppliers AS sup', 'pur.suplier_id', 'sup.id')
-                ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'pur.id AS idI', 'pur.balance', 'pur.totalPay', 'sup.name as nameC', 'pay.created_at')
-                ->get();
+                $pay_purchases = Pay_purchase::get();
             } else {
-                $pay_purchases = Pay_purchase::from('pay_purchases AS pay')
-                ->join('users AS use', 'pay.user_id', '=', 'use.id')
-                ->join('branches AS bra', 'pay.branch_id', '=', 'bra.id')
-                ->join('purchases AS pur', 'pay.purchase_id', 'pur.id')
-                ->join('suppliers AS sup', 'pur.suplier_id', 'sup.id')
-                ->select('pay.id', 'pay.pay', 'use.name', 'bra.name as nameB', 'pur.id AS idI', 'pur.balance', 'pur.totalPay', 'sup.name as nameC', 'pay.created_at')
-                ->where('pay.user_id', '=', Auth::user()->id)
-                ->get();
+                $pay_purchases = Pay_purchase::where('user_id', Auth::user()->id)->get();
             }
-
-            return datatables()
-            ->of($pay_purchases)
-            ->editColumn('created_at', function(Pay_purchase $pay){
-                return $pay->created_at->format('yy-m-d: h:m');
+            return DataTables::of($pay_purchases)
+            ->addIndexColumn()
+            ->addColumn('purchase', function (Pay_purchase $pay_purchase) {
+                return $pay_purchase->purchase->purchase;
             })
+            ->addColumn('total_pay', function (Pay_purchase $pay_purchase) {
+                return $pay_purchase->purchase->total_pay;
+            })
+            ->addColumn('balance', function (Pay_purchase $pay_purchase) {
+                return $pay_purchase->purchase->balance;
+            })
+            ->addColumn('supplier', function (Pay_purchase $pay_purchase) {
+                return $pay_purchase->purchase->supplier->name;
+            })
+            ->addColumn('branch', function (Pay_purchase $pay_purchase) {
+                return $pay_purchase->branch->name;
+            })
+            ->addColumn('user', function (Pay_purchase $pay_purchase) {
+                return $pay_purchase->user->name;
+            })
+            ->editColumn('created_at', function(Pay_purchase $pay_purchase){
+                return $pay_purchase->created_at->format('yy-m-d: h:m');
+            })
+
             ->addColumn('btn', 'admin/pay_purchase/actions')
             ->rawcolumns(['btn'])
-            ->toJson();
+            ->make(true);
         }
         return view('admin.pay_purchase.index');
+
     }
 
     /**
@@ -67,11 +75,7 @@ class PayPurchaseController extends Controller
         $payment_methods = Payment_method::get();
         $cards = Card::get();
 
-        $purchases = Purchase::from('purchases AS pur')
-        ->join('suppliers AS sup', 'pur.supplier_id', 'sup.id')
-        ->select('pur.id', 'pur.balance', 'pur.name', 'pur.created_at')
-        ->where('pur.id', '=', $request->session()->get('purchase'))
-        ->first();
+        $purchases = Purchase::where('id', '=', $request->session()->get('purchase'))->first();
 
         return view('admin.pay_purchase.create', compact('purchases', 'banks', 'payment_methods', 'cards'));
     }
@@ -105,7 +109,6 @@ class PayPurchaseController extends Controller
             $pay            = $request->pay;
             $transaction    = $request->transaction;
             $payu           = 0;
-
             while($cont < count($payment_method)){
                 $pay = $pay[$cont];
 
@@ -114,10 +117,10 @@ class PayPurchaseController extends Controller
                 $pay_purchase_payment_method->payment_method_id  = $payment_method[$cont];
                 $pay_purchase_payment_method->bank_id            = $bank[$cont];
                 $pay_purchase_payment_method->card_id            = $card[$cont];
-                $pay_purchase_payment_method->payment            = $pay;
+                $pay_purchase_payment_method->payment                = $pay;
                 $pay_purchase_payment_method->transaction        = $transaction[$cont];
                 $pay_purchase_payment_method->save();
-                /*
+
                 $payu = $payu + $pay;
 
                 $mp = $request->payment_method_id;
@@ -137,16 +140,16 @@ class PayPurchaseController extends Controller
                 $sale_box->in_pay_cash = $in_pay_cash;
                 $sale_box->in_pay = $in_pay;
                 $sale_box->cash = $cash;
-                $sale_box->update();*/
+                $sale_box->update();
 
                 $cont++;
             }
 
-            $balance = $balance-$payu;
+            $balancey = $balance-$payu;
 
-            $purshy = purchase::findOrFail($purchase->id);
-            $purshy->balance = $balance;
-            $purshy->update();
+            $purchase = purchase::findOrFail($purchase->id);
+            $purchase->balance = $balancey;
+            $purchase->update();
 
             $pay_purchases = Pay_purchase::findOrFail($pay_purchase->id);
             $pay_purchases->pay = $payu;

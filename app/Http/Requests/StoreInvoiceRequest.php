@@ -24,23 +24,23 @@ class StoreInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'invoice'           => '',
-            'items'             => '',
-            'type_document'     => '',
-            'type_operation'    => '',
-            'due_date'          => 'required',
-            'total'             => 'required',
-            'total_iva'         => 'required',
-            'total_pay'         => 'required',
-            'pay'               => 'required',
+            'document'           => 'string|max:20',
+            'items'             => 'integer',
+            'tipDoc'            => 'integer',
+            'tipOpe'            => 'integer',
+            'due_date'          => 'required|date',
+            'total'             => 'required|numeric',
+            'totalIva'          => 'numeric',
+            'totalPay'          => 'numeric',
+            'pay'               => 'nullable|numeric',
             'balance'           => '',
-            'retention'         => '',
-            'status'            => '',
-            'branch_id'         => '',
-            'customer_id'       => 'required',
-            'payment_form_id'   => 'required',
-            'payment_method_id' => 'required',
-            'retention_id'      => '',
+            'retention'         => 'nullable|numeric',
+            'status'            => 'in_array:active,credit_note,debit_note',
+            'branch_id'         => 'integer',
+            'customer_id'       => 'required|integer',
+            'payment_form_id'   => 'required|integer',
+            'payment_method_id' => 'required|integer',
+            'percentage_id'      => 'nullable|integer'
         ];
     }
 }

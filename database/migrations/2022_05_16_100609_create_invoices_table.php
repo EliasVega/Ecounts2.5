@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('invoice');
+            $table->string('document', 20);
             $table->string('type_document', 2);
             $table->string('type_operation', 2);
             $table->date('due_date');
@@ -27,14 +27,14 @@ return new class extends Migration
             $table->decimal('pay',20,2);
             $table->decimal('balance',20,2);
             $table->decimal('retention',10,2)->nullable();
-            $table->enum('status',['ACTIVE', 'CREDIT_NOTE', 'DEBIT_NOTE'])->default('ACTIVE');
+            $table->enum('status',['active', 'credit_note', 'debit_note'])->default('active');
 
             $table->foreignId('user_id')->constrained();
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');
             $table->foreignId('customer_id')->constrained()->onUpdate('cascade');
             $table->foreignId('payment_form_id')->constrained()->onUpdate('cascade');
             $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('retention_id')->nullable()->constrained();
+            $table->foreignId('percentage_id')->nullable()->constrained();
 
             $table->timestamps();
         });

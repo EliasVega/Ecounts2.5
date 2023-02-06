@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Municipality extends Model
 {
 
+    public $table = 'municipalities';
+
+    protected $primaryKey = 'id';
+
     public $timestamps = false;
 
     protected $fillable = [

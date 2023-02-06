@@ -13,7 +13,7 @@ class Payment_form extends Model
         'name',
     ];
 
-    public function invoice(){
+    public function invoices(){
         return $this->hasMany(Invoice::class);
     }
 
@@ -27,5 +27,9 @@ class Payment_form extends Model
 
     public function orders(){
         return $this->hasMany(Order::class);
+    }
+
+    public function purchases(){
+        return $this->hasMany(Purchase::class);
     }
 }

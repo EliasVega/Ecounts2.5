@@ -14,7 +14,7 @@ class Pay_invoice_payment_method extends Model
         'payment_method_id',
         'bank_id',
         'card_id',
-        'pay_event_id'
+        'advance_id'
     ];
 
     public function bank(){

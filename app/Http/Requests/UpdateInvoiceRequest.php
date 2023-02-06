@@ -25,23 +25,23 @@ class UpdateInvoiceRequest extends FormRequest
     {
         return [
 
-            'invoice'           => '',
-            'items'             => '',
-            'tipDoc'            => '',
-            'tipOpe'            => '',
-            'due_date'          => 'required',
-            'total'             => 'required',
-            'totalIva'          => 'required',
-            'totalPay'          => 'required',
-            'pay'               => 'required',
-            'balance'           => '',
-            'retention'         => '',
-            'status'            => '',
-            'branch_id'         => '',
-            'customer_id'       => 'required',
-            'payment_form_id'   => 'required',
-            'payment_method_id' => 'required',
-            'retention_id'      => '',
+            'document'           => 'required|string|max:20',
+            'items'             => 'integer',
+            'tipDoc'            => 'integer',
+            'tipOpe'            => 'integer',
+            'due_date'          => 'required|date',
+            'total'             => 'required|numeric',
+            'totalIva'          => 'required|numeric',
+            'totalPay'          => 'required|numeric',
+            'pay'               => 'nullable|numeric',
+            'balance'           => 'required',
+            'retention'         => 'nullable|numeric',
+            'status'            => 'in_array:active,credit_note,debit_note',
+            'branch_id'         => 'integer',
+            'customer_id'       => 'required|integer',
+            'payment_form_id'   => 'required|integer',
+            'payment_method_id' => 'required|integer',
+            'percentage_id'      => 'nullable|integer'
         ];
     }
 }

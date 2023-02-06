@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('retentions', function (Blueprint $table) {
             $table->id();
-            $table->decimal('porcentage', 10,2);
+
+            $table->decimal('percentage', 10,2);
             $table->integer('base');
         });
     }

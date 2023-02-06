@@ -121,7 +121,7 @@ class BranchController extends Controller
     {
         $sale_box = sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
-        ->where('status', '=', 'ABIERTA')
+        ->where('status', '=', 'open')
         ->first();
         if($sale_box == null){
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
@@ -138,7 +138,7 @@ class BranchController extends Controller
         //funcion para redirigir a pedidos
         $sale_box = sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
-        ->where('status', '=', 'ABIERTA')
+        ->where('status', '=', 'open')
         ->first();
         if($sale_box == null){
             return redirect("branch")->with('warning', 'Debes tener una cash Abierta para realizar pedidos');

@@ -309,7 +309,7 @@ body {
  .requerido:after{
      content:"*"; color: red;
  }
-
+/*
  .celeste{
      background-color: #150080 !important;
      color: #FFFFFF !important;
@@ -337,4 +337,4 @@ body {
 
 .th-gris{
     background: #ffffff !important;
-}
+}*/

@@ -25,7 +25,7 @@ class UserController extends Controller
             ->join('documents AS doc', 'use.document_id', 'doc.id')
             ->join('roles AS rol', 'use.role_id', 'rol.id')
             ->select('use.id', 'use.name', 'doc.initial', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
-            ->where('use.status', '=', 'ACTIVO')
+            ->where('use.status', '=', 'activo')
             ->get();
 
             return datatables()
@@ -45,7 +45,7 @@ class UserController extends Controller
             ->join('documents AS doc', 'use.document_id', 'doc.id')
             ->join('roles AS rol', 'use.role_id', 'rol.id')
             ->select('use.id', 'use.name', 'doc.initial', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
-            ->where('use.status', '=', 'INACTIVO')
+            ->where('use.status', '=', 'inactivo')
             ->get();
 
             return datatables()
@@ -115,10 +115,10 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if ($user->status == 'ACTIVO') {
-            $user->status = 'INACTIVO';
+        if ($user->status == 'activo') {
+            $user->status = 'inactivo';
         } else {
-            $user->status = 'ACTIVO';
+            $user->status = 'activo';
         }
         $user->update();
 
@@ -131,7 +131,7 @@ class UserController extends Controller
         \Session::put('user', $user->id, 60 * 24 * 365);
         \Session::put('name', $user->name, 60 * 24 * 365);
 
-        return redirect('cod_verif');
+        return redirect('verification_code');
     }
 
     /**

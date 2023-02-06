@@ -68,9 +68,8 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Card $card)
     {
-        $card = Card::findOrFail($id);
         return view('admin.card.edit', compact('card'));
     }
 
@@ -81,9 +80,8 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCardRequest $request, $id)
+    public function update(UpdateCardRequest $request, Card $card)
     {
-        $card = Card::findOrFail($id);
         $card->name = $request->name;
         $card->update();
         return redirect('card');

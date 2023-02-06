@@ -1,117 +1,91 @@
 <div class="box-body row">
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group row">
-            <label for="customer_id">Cliente</label>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="form-group">
+            <label for="customer_id">Cliente   <button class="btn btn-celeste btn-sm" type="button" data-toggle="modal" data-target="#customer"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar</button></label>
             <select name="customer_id" class="form-control selectpicker" id="customer_id"
                 data-live-search="true" required>
                 <option value="" disabled selected>Seleccionar el Cliente</option>
                 @foreach($customers as $cus)
-                <option value="{{ $cus->id }}">{{ $cus->name }}</option>
+                <option value="{{ $cus->id }}">{{ $cus->number }} - {{ $cus->name }}</option>
                 @endforeach
             </select>
         </div>
     </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="due_date">Vencimiento</label>
             <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
         </div>
     </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group" id="fpago">
-            <label for="payment_form_id">F/Pago</label>
-            <select name="payment_form_id" class="form-control selectpicker" id="payment_form_id"
-                data-live-search="true" required>
-                <option value="" disabled selected>Seleccionar...</option>
-                @foreach($payment_forms as $pf)
-                <option value="{{ $pf->id }}">{{ $pf->name }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group" id="mpay">
-            <label for="payment_method_id">Med/pago</label>
-            <select name="payment_method_id" class="form-control selectpicker" id="payment_method_id"
-                data-live-search="true" required>
-                <option value="" disabled selected>Seleccionar...</option>
-                @foreach($payment_methods as $pm)
-                <option value="{{ $pm->id }}">{{ $pm->name }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="box-danger">
             <label class="form-control-label">
-                <h4>Agregar Productos</h4>
+                <strong>Agregar Productos</strong>
             </label>
         </div>
     </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-        <div class="form-group" id="idPro">
+    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="idPro">
+        <div class="form-group">
             <label class="form-control-label" for="idP">ID Producto</label>
             <input type="number" id="idP" name="idP" class="form-control" placeholder="Id Prod." disabled
                 pattern="[0-9]{0,15}">
         </div>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="retention" value="1" id="rtfon">
+            <input class="form-check-input" type="radio" name="percentage" value="1" id="rtfon">
             <label class="form-check-label" for="retefte">
                 Retenciones
             </label>
             </div>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="retention" value="0" id="rtfoff" checked>
+            <input class="form-check-input" type="radio" name="percentage" value="0" id="rtfoff" checked>
             <label class="form-check-label" for="retefte">
                 No Retenciones
             </label>
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-        <div class="form-group row" id="retentiony">
-            <label class="form-control-label" for="retention_id">Retencion</label>
-            <select name="retention_id" class="form-control selectpicker" id="retention_id"
+    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="percentagey">
+        <div class="form-group row">
+            <label class="form-control-label" for="percentage_id">Porcentaje</label>
+            <select name="percentage_id" class="form-control selectpicker" id="percentage_id"
                 data-live-search="true">
-                <option value="1" disabled selected>Seleccionar Retencion</option>
-                @foreach($retentions as $ret)
+                <option value="1" disabled selected>Seleccionar.</option>
+                @foreach($percentages as $per)
                 <option
-                    value="{{ $ret->id }}_{{ $ret->porcentage }}">
-                    {{ $ret->porcentage }}</option>
+                    value="{{ $per->id }}_{{ $per->percentage }}">{{ $per->percentage }}</option>
                 @endforeach
             </select>
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="precio">P/sugerido</label>
             <input type="number" id="suggested_price" name="pricesug" class="form-control"
                 placeholder="Precio sugerido" disabled>
         </div>
     </div>
-
-    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="stock">Stock</label>
             <input type="number" id="stock" name="stock" value="{{ old('stock') }}" class="form-control"
                 placeholder="stock" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
             <input type="number" id="iva" name="iva" class="form-control" placeholder="Iva" disabled
                 pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-        <div class="form-group" id="porcent">
-            <label class="form-control-label" for="porcentage">% Ret</label>
-            <input type="number" id="porcentage" name="porcentage" value="0" class="form-control"
+    <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12" id="percent">
+        <div class="form-group">
+            <label class="form-control-label" for="percentage">% Ret</label>
+            <input type="number" id="percentage" name="percentage" value="0" class="form-control"
                 placeholder="V impuesto" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
@@ -188,7 +162,7 @@
                     <tr id="rtferase">
                         <th colspan="6" class="footder">RETENCION:</th>
                         <td class="footder"><strong id="retention_html">$ 0.00</strong>
-                            <input type="hidden" name="retention" id="retencion"></td>
+                            <input type="hidden" name="retention" id="retention"></td>
                     </tr>
                     <tr>
                         <th colspan="6" class="footder">TOTAL PAGAR:</th>
@@ -203,9 +177,9 @@
     </div>
     <div class="modal-footer" id="save">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group row">
+            <div class="form-group">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i>&nbsp;
+                <button class="btn btn-celeste" type="submit"><i class="fa fa-save"></i>&nbsp;
                     Registrar</button>
             </div>
         </div>

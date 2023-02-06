@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,33 +13,40 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-
-        $this->call(IndicatorSeeder::class);
-        $this->call(DepartmentSeeder::class);
-        $this->call(MunicipalitySeeder::class);
-        $this->call(DocumentSeeder::class);
-        $this->call(RoleSeeder::class);
-        $this->call(LiabilitySeeder::class);
-        $this->call(OrganizationSeeder::class);
-        $this->call(TaxSeeder::class);
-        $this->call(RegimeSeeder::class);
-        $this->call(BankSeeder::class);
-        $this->call(CardSeeder::class);
-        $this->call(NdDiscrepancySeeder::class);
-        $this->call(NcDiscrepancySeeder::class);
-        $this->call(CompanySeeder::class);
-        $this->call(PaymentFormSeeder::class);
-        $this->call(PaymentMethodSeeder::class);
-        $this->call(BranchSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(CategorySeeder::class);
-        $this->call(SupplierSeeder::class);
-        $this->call(UnitMeasureSeeder::class);
-        $this->call(ProductSeeder::class);
-        $this->call(RetentionSeeder::class);
-        $this->call(BranchProductSeeder::class);
-        $this->call(CustomerSeeder::class);
-        $this->call(TypeGenerationSeeder::class);
-        $this->call(TypeDocumentSeeder::class);
+        $this->call(IndicatorsTableSeeder::class);
+        $this->call(DepartmentsTableSeeder::class);
+        $this->call(MunicipalitiesTableSeeder::class);
+        $this->call(CoCountriesTableSeeder::class);
+        $this->call(CoDepartmentsTableSeeder::class);
+        $this->call(CoMunicipalitiesTableSeeder::class);
+        $this->call(DocumentsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(LiabilitiesTableSeeder::class);
+        $this->call(OrganizationsTableSeeder::class);
+        $this->call(TaxesTableSeeder::class);
+        $this->call(RegimesTableSeeder::class);
+        $this->call(BanksTableSeeder::class);
+        $this->call(CardsTableSeeder::class);
+        $this->call(NcDiscrepanciesTableSeeder::class);
+        $this->call(NdDiscrepanciesTableSeeder::class);
+        $this->call(CompaniesTableSeeder::class);
+        $this->call(PaymentFormsTableSeeder::class);
+        $this->call(PaymentMethodsTableSeeder::class);
+        $this->call(BranchesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(VerificationCodeTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(SuppliersTableSeeder::class);
+        $this->call(UnitMeasuresTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        $this->call(PercentagesTableSeeder::class);
+        $this->call(BranchProductsTableSeeder::class);
+        $this->call(CustomersTableSeeder::class);
+        $this->call(TypeGenerationsTableSeeder::class);
+        //$this->call(TypeDocumentSeeder::class);
+        $this->call(AccountClassesTableSeeder::class);
+        $this->call(AccountGroupsTableSeeder::class);
+        $this->call(AccountsTableSeeder::class);
+        $this->call(SubaccountsTableSeeder::class);
     }
 }

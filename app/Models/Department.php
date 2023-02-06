@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    public $table = 'departments';
+
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 

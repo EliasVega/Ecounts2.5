@@ -12,7 +12,8 @@ class Pay_purchase_payment_method extends Model
         'pay_purchase_id',
         'payment_method_id',
         'bank_id',
-        'card_id'
+        'card_id',
+        'payment_id',
     ];
 
     public function bank(){

@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('position', 50);
             $table->boolean('transfer');
-            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->timestamps();
         });
     }

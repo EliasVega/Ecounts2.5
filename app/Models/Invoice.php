@@ -9,7 +9,7 @@ class Invoice extends Model
 
     protected $fillable = [
 
-        'invoice',
+        'document',
         'type_document',
         'type_operation',
         'due_date',
@@ -25,12 +25,19 @@ class Invoice extends Model
         'customer_id',
         'payment_form_id',
         'payment_method_id',
-        'retention_id'
-
+        'percentage_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(Customer::class);
+    }
 
     public function customer(){
         return $this->belongsTo(Customer::class);
+    }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
     }
 
     public function payment_form(){

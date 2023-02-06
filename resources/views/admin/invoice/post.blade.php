@@ -28,7 +28,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> POST: <strong id="numfact">N°.{{ $indicators->prefijo }} - {{ $invoice->invoice }}</strong> <br>
+                <p> POST: <strong id="numfact">N°.{{ $invoice->document }}</strong> <br>
                     FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($invoice->created_at)) }}</strong>
                 </p>
             </div>
@@ -51,12 +51,12 @@
                         <span id="tc">EMAIL:    </span><br>
                     </div>
                     <div id="titd">
-                        <span id="td">{{ $invoice->number }}</span><br>
-                        <span id="td">{{ $invoice->nameC }}</span><br>
-                        <span id="td">{{ $invoice->address }}</span><br>
-                        <span id="td">{{ $invoice->nameM }}</span><br>
-                        <span id="td">{{ $invoice->phone }}</span><br>
-                        <span id="td">{{ $invoice->email }}</span><br>
+                        <span id="td">{{ $invoice->customer->number }}</span><br>
+                        <span id="td">{{ $invoice->customer->name }}</span><br>
+                        <span id="td">{{ $invoice->customer->address }}</span><br>
+                        <span id="td">{{ $invoice->customer->municipality->name }}</span><br>
+                        <span id="td">{{ $invoice->customer->phone }}</span><br>
+                        <span id="td">{{ $invoice->customer->email }}</span><br>
                     </div>
                 </div>
             </div>

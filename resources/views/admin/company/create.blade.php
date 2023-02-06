@@ -154,15 +154,15 @@
                 });
             });
         });
-        $("#department").change(function(event){
+        $("#department_id").change(function(event){
             $.get("create/" + event.target.value + "", function(response){
-                $("#municipality").empty();
-                $("#municipality").append("<option value = '#' disabled selected>Seleccionar ...</option>");
+                $("#municipality_id").empty();
+                $("#municipality_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
                 for(i = 0; i < response.length; i++){
-                    $("#municipality").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
+                    $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
                 }
+                $("#municipality_id").selectpicker('refresh');
             });
         });
-
     </script>
 @endsection

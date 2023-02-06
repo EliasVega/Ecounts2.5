@@ -14,5 +14,5 @@
     <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Agregar Abono" ><i class="fas fa-file-invoice-dollar"></i></button>
 </a>
 <a href="{{ route('post_purchase', $id) }}">
-    <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="pdf Post" ><i class="fas fa-file-invoice-dollar"></i></button>
+    <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="pdf Post" ><i class="fas fa-receipt"></i></button>
 </a>

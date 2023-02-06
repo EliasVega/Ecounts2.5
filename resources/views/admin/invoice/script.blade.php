@@ -9,6 +9,15 @@
             for(i = 0; i < response.length; i++){
                 $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
             }
+            $("#municipality_id").selectpicker('refresh');
+        });
+    });
+    jQuery(document).ready(function($){
+        $(document).ready(function() {
+            $('#percentage_id').select2({
+                theme: "classic",
+                width: "100%",
+            });
         });
     });
     jQuery(document).ready(function($){
@@ -19,7 +28,6 @@
             });
         });
     });
-
     jQuery(document).ready(function($){
         $(document).ready(function() {
             $('#product_id').select2({
@@ -28,7 +36,14 @@
             });
         });
     });
-
+    jQuery(document).ready(function($){
+        $(document).ready(function() {
+            $('#payment_form_id').select2({
+                theme: "classic",
+                width: "100%",
+            });
+        });
+    });
     jQuery(document).ready(function($){
         $(document).ready(function() {
             $('#payment_method_id').select2({
@@ -37,90 +52,65 @@
             });
         });
     });
-
-    $(document).ready(function(){
-        $("#rtfon").click(function(){
-            $("#retentiony").show();
-            $("#rtferase").show();
-            $("#porcent").show();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#rtfoff").click(function(){
-            $("#retentiony").hide();
-            $("#rtferase").hide();
-            $("#porcent").hide();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#add").click(function(){
-            add();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#cash").click(function(){
-            $("#pay").val("");
-            payCash();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#card").click(function(){
-            $("#pay").val("");
-            payCard();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#transfer").click(function(){
-            $("#pay").val("");
-            payTransaction();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#nequi").click(function(){
-            $("#pay").val("");
-            payNequi();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#pay").keyup(function(){
-            $("#pay").val();
-            payment();
-        });
-    });
-
-    $(document).ready(function(){
-        $("#transvenped").click(function(){
-            $("#pay").val("");
-            payOrderInvoice();
-        });
-    });
-
     var cont=0;
     total=0;
     subtotal=[];
     total_iva=0;
     ret = 0;
+    //form invoice
+    $("#idPro").hide();
+    $("#percentagey").hide();
+    $("#percent").hide();
     $("#save").hide();
-    $("#retentiony").hide();
-    $("#rtferase").hide();
+    //form pay
+    $("#cash").hide();
+    $("#transfer").hide();
+    $("#nequi").hide();
+    $("#card1").hide();
+    $("#card2").hide();
+    $("#noDefined").hide();
+    $("#advanceCus").hide();
+    $("#transvenped").hide();
+
     $("#payi").hide();
+    $("#abadvancey").hide();
+    $("#abvto").hide();
     $("#transactiony").hide();
     $("#banky").hide();
     $("#cardy").hide();
+    $("#advancey").hide();
     $("#eventy").hide();
-    $("#abvto").hide();
-    $("#abpaymenty").hide();
-    $("#idPro").hide();
-    $("#porcent").hide();
-    $("#porcentage").val(0);
+    $("#rtferase").hide();
+    /*
+    $("#advances").hide();
+    $("#percentage").val(0);*/
 
+    $(document).ready(function(){
+        $("#rtfon").click(function(){
+            $("#percentagey").show();
+            $("#rtferase").show();
+            $("#percent").show();
+        });
+    });
+    $(document).ready(function(){
+        $("#rtfoff").click(function(){
+            $("#percentagey").hide();
+            $("#rtferase").hide();
+            $("#percent").hide();
+        });
+    });
+    $("#percentage_id").change(percentageVer);
+
+    function percentageVer(){
+        datapercentage = document.getElementById('percentage_id').value.split('_');
+        $("#percentage_id").val(datapercentage[0]);
+        $("#percentage").val(datapercentage[1]);
+        percentages();
+    }
+
+    function percentages(){
+        $("#percentagey").hide();
+    }
 
     $("#product_id").change(productValue);
 
@@ -132,28 +122,21 @@
         $("#idP").val(dataProduct[4]);
         $("#suggested_price").val(dataProduct[2]);
     }
+    $("#pay_event_id").change(eventValue);
 
-    $("#retention_id").change(retentionVer);
-
-    function retentionVer(){
-        dataRetention = document.getElementById('retention_id').value.split('_');
-        $("#retention_id").val(dataRetention[0]);
-        $("#porcentage").val(dataRetention[1]);
-    }
-
-
-    $("#pay_event_id").change(DocumentValue);
-
-    function documentValue(){
+    function eventValue(){
 
         dataDocument = document.getElementById('pay_event_id').value.split('_');
-        $("#abv").val(dataDocument[0]);
+        $("#pay_event_id").val(dataDocument[0]);
         $("#pay").val(dataDocument[1]);
-        $("#abpayment").val(dataDocument[2]);
+        $("#abadvance").val(dataDocument[2]);
     }
-
+    $(document).ready(function(){
+        $("#add").click(function(){
+            add();
+        });
+    });
     function add(){
-
         dataProduct = document.getElementById('product_id').value.split('_');
         product_id= dataProduct[0];
         product= $("#product_id option:selected").text();
@@ -163,11 +146,12 @@
         iva= $("#iva").val();
         idp= $("#idP").val();
         idps= idp.toString();
+        percentage = $("#percentage").val();
         retention = $("#retention").val();
 
-        dataRetention = document.getElementById('retention_id').value.split('_');
-        retention_id= dataRetention[0];
-        porcentage = $("#porcentage").val();
+        datapercentage = document.getElementById('percentage_id').value.split('_');
+        percentage_id= datapercentage[0];
+        percentage = $("#percentage").val();
         dataDocument = document.getElementById('pay_event_id').value.split('_');
         pay_event_id= dataDocument[0];
         pay = $("#pay").val();
@@ -192,9 +176,6 @@
                 cont++;
 
                 totals();
-                /*
-                $("#total").html("$ " + total.toFixed(2));
-                $("#total_venta").val(total.toFixed(2));*/
                 assess();
                 $('#details').append(fila);
                 $('#product_id option:selected').remove();
@@ -210,18 +191,14 @@
             })
         }
     }
-
-
     function clean(){
         $("#product_id").val("");
         $("#quantity").val("");
         $("#sale_price").val("");
         $("#idP").val("");
-
     }
-
     function totals(){
-        rte = parseFloat($("#porcentage").val());
+        rte = parseFloat($("#percentage").val());
         vrte = total*rte/100;
 
         $("#total_html").html("$ " + total.toFixed(2));
@@ -233,23 +210,19 @@
 
         total_pay = total_pay - vrte;
         $("#retention_html").html("$ " + vrte.toFixed(2));
-        $("#retencion").val(vrte.toFixed(2));
+        $("#retention").val(vrte.toFixed(2));
 
         $("#total_pay_html").html("$ " + total_pay.toFixed(2));
         $("#total_pay").val(total_pay.toFixed(2));
 
         $("#balance").val(total_pay.toFixed(2));
     }
-
-
     function assess(){
 
         if(total>0){
 
         $("#save").show();
-        $("#retentiony").hide();
-        //$("#retefuente_id").attr('disabled','disabled');
-        //$("#retefuente_id").removeattr('disabled','disabled');
+        $("#percentagey").hide();
         $("#rtfon").attr('disabled','disabled');
         $("#rtfoff").attr('disabled','disabled');
 
@@ -257,7 +230,6 @@
             $("#save").hide();
         }
     }
-
     function eliminar(index){
 
         total = total-subtotal[index];
@@ -277,45 +249,62 @@
         $("#fila" + index).remove();
         assess();
     }
-
-
-
-    function retentions(){
-        $("#retentiony").show();
-        totalrte();
-    }
-
-    function retentionValue(){
-        $("#retention").show();
-    }
-
+    $(document).ready(function(){
+        $("#payment_form_id").change(function(){
+        form = $("#payment_form_id").val();
+        if(form == 1){
+            $("#noDefined").show();
+            $("#transvenped").show();
+            $("#cash").show();
+            $("#advanceCus").show();
+            $("#transfer").show();
+            $("#nequi").show();
+            $("#card1").show();
+            $("#card2").show();
+        }else{
+            $("#noDefined").hide();
+            $("#transvenped").hide();
+            $("#cash").hide();
+            $("#advanceCus").hide();
+            $("#transfer").hide();
+            $("#nequi").hide();
+            $("#card1").hide();
+            $("#card2").hide();
+        }
+        });
+    });
+    $(document).ready(function(){
+        $("#cash").click(function(){
+            $("#pay").val("");
+            payCash();
+        });
+    });
     function payCash(){
-        $("#payment_method_id").val(1);
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(10);
         $("#transaction").val("N/A");
         $("#bank_id").val(1);
         $("#card_id").val(1);
-        $("#transactiony").hide();
         $("#banky").hide();
         $("#cardy").hide();
-        $("#mpay").hide();
+        $("#transactiony").hide();
         $("#payi").show();
         $("#abpaymenty").hide();
+        $("#advancey").hide();
+        $("#advance").val(0);
         $("#eventy").hide();
     }
-
-    function payCard(){
-        $("#payment_method_id").val(2);
-        $("#abpaymenty").hide();
-        $("#mpay").hide();
-        $("#eventy").hide();
-        $("#payi").show();
-        $("#banky").show();
-        $("#cardy").show();
-        $("#transactiony").show();
-    }
-
+    $(document).ready(function(){
+        $("#transfer").click(function(){
+            $("#pay").val("");
+            payTransaction();
+        });
+    });
     function payTransaction(){
-        $("#payment_method_id").val(3);
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(47);
         $("#card_id").val(1);
         $("#payi").show();
         $("#abpaymenty").hide();
@@ -325,9 +314,16 @@
         $("#mpay").hide();
         $("#eventy").hide();
     }
-
+    $(document).ready(function(){
+        $("#nequi").click(function(){
+            $("#pay").val("");
+            payNequi();
+        });
+    });
     function payNequi(){
-        $("#payment_method_id").val(4);
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(47);
         $("#bank_id").val(2);
         $("#card_id").val(1);
         $("#payi").show();
@@ -338,8 +334,97 @@
         $("#banky").hide();
         $("#eventy").hide();
     }
+    $(document).ready(function(){
+        $("#card1").click(function(){
+            $("#pay").val("");
+            payCard1();
+        });
+    });
+    function payCard1(){
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(48);
+        $("#abpaymenty").hide();
+        $("#mpay").hide();
+        $("#eventy").hide();
+        $("#payi").show();
+        $("#banky").show();
+        $("#cardy").show();
+        $("#transactiony").show();
+    }
+    $(document).ready(function(){
+        $("#card2").click(function(){
+            $("#pay").val("");
+            payCard2();
+        });
+    });
 
+    function payCard2(){
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(49);
+        $("#abpaymenty").hide();
+        $("#mpay").hide();
+        $("#eventy").hide();
+        $("#payi").show();
+        $("#banky").show();
+        $("#cardy").show();
+        $("#transactiony").show();
+    }
+    $(document).ready(function(){
+        $("#noDefined").click(function(){
+            $("#pay").val("");
+            noDefined();
+        });
+    });
+    function noDefined(){
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(1);
+        $("#transaction").val("N/A");
+        $("#bank_id").val(1);
+        $("#card_id").val(1);
+        $("#transactiony").show();
+        $("#banky").hide();
+        $("#cardy").hide();
+        $("#payi").show();
+        $("#abpaymenty").hide();
+        $("#advancey").hide();
+        $("#eventy").hide();
+        $("#advance").val(0);
+    }
+
+    $(document).ready(function(){
+        $("#advanceCus").click(function(){
+            $("#pay").val("");
+            advanceCus();
+        });
+    });
+    function advanceCus(){
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(1);
+        $("#transaction").val("N/A");
+        $("#bank_id").val(1);
+        $("#card_id").val(1);
+        $("#payi").hide();
+        $("#abpaymenty").show();
+        $("#transactiony").hide();
+        $("#cardy").hide();
+        $("#mpay").hide();
+        $("#banky").hide();
+        $("#advancey").show();
+        $("#eventy").hide();
+    }
+    $(document).ready(function(){
+        $("#transvenped").click(function(){
+            $("#pay").val("");
+            payOrderInvoice();
+        });
+    });
     function payOrderInvoice(){
+        $("#pay").val();
+        $("#returned").val(0);
         $("#payment_method_id").val(1);
         $("#transaction").val("N/A");
         $("#bank_id").val(1);
@@ -352,7 +437,12 @@
         $("#banky").hide();
         $("#eventy").show();
     }
-
+    $(document).ready(function(){
+        $("#pay").keyup(function(){
+            $("#pay").val();
+            payment();
+        });
+    });
     function payment(){
         ttp = parseFloat($("#total_pay").val())
         abn = parseFloat($("#pay").val())
@@ -368,6 +458,64 @@
             })
             $("#pay").val(0)
             payment();
+        }
+    }
+    prueba = [];
+    $("#customer_id").change(function(event){
+        $.get("getAdvance/" + event.target.value + "", function(response){
+            $("#advance_id").empty();
+            $("#advance_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
+            for(i = 0; i < response.length; i++){
+                $("#advance_id").append("<option value = '" + response[i].id + "'>" + response[i].origin + '  ' + response[i].balance + "</option>");
+                prueba = response[i].balance;
+            }
+            $("#advance_id").selectpicker('refresh');
+        });
+    });
+    $(document).ready(function(){
+        $("#advance_id").change(function(){
+            parseFloat($("#abpayment").val(prueba))
+            $("#abadvancey").show();
+            prepaidnew();
+        });
+    });
+
+    function prepaidnew(){
+        ttp = parseFloat($("#total_pay").val())
+        abn = parseFloat($("#abpayment").val())
+        balancey = ttp - abn;
+        if (ttp >= abn) {
+            $("#returned").val(balancey);
+            $("#pay").val(abn);
+            $("#payment").val(abn);
+        } else {
+            $("#abvto").show();
+            //prepaid()
+        }
+    }
+    $(document).ready(function(){
+        $("#advance").keyup(function(){
+            $("#advance").val();
+            prepaid();
+        });
+    });
+    function prepaid(){
+        ttpnew = parseFloat($("#total_pay").val())
+        abnnew = parseFloat($("#advance").val())
+        balanceynew = ttpnew - abnnew;
+        if (ttpnew >= abnnew) {
+            $("#returned").val(balanceynew);
+            $("#advance").val(abnnew);
+            $("#pay").val(abnnew);
+        } else {
+            //alert("Rellene todos los campos del detalle de la venta");
+            Swal.fire({
+            type: 'error',
+            //title: 'Oops...',
+            text: 'El abono supera el valor de la compra',
+            })
+            $("#advance").val(0)
+            prepaid();
         }
     }
 </script>

@@ -9,7 +9,7 @@ class Purchase extends Model
 
     protected $fillable = [
 
-        'purchase',
+        'document',
         'due_date',
         'items',
         'total',
@@ -17,16 +17,28 @@ class Purchase extends Model
         'total_pay',
         'pay',
         'balance',
+        'retention',
         'status',
+        'document_type',
         'user_id',
         'branch_id',
         'supplier_id',
         'payment_form_id',
         'payment_method_id',
+        'percentage_id',
+        'type_generation_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(Customer::class);
+    }
 
     public function supplier(){
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
     }
 
     public function productPurchases(){
@@ -45,7 +57,11 @@ class Purchase extends Model
         return $this->hasOne(Ndpurchase::class);
     }
 
-    public function generation(){
+    public function type_generation(){
         return $this->hasOne(Generation::class);
+    }
+
+    public function paymentForm(){
+        return $this->hasOne(Payment_form::class);
     }
 }

@@ -5,12 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="box-danger"><!--
-            <div class="box-header with-border">
-                <button class="btn btn-gris btn-md" type="button" data-toggle="modal" data-target="#supplier">
-                    <i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar Proveedor
-                </button>
-            </div>-->
+        <div class="box-danger">
             @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>

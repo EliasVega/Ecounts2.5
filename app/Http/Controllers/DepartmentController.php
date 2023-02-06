@@ -72,7 +72,7 @@ class DepartmentController extends Controller
      */
     public function edit($department)
     {
-        $department = department::findOrFail($department);
+        $department = Department::findOrFail($department);
         return view("admin.department.edit", compact('department'));
     }
 
@@ -83,9 +83,8 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDepartmentRequest $request, $department)
+    public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        $department = department::findOrFail($department);
         $department->name = $request->name;
         $department->dane_code = $request->dane_code;
         $department->iso_code = $request->iso_code;

@@ -45,12 +45,28 @@ class Branch extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function invoice(){
+    public function invoices(){
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function purchases(){
         return $this->hasMany(Invoice::class);
     }
 
     public function ncpurchases(){
         return $this->hasMany(Ncpurchase::class);
+    }
+
+    public function ncinvoices(){
+        return $this->hasMany(Ncinvoice::class);
+    }
+
+    public function ndpurchases(){
+        return $this->hasMany(Ndpurchase::class);
+    }
+
+    public function ndinvoices(){
+        return $this->hasMany(Ndinvoice::class);
     }
 
     public function orders(){

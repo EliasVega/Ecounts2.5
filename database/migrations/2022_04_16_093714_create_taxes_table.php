@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('taxes', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('code');
+            $table->string('code');
             $table->string('name', 25);
             $table->string('description', 60);
         });
