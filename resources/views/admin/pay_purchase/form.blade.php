@@ -1,85 +1,28 @@
-<div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group">
-        <label class="form-control-label">Venta #</label>
-        <input type="number" value="{{ $purchases->id }}" class="form-control" disabled pattern="[0-9]{0,15}">
+<div class="box-body row">
+    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label requerido" for="purchase">Compra #</label>
+            <input type="number" value="{{ $purchase->id }}" id="purchase" name="purchase"
+                class="form-control blanco" disabled pattern="[0-9]{0,15}">
+        </div>
     </div>
-</div>
+    <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label">Proveedor</label>
+            <input type="text" value="{{ $purchase->supplier->name }}" class="form-control" disabled pattern="[0-9]{0,15}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label">Pendiente</label>
+            <input type="number" id="pendient" value="{{ $purchase->balance }}" class="form-control" disabled pattern="[0-9]{0,15}">
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label">Fecha</label>
+            <input type="text" value="{{ $purchase->created_at }}" class="form-control" disabled pattern="[0-9]{0,15}">
+        </div>
+    </div>
 
-<div class="col-lg-6 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group">
-        <label class="form-control-label">Proveedor</label>
-        <input type="text" value="{{ $purchases->supplier->name }}" class="form-control" disabled pattern="[0-9]{0,15}">
-    </div>
 </div>
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group">
-        <label class="form-control-label">Fecha</label>
-        <input type="text" value="{{ $purchases->created_at }}" class="form-control" disabled pattern="[0-9]{0,15}">
-    </div>
-</div>
-<div class="clearfix"></div>
-<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group">
-        <label class="form-control-label">Pendiente</label>
-        <input type="number" id="pendient" value="{{ $purchases->balance }}" class="form-control" disabled pattern="[0-9]{0,15}">
-    </div>
-</div>
-<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group" id="payi">
-        <label class="form-control-label" for="pay">Abono</label>
-        <input type="number" id="pay" name="pay" value="" class="form-control"
-            placeholder="pago" pattern="[0-9]{0,15}">
-    </div>
-</div>
-<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group" id="paymenty">
-        <label class="form-control-label" >Saldo</label>
-        <input type="number" id="rbalance"  value="" class="form-control" disabled pattern="[0-9]{0,15}">
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="form-group row">
-        <label for="payment_method_id">Medio de Pago</label>
-        <select name="payment_method_id" class="form-control selectpicker" id="payment_method_id"
-            data-live-search="true">
-            <option value="" disabled selected>Seleccionar....</option>
-            @foreach($payment_methods as $pm)
-            <option value="{{ $pm->id }}">{{ $pm->name }}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
-<div class="clearfix"></div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="form-group" id="banky">
-        <label for="bank_id">bank</label>
-        <select name="bank_id" class="form-control selectpicker" id="bank_id"
-            data-live-search="true">
-            <option value="" disabled selected>seleccionar...</option>
-            @foreach($banks as $ban)
-            <option value="{{ $ban->id }}">{{ $ban->name }}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="form-group" id="cardy">
-        <label for="card_id">Tipo tarjeta</label>
-        <select name="card_id" class="form-control selectpicker" id="card_id"
-            data-live-search="true">
-            <option value="" disabled selected>seleccionar...</option>
-            @foreach($cards as $car)
-            <option value="{{ $car->id }}">{{ $car->name }}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
-
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-    <div class="form-group" id="transactiony">
-        <label class="form-control-label" for="transaction"># Transaccion</label>
-        <input type="text" id="transaction" name="transaction" value="" class="form-control">
-    </div>
-</div>
-
-

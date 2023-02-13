@@ -8,7 +8,10 @@ use App\Http\Requests\UpdateCashoutRequest;
 use App\Models\Cod_verif;
 use App\Models\Sale_box;
 use App\Models\User;
+use App\Models\Verification_code;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
 class CashoutController extends Controller
 {
@@ -17,7 +20,7 @@ class CashoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (request()->ajax()) {
             $cash_outs = Cash_out::from('cash_outs AS cas')
@@ -29,11 +32,10 @@ class CashoutController extends Controller
             ->where('use.id', '=', Auth::user()->id)
             ->get();
 
-            return datatables()
-            ->of($cash_outs)
-            ->addColumn('edit', 'admin/cash_out/actions')
-            ->rawcolumns(['edit'])
-            ->toJson();
+            return DataTables::of($cash_outs)
+            ->addColumn('btn', 'admin/order/actions')
+            ->rawColumns(['btn'])
+            ->make(true);
         }
         return view('admin.cash_out.index');
     }
@@ -46,9 +48,8 @@ class CashoutController extends Controller
     public function create()
     {
         $users = User::where('id', '!=', 1)->get();
-        $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'ABIERTA')->first();
-        $cash = $sale_box->cash;
-        return view("admin.cash_out.create", compact('users', 'sale_box', 'cash'));
+        $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'open')->first();
+        return view("admin.cash_out.create", compact('users', 'sale_box'));
     }
 
     /**
@@ -63,8 +64,8 @@ class CashoutController extends Controller
         $admin_id = $request->admin_id;
         $verific = $request->admin;
         $payment = $request->payment;
-        $cod_verif = Cod_verif::select('id', 'code')->where('user_id', '=', $admin_id)->first();
-        $box_open = Sale_box::where('user_id', '=', $users)->where('status', '=', 'ABIERTA')->first();
+        $cod_verif = Verification_code::select('id', 'code')->where('user_id', '=', $admin_id)->first();
+        $box_open = Sale_box::where('user_id', '=', $users)->where('status', '=', 'open')->first();
 
         if($cod_verif == null){
             return redirect("cash_out")->with('warning', 'Usuario No autorizado para ejercer como administrador');

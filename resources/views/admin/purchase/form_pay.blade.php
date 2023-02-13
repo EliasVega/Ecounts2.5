@@ -15,12 +15,17 @@
         <div class="form-group">
             <label for="payment_method_id">Med/pago</label>
             <select name="payment_method_id" class="form-control selectpicker" id="payment_method_id"
-                data-live-search="true" required>
-                <option value="" disabled selected>Seleccionar...</option>
+                data-live-search="true">
+                <option value="1" disabled selected>Seleccionar...</option>
                 @foreach($payment_methods as $pm)
                 <option value="{{ $pm->id }}">{{ $pm->name }}</option>
                 @endforeach
             </select>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <button class="btn btn-celeste btn-sm" type="button" id="addpay" data-toggle="tooltip" data-placement="top" title="Desea Agregar Abono">Agregar abono </button>
         </div>
     </div>
     <div class="clearfix"></div>

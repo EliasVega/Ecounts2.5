@@ -7,7 +7,7 @@
     <div class="row">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>Listado de Abonos <a href="pay_purchase/create" class="btn btn-success"><i class="fa fa-plus mr-2"></i> Agregar Abono</a>
+                <h3>Listado de Abonos
                     <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
             </div>
         </div>
@@ -15,14 +15,16 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="pays">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="cash_receipts">
                     <thead>
                         <tr class="bg-info">
-                            <th>Compra</th>
-                            <th>Proveedor</th>
+                            <th>ID</th>
+                            <th>Comp #</th>
+                            <th>Factura</th>
+                            <th>Cliente</th>
                             <th>Sede</th>
                             <th>Responsable</th>
-                            <th>Valor Compra</th>
+                            <th>V/Factura.</th>
                             <th>Abono</th>
                             <th>Saldo</th>
                             <th>Fecha</th>
@@ -37,15 +39,18 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#pays').DataTable(
+        $('#cash_receipts').DataTable(
         {
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: '{{ route('pay_purchase.index') }}',
+            purchase: [[0, "desc"]],
             columns:
             [
+                {data: 'id'},
+                {data: 'pay_purchase'},
                 {data: 'purchase'},
                 {data: 'supplier'},
                 {data: 'branch'},

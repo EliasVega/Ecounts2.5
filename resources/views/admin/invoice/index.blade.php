@@ -6,11 +6,14 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Ventas <a href="invoice/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Venta</a>
+            <h3>Listado de Ventas </h3>
+                <a href="invoice/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Venta</a>
                 <a href="{{ route('branch.index') }}" class="btn btn-celeste"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                 <a href="{{ route('customer.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Clientes</a>
                 <a href="{{ route('ncinvoice.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
-                <a href="{{ route('ndinvoice.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.D.</a></h3></h3>
+                <a href="{{ route('ndinvoice.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
+                <a href="{{ route('pay_invoice.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
+                <a href="{{ route('advance.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Anticipos</a>
         </div>
 
     </div>

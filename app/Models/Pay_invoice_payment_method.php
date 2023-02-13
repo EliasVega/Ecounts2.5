@@ -28,4 +28,9 @@ class Pay_invoice_payment_method extends Model
     public function payEvent(){
         return $this->belongsTo(Payevent::class);
     }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo(Payment_method::class);
+    }
 }

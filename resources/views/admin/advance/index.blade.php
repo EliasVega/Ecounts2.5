@@ -22,7 +22,7 @@
                             <th>Sucursal</th>
                             <th>Pago Anticipado</th>
                             <th>Saldo</th>
-                            <th>Nota</th>                            <th>Fecha</th>
+                            <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>

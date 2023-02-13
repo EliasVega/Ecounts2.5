@@ -33,12 +33,12 @@ class Order extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function payment_forms(){
-        return $this->belongsToMany(Payment_form::class);
+    public function paymentForm(){
+        return $this->belongsTo(Payment_form::class);
     }
 
-    public function payment_methods(){
-        return $this->belongsToMany(Payment_method::class);
+    public function paymentMethod(){
+        return $this->belongsTo(Payment_method::class);
     }
 
     public function invoice()
@@ -52,5 +52,9 @@ class Order extends Model
 
     public function retention(){
         return $this->hasOne(Retention::class);
+    }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
     }
 }

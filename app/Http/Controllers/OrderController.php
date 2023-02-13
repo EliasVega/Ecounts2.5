@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Advance;
 use App\Models\Bank;
 use App\Models\Branch;
 use App\Models\Branch_product;
@@ -22,6 +23,7 @@ use App\Models\Payment_form;
 use App\Models\Payment_method;
 use App\Models\Pay_order;
 use App\Models\Pay_order_payment_method;
+use App\Models\Percentage;
 use App\Models\Regime;
 use App\Models\Retention;
 use App\Models\Sale_box;
@@ -29,6 +31,7 @@ use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
@@ -40,41 +43,34 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $branch = Branch::where('id', '=', $request->session()->get('branch'))->first();
+
         $rol = Auth::user()->role_id;
         if (request()->ajax()) {
             if ($rol == 1 || $rol == 2) {
-                $orders = Order::from('orders AS ord')
-                ->join('branches AS bra', 'ord.branch_id', '=', 'bra.id')
-                ->join('customer AS cus', 'ord.customer_id', '=', 'cus.id')
-                ->select('ord.id', 'cus.name', 'ord.total_pay', 'ord.balance', 'ord.status', 'ord.created_at', 'bra.name AS nameB')
-                ->get();
+                $orders = Order::get();
             } else {
-                $orders = Order::from('orders AS ord')
-                ->join('users AS use', 'ord.user_id', '=', 'use.id')
-                ->join('branches AS bra', 'ord.branch_id', '=', 'bra.id')
-                ->join('customers AS cus', 'ord.customer_id', '=', 'cus.id')
-                ->select('ord.id', 'cus.name', 'ord.total_pay', 'ord.balance', 'ord.status', 'ord.created_at', 'bra.name AS nameB')
-                ->where('bra.id', '=', $request->session()->get('branch'))
-                ->where('use.id', '=', Auth::user()->id)
-                ->where('use.status', '=', 'ACTIVO')
-                ->get();
+                $orders = Order::where('branch_id', $request->session()->get('branch'))->where('user_id', Auth::user()->id)->get();
             }
-            return datatables()
-            ->of($orders)
-            ->editColumn('created_at', function (Order $order) {
+            return DataTables::of($orders)
+            ->addIndexColumn()
+            ->addColumn('customer', function (Order $order) {
+                return $order->customer->name;
+            })
+            ->addColumn('branch', function (Order $order) {
+                return $order->branch->name;
+            })
+            ->editColumn('created_at', function(Order $order){
                 return $order->created_at->format('yy-m-d: h:m');
             })
             ->addColumn('btn', 'admin/order/actions')
-            ->rawcolumns(['btn'])
-            ->toJson();
+            ->rawColumns(['btn'])
+            ->make(true);
         }
-
         if ($branch->id == 1) {
-            return redirect('branch')->with('warning', 'No tiene Autorizacion para realizar orders');
+            return redirect('branch')->with('warning', 'No puede realizar ventas desde Bodega');
         } else {
             return view('admin.order.index');
         }
-
     }
 
     /**
@@ -97,8 +93,8 @@ class OrderController extends Controller
         $banks          = Bank::get();
         $cards          = Card::get();
         $branch         = $request->session()->get('branch');
-        $retentions     = Retention::get();
-        $pay_events      = Pay_event::where('status', '=', 'PENDIENTE')->get();
+        $percentages     = Percentage::get();
+        $pay_events      = Pay_event::where('status', '=', 'pendiente')->get();
 
         $branch_products = Branch_product::from('branch_products as bp')
         ->join('products as pro', 'bp.product_id', 'pro.id')
@@ -106,9 +102,23 @@ class OrderController extends Controller
         ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
         ->where('bp.branch_id', '=', $request->session()->get('branch'))
         ->where('bp.stock', '>', 0)
-        ->where('pro.status', '=', 'ACTIVE')
+        ->where('pro.status', '=', 'activo')
         ->get();
-        return view('admin.order.create', compact('customers', 'branch_products', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'taxes', 'regimes', 'payment_forms', 'payment_methods', 'retentions', 'banks', 'cards', 'pay_events'));
+        return view('admin.order.create', compact('customers',
+        'branch_products',
+        'departments',
+        'municipalities',
+        'documents',
+        'liabilities',
+        'organizations',
+        'taxes',
+        'regimes',
+        'payment_forms',
+        'payment_methods',
+        'percentages',
+        'banks',
+        'cards',
+        'pay_events'));
     }
 
     /**
@@ -148,18 +158,22 @@ class OrderController extends Controller
             $order->save();
             //si hay Abono registra abono
             if($pay > 0){
-                $payEven = $request->abv;
-                if ($payEven != 0) {
-                    //si el abono es un abono de otro documento aplica abono evento
-                    $pay_event = Pay_event::findOrFail($payEven);
-                    $pay_event->destination = $order->id;
-                    $pay_event->status      = 'APLICADO';
-                    $pay_event->update();
-                    $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-                    $in_pay_event = $boxy->in_pay_event + $pay;
+                $adv = $request->advance;
+                if ($adv != 0) {
+                    $advance              = Advance::findOrFail( $request->advance_id);
+                    $adv_total = $advance->balance - $adv;
 
-                    $sale_box               = Sale_box::findOrFail($boxy->id);
-                    $sale_box->in_pay_event = $in_pay_event;
+                    $advance->destination = $order->id;
+                    if ($adv_total == 0) {
+                        $advance->status      = 'aplicado';
+                    } else {
+                        $advance->status      = 'parcial';
+                    }
+                    $advance->balance = $adv_total;
+                    $advance->update();
+
+                    $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->in_advance += $pay;
                     $sale_box->update();
                 } else {
                     //si es un abono nuevo aplica abono pedido
@@ -176,23 +190,22 @@ class OrderController extends Controller
                     $pay_order_payment_method->payment_method_id  = $request->payment_method_id;
                     $pay_order_payment_method->bank_id            = $request->bank_id;
                     $pay_order_payment_method->card_id            = $request->card_id;
-                    $pay_order_payment_method->pay_event_id        = $request->pay_event_id;
+                    $pay_order_payment_method->advance_id         = $request->advance_id;
                     $pay_order_payment_method->payment            = $request->pay;
                     $pay_order_payment_method->transaction        = $request->transaction;
                     $pay_order_payment_method->save();
                 }
                 //extrayendo variables
                 $mp            = $request->payment_method_id;
-                $boxy          = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-                $in_order      = $boxy->in_order + $pay;
+                $boxy          = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                $in_order      = $boxy->in_order + $request->total_pay;
                 $in_order_cash = $boxy->in_order_cash;
                 $in_pay_cash   = $boxy->in_pay_cash;
                 $in_pay        = $boxy->in_pay + $pay;
                 $out           = $boxy->out_cash;
-
-                $cash = $boxy->cash;
+                $cash          = $boxy->cash;
                 //si hay medio de pago
-                if($mp == 1){
+                if($mp == 10){
                     $in_order_cash += $pay;
                     $in_pay_cash   += $pay;
                     $cash          += $pay;
@@ -240,13 +253,9 @@ class OrderController extends Controller
             }
 
             //obteniendo datos de la caja
-            $boxy = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'ABIERTA')->first();
-            $ord  = $boxy->order;
-            $tpv  = $order->total_pay;
-            $nord = $ord + $tpv;
+            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
             //Actualizando caja
-            $sale_box        = Sale_box::findOrFail($boxy->id);
-            $sale_box->order = $nord;
+            $sale_box->order += $request->total_pay;
             $sale_box->update();
 
             DB::commit();
@@ -265,104 +274,53 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $orders = Order::from('orders AS ord')
-        ->join('users AS use', 'ord.user_id', 'use.id')
-        ->join('branches AS bra', 'ord.branch_id', 'bra.id')
-        ->join('customers AS cus', 'ord.customer_id', 'cus.id')
-        ->join('payment_forms AS pf', 'ord.payment_form_id', 'pf.id')
-        ->join('payment_methods AS pm', 'ord.payment_method_id', 'pm.id')
-        ->select('ord.id', 'ord.due_date', 'ord.items', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'ord.pay', 'ord.balance', 'ord.retention', 'ord.status', 'ord.created_at', 'use.name', 'bra.name AS nameB', 'cus.name AS nameC', 'pf.name AS namePF', 'pm.name AS namePM')
-        ->where('ord.id', '=', $id)
-        ->first();
+        $order = Order::where('id', $id)->first();
 
         /*mostrar detalles*/
-        $order_products = Order_product::from('order_products AS op')
-        ->join('products AS pro', 'op.product_id', '=', 'pro.id')
-        ->join('orders AS ord', 'op.order_id', '=', 'ord.id')
-        ->select('op.quantity', 'op.price', 'op.subtotal', 'ord.id', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'pro.name')
-        ->where('op.order_id', '=', $id)
-        ->get();
+        $order_products = Order_product::where('order_id', $id)->get();
 
-        return view('admin.order.show', compact('orders', 'order_products'));
+        return view('admin.order.show', compact('order', 'order_products'));
     }
 
     public function show_invoicy($id)
-     {
-        $orders = Order::findOrFail($id);
-        \session()->put('order', $orders->id, 60 * 24 * 365);
-        \session()->put('branch_id', $orders->branch_id, 60 * 24 *365);
-        \session()->put('customer_id', $orders->customer_id, 60 * 24 *365);
-        \session()->put('payment_form_id', $orders->payment_form_id, 60 * 24 *365);
-        \session()->put('payment_method_id', $orders->payment_method_id, 60 * 24 *365);
-        \session()->put('retention_id', $orders->retention_id, 60 * 24 *365);
-        \session()->put('due_date', $orders->due_date, 60 * 24 *365);
-        \session()->put('total', $orders->total, 60 * 24 *365);
-        \session()->put('total_iva', $orders->total_iva, 60 * 24 *365);
-        \session()->put('total_pay', $orders->total_pay, 60 * 24 *365);
-        \session()->put('status', $orders->estado, 60 * 24 *365);
-        return redirect('order_product/create');
-     }
-
-     public function show_pay_order($id)
-     {
-
-        $orders = Order::findOrFail($id);
-        \session()->put('order', $orders->id, 60 * 24 * 365);
-        \session()->put('branch_id', $orders->branch_id, 60 * 24 *365);
-        \session()->put('customer_id', $orders->customer_id, 60 * 24 *365);
-        \session()->put('due_date', $orders->due_date, 60 * 24 *365);
-        \session()->put('total', $orders->total, 60 * 24 *365);
-        \session()->put('balance', $orders->total_pay, 60 * 24 *365);
-        \session()->put('status', $orders->estado, 60 * 24 *365);
-
-        return redirect('pay_order');
-     }
-
-     public function show_pdf_order(Request $request,$id)
     {
-        $ordery = Order::from('orders AS ord')
-        ->join('branches AS bra', 'ord.branch_id', '=', 'bra.id')
-        ->join('customers AS cus', 'ord.customer_id', '=', 'cus.id')
-        ->join('documents AS doc', 'cus.document_id', '=', 'doc.id')
-        ->join('regimes AS reg', 'cus.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'cus.tax_id', '=', 'tax.id')
-        ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
-        ->join('payment_forms AS pf', 'ord.payment_form_id', 'pf.id')
-        ->join('payment_methods AS pm', 'ord.payment_method_id', 'pm.id')
-        ->select('ord.id', 'ord.created_at', 'ord.due_date', 'ord.total', 'bra.name AS nameB', 'bra.address as addressB', 'bra.phone', 'bra.mobile', 'cus.name AS nameC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.phone', 'cus.email', 'doc.initial', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
-        ->where('ord.id', '=', $id)->first();
+    $orders = Order::findOrFail($id);
+    \session()->put('order', $orders->id, 60 * 24 * 365);
+    \session()->put('branch_id', $orders->branch_id, 60 * 24 *365);
+    \session()->put('customer_id', $orders->customer_id, 60 * 24 *365);
+    \session()->put('payment_form_id', $orders->payment_form_id, 60 * 24 *365);
+    \session()->put('payment_method_id', $orders->payment_method_id, 60 * 24 *365);
+    \session()->put('retention_id', $orders->retention_id, 60 * 24 *365);
+    \session()->put('due_date', $orders->due_date, 60 * 24 *365);
+    \session()->put('total', $orders->total, 60 * 24 *365);
+    \session()->put('total_iva', $orders->total_iva, 60 * 24 *365);
+    \session()->put('total_pay', $orders->total_pay, 60 * 24 *365);
+    \session()->put('status', $orders->estado, 60 * 24 *365);
+    return redirect('order_product/create');
+    }
 
-        $order_product = Order_product::from('order_products AS op')
-        ->join('products AS pro', 'op.product_id', '=', 'pro.id')
-        ->join('orders AS ord', 'op.order_id', '=', 'ord.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('op.id', 'ord.id AS idO', 'ord.created_at', 'ord.total', 'op.quantity', 'op.price', 'pro.name', 'cat.iva')
-        ->where('op.order_id', '=', $id)
-        ->get();
+    public function show_pay_order($id)
+    {
+    $orders = Order::findOrFail($id);
+    \session()->put('order', $orders->id, 60 * 24 * 365);
+    \session()->put('total', $orders->total, 60 * 24 *365);
+    \session()->put('total_iva', $orders->total_iva, 60 * 24 *365);
+    \session()->put('total_pay', $orders->total_Pay, 60 * 24 *365);
+    \session()->put('status', $orders->status, 60 * 24 *365);
 
-        $order = Order::from('orders as ord')
-        ->join('order_products AS op', 'op.order_id', '=', 'ord.id')
-        ->join('products AS pro', 'op.product_id', '=', 'pro.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('ord.id', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'cat.iva')
-        ->where('ord.id', '=', $id)
-        ->first();
+    return redirect()->route('pay_order.create');
+    }
 
-        $company = Company::from('companies AS com')
-        ->join('departments AS dep', 'com.department_id', '=', 'dep.id')
-        ->join('municipalities AS mun', 'com.municipality_id', '=', 'mun.id')
-        ->join('liabilities AS lia', 'com.liability_id', '=', 'lia.id')
-        ->join('regimes AS reg', 'com.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'com.tax_id', '=', 'tax.id')
-        ->join('organizations AS org', 'com.organization_id', '=', 'org.id')
-        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO', 'tax.description')
-        ->where('com.id', '=', 1)
-        ->first();
+    public function show_pdf_order(Request $request,$id)
+    {
+        $order = Order::where('id', $id)->first();
+        $order_product = Order_product::where('order_id', $id)->get();
+        $company = Company::where('id', 1)->first();
 
-        $days = $ordery->created_at->diffInDays($ordery->due_date);
-        $orderpdf = "PEDIDO-". $ordery->id;
+        $days = $order->created_at->diffInDays($order->due_date);
+        $orderpdf = "PEDIDO-". $order->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.order.pdf', compact('order', 'days', 'order_product', 'company', 'logo', 'ordery'))->render();
+        $view = \view('admin.order.pdf', compact('order', 'days', 'order_product', 'company', 'logo'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
@@ -381,12 +339,17 @@ class OrderController extends Controller
         $total = $valor - $balance;
 
         if($balance != $valor){
-            $pay_event = new Pay_event();
-            $pay_event->origin = $order->id;
-            $pay_event->destination = null;
-            $pay_event->document = 'PEDIDO';
-            $pay_event->pay = $total;
-            $pay_event->save();
+            $advance = new Advance();
+            $advance->origin = $order->id;
+            $advance->destination = null;
+            $advance->pay = $total;
+            $advance->balance = $total;
+            $advance->note = 'eliminacion pedido';
+            $advance->status = 'pendiente';
+            $advance->user_id = Auth::user()->id;
+            $advance->branch_id = $order->branch->id;
+            $advance->customer_id = $order->customer->id;
+            $advance->save();
         }
 
         $order = Order::findOrFail($id);

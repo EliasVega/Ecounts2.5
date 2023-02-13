@@ -30,7 +30,8 @@ class Pay_purchase extends Model
         return $this->hasMany(Payment_method::class);
     }
 
-    public function pay_purchases(){
-        return $this->hasMany(Pay_purchase::class);
+    public function dischargeReceipt()
+    {
+        return $this->morphMany(Discharge_receipt::class, 'paymentable');
     }
 }

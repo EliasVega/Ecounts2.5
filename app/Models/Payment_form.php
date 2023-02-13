@@ -17,11 +17,11 @@ class Payment_form extends Model
         return $this->hasMany(Invoice::class);
     }
 
-    public function pay_orders(){
+    public function payOrders(){
         return $this->belongsToMany(Pay_order::class);
     }
 
-    public function pay_events(){
+    public function payEvents(){
         return $this->belongsToMany(Pay_event::class);
     }
 

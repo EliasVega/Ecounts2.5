@@ -38,7 +38,7 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group" id="cajetilla">
                             <label class="form-control-label" for="boxy">Efectivo Caja</label>
-                            <input type="number" id="boxy" name="boxy" value="{{ $cash }}" class="form-control"
+                            <input type="number" id="boxy" name="boxy" value="{{ $sale_box->cash }}" class="form-control"
                                 placeholder="Efectivo" disabled pattern="[0-9]{0,15}">
                         </div>
                     </div>

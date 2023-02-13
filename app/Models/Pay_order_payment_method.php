@@ -16,18 +16,18 @@ class Pay_order_payment_method extends Model
         'pay_event_id',
     ];
 
-    public function banks()
+    public function bank()
     {
-        return $this->belongsToMany(Bank::class);
+        return $this->belongsTo(Bank::class);
     }
 
-    public function cards()
+    public function card()
     {
-        return $this->belongsToMany(Card::class);
+        return $this->belongsTo(Card::class);
     }
 
-    public function payevent()
+    public function paymentMethod()
     {
-        return $this->hasOne(Payevent::class);
+        return $this->belongsTo(Payment_method::class);
     }
 }

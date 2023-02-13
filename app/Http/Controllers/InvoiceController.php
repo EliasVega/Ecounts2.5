@@ -52,24 +52,8 @@ class InvoiceController extends Controller
         if (request()->ajax()) {
             if ($rol == 1 || $rol == 2) {
                 $invoices = Invoice::get();
-                /*
-                $invoices = Invoice::from('Invoices AS inv')
-                ->join('branches AS bra', 'inv.brach_id', '=', 'bra.id')
-                ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-                ->select('inv.id', 'inv.total_pay', 'inv.balance','inv.status', 'inv.created_at', 'inv.status', 'cus.name', 'bra.name AS nameB')
-                ->get();*/
             } else {
-                $invoices = Invoice::where('branch_id', $request->session()->get('branch'))->where('user_id', Auth::user()->id);
-                /*
-                $invoices = Invoice::from('invoices AS inv')
-                ->join('users AS use', 'inv.user_id', '=', 'use.id')
-                ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
-                ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-                ->select('inv.id', 'inv.total_pay', 'inv.balance','inv.status', 'inv.created_at',  'cus.name', 'bra.name AS nameB')
-                ->where('inv.branch_id', '=', $request->session()->get('branch'))
-                ->where('use.id', '=', Auth::user()->id)
-                ->where('use.status', '=', 'ACTIVO')
-                ->get();*/
+                $invoices = Invoice::where('branch_id', $request->session()->get('branch'))->where('user_id', Auth::user()->id)->get();
             }
             return DataTables::of($invoices)
             ->addIndexColumn()
@@ -241,21 +225,20 @@ class InvoiceController extends Controller
 
                 $mp = $request->payment_method_id;
 
-                $boxy = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-                $in_invoice      = $boxy->in_invoice + $pay;
-                $in_invoice_cash = $boxy->in_invoice_cash;
-                $in_pay_cash     = $boxy->in_pay_cash;
-                $in_pay          = $boxy->in_pay + $pay;
-                $cash            = $boxy->cash;
-                $out             = $boxy->out_cash;
-                if($mp == 1){
+                $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                $in_invoice      = $sale_box->in_invoice + $request->pay;
+                $in_invoice_cash = $sale_box->in_invoice_cash;
+                $in_pay_cash     = $sale_box->in_pay_cash;
+                $in_pay          = $sale_box->in_pay + $pay;
+                $cash            = $sale_box->cash;
+                $out             = $sale_box->out_cash;
+                if($mp == 10){
                     $in_invoice_cash += $pay;
                     $in_pay_cash     += $pay;
                     $cash            += $pay;
                 }
                 $totale = $cash - $out;
 
-                $sale_box = Sale_box::findOrFail($boxy->id);
                 $sale_box->in_invoice_cash = $in_invoice_cash;
                 $sale_box->in_invoice      = $in_invoice;
                 $sale_box->in_pay_cash     = $in_pay_cash;
@@ -314,13 +297,8 @@ class InvoiceController extends Controller
 
                 $cont++;
             }
-            $boxy = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-            $inv = $boxy->sale;
-            $tpv = $invoice->total_pay;
-            $ninv = $inv + $tpv;
-
-            $sale_box = Sale_box::findOrFail($boxy->id);
-            $sale_box->sale = $ninv;
+            $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+            $sale_box->sale += $request->total_pay;
             $sale_box->update();
 
 
@@ -340,25 +318,12 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        $invoices = Invoice::from('invoices AS inv')
-        ->join('users as use', 'inv.user_id', 'use.id')
-        ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
-        ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-        ->join('payment_forms AS pf', 'inv.payment_form_id', '=', 'pf.id')
-        ->join('payment_methods as pm', 'inv.payment_method_id', '=', 'pm.id')
-        ->select('inv.document', 'inv.due_date', 'inv.total', 'inv.total_iva', 'inv.retention', 'inv.total_pay', 'inv.created_at', 'bra.name as nameB', 'cus.name as nameC', 'pf.name as namePF', 'pm.name as namePM', 'use.name')
-        ->where('inv.id', '=', $id)->first();
+        $invoice = Invoice::where('id', $id)->first();
 
         /*mostrar detalles*/
-        $invoice_products = Invoice_product::from('invoice_products AS ip')
-        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
-        ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
-        ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-        ->select('ip.quantity', 'ip.price', 'ip.subtotal', 'inv.id', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'pro.name', 'cus.name AS nameC')
-        ->where('ip.invoice_id', '=', $id)
-        ->get();
+        $invoice_products = Invoice_product::where('invoice_id', $id)->get();
 
-        return view('admin.invoice.show', compact('invoices', 'invoice_products'));
+        return view('admin.invoice.show', compact('invoice', 'invoice_products'));
     }
 
     public function show_invoice($id)
@@ -408,55 +373,15 @@ class InvoiceController extends Controller
 
     public function show_pdf_invoice(Request $request, $id)
     {
-        $invoice = Invoice::from('invoices AS inv')
-        ->join('branches AS bra', 'inv.branch_id', '=', 'bra.id')
-        ->join('customers AS cus', 'inv.customer_id', '=', 'cus.id')
-        ->join('documents AS doc', 'cus.document_id', '=', 'doc.id')
-        ->join('regimes AS reg', 'cus.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'cus.tax_id', '=', 'tax.id')
-        ->join('municipalities AS mun', 'cus.municipality_id', '=', 'mun.id')
-        ->join('payment_forms AS pf', 'inv.payment_form_id', 'pf.id')
-        ->join('payment_methods AS pm', 'inv.payment_method_id', 'pm.id')
-        ->select('inv.id', 'inv.document', 'inv.created_at', 'inv.due_date',  'inv.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'cus.name AS namreC', 'cus.document_id', 'cus.number', 'cus.address', 'cus.email', 'doc.initial', 'inv.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
-        ->where('inv.id', '=', $id)->first();
-
-        $invoice_products = Invoice_product::from('invoice_products AS ip')
-        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
-        ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
-        ->where('ip.invoice_id', '=', $id)
-        ->get();
-
-        $invoicy = Invoice_product::from('invoice_products AS ip')
-        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
-        ->join('invoices AS inv', 'ip.invoice_id', '=', 'inv.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('ip.id', 'inv.id AS idI', 'inv.created_at', 'inv.total', 'inv.total_iva', 'inv.total_pay', 'ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
-        ->where('ip.invoice_id', '=', $id)
-        ->first();
-
-        $company = Company::from('companies AS com')
-        ->join('departments AS dep', 'com.department_id', '=', 'dep.id')
-        ->join('municipalities AS mun', 'com.municipality_id', '=', 'mun.id')
-        ->join('liabilities AS lia', 'com.liability_id', '=', 'lia.id')
-        ->join('regimes AS reg', 'com.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'com.tax_id', '=', 'tax.id')
-        ->join('organizations AS org', 'com.organization_id', '=', 'org.id')
-        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO', 'tax.description')
-        ->where('com.id', '=', 1)
-        ->first();
-
-
-        $indicators = Indicator::from('indicators AS ind')
-        ->select('ind.prefix', 'ind.resolution', 'ind.from', 'ind.to')
-        ->where('ind.id', '=', 1)
-        ->first();
+        $invoice = Invoice::findOrFail($id);
+        $invoice_products = Invoice_product::where('invoice_id', $id)->get();
+        $company = Company::findOrFail(1);
+        $indicators = Indicator::findOrFail(1);
 
         $days = $invoice->created_at->diffInDays($invoice->fecven);
         $invoicepdf = "FACT-". $invoice->document;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.invoice.pdf', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'invoicy', 'indicators'))->render();
+        $view = \view('admin.invoice.pdf', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'indicators'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );

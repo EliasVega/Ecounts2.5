@@ -30,4 +30,9 @@ class Pay_invoice extends Model
     public function Payment_methods(){
         return $this->belongsToMany(Payment_method::class);
     }
+
+    public function cashReceipt()
+    {
+        return $this->morphMany(Cash_receipt::class, 'payable');
+    }
 }

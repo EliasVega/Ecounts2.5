@@ -62,6 +62,19 @@ class Purchase extends Model
     }
 
     public function paymentForm(){
-        return $this->hasOne(Payment_form::class);
+        return $this->belongsTo(Payment_form::class);
+    }
+
+    public function paymentMethod(){
+        return $this->belongsTo(Payment_method::class);
+    }
+
+    public function pay_purchases()
+    {
+        return $this->hasMany(Pay_purchase::class);
+
+    }
+    public function retention(){
+        return $this->hasOne(Retention::class);
     }
 }

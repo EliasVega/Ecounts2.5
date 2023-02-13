@@ -7,7 +7,7 @@
     <div class="row">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>Listado de Abonos <a href="pay_order/create" class="btn btn-success"><i class="fa fa-plus mr-2"></i> Agregar Abono</a>
+                <h3>Listado de Abonos
                     <a href="{{ route('order.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
             </div>
         </div>
@@ -15,9 +15,11 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="pay_orders">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="cash_receipts">
                     <thead>
                         <tr class="bg-info">
+                            <th>ID</th>
+                            <th>Comp #</th>
                             <th>Pedido</th>
                             <th>Cliente</th>
                             <th>Sede</th>
@@ -37,22 +39,25 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#pay_orders').DataTable(
+        $('#cash_receipts').DataTable(
         {
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: '{{ route('pay_order.index') }}',
+            order: [[0, "desc"]],
             columns:
             [
-                {data: 'idO'},
-                {data: 'nameC'},
-                {data: 'nameB'},
-                {data: 'name'},
+                {data: 'id'},
+                {data: 'pay_order'},
+                {data: 'order'},
+                {data: 'customer'},
+                {data: 'branch'},
+                {data: 'user'},
                 {data: 'total_pay'},
                 {data: 'pay'},
-                {data: 'balance'},
+                {data: 'balance_order'},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

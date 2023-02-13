@@ -23,7 +23,6 @@ class Customer extends Model
         'document_id',
         'liability_id',
         'organization_id',
-        'tax_id',
         'regime_id',
     ];
 

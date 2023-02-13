@@ -32,6 +32,8 @@ class StoreSaleboxRequest extends FormRequest
             'in_pay_cash'     => '',
             'in_pay'          => '',
             'in_advance'      => '',
+            'out_purchase_cash' => '',
+            'out_purchase'    => '',
             'out_payment'     => '',
             'out_cash'        => '',
             'cash'            => '',
@@ -39,13 +41,14 @@ class StoreSaleboxRequest extends FormRequest
             'total'           => '',
             'sale'            => '',
             'order'           => '',
+            'purchase'        => '',
             'verification_code_open'  => '',
             'verification_code_close' => '',
             'status'          => '',
             'user_id'         => '',
             'branch_id'       => '',
             'user_open_id'    => '',
-            'user_olose_id'   => ''
+            'user_close_id'   => ''
         ];
     }
 }

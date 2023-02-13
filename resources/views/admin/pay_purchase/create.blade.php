@@ -4,11 +4,8 @@
 @endsection
 @section('content')
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-12 col-md-12">
         <div class="box-danger">
-            <div class="box-header with-border">
-                <h2>Agregar Abono</h2>
-            </div>
             @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
@@ -20,9 +17,13 @@
             @endif
             <form action="{{route('pay_purchase.store')}}" method="POST">
                 {{csrf_field()}}
-                <div class="box-body row">
-                    @include('admin/pay_purchase.form')
-                    @include('admin/pay_purchase.pay')
+                <div class="row m-1">
+                    <div class="col-12 col-md-12">
+                        @include('admin/pay_purchase.form')
+                    </div>
+                    <div class="col-12 col-md-12">
+                        @include('admin/pay_purchase.form_pay')
+                    </div>
                 </div>
             </form>
         </div>

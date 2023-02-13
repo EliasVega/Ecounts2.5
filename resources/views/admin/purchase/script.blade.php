@@ -78,6 +78,7 @@
     $("#idPro").hide();
     $("#percent").hide();
     $("#percentage").val(0);
+    $("#addpayment").hide();
 
     $("#noDefined").hide();
     $("#transvenped").hide();
@@ -239,7 +240,10 @@
             $("#nequi").show();
             $("#card1").show();
             $("#card2").show();
+            $("#mpay").hide();
+            $("#addpayment").hide();
         }else{
+            $("#addpayment").show();
             $("#noDefined").hide();
             $("#cash").hide();
             $("#advance").hide();
@@ -247,9 +251,28 @@
             $("#nequi").hide();
             $("#card1").hide();
             $("#card2").hide();
+            $("#mpay").show();
         }
         });
     });
+
+    $(document).ready(function(){
+        $("#addpay").click(function(){
+            see();
+        });
+    });
+    function see(){
+        $("#noDefined").show();
+        $("#cash").show();
+        $("#advance").show();
+        $("#transfer").show();
+        $("#nequi").show();
+        $("#card1").show();
+        $("#card2").show();
+        $("#mpay").hide();
+        $("#addpayment").hide();
+
+    }
 
     $(document).ready(function(){
         $("#noDefined").click(function(){
@@ -416,6 +439,7 @@
     $(document).ready(function(){
         $("#pay").keyup(function(){
             $("#pay").val();
+            $("#returned").val();
             paymentor();
         });
     });

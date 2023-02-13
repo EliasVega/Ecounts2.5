@@ -9,7 +9,7 @@
     <button class="btn btn-lila" data-toggle="tooltip" data-placement="top" title="Agregar Abono" ><i class="fas fa-file-invoice-dollar"></i></button>
 </a>
 <a href="{{ route('show_pdf_order', $id) }}">
-    <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Pedido pdf"><i class="fas fa-file-invoice"></i></button>
+    <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="pdf Pedido" ><i class="fas fa-file-pdf"></i></button>
 </a>
 <a href="{{ route('eliminar', $id) }}">
     <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar Pedido" ><i class="fas fa-trash"></i></button>

@@ -1,7 +1,7 @@
 <div class="box-body row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="form-group">
-            <label for="customer_id">Cliente   <button class="btn btn-celeste btn-sm" type="button" data-toggle="modal" data-target="#customer"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar</button></label>
+            <label for="customer_id">Cliente   <button class="btn btn-celeste btn-sm" type="button" data-toggle="modal" data-target="#customer"><i class="fa fa-plus"></i>Agregar</button></label>
             <select name="customer_id" class="form-control selectpicker" id="customer_id"
                 data-live-search="true" required>
                 <option value="" disabled selected>Seleccionar el Cliente</option>
@@ -17,7 +17,6 @@
             <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
         </div>
     </div>
-
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="box-danger">
             <label class="form-control-label">
@@ -32,7 +31,6 @@
                 pattern="[0-9]{0,15}">
         </div>
     </div>
-
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="percentage" value="1" id="rtfon">
@@ -90,7 +88,6 @@
         </div>
     </div>
     <div class="clearfix">
-
     </div>
     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group row">
@@ -132,7 +129,6 @@
             <a href="{{url('invoice')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
         </div>
     </div>
-
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="table-responsive">
             <table id="details" class="table table-striped table-bordered table-condensed table-hover">

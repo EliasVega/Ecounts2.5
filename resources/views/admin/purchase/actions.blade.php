@@ -2,7 +2,7 @@
     <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Venta" ><i class="far fa-eye"></i></button>
 </a>
 <a href="{{ route('show_pdf_purchase', $id) }}">
-    <button class="btn btn-lila" data-toggle="tooltip" data-placement="top" title="Compra pdf"><i class="fas fa-file-invoice"></i></button>
+    <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Compra pdf"><i class="fas fa-file-pdf"></i></i></button>
 </a>
 <a href="{{ route('show_ndpurchase', $id) }}">
     <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Nota Debito"><i class="fas fa-notes-medical"></i></button>

@@ -35,6 +35,12 @@ class PaymentController extends Controller
             }
             return DataTables::of($payments)
             ->addIndexColumn()
+            ->addColumn('pay', function (Payment $payment) {
+                return number_format($payment->pay, 2);
+            })
+            ->addColumn('balance', function (Payment $payment) {
+                return number_format($payment->balance, 2);
+            })
             ->addColumn('supplier', function (Payment $payment) {
                 return $payment->supplier->name;
             })
@@ -113,26 +119,27 @@ class PaymentController extends Controller
                 $payment_payment_method->save();
 
                 $payu = $payu + $paymentLine;
-                /*
+
                 $mp = $request->payment_method_id;
 
-                $boxy = Sale_box::where('user_id', '=', Auth::user()->id)
-                ->where('status', '=', 'ABIERTA')
+                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
+                ->where('status', '=', 'open')
                 ->first();
-                $in_pay = $boxy->in_pay + $payment;
-                $in_pay_cash = $boxy->in_pay_cash;
-                $cash = $boxy->cash;
-                if($mp == 1){
-                    $in_pay_cash += $payment;
-                    $cash += $payment;
+                if (isset($sale_box)) {
+                    $out_payment = $sale_box->out_payment + $paymentLine;
+                    $out_cash = $sale_box->out_cash;
+                    $cash = $sale_box->cash;
+                    if($mp == 10){
+                        $out_cash += $paymentLine;
+                        $cash += $paymentLine;
+                    }
+
+                    //$sale_box = Sale_box::findOrFail($boxy->id);
+                    $sale_box->out_payment = $out_payment;
+                    $sale_box->out_cash = $out_cash;
+                    $sale_box->cash = $cash;
+                    $sale_box->update();
                 }
-
-                $sale_box = Sale_box::findOrFail($boxy->id);
-                $sale_box->in_pay_cash = $in_pay_cash;
-                $sale_box->in_pay = $in_pay;
-                $sale_box->cash = $cash;
-                $sale_box->update();*/
-
                 $cont++;
             }
 

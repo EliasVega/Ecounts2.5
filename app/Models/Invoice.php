@@ -40,11 +40,11 @@ class Invoice extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function payment_form(){
+    public function paymentForm(){
         return $this->belongsTo(Payment_form::class);
     }
 
-    public function payment_method(){
+    public function paymentMethod(){
         return $this->belongsTo(Payment_method::class);
     }
 
@@ -63,9 +63,9 @@ class Invoice extends Model
         return $this->hasOne(Ncinvoice::class);
     }
 
-    public function payInvoice()
+    public function pay_invoices()
     {
-        return $this->belongsToMany(Payinvoice::class);
+        return $this->hasMany(Pay_invoice::class);
 
     }
     public function retention(){

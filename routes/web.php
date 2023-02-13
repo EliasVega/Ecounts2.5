@@ -7,6 +7,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BranchProductController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CashoutController;
+use App\Http\Controllers\CashReceiptController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CoCountryController;
 use App\Http\Controllers\CoDepartmentController;
@@ -213,6 +214,9 @@ Route::get('auxiliary_account/Subaccount/{id}', [AuxiliaryAccountController::cla
 Route::get('auxiliary_account/AuxAccount/{id}', [AuxiliaryAccountController::class, 'AuxAccounts'])->name('AuxAccount');
 
 Route::get('pdf_pay_invoice/{id}', [PayinvoiceController::class, 'pdf_pay_invoice'])->name('pdf_pay_invoice');
+Route::get('pdf_pay_purchase/{id}', [PayPurchaseController::class, 'pdf_pay_purchase'])->name('pdf_pay_purchase');
+Route::get('pdfPayOrder/{id}', [PayorderController::class, 'pdfPayOrder'])->name('pdfPayOrder');
 
 Route::get('co_municipality/co_department/{id}', [CoMunicipalityController::class, 'getCoDepartment'])->name('co_department');
+Route::resource('cash_receipt', CashReceiptController::class);
 

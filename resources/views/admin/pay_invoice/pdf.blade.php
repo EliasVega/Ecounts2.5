@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ asset('css/voucher.css') }}">
-        <title>ABONO A FACTURA</title>
+        <title>ANTICIPO</title>
 
     </head>
     <header id="header">
@@ -23,7 +23,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="voucher">
-                <p>RECIBO <br> DE CAJA <br> <strong id="numbervoucher">N°. {{ $payinvoice->id }}</strong></p>
+                <p>RECIBO <br> DE CAJA <br> <strong id="numbervoucher">N°. {{ $cashReceipt->id }}</strong></p>
 
             </div>
         </div>
@@ -40,10 +40,10 @@
                 <p>Fecha</p>
             </div>
             <div class="description2">
-                <p>{{ date('d-m-Y', strtotime($payinvoice->created_at)) }}</p>
+                <p>{{ date('d-m-Y', strtotime($cashReceipt->created_at)) }}</p>
             </div>
             <div class="description3">
-                <p>$ {{ $payinvoice->pay }}</p>
+                <p>$ {{ number_format($cashReceipt->payable->pay, 2) }}</p>
             </div>
 
             <div class="clearfix"></div>
@@ -51,27 +51,33 @@
                 <p>DIRECCION:</p>
             </div>
             <div class="description4">
-                <p>{{  $payinvoice->invoice->customer->address  }}</p>
+                <p>{{  $cashReceipt->payable->invoice->customer->address  }}</p>
             </div>
             <div class="title">
                 <p>TELEFONO:</p>
             </div>
             <div class="description2">
-                <p>{{  $payinvoice->invoice->customer->phone  }}</p>
+                <p>{{  $cashReceipt->payable->invoice->customer->phone  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>RECIBO DE:</p>
             </div>
             <div class="description5">
-                <p>{{  $payinvoice->invoice->customer->name  }}</p>
+                <p>{{  $cashReceipt->payable->invoice->customer->name  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>CONCEPTO DE::</p>
             </div>
-            <div class="description5">
-                <p>Abono a Factura N°. {{  $payinvoice->invoice->invoice  }}</p>
+            <div class="description4">
+                <p>Abono a Factura # {{ $cashReceipt->payable->invoice->id }} </p>
+            </div>
+            <div class="title">
+                <p>Comprobante</p>
+            </div>
+            <div class="description2">
+                <p>{{ $cashReceipt->payable->id }}</p>
             </div>
         </div>
         <div class="content">
@@ -87,11 +93,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($payInvoice_paymentMethods as $pp)
+                            @foreach ($payInvoice_PaymentMethods as $pp)
                             <tr>
                                 <td>{{ $pp->transaction }}</td>
-                                <td>{{ $pp->name }}</td>
-                                <td class="tdder">$ {{ $pp->payment }}</td>
+                                <td>{{ $pp->paymentMethod->name }}</td>
+                                <td class="tdder">$ {{ number_format($pp->payment, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

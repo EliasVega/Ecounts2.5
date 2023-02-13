@@ -9,25 +9,25 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="name">CLIENTE</label>
-                <p>{{ $pay_orders->nameC }}</p>
+                <p>{{ $cashReceipt->payable->order->customer->name }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="order">Pedido #</label>
-                <p>{{ $pay_orders->idO }}</p>
+                <p><strong>{{ $cashReceipt->payable->order->id }}</strong></p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="abono">ABONO</label>
-                <p>{{ $pay_orders->pay }}</p>
+                <p>{{ number_format($cashReceipt->payable->pay, 2) }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="vece">VENCE</label>
-                <p>{{ $pay_orders->due_date }}</p>
+                <p>{{ $cashReceipt->payable->order->due_date }}</p>
             </div>
         </div>
     </div>
@@ -37,8 +37,8 @@
                 <strong class="tpdf">Detalle de Abonos</strong>
 
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('pay_order.index') }}" class="btn btn-success"><i class="fa fa-plus mr-2"></i>Regresar</a>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-2">
+                <a href="{{ route('pay_order.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
 
         </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -56,17 +56,17 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $pay_orders->pay }}</p></th>
+                                <th><p align="right">${{ number_format($cashReceipt->payable->pay, 2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($paymentmethodpay_orders as $pp)
+                            @foreach($pay_order_payment_methods as $pp)
                                 <tr>
-                                    <td>{{ $pp->namePM }}</td>
-                                    <td>{{ $pp->nameB }}</td>
-                                    <td>{{ $pp->nameC }}</td>
+                                    <td>{{ $pp->paymentMethod->name }}</td>
+                                    <td>{{ $pp->bank->name }}</td>
+                                    <td>{{ $pp->card->name }}</td>
                                     <td>{{ $pp->transaction }}</td>
-                                    <td>$ {{ $pp->payment }}</td>
+                                    <td class="tdder">$ {{ number_format($pp->payment, 2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

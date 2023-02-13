@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ 'css/pdfs.css' }}">
         <title>Factura de venta</title>
-
     </head>
     <header id="header">
         <!-- LOGGO -->
@@ -18,12 +17,12 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->nameL }} -- <br> R. fiscal. {{ $company->nameR }} <br> {{ $company->description }} -- {{ $company->nameO }} <br>Resolucion N°. {{ $indicators->resolution }} Prefijo: {{ $indicators->prefix }} Rango {{ $indicators->from }} <br> al {{ $indicators->to }} -- Vigencia: desde {{ $indicators->ddate_from }} hasta {{ $indicators->date_to }} <br> {{ $invoice->direcionB }} {{ $company->nameM }} -- {{ $company->nameD }} <br> Email: {{ $invoice->email }}
+                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->liability->name }} -- <br> {{ $company->regime->name }} - {{ $company->organization->name }} <br>Resolucion N°. {{ $indicators->resolution }} Prefijo: {{ $indicators->prefix }} Rango {{ $indicators->from }} <br> al {{ $indicators->to }} -- Vigencia: desde {{ $indicators->date_from }} hasta {{ $indicators->date_to }} <br> {{ $invoice->branch->municipality->name }} -- {{ $invoice->branch->department->name }}  <br> --Sucursal - {{ $invoice->branch->name }} -- {{ $invoice->branch->address }} <br> Email: {{ $company->email }}
                     </p>
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> <h4>FACTURA ELECTRONICA <br> DE VENTA <br> <strong id="numfact">N°.{{ $indicators->prefijo }} - {{ $invoice->invoice }}</strong>  </h4>
+                <p> <h4>FACTURA ELECTRONICA <br> DE VENTA <br> <strong id="numfact">N°.{{ $indicators->prefix }} - {{ $invoice->document }}</strong>  </h4>
 
                 </p>
                 <p> <h4>FECHA DE EMISION <br> <strong id="detosfact">{{ date('d-m-Y', strtotime($invoice->created_at)) }}</strong>  </h4>
@@ -42,7 +41,7 @@
             <div class="center">
                 <!--CODIGO QR -->
                 <div id="qr">
-                    <img src="{{ public_path('images/qr.jpg') }}" alt="qr">
+                    <img src="" alt="qr">
                 </div>
                 <div id="cliente">
                     <!--DATOS CLIENTE -->
@@ -50,19 +49,19 @@
                         <span id="tc">CC o NIT: </span><br>
                         <span id="tc">NOMBRE:   </span><br>
                         <span id="tc">REGIMEN:  </span><br>
-                        <span id="tc">DIRECCION:</span><br>
                         <span id="tc">CIUDAD:   </span><br>
                         <span id="tc">TELEFONO: </span><br>
                         <span id="tc">EMAIL:    </span><br>
+                        <span id="tc">DIRECCION:</span><br>
                     </div>
                     <div id="titd">
-                        <span id="td">{{ $invoice->number }}</span><br>
-                        <span id="td">{{ $invoice->nameC }}</span><br>
-                        <span id="td">{{ $invoice->description }}</span><br>
-                        <span id="td">{{ $invoice->address }}</span><br>
-                        <span id="td">{{ $invoice->nameM }}</span><br>
-                        <span id="td">{{ $invoice->phone }}</span><br>
-                        <span id="td">{{ $invoice->email }}</span><br>
+                        <span id="td">{{ $invoice->customer->number }}</span><br>
+                        <span id="td">{{ $invoice->customer->name }}</span><br>
+                        <span id="td">{{ $invoice->customer->regime->name }}</span><br>
+                        <span id="td">{{ $invoice->customer->municipality->name }}</span><br>
+                        <span id="td">{{ $invoice->customer->phone }}</span><br>
+                        <span id="td">{{ $invoice->customer->email }}</span><br>
+                        <span id="td">{{ $invoice->customer->address }}</span><br>
                     </div>
                 </div>
                 <div id="fpago">
@@ -73,8 +72,8 @@
                         <span id="tc">Vence:</span><br>
                     </div>
                     <div id="dfpago">
-                        <span id="td">{{ $invoice->namePF }}</span><br>
-                        <span id="td">{{ $invoice->namePM }}</span><br>
+                        <span id="td">{{ $invoice->paymentForm->name }}</span><br>
+                        <span id="td">{{ $invoice->paymentMethod->name }}</span><br>
                         <span id="td">{{ $invoice->due_date }}</span><br>
                     </div>
                 </div>
@@ -109,17 +108,17 @@
                             <!--DATOS FTOTALES -->
                             <tr>
                                <th colspan="3" class="footder">TOTAL:</th>
-                               <td class="footder"><strong>${{number_format($invoicy->total,2)}}</strong></td>
+                               <td class="footder"><strong>${{number_format($invoice->total,2)}}</strong></td>
                             </tr>
 
                             <tr>
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($invoicy->total_iva,2)}}</strong> </td>
+                                <td class="footder"><strong>${{number_format($invoice->total_iva,2)}}</strong> </td>
                             </tr>
 
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($invoicy->total_pay,2)}}</strong></td>
+                                <td class="footder"><strong id="total">${{number_format($invoice->total_pay,2)}}</strong></td>
                             </tr>
                         </tfoot>
                     </table>

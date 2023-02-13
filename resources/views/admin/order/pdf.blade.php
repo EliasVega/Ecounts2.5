@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ 'css/pdfs.css' }}">
-        <title>Factura de venta</title>
-
+        <title>Orden de Pedido</title>
     </head>
     <header id="header">
         <!-- LOGGO -->
@@ -18,10 +17,10 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->nameL }} -- <br> R. fiscal. {{ $company->nameR }} <br> {{ $company->description }} -- {{ $company->nameO }} <br> {{ $order->direcionB }} {{ $company->nameM }} -- {{ $company->nameD }} <br> Email: {{ $order->email }}
+                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->liability->name }} -- <br> R. fiscal. {{ $company->regime->name }} <br> {{ $company->description }} -- {{ $company->organization->name }} <br> {{ $company->address }} {{ $company->municipality->name }} -- {{ $company->department->name }} <br> Email: {{ $order->email }} - Sucursal - {{ $order->branch->name }} -- {{ $order->branch->address }}
                     </p>
             </div>
-            <!--DATOS FACTURA -->
+            <!--DATOS PEDIDO -->
             <div id="factura">
                 <p> <h4> PEDIDO <br> <strong id="numfact">N°. {{ $order->id }}</strong>  </h4>
 
@@ -42,7 +41,7 @@
             <div class="center">
                 <!--CODIGO QR -->
                 <div id="qr">
-                    <img src="{{ public_path('images/qr.jpg') }}" alt="qr">
+                    <img src="" alt="qr">
                 </div>
                 <div id="cliente">
                     <!--DATOS CLIENTE -->
@@ -50,19 +49,19 @@
                         <span id="tc">CC o NIT: </span><br>
                         <span id="tc">NOMBRE:   </span><br>
                         <span id="tc">REGIMEN:  </span><br>
-                        <span id="tc">DIRECCION:</span><br>
                         <span id="tc">CIUDAD:   </span><br>
                         <span id="tc">TELEFONO: </span><br>
                         <span id="tc">EMAIL:    </span><br>
+                        <span id="tc">DIRECCION:</span><br>
                     </div>
                     <div id="titd">
-                        <span id="td">{{ $ordery->number }}</span><br>
-                        <span id="td">{{ $ordery->nameC }}</span><br>
-                        <span id="td">{{ $ordery->description }}</span><br>
-                        <span id="td">{{ $ordery->address }}</span><br>
-                        <span id="td">{{ $ordery->nameM }}</span><br>
-                        <span id="td">{{ $ordery->phone }}</span><br>
-                        <span id="td">{{ $ordery->email }}</span><br>
+                        <span id="td">{{ $order->customer->number }}</span><br>
+                        <span id="td">{{ $order->customer->name }}</span><br>
+                        <span id="td">{{ $order->customer->regime->name }}</span><br>
+                        <span id="td">{{ $order->customer->municipality->name }}</span><br>
+                        <span id="td">{{ $order->customer->phone }}</span><br>
+                        <span id="td">{{ $order->customer->email }}</span><br>
+                        <span id="td">{{ $order->customer->address }}</span><br>
                     </div>
                 </div>
                 <div id="fpago">
@@ -73,9 +72,9 @@
                         <span id="tc">Vence:</span><br>
                     </div>
                     <div id="dfpago">
-                        <span id="td">{{ $ordery->namePF }}</span><br>
-                        <span id="td">{{ $ordery->namePM }}</span><br>
-                        <span id="td">{{ $ordery->due_date }}</span><br>
+                        <span id="td">{{ $order->paymentForm->name }}</span><br>
+                        <span id="td">{{ $order->paymentMethod->name }}</span><br>
+                        <span id="td">{{ $order->due_date }}</span><br>
                     </div>
                 </div>
 
@@ -109,17 +108,17 @@
                             <!--DATOS FTOTALES -->
                             <tr>
                                <th colspan="3" class="footder">TOTAL:</th>
-                               <td class="footder"><strong>${{number_format($ordery->total,2)}}</strong></td>
+                               <td class="footder"><strong>${{number_format($order->total, 2)}}</strong></td>
                             </tr>
 
                             <tr>
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($ordery->total_iva,2)}}</strong> </td>
+                                <td class="footder"><strong>${{number_format($order->total_iva, 2)}}</strong> </td>
                             </tr>
 
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($ordery->total_pay,2)}}</strong></td>
+                                <td class="footder"><strong id="total">${{number_format($order->total_pay, 2)}}</strong></td>
                             </tr>
                         </tfoot>
                     </table>

@@ -5,7 +5,7 @@
     <button class="btn btn-limon" data-toggle="tooltip" data-placement="top" title="Factura Electronica"><i class="fas fa-file-invoice-dollar"></i></button>
 </a>
 <a href="{{ route('show_pdf_invoice', $id) }}">
-    <button class="btn btn-lila" data-toggle="tooltip" data-placement="top" title="Factura Venta pdf"><i class="fas fa-file-invoice"></i></button>
+    <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Factura de venta pdf" ><i class="fas fa-file-pdf"></i></button>
 </a>
 <a href="{{ route('show_ndinvoice', $id) }}">
     <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Nota Debito"><i class="fas fa-notes-medical"></i></button>

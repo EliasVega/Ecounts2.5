@@ -24,20 +24,20 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'due_date'          => '',
-            'items'             => '',
-            'total'             => 'required',
-            'total_iva'         => 'required',
-            'total_pay'         => 'required',
-            'pay'               => 'required',
+            'items'             => 'integer',
+            'due_date'          => 'required|date',
+            'total'             => 'required|numeric',
+            'totalIva'          => 'numeric',
+            'totalPay'          => 'numeric',
+            'pay'               => 'nullable|numeric',
             'balance'           => '',
             'retention'         => '',
-            'status'            => '',
-            'branch_id'         => '',
-            'customer_id'       => 'required',
-            'payment_form_id'   => 'required',
-            'payment_method_id' => 'required',
-            'retention_id'      => '',
+            'status'            => 'in_array:pendiente,facturado,anulado',
+            'branch_id'         => 'integer',
+            'customer_id'       => 'required|integer',
+            'payment_form_id'   => 'required|integer',
+            'payment_method_id' => 'required|integer',
+            'percentage_id'      => 'nullable|integer'
         ];
     }
 }

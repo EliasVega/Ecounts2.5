@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ asset('css/voucher.css') }}">
-        <title>ABONO A FACTURA</title>
+        <title>ANTICIPO</title>
 
     </head>
     <header id="header">
@@ -23,7 +23,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="voucher">
-                <p>COMPROBANTE <br> DE EGRESO <br> <strong id="numbervoucher">N°. {{ $pay_purchase->id }}</strong></p>
+                <p>COMPROBANTE <br> DE EGRESO <br> <strong id="numbervoucher">N°. {{ $dischargeReceipt->id }}</strong></p>
 
             </div>
         </div>
@@ -40,10 +40,10 @@
                 <p>Fecha</p>
             </div>
             <div class="description2">
-                <p>{{ date('d-m-Y', strtotime($pay_purchase->created_at)) }}</p>
+                <p>{{ date('d-m-Y', strtotime($dischargeReceipt->created_at)) }}</p>
             </div>
             <div class="description3">
-                <p>$ {{ $pay_purchase->pay }}</p>
+                <p>$ {{ number_format($dischargeReceipt->paymentable->pay, 2) }}</p>
             </div>
 
             <div class="clearfix"></div>
@@ -51,27 +51,33 @@
                 <p>DIRECCION:</p>
             </div>
             <div class="description4">
-                <p>{{  $pay_purchase->purchase->supplier->address  }}</p>
+                <p>{{  $dischargeReceipt->paymentable->purchase->supplier->address  }}</p>
             </div>
             <div class="title">
                 <p>TELEFONO:</p>
             </div>
             <div class="description2">
-                <p>{{  $pay_purchase->purchase->supplier->phone  }}</p>
+                <p>{{  $dischargeReceipt->paymentable->purchase->supplier->phone  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>RECIBO DE:</p>
             </div>
             <div class="description5">
-                <p>{{  $pay_purchase->purchase->supplier->name  }}</p>
+                <p>{{  $dischargeReceipt->paymentable->purchase->supplier->name  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>CONCEPTO DE::</p>
             </div>
-            <div class="description5">
-                <p>Abono a Factura N°. {{  $pay_purchase->purchase->purchase  }}</p>
+            <div class="description4">
+                <p>Abono a Compra # {{ $dischargeReceipt->paymentable->purchase->id }} </p>
+            </div>
+            <div class="title">
+                <p>Comprobante</p>
+            </div>
+            <div class="description2">
+                <p>{{ $dischargeReceipt->paymentable->id }}</p>
             </div>
         </div>
         <div class="content">
@@ -87,11 +93,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pay_purchase_payment_methods as $pp)
+                            @foreach ($payPurchase_PaymentMethods as $pp)
                             <tr>
                                 <td>{{ $pp->transaction }}</td>
-                                <td>{{ $pp->name }}</td>
-                                <td class="tdder">$ {{ $pp->payment }}</td>
+                                <td>{{ $pp->paymentMethod->name }}</td>
+                                <td class="tdder">$ {{ number_format($pp->payment, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

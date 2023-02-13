@@ -35,6 +35,12 @@ class AdvanceController extends Controller
             }
             return DataTables::of($advances)
             ->addIndexColumn()
+            ->addColumn('pay', function (Advance $advance) {
+                return number_format($advance->pay, 2);
+            })
+            ->addColumn('balance', function (Advance $advance) {
+                return number_format($advance->balance, 2);
+            })
             ->addColumn('customer', function (Advance $advance) {
                 return $advance->customer->name;
             })

@@ -113,18 +113,7 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label for="tax_id">Tributo</label>
-                        <select name="tax_id" class="form-control selectpicker" data-live-search="true" id="tax_id" required>
-                            <option value="{{ old('tax_id') }}" disabled selected>Seleccionar.</option>
-                            @foreach($taxes as $tax)
-                                <option value="{{ $tax->id }}">{{ $tax->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label for="regime_id">Responsabilidad fiscal 2</label>
+                        <label for="regime_id">Regimen</label>
                         <select name="regime_id" class="form-control selectpicker" data-live-search="true" id="regime_id" required>
                             <option value="{{ old('regime_id') }}" disabled selected>Seleccionar.</option>
                             @foreach($regimes as $reg)

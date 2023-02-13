@@ -172,6 +172,28 @@ class PurchaseController extends Controller
                     $pay_purchase_Payment_method->transaction        = $request->transaction;
                     $pay_purchase_Payment_method->save();
                 }
+                $mp = $request->payment_method_id;
+
+                $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                $out_purchase_cash = $sale_box->out_purchase_cash;
+                $out_cash          = $sale_box->out_cash;
+                $cash              = $sale_box->cash;
+                $out               = $sale_box->out;
+                if($mp == 10){
+                    $out_purchase_cash += $pay;
+                    $out_cash     += $pay;
+                    $out            += $pay;
+                }
+                $totale = $cash - $out;
+
+                $sale_box->out_purchase_cash = $out_purchase_cash;
+                $sale_box->out_purchase += $request->pay;
+                $sale_box->out_cash = $out_cash;
+                $sale_box->out_payment += $pay;
+                $sale_box->out = $out;
+                $sale_box->cash = $cash;
+                $sale_box->total = $totale;
+                $sale_box->update();
             }
 
             //Toma el Request del array
@@ -241,6 +263,9 @@ class PurchaseController extends Controller
 
                 $cont++;
             }
+            $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+            $sale_box->purchase += $request->total_pay;
+            $sale_box->update();
             DB::commit();
         }
         catch(Exception $e){
@@ -319,61 +344,27 @@ class PurchaseController extends Controller
      public function show_pay_purchase($id)
      {
 
-        $purchases = Purchase::findOrFail($id);
-        \session()->put('purchase', $purchases->id, 60 * 24 * 365);
-        \session()->put('due_date', $purchases->due_date, 60 * 24 *365);
-        \session()->put('total', $purchases->total, 60 * 24 *365);
-        \session()->put('total_iva', $purchases->total_iva, 60 * 24 *365);
-        \session()->put('total_pay', $purchases->total_Pay, 60 * 24 *365);
-        \session()->put('status', $purchases->status, 60 * 24 *365);
+        $purchase = Purchase::findOrFail($id);
+        \session()->put('purchase', $purchase->id, 60 * 24 * 365);
+        \session()->put('due_date', $purchase->due_date, 60 * 24 *365);
+        \session()->put('total', $purchase->total, 60 * 24 *365);
+        \session()->put('total_iva', $purchase->total_iva, 60 * 24 *365);
+        \session()->put('total_pay', $purchase->total_Pay, 60 * 24 *365);
+        \session()->put('status', $purchase->status, 60 * 24 *365);
 
-        return redirect('pay_purchase');
+        return redirect('pay_purchase/create');
      }
 
      public function show_pdf_purchase(Request $request, $id)
     {
-        $purchase = Purchase::from('purchases AS pur')
-        ->join('branches AS bra', 'pur.branch_id', '=', 'bra.id')
-        ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->join('documents AS doc', 'sup.document_id', '=', 'doc.id')
-        ->join('regimes AS reg', 'sup.regime_id', '=', 'reg.id')
-        ->join('municipalities AS mun', 'sup.municipality_id', '=', 'mun.id')
-        ->join('payment_forms AS pf', 'pur.payment_form_id', 'pf.id')
-        ->join('payment_methods AS pm', 'pur.payment_method_id', 'pm.id')
-        ->select('pur.id', 'pur.document', 'pur.created_at', 'pur.due_date',  'pur.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'sup.name AS nameS', 'sup.document_id', 'sup.number', 'sup.address', 'sup.email', 'doc.initial', 'pur.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'pf.name AS namePF', 'pm.name AS namePM')
-        ->where('pur.id', '=', $id)->first();
-
-        $product_purchases = Product_purchase::from('product_purchases AS pp')
-        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
-        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pp.id', 'pur.id AS idI', 'pur.created_at', 'pur.total', 'pp.quantity', 'pp.price', 'pro.name', 'cat.iva')
-        ->where('pp.purchase_id', '=', $id)
-        ->get();
-
-        $purchases = Product_purchase::from('product_purchases AS pp')
-        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
-        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pp.id', 'pur.id AS idI', 'pur.created_at', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pp.quantity', 'pp.price', 'pro.name', 'cat.iva')
-        ->where('pp.purchase_id', '=', $id)
-        ->first();
-
-        $company = Company::from('companies AS com')
-        ->join('departments AS dep', 'com.department_id', '=', 'dep.id')
-        ->join('municipalities AS mun', 'com.municipality_id', '=', 'mun.id')
-        ->join('liabilities AS lia', 'com.liability_id', '=', 'lia.id')
-        ->join('regimes AS reg', 'com.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'com.tax_id', '=', 'tax.id')
-        ->join('organizations AS org', 'com.organization_id', '=', 'org.id')
-        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO', 'tax.description')
-        ->where('com.id', '=', 1)
-        ->first();
+        $purchase = Purchase::findOrFail($id);
+        $product_purchases = Product_purchase::where('purchase_id', $id)->get();
+        $company = Company::findOrFail(1);
 
         $days = $purchase->created_at->diffInDays($purchase->fecven);
-        $purchasepdf = "FACT-". $purchase->purchase;
+        $purchasepdf = "COMP-". $purchase->purchase;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.purchase.pdf', compact('purchase', 'days', 'product_purchases', 'company', 'logo', 'purchases'))->render();
+        $view = \view('admin.purchase.pdf', compact('purchase', 'days', 'product_purchases', 'company', 'logo'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );

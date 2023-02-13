@@ -23,6 +23,11 @@
             </select>
         </div>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <button class="btn btn-celeste btn-sm" type="button" id="addpay" data-toggle="tooltip" data-placement="top" title="Desea Agregar Abono">Agregar abono </button>
+        </div>
+    </div>
     <div class="clearfix"></div>
 
     <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">

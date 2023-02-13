@@ -50,9 +50,9 @@
         <script type="text/javascript">
         $(document).ready(function (){
             $(".daterange").datepicker({
-            todayBtn: "linked",
-            //format: "yyyy-mm-dd",
-            autoclose: true,
+                todayBtn: "linked",
+                //format: "yyyy-mm-dd",
+                autoclose: true,
             });
             load_data();
             function load_data(start = '', end = ''){

@@ -345,6 +345,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ url('cash_receipt') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Recibos de caja</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('sale_box') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Caja</p>
