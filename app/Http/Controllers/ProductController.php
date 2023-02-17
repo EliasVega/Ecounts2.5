@@ -99,7 +99,7 @@ class ProductController extends Controller
     {
         $categories = Category::select('id', 'name')->get();
 
-        return view("admin.product.create", compact('categories'));
+        return view("admin.product.show", compact('categories'));
     }
 
     /**

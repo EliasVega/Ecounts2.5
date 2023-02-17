@@ -106,15 +106,44 @@ class BranchController extends Controller
     //funcion para redirigir a compras
     public function show_purchase($id)
     {
+        $sale_box = sale_box::select('id')
+        ->where('user_id', '=', Auth::user()->id)
+        ->where('status', '=', 'open')
+        ->first();
+        if($sale_box == null){
+            toast( 'Debes disponer de una caja abierta para poder realizar compras','warning');
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
+        }
         $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
-        /*if($branch->id != 1){
+        /*
+        $branch = Branch::findOrFail($id);
+        \Session::put('branch', $branch->id, 60 * 24 * 365);
+        \Session::put('name', $branch->name, 60 * 24 * 365);
+
+        if($branch->id != 1){
             return redirect("admin/branch")->with('warning', 'Esta branch no esta autorizada para hacer compras');
         }*/
 
         return redirect('purchase');
+    }
+    public function show_expense($id)
+    {
+        $sale_box = sale_box::select('id')
+        ->where('user_id', '=', Auth::user()->id)
+        ->where('status', '=', 'open')
+        ->first();
+        if($sale_box == null){
+            toast( 'Debes disponer de una caja abierta para poder realizar Gastos','warning');
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
+        }
+        $branch = Branch::findOrFail($id);
+        \Session::put('branch', $branch->id, 60 * 24 * 365);
+        \Session::put('name', $branch->name, 60 * 24 * 365);
+
+        return redirect('expense');
     }
     //funcion para redirigir a ventas
     public function show_invoice($id)
@@ -124,6 +153,7 @@ class BranchController extends Controller
         ->where('status', '=', 'open')
         ->first();
         if($sale_box == null){
+            toast( 'Debes disponer de una caja abierta para poder realizar ventas','warning');
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
         }
         $branch = Branch::findOrFail($id);
@@ -141,14 +171,25 @@ class BranchController extends Controller
         ->where('status', '=', 'open')
         ->first();
         if($sale_box == null){
-            return redirect("branch")->with('warning', 'Debes tener una cash Abierta para realizar pedidos');
+
+            toast( 'Debes disponer de una caja abierta para poder realizar pedidos','warning');
+
+            return redirect("branch");
+            /*toast('Your Post as been submited!','success');
+            Alert::question('Question Title', 'Question Message');
+            Alert::error('Error Title', 'Error Message');
+            Alert::warning('Warning Title', 'Warning Message');
+            Alert::info('Info Title', 'Info Message');
+            Alert::success('Success Title', 'Debes tener una cash Abierta para realizar pedidos');
+            Alert::image('Image Title!','Image Description','Image URL','Image Width','Image Height', 'Image Alt');
+            Alert::html('Html Title', 'Html Code', 'Type');
+            Alert::toast('Toast Message', 'Toast Type');
+            toast('Warning Toast','warning');*/
         }
 
         $branch = branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
-
-
 
         return redirect('order');
     }
@@ -182,9 +223,11 @@ class BranchController extends Controller
         $user = Auth::user()->branch_id;
 
         if ($branch->id == $user) {
+            /*
             if($branch->id == 1){
+                Alert::warning('Warning', 'Esta Sucursal No autorizada para tener cajas');
                 return redirect("branch")->with('warning', 'Esta Sucursal No autorizada para tener caja');
-            }
+            }*/
             return redirect('sale_box');
         } else {
             return redirect("branch")->with('warning', 'Usuario no autorizado en esta sucursal');

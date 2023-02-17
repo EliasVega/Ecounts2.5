@@ -11,13 +11,13 @@ use App\Http\Controllers\CashReceiptController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CoCountryController;
 use App\Http\Controllers\CoDepartmentController;
-use App\Http\Controllers\CodverifController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CoMunicipalityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\KardexController;
@@ -31,6 +31,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderProductController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PayeventController;
+use App\Http\Controllers\PayExpenseController;
 use App\Http\Controllers\PayinvoiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentFormController;
@@ -46,6 +47,7 @@ use App\Http\Controllers\ResolutionController;
 use App\Http\Controllers\RetentionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaleboxController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\SubaccountController;
 use App\Http\Controllers\SupplierController;
@@ -55,7 +57,6 @@ use App\Http\Controllers\TypeDocumentController;
 use App\Http\Controllers\UnitMeasureController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationCodeController;
-use App\Models\Subaccount;
 use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
@@ -137,6 +138,9 @@ Route::resource('co_department', CoDepartmentController::class);
 Route::resource('co_municipality', CoMunicipalityController::class);
 Route::resource('advance', AdvanceController::class);
 Route::resource('payment', PaymentController::class);
+Route::resource('expense', ExpenseController::class);
+Route::resource('pay_expense', PayExpenseController::class);
+Route::resource('service', ServiceController::class);
 
 Route::get('advance/advancePdf/{id}', [AdvanceController::class, 'advancePdf'])->name('advancePdf');
 Route::get('payment/paymentPdf/{id}', [PaymentController::class, 'paymentPdf'])->name('paymentPdf');
@@ -146,6 +150,7 @@ Route::post('company/logout', [CompanyController::class, 'logout'])->name('logou
 
 Route::get('branch/create/{id}', [BranchController::class, 'getMunicipalities']);
 Route::get('show_purchase/{id}', [BranchController::class, 'show_purchase'])->name('show_purchase');
+Route::get('show_expense/{id}', [BranchController::class, 'show_expense'])->name('show_expense');
 Route::get('show_invoice/{id}', [BranchController::class, 'show_invoice'])->name('show_invoice');
 Route::get('show_order/{id}', [BranchController::class, 'show_order'])->name('show_order');
 Route::get('show_product/{id}', [BranchController::class, 'show_product'])->name('show_product');
@@ -219,4 +224,9 @@ Route::get('pdfPayOrder/{id}', [PayorderController::class, 'pdfPayOrder'])->name
 
 Route::get('co_municipality/co_department/{id}', [CoMunicipalityController::class, 'getCoDepartment'])->name('co_department');
 Route::resource('cash_receipt', CashReceiptController::class);
+
+Route::get('expense/show_pdf_expense/{id}', [ExpenseController::class, 'show_pdf_expense'])->name('show_pdf_expense');
+Route::get('expense/show_pay_expense/{id}', [ExpenseController::class, 'show_pay_expense'])->name('show_pay_expense');
+Route::get('expense/create/{id}', [InvoiceController::class, 'getMunicipalities']);
+Route::get('expense/post_expense/{id}', [ExpenseController::class, 'post_expense'])->name('post_expense');
 

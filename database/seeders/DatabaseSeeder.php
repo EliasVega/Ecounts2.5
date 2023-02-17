@@ -48,5 +48,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AccountGroupsTableSeeder::class);
         $this->call(AccountsTableSeeder::class);
         $this->call(SubaccountsTableSeeder::class);
+        $this->call(ServiceTableSeeder::class);
     }
 }

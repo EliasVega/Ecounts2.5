@@ -137,8 +137,8 @@
                             <td>{{ $pro->id }}</td>
                             <td>{{ $pro->name }}</td>
                             <td>{{ $pro->stock }}</td>
-                            <td>{{ $pro->price }}</td>
-                            <td>{{ $pro->sale_price }}</td>
+                            <td>{{ number_format($pro->price, 2) }}</td>
+                            <td>{{ number_format($pro->sale_price, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -169,8 +169,8 @@
                             <td>{{ $pro->id }}</td>
                             <td>{{ $pro->name }}</td>
                             <td>{{ $pro->stock }}</td>
-                            <td>{{ $pro->price }}</td>
-                            <td>{{ $pro->sale_price }}</td>
+                            <td>{{ number_format($pro->price, 2) }}</td>
+                            <td>{{ number_format($pro->sale_price, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -198,7 +198,7 @@
                         <tr>
                             <td>{{ $inv->document }}</td>
                             <td>{{ $inv->customer->name }}</td>
-                            <td>$ {{ $inv->total_pay }}</td>
+                            <td>$ {{ number_format($inv->total_pay, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -226,7 +226,7 @@
                         <tr>
                             <td>{{ $pur->document }}</td>
                             <td>{{ $pur->supplier->name }}</td>
-                            <td>$ {{ $pur->total_pay }}</td>
+                            <td>$ {{ number_format($pur->total_pay, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -239,6 +239,34 @@
                     </tfoot>
                 </table>
             </div>
+            <div class="unicos">
+                REPORTE DE GASTOS
+        <table>
+            <thead>
+                <tr>
+                    <th>N°.Gasto</th>
+                    <th>Proveedor</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody class="fact">
+                @foreach ($expenses as $exp)
+                <tr>
+                    <td>{{ $exp->document }}</td>
+                    <td>{{ $exp->supplier->name }}</td>
+                    <td>$ {{ number_format($exp->total_pay, 2) }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
+
+                <tr>
+                   <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                   <td><p align="right" class="tfd"><h2>${{number_format($expTotalPay,2)}}</h2></p></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
             <div class="unicos">
                 REPORTE DE PEDIDOS
                 <table>
@@ -254,7 +282,7 @@
                         <tr>
                             <td>{{ $ord->id }}</td>
                             <td>{{ $ord->customer->name }}</td>
-                            <td>$ {{ $ord->total_pay }}</td>
+                            <td>$ {{ number_format($ord->total_pay, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -392,7 +420,7 @@
                     <tbody class="fact">
                         @foreach ($pay_purchases as $pp)
                         <tr>
-                            <td>{{ $pp->purchase->idt }}</td>
+                            <td>{{ $pp->purchase->id }}</td>
                             <td>{{ $pp->purchase->supplier->name }}</td>
                             <td>$ {{ $pp->pay }}</td>
                         </tr>
@@ -403,6 +431,34 @@
                         <tr>
                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_purchases,2)}}</h2></p></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="unicos">
+                REPORTE DE PAGOS Y GASTOS
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°.Gasto</th>
+                            <th>Proveedor</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fact">
+                        @foreach ($pay_expenses as $pe)
+                        <tr>
+                            <td>{{ $pe->expense->id }}</td>
+                            <td>{{ $pe->expense->supplier->name }}</td>
+                            <td>$ {{ $pe->pay }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot>
+
+                        <tr>
+                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                           <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_expenses,2)}}</h2></p></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -455,6 +511,10 @@
                          <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL COMPRAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($purTotalPay,2)}}</h2></p></td>
+                         </tr>
+                         <tr>
+                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL GASTOS:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($expTotalPay,2)}}</h2></p></td>
                          </tr>
                          <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA CREDITO:</p></th>

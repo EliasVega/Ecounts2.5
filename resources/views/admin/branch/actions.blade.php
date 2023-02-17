@@ -16,6 +16,10 @@
         class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Compras"><i class="fas fa-cart-plus"></i>
         </a>
     </a>
+    <a href="{{ route('show_expense', $id) }}"
+        class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Gastos"><i class="fas fa-money-bill"></i>
+        </a>
+    </a>
     <a href="{{ route('show_product', $id) }}"
         class="btn btn-limon" data-toggle="tooltip" data-placement="top" title="Productos esta Bodega"><i class="fas fa-box-open"></i>
         </a>

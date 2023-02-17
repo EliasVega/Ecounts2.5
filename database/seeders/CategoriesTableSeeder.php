@@ -14,12 +14,12 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('categories')->delete();
-        
+
         \DB::table('categories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Electricos',
@@ -30,7 +30,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Ferreteria',
@@ -41,7 +41,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'Computadores',
@@ -52,7 +52,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'tablet',
@@ -63,8 +63,19 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
+            4 =>
+            array (
+                'id' => 5,
+                'name' => 'Servicios y Excentos',
+                'description' => 'Gastos de la empresa',
+                'iva' => '0.00',
+                'utility' => '0.00',
+                'status' => 1,
+                'created_at' => '2023-01-12 21:07:43',
+                'updated_at' => '2023-01-12 21:07:43',
+            ),
         ));
-        
-        
+
+
     }
 }

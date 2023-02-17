@@ -68,6 +68,18 @@
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
+                <label class="form-control-label" for="in_invoice_cash">Gastos Efectivo</label>
+                <p>{{ $sale_box->out_expense_cash }}</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="abono">T/Gastos</label>
+                <p>{{ $sale_box->out_expense }}</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
                 <label class="form-control-label" for="in_invoice_cash">Notas Debito Efectivo</label>
                 <p>{{ $sale_box->in_ndinvoice_cash }}</p>
             </div>
@@ -78,6 +90,7 @@
                 <p>{{ $sale_box->in_ndinvoice }}</p>
             </div>
         </div>
+        <div class="clearfix"></div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="pay">T/Ingresos</label>
@@ -111,7 +124,7 @@
                 <strong class="tpdf">Articulos Vendidos</strong>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('sale_box.index') }}" class="btn btn-success"><i class="fa fa-plus mr-2"></i>Regresar</a>
+                <a href="{{ route('sale_box.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
             </div>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -154,9 +167,6 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <strong class="tpdf">Articulos Comprados</strong>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('sale_box.index') }}" class="btn btn-success"><i class="fa fa-plus mr-2"></i>Regresar</a>
             </div>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -562,7 +572,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th  colspan="4"><p align="right">TOTAL:</p></th>
+                            <th  colspan="3"><p align="right">TOTAL:</p></th>
                             <th><p align="right">${{ $sum_payments }}</p></th>
                         </tr>
                     </tfoot>

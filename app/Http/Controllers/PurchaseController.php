@@ -355,7 +355,7 @@ class PurchaseController extends Controller
         return redirect('pay_purchase/create');
      }
 
-     public function show_pdf_purchase(Request $request, $id)
+    public function show_pdf_purchase(Request $request, $id)
     {
         $purchase = Purchase::findOrFail($id);
         $product_purchases = Product_purchase::where('purchase_id', $id)->get();
@@ -475,7 +475,7 @@ class PurchaseController extends Controller
         }
     }
 
-    public function pdf_payinvoice(Request $request, $id)
+    public function pdf_paypurchase(Request $request, $id)
     {
         $purchase = Purchase::where('id', $id)->first();
         $company = Company::where('id', 1)->first();
@@ -488,7 +488,7 @@ class PurchaseController extends Controller
         ->get();
         $purchasepdf = "FACT-". $purchase->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.pay_invoice.pdf', compact('payInvoice_paymentMethods', 'company', 'logo', 'payinvoice', 'user'))->render();
+        $view = \view('admin.pay_purchase.pdf', compact('company', 'logo', 'paypurchase', 'user'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );

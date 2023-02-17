@@ -109,6 +109,24 @@
                 <p>{{ number_format($sale_box->purchase,2) }}</p>
             </div>
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="in_invoice_cash">Gastos Efectivo</label>
+                <p>{{ number_format($sale_box->out_expense_cash,2) }}</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="abono">T/Egresos Gastos</label>
+                <p>{{ number_format($sale_box->out_expense,2) }}</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="form-group">
+                <label class="form-control-label" for="abono">T/Gastos</label>
+                <p>{{ number_format($sale_box->expense,2) }}</p>
+            </div>
+        </div>
 
 
     </div>
@@ -197,6 +215,47 @@
                                 <td class="tdder">$ {{ number_format($pur->pay,2) }}</td>
                                 <td class="tdder">$ {{ number_format($pur->balance,2) }}</td>
                                 <td class="tdder">$ {{ number_format($pur->total_pay,2) }}</td>
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="box-body row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <strong class="tpdf">Detalle Gastos</strong>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr class="bg-info">
+                            <th>Fecha</th>
+                            <th>N°.P</th>
+                            <th>Proveedor</th>
+                            <th>Estado</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th  colspan="6"><p align="right">TOTAL:</p></th>
+                            <th><p align="right">${{ number_format($sale_box->expense,2) }}</p></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach($expenses as $exp)
+                            <tr>
+                                <td>{{ $exp->created_at }}</td>
+                                <td>{{ $exp->id }}</td>
+                                <td>{{ $exp->name }}</td>
+                                <td class="tdder">$ {{ number_format($exp->total_pay,2) }}</td>
 
                             </tr>
                         @endforeach

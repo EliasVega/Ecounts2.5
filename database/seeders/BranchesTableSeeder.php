@@ -14,15 +14,15 @@ class BranchesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('branches')->delete();
-        
+
         \DB::table('branches')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
-                'name' => 'Bodega',
+                'name' => 'Principal',
                 'address' => 'Calle 45 # 31-47',
                 'phone' => '6706250',
                 'mobile' => '3172145789',
@@ -34,7 +34,7 @@ class BranchesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Floridablanca',
@@ -49,7 +49,7 @@ class BranchesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'Giron',
@@ -64,10 +64,10 @@ class BranchesTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
-                'name' => 'Discom Medallin',
+                'name' => 'Discom Medellin',
                 'address' => 'Calle 60 # 28-47',
                 'phone' => '6556250',
                 'mobile' => '3172485789',
@@ -80,7 +80,7 @@ class BranchesTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 21:07:43',
             ),
         ));
-        
-        
+
+
     }
 }

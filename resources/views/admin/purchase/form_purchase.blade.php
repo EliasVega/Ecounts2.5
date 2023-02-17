@@ -26,7 +26,7 @@
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="document">N°Factura</label>
-            <input type="text" id="document" name="document" value="{{ old('document') }}" class="form-control" placeholder="Numero de la factura" required pattern="[0-9]{0,15}">
+            <input type="text" id="document" name="document" value="{{ old('document') }}" class="form-control" placeholder="Numero de la factura" required>
         </div>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">

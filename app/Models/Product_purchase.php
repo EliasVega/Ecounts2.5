@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product_purchase extends Model
 {
-
     protected $fillable = [
 
         'quantity',
         'price',
+        'iva',
+        'subtotal',
+        'ivasubt',
+        'item',
         'purchase_id',
         'product_id',
     ];
@@ -20,6 +23,6 @@ class Product_purchase extends Model
     }
 
     public function product(){
-        return $this->belongsTo(Product::class);
+        return $this->hasOne(Product::class);
     }
 }

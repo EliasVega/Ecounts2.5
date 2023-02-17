@@ -110,9 +110,9 @@ class PayPurchaseController extends Controller
             $pay_purchase->balance_purchase = 0;
             $pay_purchase->save();
 
-            $cash_receipt = new Discharge_receipt();
-            $cash_receipt->type = 'purchase';
-            $pay_purchase->dischargeReceipt()->save($cash_receipt);
+            $discharge_receipt = new Discharge_receipt();
+            $discharge_receipt->type = 'purchase';
+            $pay_purchase->dischargeReceipt()->save($discharge_receipt);
 
             $cont = 0;
             $payment_method = $request->payment_method_id;
