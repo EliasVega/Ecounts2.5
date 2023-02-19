@@ -50,55 +50,27 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 vh-30">
-        <div>
-            <a href="{{ route('branch.index') }}"><button><img src="{{ asset('/img/branch.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Sucursales" /></button></a>
-        </div>
-    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <a href="{{ route('branch.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Entrar Sucursales" style='width:150px; height:100px; font-size: 24px;'>Sucursales </button></a>
 
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 vh-30">
-        <div>
-            <a href="{{ route('user.index') }}"><button><img src="{{ asset('/img/user.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Usuarios" /></button></a>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div>
-            <a href="{{ route('payment_form.index') }}"><button><img src="{{ asset('/img/paymentForm.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Forma de Pago" /></button></a>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <a href="{{ route('user.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Entrar Usuarios" style='width:150px; height:100px; font-size: 24px;'>Usuarios </button></a>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div>
-            <a href="{{ route('payment_method.index') }}"><button><img src="{{ asset('/img/paymentMethod.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Medios de Pago" /></button></a>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <a href="{{ route('report.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Entrar Reportes" style='width:150px; height:100px; font-size: 24px;'>Reportes </button></a>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div>
-            <a href="{{ route('retention.index') }}"><button><img src="{{ asset('/img/retention.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Retenciones" /></button></a>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <a href="{{ route('verification_code.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Autorizar Usuario" style='width:150px; height:100px; font-size: 24px;'>Permisos</button></a>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 vh-30">
-        <div>
-            <a href="{{ route('report.index') }}"><button><img src="{{ asset('/img/report.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Reportes" /></button></a>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div>
-            <a href="{{ route('verification_code.index') }}"><button><img src="{{ asset('/img/autorization.jpg') }}" height ="120" width="120" data-toggle="tooltip" data-placement="top" title="Autorization de Usuarios" /></button></a>
-        </div>
-    </div>
-
-
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <div>
-            <a href="{{ route('bank.index') }}"><button><img src="{{ asset('/img/bank.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Bancos" /></button></a>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-5 mt-10">
-        <div>
-            <a href="{{ route('card.index') }}"><button><img src="{{ asset('/img/cards.jpg') }}" height ="150" width="150" data-toggle="tooltip" data-placement="top" title="Tarjetas" /></button></a>
-        </div>
-    </div>
-
 </div>
 @endsection
 
