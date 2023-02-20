@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateBranchRequest;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Municipality;
-use App\Models\sale_box;
+use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;

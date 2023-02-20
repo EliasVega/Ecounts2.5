@@ -29,9 +29,6 @@ class Sale_box extends Model
         'cash',
         'out',
         'total',
-
-
-
         'verification_code_open',
         'verification_code_close',
         'status',
