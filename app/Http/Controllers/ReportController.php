@@ -63,22 +63,6 @@ class ReportController extends Controller
 
     public function daily_report(Request $request)
     {
-        $invoices = Invoice::from('invoices as inv')
-                ->join('users as use', 'inv.user_id', 'use.id')
-                ->join('branches as bra', 'inv.branch_id', 'bra.id')
-                ->join('customers as cus', 'inv.customer_id', 'cus.id')
-                ->select('inv.id', 'inv.document', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
-                ->whereDate('inv.created_at', Carbon::now())
-                ->get();
-                $purchases = Purchase::from('purchases as inv')
-                ->join('users as use', 'inv.user_id', 'use.id')
-                ->join('branches as bra', 'inv.branch_id', 'bra.id')
-                ->join('suppliers as cus', 'inv.supplier_id', 'cus.id')
-                ->select('inv.id', 'inv.document', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'use.name', 'bra.name as nameB', 'cus.name as nameC')
-                ->whereDate('inv.created_at', Carbon::now())
-                ->get();
-                $invopurc = $invoices->concat($purchases);
-                dd($invopurc);
         $invoice_total = Invoice::sum('total_pay');
         $daily_report = Invoice::sum('total_pay');
         $portfolio = Invoice::sum('balance');
