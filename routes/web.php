@@ -150,7 +150,7 @@ Route::post('company/logout', [CompanyController::class, 'logout'])->name('logou
 
 Route::get('branch/create/{id}', [BranchController::class, 'getMunicipalities']);
 Route::get('show_purchase/{id}', [BranchController::class, 'show_purchase'])->name('show_purchase');
-Route::get('show_expense/{id}', [BranchController::class, 'show_expense'])->name('show_expense');
+Route::get('branch/show_expense/{id}', [BranchController::class, 'show_expense'])->name('show_expense');
 Route::get('show_invoice/{id}', [BranchController::class, 'show_invoice'])->name('show_invoice');
 Route::get('show_order/{id}', [BranchController::class, 'show_order'])->name('show_order');
 Route::get('show_product/{id}', [BranchController::class, 'show_product'])->name('show_product');

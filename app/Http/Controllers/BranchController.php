@@ -50,7 +50,7 @@ class BranchController extends Controller
             return datatables()
             ->of($branches)
             ->addColumn('btn', 'admin/branch/actions')
-            ->addColumn('accesos', 'admin/branch/actionsaccesos')
+            ->addColumn('accesos', 'admin/branch/accesos')
             ->rawcolumns(['btn', 'accesos'])
             ->toJson();
         }
@@ -111,9 +111,8 @@ class BranchController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
-        if($sale_box == null){
-            toast( 'Debes disponer de una caja abierta para poder realizar compras','warning');
-            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
+        if(is_null($sale_box)){
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
         }
         $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
@@ -136,9 +135,8 @@ class BranchController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
-        if($sale_box == null){
-            toast( 'Debes disponer de una caja abierta para poder realizar Gastos','warning');
-            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
+        if(is_null($sale_box)){
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Gastos');
         }
         $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
@@ -153,8 +151,7 @@ class BranchController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
-        if($sale_box == null){
-            toast( 'Debes disponer de una caja abierta para poder realizar ventas','warning');
+        if(is_null($sale_box)){
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
         }
         $branch = Branch::findOrFail($id);
@@ -171,11 +168,9 @@ class BranchController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
-        if($sale_box == null){
+        if(is_null($sale_box)){
 
-            toast( 'Debes disponer de una caja abierta para poder realizar pedidos','warning');
-
-            return redirect("branch");
+            return redirect("order")->with('warning', 'Debes tener una caja Abierta para realizar Pedidos');
             /*toast('Your Post as been submited!','success');
             Alert::question('Question Title', 'Question Message');
             Alert::error('Error Title', 'Error Message');
@@ -193,6 +188,7 @@ class BranchController extends Controller
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
         return redirect('order');
+
     }
     //funcion para redirigir a productos sucursal
     public function show_product($id)
