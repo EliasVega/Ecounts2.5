@@ -23,8 +23,6 @@ class BranchController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->forget('branch');
-
         $users = Auth::user()->branch_id;
         if (request()->ajax()) {
             if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
