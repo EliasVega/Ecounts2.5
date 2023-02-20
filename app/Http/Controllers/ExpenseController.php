@@ -234,6 +234,7 @@ class ExpenseController extends Controller
         $expense = Expense::findOrFail($id);
         $expense_service = Expense_service::where('expense_id', $id)->get();
         $company = Company::findOrFail(1);
+        //dd($expense_service->service->name);
 
         $days = $expense->created_at->diffInDays($expense->fecven);
         $expensepdf = "COMP-". $expense->expense;
@@ -243,8 +244,8 @@ class ExpenseController extends Controller
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
-        //return $pdf->stream('vista-pdf', "$expensepdf.pdf");
-        return $pdf->download("$expensepdf.pdf");
+        return $pdf->stream('vista-pdf', "$expensepdf.pdf");
+        //return $pdf->download("$expensepdf.pdf");
     }
 
     public function post_expense(Request $request, $id)

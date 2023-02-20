@@ -59,7 +59,7 @@
                     <div class="form-group">
                     <label for="liability_id">Res. Fiscal</label>
                         <select name="liability_id" class="form-control" id="liability">
-                            @foreach($liabilitys as $lia)
+                            @foreach($liabilities as $lia)
                                 @if($lia->id == $company->liability_id)
                                     <option value="{{ $lia->id }}" selected>{{ $lia->name }}</option>
                                 @else
@@ -85,27 +85,13 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                    <label for="tax_id">Tributo</label>
-                        <select name="tax_id" class="form-control" id="tax">
-                            @foreach($taxes as $tax)
-                                @if($tax->id == $company->tax_id)
-                                    <option value="{{ $tax->id }}" selected>{{ $tax->name }}</option>
-                                @else
-                                    <option value="{{ $tax->id }}">{{ $tax->name }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
                     <label for="regime_id">Regimen</label>
                         <select name="regime_id" class="form-control" id="regime">
                             @foreach($regimes as $reg)
                                 @if($reg->id == $company->regime_id)
                                     <option value="{{ $reg->id }}" selected>{{ $reg->name }}</option>
                                 @else
-                                    <option value="{{ $rfis->id }}">{{ $rfis->name }}</option>
+                                    <option value="{{ $reg->id }}">{{ $reg->name }}</option>
                                 @endif
                             @endforeach
                         </select>

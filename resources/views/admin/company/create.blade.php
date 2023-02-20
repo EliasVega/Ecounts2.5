@@ -52,7 +52,7 @@
                             <label for="liability_id">Resp. Fiscal</label>
                             <select name="liability_id" class="form-control" data-live-search="true" id="department" required>
                                 <option value="{{ old('liability_id') }}" disabled selected>Seleccionar.</option>
-                                @foreach($liabilitys as $lia)
+                                @foreach($liabilities as $lia)
                                     <option value="{{ $lia->id }}">{{ $lia->name }}</option>
                                 @endforeach
                             </select>
@@ -65,17 +65,6 @@
                                 <option value="{{ old('organization_id') }}" disabled selected>Seleccionar.</option>
                                 @foreach($organizations as $org)
                                     <option value="{{ $org->id }}">{{ $org->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                            <label for="tax_id">Tributo</label>
-                            <select name="tax_id" class="form-control" data-live-search="true" id="tax" required>
-                                <option value="{{ old('tax_id') }}" disabled selected>Seleccionar.</option>
-                                @foreach($taxes as $tax)
-                                    <option value="{{ $tax->id }}">{{ $tax->name }}</option>
                                 @endforeach
                             </select>
                         </div>

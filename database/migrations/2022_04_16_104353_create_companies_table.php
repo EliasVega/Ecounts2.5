@@ -28,7 +28,6 @@ return new class extends Migration
             $table->foreignId('liability_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('organization_id')->constrained()->onUpdate('cascade');
             $table->foreignId('regime_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('tax_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

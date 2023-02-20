@@ -19,8 +19,7 @@ class Company extends Model
         'municipaliy_id',
         'liability_id',
         'organization_id',
-        'regime_id',
-        'tax_id',
+        'regime_id'
     ];
 
     public function department()

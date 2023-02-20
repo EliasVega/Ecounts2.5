@@ -23,36 +23,34 @@ class BranchController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->forget('branch');
-        //
         $users = Auth::user()->branch_id;
-        if (request()->ajax()) {
+
+        if ($request->ajax()) {
             if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
 
                 //Consulta para mostrar branch a administradores y superadmin
-                $branches = Branch::from('branches AS bra')
-                ->join('departments AS dep', 'bra.department_id', '=', 'dep.id')
-                ->join('municipalities AS mun', 'bra.municipality_id', '=', 'mun.id')
-                ->join('companies AS com', 'bra.company_id', '=', 'com.id')
-                ->select('bra.id', 'dep.name as nameD', 'mun.name as nameM', 'com.name as nameC', 'bra.name', 'com.nit', 'bra.address', 'bra.phone', 'bra.mobile', 'bra.manager')
-                ->get();
+                $branches = Branch::get();
             } else {
                 //Consulta para mostrar branch a roles 3 -4 -5
-                $branches = Branch::from('branches AS bra')
-                ->join('departments AS dep', 'bra.department_id', '=', 'dep.id')
-                ->join('municipalities AS mun', 'bra.municipality_id', '=', 'mun.id')
-                ->join('companies AS com', 'bra.company_id', '=', 'com.id')
-                ->select('bra.id', 'dep.name AS nameD', 'mun.name AS nameM', 'com.name AS nameC', 'bra.name', 'com.nit', 'bra.address', 'bra.phone', 'bra.mobile', 'bra.manager')
-                ->where('bra.id', '=', $users)
-                ->get();
+                $branches = Branch::where('id', $users)->get();
             }
 
-            return datatables()
-            ->of($branches)
-            ->addColumn('btn', 'admin/branch/actions')
-            ->addColumn('accesos', 'admin/branch/actionsaccesos')
-            ->rawcolumns(['btn', 'accesos'])
-            ->toJson();
+            return DataTables::of($branches)
+                ->addIndexColumn()
+                ->addColumn('department', function (Branch $branch) {
+                    return $branch->department->name;
+                })
+                ->addColumn('municipality', function (Branch $branch) {
+                    return $branch->municipality->name;
+                })
+                ->addColumn('company', function (Branch $branch) {
+                    return $branch->company->nit;
+                })
+
+                ->addColumn('btn', 'admin/branch/actions')
+                ->addColumn('accesos', 'admin/branch/accesos')
+                ->rawcolumns(['btn', 'accesos'])
+                ->make(true);
         }
         return view('admin.branch.index');
     }

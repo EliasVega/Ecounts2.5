@@ -40,10 +40,9 @@ class CompanyController extends Controller
         $municipalities = Municipality::get();
         $liabilities = Liability::get();
         $organizations = Organization::get();
-        $taxes = Tax::get();
         $regimes = Regime::get();
         //$users = User::where('role_id', '=', 2)->get();
-        return view('admin.company.create', compact('departments', 'municipalities', 'liabilities', 'organizations', 'taxes', 'regimes'));
+        return view('admin.company.create', compact('departments', 'municipalities', 'liabilities', 'organizations', 'regimes'));
     }
 
     /**
@@ -59,7 +58,6 @@ class CompanyController extends Controller
         $company->municipality_id = $request->municipality_id;
         $company->liability_id    = $request->liability_id;
         $company->organization_id = $request->organization_id;
-        $company->tax_id          = $request->tax_id;
         $company->regime_id       = $request->regime_id;
         $company->name          = $request->name;
         $company->nit             = $request->nit;
@@ -113,9 +111,8 @@ class CompanyController extends Controller
         $municipalities = Municipality::get();
         $liabilities    = Liability::get();
         $organizations  = Organization::get();
-        $taxes          = Tax::get();
         $regimes        = Regime::get();
-        return view("admin.company.edit", compact('company', 'departments', 'municipalities', 'liabilities', 'organizations', 'taxes', 'regimes'));
+        return view("admin.company.edit", compact('company', 'departments', 'municipalities', 'liabilities', 'organizations', 'regimes'));
     }
 
     /**
@@ -131,7 +128,6 @@ class CompanyController extends Controller
         $company->municipality_id = $request->municipality_id;
         $company->liability_id    = $request->liability_id;
         $company->organization_id = $request->organization_id;
-        $company->tax_id          = $request->tax_id;
         $company->regime_id       = $request->regime_id;
         $company->name            = $request->name;
         $company->nit             = $request->nit;

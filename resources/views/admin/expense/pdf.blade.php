@@ -99,7 +99,7 @@
                             @foreach ($expense_service as $es)
                             <tr>
                                 <td id="ccent">{{ number_format($es->quantity) }}</td>
-                                <td>{{ $es->name }}</td>
+                                <td>{{ $es->service->name }}</td>
                                 <td class="tdder">${{ number_format($es->price)}}</td>
                                 <td class="tdder">${{number_format($es->quantity * $es->price)}}</td>
                             </tr>

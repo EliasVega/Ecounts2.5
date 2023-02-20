@@ -25,7 +25,7 @@ class StoreCompanyRequest extends FormRequest
     {
         return [
 
-            'nombre'          => 'required|max:45',
+            'name'          => 'required|max:45',
             'nit'             => 'required|max:20',
             'dv'              => 'required|max:1',
             'email'           => 'required',
@@ -36,8 +36,7 @@ class StoreCompanyRequest extends FormRequest
             'municipality_id' => 'required',
             'liability_id'    => 'required',
             'organization_id' => 'required',
-            'regime_id'       => 'required',
-            'tax_id'          => 'required'
+            'regime_id'       => 'required'
         ];
     }
 }

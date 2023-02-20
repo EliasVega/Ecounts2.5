@@ -23,7 +23,7 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} R. fiscal: {{ $company->nameR }} {{ $company->description }} {{ $company->nameO }}  {{ $expense->direcionB }} {{ $company->nameM }} {{ $company->nameD }} <br> Email: {{ $expense->email }}
+                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} R. fiscal: {{ $company->nameR }} {{ $company->description }} {{ $company->nameO }}  {{ $expense->direcionB }} {{ $company->nameM }} {{ $company->nameD }} <br> Email: {{ $company->email }}
                     </p>
             </div>
             <!--DATOS FACTURA -->
@@ -74,7 +74,7 @@
                 <tbody>
                     @foreach ($expense_services as $es)
                     <tr>
-                        <td>{{ $es->name }}</td>
+                        <td>{{ $es->service->name }}</td>
                         <td id="ccent">{{ number_format($es->quantity) }}</td>
                         <td class="tdder">${{ number_format($es->price)}}</td>
                         <td class="tdder">${{number_format($es->quantity * $es->price)}}</td>
