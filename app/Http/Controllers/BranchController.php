@@ -107,7 +107,7 @@ class BranchController extends Controller
     //funcion para redirigir a compras
     public function show_purchase($id)
     {
-        $sale_box = sale_box::select('id')
+        $sale_box = Sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
@@ -131,7 +131,7 @@ class BranchController extends Controller
     }
     public function show_expense($id)
     {
-        $sale_box = sale_box::select('id')
+        $sale_box = Sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
@@ -147,7 +147,7 @@ class BranchController extends Controller
     //funcion para redirigir a ventas
     public function show_invoice($id)
     {
-        $sale_box = sale_box::select('id')
+        $sale_box = Sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
@@ -164,7 +164,7 @@ class BranchController extends Controller
     public function show_order($id)
     {
         //funcion para redirigir a pedidos
-        $sale_box = sale_box::select('id')
+        $sale_box = Sale_box::select('id')
         ->where('user_id', '=', Auth::user()->id)
         ->where('status', '=', 'open')
         ->first();
@@ -183,7 +183,7 @@ class BranchController extends Controller
             toast('Warning Toast','warning');*/
         }
 
-        $branch = branch::findOrFail($id);
+        $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
@@ -203,7 +203,7 @@ class BranchController extends Controller
     public function show_product_branch($id)
     {
         //
-        $branch = branch::findOrFail($id);
+        $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
@@ -213,7 +213,7 @@ class BranchController extends Controller
     public function show_sale_box($id)
     {
         //
-        $branch = branch::findOrFail($id);
+        $branch = Branch::findOrFail($id);
         \Session::put('branch', $branch->id, 60 * 24 * 365);
         \Session::put('name', $branch->name, 60 * 24 * 365);
 
