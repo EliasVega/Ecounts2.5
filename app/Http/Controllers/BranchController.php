@@ -24,7 +24,8 @@ class BranchController extends Controller
     public function index(Request $request)
     {
         $users = Auth::user()->branch_id;
-        if (request()->ajax()) {
+
+        if ($request->ajax()) {
             if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
 
                 //Consulta para mostrar branch a administradores y superadmin
