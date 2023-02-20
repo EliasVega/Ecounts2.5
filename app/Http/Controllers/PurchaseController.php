@@ -410,9 +410,8 @@ class PurchaseController extends Controller
         ->join('municipalities AS mun', 'com.municipality_id', '=', 'mun.id')
         ->join('liabilities AS lia', 'com.liability_id', '=', 'lia.id')
         ->join('regimes AS reg', 'com.regime_id', '=', 'reg.id')
-        ->join('taxes AS tax', 'com.tax_id', '=', 'tax.id')
         ->join('organizations AS org', 'com.organization_id', '=', 'org.id')
-        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO', 'tax.description')
+        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO')
         ->where('com.id', '=', 1)
         ->first();
 
