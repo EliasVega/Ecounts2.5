@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('email', 50)->unique();
             $table->string('manager', 50);
 
-            $table->foreignId('department_id')->constrained()->onUpdate('restrict')->onDelete('cascade');
+            $table->foreignId('department_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('municipality_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('company_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
