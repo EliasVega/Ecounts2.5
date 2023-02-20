@@ -32,7 +32,8 @@ class StoreNdpurchaseRequest extends FormRequest
             'purchase_id'       => '',
             'product_id'        => '',
             'supplier_id'       => '',
-            'nc_discrepancy_id' => ''
+            'nc_discrepancy_id' => '',
+            'voucher_type_id' => 'integer'
         ];
     }
 }

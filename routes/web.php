@@ -206,6 +206,7 @@ Route::get('portfolio', [ReportController::class, 'portfolio'])->name('portfolio
 Route::get('past_due_portfolio', [ReportController::class, 'past_due_portfolio'])->name('past_due_portfolio');
 Route::get('portfolio_thirty', [ReportController::class, 'portfolio_thirty'])->name('portfolio_thirty');
 Route::get('portfolio_sixty', [ReportController::class, 'portfolio_sixty'])->name('portfolio_sixty');
+Route::get('daily_report', [ReportController::class, 'daily_report'])->name('daily_report');
 
 Route::get('show_pay_ncinvoice/{id}', [NcinvoiceController::class, 'show_pay_ncinvoice'])->name('show_pay_ncinvoice');
 

@@ -147,6 +147,7 @@ class OrderController extends Controller
             $order->payment_form_id   = $request->payment_form_id;
             $order->payment_method_id = $request->payment_method_id;
             $order->retention_id      = $request->retention_id;
+            $order->voucher_type_id   = 19;
             $order->due_date          = $request->due_date;
             $order->items             = count($product_id);
             $order->total             = $request->total;

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h5>Listado de Compras</h5>
-                 <a href="purchase/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Compra</a>
+                <a href="purchase/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Compra</a>
                 <a href="{{ route('branch.index') }}" class="btn btn-celeste"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                 <a href="{{ route('supplier.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Proveedores</a>
                 <a href="{{ route('ncpurchase.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>

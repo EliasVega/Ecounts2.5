@@ -14,7 +14,7 @@
     <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="branch_id">Sucursal Destino</label>
-                <select name="branch_id" class="form-control selectpicker" id="branch_id" data-live-search="true">
+                <select name="branch_id" class="form-control selectpicker" id="branch_id" data-live-search="true" required>
                     <option value="0" disabled selected>Seleccionar Sucursal</option>
                     @foreach($branchs as $bra)
                         <option value="{{ $bra->id }}">{{ $bra->name }}</option>

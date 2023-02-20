@@ -27,7 +27,6 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->decimal('retention',10,2)->nullable();
             $table->enum('status',['active', 'debit_note', 'credit_note'])->default('active');
-            $table->enum('document_type',['purchase', 'support_document'])->default('purchase');
 
             $table->foreignId('user_id')->constrained();
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
@@ -36,6 +35,7 @@ return new class extends Migration
             $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
             $table->foreignId('percentage_id')->nullable()->constrained();
             $table->foreignId('type_generation_id')->nullable()->constrained();
+            $table->foreignId('voucher_type_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

@@ -167,7 +167,8 @@ class InvoiceController extends Controller
             $invoice->customer_id       = $request->customer_id;
             $invoice->payment_form_id   = $request->payment_form_id;
             $invoice->payment_method_id = $request->payment_method_id;
-            $invoice->percentage_id      = $request->percentage_id;
+            $invoice->percentage_id     = $request->percentage_id;
+            $invoice->voucher_type_id   = 1;
             $invoice->document          = $invoicey; //Cuadrar esto para ccolocarle prefix y numero
             $invoice->type_document     = '01';
             $invoice->type_operation    = '10';

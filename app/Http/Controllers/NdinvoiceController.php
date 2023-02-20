@@ -125,6 +125,7 @@ class NdinvoiceController extends Controller
             $ndinvoice->nd_discrepancy_id = $request->nd_discrepancy_id;
             $ndinvoice->payment_method_id = $request->payment_method_id;
             $ndinvoice->payment_form_id   = $request->payment_form_id;
+            $ndinvoice->voucher_type_id   = 6;
             $ndinvoice->total             = $request->total;
             $ndinvoice->total_iva         = $request->total_iva;
             $ndinvoice->total_pay         = $request->total_pay;

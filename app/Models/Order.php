@@ -22,7 +22,8 @@ class Order extends Model
         'customer_id',
         'payment_form_id',
         'payment_method_id',
-        'retention_id'
+        'retention_id',
+        'voucher_type_id'
     ];
 
     public function customer(){
@@ -56,5 +57,10 @@ class Order extends Model
 
     public function branch(){
         return $this->belongsTo(Branch::class);
+    }
+
+    public function voucherTipe()
+    {
+        return $this->belongsTo(Voucher_type::class);
     }
 }

@@ -100,18 +100,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('payment_form') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Forma Pagos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('payment_method') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Medios Pagos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ url('resolution') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Resoluciones</p>
@@ -192,6 +180,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('payment_form') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Forma Pagos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('payment_method') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Medios Pagos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('document') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>T/Documentos</p>
@@ -237,6 +237,12 @@
                             <a href="{{ url('unit_measure') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Unidades de Medida</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('voucher_type') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Typo de Comprobantes</p>
                             </a>
                         </li>
                     </ul>

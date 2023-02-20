@@ -25,7 +25,8 @@ class Invoice extends Model
         'customer_id',
         'payment_form_id',
         'payment_method_id',
-        'percentage_id'
+        'percentage_id',
+        'voucher_type_id'
     ];
 
     public function user(){
@@ -70,5 +71,10 @@ class Invoice extends Model
     }
     public function retention(){
         return $this->hasOne(Retention::class);
+    }
+
+    public function voucherTipe()
+    {
+        return $this->belongsTo(Voucher_type::class);
     }
 }

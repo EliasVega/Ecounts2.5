@@ -35,6 +35,7 @@ return new class extends Migration
             $table->foreignId('payment_form_id')->constrained()->onUpdate('cascade');
             $table->foreignId('payment_method_id')->constrained()->onUpdate('cascade');
             $table->foreignId('percentage_id')->nullable()->constrained();
+            $table->foreignId('voucher_type_id')->constrained()->onUpdate('cascade');
 
             $table->timestamps();
         });

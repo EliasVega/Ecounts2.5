@@ -17,7 +17,8 @@ class Ndpurchase extends Model
         'branch_id',
         'purchase_id',
         'supplier_id',
-        'nc_discrepancy_id'
+        'nc_discrepancy_id',
+        'voucher_type_id'
     ];
 
     public function branch(){

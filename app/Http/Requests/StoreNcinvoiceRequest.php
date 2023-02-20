@@ -35,7 +35,8 @@ class StoreNcinvoiceRequest extends FormRequest
             'customer_id'       => '',
             'nc_discrepancy_id' => '',
             'payment_method_id' => '',
-            'payment_form_id'   => ''
+            'payment_form_id'   => '',
+            'voucher_type_id' => 'integer'
         ];
     }
 }

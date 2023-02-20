@@ -118,6 +118,7 @@ class NdpurchaseController extends Controller
             $ndpurchase->branch_id             = $branch;
             $ndpurchase->purchase_id           = $purchase;
             $ndpurchase->supplier_id           = $request->supplier_id;
+            $ndpurchase->voucher_type_id       = 11;
 
             $ndpurchase->nc_discrepancy_id     = $request->nc_discrepancy_id;
             if ($discrepancy == 2) {

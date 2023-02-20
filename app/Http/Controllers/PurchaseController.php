@@ -125,6 +125,7 @@ class PurchaseController extends Controller
             $purchase->payment_form_id = $request->payment_form_id;
             $purchase->payment_method_id = $request->payment_method_id;
             $purchase->percentage_id = $request->percentage_id;
+            $purchase->voucher_type_id = 7;
             $purchase->document    = $request->document;
             $purchase->due_date    = $request->due_date;
             $purchase->items       = count($product_id);

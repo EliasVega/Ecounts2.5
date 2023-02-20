@@ -119,6 +119,7 @@ class NcinvoiceController extends Controller
             }
             $ncinvoice->payment_method_id = $request->payment_method_id;
             $ncinvoice->payment_form_id   = $request->payment_form_id;
+            $ncinvoice->voucher_type_id   = 5;
             $ncinvoice->pay               = $request->total_pay;
             $ncinvoice->balance           = 0;
             $ncinvoice->save();

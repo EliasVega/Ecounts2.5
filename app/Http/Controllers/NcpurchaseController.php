@@ -104,6 +104,7 @@ class NcpurchaseController extends Controller
             $ncpurchase->purchase_id       = $purchase;
             $ncpurchase->supplier_id       = $request->supplier_id;
             $ncpurchase->nd_discrepancy_id = $request->nd_discrepancy_id;
+            $ncpurchase->voucher_type_id   = 10;
             $ncpurchase->total             = $request->total;
             $ncpurchase->total_iva         = $request->total_iva;
             $ncpurchase->total_pay         = $request->total_pay;

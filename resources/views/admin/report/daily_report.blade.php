@@ -72,13 +72,14 @@ REPORTE GENERAL DE INVENTARIO
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="reports">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="daily_reports">
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
-                            <th>Vendedor</th>
+                            <th>Tipo</th>
+                            <th>Servidor</th>
                             <th>Sede</th>
-                            <th>Cliente</th>
+                            <th>Tercero</th>
                             <th>Valor</th>
                             <th>Saldo</th>
                             <th>Fecha</th>
@@ -102,12 +103,12 @@ REPORTE GENERAL DE INVENTARIO
         load_data();
         function load_data(start = '', end = '')
         {
-            $('#reports').DataTable({
+            $('#daily_reports').DataTable({
                 responsive: true,
                 autoWidth: false,
                 processing: true,
                 ajax:{
-                    url: '{{ route('report.index') }}',
+                    url: '{{ route('daily_report') }}',
                     data: {
                         start: start,
                         end: end,
@@ -116,6 +117,7 @@ REPORTE GENERAL DE INVENTARIO
                 columns:
                 [
                     {data: 'id'},
+                    {data: 'code'},
                     {data: 'name'},
                     {data: 'nameB'},
                     {data: 'nameC'},
