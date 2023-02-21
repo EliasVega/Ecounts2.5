@@ -80,7 +80,6 @@
     $("#banky").hide();
     $("#cardy").hide();
     $("#advancey").hide();
-    $("#eventy").hide();
     $("#rtferase").hide();
     /*
     $("#advances").hide();
@@ -155,8 +154,6 @@
                 text: 'La cantidad a vender supera el stock',
             })
             } else {
-
-
                 subtotal[cont]= parseFloat(quantity) * parseFloat(price);
                 total= total+subtotal[cont];
                 ivita= subtotal[cont]*iva/100;
@@ -245,7 +242,7 @@
         if(form == 1){
             $("#noDefined").show();
             $("#cash").show();
-            $("#advance").show();
+            $("#advanceCus").show();
             $("#transfer").show();
             $("#nequi").show();
             $("#card1").show();
@@ -256,7 +253,7 @@
             $("#addpayment").show();
             $("#noDefined").hide();
             $("#cash").hide();
-            $("#advance").hide();
+            $("#advanceCus").hide();
             $("#transfer").hide();
             $("#nequi").hide();
             $("#card1").hide();
@@ -273,14 +270,13 @@
     function see(){
         $("#noDefined").show();
         $("#cash").show();
-        $("#advance").show();
+        $("#advanceCus").show();
         $("#transfer").show();
         $("#nequi").show();
         $("#card1").show();
         $("#card2").show();
         $("#mpay").hide();
         $("#addpayment").hide();
-
     }
     $(document).ready(function(){
         $("#cash").click(function(){
@@ -322,6 +318,7 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#eventy").hide();
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#nequi").click(function(){
@@ -342,6 +339,7 @@
         $("#mpay").hide();
         $("#banky").hide();
         $("#eventy").hide();
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#card1").click(function(){
@@ -359,6 +357,7 @@
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
+        $("#advancey").hide();
         $("#transactiony").show();
     }
     $(document).ready(function(){
@@ -367,7 +366,6 @@
             payCard2();
         });
     });
-
     function payCard2(){
         $("#pay").val();
         $("#returned").val(0);
@@ -378,6 +376,7 @@
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
+        $("#advancey").hide();
         $("#transactiony").show();
     }
     $(document).ready(function(){
@@ -402,7 +401,6 @@
         $("#eventy").hide();
         $("#advance").val(0);
     }
-
     $(document).ready(function(){
         $("#advanceCus").click(function(){
             $("#pay").val("");
@@ -426,29 +424,9 @@
         $("#eventy").hide();
     }
     $(document).ready(function(){
-        $("#transvenped").click(function(){
-            $("#pay").val("");
-            payOrderInvoice();
-        });
-    });
-    function payOrderInvoice(){
-        $("#pay").val();
-        $("#returned").val(0);
-        $("#payment_method_id").val(1);
-        $("#transaction").val("N/A");
-        $("#bank_id").val(1);
-        $("#card_id").val(1);
-        $("#payi").hide();
-        $("#abpaymenty").show();
-        $("#transactiony").hide();
-        $("#cardy").hide();
-        $("#mpay").hide();
-        $("#banky").hide();
-        $("#eventy").show();
-    }
-    $(document).ready(function(){
         $("#pay").keyup(function(){
             $("#pay").val();
+            $("#returned").val();
             payment();
         });
     });
@@ -488,7 +466,6 @@
             prepaidnew();
         });
     });
-
     function prepaidnew(){
         ttp = parseFloat($("#total_pay").val())
         abn = parseFloat($("#abpayment").val())

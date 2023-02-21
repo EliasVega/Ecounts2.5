@@ -149,6 +149,7 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#advance").val(0);
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#nequi").click(function(){
@@ -169,6 +170,7 @@
         $("#mpay").hide();
         $("#banky").hide();
         $("#advance").val(0);
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#card1").click(function(){
@@ -187,6 +189,7 @@
         $("#cardy").show();
         $("#transactiony").show();
         $("#advance").val(0);
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#card2").click(function(){
@@ -206,6 +209,7 @@
         $("#cardy").show();
         $("#transactiony").show();
         $("#advance").val(0);
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#noDefined").click(function(){

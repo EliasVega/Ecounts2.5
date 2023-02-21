@@ -140,8 +140,8 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group" id="advancey">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" id="advancey">
+        <div class="form-group">
             <label for="advance_id">Pago Anticipado</label>
             <select name="advance_id" class="form-control" id="advance_id">
                 <option value ="" disabled selected>Seleccionar...</option>

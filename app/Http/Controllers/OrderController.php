@@ -147,14 +147,14 @@ class OrderController extends Controller
             $order->payment_form_id   = $request->payment_form_id;
             $order->payment_method_id = $request->payment_method_id;
             $order->retention_id      = $request->retention_id;
-            $order->voucher_type_id   = 19;
+            $order->voucher_type_id   = 18;
             $order->due_date          = $request->due_date;
             $order->items             = count($product_id);
             $order->total             = $request->total;
             $order->total_iva         = $request->total_iva;
             $order->total_pay         = $request->total_pay;
             $order->pay               = $pay;
-            $order->balance           = $request->total_pay;
+            $order->balance           = $request->total_pay - $pay;
             $order->retention         = $request->retention;
             $order->save();
             //si hay Abono registra abono
@@ -273,12 +273,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        $order = Order::where('id', $id)->first();
 
         /*mostrar detalles*/
-        $order_products = Order_product::where('order_id', $id)->get();
+        $order_products = Order_product::where('order_id', $order->id)->get();
 
         return view('admin.order.show', compact('order', 'order_products'));
     }
@@ -326,7 +325,8 @@ class OrderController extends Controller
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
-        return $pdf->download("$orderpdf.pdf");
+        //return $pdf->download("$orderpdf.pdf");
+        return $pdf->stream('vista-pdf', "$orderpdf.pdf");
     }
 
     public function eliminar($id)

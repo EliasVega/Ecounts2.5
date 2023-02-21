@@ -282,29 +282,8 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        $purchases = Purchase::where('id', $purchase->id)->first();
-        /*
-        $purchases = Purchase::from('purchases AS pur')
-        ->join('users as use', 'pur.user_id', 'use.id')
-        ->join('branches AS bra', 'pur.branch_id', '=', 'bra.id')
-        ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->join('payment_forms AS pf', 'pur.payment_form_id', '=', 'pf.id')
-        ->join('payment_methods as pm', 'pur.payment_method_id', '=', 'pm.id')
-        ->select('pur.id', 'pur.document', 'pur.due_date', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pur.balance', 'pur.created_at', 'bra.name as nameB', 'sup.name as nameC', 'pf.name as namePF', 'pm.name as namePM', 'use.name')
-        ->where('pur.id', '=', $id)->first();*/
-
-        /*mostrar detalles*/
         $product_purchases = Product_purchase::where('purchase_id', $purchase->id)->get();
-        /*
-        $product_purchases = product_purchase::from('product_purchases AS pp')
-        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
-        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
-        ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->select('pp.quantity', 'pp.price', 'pp.subtotal', 'pur.id', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pro.name', 'sup.name AS nameC')
-        ->where('pp.purchase_id', '=', $id)
-        ->get();*/
-
-        return view('admin.purchase.show', compact('purchases', 'product_purchases'));
+        return view('admin.purchase.show', compact('purchase', 'product_purchases'));
     }
 
     public function show_ncpurchase($id)

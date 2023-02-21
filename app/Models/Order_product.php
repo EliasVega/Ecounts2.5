@@ -17,12 +17,8 @@ class Order_product extends Model
         'order_id',
         'product_id'
     ];
-    /*
-    public function pedido(){
-        return $this->belongsTo(Pedido::class);
-    }
 
-    public function producto(){
-        return $this->belongsTo(Producto::class);
-    }*/
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
 }

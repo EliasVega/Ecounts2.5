@@ -7,7 +7,7 @@
     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Cerrando Caja:&nbsp;&nbsp;&nbsp;&nbsp;  {{ $sale_box->created_at }}</h3>
+                <h5>Cerrando Caja: {{ $sale_box->created_at }}</h5>
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">
@@ -45,8 +45,8 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
-                            <button class="btn btn-primary btn-md" type="submit"><i class="fas fa-lock"></i>&nbsp; Cerrar sale_box</button>
-                            <a href="{{ url('sale_box') }}" class="btn btn-danger"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
+                            <button class="btn btn-celeste btn-md" type="submit"><i class="fas fa-lock"></i>&nbsp; Cerrar sale_box</button>
+                            <a href="{{ url('sale_box') }}" class="btn btn-gris"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
                         </div>
                     </div>
                 </div>

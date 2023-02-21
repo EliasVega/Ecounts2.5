@@ -8,56 +8,56 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="id">COMPRA #</label>
-                <h6>{{ $purchases->id }}</h6>
+                <h6>{{ $purchase->id }}</h6>
             </div>
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="company">SUCURSAL</label>
-                <h6>{{ $purchases->branch->name }}</h6>
+                <h6>{{ $purchase->branch->name }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="payment_form">FORMA DE PAGO</label>
-                <h6>{{ $purchases->paymentForm->name }}</h6>
+                <h6>{{ $purchase->paymentForm->name }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="balance">SALDO A PAGAR</label>
-                <h6>{{ number_format($purchases->balance, 2) }}</h6>
+                <h6>{{ number_format($purchase->balance, 2) }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="nombre">PROVEEDOR</label>
-                <h6>{{ $purchases->supplier->name }}</h6>
+                <h6>{{ $purchase->supplier->name }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="document">DOCUMENTO No.</label>
-                <h6>{{ $purchases->document }}</h6>
+                <h6>{{ $purchase->document }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="Fecha">FECHA EMISION</label>
-                <h6>{{ date('d-m-Y', strtotime($purchases->created_at)) }}</h6>
+                <h6>{{ date('d-m-Y', strtotime($purchase->created_at)) }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="due_date">VENCE</label>
-                <h6>{{ $purchases->due_date }}</h6>
+                <h6>{{ $purchase->due_date }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="company">RESPONSABLE</label>
-                <h6>{{ $purchases->user->name }}</h6>
+                <h6>{{ $purchase->user->name }}</h6>
             </div>
         </div>
     </div><br>
@@ -84,22 +84,22 @@
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ number_format($purchases->total, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($purchase->total, 2) }}</p></th>
                             </tr>
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ number_format($purchases->total_iva, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($purchase->total_iva, 2) }}</p></th>
                             </tr>
 
                             <tr>
                                 <th colspan="3"><p align="right">RETENCION:</p></th>
-                                <th><p align="right">${{ number_format($purchases->retention, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($purchase->retention, 2) }}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ number_format($purchases->total_pay, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($purchase->total_pay, 2) }}</p></th>
                             </tr>
 
                         </tfoot>

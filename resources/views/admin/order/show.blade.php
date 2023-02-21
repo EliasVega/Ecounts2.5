@@ -104,7 +104,7 @@
                             <tbody>
                                 @foreach ($order_products as $op)
                                     <tr>
-                                        <td>{{ $op->name }}</td>
+                                        <td>{{ $op->product->name }}</td>
                                         <td>${{ $op->price }}</td>
                                         <td class="tdder">{{ $op->quantity }}</td>
                                         <td class="tdder">{{ number_format($op->subtotal, 2) }}</td>

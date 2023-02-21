@@ -65,4 +65,12 @@ class Product extends Model
     public function kardex(){
         return $this->belongsTo(Kardex::class);
     }
+
+    public function productPurchases(){
+        return $this->belongsToMany(Product_purchase::class);
+    }
+
+    public function orderProducts(){
+        return $this->belongsToMany(Order_product::class);
+    }
 }

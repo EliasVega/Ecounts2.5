@@ -581,7 +581,7 @@
                             <tr>
                                 <td>{{ $pay->created_at }}</td>
                                 <td>{{ $pay->id }}</td>
-                                <td>{{ $pay->purchase->supplier->name }}</td>
+                                <td>{{ $pay->supplier->name }}</td>
                                 <td class="tdder">$ {{ $pay->pay }}</td>
                             </tr>
                         @endforeach

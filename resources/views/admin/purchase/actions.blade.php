@@ -1,5 +1,5 @@
 <a href="{{ route('purchase.show', $id) }}">
-    <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Venta" ><i class="far fa-eye"></i></button>
+    <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Compra" ><i class="far fa-eye"></i></button>
 </a>
 <a href="{{ route('show_pdf_purchase', $id) }}">
     <button class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Compra pdf"><i class="fas fa-file-pdf"></i></i></button>

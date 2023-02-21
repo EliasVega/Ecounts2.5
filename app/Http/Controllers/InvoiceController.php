@@ -385,8 +385,8 @@ class InvoiceController extends Controller
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
-        //return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
-        return $pdf->download("$invoicepdf.pdf");
+        return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
     }
 
     public function post(Request $request, $id)

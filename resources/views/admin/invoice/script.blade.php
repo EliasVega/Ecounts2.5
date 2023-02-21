@@ -122,15 +122,6 @@
         $("#idP").val(dataProduct[4]);
         $("#suggested_price").val(dataProduct[2]);
     }
-    $("#pay_event_id").change(eventValue);
-
-    function eventValue(){
-
-        dataDocument = document.getElementById('pay_event_id').value.split('_');
-        $("#pay_event_id").val(dataDocument[0]);
-        $("#pay").val(dataDocument[1]);
-        $("#abadvance").val(dataDocument[2]);
-    }
     $(document).ready(function(){
         $("#add").click(function(){
             add();
@@ -152,8 +143,6 @@
         datapercentage = document.getElementById('percentage_id').value.split('_');
         percentage_id= datapercentage[0];
         percentage = $("#percentage").val();
-        dataDocument = document.getElementById('pay_event_id').value.split('_');
-        pay_event_id= dataDocument[0];
         pay = $("#pay").val();
         if(product_id !="" && quantity!="" && quantity>0  && price!="" && stock!="" && iva!=""){
 
@@ -165,8 +154,6 @@
                 text: 'La cantidad a vender supera el stock',
             })
             } else {
-
-
                 subtotal[cont]= parseFloat(quantity) * parseFloat(price);
                 total= total+subtotal[cont];
                 ivita= subtotal[cont]*iva/100;
@@ -275,7 +262,6 @@
         }
         });
     });
-
     $(document).ready(function(){
         $("#addpay").click(function(){
             see();
@@ -291,9 +277,7 @@
         $("#card2").show();
         $("#mpay").hide();
         $("#addpayment").hide();
-
     }
-
     $(document).ready(function(){
         $("#cash").click(function(){
             $("#pay").val("");
@@ -334,6 +318,7 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#eventy").hide();
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#nequi").click(function(){
@@ -354,6 +339,7 @@
         $("#mpay").hide();
         $("#banky").hide();
         $("#eventy").hide();
+        $("#advancey").hide();
     }
     $(document).ready(function(){
         $("#card1").click(function(){
@@ -371,6 +357,7 @@
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
+        $("#advancey").hide();
         $("#transactiony").show();
     }
     $(document).ready(function(){
@@ -379,7 +366,6 @@
             payCard2();
         });
     });
-
     function payCard2(){
         $("#pay").val();
         $("#returned").val(0);
@@ -390,6 +376,7 @@
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
+        $("#advancey").hide();
         $("#transactiony").show();
     }
     $(document).ready(function(){
@@ -414,7 +401,6 @@
         $("#eventy").hide();
         $("#advance").val(0);
     }
-
     $(document).ready(function(){
         $("#advanceCus").click(function(){
             $("#pay").val("");
@@ -437,7 +423,6 @@
         $("#advancey").show();
         $("#eventy").hide();
     }
-
     $(document).ready(function(){
         $("#pay").keyup(function(){
             $("#pay").val();
@@ -481,7 +466,6 @@
             prepaidnew();
         });
     });
-
     function prepaidnew(){
         ttp = parseFloat($("#total_pay").val())
         abn = parseFloat($("#abpayment").val())
