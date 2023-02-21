@@ -82,9 +82,6 @@ REPORTE GENERAL DE INVENTARIO
                             <th>Tercero</th>
                             <th>Valor</th>
                             <th>Saldo</th>
-                            <th>Fecha</th>
-                            <th>Vence</th>
-                            <th>Estado</th>
                         </tr>
                     </thead>
                 </table>
@@ -117,15 +114,12 @@ REPORTE GENERAL DE INVENTARIO
                 columns:
                 [
                     {data: 'id'},
-                    {data: 'code'},
+                    {data: 'nameV'},
                     {data: 'name'},
                     {data: 'nameB'},
                     {data: 'nameC'},
                     {data: 'total_pay'},
                     {data: 'balance'},
-                    {data: 'created_at'},
-                    {data: 'due_date'},
-                    {data: 'status'},
                 ],
                 dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
                 buttons:

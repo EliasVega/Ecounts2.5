@@ -70,11 +70,7 @@ class InvoiceController extends Controller
             ->rawColumns(['btn'])
             ->make(true);
         }
-        if ($branch->id == 1) {
-            return redirect('branch')->with('warning', 'No puede realizar ventas desde Bodega');
-        } else {
-            return view('admin.invoice.index');
-        }
+        return view('admin.invoice.index');
     }
 
     /**
