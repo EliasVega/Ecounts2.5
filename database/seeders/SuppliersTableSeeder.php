@@ -39,5 +39,6 @@ class SuppliersTableSeeder extends Seeder
                 'created_at' => '2023-01-20 21:07:43',
                 'updated_at' => '2023-01-20 21:07:43',
             ),
+        ));
     }
 }
