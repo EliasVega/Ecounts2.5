@@ -96,6 +96,14 @@ class ReportController extends Controller
                 ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'vt.code', 'use.name', 'bra.name as nameB', 'cus.name as nameC', 'vt.name as nameV')
                 ->whereDate('inv.created_at', Carbon::now())
                 ->get();
+                $expenses = Purchase::from('purchases as inv')
+                ->join('users as use', 'inv.user_id', 'use.id')
+                ->join('branches as bra', 'inv.branch_id', 'bra.id')
+                ->join('suppliers as cus', 'inv.supplier_id', 'cus.id')
+                ->join('voucher_types as vt', 'inv.voucher_type_id', 'vt.id')
+                ->select('inv.id', 'inv.total_pay', 'inv.balance', 'inv.status', 'inv.created_at', 'inv.due_date', 'vt.code', 'use.name', 'bra.name as nameB', 'cus.name as nameC', 'vt.name as nameV')
+                ->whereDate('inv.created_at', Carbon::now())
+                ->get();
                 $invopurc = $invoices->concat($purchases);
 
             return DataTables()::of($invopurc)

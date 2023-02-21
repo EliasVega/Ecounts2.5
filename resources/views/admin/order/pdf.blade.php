@@ -98,7 +98,7 @@
                             @foreach ($order_product as $op)
                             <tr>
                                 <td id="ccent">{{ number_format($op->quantity) }}</td>
-                                <td>{{ $op->name }}</td>
+                                <td>{{ $op->product->name }}</td>
                                 <td class="tdder">${{ number_format($op->price)}}</td>
                                 <td class="tdder">${{number_format($op->quantity * $op->price)}}</td>
                             </tr>

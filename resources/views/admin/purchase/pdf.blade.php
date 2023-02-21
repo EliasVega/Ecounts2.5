@@ -89,8 +89,8 @@
                         <!--DETALLE DE VENTA -->
                         <thead>
                             <tr>
-                                <th id="uno">Cant.</th>
                                 <th id="dos">Descripcion del producto</th>
+                                <th id="uno">Cant.</th>
                                 <th>Valor</th>
                                 <th>SubTotal ($)</th>
                             </tr>
@@ -99,7 +99,7 @@
                             @foreach ($product_purchases as $pp)
                             <tr>
                                 <td id="ccent">{{ number_format($pp->quantity) }}</td>
-                                <td>{{ $pp->name }}</td>
+                                <td>{{ $pp->product->name }}</td>
                                 <td class="tdder">${{ number_format($pp->price)}}</td>
                                 <td class="tdder">${{number_format($pp->quantity * $pp->price)}}</td>
                             </tr>

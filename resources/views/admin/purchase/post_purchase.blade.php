@@ -65,8 +65,8 @@
                 <!--DETALLE DE VENTA -->
                 <thead>
                     <tr>
-                        <th>Descripcion</th>
                         <th>Cant.</th>
+                        <th>Descripcion</th>
                         <th>Valor</th>
                         <th>SubTotal</th>
                     </tr>
@@ -74,8 +74,8 @@
                 <tbody>
                     @foreach ($product_purchases as $ip)
                     <tr>
-                        <td>{{ $ip->name }}</td>
                         <td id="ccent">{{ number_format($ip->quantity) }}</td>
+                        <td>{{ $ip->product->name }}</td>
                         <td class="tdder">${{ number_format($ip->price)}}</td>
                         <td class="tdder">${{number_format($ip->quantity * $ip->price)}}</td>
                     </tr>
