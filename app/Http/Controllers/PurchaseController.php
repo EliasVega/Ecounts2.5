@@ -352,51 +352,16 @@ class PurchaseController extends Controller
         //return $pdf->download("$purchasepdf.pdf");
     }
 
-    public function post_purchase(Request $request, $id)
+    public function post_purchase($id)
     {
         $purchase = Purchase::where('id', $id)->first();
-        /*
-        $purchase = Purchase::from('purchases AS pur')
-        ->join('branches AS bra', 'pur.branch_id', '=', 'bra.id')
-        ->join('suppliers AS sup', 'pur.supplier_id', '=', 'sup.id')
-        ->join('documents AS doc', 'sup.document_id', '=', 'doc.id')
-        ->join('regimes AS reg', 'sup.regime_id', '=', 'reg.id')
-        ->join('municipalities AS mun', 'sup.municipality_id', '=', 'mun.id')
-        ->join('payment_forms AS pf', 'pur.payment_form_id', 'pf.id')
-        ->join('payment_methods AS pm', 'pur.payment_method_id', 'pm.id')
-        ->select('pur.id', 'pur.document', 'pur.created_at', 'pur.due_date',  'pur.total', 'bra.name AS nameS', 'bra.address AS addressB', 'bra.email', 'bra.phone', 'bra.mobile', 'sup.name AS nameC', 'sup.document_id', 'sup.number', 'sup.address', 'sup.email', 'doc.initial', 'pur.created_at', 'reg.name AS nameR', 'mun.name AS nameM', 'tax.description', 'pf.name AS namePF', 'pm.name AS namePM')
-        ->where('pur.id', '=', $id)->first();*/
+        $product_purchases = Product_purchase::where('purchase_id', $id)->get();
+        $company = Company::where('id', 1)->first();
 
-        $product_purchases = Product_purchase::from('product_purchases AS pp')
-        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
-        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pp.id', 'pur.id AS idI', 'pur.created_at', 'pur.total', 'pp.quantity', 'pp.price', 'pro.name', 'cat.iva')
-        ->where('pp.purchase_id', '=', $id)
-        ->get();
-
-        $purchases = Product_purchase::from('product_purchases AS pp')
-        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
-        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
-        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-        ->select('pp.id', 'pur.id AS idI', 'pur.created_at', 'pur.total', 'pur.total_iva', 'pur.total_pay', 'pp.quantity', 'pp.price', 'pro.name', 'cat.iva')
-        ->where('pp.purchase_id', '=', $id)
-        ->first();
-
-        $company = Company::from('companies AS com')
-        ->join('departments AS dep', 'com.department_id', '=', 'dep.id')
-        ->join('municipalities AS mun', 'com.municipality_id', '=', 'mun.id')
-        ->join('liabilities AS lia', 'com.liability_id', '=', 'lia.id')
-        ->join('regimes AS reg', 'com.regime_id', '=', 'reg.id')
-        ->join('organizations AS org', 'com.organization_id', '=', 'org.id')
-        ->select('com.id', 'com.name', 'com.nit', 'com.dv', 'com.logo', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'reg.name AS nameR', 'org.name AS nameO')
-        ->where('com.id', '=', 1)
-        ->first();
-
-        $days = $purchase->created_at->diffInDays($purchase->fecven);
+        $days = $purchase->created_at->diffInDays($purchase->due_date);
         $purchasepdf = "FACT-". $purchase->document;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.purchase.post_purchase', compact('purchase', 'days', 'product_purchases', 'company', 'logo', 'purchases'))->render();
+        $view = \view('admin.purchase.post_purchase', compact('purchase', 'days', 'product_purchases', 'company', 'logo'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');

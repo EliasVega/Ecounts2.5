@@ -23,7 +23,7 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} R. fiscal: {{ $company->nameR }} {{ $company->description }} {{ $company->nameO }}  {{ $purchase->direcionB }} {{ $company->nameM }} {{ $company->nameD }} <br> Email: {{ $purchase->email }}
+                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} - {{ $company->regime->name }} - {{ $company->nameO }}  {{ $purchase->branch->address }} - {{ $company->municipality->name }} {{ $company->department->name }} <br> Email: {{ $purchase->branch->email }}
                     </p>
             </div>
             <!--DATOS FACTURA -->
@@ -85,17 +85,17 @@
                     <!--DATOS FTOTALES -->
                     <tr>
                         <th colspan="2" class="footder">TOTAL:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($purchases->total,2)}}</strong></td>
+                        <td colspan="2" class="footder"><strong>${{number_format($purchase->total,2)}}</strong></td>
                     </tr>
 
                     <tr>
                         <th colspan="2" class="footder">TOTAL IVA:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($purchases->total_iva,2)}}</strong> </td>
+                        <td colspan="2" class="footder"><strong>${{number_format($purchase->total_iva,2)}}</strong> </td>
                     </tr>
 
                     <tr>
                         <th  colspan="2" class="footder">TOTAL PAGAR:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($purchases->total_pay,2)}}</strong></td>
+                        <td colspan="2" class="footder"><strong>${{number_format($purchase->total_pay,2)}}</strong></td>
                     </tr>
                 </tfoot>
             </table>
