@@ -96,7 +96,7 @@ class User extends Authenticatable
     }
 
     public function purchases(){
-        return $this->hasMany(purchase::class);
+        return $this->hasMany(Purchase::class);
     }
 
     public function ncpurchases(){
@@ -116,7 +116,7 @@ class User extends Authenticatable
     }
 
     public function invoices(){
-        return $this->belongsToMany(Invoice::class);
+        return $this->hasMany(Invoice::class);
     }
 
     public function orders(){

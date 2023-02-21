@@ -127,24 +127,20 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <label for="tax_id">Regimen o Tributo</label>
-                                <select name="tax_id" class="form-control" id="tax_id">
-                                    @foreach($taxes as $tax)
-                                        @if($tax->id == $supplier->tax_id)
-                                            <option value="{{ $tax->id }}" selected>{{ $tax->name }}</option>
+                            <label for="regime_id">Regimen</label>
+                                <select name="regime_id" class="form-control" id="fiscal_id">
+                                    @foreach($regimes as $reg)
+                                        @if($reg->id == $supplier->regime_id)
+                                            <option value="{{ $reg->id }}" selected>{{ $reg->name }}</option>
                                         @else
-                                            <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                                            <option value="{{ $reg->id }}">{{ $reg->name }}</option>
                                         @endif
                                     @endforeach
                                 </select>
                         </div>
                     </div>
-
-
-
-
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="contact">Contacto</label>

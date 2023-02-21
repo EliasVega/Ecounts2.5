@@ -7,8 +7,8 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Clientes <a href="customer/create"><button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar Cliente</button></a>
-                <a href="{{ route('order.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+            <h3>Listado de Clientes <a href="customer/create"><button class="btn btn-celeste"><i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar Cliente</button></a>
+                <a href="{{ route('branch.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
         </div>
     </div>
     <div class="row">
@@ -18,17 +18,12 @@
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
-                            <th>Departamento</th>
-                            <th>Municipio</th>
                             <th>Nombre</th>
                             <th>DOC.</th>
                             <th>Numero</th>
                             <th>Direccion</th>
                             <th>Telefono</th>
                             <th>Email</th>
-                            <th>R.Fiscal</th>
-                            <th>T.Organizacion</th>
-                            <th>Regimen</th>
                             <th>editar</th>
                         </tr>
                     </thead>
@@ -50,17 +45,12 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'department'},
-                {data: 'municipality'},
                 {data: 'name'},
                 {data: 'document'},
                 {data: 'number'},
                 {data: 'address'},
                 {data: 'phone'},
                 {data: 'email'},
-                {data: 'liability'},
-                {data: 'organization'},
-                {data: 'regime'},
                 {data: 'edit'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',

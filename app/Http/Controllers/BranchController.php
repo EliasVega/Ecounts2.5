@@ -24,6 +24,38 @@ class BranchController extends Controller
     public function index(Request $request)
     {
         $request->session()->forget('branch');
+
+        if (request()->ajax()) {
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+
+                //Consulta para mostrar branch a administradores y superadmin
+                $branches = Branch::get();
+            } else {
+                //Consulta para mostrar branch a roles 3 -4 -5
+                $branches = Branch::where('id', Auth::user()->branch_id)->get();
+            }
+
+            return DataTables::of($branches)
+                ->addIndexColumn()
+                ->addColumn('department', function (Branch $branch) {
+                    return $branch->department->name;
+                })
+                ->addColumn('municipality', function (Branch $branch) {
+                    return $branch->municipality->name;
+                })
+                ->addColumn('company', function (Branch $branch) {
+                    return $branch->company->nit;
+                })
+
+                ->addColumn('btn', 'admin/branch/actions')
+                ->addColumn('accesos', 'admin/branch/accesos')
+                ->rawcolumns(['btn', 'accesos'])
+                ->make(true);
+        }
+        return view('admin.branch.index');
+
+        /*
+        $request->session()->forget('branch');
         //
         $users = Auth::user()->branch_id;
         if (request()->ajax()) {
@@ -54,7 +86,7 @@ class BranchController extends Controller
             ->rawcolumns(['btn', 'accesos'])
             ->toJson();
         }
-        return view('admin.branch.index');
+        return view('admin.branch.index');*/
     }
 
     /**
@@ -171,16 +203,6 @@ class BranchController extends Controller
         if(is_null($sale_box)){
 
             return redirect("order")->with('warning', 'Debes tener una caja Abierta para realizar Pedidos');
-            /*toast('Your Post as been submited!','success');
-            Alert::question('Question Title', 'Question Message');
-            Alert::error('Error Title', 'Error Message');
-            Alert::warning('Warning Title', 'Warning Message');
-            Alert::info('Info Title', 'Info Message');
-            Alert::success('Success Title', 'Debes tener una cash Abierta para realizar pedidos');
-            Alert::image('Image Title!','Image Description','Image URL','Image Width','Image Height', 'Image Alt');
-            Alert::html('Html Title', 'Html Code', 'Type');
-            Alert::toast('Toast Message', 'Toast Type');
-            toast('Warning Toast','warning');*/
         }
 
         $branch = Branch::findOrFail($id);

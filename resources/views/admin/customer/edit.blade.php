@@ -99,21 +99,7 @@
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <label for="tax_id">Regimen o Tributo</label>
-                                <select name="tax_id" class="form-control" id="tax_id">
-                                    @foreach($taxes as $tax)
-                                        @if($tax->id == $customer->tax_id)
-                                            <option value="{{ $tax->id }}" selected>{{ $tax->name }}</option>
-                                        @else
-                                            <option value="{{ $tax->id }}">{{ $tax->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                            <label for="regime_id">Responsabilidad fiscal 2</label>
+                            <label for="regime_id">Regimen</label>
                                 <select name="regime_id" class="form-control" id="fiscal_id">
                                     @foreach($regimes as $reg)
                                         @if($reg->id == $customer->regime_id)
@@ -140,7 +126,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="direccion">Direccion</label>
-                            <input type="text" name="direccion" value="{{ $customer->direccion }}" class="form-control" placeholder="Ingrese la direccion">
+                            <input type="text" name="direccion" value="{{ $customer->address }}" class="form-control" placeholder="Ingrese la direccion">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -163,8 +149,8 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-pencil-alt"></i>&nbsp; Actualizar</button>
-                            <a href="{{ url('customer') }}" class="btn btn-danger"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
+                            <button class="btn btn-celeste" type="submit"><i class="fa fa-pencil-alt"></i>&nbsp; Actualizar</button>
+                            <a href="{{ url('customer') }}" class="btn btn-gris"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
                         </div>
                     </div>
                 </div>

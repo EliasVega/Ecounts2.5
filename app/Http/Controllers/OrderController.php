@@ -65,12 +65,12 @@ class OrderController extends Controller
             ->addColumn('btn', 'admin/order/actions')
             ->rawColumns(['btn'])
             ->make(true);
-        }
+        }/*
         if ($branch->id == 1) {
             return redirect('branch')->with('warning', 'No puede realizar ventas desde Bodega');
-        } else {
+        } else {*/
             return view('admin.order.index');
-        }
+        //}
     }
 
     /**

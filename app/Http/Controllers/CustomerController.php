@@ -125,16 +125,15 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        $customer = Customer::findOrFail($id);
         $departments = Department::get();
         $municipalities = Municipality::get();
         $documents = Document::get();
         $liabilities = Liability::get();
         $organizations = Organization::get();
         $regimes = Regime::get();
-        return view('admin.customer.create', compact('departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'regimes'));
+        return view('admin.customer.edit', compact('customer', 'departments', 'municipalities', 'documents', 'liabilities', 'organizations', 'regimes'));
     }
 
     /**

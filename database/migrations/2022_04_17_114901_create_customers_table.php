@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 45);
+            $table->string('name', 100);
             $table->string('number', 20)->unique();
             $table->string('dv', 1)->nullable();
-            $table->string('address', 45)->nullable();
+            $table->string('address', 100)->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('email', 45)->nullable();
             $table->decimal('credit_limit', 10, 2);

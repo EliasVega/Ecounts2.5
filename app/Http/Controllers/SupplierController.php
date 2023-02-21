@@ -12,6 +12,7 @@ use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Regime;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class SupplierController extends Controller
 {
@@ -23,21 +24,26 @@ class SupplierController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $suppliers = Supplier::from('suppliers AS sup')
-            ->join('departments AS dep', 'sup.department_id', 'dep.id')
-            ->join('municipalities AS mun', 'sup.municipality_id', 'mun.id')
-            ->join('documents AS doc', 'sup.document_id', 'doc.id')
-            ->join('liabilities AS lia', 'sup.liability_id', 'lia.id')
-            ->join('organizations AS org', 'sup.organization_id', 'org.id')
-            ->join('regimes AS reg', 'sup.regime_id', 'reg.id')
-            ->select('sup.id', 'dep.name AS nameD', 'mun.name AS nameM', 'lia.name AS nameL', 'org.name AS nameO', 'reg.name AS nameT', 'sup.name', 'sup.number', 'sup.address', 'sup.phone', 'sup.email', 'sup.contact', 'sup.phone_contact')
-            ->get();
+            $suppliers = Supplier::get();
 
-            return datatables()
-            ->of($suppliers)
-            ->addColumn('edit', 'admin/supplier/actions')
-            ->rawcolumns(['edit'])
-            ->toJson();
+            return DataTables::of($suppliers)
+                ->addIndexColumn()
+                ->addColumn('document', function (Supplier $supplier) {
+                    return $supplier->document->initial;
+                })
+                ->addColumn('liability', function (Supplier $supplier) {
+                    return $supplier->liability->name;
+                })
+                ->addColumn('organization', function (Supplier $supplier) {
+                    return $supplier->organization->name;
+                })
+                ->addColumn('regime', function (Supplier $supplier) {
+                    return $supplier->regime->name;
+                })
+
+                ->addColumn('edit', 'admin/supplier/actions')
+                ->rawcolumns(['edit'])
+                ->make(true);
         }
         return view('admin.supplier.index');
     }

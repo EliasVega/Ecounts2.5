@@ -95,19 +95,6 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label for="tax_id">Regimen o Tributo</label>
-                        <select name="tax_id" class="form-control selectpicker" data-live-search="true" id="tax_id" required>
-                            <option value="{{ old('tax_id') }}" disabled selected>Seleccionar.</option>
-                            @foreach($taxes as $tax)
-                                <option value="{{ $tax->id }}">{{ $tax->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>&nbsp; Guardar</button>

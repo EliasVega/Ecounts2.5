@@ -26,6 +26,11 @@ class Order extends Model
         'voucher_type_id'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function customer(){
         return $this->belongsTo(Customer::class);
     }
