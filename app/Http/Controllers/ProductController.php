@@ -38,7 +38,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::select('id', 'name')->get();
-        $measures = Unit_measure::get();
+        $measures = Unit_measure::where('status', 'activo')->get();
 
         return view("admin.product.create", compact('categories', 'measures'));
     }
