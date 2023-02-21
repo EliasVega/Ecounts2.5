@@ -313,6 +313,12 @@
                                 <p>Productos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('service') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Servicios</p>
+                            </a>
+                        </li>
                         <li>
                             <a href="{{ url('purchase') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
