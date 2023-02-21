@@ -25,7 +25,8 @@ class UpdateUnit_measureRequest extends FormRequest
     {
         return [
             'code' => 'required|string|max:4',
-            'name' => 'required|string|max:100'
+            'name' => 'required|string|max:100',
+            'status' => 'required'
         ];
     }
 }

@@ -19,7 +19,8 @@ class Unit_measure extends Model
 
     protected $fillable = [
         'name',
-        'code'
+        'code',
+        'status'
     ];
 
     protected $guarded = ['id'];

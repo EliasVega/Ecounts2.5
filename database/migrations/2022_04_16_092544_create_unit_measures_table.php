@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->string('name', 100);
             $table->string('code', 4);
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
 
             $table->timestamps();
         });
