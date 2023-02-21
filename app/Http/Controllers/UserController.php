@@ -9,6 +9,7 @@ use App\Models\Document;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
@@ -17,9 +18,31 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (request()->ajax()) {
+
+
+        if ($request->ajax()) {
+            $users = User::where('status', 'activo')->where('id', '!=', 1)->get();
+
+            return DataTables::of($users)
+            ->addIndexColumn()
+            ->addColumn('document', function (User $user) {
+                return $user->document->initial;
+            })
+            ->addColumn('role', function (User $user) {
+                return $user->role->name;
+            })
+            ->addColumn('branch', function (User $user) {
+                return $user->branch->name;
+            })
+            ->addColumn('edit', 'admin/user/actions')
+            ->rawcolumns(['edit'])
+            ->make(true);
+        }
+
+        return view('admin.user.index');
+        /*
             $users = User::from('users AS use')
             ->join('branches AS bra', 'use.branch_id', 'bra.id')
             ->join('documents AS doc', 'use.document_id', 'doc.id')
@@ -34,7 +57,7 @@ class UserController extends Controller
             ->rawcolumns(['edit'])
             ->toJson();
         }
-        return view('admin.user.index');
+        return view('admin.user.index');*/
     }
 
     public function inactive()
