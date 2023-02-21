@@ -59,7 +59,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <h3>Detalle de la venta
+                    <h3>Detalle del Gasto
                         <a href="{{ route('expense.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
                 </div>
             </div>
