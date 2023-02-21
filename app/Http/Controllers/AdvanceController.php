@@ -88,7 +88,7 @@ class AdvanceController extends Controller
     {
             $advance = new Advance();
             $advance->user_id    = Auth::user()->id;
-            $advance->branch_id  = $request->session()->get('branch');
+            $advance->branch_id  = Auth::user()->branch_id;
             $advance->customer_id = $request->customer_id;
             $advance->origin = 'Anticipo con medio de pago';
             $advance->destination = null;
