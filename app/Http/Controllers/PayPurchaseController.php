@@ -81,10 +81,11 @@ class PayPurchaseController extends Controller
         $banks = Bank::get();
         $payment_methods = Payment_method::get();
         $cards = Card::get();
-
         $purchase = Purchase::where('id', '=', $request->session()->get('purchase'))->first();
+        $supp = $purchase->supplier->id;
+        $payments = Payment::where('status', '!=', 'aplicado')->where('supplier_id', $supp)->get();
 
-        return view('admin.pay_purchase.create', compact('purchase', 'banks', 'payment_methods', 'cards'));
+        return view('admin.pay_purchase.create', compact('purchase', 'banks', 'payment_methods', 'cards', 'payments'));
     }
 
     /**
@@ -122,7 +123,6 @@ class PayPurchaseController extends Controller
             $pay            = $request->pay;
             $transaction    = $request->transaction;
             $payu           = $request->payment;
-
             if ($payu != 0) {
                 $payment = Payment::findOrFail( $request->payment_id);
                 $payu_total = $payment->balance - $payu;
@@ -138,20 +138,19 @@ class PayPurchaseController extends Controller
             }
 
             while($cont < count($payment_method)){
+                $payment_id     = $request->payment_id[$cont];
                 $paymentLine = $request->pay[$cont];
-
                 $pay_purchase_payment_method = new Pay_purchase_payment_method();
                 $pay_purchase_payment_method->pay_purchase_id      = $pay_purchase->id;
                 $pay_purchase_payment_method->payment_method_id  = $payment_method[$cont];
                 $pay_purchase_payment_method->bank_id            = $bank[$cont];
                 $pay_purchase_payment_method->card_id            = $card[$cont];
-                if (isset($advance_id[$cont])){
+                if (isset($payment_id[$cont])){
                     $pay_purchase_payment_method->payment_id = $payment_id[$cont];
                 }
-                $pay_purchase_payment_method->payment                = $pay;
+                $pay_purchase_payment_method->payment                = $pay[$cont];
                 $pay_purchase_payment_method->transaction        = $transaction[$cont];
                 $pay_purchase_payment_method->save();
-
                 $mp = $request->payment_method_id;
 
                 $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)

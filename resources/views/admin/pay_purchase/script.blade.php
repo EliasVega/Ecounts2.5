@@ -274,6 +274,7 @@
             payment();
         }
     }
+    /*
     prueba = [];
     $("#supplier_id").change(function(event){
         $.get("getpayment/" + event.target.value + "", function(response){
@@ -292,8 +293,15 @@
             $("#abpaymenty").show();
             prepaidnew();
         });
-    });
+    });*/
+    $("#payment_id").change(paymentValue);
 
+    function paymentValue(){
+        dataPayment = document.getElementById('payment_id').value.split('_');
+        parseFloat($("#abpayment").val(dataPayment[1]));
+        $("#abpaymenty").show();
+        prepaidnew();
+    }
     function prepaidnew(){
         ttp = parseFloat($("#balance").val())
         abn = parseFloat($("#abpayment").val())

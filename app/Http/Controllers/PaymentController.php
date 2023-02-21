@@ -86,10 +86,9 @@ class PaymentController extends Controller
      */
     public function store(StorePaymentRequest $request)
     {
-
             $payment = new Payment();
             $payment->user_id    = Auth::user()->id;
-            $payment->branch_id  = $request->session()->get('branch');
+            $payment->branch_id  = Auth::user()->branch_id;
             $payment->supplier_id = $request->supplier_id;
             $payment->origin = 'Abonos con medios de pago';
             $payment->destination = null;

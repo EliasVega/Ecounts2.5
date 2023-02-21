@@ -100,7 +100,6 @@ class InvoiceController extends Controller
         $pay_events = Pay_event::get();
         $banks = Bank::get();
         $cards = Card::get();
-
         $advances   = Advance::where('status', '!=', 'aplicado')->get();
         /*$branch_products = Branch_product::where('branch_id', $branch)
         ->where('stock', '>', 0)
@@ -187,7 +186,6 @@ class InvoiceController extends Controller
                 if ($adv != 0) {
                     $advance              = Advance::findOrFail( $request->advance_id);
                     $adv_total = $advance->balance - $adv;
-
                     $advance->destination = $invoice->document;
                     if ($adv_total == 0) {
                         $advance->status      = 'aplicado';

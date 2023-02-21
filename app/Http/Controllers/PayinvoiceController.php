@@ -80,8 +80,9 @@ class PayinvoiceController extends Controller
         $banks = Bank::get();
         $payment_methods = Payment_method::get();
         $cards = Card::get();
-        $advances = Advance::where('status', '=', 'pendiente');
         $invoice = Invoice::where('id', $request->session()->get('invoice'))->first();
+        $custom = $invoice->customer->id;
+        $advances = Advance::where('status', '!=', 'aplicado')->where('customer_id', $custom)->get();
 
         return view('admin.pay_invoice.create', compact('invoice', 'banks', 'payment_methods', 'cards', 'advances'));
     }
@@ -123,6 +124,7 @@ class PayinvoiceController extends Controller
             $adv = $request->advance;
 
             if ($adv != 0) {
+
                 $advance = Advance::findOrFail( $request->advance_id);
                 $adv_total = $advance->balance - $adv;
 
@@ -136,7 +138,7 @@ class PayinvoiceController extends Controller
                 $advance->update();
 
                 $sale_box = Sale_box::where('user_id', '=', $pay_invoice->user_id)->where('status', '=', 'open')->first();
-                $sale_box->in_advance = $sale_box->in_advance + $pay;
+                $sale_box->in_advance = $sale_box->in_advance + $adv;
                 $sale_box->update();
             }
 

@@ -110,7 +110,6 @@ class PurchaseController extends Controller
         try{
             DB::beginTransaction();
             //Crea un registro de compras
-
             $product_id = $request->product_id;
             $quantity   = $request->quantity;
             $price      = $request->price;
@@ -370,8 +369,8 @@ class PurchaseController extends Controller
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
-        //return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
-        return $pdf->download("$purchasepdf.pdf");
+        return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
+        //return $pdf->download("$purchasepdf.pdf");
     }
 
     public function post_purchase(Request $request, $id)

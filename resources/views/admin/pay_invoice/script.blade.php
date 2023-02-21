@@ -249,6 +249,7 @@
         $("#mpay").hide();
         $("#banky").hide();
         $("#advancey").show();
+        $("#advto").show();
     }
 
     $(document).ready(function(){
@@ -274,6 +275,7 @@
             payment();
         }
     }
+    /*
     prueba = [];
     $("#customer_id").change(function(event){
         $.get("getAdvance/" + event.target.value + "", function(response){
@@ -285,14 +287,15 @@
             }
             $("#advance_id").selectpicker('refresh');
         });
-    });
-    $(document).ready(function(){
-        $("#advance_id").change(function(){
-            parseFloat($("#abpayment").val(prueba))
-            $("#abadvancey").show();
-            prepaidnew();
-        });
-    });
+    });*/
+    $("#advance_id").change(advanceValue);
+
+    function advanceValue(){
+        dataAdvance = document.getElementById('advance_id').value.split('_');
+        parseFloat($("#abpayment").val(dataAdvance[1]));
+        $("#abadvancey").show();
+        prepaidnew();
+    }
 
     function prepaidnew(){
         ttp = parseFloat($("#balance").val())

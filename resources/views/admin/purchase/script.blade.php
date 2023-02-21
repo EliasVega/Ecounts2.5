@@ -65,29 +65,34 @@
     subtotal=[];
     total_iva=0;
     ret = 0;
-    $("#save").hide();
-    $("#percentagey").hide();
-    $("#rtferase").hide();
-    $("#payi").hide();
-    $("#transactiony").hide();
-    $("#banky").hide();
-    $("#cardy").hide();
-    $("#paymenty").hide();
-    $("#abvto").hide();
-    $("#abpaymenty").hide();
+    //form purchase
     $("#idPro").hide();
+    $("#percentagey").hide();
     $("#percent").hide();
-    $("#percentage").val(0);
-    $("#addpayment").hide();
-
-    $("#noDefined").hide();
-    $("#transvenped").hide();
+    $("#save").hide();
+    //form pay
     $("#cash").hide();
-    $("#advance").hide();
     $("#transfer").hide();
     $("#nequi").hide();
     $("#card1").hide();
     $("#card2").hide();
+    $("#noDefined").hide();
+    $("#transvenped").hide();
+    $("#addpayment").hide();
+
+    $("#payi").hide();
+    $("#abpaymenty").hide();
+    $("#abvto").hide();
+    $("#transactiony").hide();
+    $("#banky").hide();
+    $("#cardy").hide();
+    $("#paymenty").hide();
+    $("#rtferase").hide();
+    $("#advance").hide();
+    /*
+    $("#percentage").val(0);
+    */
+
 
     $(document).ready(function(){
         $("#rtfon").click(function(){
@@ -240,7 +245,7 @@
             $("#nequi").show();
             $("#card1").show();
             $("#card2").show();
-            $("#mpay").hide();
+            //$("#mpay").hide();
             $("#addpayment").hide();
         }else{
             $("#addpayment").show();
@@ -251,7 +256,7 @@
             $("#nequi").hide();
             $("#card1").hide();
             $("#card2").hide();
-            $("#mpay").show();
+            //$("#mpay").show();
         }
         });
     });
@@ -275,28 +280,6 @@
     }
 
     $(document).ready(function(){
-        $("#noDefined").click(function(){
-            $("#pay").val("");
-            noDefined();
-        });
-    });
-
-    function noDefined(){
-        $("#pay").val();
-        $("#returned").val(0);
-        $("#payment_method_id").val(1);
-        $("#transaction").val("N/A");
-        $("#bank_id").val(1);
-        $("#card_id").val(1);
-        $("#transactiony").show();
-        $("#banky").hide();
-        $("#cardy").hide();
-        $("#payi").show();
-        $("#abpaymenty").hide();//valor del anticipo
-        $("#paymenty").hide();//modelo
-        $("#payment").val(0);
-    }
-    $(document).ready(function(){
         $("#cash").click(function(){
             $("#pay").val("");
             payCash();
@@ -317,36 +300,6 @@
         $("#abpaymenty").hide();
         $("#paymenty").hide();
         $("#payment").val(0);
-    }
-    /*
-    $(document).ready(function(){
-        $("#transvenped").click(function(){
-            $("#pay").val("");
-            advance();
-        });
-    });*/
-
-    $(document).ready(function(){
-        $("#advance").click(function(){
-            $("#pay").val("");
-            advance();
-        });
-    });
-
-    function advance(){
-        $("#pay").val();
-        $("#returned").val(0);
-        $("#payment_method_id").val(1);
-        $("#transaction").val("N/A");
-        $("#bank_id").val(1);
-        $("#card_id").val(1);
-        $("#payi").hide();
-        $("#abpaymenty").show();
-        $("#transactiony").hide();
-        $("#cardy").hide();
-        $("#mpay").hide();
-        $("#banky").hide();
-        $("#paymenty").show();
     }
 
     $(document).ready(function(){
@@ -436,6 +389,59 @@
         $("#payment").val(0);
     }
 
+    $(document).ready(function(){
+        $("#noDefined").click(function(){
+            $("#pay").val("");
+            noDefined();
+        });
+    });
+
+    function noDefined(){
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(1);
+        $("#transaction").val("N/A");
+        $("#bank_id").val(1);
+        $("#card_id").val(1);
+        $("#transactiony").show();
+        $("#banky").hide();
+        $("#cardy").hide();
+        $("#payi").show();
+        $("#abpaymenty").hide();//valor del anticipo
+        $("#paymenty").hide();//modelo
+        $("#payment").val(0);
+    }
+
+    /*
+    $(document).ready(function(){
+        $("#transvenped").click(function(){
+            $("#pay").val("");
+            advance();
+        });
+    });*/
+
+    $(document).ready(function(){
+        $("#advance").click(function(){
+            $("#pay").val("");
+            advance();
+        });
+    });
+
+    function advance(){
+        $("#pay").val();
+        $("#returned").val(0);
+        $("#payment_method_id").val(1);
+        $("#transaction").val("N/A");
+        $("#bank_id").val(1);
+        $("#card_id").val(1);
+        $("#payi").hide();
+        $("#abpaymenty").show();
+        $("#transactiony").hide();
+        $("#cardy").hide();
+        $("#mpay").hide();
+        $("#banky").hide();
+        $("#paymenty").show();
+    }
     $(document).ready(function(){
         $("#pay").keyup(function(){
             $("#pay").val();

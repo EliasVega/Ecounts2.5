@@ -80,7 +80,6 @@
     $("#banky").hide();
     $("#cardy").hide();
     $("#advancey").hide();
-    $("#eventy").hide();
     $("#rtferase").hide();
     /*
     $("#advances").hide();
@@ -256,7 +255,7 @@
         if(form == 1){
             $("#noDefined").show();
             $("#cash").show();
-            $("#advance").show();
+            $("#advanceCus").show();
             $("#transfer").show();
             $("#nequi").show();
             $("#card1").show();
@@ -267,7 +266,7 @@
             $("#addpayment").show();
             $("#noDefined").hide();
             $("#cash").hide();
-            $("#advance").hide();
+            $("#advanceCus").hide();
             $("#transfer").hide();
             $("#nequi").hide();
             $("#card1").hide();
@@ -438,30 +437,11 @@
         $("#advancey").show();
         $("#eventy").hide();
     }
-    $(document).ready(function(){
-        $("#transvenped").click(function(){
-            $("#pay").val("");
-            payOrderInvoice();
-        });
-    });
-    function payOrderInvoice(){
-        $("#pay").val();
-        $("#returned").val(0);
-        $("#payment_method_id").val(1);
-        $("#transaction").val("N/A");
-        $("#bank_id").val(1);
-        $("#card_id").val(1);
-        $("#payi").hide();
-        $("#abpaymenty").show();
-        $("#transactiony").hide();
-        $("#cardy").hide();
-        $("#mpay").hide();
-        $("#banky").hide();
-        $("#eventy").show();
-    }
+
     $(document).ready(function(){
         $("#pay").keyup(function(){
             $("#pay").val();
+            $("#returned").val();
             payment();
         });
     });

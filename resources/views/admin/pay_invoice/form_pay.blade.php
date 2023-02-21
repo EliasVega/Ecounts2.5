@@ -58,7 +58,7 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
-            <label class="form-control-label" for="balance">Valor Pedido</label>
+            <label class="form-control-label" for="balance">Valor Venta</label>
             <input type="number" id="balance" name="balance" value="{{ $invoice->balance }}" class="form-control gris" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
@@ -122,11 +122,15 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" id="advancey">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="advancey">
         <div class="form-group">
-            <label for="advance_id">Pago Anticipado</label>
-            <select name="advance_id" class="form-control" id="advance_id">
-                <option value ="" disabled selected>Seleccionar...</option>
+            <label for="advance_id">Anticipo</label>
+            <select name="advance_id" class="form-control selectpicker" id="advance_id"
+                data-live-search="true">
+                <option value="" disabled selected>seleccionar...</option>
+                @foreach($advances as $adv)
+                <option value="{{ $adv->id }}_{{ $adv->balance }}">{{ $adv->customer->name }}-- {{ $adv->balance }}</option>
+                @endforeach
             </select>
         </div>
     </div>
