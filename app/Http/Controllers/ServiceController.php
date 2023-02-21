@@ -15,7 +15,7 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
         if (request()->ajax()) {
             $services = Service::get();
@@ -32,7 +32,7 @@ class ServiceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         $categories = Category::select('id', 'name')->get();
         $measures = Unit_measure::get();
@@ -60,7 +60,7 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Service $service): Response
+    public function show(Service $service)
     {
         $categories = Category::select('id', 'name')->get();
 
@@ -70,7 +70,7 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $service): Response
+    public function edit(Service $service)
     {
         $categories = Category::get();
 
@@ -80,7 +80,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateServiceRequest $request, Service $service): RedirectResponse
+    public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->category_id = $request->category_id;
         $service->unit_measure_id = $request->unit_measure_id;
@@ -96,7 +96,7 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $service): RedirectResponse
+    public function destroy(Service $service)
     {
         //
     }
