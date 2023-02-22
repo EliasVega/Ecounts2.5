@@ -882,7 +882,7 @@ class SaleboxController extends Controller
     public function update(UpdateSaleboxRequest $request, $id)
     {
         $close = $request->user_close_id;
-        $verific = $request->cod_ver_close;
+        $verific = $request->verification_code_close;
         $verification_code = Verification_code::select('id', 'code')->where('user_id', '=', $close)->first();
         $box_close = Sale_box::select('status')->where('id', '=', $id)->first();
 
@@ -892,13 +892,13 @@ class SaleboxController extends Controller
 
         if ($verification_code->code != $verific) {
             return redirect("sale_box")->with('warning', 'Error en codigo de verificacion');
-        } elseif ($box_close->status == 'CERRADA') {
+        } elseif ($box_close->status == 'close') {
             return redirect("sale_box")->with('warning', 'Esta caja ya fue cerrada Anteriormente');
         } else {
             $sale_box = Sale_box::findOrFail($id);
-            $sale_box->user_close_id  = $request->userClose_id;
-            $sale_box->cod_ver_close   = $request->cod_ver_close;
-            $sale_box->status         = 'CERRADA';
+            $sale_box->user_close_id  = $close;
+            $sale_box->verification_code_close   = $verific;
+            $sale_box->status         = 'close';
             $sale_box->update();
         }
         return redirect("sale_box")->with('success', 'Caja cerrada Satisfactoriamente');
