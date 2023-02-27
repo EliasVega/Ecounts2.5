@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchase;
 use App\Http\Requests\StorePurchaseRequest;
-use App\Http\Requests\UpdatepurchaseRequest;
+use App\Http\Requests\UpdatePurchaseRequest;
 use App\Models\Bank;
 use App\Models\Branch;
 use App\Models\Branch_product;
@@ -370,7 +370,7 @@ class PurchaseController extends Controller
      * @param  \App\Models\purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePurchaseRequest $request, purchase $purchase)
+    public function update(UpdatepurchaseRequest $request, purchase $purchase)
     {
         try{
             DB::beginTransaction();
