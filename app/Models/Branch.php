@@ -73,8 +73,15 @@ class Branch extends Model
         return $this->hasMany(Order::class);
     }
 
-
     public function payorders(){
         return $this->hasMany(Payorder::class);
+    }
+
+    public function cashIns(){
+        return $this->belongsTo(Cash_in::class);
+    }
+
+    public function cashOuts(){
+        return $this->hasMany(Cash_out::class);
     }
 }

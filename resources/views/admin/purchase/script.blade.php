@@ -245,7 +245,6 @@
             $("#nequi").show();
             $("#card1").show();
             $("#card2").show();
-            //$("#mpay").hide();
             $("#addpayment").hide();
         }else{
             $("#addpayment").show();
@@ -256,7 +255,7 @@
             $("#nequi").hide();
             $("#card1").hide();
             $("#card2").hide();
-            //$("#mpay").show();
+            $("#payment_method_id").val(1);
         }
         });
     });

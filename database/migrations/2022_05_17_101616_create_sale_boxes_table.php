@@ -17,44 +17,53 @@ return new class extends Migration
             $table->id();
 
             $table->decimal('cash_box',20,2);//inicio efectivo
-            $table->decimal('in_order_cash',20,2);//ing pedidos efectivo
-            $table->decimal('in_order',20,2);//ing total de pedidos
+            $table->decimal('in_cash',20,2);//ingresos de efectivo sin comprobante
+            $table->decimal('in_order_cash',20,2);//ingreso pedidos efectivo
+            $table->decimal('in_order',20,2);//ingreso total de pedidos
             $table->decimal('order',20,2);//total de pedidos
-            $table->decimal('in_invoice_cash',20,2);//ing ventas efectivo
+            $table->decimal('in_invoice_cash',20,2);//ingreso ventas efectivo
             $table->decimal('in_invoice',20,2);//ing total de ventas
-            $table->decimal('sale',20,2);//total de ventas
-            $table->decimal('in_ndinvoice_cash',20,2);//ing nota debito efectivo
-            $table->decimal('in_ndinvoice',20,2); //ing total notas debito
+            $table->decimal('invoice',20,2);//total de ventas
+            $table->decimal('in_advance_cash', 20,2);//ing avances en efectivo
+            $table->decimal('in_advance', 20,2);//ing total de avances
+            $table->decimal('in_ndinvoice_cash',20,2);//ingreso nota debito ventas efectivo
+            $table->decimal('in_ndinvoice',20,2);//ingreso total nota debito ventas
+            $table->decimal('ndinvoice',20,2);//total notas debito ventas
+            $table->decimal('in_ncpurchase_cash',20,2); //ingreso total notas credito compras efectivo
+            $table->decimal('in_ncpurchase',20,2); //ingreso total notas debito compras
+            $table->decimal('ncpurchase',20,2);//total de noras credito compras
+            $table->decimal('in_total',20,2);//total ingresos
             $table->decimal('out_purchase_cash',20,2);//salida efectivo compras
             $table->decimal('out_purchase',20,2);//salida total compras
-            $table->decimal('purchase', 20,2);//total compras
-            $table->decimal('out_expense_cash',20,2);//salida efectivo compras
-            $table->decimal('out_expense',20,2);//salida total compras
-            $table->decimal('expense', 20,2);//total compras
-            $table->decimal('in_pay_cash',20,2);//ing abonos en efectivo
-            $table->decimal('in_pay',20,2);//ing total de abonos
-            $table->decimal('in_advance', 20,2);//ing abonos por avances
-            $table->decimal('out_payment',20,2);//total pagos
-            $table->decimal('out_cash',20,2);//salidas de efectivo
-            $table->decimal('cash',20,2);//total efectivo
+            $table->decimal('purchase',20,2);//total de compras
+            $table->decimal('out_expense_cash',20,2);//salida efectivo compras gastos
+            $table->decimal('out_expense',20,2);//salida total compras gastos
+            $table->decimal('expense',20,2);//total de gastos
+            $table->decimal('out_payment_cash',20,2);//total pagos anticipos
+            $table->decimal('out_payment',20,2);//total pagos anticipos
+            $table->decimal('out_ndpurchase_cash',20,2);//salida nota debito compras efectivo
+            $table->decimal('out_ndpurchase',20,2);//salida nota debito compras efectivo
+            $table->decimal('ndpurchase',20,2);//total de notas debito compras
+            $table->decimal('out_ncinvoice_cash',20,2); //salida efectivo notas credito ventas
+            $table->decimal('out_ncinvoice',20,2); //salida total notas credito ventas
+            $table->decimal('ncinvoice',20,2);//total de notas credito ventas
+            $table->decimal('out_total',20,2);//total de egresos
+            $table->decimal('out_cash',20,2);//salidas de efectivo entregas de caja
+            $table->decimal('cash',20,2);//total entradas efectivo
             $table->decimal('out',20,2);//total salidas efectivo
-            $table->decimal('total',20,2);//total efectivo menos salidas
             $table->string('verification_code_open',12);//codigo verif apertura de caja
             $table->string('verification_code_close',12)->nullable();//cod verif cierre de caja
             $table->enum('status', ['open', 'close'])->default('open');
 
+            $table->foreignId('branch_id')->constrained();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
-
             $table->foreignId('user_open_id')
             ->references('id')
             ->on('users');
-
             $table->foreignId('user_close_id')
             ->nullable()
             ->references('id')
             ->on('users');
-
-            $table->foreignId('branch_id')->constrained();
 
             $table->timestamps();
         });

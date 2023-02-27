@@ -14,6 +14,7 @@ class Pay_ndinvoice_payment_method extends Model
         'payment_method_id',
         'bank_id',
         'card_id',
+        'adbance_id'
     ];
 
     public function bank(){

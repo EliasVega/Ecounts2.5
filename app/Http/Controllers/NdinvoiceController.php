@@ -197,7 +197,7 @@ class NdinvoiceController extends Controller
             $ninv = $inv + $tpv;
 
             $sale_box = Sale_box::findOrFail($boxy->id);
-            $sale_box->sale = $ninv;
+            $sale_box->invoice = $ninv;
             $sale_box->update();
 
             DB::commit();

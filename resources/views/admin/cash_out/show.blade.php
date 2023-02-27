@@ -35,11 +35,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <strong class="tpdf">Detalle de Abonos</strong>
-
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="{{ route('abonoped.index') }}" class="btn btn-success"><i class="fa fa-plus mr-2"></i>Regresar</a>
-
+                <a href="{{ route('abonoped.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
+            </div>
         </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">

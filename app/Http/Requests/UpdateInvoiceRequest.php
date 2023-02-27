@@ -25,16 +25,16 @@ class UpdateInvoiceRequest extends FormRequest
     {
         return [
 
-            'document'           => 'required|string|max:20',
+            'document'           => 'string|max:20',
             'items'             => 'integer',
             'tipDoc'            => 'integer',
             'tipOpe'            => 'integer',
             'due_date'          => 'required|date',
             'total'             => 'required|numeric',
-            'totalIva'          => 'required|numeric',
-            'totalPay'          => 'required|numeric',
+            'totalIva'          => 'numeric',
+            'totalPay'          => 'numeric',
             'pay'               => 'nullable|numeric',
-            'balance'           => 'required',
+            'balance'           => '',
             'retention'         => 'nullable|numeric',
             'status'            => 'in_array:active,credit_note,debit_note',
             'branch_id'         => 'integer',

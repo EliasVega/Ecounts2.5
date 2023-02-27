@@ -27,8 +27,8 @@ class Pay_invoice extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function Payment_methods(){
-        return $this->belongsToMany(Payment_method::class);
+    public function paymentMethod(){
+        return $this->hasMany(Payment_method::class);
     }
 
     public function cashReceipt()

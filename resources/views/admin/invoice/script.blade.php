@@ -234,6 +234,7 @@
         $("#total_pay").val(total_pay.toFixed(2));
 
         $("#fila" + index).remove();
+        $("#balance").val(total_pay.toFixed(2));
         assess();
     }
     $(document).ready(function(){
@@ -259,6 +260,7 @@
             $("#card1").hide();
             $("#card2").hide();
             $("#mpay").show();
+            $("#payment_method_id").val(1);
         }
         });
     });

@@ -20,7 +20,16 @@ class Cash_out extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function sailbox(){
+
+    public function adminId(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
+    }
+
+    public function salelBox(){
         return $this->belongsTo(Sale_box::class);
     }
 }

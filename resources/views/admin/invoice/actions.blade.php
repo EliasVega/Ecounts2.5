@@ -1,3 +1,6 @@
+<a href="{{ route('invoice.edit', $id) }}"
+    class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="far fa-edit"></i>
+</a>
 <a href="{{ route('invoice.show', $id) }}">
     <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Venta" ><i class="far fa-eye"></i></button>
 </a>

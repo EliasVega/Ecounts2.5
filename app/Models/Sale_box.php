@@ -46,8 +46,12 @@ class Sale_box extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function cashOut(){
-        return $this->hasMany(Cashout::class);
+    public function cashIns(){
+        return $this->belongsTo(Cash_in::class);
+    }
+
+    public function cashOuts(){
+        return $this->hasMany(Cash_out::class);
     }
 
 }

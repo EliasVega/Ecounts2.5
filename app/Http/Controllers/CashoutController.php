@@ -22,6 +22,29 @@ class CashoutController extends Controller
      */
     public function index(Request $request)
     {
+        /*
+        if ($request->ajax()) {
+            $cash_outs = Cash_out::get();
+
+            return DataTables::of($cash_outs)
+                ->addIndexColumn()
+                ->addColumn('user', function (Cash_out $cash_out) {
+                    return $cash_out->user->name;
+                })
+                ->addColumn('adminId', function (Cash_out $cash_out) {
+                    return $cash_out->adminId->name;
+                })
+                ->addColumn('branch', function (Cash_out $cash_out) {
+                    return $cash_out->branch->name;
+                })
+                ->editColumn('created_at', function(Cash_out $cash_out){
+                    return $cash_out->created_at->format('yy-m-d');
+                })
+                ->make(true);
+        }
+
+        return view('admin.cash_out.index');*/
+
         if (request()->ajax()) {
             $cash_outs = Cash_out::from('cash_outs AS cas')
             ->join('sale_boxes AS sal', 'cas.sale_box_id', 'sal.id')
@@ -33,6 +56,9 @@ class CashoutController extends Controller
             ->get();
 
             return DataTables::of($cash_outs)
+            ->editColumn('created_at', function(Cash_out $cash_out){
+                return $cash_out->created_at->format('yy-m-d');
+            })
             ->addColumn('btn', 'admin/order/actions')
             ->rawColumns(['btn'])
             ->make(true);
@@ -75,7 +101,7 @@ class CashoutController extends Controller
             return redirect("cash_out")->with('warning', 'Error en codigo de verificacion');
         } else {
             $id = $box_open->id;
-            $cash_out = new cash_out();
+            $cash_out = new Cash_out();
             $cash_out->user_id     = $users;
             $cash_out->sale_box_id = $id;
             $cash_out->branch_id   = $request->session()->get('branch');
@@ -85,13 +111,10 @@ class CashoutController extends Controller
             $cash_out->admin       = $request->admin;
             $cash_out->save();
 
-            $boxy = Sale_box::findOrFail($id);
-            $out = $boxy->out_cash + $payment;
-            $totale = $boxy->total - $payment;
-
             $sale_box = Sale_box::findOrFail($id);
-            $sale_box->out_cash = $out;
-            $sale_box->total    = $totale;
+            $sale_box->out += $payment;
+            $sale_box->out_cash += $payment;
+            $sale_box->out_total += $payment;
             $sale_box->update();
         }
         return redirect("cash_out")->with('success', 'Salida creada Satisfactoriamente');
