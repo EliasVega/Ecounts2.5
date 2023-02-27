@@ -14,22 +14,22 @@ class IndicatorsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('indicators')->delete();
-        
+
         \DB::table('indicators')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'DIAN',
                 'nit' => '800197268',
                 'dv' => '4',
-                'resolution' => '18760000001',
+                'resolution' => '1876',
                 'date_from' => '2019-01-19',
                 'date_to' => '2030-01-19',
                 'prefix' => 'FE',
-                'from' => 10000,
+                'from' => 1,
                 'to' => 20000,
                 'software_id' => '56f2ae4e-9812-4fad-9255-08fcfcd5ccb0',
                 'pin' => '12345',
@@ -46,7 +46,7 @@ class IndicatorsTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 21:07:40',
             ),
         ));
-        
-        
+
+
     }
 }
