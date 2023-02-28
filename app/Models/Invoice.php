@@ -30,7 +30,7 @@ class Invoice extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
     }
 
     public function customer(){
