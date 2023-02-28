@@ -904,7 +904,9 @@ class SaleboxController extends Controller
     public function show_out( $id)
     {
         $sale_box = Sale_box::findOrFail($id);
-
+        if($sale_box->status == 'close'){
+            return redirect("sale_box")->with('warning', 'Esta Caja ya esta cerrada');
+        }
         $users = User::where('id', '!=', 1)->get();
         $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'open')->first();
 
@@ -912,9 +914,7 @@ class SaleboxController extends Controller
         \Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
         \Session::put('user', $sale_box->user_id, 60 * 24 * 365);
 
-        if($sale_box->status == 'close'){
-            return redirect("sale_box")->with('warning', 'Esta Caja ya esta cerrada');
-        }
+
 
         return view("admin.cash_out.create", compact('users', 'sale_box'));
     }
@@ -922,16 +922,16 @@ class SaleboxController extends Controller
     public function show_cashIn( $id)
     {
         $sale_box = Sale_box::findOrFail($id);
-
+        if($sale_box->status == 'close'){
+            return redirect("sale_box")->with('warning', 'Esta Caja ya esta cerrada');
+        }
         $users = User::where('id', '!=', 1)->get();
         $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'open')->first();
         \Session::put('sale_box', $sale_box->id, 60 * 24 * 365);
         \Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
         \Session::put('user', $sale_box->user_id, 60 * 24 * 365);
 
-        if($sale_box->status == 'close'){
-            return redirect("sale_box")->with('warning', 'Esta Caja ya esta cerrada');
-        }
+
         return view("admin.cash_in.create", compact('users', 'sale_box'));
     }
 

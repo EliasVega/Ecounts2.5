@@ -19,6 +19,7 @@ use App\Models\Municipality;
 use App\Models\Nd_discrepancy;
 use App\Models\Organization;
 use App\Models\Pay_ndpurchase;
+use App\Models\Pay_ndpurchase_payment_method;
 use App\Models\Pay_purchase;
 use App\Models\Pay_purchase_payment_method;
 use App\Models\Payment;
@@ -408,7 +409,13 @@ class PurchaseController extends Controller
             $purchase->total_iva    = $request->total_iva;
             $purchase->total_pay    = $request->total_pay;
             $purchase->status      = 'active';
-            $purchase->pay         = $pay;
+            if ($payOld > 0 && $pay == 0) {
+                $purchase->pay         = $payOld;
+            } elseif ($pay > 0) {
+                $purchase->pay         = $pay;
+            } else {
+                $purchase->pay         = $pay;
+            }
             $purchase->balance     = $request->total_pay - $pay;
             $purchase->retention   = $request->retention;
             $purchase->update();
@@ -488,18 +495,18 @@ class PurchaseController extends Controller
                     $sale_box->update();
                 }
 
-            } elseif($payTotal < 0) {
+            } elseif($payTotal < 0 && $pay > 0) {
 
                 //si no hay pago anticipado se crea un pago a compra
                 $pay_ndpurchase                   = new Pay_ndpurchase();
                 $pay_ndpurchase->pay              = $payTotal;
-                $pay_ndpurchase->balance_ndpurchase = 0;
+                $pay_ndpurchase->balance_ndpurchase = $purchase->balance - $pay;
                 $pay_ndpurchase->user_id          = $purchase->user_id;
                 $pay_ndpurchase->branch_id        = $purchase->branch_id;
                 $pay_ndpurchase->purchase_id      = $purchase->id;
                 $pay_ndpurchase->save();
                 //metodo que registra el pago a compra y el methodo de pago
-                $pay_ndpurchase_Payment_method                     = new Pay_purchase_payment_method();
+                $pay_ndpurchase_Payment_method                     = new Pay_ndpurchase_payment_method();
                 $pay_ndpurchase_Payment_method->pay_ndpurchase_id    = $pay_ndpurchase->id;
                 $pay_ndpurchase_Payment_method->payment_method_id  = $request->payment_method_id;
                 $pay_ndpurchase_Payment_method->bank_id            = $request->bank_id;
