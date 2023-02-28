@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title">Entregando Efectivo</h3>
@@ -21,28 +21,31 @@
             <form action="{{route('cash_out.store')}}" method="POST">
                 {{csrf_field()}}
                 <div class="box-body row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group" id="valorcito">
-                            <label class="form-control-label" for="payment">Efectivo Entregar</label>
-                            <input type="number" id="payment" name="payment" value="" class="form-control"
-                                placeholder="Efectivo" pattern="[0-9]{0,15}">
-                        </div>
+                    <div class="col-12 col-md-12">
+                        <a href="{{ route('sale_box.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-12 col-md-12">
                         <div class="form-group">
                             <label class="form-control-label" for="reason">Razon Salida</label>
                             <input type="text" id="reason" name="reason" value="" class="form-control"
                                 placeholder="Motivo">
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-12 col-md-6">
                         <div class="form-group" id="cajetilla">
                             <label class="form-control-label" for="boxy">Efectivo Caja</label>
                             <input type="number" id="boxy" name="boxy" value="{{ $sale_box->cash }}" class="form-control"
                                 placeholder="Efectivo" disabled pattern="[0-9]{0,15}">
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group" id="valorcito">
+                            <label class="form-control-label" for="payment">Efectivo Entregar</label>
+                            <input type="number" id="payment" name="payment" value="" class="form-control"
+                                placeholder="Efectivo" pattern="[0-9]{0,15}">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="admin_id">Admin Recibe Efectivo</label>
                             <select name="admin_id" class="form-control selectpicker" id="admin_id"
@@ -55,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-12 col-md-6">
                         <div class="form-group" id="valorcito">
                             <label class="form-control-label" for="admin">Codigo de verificacion</label>
                             <input type="password" id="admin" name="admin" value="" class="form-control"
@@ -63,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-12 col-md-12">
                         <div class="form-group" id="save">
                             <button class="btn btn-primary btn-md" type="submit"><i class="fa fa-save"></i>&nbsp; Aceptar</button>
                             <a href="{{url('cash_out')}}" class="btn btn-danger"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>

@@ -123,15 +123,23 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function cashOut(){
-        return $this->hasMany(Cashout::class);
-    }
-
     public function payorders(){
         return $this->hasMany(Payorder::class);
     }
 
-    public function cod_verif(){
-        return $this->hasOne(Cod_verif::class);
+    public function VerificationCode(){
+        return $this->hasOne(Verification_code::class);
+    }
+
+    public function cashOuts(){
+        return $this->hasMany(Cash_out::class);
+    }
+
+    public function cashIns(){
+        return $this->hasMany(Cash_in::class);
+    }
+
+    public function saleBoxes(){
+        return $this->hasMany(Sale_box::class);
     }
 }

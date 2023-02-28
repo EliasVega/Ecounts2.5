@@ -157,18 +157,15 @@ class PayPurchaseController extends Controller
                 ->where('status', '=', 'open')
                 ->first();
                 if (isset($sale_box)) {
-                    $out_payment = $sale_box->out_payment + $paymentLine;
-                    $out_cash = $sale_box->out_cash;
-                    $cash = $sale_box->cash;
+                    $out = $sale_box->out;
                     if($mp == 10){
-                        $out_cash += $paymentLine;
-                        $cash += $paymentLine;
+                        $sale_box->out_urchase_cash += $paymentLine;
+                        $out += $paymentLine;
                     }
 
                     //$sale_box = Sale_box::findOrFail($boxy->id);
-                    $sale_box->out_payment = $out_payment;
-                    $sale_box->out_cash = $out_cash;
-                    $sale_box->cash = $cash;
+                    $sale_box->out_purchase += $paymentLine;
+                    $out = $out;
                     $sale_box->update();
                 }
 

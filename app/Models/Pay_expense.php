@@ -27,7 +27,7 @@ class Pay_expense extends Model
         return $this->belongsTo(Branch::class);
     }
 
-    public function payment_method(){
+    public function paymentMethod(){
         return $this->hasMany(Payment_method::class);
     }
 

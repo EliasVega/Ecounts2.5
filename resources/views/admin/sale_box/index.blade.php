@@ -46,8 +46,8 @@
             ajax: '{{ route('sale_box.index') }}',
             columns:
             [
-                {data: 'name'},
-                {data: 'nameB'},
+                {data: 'user'},
+                {data: 'branch'},
                 {data: 'cash_box'},
                 {data: 'cash'},
                 {data: 'out'},

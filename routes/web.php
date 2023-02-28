@@ -6,6 +6,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BranchProductController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CashInController;
 use App\Http\Controllers\CashoutController;
 use App\Http\Controllers\CashReceiptController;
 use App\Http\Controllers\CategoryController;
@@ -141,6 +142,7 @@ Route::resource('payment', PaymentController::class);
 Route::resource('expense', ExpenseController::class);
 Route::resource('pay_expense', PayExpenseController::class);
 Route::resource('service', ServiceController::class);
+Route::resource('cash_in', CashInController::class);
 
 Route::get('advance/advancePdf/{id}', [AdvanceController::class, 'advancePdf'])->name('advancePdf');
 Route::get('payment/paymentPdf/{id}', [PaymentController::class, 'paymentPdf'])->name('paymentPdf');
@@ -201,6 +203,7 @@ Route::get('order/create/{id}', [OrderController::class, 'getMunicipalities']);
 Route::get('show_out/{id}', [saleboxController::class, 'show_out'])->name('show_out');
 Route::get('show_pos/{id}', [saleboxController::class, 'show_pos'])->name('show_pos');
 Route::get('show_close/{id}', [SaleboxController::class, 'show_close'])->name('show_close');
+Route::get('show_cashIn/{id}', [SaleboxController::class, 'show_cashIn'])->name('show_cashIn');
 
 Route::get('portfolio', [ReportController::class, 'portfolio'])->name('portfolio');
 Route::get('past_due_portfolio', [ReportController::class, 'past_due_portfolio'])->name('past_due_portfolio');

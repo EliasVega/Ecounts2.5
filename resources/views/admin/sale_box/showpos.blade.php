@@ -119,376 +119,462 @@
         </header>
 
         <section>
-            <div class="unicos">
-                REPORTE DE ARTICULOS VENTAS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Articulo</th>
-                            <th>Cant</th>
-                            <th>Iva</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($produc as $pro)
-                        <tr>
-                            <td>{{ $pro->id }}</td>
-                            <td>{{ $pro->name }}</td>
-                            <td>{{ $pro->stock }}</td>
-                            <td>{{ number_format($pro->price, 2) }}</td>
-                            <td>{{ number_format($pro->sale_price, 2) }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+            @if ($sale_box->invoice > 0)
+                <div class="unicos">
+                    REPORTE DE ARTICULOS VENTAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Articulo</th>
+                                <th>Cant</th>
+                                <th>Iva</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($produc as $pro)
+                            <tr>
+                                <td>{{ $pro->id }}</td>
+                                <td>{{ $pro->name }}</td>
+                                <td>{{ $pro->stock }}</td>
+                                <td>{{ number_format($pro->price, 2) }}</td>
+                                <td>{{ number_format($pro->sale_price, 2) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                        <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                        <td class="tdder"><p align="right" class="tfd"><h2>${{number_format($invTotalPay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE ARTICULOS COMPRAS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Articulo</th>
-                            <th>Cant</th>
-                            <th>Iva</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($productpurc as $pro)
-                        <tr>
-                            <td>{{ $pro->id }}</td>
-                            <td>{{ $pro->name }}</td>
-                            <td>{{ $pro->stock }}</td>
-                            <td>{{ number_format($pro->price, 2) }}</td>
-                            <td>{{ number_format($pro->sale_price, 2) }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td class="tdder"><p align="right" class="tfd"><h2>${{number_format($sale_box->invoice,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->purchase > 0)
+                <div class="unicos">
+                    REPORTE DE ARTICULOS COMPRAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Articulo</th>
+                                <th>Cant</th>
+                                <th>Iva</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($productpurc as $pro)
+                            <tr>
+                                <td>{{ $pro->id }}</td>
+                                <td>{{ $pro->name }}</td>
+                                <td>{{ $pro->stock }}</td>
+                                <td>{{ number_format($pro->price, 2) }}</td>
+                                <td>{{ number_format($pro->sale_price, 2) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                        <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                        <td class="tdder"><p align="right" class="tfd"><h2>${{number_format($purTotalPay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                        REPORTE DE FACTURAS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.Factura</th>
-                            <th>Cliente</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($invoices as $inv)
-                        <tr>
-                            <td>{{ $inv->document }}</td>
-                            <td>{{ $inv->customer->name }}</td>
-                            <td>$ {{ number_format($inv->total_pay, 2) }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td class="tdder"><p align="right" class="tfd"><h2>${{number_format($sale_box->purchase,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->invoice > 0)
+                <div class="unicos">
+                            REPORTE DE FACTURAS DE VENTA
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.Factura</th>
+                                <th>Cliente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($invoices as $inv)
+                            <tr>
+                                <td>{{ $inv->document }}</td>
+                                <td>{{ $inv->customer->name }}</td>
+                                <td>$ {{ number_format($inv->total_pay, 2) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($invTotalPay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                        REPORTE DE COMPRAS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.Factura</th>
-                            <th>Proveedor</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($purchases as $pur)
-                        <tr>
-                            <td>{{ $pur->document }}</td>
-                            <td>{{ $pur->supplier->name }}</td>
-                            <td>$ {{ number_format($pur->total_pay, 2) }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->invoice,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->purchase > 0)
+                <div class="unicos">
+                            REPORTE DE COMPRAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.Factura</th>
+                                <th>Proveedor</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($purchases as $pur)
+                            <tr>
+                                <td>{{ $pur->document }}</td>
+                                <td>{{ $pur->supplier->name }}</td>
+                                <td>$ {{ number_format($pur->total_pay, 2) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($purTotalPay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE GASTOS
-        <table>
-            <thead>
-                <tr>
-                    <th>N°.Gasto</th>
-                    <th>Proveedor</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody class="fact">
-                @foreach ($expenses as $exp)
-                <tr>
-                    <td>{{ $exp->document }}</td>
-                    <td>{{ $exp->supplier->name }}</td>
-                    <td>$ {{ number_format($exp->total_pay, 2) }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot>
+                            <tr>
+                            <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->purchase,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->expense > 0)
+                <div class="unicos">
+                    REPORTE DE GASTOS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.Gasto</th>
+                                <th>Proveedor</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($expenses as $exp)
+                            <tr>
+                                <td>{{ $exp->document }}</td>
+                                <td>{{ $exp->supplier->name }}</td>
+                                <td>$ {{ number_format($exp->total_pay, 2) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                <tr>
-                   <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                   <td><p align="right" class="tfd"><h2>${{number_format($expTotalPay,2)}}</h2></p></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-            <div class="unicos">
-                REPORTE DE PEDIDOS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.pedido</th>
-                            <th>Cliente</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($orders as $ord)
-                        <tr>
-                            <td>{{ $ord->id }}</td>
-                            <td>{{ $ord->customer->name }}</td>
-                            <td>$ {{ number_format($ord->total_pay, 2) }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="1" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->expense,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->order > 0)
+                <div class="unicos">
+                    REPORTE DE PEDIDOS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.pedido</th>
+                                <th>Cliente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($orders as $ord)
+                            <tr>
+                                <td>{{ $ord->id }}</td>
+                                <td>{{ $ord->customer->name }}</td>
+                                <td>$ {{ number_format($ord->total_pay, 2) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($ordTotalPay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE NOTAS CREDITO
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.NC</th>
-                            <th>Cliente</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($ncinvoices as $nc)
-                        <tr>
-                            <td>{{ $nc->id }}</td>
-                            <td>{{ $nc->invoice->customer->name }}</td>
-                            <td>$ {{ $nc->total_pay }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->order,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->ncinvoice > 0)
+                <div class="unicos">
+                    REPORTE DE NOTAS CREDITO VENTAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.NC</th>
+                                <th>Cliente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($ncinvoices as $nc)
+                            <tr>
+                                <td>{{ $nc->id }}</td>
+                                <td>{{ $nc->invoice->customer->name }}</td>
+                                <td>$ {{ $nc->total_pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($ncipay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE NOTAS DEBITO
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.ND</th>
-                            <th>Cliente</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($ndinvoices as $nd)
-                        <tr>
-                            <td>{{ $nd->id }}</td>
-                            <td>{{ $nd->invoice->customer->name }}</td>
-                            <td>$ {{ $nd->total_pay }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($ncinvoice,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->ndinvoice > 0)
+                <div class="unicos">
+                    REPORTE DE NOTAS DEBITO VENTAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.ND</th>
+                                <th>Cliente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($ndinvoices as $nd)
+                            <tr>
+                                <td>{{ $nd->id }}</td>
+                                <td>{{ $nd->invoice->customer->name }}</td>
+                                <td>$ {{ $nd->total_pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($ndipay,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE ABONOS A PEDIDOS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.order</th>
-                            <th>Cliente</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($pay_orders as $po)
-                        <tr>
-                            <td>{{ $po->order_id }}</td>
-                            <td>{{ $po->order->customer->name }}</td>
-                            <td>$ {{ $po->pay }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($ndinvoice,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->ncpurchase > 0)
+                <div class="unicos">
+                    REPORTE DE NOTAS CREDITO COMPRAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.NC</th>
+                                <th>Cliente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($ncinvoices as $nc)
+                            <tr>
+                                <td>{{ $nc->id }}</td>
+                                <td>{{ $nc->invoice->customer->name }}</td>
+                                <td>$ {{ $nc->total_pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_orders,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE ABONOS A FACTURAS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.Factura</th>
-                            <th>Cliente</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($pay_invoices as $pi)
-                        <tr>
-                            <td>{{ $pi->invoice->document }}</td>
-                            <td>{{ $pi->invoice->customer->name }}</td>
-                            <td>$ {{ $pi->pay }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($ncpurchase,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->ndpurchase > 0)
+                <div class="unicos">
+                    REPORTE DE NOTAS DEBITO COMPRAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.ND</th>
+                                <th>Cliente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($ndinvoices as $nd)
+                            <tr>
+                                <td>{{ $nd->id }}</td>
+                                <td>{{ $nd->invoice->customer->name }}</td>
+                                <td>$ {{ $nd->total_pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_invoices,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE PAGOS A COMPRAS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.Compra</th>
-                            <th>Proveedor</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($pay_purchases as $pp)
-                        <tr>
-                            <td>{{ $pp->purchase->id }}</td>
-                            <td>{{ $pp->purchase->supplier->name }}</td>
-                            <td>$ {{ $pp->pay }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($ndpurchase,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->sum_pay_orders > 0)
+                <div class="unicos">
+                    REPORTE DE ABONOS A PEDIDOS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.order</th>
+                                <th>Cliente</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($pay_orders as $po)
+                            <tr>
+                                <td>{{ $po->order_id }}</td>
+                                <td>{{ $po->order->customer->name }}</td>
+                                <td>$ {{ $po->pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_purchases,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE PAGOS Y GASTOS
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°.Gasto</th>
-                            <th>Proveedor</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($pay_expenses as $pe)
-                        <tr>
-                            <td>{{ $pe->expense->id }}</td>
-                            <td>{{ $pe->expense->supplier->name }}</td>
-                            <td>$ {{ $pe->pay }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_orders,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->sum_pay_invoices > 0)
+                <div class="unicos">
+                    REPORTE DE ABONOS A FACTURAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.Factura</th>
+                                <th>Cliente</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($pay_invoices as $pi)
+                            <tr>
+                                <td>{{ $pi->invoice->document }}</td>
+                                <td>{{ $pi->invoice->customer->name }}</td>
+                                <td>$ {{ $pi->pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_expenses,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-            <div class="unicos">
-                REPORTE DE SALIDAS EFECTIVO
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Autoriza</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody class="fact">
-                        @foreach ($cash_outs as $cas)
-                        <tr>
-                            <td>{{ $cas->name }}</td>
-                            <td>$ {{ $cas->payment }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_invoices,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->sum_pay_purchases > 0)
+                <div class="unicos">
+                    REPORTE DE PAGOS A COMPRAS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.Compra</th>
+                                <th>Proveedor</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($pay_purchases as $pp)
+                            <tr>
+                                <td>{{ $pp->purchase->id }}</td>
+                                <td>{{ $pp->purchase->supplier->name }}</td>
+                                <td>$ {{ $pp->pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
 
-                        <tr>
-                           <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                           <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_cashs,2)}}</h2></p></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_purchases,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->sum_pay_expenses > 0)
+                <div class="unicos">
+                    REPORTE DE PAGOS Y GASTOS
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>N°.Gasto</th>
+                                <th>Proveedor</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($pay_expenses as $pe)
+                            <tr>
+                                <td>{{ $pe->expense->id }}</td>
+                                <td>{{ $pe->expense->supplier->name }}</td>
+                                <td>$ {{ $pe->pay }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_expenses,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->sum_pay_cashs > 0)
+                <div class="unicos">
+                    REPORTE DE SALIDAS EFECTIVO
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Autoriza</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($cash_outs as $cas)
+                            <tr>
+                                <td>{{ $cas->name }}</td>
+                                <td>$ {{ $cas->payment }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_cashs,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
             <div class="unicos">
                 REPORTE DE TOTALES
                 <table>
@@ -500,79 +586,102 @@
                         <th>VALOR</th>
                     </thead>
                     <tbody class="fact">
+                        @if ($sale_box->invoice > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL FACTURAS:</p></th>
+                                <td><h2 align="right">${{number_format($sale_box->invoice,2)}}</h2></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->order > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL PEDIDOS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->order,2)}}</h2></p></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->purchase > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL COMPRAS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->purchase,2)}}</h2></p></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->expense > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL GASTOS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->expense,2)}}</h2></p></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->ncinvoice > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA CREDITO VENTAS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->ncinvoice,2)}}</h2></p></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->ndinvoice > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA DEBITO VENTAS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->ndinvoice,2)}}</h2></p></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->ncpurchase > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA CREDITO COMPRAS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->ncpurchase,2)}}</h2></p></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->ndpurchase > 0)
+                            <tr>
+                                <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA DEBITO COMPRAS:</p></th>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->ndpurchase,2)}}</h2></p></td>
+                            </tr>
+                        @endif
                         <tr>
-                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL FACTURAS:</p></th>
-                            <td><h2 align="right">${{number_format($invTotalPay,2)}}</h2></td>
-                         </tr>
-                         <tr>
-                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL PEDIDOS:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($ordTotalPay,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
-                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL COMPRAS:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($purTotalPay,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
-                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL GASTOS:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($expTotalPay,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
-                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA CREDITO:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($ncipay,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
-                            <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL NOTA DEBITO:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($ndipay,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">INGRESOS FACTURAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_invoice,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">INGRESOS PEDIDOS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_order,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EGRESOS COMPRAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out_purchase,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL INGRESOS:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_pay,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_total,2)}}</h2></p></td>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL EGRESOS:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out_payment,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out_total,2)}}</h2></p></td>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO INICIAL:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash_box,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO FACTURAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_invoice_cash,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO PEDIDOS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_order_cash,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO COMPRAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_purchase_cash,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL EFECTIVO:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">SALIDA EFECTIVO:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out,2)}}</h2></p></td>
-                         </tr>
-                         <tr>
-
+                        </tr>
+                        <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">CAJA:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->total,2)}}</h2></p></td>
-                         </tr>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash - $sale_box->out ,2)}}</h2></p></td>
+                        </tr>
                     </tbody>
                     <tfoot>
 

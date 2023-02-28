@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('discharge_receipts', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('type',['purchase', 'payment', 'discharges', 'expense']);
+            $table->enum('type',['purchase', 'payment', 'discharges', 'expense', 'cash_out']);
             $table->morphs('paymentable');
 
             $table->timestamps();

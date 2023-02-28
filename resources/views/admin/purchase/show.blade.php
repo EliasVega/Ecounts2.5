@@ -91,11 +91,14 @@
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
                                 <th><p align="right">${{ number_format($purchase->total_iva, 2) }}</p></th>
                             </tr>
+                            @if ($purchase->retention > 0)
+                                <tr>
+                                    <th colspan="3"><p align="right">RETENCION:</p></th>
+                                    <th><p align="right">${{ number_format($purchase->retention, 2) }}</p></th>
+                                </tr>
 
-                            <tr>
-                                <th colspan="3"><p align="right">RETENCION:</p></th>
-                                <th><p align="right">${{ number_format($purchase->retention, 2) }}</p></th>
-                            </tr>
+                            @endif
+
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>

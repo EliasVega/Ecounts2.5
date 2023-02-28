@@ -148,24 +148,18 @@
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" id="advancey">
         <div class="form-group">
             <label for="advance_id">Pago Anticipado</label>
-            <select name="advance_id" class="form-control" id="advance_id" required>
+            <select name="advance_id" class="form-control" id="advance_id">
                 <option value ="" disabled selected>Seleccionar...</option>
             </select>
         </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="eventy">
-        <div class="form-group">
-            <label class="form-control-label" for="pay_event_id">De Documento</label>
-            <select name="pay_event_id" class="form-control selectpicker" id="pay_event_id"
-                data-live-search="true">
-                <option value="0" disabled selected>Seleccionar el Documento</option>
-                @foreach($pay_events as $pe)
-                <option
-                    value="{{ $pe->id }}_{{ $pe->pay }}">{{ $pe->document }} -- {{ $pe->origin }}</option>
-                @endforeach
-            </select>
+    <div class="modal-footer" id="save">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <button class="btn btn-celeste" type="submit"><i class="fa fa-save"></i>&nbsp;
+                    Registrar</button>
+            </div>
         </div>
     </div>
-
-
 </div>
