@@ -30,6 +30,9 @@
             display: flex;
             align-items: center;
         }
+        .unicos p {
+            font-size: 10px;
+        }
         .izqlogo {
             align-items: center;
             width: 100%;
@@ -121,7 +124,7 @@
         <section>
             @if ($sale_box->invoice > 0)
                 <div class="unicos">
-                    REPORTE DE ARTICULOS VENTAS
+                    <p>REPORTE DE ARTICULOS VENTAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -155,7 +158,7 @@
             @endif
             @if ($sale_box->purchase > 0)
                 <div class="unicos">
-                    REPORTE DE ARTICULOS COMPRAS
+                    <p>REPORTE DE ARTICULOS COMPRAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -189,7 +192,7 @@
             @endif
             @if ($sale_box->invoice > 0)
                 <div class="unicos">
-                            REPORTE DE FACTURAS DE VENTA
+                    <p>REPORTE DE FACTURAS DE VENTA</p>
                     <table>
                         <thead>
                             <tr>
@@ -219,7 +222,7 @@
             @endif
             @if ($sale_box->purchase > 0)
                 <div class="unicos">
-                            REPORTE DE COMPRAS
+                    <p>REPORTE DE COMPRAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -249,7 +252,7 @@
             @endif
             @if ($sale_box->expense > 0)
                 <div class="unicos">
-                    REPORTE DE GASTOS
+                    <p>REPORTE DE GASTOS</p>
                     <table>
                         <thead>
                             <tr>
@@ -279,7 +282,7 @@
             @endif
             @if ($sale_box->order > 0)
                 <div class="unicos">
-                    REPORTE DE PEDIDOS
+                    <p>REPORTE DE PEDIDOS</p>
                     <table>
                         <thead>
                             <tr>
@@ -309,7 +312,7 @@
             @endif
             @if ($sale_box->ncinvoice > 0)
                 <div class="unicos">
-                    REPORTE DE NOTAS CREDITO VENTAS
+                    <p>REPORTE DE NOTAS CREDITO VENTAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -339,7 +342,7 @@
             @endif
             @if ($sale_box->ndinvoice > 0)
                 <div class="unicos">
-                    REPORTE DE NOTAS DEBITO VENTAS
+                    <p>REPORTE DE NOTAS DEBITO VENTAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -369,7 +372,7 @@
             @endif
             @if ($sale_box->ncpurchase > 0)
                 <div class="unicos">
-                    REPORTE DE NOTAS CREDITO COMPRAS
+                    <p>REPORTE DE NOTAS CREDITO COMPRAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -399,7 +402,7 @@
             @endif
             @if ($sale_box->ndpurchase > 0)
                 <div class="unicos">
-                    REPORTE DE NOTAS DEBITO COMPRAS
+                    <p>REPORTE DE NOTAS DEBITO COMPRAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -429,7 +432,7 @@
             @endif
             @if ($sale_box->sum_pay_orders > 0)
                 <div class="unicos">
-                    REPORTE DE ABONOS A PEDIDOS
+                    <p>REPORTE DE ABONOS A PEDIDOS</p>
                     <table>
                         <thead>
                             <tr>
@@ -459,7 +462,7 @@
             @endif
             @if ($sale_box->sum_pay_invoices > 0)
                 <div class="unicos">
-                    REPORTE DE ABONOS A FACTURAS
+                    <p>REPORTE DE ABONOS A FACTURAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -489,7 +492,7 @@
             @endif
             @if ($sale_box->sum_pay_purchases > 0)
                 <div class="unicos">
-                    REPORTE DE PAGOS A COMPRAS
+                    <p>REPORTE DE PAGOS A COMPRAS</p>
                     <table>
                         <thead>
                             <tr>
@@ -519,7 +522,7 @@
             @endif
             @if ($sale_box->sum_pay_expenses > 0)
                 <div class="unicos">
-                    REPORTE DE PAGOS Y GASTOS
+                    <p>REPORTE DE PAGOS Y GASTOS</p>
                     <table>
                         <thead>
                             <tr>
@@ -549,7 +552,7 @@
             @endif
             @if ($sale_box->sum_pay_cashs > 0)
                 <div class="unicos">
-                    REPORTE DE SALIDAS EFECTIVO
+                    <p>REPORTE DE SALIDAS EFECTIVO</p>
                     <table>
                         <thead>
                             <tr>
@@ -576,7 +579,7 @@
                 </div>
             @endif
             <div class="unicos">
-                REPORTE DE TOTALES
+                <p>REPORTE DE TOTALES</p>
                 <table>
                     <thead>
                         <th>TOTALES</th>
