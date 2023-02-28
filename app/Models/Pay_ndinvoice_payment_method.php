@@ -14,7 +14,7 @@ class Pay_ndinvoice_payment_method extends Model
         'payment_method_id',
         'bank_id',
         'card_id',
-        'adbance_id'
+        'advance_id'
     ];
 
     public function bank(){
@@ -28,5 +28,9 @@ class Pay_ndinvoice_payment_method extends Model
     public function paymentMethod()
     {
         return $this->belongsTo(Payment_method::class);
+    }
+    public function advance()
+    {
+        return $this->belongsTo(Advance::class);
     }
 }

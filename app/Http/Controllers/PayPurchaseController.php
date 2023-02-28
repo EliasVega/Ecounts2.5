@@ -98,17 +98,16 @@ class PayPurchaseController extends Controller
     {
         try{
             DB::beginTransaction();
-
             $purchase = purchase::where('id', '=', $request->session()->get('purchase'))->first();
             $balance = $purchase->balance;
             $total = $request->total;
 
             $pay_purchase = new Pay_purchase();
             $pay_purchase->user_id    = Auth::user()->id;
-            $pay_purchase->branch_id  = $request->session()->get('branch');
+            $pay_purchase->branch_id  = Auth::user()->branch_id;
             $pay_purchase->purchase_id = $purchase->id;
             $pay_purchase->pay        = $total;
-            $pay_purchase->balance_purchase = 0;
+            $pay_purchase->balance_purchase = $balance - $total;
             $pay_purchase->save();
 
             $discharge_receipt = new Discharge_receipt();
@@ -138,7 +137,6 @@ class PayPurchaseController extends Controller
             }
 
             while($cont < count($payment_method)){
-                $payment_id     = $request->payment_id[$cont];
                 $paymentLine = $request->pay[$cont];
                 $pay_purchase_payment_method = new Pay_purchase_payment_method();
                 $pay_purchase_payment_method->pay_purchase_id      = $pay_purchase->id;

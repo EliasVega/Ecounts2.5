@@ -30,4 +30,7 @@ class Pay_ndpurchase_payment_method extends Model
     public function payNdpurchase(){
         return $this->belongsTo(Pay_ndpurchase::class);
     }
+    public function advance(){
+        return $this->belongsTo(Advance::class);
+    }
 }

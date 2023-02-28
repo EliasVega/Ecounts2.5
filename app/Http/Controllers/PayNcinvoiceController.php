@@ -95,7 +95,7 @@ class PayNcinvoiceController extends Controller
 
             $pay_ncinvoice = new Pay_ncinvoice();
             $pay_ncinvoice->user_id         = Auth::user()->id;
-            $pay_ncinvoice->branch_id       = $request->session()->get('branch');
+            $pay_ncinvoice->branch_id       = Auth::user()->branch_id;
             $pay_ncinvoice->ncinvoice_id    = $ncinvoice->id;
             $pay_ncinvoice->pay             = 0;
             $pay_ncinvoice->balance_ncinvoice = 0;
@@ -117,7 +117,7 @@ class PayNcinvoiceController extends Controller
                 $pay_ncinvoice_payment_method->payment_method_id  = $payment_method[$cont];
                 $pay_ncinvoice_payment_method->bank_id            = $bank[$cont];
                 $pay_ncinvoice_payment_method->card_id            = $card[$cont];
-                $pay_ncinvoice_payment_method->payEvent_id        = null;
+                $pay_ncinvoice_payment_method->payment_id         = null;
                 $pay_ncinvoice_payment_method->payment            = $pay;
                 $pay_ncinvoice_payment_method->transaction        = $transaction[$cont];
                 $pay_ncinvoice_payment_method->save();

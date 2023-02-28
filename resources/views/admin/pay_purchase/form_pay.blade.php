@@ -72,7 +72,7 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="payi">
         <div class="form-group">
             <label class="form-control-label requerido" for="pay">Abono</label>
-            <input type="number" id="pay" name="pay" value="0"
+            <input type="number" id="pay" name="pay" value="{{ $purchase->balance }}"
                 class="form-control blanco" placeholder="pay" pattern="[0-9]{0,15}">
         </div>
     </div>

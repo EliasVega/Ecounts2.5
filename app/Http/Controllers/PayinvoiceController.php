@@ -104,10 +104,10 @@ class PayinvoiceController extends Controller
 
             $pay_invoice = new Pay_invoice();
             $pay_invoice->user_id    = Auth::user()->id;
-            $pay_invoice->branch_id  = $request->session()->get('branch');
+            $pay_invoice->branch_id  = Auth::user()->branch_id;
             $pay_invoice->invoice_id = $invoice->id;
             $pay_invoice->pay        = $total;
-            $pay_invoice->balance_invoice = 0;
+            $pay_invoice->balance_invoice = $balance - $total;
             $pay_invoice->save();
 
             $cash_receipt = new Cash_receipt();
@@ -143,9 +143,7 @@ class PayinvoiceController extends Controller
             }
 
             while($cont < count($payment_method)){
-
                 $pay = $request->pay[$cont];
-
                 $pay_invoice_payment_method = new Pay_invoice_payment_method();
                 $pay_invoice_payment_method->pay_invoice_id = $pay_invoice->id;
                 $pay_invoice_payment_method->payment_method_id = $payment_method[$cont];
