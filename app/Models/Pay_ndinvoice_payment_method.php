@@ -29,8 +29,19 @@ class Pay_ndinvoice_payment_method extends Model
     {
         return $this->belongsTo(Payment_method::class);
     }
+<<<<<<< HEAD
+=======
+    public function payNcinvoice()
+    {
+        return $this->belongsTo(pay_ncinvoice::class);
+    }
+>>>>>>> 6276eea0077679ed6e2380e1b91400604e21b707
     public function advance()
     {
         return $this->belongsTo(Advance::class);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6276eea0077679ed6e2380e1b91400604e21b707
 }

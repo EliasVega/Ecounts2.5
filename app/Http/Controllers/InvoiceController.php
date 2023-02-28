@@ -482,7 +482,7 @@ class InvoiceController extends Controller
                 $pay_ncinvoice_Payment_method->payment_method_id  = $request->payment_method_id;
                 $pay_ncinvoice_Payment_method->bank_id            = $request->bank_id;
                 $pay_ncinvoice_Payment_method->card_id            = $request->card_id;
-                $pay_ncinvoice_Payment_method->advance_id         = $request->advance_id;
+                $pay_ncinvoice_Payment_method->payment_id         = $request->payment_id;
                 $pay_ncinvoice_Payment_method->payment            = $pay;
                 $pay_ncinvoice_Payment_method->transaction        = $request->transaction;
                 $pay_ncinvoice_Payment_method->save();
