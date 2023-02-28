@@ -17,6 +17,7 @@ use App\Models\Kardex;
 use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
+use App\Models\Pay_ndpurchase;
 use App\Models\Pay_purchase;
 use App\Models\Pay_purchase_payment_method;
 use App\Models\Payment;
@@ -489,7 +490,7 @@ class PurchaseController extends Controller
             } elseif($payTotal < 0) {
 
                 //si no hay pago anticipado se crea un pago a compra
-                $pay_ndpurchase                   = new Pay_purchase();
+                $pay_ndpurchase                   = new Pay_ndpurchase();
                 $pay_ndpurchase->pay              = $payTotal;
                 $pay_ndpurchase->balance_ndpurchase = 0;
                 $pay_ndpurchase->user_id          = $purchase->user_id;
@@ -502,7 +503,7 @@ class PurchaseController extends Controller
                 $pay_ndpurchase_Payment_method->payment_method_id  = $request->payment_method_id;
                 $pay_ndpurchase_Payment_method->bank_id            = $request->bank_id;
                 $pay_ndpurchase_Payment_method->card_id            = $request->card_id;
-                $pay_ndpurchase_Payment_method->payment_id         = $request->payment_id;
+                $pay_ndpurchase_Payment_method->advance_id         = $request->advance_id;
                 $pay_ndpurchase_Payment_method->payment            = $pay;
                 $pay_ndpurchase_Payment_method->transaction        = $request->transaction;
                 $pay_ndpurchase_Payment_method->save();

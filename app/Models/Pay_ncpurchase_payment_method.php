@@ -14,7 +14,7 @@ class Pay_ncpurchase_payment_method extends Model
         'payment_method_id',
         'bank_id',
         'card_id',
-        'adbance_id'
+        'payment_id'
     ];
 
     public function bank(){
@@ -29,5 +29,8 @@ class Pay_ncpurchase_payment_method extends Model
     }
     public function payNcurchase(){
         return $this->belongsTo(Pay_ncpurchase::class);
+    }
+    public function payment(){
+        return $this->belongsTo(Payment::class);
     }
 }

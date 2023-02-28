@@ -13,7 +13,7 @@ class Pay_ncinvoice_payment_method extends Model
         'payment_method_id',
         'bank_id',
         'card_id',
-        'adbance_id'
+        'payment_id'
     ];
 
     public function bank(){
@@ -28,5 +28,8 @@ class Pay_ncinvoice_payment_method extends Model
     }
     public function payNcinvoice(){
         return $this->belongsTo(pay_ncinvoice::class);
+    }
+    public function payment(){
+        return $this->belongsTo(Payment::class);
     }
 }
