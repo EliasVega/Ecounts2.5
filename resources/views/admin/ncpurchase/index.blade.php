@@ -6,13 +6,11 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Notas Credito de Compras
-
-                    <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h3>
-
-            </h3>
+            <h5>Notas Credito de Compras
+            <a href="{{ route('purchase.index') }}" class="btn btn-celeste"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h5>
         </div>
     </div>
+    @dd($ncpurchases);
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
@@ -46,10 +44,10 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'name'},
-                {data: 'idP'},
+                {data: 'supplier'},
+                {data: 'document'},
                 {data: 'total_pay'},
-                {data: 'nameU'},
+                {data: 'user'},
                 {data: 'created_at'},
                 {data: 'edit'},
             ],

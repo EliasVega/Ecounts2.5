@@ -40,4 +40,7 @@ class Ndpurchase extends Model
     public function nc_discrepancy(){
         return $this->belongsTo(Nc_discrepancy::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -9,13 +9,7 @@
 </a>
 <a href="{{ route('show_pdf_invoice', $id) }}" class="btn btn-ver" target="_blank" data-toggle="tooltip" data-placement="top" title="Factura de venta pdf" >
     <i class="fas fa-file-pdf"></i>
-</a>
-<a href="{{ route('show_ndinvoice', $id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Nota Debito">
-    <i class="fas fa-notes-medical"></i>
-</a>
-<a href="{{ route('show_ncinvoice', $id) }}" class="btn btn-verde" data-toggle="tooltip" data-placement="top" title="Nota Credito">
-    <i class="fas fa-clipboard"></i>
-</a>
+
 <a href="{{ route('show_pay_invoice', $id) }}" class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Agregar Abono" >
     <i class="fas fa-file-invoice-dollar"></i>
 </a>

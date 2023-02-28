@@ -35,7 +35,7 @@ class StoreNcpurchaseRequest extends FormRequest
             'branch_id'   => '',
             'purchase_id' => '',
             'product_id'  => '',
-            'nd_discrepancy_id' => 'required',
+            'nc_discrepancy_id' => 'required',
             'voucher_type_id' => 'integer'
         ];
     }

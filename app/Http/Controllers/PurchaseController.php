@@ -16,6 +16,7 @@ use App\Models\Document;
 use App\Models\Kardex;
 use App\Models\Liability;
 use App\Models\Municipality;
+use App\Models\Nd_discrepancy;
 use App\Models\Organization;
 use App\Models\Pay_ndpurchase;
 use App\Models\Pay_purchase;
@@ -702,19 +703,15 @@ class PurchaseController extends Controller
 
     public function show_ncpurchase($id)
      {
-        $purchase = Purchase::findOrFail($id);
-        \session()->put('purchase', $purchase->id, 60 * 24 * 365);
-        \session()->put('supplier_id', $purchase->supplier_id, 60 * 24 *365);
-        \session()->put('purchase', $purchase->document, 60 * 24 *365);
-        \session()->put('iva', $purchase->iva, 60 * 24 *365);
-        \session()->put('total', $purchase->total, 60 * 24 *365);
-        \session()->put('status', $purchase->status, 60 * 24 *365);
-
-        if ($purchase->status != 'ACTIVE') {
-            return redirect("purchase")->with('warning', 'Esta Compra ya tiene una Nota Credito o Debito');
-        } else {
-            return redirect('ncpurchase/create');
+        $purchase = Purchase::where('id', $id)->first();
+        $productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
+        $products = Product::get();
+        $discrepancies = Nd_discrepancy::where('id', '!=', 4)->get();
+        if ($purchase->status == 'credit_note') {
+            return redirect("ncpurchase")->with('warning', 'Esta Compra ya tiene una Nota Credito');
         }
+
+        return view('admin.ncpurchase.create', compact('purchase', 'products', 'productPurchases', 'discrepancies'));
      }
 
     public function show_ndpurchase($id)

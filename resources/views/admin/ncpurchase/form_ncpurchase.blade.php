@@ -1,32 +1,19 @@
 <div class="box-body row">
-    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-12">
+    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
         <div class="form-group">
             <label for="supplier_id">Id_Sup.</label>
-            <input type="text" name="supplier_id" value="{{ $purchases->idS }}"
+            <input type="text" name="supplier_id" value="{{ $purchase->supplier->id }}"
                 class="form-control" placeholder="" readonly>
         </div>
     </div>
-    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
         <div class="form-group">
             <label for="">Proveedor</label>
-            <input type="text" name="" value="{{ $purchases->name }}"
+            <input type="text" name="" value="{{ $purchase->supplier->name }}"
                 class="form-control" placeholder="" readonly>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-        <div class="form-group">
-            <label for="purchase">Factura N°</label>
-            <input type="text" name="purchase" value="{{ $purchases->purchase }}"
-                class="form-control" placeholder="" readonly>
-        </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-        <div class="box-danger">
-            <label class="form-control-label"><h4>Agregar products</h4></label>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="form-group row">
             <label class="form-control-label" for="nc_discrepancy_id">Discrepancia</label>
                 <select name="nc_discrepancy_id" class="form-control selectpicker" id="nc_discrepancy_id" data-live-search="true">
@@ -38,6 +25,18 @@
         </div>
     </div>
     <div class="clearfix"></div>
+    <div class="col-lg8 col-md-8 col-sm8 col-xs-12">
+        <div class="box-danger">
+            <label class="form-control-label"><h6>Agregar products</h6></label>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group">
+            <label for="purchase_id">Compra</label>
+            <input type="text" name="purchase_id" value="{{ $purchase->id }}"
+                class="form-control" placeholder="" readonly>
+        </div>
+    </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
@@ -67,19 +66,19 @@
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group row">
             <label class="form-control-label" for="product_id">Producto</label>
                 <select name="product_id" class="form-control selectpicker" id="product_id" data-live-search="true">
                     <option value="0" disabled selected>Seleccionar el Producto</option>
-                    @foreach($product_purchases as $pp)
-                        <option value="{{ $pp->id }}_{{ $pp->price }}_{{ $pp->stock }}_{{ $pp->quantity }}_{{ $pp->iva }}">{{ $pp->name }}</option>
+                    @foreach($productPurchases as $pp)
+                        <option value="{{ $pp->product->id }}_{{ $pp->product->price }}_{{ $pp->product->stock }}_{{ $pp->quantity }}_{{ $pp->product->category->iva }}">{{ $pp->product->name }}</option>
                     @endforeach
                 </select>
         </div>
     </div>
 
-    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="price">Precio</label>
             <input type="number" id="price" name="price" class="form-control" placeholder="Precio"
@@ -87,13 +86,13 @@
         </div>
     </div>
 
-    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label">Add</label><br>
             <button class="btn btn-grisb" type="button" id="add" data-toggle="tooltip" data-placement="top" title="adicionar"><i class="fas fa-check"></i>&nbsp; </button>
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" >Canc</label><br>
             <a href="{{url('purchase')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
@@ -140,9 +139,9 @@
         </div>
     <div class="modal-footer" id="save">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group row">
+            <div class="form-group">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="btn btn-success" type="submit"><i class="fa fa-save fa-2x"></i>&nbsp; Registrar</button>
+                <button class="btn btn-celeste" type="submit"><i class="fa fa-save fa-2x"></i>&nbsp; Registrar</button>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h4 class="box-title">Agregar Nota Credito Compra</h4>
+                <h4 class="box-title">Agregar Nota Credito Compra {{ $purchase->document }}</h4>
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">

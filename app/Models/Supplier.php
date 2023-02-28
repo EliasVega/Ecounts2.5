@@ -59,7 +59,7 @@ class Supplier extends Model
     }
 
     public function ncpurchases(){
-        return $this->belongsToMany(Ncpurchase::class);
+        return $this->hasMany(Ncpurchase::class);
     }
 
     public function ndpurchases(){
