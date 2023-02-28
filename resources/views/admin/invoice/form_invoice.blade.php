@@ -1,7 +1,7 @@
 <div class="box-body row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="form-group">
-            <label for="customer_id">Cliente   <button class="btn btn-celeste btn-sm" type="button" data-toggle="modal" data-target="#customer"><i class="fa fa-plus"></i>Agregar</button></label>
+            <label for="customer_id">Cliente   <button class="btn btn-celeste btn-sm mb-2" type="button" data-toggle="modal" data-target="#customer"><i class="fa fa-plus"></i>Agregar</button></label>
             <select name="customer_id" class="form-control selectpicker" id="customer_id"
                 data-live-search="true" required>
                 <option value="" disabled selected>Seleccionar el Cliente</option>
