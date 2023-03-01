@@ -192,6 +192,10 @@ class InvoiceController extends Controller
                     }
                     $advance->balance = $adv_total;
                     $advance->update();
+                    $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->in_advance += $pay;
+                    $sale_box->in_total += $pay;
+                    $sale_box->update();
                 } else {
                     $pay_invoice                  = new Pay_invoice();
                     $pay_invoice->pay             = $pay;
@@ -223,6 +227,7 @@ class InvoiceController extends Controller
                     $sale_box->in_invoice_cash = $in_invoice_cash;
                     $sale_box->in_invoice      += $pay;
                     $sale_box->cash            = $cash;
+                    $sale_box->in_total += $pay;
                     $sale_box->update();
                 }
             }
@@ -256,22 +261,18 @@ class InvoiceController extends Controller
                 $branch_product->stock = $stock;
                 $branch_product->update();
 
-                $products = Product::from('products AS pro')
-                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $invoice_product->product_id)
-                ->first();
-
-                $id = $products->id;
-                $stockardex = $products->stock;
+                //reeplazando trigger
+                $product = Product::findOrFail($invoice_product->product_id);
+                $product->stock -= $quantity[$cont];
+                $product->update();
 
                 $kardex = new Kardex();
-                $kardex->product_id = $id;
+                $kardex->product_id = $product->id;
                 $kardex->branch_id = $invoice->branch_id;
                 $kardex->operation = 'venta';
                 $kardex->number = $invoice->document;
                 $kardex->quantity = $quantity[$cont];
-                $kardex->stock = $stockardex;
+                $kardex->stock = $product->stock;
                 $kardex->save();
 
                 $cont++;
@@ -331,7 +332,6 @@ class InvoiceController extends Controller
         ->select('ip.id', 'ip.quantity', 'pro.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
         ->where('invoice_id', $invoice->id)
         ->get();
-        //dd($invoiceProducts);
         return view('admin.invoice.edit', compact(
             'invoice',
             'departments',
@@ -374,6 +374,9 @@ class InvoiceController extends Controller
             $payOld = Pay_invoice::where('invoice_id', $invoice->id)->sum('pay');
             $payNew = $pay;
             $payTotal = $payNew - $payOld;
+            $invPayTotal = $payOld - $payNew;
+            $balanceOld = $invoice->balance;
+            $balanceNew = $balanceOld + $pay;
             //actualizar la caja
             $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
             $sale_box->invoice -= $invoice->total_pay;
@@ -394,9 +397,15 @@ class InvoiceController extends Controller
             $invoice->items             = count($product_id);
             $invoice->total             = $request->total;
             $invoice->total_iva         = $request->total_iva;
-            $invoice->total_pay         = $request->total_pay;
+            if ($payOld > 0 && $pay == 0) {
+                $invoice->pay         = $payOld;
+            } elseif ($pay > 0) {
+                $invoice->pay         = $pay;
+            } else {
+                $invoice->pay         = $pay;
+            }
             $invoice->pay               = $request->pay;
-            $invoice->balance           = $request->total_pay - $pay;
+            $invoice->balance           = $request->total_pay - $balanceNew;
             $invoice->retention         = $request->retention;
             $invoice->update();
             //actualizar la caja
@@ -432,6 +441,7 @@ class InvoiceController extends Controller
                     //Actualizando la caja
                     $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
                     $sale_box->in_advance += $pay;
+                    $sale_box->in_total += $pay;
                     $sale_box->update();
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
@@ -465,6 +475,7 @@ class InvoiceController extends Controller
                     $sale_box->in_invoice_cash = $in_invoice_cash;
                     $sale_box->in_invoice      += $pay;
                     $sale_box->cash            = $cash;
+                    $sale_box->in_total += $pay;
                     $sale_box->update();
                 }
             } elseif($payTotal < 0) {
@@ -480,25 +491,25 @@ class InvoiceController extends Controller
                 $pay_ncinvoice_Payment_method                     = new Pay_ncinvoice_payment_method();
                 $pay_ncinvoice_Payment_method->pay_ncinvoice_id    = $pay_ncinvoice->id;
                 $pay_ncinvoice_Payment_method->payment_method_id  = $request->payment_method_id;
-                $pay_ncinvoice_Payment_method->bank_id            = $request->bank_id;
-                $pay_ncinvoice_Payment_method->card_id            = $request->card_id;
-                $pay_ncinvoice_Payment_method->payment_id         = $request->payment_id;
-                $pay_ncinvoice_Payment_method->payment            = $pay;
-                $pay_ncinvoice_Payment_method->transaction        = $request->transaction;
+                $pay_ncinvoice_Payment_method->bank_id            = 1;
+                $pay_ncinvoice_Payment_method->card_id            = 1;
+                $pay_ncinvoice_Payment_method->payment_id         = null;
+                $pay_ncinvoice_Payment_method->payment            = $invPayTotal;
+                $pay_ncinvoice_Payment_method->transaction        = 'N/A';
                 $pay_ncinvoice_Payment_method->save();
 
                 $mp = $request->payment_method_id;
                 $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-                $in_ncinvoice_cash = $sale_box->in_ncinvoice_cash;
+                $out_ncinvoice_cash = $sale_box->out_ncinvoice_cash;
                 $cash               = $sale_box->cash;
                 if($mp == 10){
-                    $in_ncinvoice_cash += $payTotal;
+                    $out_ncinvoice_cash += $payTotal;
                     $cash += $payTotal;
                 }
-                $sale_box->in_ncinvoice_cash = $in_ncinvoice_cash;
-                $sale_box->in_ncinvoice += $payTotal;
-                $sale_box->ncinvoice += $payTotal;
-                $sale_box->in_total += $payTotal;
+                $sale_box->out_ncinvoice_cash = $out_ncinvoice_cash;
+                $sale_box->out_ncinvoice += $invPayTotal;
+                $sale_box->ncinvoice += $invPayTotal;
+                $sale_box->out_total += $invPayTotal;
                 $sale_box->cash = $cash;
                 $sale_box->update();
             }

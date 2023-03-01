@@ -186,7 +186,7 @@ class PurchaseController extends Controller
                     $payment->balance = $paym_total;
                     $payment->update();
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->in_payment += $pay;
+                    $sale_box->out_payment += $pay;
                     $sale_box->update();
 
                 } else {
@@ -222,6 +222,7 @@ class PurchaseController extends Controller
                     $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $pay;
                     $sale_box->out = $out;
+                    $sale_box->out_total += $pay;
                     $sale_box->update();
                 }
             }
@@ -231,8 +232,9 @@ class PurchaseController extends Controller
             $cont = 0;
             //Ingresa los productos que vienen en el array
             while($cont < count($product_id)){
-                $subtotal = $quantity[$cont] * $price[$cont];
-                $ivasub = $subtotal * $iva[$cont]/100;
+
+                //$subtotal = $quantity[$cont] * $price[$cont];
+                //$ivasub = $subtotal * $iva[$cont]/100;
                 $item = $cont + 1;
 
                 $product_purchase = new Product_purchase();
@@ -241,8 +243,8 @@ class PurchaseController extends Controller
                 $product_purchase->quantity    = $quantity[$cont];
                 $product_purchase->price       = $price[$cont];
                 $product_purchase->iva         = $iva[$cont];
-                $product_purchase->subtotal    = $subtotal;
-                $product_purchase->ivasubt     = $ivasub;
+                $product_purchase->subtotal    = $quantity[$cont] * $price[$cont];
+                $product_purchase->ivasubt     =($quantity[$cont] * $price[$cont] * $iva[$cont])/100;
                 $product_purchase->item        = $item;
                 $product_purchase->save();
                 //selecciona el producto que viene del array
@@ -250,11 +252,14 @@ class PurchaseController extends Controller
 
                 //$id = $products->id;
                 $utility = $products->category->utility;
-                $priceProduct = $products->price;
+                $priceProd = $products->price;
                 $stockardex = $products->stock;
-                $priceSale = $priceProduct + ($priceProduct * $utility / 100);
+                $priceSale = $priceProd + ($priceProd * $utility / 100);
+                $priceProduct = (($stockardex * $priceProd) + ($quantity[$cont] * $price[$cont])) / ($stockardex + $quantity[$cont]);
                 //Cambia el valor de venta del producto
                 //$product = Product::findOrFail($id);
+                $products->stock += $quantity[$cont]; //reempazando triguer
+                $products->price = $priceProduct;
                 $products->sale_price = $priceSale;
                 $products->update();
 
@@ -388,6 +393,8 @@ class PurchaseController extends Controller
             $payOld = Pay_purchase::where('purchase_id', $purchase->id)->sum('pay');
             $payNew = $pay;
             $payTotal = $payNew - $payOld;
+            $balanceOld = $purchase->balance;
+            $balanceNew = $balanceOld + $pay;
             //actualizar la caja
             $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
             $sale_box->purchase -= $purchase->total_pay;
@@ -416,7 +423,7 @@ class PurchaseController extends Controller
             } else {
                 $purchase->pay         = $pay;
             }
-            $purchase->balance     = $request->total_pay - $pay;
+            $invoice->balance           = $request->total_pay - $balanceNew;
             $purchase->retention   = $request->retention;
             $purchase->update();
             //actualizar la caja
@@ -457,7 +464,8 @@ class PurchaseController extends Controller
                     $payment->update();
                     //Actualizando la caja
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->in_payment += $pay;
+                    $sale_box->out_payment += $pay;
+                    $sale_box->out_total += $pay;
                     $sale_box->update();
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
@@ -492,6 +500,7 @@ class PurchaseController extends Controller
                     $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $payTotal;
                     $sale_box->out = $out;
+                    $sale_box->out_total += $payTotal;
                     $sale_box->update();
                 }
 

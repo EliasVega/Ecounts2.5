@@ -179,6 +179,11 @@ class NcinvoiceController extends Controller
                         $branch_products->stock = $stock;
                         $branch_products->update();
 
+                        //reemplazando trigger
+                        $product = Product::findOrFail($product_id[$cont]);
+                        $product->stock += $quantity[$cont];
+                        $product->update();
+
                         //calcular valor para actualizar kardex
                         $products = Product::where('id', $product_id[$cont])->first();
 
@@ -186,12 +191,12 @@ class NcinvoiceController extends Controller
                         $stockardex = $products->stock;
                         //Actualizar Kardex
                         $kardex = new Kardex();
-                        $kardex->product_id = $id;
+                        $kardex->product_id = $product->id;
                         $kardex->branch_id = $ncinvoice->branch_id;
-                        $kardex->operation = 'NC_VENTA';
+                        $kardex->operation = 'nc_venta';
                         $kardex->number = $ncinvoice->id;
                         $kardex->quantity = $product_id[$cont];
-                        $kardex->stock = $stockardex;
+                        $kardex->stock = $product->stock;
                         $kardex->save();
 
                     }else {

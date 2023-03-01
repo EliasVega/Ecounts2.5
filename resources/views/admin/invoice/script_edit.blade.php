@@ -193,7 +193,7 @@
             percentage_id= datapercentage[0];
             percentage = $("#percentage").val();
             pay = $("#pay").val();
-            if(product_id !="" && quantity!="" && quantity>0  && price!="" && stock!="" && iva!=""){
+            if(product_id !="" && quantity!="" && quantity>0  && price!=""){
 
                 subtotal[cont]= parseFloat(quantity) * parseFloat(price);
                 total= total+subtotal[cont];

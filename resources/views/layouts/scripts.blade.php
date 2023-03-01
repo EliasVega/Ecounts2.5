@@ -9,12 +9,6 @@
 <!-- Bootstrap 4 -->
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/typescript/4.9.5/typescript.min.js"></script>
-
-
-
-
-
 
 <!-- AdminLTE App -->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>

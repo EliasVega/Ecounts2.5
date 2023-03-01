@@ -68,6 +68,10 @@ class PaymentController extends Controller
      */
     public function create(Request $request)
     {
+        $sale_box = Sale_box::where('user_id', Auth::user()->id)->first();
+        if(is_null($sale_box)){
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar esta operacion');
+        }
         $banks = Bank::get();
         $paymentMethods = Payment_method::get();
         $cards = Card::get();
@@ -119,26 +123,24 @@ class PaymentController extends Controller
 
                 $payu = $payu + $paymentLine;
 
-                $mp = $request->payment_method_id;
-
-                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
+                $mp = $request->payment_method_id[$cont];
+                $sale_box = Sale_box::where('user_id', Auth::user()->id)
                 ->where('status', '=', 'open')
                 ->first();
-                if (isset($sale_box)) {
-                    $out_payment = $sale_box->out_payment + $paymentLine;
-                    $out_cash = $sale_box->out_cash;
-                    $cash = $sale_box->cash;
-                    if($mp == 10){
-                        $out_cash += $paymentLine;
-                        $cash += $paymentLine;
-                    }
-
-                    //$sale_box = Sale_box::findOrFail($boxy->id);
-                    $sale_box->out_payment = $out_payment;
-                    $sale_box->out_cash = $out_cash;
-                    $sale_box->cash = $cash;
-                    $sale_box->update();
+                $out_payment_cash = $sale_box->out_payment_cash;
+                $out = $sale_box->out;
+                if($mp == 10){
+                    $out_payment_cash += $paymentLine;
+                    $out += $paymentLine;
                 }
+
+                //$sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->out_payment_cash = $out_payment_cash;
+                $sale_box->out_payment += $paymentLine;
+                $sale_box->out = $out;
+                $sale_box->out_total += $paymentLine;
+                $sale_box->update();
+
                 $cont++;
             }
 

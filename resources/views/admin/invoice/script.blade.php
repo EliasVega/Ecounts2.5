@@ -272,7 +272,7 @@
     function see(){
         $("#noDefined").show();
         $("#cash").show();
-        $("#advance").show();
+        $("#advanceCus").show();
         $("#transfer").show();
         $("#nequi").show();
         $("#card1").show();

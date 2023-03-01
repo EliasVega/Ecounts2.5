@@ -99,11 +99,11 @@ class NdpurchaseController extends Controller
      */
     public function store(StoreNdpurchaseRequest $request)
     {
-        $purchase = $request->session()->get('purchase');
-        $pur = Purchase::findOrFail($purchase);
-        $branch = $request->session()->get('branch');
+        $pur = $request->session()->get('purchase');
+        $purchase = Purchase::findOrFail($pur);
+        $branch = $purchase->branch_id;
         $discrepancy = $request->nc_discrepancy_id;
-        $total = $pur->total;
+        $total = $purchase->total;
         $totaly = $request->total;
         $totality = $total - $totaly;
         if ($discrepancy != 2 && $totality < 0) {
@@ -145,19 +145,6 @@ class NdpurchaseController extends Controller
                     $branch_product->stock = $stky;
                     $branch_product->update();
 
-                    $prod = Product::findOrFail($id);
-                    $stka = $prod->stock;
-                    $pricea = $prod->price;
-                    $quan = $pp->quantity;
-                    $pricep = $pp->price;
-                    $stocknew = $stka - $quan;
-                    if ($stocknew > 0) {
-                        $prod->price = ($stka * $pricea - $quan * $pricep) / ($stocknew);
-                    } else {
-                        $prod->price = $pricep;
-                    }
-                    $prod->update();
-
                     $ndpurchase_product = new Ndpurchase_product();
                     $ndpurchase_product->ndpurchase_id = $ndpurchase->id;
                     $ndpurchase_product->product_id = $id;
@@ -165,19 +152,30 @@ class NdpurchaseController extends Controller
                     $ndpurchase_product->price = $pp->price;
                     $ndpurchase_product->save();
 
-                    $products = Product::findOrFail($id);
+                    $product = Product::findOrFail($id);
+                    $stockProduct = $product->stock;
+                    $priceProduct = $product->price;
+                    $quantity = $pp->quantity;
+                    $price = $pp->price;
+                    $stockNew = $stockProduct - $quantity;
+                    //actualizando la tabla products
+                    $product->stock = $stockNew;
+                    if ($stockNew > 0) {
+                        $product->price = ($stockProduct * $priceProduct - $quantity * $price) / ($stockNew);
+                    } else {
+                        $product->price = $price;
+                    }
+                    $product->update();
 
-                        $id = $products->id;
-                        $stockardex = $products->stock;
-                        //Actualizar Kardex
-                        $kardex = new Kardex();
-                        $kardex->product_id = $id;
-                        $kardex->branch_id = $ndpurchase->branch_id;
-                        $kardex->operation = 'ND_COMPRA';
-                        $kardex->number = $ndpurchase->id;
-                        $kardex->quantity = $quantity;
-                        $kardex->stock = $stockardex;
-                        $kardex->save();
+                    //Actualizar Kardex
+                    $kardex = new Kardex();
+                    $kardex->product_id = $product->id;
+                    $kardex->branch_id = $ndpurchase->branch_id;
+                    $kardex->operation = 'nd_compra';
+                    $kardex->number = $ndpurchase->id;
+                    $kardex->quantity = $quantity;
+                    $kardex->stock = $product->stock;
+                    $kardex->save();
                 }
             } else {
                 $product_id     = $request->product_id;

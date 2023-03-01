@@ -118,25 +118,24 @@ class AdvanceController extends Controller
                 $advance_payment_method->save();
 
                 $payu = $payu + $paymentLine;
-                /*
-                $mp = $request->payment_method_id;
 
-                $boxy = Sale_box::where('user_id', '=', Auth::user()->id)
+                $mp = $payment_method[$cont];
+
+                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
                 ->where('status', '=', 'open')
                 ->first();
-                $in_pay = $boxy->in_pay + $payment;
-                $in_pay_cash = $boxy->in_pay_cash;
-                $cash = $boxy->cash;
-                if($mp == 1){
-                    $in_pay_cash += $payment;
-                    $cash += $payment;
-                }
+                $inAdvanceCash = $sale_box->in_advance_cash;
 
-                $sale_box = Sale_box::findOrFail($boxy->id);
-                $sale_box->in_pay_cash = $in_pay_cash;
-                $sale_box->in_pay = $in_pay;
+                $cash = $sale_box->cash;
+                if($mp == 10){
+                    $inAdvanceCash += $paymentLine;
+                    $cash += $paymentLine;
+                }
+                $sale_box->in_advance_cash = $inAdvanceCash;
+                $sale_box->in_advance += $paymentLine;
                 $sale_box->cash = $cash;
-                $sale_box->update();*/
+                $sale_box->in_total += $paymentLine;
+                $sale_box->update();
 
                 $cont++;
             }

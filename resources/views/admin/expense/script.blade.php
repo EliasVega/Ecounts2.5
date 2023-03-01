@@ -161,7 +161,8 @@
 
     $(document).ready(function(){
         $("#noDefined").click(function(){
-            $("#pay").val("");
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
             noDefined();
         });
     });
@@ -181,7 +182,8 @@
     }
     $(document).ready(function(){
         $("#cash").click(function(){
-            $("#pay").val("");
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
             payCash();
         });
     });
@@ -202,7 +204,8 @@
 
     $(document).ready(function(){
         $("#transfer").click(function(){
-            $("#pay").val("");
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
             payTransaction();
         });
     });
@@ -222,7 +225,8 @@
 
     $(document).ready(function(){
         $("#nequi").click(function(){
-            $("#pay").val("");
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
             payNequi();
         });
     });
@@ -243,7 +247,8 @@
 
     $(document).ready(function(){
         $("#card1").click(function(){
-            $("#pay").val("");
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
             payCard1();
         });
     });
@@ -262,7 +267,8 @@
 
     $(document).ready(function(){
         $("#card2").click(function(){
-            $("#pay").val("");
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
             payCard2();
         });
     });
