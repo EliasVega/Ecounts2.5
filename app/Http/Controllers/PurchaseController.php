@@ -423,7 +423,7 @@ class PurchaseController extends Controller
             } else {
                 $purchase->pay         = $pay;
             }
-            $invoice->balance           = $request->total_pay - $balanceNew;
+            $purchase->balance           = $request->total_pay - $balanceNew;
             $purchase->retention   = $request->retention;
             $purchase->update();
             //actualizar la caja
