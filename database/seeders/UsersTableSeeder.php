@@ -95,7 +95,7 @@ class UsersTableSeeder extends Seeder
                 'company_id' => 1,
                 'branch_id' => 1,
                 'document_id' => 3,
-                'role_id' => 1,
+                'role_id' => 3,
             ),
             3 =>
             array (
@@ -121,7 +121,7 @@ class UsersTableSeeder extends Seeder
                 'company_id' => 1,
                 'branch_id' => 1,
                 'document_id' => 3,
-                'role_id' => 1,
+                'role_id' => 3,
             ),
         ));
     }

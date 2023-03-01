@@ -169,7 +169,7 @@ class UserController extends Controller
         $companies = Company::get();
         $branches = Branch::get();
         $documents = Document::get();
-        $roles = Role::get();
+        $roles = Role::where('id', '!=', 1)->get();
         return view('admin.user.edit', compact('user', 'companies', 'branches', 'documents', 'roles'));
     }
 
