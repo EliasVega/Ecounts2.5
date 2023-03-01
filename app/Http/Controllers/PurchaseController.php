@@ -125,7 +125,6 @@ class PurchaseController extends Controller
     {
         try{
             DB::beginTransaction();
-            dd($request->inventory);
             //llamado a variables
             $inventory = $request->inventory;
             $product_id = $request->product_id;
