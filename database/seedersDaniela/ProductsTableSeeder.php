@@ -25,14 +25,14 @@ class ProductsTableSeeder extends Seeder
                 'code' => '000008',
                 'name' => 'ACERO INOX',
                 'price' => 5709.51,
-                'sale_price' => 5709,51,
+                'sale_price' => 5709.51,
                 'stock' => 740.5,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             1 =>
             array(
@@ -47,7 +47,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             2 =>
             array(
@@ -62,7 +62,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             3 =>
             array(
@@ -70,14 +70,14 @@ class ProductsTableSeeder extends Seeder
                 'code' => '000010',
                 'name' => 'ALUMINIO BLANDO',
                 'price' => 6650.32,
-                'sale_price' => 6650,32,
+                'sale_price' => 6650.32,
                 'stock' => 783,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             4 =>
             array(
@@ -92,7 +92,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             5 =>
             array(
@@ -107,7 +107,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             6 =>
             array(
@@ -122,7 +122,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             7 =>
             array(
@@ -137,7 +137,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             8 =>
             array(
@@ -152,7 +152,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             9 =>
             array(
@@ -160,14 +160,14 @@ class ProductsTableSeeder extends Seeder
                 'code' => '000011',
                 'name' => 'ALUMINIO POTE',
                 'price' => 6000.79,
-                'sale_price' => 6000,79,
+                'sale_price' => 6000.79,
                 'stock' => 5602.6,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             10 =>
             array(
@@ -175,14 +175,14 @@ class ProductsTableSeeder extends Seeder
                 'code' => '000018',
                 'name' => 'ALUMINIO REVUELTO',
                 'price' => 5730.5,
-                'sale_price' => 5730,5,
+                'sale_price' => 5730.5,
                 'stock' => 53.3,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             11 =>
             array(
@@ -197,7 +197,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             12 =>
             array(
@@ -212,7 +212,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             13 =>
             array(
@@ -227,7 +227,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             14 =>
             array(
@@ -242,7 +242,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             15 =>
             array(
@@ -257,7 +257,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             16 =>
             array(
@@ -272,7 +272,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             17 =>
             array(
@@ -287,7 +287,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             18 =>
             array(
@@ -302,7 +302,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             19 =>
             array(
@@ -317,7 +317,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             20 =>
             array(
@@ -332,7 +332,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             21 =>
             array(
@@ -347,7 +347,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             22 =>
             array(
@@ -362,7 +362,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             23 =>
             array(
@@ -377,7 +377,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             24 =>
             array(
@@ -392,7 +392,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             25 =>
             array(
@@ -407,7 +407,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             26 =>
             array(
@@ -422,7 +422,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             27 =>
             array(
@@ -437,7 +437,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             28 =>
             array(
@@ -452,7 +452,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             29 =>
             array(
@@ -467,7 +467,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             30 =>
             array(
@@ -482,7 +482,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             31 =>
             array(
@@ -497,7 +497,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             32 =>
             array(
@@ -512,7 +512,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             33 =>
             array(
@@ -527,7 +527,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             34 =>
             array(
@@ -542,7 +542,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             35 =>
             array(
@@ -557,7 +557,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             36 =>
             array(
@@ -572,7 +572,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             37 =>
             array(
@@ -587,7 +587,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             38 =>
             array(
@@ -602,7 +602,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             39 =>
             array(
@@ -617,7 +617,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             40 =>
             array(
@@ -632,7 +632,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             41 =>
             array(
@@ -647,7 +647,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             42 =>
             array(
@@ -662,7 +662,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             43 =>
             array(
@@ -677,7 +677,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             44 =>
             array(
@@ -692,7 +692,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             45 =>
             array(
@@ -707,7 +707,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             46 =>
             array(
@@ -722,7 +722,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             47 =>
             array(
@@ -737,7 +737,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             48 =>
             array(
@@ -752,7 +752,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             49 =>
             array(
@@ -767,7 +767,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             50 =>
             array(
@@ -782,7 +782,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             51 =>
             array(
@@ -797,7 +797,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             52 =>
             array(
@@ -812,7 +812,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             53 =>
             array(
@@ -827,7 +827,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             54 =>
             array(
@@ -842,12 +842,12 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             55 =>
             array(
                 'id' => 56,
-                'code' => '000095',
+                'code' => '000096',
                 'name' => 'PANAN',
                 'price' => 2851.00,
                 'sale_price' => 2851.00,
@@ -857,7 +857,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             56 =>
             array(
@@ -872,7 +872,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             57 =>
             array(
@@ -887,7 +887,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             58 =>
             array(
@@ -902,7 +902,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             59 =>
             array(
@@ -917,7 +917,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             60 =>
             array(
@@ -932,7 +932,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             61 =>
             array(
@@ -947,7 +947,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             62 =>
             array(
@@ -962,7 +962,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             63 =>
             array(
@@ -977,7 +977,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             64 =>
             array(
@@ -992,7 +992,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             65 =>
             array(
@@ -1007,7 +1007,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             66 =>
             array(
@@ -1022,7 +1022,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             67 =>
             array(
@@ -1037,7 +1037,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             68 =>
             array(
@@ -1052,7 +1052,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             69 =>
             array(
@@ -1067,7 +1067,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             70 =>
             array(
@@ -1082,7 +1082,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             71 =>
             array(
@@ -1097,7 +1097,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             72 =>
             array(
@@ -1112,7 +1112,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             73 =>
             array(
@@ -1127,7 +1127,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             74 =>
             array(
@@ -1142,7 +1142,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             75 =>
             array(
@@ -1157,7 +1157,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             76 =>
             array(
@@ -1172,7 +1172,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             77 =>
             array(
@@ -1187,7 +1187,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             78 =>
             array(
@@ -1202,7 +1202,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             79 =>
             array(
@@ -1217,7 +1217,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             80 =>
             array(
@@ -1232,7 +1232,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             81 =>
             array(
@@ -1247,7 +1247,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             82 =>
             array(
@@ -1262,7 +1262,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             83 =>
             array(
@@ -1277,7 +1277,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             84 =>
             array(
@@ -1292,7 +1292,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             85 =>
             array(
@@ -1307,7 +1307,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             86 =>
             array(
@@ -1322,7 +1322,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             87 =>
             array(
@@ -1337,7 +1337,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             88 =>
             array(
@@ -1352,7 +1352,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             89 =>
             array(
@@ -1367,7 +1367,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             90 =>
             array(
@@ -1382,7 +1382,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             91 =>
             array(
@@ -1397,7 +1397,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             92 =>
             array(
@@ -1412,7 +1412,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             93 =>
             array(
@@ -1427,7 +1427,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             94 =>
             array(
@@ -1442,7 +1442,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             95 =>
             array(
@@ -1457,7 +1457,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             96 =>
             array(
@@ -1472,7 +1472,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             97 =>
             array(
@@ -1481,13 +1481,13 @@ class ProductsTableSeeder extends Seeder
                 'name' => 'TIERRA MOTO',
                 'price' => 3793.86,
                 'sale_price' => 3793.86,
-                'stock' => 351,9,
+                'stock' => 351.9,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             98 =>
             array(
@@ -1502,7 +1502,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 70,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             99 =>
             array(
@@ -1517,7 +1517,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             100 =>
             array(
@@ -1532,7 +1532,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             101 =>
             array(
@@ -1547,7 +1547,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             102 =>
             array(
@@ -1562,7 +1562,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             103 =>
             array(
@@ -1571,13 +1571,13 @@ class ProductsTableSeeder extends Seeder
                 'name' => 'VIRUTA DE BRONCE',
                 'price' => 13640,
                 'sale_price' => 13640,
-                'stock' => 2,5,
+                'stock' => 2.5,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
             104 =>
             array(
@@ -1592,7 +1592,7 @@ class ProductsTableSeeder extends Seeder
                 'category_id' => 1,
                 'unit_measure_id' => 767,
                 'created_at' => '2023-03-01 00:00:00',
-                'updated_at' => '2023-03-01 00:00:00'
+                'updated_at' => '2023-03-01 00:00:00',
             ),
         ));
     }

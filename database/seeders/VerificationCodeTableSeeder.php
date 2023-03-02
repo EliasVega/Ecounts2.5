@@ -20,20 +20,8 @@ class VerificationCodeTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'user_id' => 2,
-                'code' => '1098760453'
-            ),
-            0 =>
-            array (
-                'id' => 1,
                 'user_id' => 3,
-                'code' => '3714501'
-            ),
-            0 =>
-            array (
-                'id' => 1,
-                'user_id' => 4,
-                'code' => '63548838'
+                'code' => 'matrix2012'
             ),
         ));
     }
