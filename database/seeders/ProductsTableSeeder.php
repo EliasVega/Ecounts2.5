@@ -849,7 +849,7 @@ class ProductsTableSeeder extends Seeder
                 'id' => 56,
                 'code' => '000054',
                 'name' => 'PANAN',
-                'price' => 2851,08,
+                'price' => 2851,
                 'sale_price' => 2851,08,
                 'stock' => 2696,3,
                 'status' => 'activo',
