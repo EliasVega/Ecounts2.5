@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->integer('stock');//stock por branch
-            $table->integer('order_product');
+            $table->decimal('order_product');
 
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');
             $table->foreignId('product_id')->constrained()->onUpdate('cascade');

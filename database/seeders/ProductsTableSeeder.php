@@ -491,7 +491,7 @@ class ProductsTableSeeder extends Seeder
                 'name' => 'CANASTA VACIA',
                 'price' => 5504.16,
                 'sale_price' => 5504.16,
-                'stock' => 9,
+                'stock' => 85,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,

@@ -8440,7 +8440,6 @@ class CustomersTableSeeder extends Seeder
                 'created_at' => '2023-03-01 00:00:00',
                 'updated_at' => '2023-03-01 00:00:00'
             ),
-
         ));
     }
 }

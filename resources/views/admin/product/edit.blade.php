@@ -58,19 +58,19 @@
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label for="price">Precio de Compra</label>
-                                <input type="text" name="price" value="{{ $product->price }}" class="form-control"  readonly>
+                                <input type="text" name="price" value="{{ $product->price }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label for="sail_price">Precio de Venta</label>
-                                <input type="text" name="sail_price" value="{{ $product->sail_price }}" class="form-control" placeholder="Ingrese el Precio del product" readonly>
+                                <input type="text" name="sail_price" value="{{ $product->sail_price }}" class="form-control" placeholder="Ingrese el Precio del product">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label for="stock">Stock</label>
-                                <input type="text" name="stock" value="{{ $product->stock }}" class="form-control" placeholder="Ingrese el Stock" readonly>
+                                <input type="text" name="stock" value="{{ $product->stock }}" class="form-control" placeholder="Ingrese el Stock">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-9 col-sm-6 col-xs-12">
