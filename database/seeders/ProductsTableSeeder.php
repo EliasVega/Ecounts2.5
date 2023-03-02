@@ -847,11 +847,11 @@ class ProductsTableSeeder extends Seeder
             55 =>
             array(
                 'id' => 56,
-                'code' => '000054',
+                'code' => '000095',
                 'name' => 'PANAN',
-                'price' => 2851,
-                'sale_price' => 2851,08,
-                'stock' => 2696,3,
+                'price' => 2851,00,
+                'sale_price' => 2851,00,
+                'stock' => 0,
                 'status' => 'activo',
                 'image' => 'noimagen.jpg',
                 'category_id' => 1,
