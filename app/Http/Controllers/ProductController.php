@@ -132,8 +132,8 @@ class ProductController extends Controller
         $product->code = $request->code;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->sale_price = $product->sale_price;
-        $product->stock = $product->stock;
+        $product->sale_price = $request->sale_price;
+        $product->stock = $request->stock;
         $product->status = 1;
 
         //Handle File Upload
@@ -153,6 +153,10 @@ class ProductController extends Controller
             }
             $product->image=$fileNameToStore;
         $product->update();
+
+        $branchProduct = Branch_product::where('product_id', $product->id)->first();
+        $branchProduct->stock = $request->stock;
+        $branchProduct->update();
 
         return redirect('product');
     }
