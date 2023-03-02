@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->decimal('price', 10,2); //precio de compra
             $table->decimal('sale_price', 11,2);
-            $table->integer('stock');
+            $table->decimal('stock', 10,2);
             $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->string('image', 255);
 
