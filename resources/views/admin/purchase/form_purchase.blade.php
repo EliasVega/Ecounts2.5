@@ -1,14 +1,4 @@
 <div class="box-body row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group">
-            <label for="inventory">Inventario </label>
-            <select name="inventory" class="form-select" aria-label="Default select example" id="inventory">
-                <option selected>Seleccione Ingreso de Productos</option>
-                <option value="1">Ingresar Compra</option>
-                <option value="2">Ingrsar Productos sin compra</option>
-              </select>
-        </div>
-    </div>
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group">
             <label for="supplier_id">Proveedor  <button class="btn btn-celeste btn-sm mb-2" type="button" data-toggle="modal" data-target="#supplier"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar</button></label>
