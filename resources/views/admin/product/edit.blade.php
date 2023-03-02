@@ -77,7 +77,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label for="sale_price">Precio de Venta</label>
-                                <input type="text" name="sale_price" value="{{ $product->sail_price }}" class="form-control" placeholder="Ingrese el Precio del product">
+                                <input type="text" name="sale_price" value="{{ $product->sale_price }}" class="form-control" placeholder="Ingrese el Precio del product">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
