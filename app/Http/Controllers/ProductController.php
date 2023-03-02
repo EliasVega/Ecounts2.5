@@ -112,8 +112,9 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = Category::select('id', 'name')->get();
+        $measures = Unit_measure::where('status', 'activo')->get();
 
-        return view("admin.product.edit", compact('product', 'categories'));
+        return view("admin.product.edit", compact('product', 'categories', 'measures'));
     }
 
     /**
