@@ -175,13 +175,12 @@
                                 <th>Fecha</th>
                                 <th>N°.P</th>
                                 <th>Proveedor</th>
-                                <th>Estado</th>
                                 <th>Valor</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th  colspan="6"><p align="right">TOTAL:</p></th>
+                                <th  colspan="3"><p align="right">TOTAL:</p></th>
                                 <th><p align="right">${{ number_format($sale_box->expense,2) }}</p></th>
                             </tr>
                         </tfoot>
@@ -190,7 +189,7 @@
                                 <tr>
                                     <td>{{ $exp->created_at }}</td>
                                     <td>{{ $exp->id }}</td>
-                                    <td>{{ $exp->name }}</td>
+                                    <td>{{ $exp->supplier->name }}</td>
                                     <td class="tdder">$ {{ number_format($exp->total_pay,2) }}</td>
 
                                 </tr>
