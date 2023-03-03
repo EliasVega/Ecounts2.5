@@ -73,7 +73,7 @@ class Product extends Model
     public function orderProducts(){
         return $this->belongsToMany(Order_product::class);
     }
-    public function branchProduct(){
-        return $this->belongsTo(Branch_product::class);
+    public function branchProducts(){
+        return $this->hasMany(Branch_product::class);
     }
 }

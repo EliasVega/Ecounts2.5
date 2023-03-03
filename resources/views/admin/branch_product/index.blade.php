@@ -22,7 +22,6 @@
                             <th>Precio</th>
                             <th>stock</th>
                             <th>Estado</th>
-                            <th>Pedidos</th>
                         </tr>
                     </thead>
                 </table>
@@ -44,9 +43,9 @@
             ajax: '{{ route('branch_product.index') }}',
             columns:
             [
-                {data: 'id'},
+                {data: 'idProduct'},
                 {data: 'code'},
-                {data: 'name'},
+                {data: 'nameProduct'},
                 {data: 'price'},
                 {data: 'stock'},
                 {data: 'status'},

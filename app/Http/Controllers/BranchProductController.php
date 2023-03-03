@@ -18,7 +18,6 @@ class BranchProductController extends Controller
      */
     public function index(Request $request)
     {
-        //$branchProducts = Branch_product::get();
         /*$branchProducts = Branch_product::from('branch_products AS bp')
             ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
             ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
@@ -27,41 +26,42 @@ class BranchProductController extends Controller
             ->where('pro.status', '=', 'activo')
             ->get();
             dd($branchProducts);*/
-        /*
+
         $user = Auth::user()->role_id;
         if (request()->ajax($request)) {
             if ($user == 1 || $user == 2) {
                 $branchProducts = Branch_product::get();
             } else {
-                $branchProducts = Branch_product::where('user_id', Auth::user()->id)->get();
+                $branchProducts = Branch_product::where('branch_id', Auth::user()->branch_id)->get();
             }
             return DataTables::of($branchProducts)
+
             ->addIndexColumn()
             ->addColumn('idProduct', function (Branch_product $branchProduct) {
-                return number_format($branchProduct->porducts->id, 2);
+                return $branchProduct->product->id;
             })
+
             ->addColumn('code', function (Branch_product $branchProduct) {
-                return $branchProduct->products->code;
+                return $branchProduct->product->code;
             })
             ->addColumn('nameProduct', function (Branch_product $branchProduct) {
-                return $branchProduct->products->name;
+                return $branchProduct->product->name;
             })
-            ->addColumn('balance', function (Branch_product $branchProduct) {
-                return number_format($branchProduct->products->price, 2);
+            ->addColumn('price', function (Branch_product $branchProduct) {
+                return number_format($branchProduct->product->price, 2);
             })
-            ->addColumn('user', function (Branch_product $branchProduct) {
-                return $branchProduct->products->status;
+            ->addColumn('status', function (Branch_product $branchProduct) {
+                return $branchProduct->product->status;
             })
             ->editColumn('created_at', function(Branch_product $branchProduct){
                 return $branchProduct->created_at->format('yy-m-d: h:m');
             })
-
             ->addColumn('btn', 'admin/branch_product/actions')
             ->rawcolumns(['btn'])
             ->make(true);
         }
-        return view('admin.branch_product.index');*/
-
+        return view('admin.branch_product.index');
+        /*
         if (request()->ajax()) {
             //Mostrar los productos de una sucursal especifica
             $branchProducts = Branch_product::from('branch_products AS bp')
@@ -75,7 +75,7 @@ class BranchProductController extends Controller
             return DataTables::of($branchProducts)
             ->toJson();
         }
-        return view('admin.branch_product.index');
+        return view('admin.branch_product.index');*/
     }
 
     /**

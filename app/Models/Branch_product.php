@@ -43,8 +43,8 @@ class Branch_product extends Model
     public function ntcventa(){
         return $this->belongsToMany(Ntcventa::class);
     }
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 
 }
