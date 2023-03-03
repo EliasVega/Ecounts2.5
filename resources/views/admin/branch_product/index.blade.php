@@ -19,7 +19,7 @@
                             <th>Id</th>
                             <th>Codigo</th>
                             <th>Nombre</th>
-                            <th>Precio_Venta</th>
+                            <th>Precio</th>
                             <th>stock</th>
                             <th>Estado</th>
                             <th>Pedidos</th>
@@ -47,10 +47,9 @@
                 {data: 'id'},
                 {data: 'code'},
                 {data: 'name'},
-                {data: 'sale_price'},
+                {data: 'price'},
                 {data: 'stock'},
                 {data: 'status'},
-                {data: 'order_product'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
             buttons:
