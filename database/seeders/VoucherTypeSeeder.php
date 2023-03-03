@@ -105,6 +105,11 @@ class VoucherTypeSeeder extends Seeder
                 'code' => 'OP',
                 'name' => 'Orden de Pedido',
                 'state' => 'active'
+            ],
+            [
+                'code' => 'CG',
+                'name' => 'Comprobante de Gastos',
+                'state' => 'active'
             ]
         ];
 

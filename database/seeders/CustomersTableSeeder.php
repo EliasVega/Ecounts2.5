@@ -82,6 +82,7 @@ class CustomersTableSeeder extends Seeder
                 'created_at' => '2023-03-01 00:00:00',
                 'updated_at' => '2023-03-01 00:00:00'
             ),
+            /*
             3	=>
             array(
                 'id' => 4,
@@ -8439,7 +8440,7 @@ class CustomersTableSeeder extends Seeder
                 'regime_id' => 2,
                 'created_at' => '2023-03-01 00:00:00',
                 'updated_at' => '2023-03-01 00:00:00'
-            ),
+            ),*/
         ));
     }
 }

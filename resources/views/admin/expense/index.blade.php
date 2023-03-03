@@ -22,8 +22,9 @@
                         <tr class="bg-info">
                             <th>Id</th>
                             <th>Proveedor</th>
-                            <th>#Fac_Compra</th>
+                            <th>#Comprobante</th>
                             <th>Valor</th>
+                            <th>Saldo</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
@@ -50,6 +51,7 @@
                 {data: 'supplier'},
                 {data: 'document'},
                 {data: 'total_pay'},
+                {data: 'balance'},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

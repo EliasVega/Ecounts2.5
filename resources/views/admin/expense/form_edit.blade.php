@@ -1,40 +1,36 @@
 <div class="box-body row">
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group">
-            <label for="supplier_id">Proveedor  <button class="btn btn-celeste btn-sm" type="button" data-toggle="modal" data-target="#supplier"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar</button></label>
-            <select name="supplier_id" class="form-control selectpicker" id="supplier_id"
-                data-live-search="true" required>
-                <option value="" disabled selected>Seleccionar el Proveedor</option>
-                @foreach($suppliers as $sup)
-                <option value="{{ $sup->id }}">{{ $sup->number }} - {{ $sup->name }}</option>
+    <div class="col-12 col-md-3">
+        <label for="supplier_id">Proveedor</label>
+        <div class="select">
+            <select id="supplier_id" name="supplier_id" class="form-control selectpicker" data-live-search="true" required>
+                <option {{ old('supplier_id', $expense->supplier_id ?? '') == '' ? "selected" : "" }} disabled>Seleccionar tipo de persona</option>
+                @foreach($suppliers as $supplier)
+                    @if(old('supplier_id', $expense->supplier_id ?? '') == $supplier->id)
+                        <option value="{{ $supplier->id }}" selected>{{ $supplier->name }}</option>
+                    @else
+                        <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
     </div>
-
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="document">Comprobante</label>
-            <input type="text" id="document" name="document" value="N/A" class="form-control" placeholder="Numero Recibo">
+            <input type="text" id="document" name="document" value="{{ $expense->document }}" class="form-control" placeholder="Numero de la factura" required readonly>
         </div>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="due_date">Vencimiento</label>
-            <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
+            <input type="date" name="due_date" value="{{ $expense->due_date }}" class="form-control" placeholder="Fecha Vencimiento" readonly>
         </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
             <input type="number" id="iva" name="iva" class="form-control" placeholder="Iva" disabled
                 pattern="[0-9]{0,15}">
-        </div>
-    </div>
-    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="note">Nota</label>
-            <input type="text" id="note" name="note" class="form-control" placeholder="Describe una nota">
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -48,27 +44,27 @@
                 </select>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="price">Precio</label>
             <input type="number" id="price" name="price" class="form-control"
                 placeholder="Precio">
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="quantity">Cantidad</label>
             <input type="number" id="quantity" name="quantity" value=""
                 class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
         <div class="form-group">
             <label class="form-control-label">Add</label><br>
             <button class="btn btn-grisb" type="button" id="add" data-toggle="tooltip" data-placement="top" title="Add"><i class="fas fa-check"></i>&nbsp; </button>
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" >Canc</label><br>
             <a href="{{url('expense')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
@@ -81,7 +77,7 @@
                 <thead>
                     <tr>
                         <th>Eliminar</th>
-                        <th>Producto</th>
+                        <th>Servicio</th>
                         <th>Cantidad</th>
                         <th>precio ($)</th>
                         <th>iva (%)</th>

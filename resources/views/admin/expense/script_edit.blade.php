@@ -2,24 +2,6 @@
     /*$(document).ready(function(){
             alert('estoy funcionando correctamanete empresa');
         });*/
-    $("#department_id").change(function(event){
-        $.get("create/" + event.target.value + "", function(response){
-            $("#municipality_id").empty();
-            $("#municipality_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
-            for(i = 0; i < response.length; i++){
-                $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
-            }
-            $("#municipality_id").selectpicker('refresh');
-        });
-    });
-    jQuery(document).ready(function($){
-        $(document).ready(function() {
-            $('#branch_id').select2({
-                theme: "classic",
-                width: "100%",
-            });
-        });
-    });
     jQuery(document).ready(function($){
         $(document).ready(function() {
             $('#supplier_id').select2({
@@ -58,7 +40,6 @@
     total_iva=0;
     ret = 0;
     //form purchase
-    $("#idPro").hide();
     $("#save").hide();
     //form pay
     $("#cash").hide();
@@ -77,10 +58,8 @@
     $("#banky").hide();
     $("#cardy").hide();
     $("#paymenty").hide();
+    $("#rtferase").hide();
     $("#advance").hide();
-    /*
-    $("#percentage").val(0);
-    */
 
     $("#service_id").change(serviceValue);
 
@@ -94,6 +73,7 @@
         });
     });
     function add(){
+
         dataService = document.getElementById('service_id').value.split('_');
         service_id= dataService[0];
         service= $("#service_id option:selected").text();
@@ -113,6 +93,7 @@
             totals();
             assess();
             $('#details').append(fila);
+
             $('#service_id option:selected').remove();
             clean();
 
@@ -127,8 +108,50 @@
         }
     }
 
+    //function add(){
+
+        expense = {!! json_encode($expenseServices) !!};
+        expense.forEach((value, i) => {
+        if (value['quantity'] > 0) {
+
+
+        service_id= value['id'];
+        service= value['name'];
+        quantity= value['quantity'];
+        price= value['price'];
+        iva= value['iva'];
+
+        if(service_id !="" && quantity!="" && quantity>0  && price!=""){
+            subtotal[cont]= parseFloat(quantity) * parseFloat(price);
+            total= total+subtotal[cont];
+            ivita= subtotal[cont]*iva/100;
+            total_iva=total_iva+ivita;
+
+            var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times"></i></button></td><td><input type="hidden" id="service_id" name="service_id[]" value="'+service_id+'">'+service+'</td> <td><input type="hidden" id="quantity" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" id="price" name="price[]" value="'+parseFloat(price).toFixed(2)+'">'+price+'</td> td> <td><input type="hidden" name="iva[]" value="'+iva+'">'+iva+'</td>  <td> $'+parseFloat(subtotal[cont]).toFixed(2)+'</td></tr>';
+            cont++;
+
+            totals();
+            assess();
+            $('#details').append(fila);
+
+            $('#product_id option:selected').remove();
+            clean();
+
+
+        }else{
+            //alert("Rellene todos los campos del detalle para esta compra");
+            Swal.fire({
+            type: 'error',
+            //title: 'Oops...',
+            text: 'Rellene todos los campos del detalle para esta compra',
+            })
+        }
+        }
+    });
+    //}
+
     function clean(){
-        $("#service_id").val("");
+        $("#product_id").val("");
         $("#quantity").val("");
         $("#price").val("");
     }
@@ -147,16 +170,7 @@
 
         $("#balance").val(total_pay.toFixed(2));
     }
-    function assess(){
 
-        if(total>0){
-
-        $("#save").show();
-
-        } else{
-            $("#save").hide();
-        }
-    }
     function eliminar(index){
 
         total = total-subtotal[index];
@@ -173,9 +187,19 @@
         $("#total_pay_html").html("$ " + total_pay.toFixed(2));
         $("#total_pay").val(total_pay.toFixed(2));
 
+        $("#balance").val(total_pay);
         $("#fila" + index).remove();
         assess();
     }
+    function assess(){
+
+        if(total>0){
+            $("#save").show();
+        } else{
+            $("#save").hide();
+        }
+    }
+
     $(document).ready(function(){
         $("#payment_form_id").change(function(){
         form = $("#payment_form_id").val();
@@ -187,6 +211,7 @@
             $("#nequi").show();
             $("#card1").show();
             $("#card2").show();
+            //$("#mpay").hide();
             $("#addpayment").hide();
         }else{
             $("#addpayment").show();

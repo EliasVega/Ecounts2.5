@@ -8,7 +8,7 @@ class Cash_out extends Model
 {
 
     protected $fillable = [
-        'sail_box_id',
+        'sale_box_id',
         'user_id',
         'branch_id',
         'admin_id',

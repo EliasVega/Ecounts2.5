@@ -82,8 +82,7 @@ class PayPurchaseController extends Controller
         $payment_methods = Payment_method::get();
         $cards = Card::get();
         $purchase = Purchase::where('id', '=', $request->session()->get('purchase'))->first();
-        $supp = $purchase->supplier->id;
-        $payments = Payment::where('status', '!=', 'aplicado')->where('supplier_id', $supp)->get();
+        $payments = Payment::where('status', '!=', 'aplicado')->where('supplier_id', $purchase->supplier->id)->get();
 
         return view('admin.pay_purchase.create', compact('purchase', 'banks', 'payment_methods', 'cards', 'payments'));
     }
@@ -157,7 +156,7 @@ class PayPurchaseController extends Controller
                 if (isset($sale_box)) {
                     $out = $sale_box->out;
                     if($mp == 10){
-                        $sale_box->out_urchase_cash += $paymentLine;
+                        $sale_box->out_purchase_cash += $paymentLine;
                         $out += $paymentLine;
                     }
 
@@ -192,9 +191,9 @@ class PayPurchaseController extends Controller
      * @param  \App\Models\Pay_purchase  $pay_purchase
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pay_purchase $pay_purchase)
     {
-        $dischargeReceipt = Discharge_receipt::where('id', $id)->first();
+        $dischargeReceipt = Discharge_receipt::where('id', $pay_purchase->id)->first();
         $payPurchase_paymentMethods = Pay_purchase_payment_method::where('pay_purchase_id', $dischargeReceipt->paymentable->id)->get();
 
         return view('admin.pay_purchase.show', compact('dischargeReceipt', 'payPurchase_paymentMethods'));

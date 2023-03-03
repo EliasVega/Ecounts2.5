@@ -15,8 +15,8 @@
         <div class="form-group">
             <label for="payment_method_id">Med/pago</label>
             <select name="payment_method_id" class="form-control selectpicker" id="payment_method_id"
-                data-live-search="true">
-                <option value="1" disabled selected>Seleccionar...</option>
+                data-live-search="true" required>
+                <option value="" disabled selected>Seleccionar...</option>
                 @foreach($payment_methods as $pm)
                 <option value="{{ $pm->id }}">{{ $pm->name }}</option>
                 @endforeach
@@ -24,6 +24,11 @@
         </div>
     </div>
     <div class="clearfix"></div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="addpayment">
+        <div class="form-group">
+            <button class="btn btn-celeste btn-sm" type="button" id="addpay" data-toggle="tooltip" data-placement="top" title="Desea Agregar Abono">Agregar abono </button>
+        </div>
+    </div>
     <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
             <button class="btn btn-celeste btn-sm" type="button" id="noDefined" data-toggle="tooltip" data-placement="top" title="Metodo no definido">Indefinido </button>
@@ -81,6 +86,20 @@
                 class="form-control blanco" placeholder="pay" pattern="[0-9]{0,15}">
         </div>
     </div>
+    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" id="abpaymenty">
+        <div class="form-group">
+            <label class="form-control-label requerido" for="abpayment">abono anticipado</label>
+            <input type="number" id="abpayment" name="abpayment"
+                class="form-control blanco">
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" id="abvto">
+        <div class="form-group">
+            <label class="form-control-label" for="payment">Abono +</label>
+            <input type="number" id="payment" name="payment"
+                class="form-control blanco" placeholder="valor" pattern="[0-9]{0,15}">
+        </div>
+    </div>
     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" id="transactiony">
         <div class="form-group">
             <label class="form-control-label" for="transaction">#Transaccion</label>
@@ -110,6 +129,14 @@
                 @foreach($cards as $car)
                 <option value="{{ $car->id }}">{{ $car->name }}</option>
                 @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="paymenty">
+        <div class="form-group">
+            <label for="payment_id">Pago Anticipado</label>
+            <select name="payment_id" class="form-control" id="payment_id">
+                <option value ="0" disabled selected>Seleccionar...</option>
             </select>
         </div>
     </div>

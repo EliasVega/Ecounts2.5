@@ -14,6 +14,7 @@ class Pay_expense_payment_method extends Model
         'payment_method_id',
         'bank_id',
         'card_id',
+        'payment_id'
     ];
 
     public function bank(){

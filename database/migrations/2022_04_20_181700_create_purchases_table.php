@@ -27,6 +27,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->decimal('retention',10,2)->nullable();
             $table->enum('status',['active', 'debit_note', 'credit_note'])->default('active');
+            $table->string('note', 255)->nullable();
 
             $table->foreignId('user_id')->constrained();
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

@@ -10,8 +10,8 @@
                 <a href="purchase/create" class="btn btn-celeste btn-sm"><i class="fa fa-plus mr-2"></i> Agregar Compra</a>
                 <a href="{{ route('branch.index') }}" class="btn btn-celeste btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                 <a href="{{ route('supplier.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Proveedores</a>
-                <a href="{{ route('ncpurchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
-                <a href="{{ route('ndpurchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
+                <a href="{{ route('purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
+                <a href="{{ route('purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
                 <a href="{{ route('pay_purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
                 <a href="{{ route('payment.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Ant a Proveedores</a>
         </div>

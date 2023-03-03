@@ -10,8 +10,8 @@
                 <a href="invoice/create" class="btn btn-celeste btn-sm mb-2"><i class="fa fa-plus mr-2"></i> Agregar Venta</a>
                 <a href="{{ route('branch.index') }}" class="btn btn-celeste btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                 <a href="{{ route('customer.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Clientes</a>
-                <a href="{{ route('ncinvoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
-                <a href="{{ route('ndinvoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
+                <a href="{{ route('invoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
+                <a href="{{ route('invoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
                 <a href="{{ route('pay_invoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
                 <a href="{{ route('advance.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Anticipos</a>
         </div>
