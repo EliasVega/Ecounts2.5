@@ -145,13 +145,13 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="cash_out">Salida Efectivo</label>
-                <p>{{ $sale_box->out }}</p>
+                <p>{{ $sale_box->departure }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="balance">Total Efectivo</label>
-                <p>{{ $sale_box->cash - $sale_box->out }}</p>
+                <p>{{ $sale_box->cash - $sale_box->departure }}</p>
             </div>
         </div>
 

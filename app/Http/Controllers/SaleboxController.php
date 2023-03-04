@@ -157,7 +157,7 @@ class SaleboxController extends Controller
             $sale_box->out_total           = 0;
             $sale_box->out_cash            = 0;
             $sale_box->cash                = $request->cash_box;
-            $sale_box->out                 = 0;
+            $sale_box->departure           = 0;
             $sale_box->verification_code_open  = $request->verification_code_open;
             $sale_box->verification_code_close = null;
             $sale_box->branch_id         = $branch;
@@ -985,6 +985,7 @@ class SaleboxController extends Controller
      */
     public function update(UpdateSaleboxRequest $request, $id)
     {
+
         $close = $request->user_close_id;
         $verific = $request->verification_code_close;
         $verification_code = Verification_code::select('id', 'code')->where('user_id', '=', $close)->first();

@@ -54,13 +54,13 @@
         <div class="col-12 col-md-4 col-sm-6">
             <div class="form-group">
                 <label class="form-control-label" for="pay">Salida de efectivo</label>
-                <p>{{ number_format($sale_box->out,2) }}</p>
+                <p>{{ number_format($sale_box->departure,2) }}</p>
             </div>
         </div>
         <div class="col-12 col-md-4 col-sm-6">
             <div class="form-group">
                 <label class="form-control-label" for="balance">Saldo en caja</label>
-                <p>{{ number_format(($sale_box->cash - $sale_box->out),2) }}</p>
+                <p>{{ number_format(($sale_box->cash - $sale_box->departure),2) }}</p>
             </div>
         </div>
     </div>

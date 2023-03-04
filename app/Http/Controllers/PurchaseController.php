@@ -214,15 +214,13 @@ class PurchaseController extends Controller
 
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                     $out_purchase_cash = $sale_box->out_purchase_cash;
-                    $out = $sale_box->out;
                     if($mp == 10){
                         $out_purchase_cash += $pay;
-                        $out            += $pay;
+                        $sale_box->departure  += $pay;
                     }
 
                     $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $pay;
-                    $sale_box->out = $out;
                     $sale_box->update();
                 }
             }
@@ -492,15 +490,13 @@ class PurchaseController extends Controller
                     //metodo para actualizar la caja
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                     $out_purchase_cash = $sale_box->out_purchase_cash;
-                    $out               = $sale_box->out;
                     if($mp == 10){
                         $out_purchase_cash += $payTotal;
-                        $out += $payTotal;
+                        $sale_box->departure += $payTotal;
                     }
 
                     $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $payTotal;
-                    $sale_box->out = $out;
                     $sale_box->update();
                 }
 
@@ -529,7 +525,7 @@ class PurchaseController extends Controller
                 $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                 if($mp == 10){
                     $sale_box->out_ndpurchase_cash +=  $invPayTotal;
-                    $sale_box->out += $invPayTotal;
+                    $sale_box->departure+= $invPayTotal;
                 }
                 $sale_box->out_ncpurchase += $invPayTotal;
                 $sale_box->ncpurchase += $invPayTotal;

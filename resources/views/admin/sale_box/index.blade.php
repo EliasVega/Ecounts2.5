@@ -50,7 +50,7 @@
                 {data: 'branch'},
                 {data: 'cash_box'},
                 {data: 'cash'},
-                {data: 'out'},
+                {data: 'departure'},
                 {data: 'total'},
                 {data: 'status'},
                 {data: 'created_at'},

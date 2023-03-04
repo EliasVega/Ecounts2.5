@@ -50,7 +50,7 @@ return new class extends Migration
             $table->decimal('out_total',20,2);//total de egresos
             $table->decimal('out_cash',20,2);//salidas de efectivo entregas de caja
             $table->decimal('cash',20,2);//total entradas efectivo
-            $table->decimal('out',20,2);//total salidas efectivo
+            $table->decimal('departure',20,2);//total salidas efectivo
             $table->string('verification_code_open',12);//codigo verif apertura de caja
             $table->string('verification_code_close',12)->nullable();//cod verif cierre de caja
             $table->enum('status', ['open', 'close'])->default('open');

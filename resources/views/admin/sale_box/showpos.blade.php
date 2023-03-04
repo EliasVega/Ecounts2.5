@@ -721,11 +721,11 @@
                         </tr>
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">SALIDA EFECTIVO:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out,2)}}</h2></p></td>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->departure,2)}}</h2></p></td>
                         </tr>
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">CAJA:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash - $sale_box->out ,2)}}</h2></p></td>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash - $sale_box->departure ,2)}}</h2></p></td>
                         </tr>
                     </tbody>
                     <tfoot>

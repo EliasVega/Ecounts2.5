@@ -129,7 +129,7 @@ class PaymentController extends Controller
                 ->first();
                 if($mp == 10){
                     $sale_box->out_payment_cash += $paymentLine;
-                    $sale_box->out += $paymentLine;
+                    $sale_box->departure += $paymentLine;
                 }
 
                 //$sale_box = Sale_box::findOrFail($boxy->id);

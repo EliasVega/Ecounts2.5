@@ -43,7 +43,7 @@ class UpdateSaleboxRequest extends FormRequest
             'out_payment'     => '',
             'out_cash'        => '',
             'cash'            => '',
-            'out'             => '',
+            'departure'       => '',
             'total'           => '',
             'verification_code_open'  => '',
             'verification_code_close' => '',

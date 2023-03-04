@@ -112,9 +112,9 @@ class CashoutController extends Controller
             $cash_out->save();
 
             $sale_box = Sale_box::findOrFail($id);
-            $sale_box->out += $payment;
             $sale_box->out_cash += $payment;
             $sale_box->out_total += $payment;
+            $sale_box->departure += $payment;
             $sale_box->update();
         }
         return redirect("cash_out")->with('success', 'Salida creada Satisfactoriamente');
