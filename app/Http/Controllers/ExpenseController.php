@@ -480,15 +480,11 @@ class ExpenseController extends Controller
                     //metodo para actualizar la caja
                     $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
                     $out_expense_cash = $sale_box->out_expense_cash;
-                    $out               = $sale_box->departure;
                     if($mp == 10){
                         $out_expense_cash += $payTotal;
-                        $out += $payTotal;
+                        $sale_box->departure += $payTotal;
                     }
-
-                    $sale_box->out_expense_cash = $out_expense_cash;
                     $sale_box->out_expense += $payTotal;
-                    $sale_box->departure = $out;
                     $sale_box->out_payment += $payTotal;
                     $sale_box->update();
                 }

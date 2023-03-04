@@ -69,7 +69,7 @@ class SaleboxController extends Controller
                 return $saleBox->branch->name;
             })
             ->addColumn('total', function (Sale_box $saleBox) {
-                return $saleBox->cash - $saleBox->out;
+                return $saleBox->cash - $saleBox->departure;
             })
             ->editColumn('created_at', function(Sale_box $saleBox){
                 return $saleBox->created_at->format('yy-m-d: h:m');

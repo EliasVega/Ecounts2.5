@@ -147,7 +147,7 @@ class PayExpenseController extends Controller
                 if (isset($sale_box)) {
                     if($mp == 10){
                         $sale_box->out_expense_cash += $paymentLine;
-                        $sale_box->out += $paymentLine;
+                        $sale_box->departure += $paymentLine;
                     }
 
                     //$sale_box = Sale_box::findOrFail($boxy->id);

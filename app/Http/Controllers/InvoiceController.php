@@ -495,7 +495,7 @@ class InvoiceController extends Controller
                 $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
                 if($mp == 10){
                     $sale_box->out_ncinvoice_cash += $payTotal;
-                    $sale_box->out += $invPayTotal;
+                    $sale_box->departure += $invPayTotal;
                 }
                 $sale_box->out_ncinvoice += $invPayTotal;
                 $sale_box->ncinvoice += $invPayTotal;
