@@ -74,7 +74,7 @@
                     <div class="col-12 col-md-12">
                         <div class="form-group" id="save">
                             <button class="btn btn-celeste btn-md" type="submit"><i class="fa fa-save"></i>&nbsp; Aceptar</button>
-                            <a href="{{url('cash_out')}}" class="btn btn-gris"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
+                            <a href="{{url('cash_in')}}" class="btn btn-gris"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
                         </div>
                     </div>
                 </div>

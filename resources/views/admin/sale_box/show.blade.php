@@ -96,8 +96,8 @@
                             @foreach($invoices as $inv)
                                 <tr>
                                     <td>{{ $inv->created_at }}</td>
-                                    <td>{{ $inv->invoice }}</td>
-                                    <td>{{ $inv->name }}</td>
+                                    <td>{{ $inv->document }}</td>
+                                    <td>{{ $inv->customer->name }}</td>
                                     <td>{{ $inv->status }}</td>
                                     <td class="tdder">$ {{ number_format($inv->pay,2) }}</td>
                                     <td class="tdder">$ {{ number_format($inv->balance,2) }}</td>
@@ -181,7 +181,7 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ number_format($sale_box->expense,2) }}</p></th>
+                                <th><p align="right">${{ number_format($exppay,2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -310,6 +310,10 @@
                             </tr>
                         </thead>
                         <tfoot>
+                            <tr>
+                                <th  colspan="4"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($ncipay,2) }}</p></th>
+                            </tr>
                         </tfoot>
                         <tbody>
                             @foreach($ncinvoices as $nc)
@@ -331,7 +335,7 @@
         <div class="box-body row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <strong class="tpdf">Detalle Notas Debito Ventas</strong>
+                    <strong class="tpdf">Detalle Notas Debito Compras</strong>
 
                 </div>
 
@@ -350,7 +354,7 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ number_format($ndipay,2) }}</p></th>
+                                <th><p align="right">${{ number_format($ndppay,2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -373,7 +377,7 @@
         <div class="box-body row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <strong class="tpdf">Detalle Notas Credito Venta</strong>
+                    <strong class="tpdf">Detalle Notas Credito Compras</strong>
 
                 </div>
 
@@ -390,6 +394,10 @@
                             </tr>
                         </thead>
                         <tfoot>
+                            <tr>
+                                <th  colspan="4"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($ndppay,2) }}</p></th>
+                            </tr>
                         </tfoot>
                         <tbody>
                             @foreach($ncpurchases as $nc)
@@ -425,6 +433,10 @@
                             </tr>
                         </thead>
                         <tfoot>
+                            <tr>
+                                <th  colspan="3"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($sum_cash_outs,2) }}</p></th>
+                            </tr>
                         </tfoot>
                         <tbody>
                             @foreach($cashOuts as $out)
@@ -459,6 +471,10 @@
                         </tr>
                     </thead>
                     <tfoot>
+                        <tr>
+                            <th  colspan="3"><p align="right">TOTAL:</p></th>
+                            <th><p align="right">${{ number_format($sum_cash_ins,2) }}</p></th>
+                        </tr>
                     </tfoot>
                     <tbody>
                         @foreach($cashIns as $cash)

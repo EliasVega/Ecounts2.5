@@ -550,9 +550,9 @@
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_pay_cashs > 0)
+            @if ($sale_box->sum_cash_ins > 0)
                 <div class="unicos">
-                    <p>REPORTE DE SALIDAS EFECTIVO</p>
+                    <p>REPORTE DE ENTRADAS EFECTIVO</p>
                     <table>
                         <thead>
                             <tr>
@@ -561,7 +561,7 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($cash_outs as $cas)
+                            @foreach ($cashIns as $cas)
                             <tr>
                                 <td>{{ $cas->name }}</td>
                                 <td>$ {{ $cas->payment }}</td>
@@ -572,7 +572,35 @@
 
                             <tr>
                             <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_cashs,2)}}</h2></p></td>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_cash_ins,2)}}</h2></p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
+            @if ($sale_box->sum_cash_outs > 0)
+                <div class="unicos">
+                    <p>REPORTE DE SALIDAS EFECTIVO</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Autoriza</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($cashOuts as $cas)
+                            <tr>
+                                <td>{{ $cas->name }}</td>
+                                <td>$ {{ $cas->payment }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+
+                            <tr>
+                            <th colspan="3" class="tfd"><p align="right" class="tfd">TOTAL:</p></th>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sum_cash_outs,2)}}</h2></p></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -610,7 +638,7 @@
                         @if ($sale_box->expense > 0)
                             <tr>
                                 <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL GASTOS:</p></th>
-                                <td><p align="right" class="tfd"><h2>${{number_format($sale_box->expense,2)}}</h2></p></td>
+                                <td><p align="right" class="tfd"><h2>${{number_format($sum_pay_expenses,2)}}</h2></p></td>
                             </tr>
                         @endif
                         @if ($sale_box->ncinvoice > 0)
@@ -637,18 +665,24 @@
                                 <td><p align="right" class="tfd"><h2>${{number_format($sale_box->ndpurchase,2)}}</h2></p></td>
                             </tr>
                         @endif
+                        @if ($sale_box->in_invoice > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">INGRESOS FACTURAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_invoice,2)}}</h2></p></td>
                         </tr>
+                        @endif
+                        @if ($sale_box->in_order > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">INGRESOS PEDIDOS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_order,2)}}</h2></p></td>
                         </tr>
+                        @endif
+                        @if ($sale_box->out_purchase > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EGRESOS COMPRAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out_purchase,2)}}</h2></p></td>
                         </tr>
+                        @endif
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL INGRESOS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_total,2)}}</h2></p></td>
@@ -657,22 +691,30 @@
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL EGRESOS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out_total,2)}}</h2></p></td>
                         </tr>
+                        @if ($sale_box->cash_box > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO INICIAL:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash_box,2)}}</h2></p></td>
                         </tr>
+                        @endif
+                        @if ($sale_box->in_invoice_cash > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO FACTURAS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_invoice_cash,2)}}</h2></p></td>
                         </tr>
+                        @endif
+                        @if ($sale_box->in_order_cash > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO PEDIDOS:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_order_cash,2)}}</h2></p></td>
                         </tr>
+                        @endif
+                        @if ($sale_box->out_purchase_cash > 0)
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">EFECTIVO COMPRAS:</p></th>
-                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->in_purchase_cash,2)}}</h2></p></td>
+                            <td><p align="right" class="tfd"><h2>${{number_format($sale_box->out_purchase_cash,2)}}</h2></p></td>
                         </tr>
+                        @endif
                         <tr>
                             <th colspan="4" class="tfd"><p align="left" class="tfd">TOTAL EFECTIVO:</p></th>
                             <td><p align="right" class="tfd"><h2>${{number_format($sale_box->cash,2)}}</h2></p></td>

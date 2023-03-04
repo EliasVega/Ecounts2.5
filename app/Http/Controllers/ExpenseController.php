@@ -204,39 +204,6 @@ class ExpenseController extends Controller
                     $sale_box->update();
                 }
             }
-            if($pay > 0){
-                    $pay_expense                   = new Pay_expense();
-                    $pay_expense->pay              = $pay;
-                    $pay_expense->balance_expense = $expense->total_pay;
-                    $pay_expense->user_id          = $expense->user_id;
-                    $pay_expense->branch_id        = $expense->branch_id;
-                    $pay_expense->expense_id      = $expense->id;
-                    $pay_expense->save();
-
-                    $pay_expense_Payment_method                     = new Pay_expense_payment_method();
-                    $pay_expense_Payment_method->pay_expense_id    = $pay_expense->id;
-                    $pay_expense_Payment_method->payment_method_id  = $request->payment_method_id;
-                    $pay_expense_Payment_method->bank_id            = $request->bank_id;
-                    $pay_expense_Payment_method->card_id            = $request->card_id;
-                    $pay_expense_Payment_method->payment_id         = $request->payment_id;
-                    $pay_expense_Payment_method->payment            = $request->pay;
-                    $pay_expense_Payment_method->transaction        = $request->transaction;
-                    $pay_expense_Payment_method->save();
-
-                $mp = $request->payment_method_id;
-
-                $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-                $out_expense_cash = $sale_box->out_expense_cash;
-                $out          = $sale_box->out;
-                if($mp == 10){
-                    $out_expense_cash += $pay;
-                    $out            += $pay;
-                }
-                $sale_box->out_expense_cash = $out_expense_cash;
-                $sale_box->out_expense += $request->pay;
-                $sale_box->out = $out;
-                $sale_box->update();
-            }
 
             //Toma el Request del array
 
@@ -264,9 +231,6 @@ class ExpenseController extends Controller
 
                 $cont++;
             }
-            $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-            $sale_box->expense += $request->total_pay;
-            $sale_box->update();
             DB::commit();
         }
         catch(Exception $e){
@@ -426,6 +390,7 @@ class ExpenseController extends Controller
             $payTotal = $payNew - $payOld;
             $balanceOld = $expense->balance;
             $balanceNew = $balanceOld + $pay;
+
             //actualizar la caja
             $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
             $sale_box->expense -= $expense->total_pay;

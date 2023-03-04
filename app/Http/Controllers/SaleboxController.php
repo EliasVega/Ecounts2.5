@@ -353,6 +353,8 @@ class SaleboxController extends Controller
             $purpay = Purchase::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
             $expenses = Expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+            $expbalance = Expense::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('balance');
+            $exppay =  Expense::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
 
             $ncinvoices = Ncinvoice::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->get();
             $ncipay =  Ncinvoice::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
@@ -375,6 +377,9 @@ class SaleboxController extends Controller
             $pay_purchases = Pay_purchase::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->get();
             $sum_pay_purchases = Pay_purchase::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
+            $pay_expenses = Pay_expense::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->get();
+            $sum_pay_expenses = Pay_expense::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
             $payments = Payment::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->get();
             $sum_payments = Payment::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
@@ -382,7 +387,7 @@ class SaleboxController extends Controller
             $sum_advances = Advance::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
             //$cash_outs = Cash_out::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->get();
-            $sum_pay_cashs = Cash_out::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('payment');
+            $sum_cash_outs = Cash_out::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('payment');
 
             $cashOuts = Cash_out::from('cash_outs AS cas')
             ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
@@ -392,6 +397,9 @@ class SaleboxController extends Controller
             ->where('cas.user_id', '=', $user->id)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
+
+            $sum_cash_ins = Cash_in::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('payment');
+
             $cashIns = Cash_in::from('cash_ins AS cas')
             ->join('sale_boxes AS sal', 'cas.sale_box_id', 'sal.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
@@ -428,13 +436,16 @@ class SaleboxController extends Controller
             'pay_purchases',
             'sum_pay_purchases',
             'expenses',
+            'expbalance',
+            'exppay',
             'payments',
             'sum_payments',
             'advances',
             'sum_advances',
             'cashOuts',
+            'sum_cash_ins',
             'cashIns',
-            'sum_pay_cashs',
+            'sum_cash_outs',
             'invoice_products',
             'ivai',
             'product_purchases',
@@ -691,14 +702,19 @@ class SaleboxController extends Controller
 
             $pay_orders = Pay_order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
             $sum_pay_orders = Pay_order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
             $pay_invoices = Pay_invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
             $sum_pay_invoices = Pay_invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
             $pay_purchases = Pay_purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
             $sum_pay_purchases = Pay_purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
             $pay_expenses = Pay_expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
             $sum_pay_expenses = Pay_expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
             $payments = Payment::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
             $sum_payments = Payment::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
             $advances = Advance::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
             $sum_advances = Advance::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
@@ -837,9 +853,19 @@ class SaleboxController extends Controller
             $sum_advances = Advance::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('pay');
 
             //$cash_outs = Cash_out::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->get();
-            $sum_pay_cashs = Cash_out::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('payment');
+            $sum_cash_outs = Cash_out::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('payment');
 
-            $cash_outs = Cash_out::from('cash_outs AS cas')
+            $cashOuts = Cash_out::from('cash_outs AS cas')
+            ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
+            ->join('users AS use', 'cas.user_id', 'use.id')
+            ->join('users AS usa', 'cas.admin_id', 'usa.id')
+            ->select('cas.id', 'cas.payment', 'cas.created_at', 'usa.name')
+            ->where('cas.user_id', '=', $user)
+            ->whereBetween('cas.created_at', [$from, $to])
+            ->get();
+
+            $sum_cash_ins = Cash_in::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('payment');
+            $cashIns = Cash_in::from('cash_ins AS cas')
             ->join('sale_boxes AS sai', 'cas.sale_box_id', 'sai.id')
             ->join('users AS use', 'cas.user_id', 'use.id')
             ->join('users AS usa', 'cas.admin_id', 'usa.id')
@@ -875,8 +901,10 @@ class SaleboxController extends Controller
             'sum_payments',
             'advances',
             'sum_advances',
-            'cash_outs',
-            'sum_pay_cashs',
+            'cashIns',
+            'sum_cash_ins',
+            'cashOuts',
+            'sum_cash_outs',
             'invoice_products',
             'ivai',
             'product_purchases',
