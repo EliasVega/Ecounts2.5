@@ -200,7 +200,7 @@ class ExpenseController extends Controller
                     $sale_box->out_expense_cash = $out_expense_cash;
                     $sale_box->out_expense += $pay;
                     $sale_box->out = $out;
-                    $sale_box->out_total += $pay;
+                    $sale_box->out_payment += $pay;
                     $sale_box->update();
                 }
             }
@@ -388,8 +388,9 @@ class ExpenseController extends Controller
             $payOld = Pay_expense::where('expense_id', $expense->id)->sum('pay');
             $payNew = $pay;
             $payTotal = $payNew - $payOld;
+            $invPayTotal = $payOld - $payNew;
             $balanceOld = $expense->balance;
-            $balanceNew = $balanceOld + $pay;
+            $balanceNew = $balanceOld - $pay;
 
             //actualizar la caja
             $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
@@ -410,8 +411,6 @@ class ExpenseController extends Controller
             $expense->total       = $request->total;
             $expense->total_iva    = $request->total_iva;
             $expense->total_pay    = $request->total_pay;
-            $expense->pay         = $pay;
-            $expense->balance     = $request->total_pay - $pay;
             if ($payOld > 0 && $pay == 0) {
                 $expense->pay         = $payOld;
             } elseif ($pay > 0) {
@@ -492,7 +491,7 @@ class ExpenseController extends Controller
                     $sale_box->out_expense_cash = $out_expense_cash;
                     $sale_box->out_expense += $payTotal;
                     $sale_box->out = $out;
-                    $sale_box->out_total += $payTotal;
+                    $sale_box->out_payment += $payTotal;
                     $sale_box->update();
                 }
 

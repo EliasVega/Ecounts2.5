@@ -133,6 +133,9 @@ class PayPurchaseController extends Controller
                 }
                 $payment->balance = $payu_total;
                 $payment->update();
+                $sale_box = Sale_box::where('user_id', '=', $pay_expense->user_id)->where('status', '=', 'open')->first();
+                $sale_box->out_payment += $payu;
+                $sale_box->update();
             }
 
             while($cont < count($payment_method)){
@@ -148,21 +151,20 @@ class PayPurchaseController extends Controller
                 $pay_purchase_payment_method->payment                = $pay[$cont];
                 $pay_purchase_payment_method->transaction        = $transaction[$cont];
                 $pay_purchase_payment_method->save();
-                $mp = $request->payment_method_id;
+                $mp = $payment_method[$cont];
 
                 $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
                 ->where('status', '=', 'open')
                 ->first();
                 if (isset($sale_box)) {
-                    $out = $sale_box->out;
                     if($mp == 10){
                         $sale_box->out_purchase_cash += $paymentLine;
-                        $out += $paymentLine;
+                        $sale_box->out += $paymentLine;
                     }
 
                     //$sale_box = Sale_box::findOrFail($boxy->id);
-                    $sale_box->out_purchase += $paymentLine;
-                    $out = $out;
+                    $sale_box->out_expense += $paymentLine;
+                    $sale_box->out_total += $paymentLine;
                     $sale_box->update();
                 }
 

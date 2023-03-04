@@ -42,17 +42,19 @@
                                     </select>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-md-5 col-sm-8 col-xs-12">
-                            <div class="form-group">
-                                <label for="unit_measure_id">U/medida</label>
-                                <div class="select">
-                                    <select name="unit_measure_id" class="form-control selectpicker" data-live-search="true" id="unit_measure_id" required>
-                                        <option value="" disabled selected>Seleccionar.</option>
-                                        @foreach($measures as $mea)
-                                        <option value="{{ $mea->id }}">{{ $mea->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <div class="col-12 col-md-12">
+                            <label for="account_class_id">U/medida</label>
+                            <div class="select">
+                                <select id="unit_measure_id" name="unit_measure_id" class="form-control selectpicker" data-live-search="true" required>
+                                    <option {{ ($product->unit_measure_id ?? '') == '' ? "selected" : "" }} disabled>Clase Cuenta</option>
+                                    @foreach($measures as $measure)
+                                        @if($measure->id == ($product->unit_measure_id ?? ''))
+                                            <option value="{{ $measure->id }}" selected>{{ $measure->name }}</option>
+                                        @else
+                                            <option value="{{ $measure->id }}">{{ $measure->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

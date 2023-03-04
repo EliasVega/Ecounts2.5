@@ -123,21 +123,17 @@ class PaymentController extends Controller
 
                 $payu = $payu + $paymentLine;
 
-                $mp = $request->payment_method_id[$cont];
+                $mp = $payment_method[$cont];
                 $sale_box = Sale_box::where('user_id', Auth::user()->id)
                 ->where('status', '=', 'open')
                 ->first();
-                $out_payment_cash = $sale_box->out_payment_cash;
-                $out = $sale_box->out;
                 if($mp == 10){
-                    $out_payment_cash += $paymentLine;
-                    $out += $paymentLine;
+                    $sale_box->out_payment_cash += $paymentLine;
+                    $sale_box->out += $paymentLine;
                 }
 
                 //$sale_box = Sale_box::findOrFail($boxy->id);
-                $sale_box->out_payment_cash = $out_payment_cash;
                 $sale_box->out_payment += $paymentLine;
-                $sale_box->out = $out;
                 $sale_box->out_total += $paymentLine;
                 $sale_box->update();
 

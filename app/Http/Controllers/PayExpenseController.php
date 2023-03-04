@@ -121,6 +121,9 @@ class PayExpenseController extends Controller
                 }
                 $payment->balance = $payu_total;
                 $payment->update();
+                $sale_box = Sale_box::where('user_id', '=', $pay_expense->user_id)->where('status', '=', 'open')->first();
+                $sale_box->out_payment += $adv;
+                $sale_box->update();
             }
 
             while($cont < count($payment_method)){
@@ -142,15 +145,14 @@ class PayExpenseController extends Controller
                 ->where('status', '=', 'open')
                 ->first();
                 if (isset($sale_box)) {
-                    $out = $sale_box->out;
                     if($mp == 10){
                         $sale_box->out_expense_cash += $paymentLine;
-                        $out += $paymentLine;
+                        $sale_box->out += $paymentLine;
                     }
 
                     //$sale_box = Sale_box::findOrFail($boxy->id);
                     $sale_box->out_expense += $paymentLine;
-                    $out = $out;
+                    $sale_box->out_total += $paymentLine;
                     $sale_box->update();
                 }
 

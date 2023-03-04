@@ -138,7 +138,7 @@ class PayinvoiceController extends Controller
                 $advance->update();
 
                 $sale_box = Sale_box::where('user_id', '=', $pay_invoice->user_id)->where('status', '=', 'open')->first();
-                $sale_box->in_advance = $sale_box->in_advance + $adv;
+                $sale_box->in_advance += $adv;
                 $sale_box->update();
             }
 
@@ -156,17 +156,16 @@ class PayinvoiceController extends Controller
                 $pay_invoice_payment_method->transaction = $transaction[$cont];
                 $pay_invoice_payment_method->save();
 
-                $mp = $request->payment_method_id;
+                $mp = $payment_method[$cont];
                 $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
                 ->where('status', '=', 'open')
                 ->first();
-                $cash = $sale_box->cash;
                 if($mp == 10){
-                    $sale_box->in_invoice_cash += $pay[$cont];
-                    $cash += $pay;
+                    $sale_box->cash += $pay;
+                    $sale_box->in_invoice_cash += $pay;
                 }
-                $sale_box->in_invoice += $pay[$cont];
-                $sale_box->cash = $cash;
+                $sale_box->in_invoice += $pay;
+                $sale_box->in_total += $pay;
                 $sale_box->update();
 
                 $cont++;

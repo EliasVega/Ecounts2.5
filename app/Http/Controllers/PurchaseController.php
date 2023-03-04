@@ -223,7 +223,6 @@ class PurchaseController extends Controller
                     $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $pay;
                     $sale_box->out = $out;
-                    $sale_box->out_total += $pay;
                     $sale_box->update();
                 }
             }
@@ -391,11 +390,13 @@ class PurchaseController extends Controller
             $pay        = $request->pay;
             $branch     = $request->branch_id[0];
             //llamado de todos los pagos y pago nuevo para la diferencia
+
             $payOld = Pay_purchase::where('purchase_id', $purchase->id)->sum('pay');
             $payNew = $pay;
             $payTotal = $payNew - $payOld;
+            $invPayTotal = $payOld - $payNew;
             $balanceOld = $purchase->balance;
-            $balanceNew = $balanceOld + $pay;
+            $balanceNew = $balanceOld - $pay;
             //actualizar la caja
             $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
             $sale_box->purchase -= $purchase->total_pay;
@@ -424,7 +425,7 @@ class PurchaseController extends Controller
             } else {
                 $purchase->pay         = $pay;
             }
-            $purchase->balance           = $request->total_pay - $balanceNew;
+            $purchase->balance   = $request->total_pay - $balanceNew;
             $purchase->retention   = $request->retention;
             $purchase->update();
             //actualizar la caja
@@ -466,7 +467,6 @@ class PurchaseController extends Controller
                     //Actualizando la caja
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                     $sale_box->out_payment += $pay;
-                    $sale_box->out_total += $pay;
                     $sale_box->update();
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
@@ -501,11 +501,10 @@ class PurchaseController extends Controller
                     $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $payTotal;
                     $sale_box->out = $out;
-                    $sale_box->out_total += $payTotal;
                     $sale_box->update();
                 }
 
-            } elseif($payTotal < 0 && $pay > 0) {
+            } elseif($payTotal < 0) {
 
                 //si no hay pago anticipado se crea un pago a compra
                 $pay_ndpurchase                   = new Pay_ndpurchase();
@@ -522,23 +521,18 @@ class PurchaseController extends Controller
                 $pay_ndpurchase_Payment_method->bank_id            = $request->bank_id;
                 $pay_ndpurchase_Payment_method->card_id            = $request->card_id;
                 $pay_ndpurchase_Payment_method->advance_id         = $request->advance_id;
-                $pay_ndpurchase_Payment_method->payment            = $pay;
+                $pay_ndpurchase_Payment_method->payment            = $invPayTotal;
                 $pay_ndpurchase_Payment_method->transaction        = $request->transaction;
                 $pay_ndpurchase_Payment_method->save();
 
                 $mp = $request->payment_method_id;
                 $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                $in_ncpurchase_cash = $sale_box->in_ncpurchase_cash;
-                $cash               = $sale_box->cash;
                 if($mp == 10){
-                    $in_ncpurchase_cash += $payTotal;
-                    $cash += $payTotal;
+                    $sale_box->out_ndpurchase_cash +=  $invPayTotal;
+                    $sale_box->out += $invPayTotal;
                 }
-                $sale_box->in_ncpurchase_cash = $in_ncpurchase_cash;
-                $sale_box->in_ncpurchase += $payTotal;
-                $sale_box->ncpurchase += $payTotal;
-                $sale_box->in_total += $payTotal;
-                $sale_box->cash = $cash;
+                $sale_box->out_ncpurchase += $invPayTotal;
+                $sale_box->ncpurchase += $invPayTotal;
                 $sale_box->update();
             }
 
