@@ -50,16 +50,16 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
-            <label class="form-control-label" for="price">Precio</label>
-            <input type="number" id="price" name="price" class="form-control"
-                placeholder="Precio">
+            <label class="form-control-label" for="quantity">Cantidad</label>
+            <input type="number" id="quantity" name="quantity" value=""
+                class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <div class="form-group">
-            <label class="form-control-label" for="quantity">Cantidad</label>
-            <input type="number" id="quantity" name="quantity" value=""
-                class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
+            <label class="form-control-label" for="price">Precio</label>
+            <input type="number" id="price" name="price" class="form-control"
+                placeholder="Precio">
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

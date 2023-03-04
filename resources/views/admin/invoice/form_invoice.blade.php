@@ -104,16 +104,16 @@
     </div>
     <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
         <div class="form-group">
-            <label class="form-control-label" for="sale_price">Precio</label>
-            <input type="number" id="sale_price" name="sale_price" class="form-control"
-                placeholder="Precio de venta">
+            <label class="form-control-label" for="quantity">Cantidad</label>
+            <input type="number" id="quantity" name="quantity" value=""
+                class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
         </div>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
         <div class="form-group">
-            <label class="form-control-label" for="quantity">Cantidad</label>
-            <input type="number" id="quantity" name="quantity" value=""
-                class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
+            <label class="form-control-label" for="sale_price">Precio</label>
+            <input type="number" id="sale_price" name="sale_price" class="form-control"
+                placeholder="Precio de venta">
         </div>
     </div>
     <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
