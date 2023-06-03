@@ -82,7 +82,7 @@ class ResolutionController extends Controller
         $resolution->end_number = $request->end_number;
         $resolution->start_date = $request->start_date;
         $resolution->end_date = $request->end_date;
-        $resolution->status = 'ACTIVA';
+        $resolution->status = 'active';
         $resolution->save();
 
         return redirect('resolution');

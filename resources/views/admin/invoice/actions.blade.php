@@ -7,11 +7,11 @@
 <a href="{{ route('show_invoice', $id) }}" class="btn btn-limon" data-toggle="tooltip" data-placement="top" title="Factura Electronica">
     <i class="fas fa-file-invoice-dollar"></i>
 </a>
-<a href="{{ route('show_pdf_invoice', $id) }}" class="btn btn-ver" target="_blank" data-toggle="tooltip" data-placement="top" title="Factura de venta pdf" >
-    <i class="fas fa-file-pdf"></i>
-
 <a href="{{ route('show_pay_invoice', $id) }}" class="btn btn-ver" data-toggle="tooltip" data-placement="top" title="Agregar Abono" >
     <i class="fas fa-file-invoice-dollar"></i>
+</a>
+<a href="{{ route('show_pdf_invoice', $id) }}" class="btn btn-ver" target="_blank" data-toggle="tooltip" data-placement="top" title="Factura de venta pdf" >
+    <i class="fas fa-file-pdf"></i>
 </a>
 <a href="{{ route('post', $id) }}" class="btn btn-ver" target="_blank" data-toggle="tooltip" data-placement="top" title="pdf Post" >
     <i class="fas fa-file-invoice-dollar"></i>

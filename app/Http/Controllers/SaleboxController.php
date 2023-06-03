@@ -25,8 +25,6 @@ use App\Models\Product;
 use App\Models\Product_purchase;
 use App\Models\Purchase;
 use App\Models\User;
-use Barryvdh\DomPDF\PDF;
-use Dompdf\Adapter\PDFLib;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
@@ -176,7 +174,7 @@ class SaleboxController extends Controller
         $from = $sale_box->created_at;
         $to = $sale_box->updated_at;
 
-        if ($user->role_id == 1 || $user->role_id == 2) {
+        /*if ($user->role_id == 1 || $user->role_id == 2) {
             $produc = [];
             $cont = 0;
             $products = Product::all();
@@ -278,7 +276,7 @@ class SaleboxController extends Controller
             ->where('cas.user_id', '=', $sale_box->user_id)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
-        } else {
+        } else {*/
 
             $produc = [];
             $cont = 0;
@@ -408,7 +406,7 @@ class SaleboxController extends Controller
             ->where('cas.user_id', '=', $user->id)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
-        }
+        //}
 
         return view('admin.sale_box.show', compact(
             'sale_box',
@@ -619,7 +617,7 @@ class SaleboxController extends Controller
         $from = $sale_box->created_at;
         $to = $sale_box->updated_at;
 
-        if ($users->role_id == 1 || $users->role_id == 2) {
+        /*if ($users->role_id == 1 || $users->role_id == 2) {
             $produc = [];
             $cont = 0;
             $products = Product::all();
@@ -728,7 +726,7 @@ class SaleboxController extends Controller
             ->where('cas.user_id', '=', $sale_box->user_id)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
-        } else {
+        } else {*/
 
             $produc = [];
             $cont = 0;
@@ -873,7 +871,7 @@ class SaleboxController extends Controller
             ->where('cas.user_id', '=', $user)
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
-        }
+        //}
 
         $view = \view('admin.sale_box.showpos', compact(
             'sale_box',

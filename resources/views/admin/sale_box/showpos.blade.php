@@ -97,6 +97,7 @@
             font-size: 0.6rem;
         }
         .fact {
+            width: 90%;
             border-bottom: 1px solid #7a7d7e;
         }
         .tfd {

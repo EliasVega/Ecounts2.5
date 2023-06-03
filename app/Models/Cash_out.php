@@ -22,7 +22,7 @@ class Cash_out extends Model
     }
 
     public function adminId(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
     public function branch(){

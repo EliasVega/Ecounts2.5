@@ -11,6 +11,8 @@ use App\Models\Municipality;
 use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\FacadesSession;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
@@ -113,13 +115,13 @@ class BranchController extends Controller
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
         }
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         /*
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         if($branch->id != 1){
             return redirect("admin/branch")->with('warning', 'Esta branch no esta autorizada para hacer compras');
@@ -137,8 +139,8 @@ class BranchController extends Controller
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Gastos');
         }
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         return redirect('expense');
     }
@@ -153,8 +155,8 @@ class BranchController extends Controller
             return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
         }
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         return redirect('invoice');
     }
@@ -172,8 +174,8 @@ class BranchController extends Controller
         }
 
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         return redirect('order');
 
@@ -182,8 +184,8 @@ class BranchController extends Controller
     public function show_product($id)
     {
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         return redirect('branch_product');
     }
@@ -192,8 +194,8 @@ class BranchController extends Controller
     {
         //
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         return redirect('product_branch');
     }
@@ -202,8 +204,8 @@ class BranchController extends Controller
     {
         //
         $branch = Branch::findOrFail($id);
-        \Session::put('branch', $branch->id, 60 * 24 * 365);
-        \Session::put('name', $branch->name, 60 * 24 * 365);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
 
         $user = Auth::user()->branch_id;
 

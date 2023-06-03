@@ -18,14 +18,6 @@ class BranchProductController extends Controller
      */
     public function index(Request $request)
     {
-        /*$branchProducts = Branch_product::from('branch_products AS bp')
-            ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
-            ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
-            ->select('pro.id', 'pro.code', 'pro.name', 'pro.price', 'bp.stock', 'bp.order_product', 'pro.status')
-            ->where('bra.id', '=', Auth::user()->branch_id)
-            ->where('pro.status', '=', 'activo')
-            ->get();
-            dd($branchProducts);*/
 
         $user = Auth::user()->role_id;
         if (request()->ajax($request)) {

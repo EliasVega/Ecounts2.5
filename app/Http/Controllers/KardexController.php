@@ -6,6 +6,7 @@ use App\Models\Kardex;
 use App\Http\Requests\StoreKardexRequest;
 use App\Http\Requests\UpdateKardexRequest;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class KardexController extends Controller
 {
@@ -16,23 +17,25 @@ class KardexController extends Controller
      */
     public function index(Request $request)
     {
-        if (request()->ajax()) {
+        if ($request->ajax()) {
             if (!empty($request->end)) {
-                $kardexes = Kardex::from('kardexes AS kar')
+                $kardexes = Kardex::whereBetween('created_at', [$request->start, $request->end])->get();
+                /*$kardexes = Kardex::from('kardexes AS kar')
                 ->join('products as pro', 'kar.product_id', 'pro.id')
                 ->join('branches as bra', 'kar.branch_id', 'bra.id')
                 ->select('kar.id', 'kar.operation', 'kar.number', 'kar.quantity', 'kar.stock', 'kar.created_at', 'pro.id as idP', 'pro.name', 'bra.name as nameB')
                 ->whereBetween('kar.created_at', [$request->start, $request->end])
-                ->get();
+                ->get();*/
             } else {
+                $kardexes = Kardex::get();
+                /*
                 $kardexes = Kardex::from('kardexes AS kar')
                 ->join('products as pro', 'kar.product_id', 'pro.id')
                 ->join('branches as bra', 'kar.branch_id', 'bra.id')
                 ->select('kar.id', 'kar.operation', 'kar.number', 'kar.quantity', 'kar.stock', 'kar.created_at', 'pro.id as idP', 'pro.name', 'bra.name as nameB')
-                ->get();
+                ->get();*/
             }
-            return datatables()
-                ->of($kardexes)
+            return DataTables::of($kardexes)
                 /*->editColumn('created_at', function(Kardex $kardex){
                     return $kardex->created_at->format('yy-m-d');
                 })*/

@@ -176,13 +176,6 @@ class AdvanceController extends Controller
         $company = Company::where('id', 1)->first();
         $user = auth::user();
         $advancePaymentMethods = Advance_payment_method::where('advance_id', $id)->get();
-        /*
-        $advancePaymentMethods = Advance_payment_method::from('advance_payment_methods as ap')
-        ->join('payment_methods as pm', 'pp.payment_method_id', 'pm.id')
-        ->join('advances as adv', 'ap.advance_id', 'adv.id')
-        ->select('pm.name', 'ap.transaction', 'ap.payment')
-        ->where('ap.advance_id', $id)
-        ->get();*/
         $advancepdf = "ADV-". $advance->id;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.advance.pdf', compact('advancePaymentMethods', 'company', 'logo', 'advance', 'user'))->render();

@@ -280,6 +280,8 @@ class InvoiceController extends Controller
         catch(Exception $e){
             DB::rollback();
         }
+
+        return redirect()->route('post', $invoice->id);
         return redirect('invoice');
     }
 

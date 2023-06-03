@@ -24,5 +24,4 @@
             <input type="text" value="{{ $purchase->created_at }}" class="form-control" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
-
 </div>

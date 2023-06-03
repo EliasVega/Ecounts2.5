@@ -1,6 +1,6 @@
 @page {
     margin-left: 0.3cm;
-    margin-right: 0;
+    margin-right: 0.3cm;
 }
 body {
     text-align: center;
@@ -26,7 +26,7 @@ body {
 
 #logo img {
     display: block;
-    width: 100px;
+    width: 180px;
     height: 80px;
     margin-top: 5px;
 }
@@ -52,7 +52,7 @@ body {
 #nombre {
     display: block;
     font-weight: 600;
-    font-size: 0.8em;
+    font-size: 1.2em;
     margin: auto;
 }
 

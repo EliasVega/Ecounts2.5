@@ -144,7 +144,7 @@
 
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="form-group">
-            <button class="btn btn-celeste" type="button" id="add"><i class="fa fa-save"></i>&nbsp; Agregar Abono</button>
+            <button class="btn btn-celeste" type="button" id="add"><i class="fa fa-save"></i> Agregar Abono</button>
             <a href="{{url('pay_purchase')}}" class="btn btn-gris"><i class="fa fa-window-close"></i>&nbsp; Cancelar</a>
         </div>
     </div>
@@ -183,7 +183,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <button class="btn btn-celeste" type="submit"><i class="fa fa-save"></i>&nbsp;
+                <button class="btn btn-celeste" type="submit"><i class="fa fa-save"></i>
                     Registrar</button>
             </div>
         </div>
