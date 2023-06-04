@@ -20,8 +20,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-
         if ($request->ajax()) {
             $users = User::where('status', 'activo')->where('id', '!=', 1)->get();
 
@@ -58,26 +56,6 @@ class UserController extends Controller
             ->toJson();
         }
         return view('admin.user.index');*/
-    }
-
-    public function inactive()
-    {
-        if (request()->ajax()) {
-            $users = User::from('users AS use')
-            ->join('branches AS bra', 'use.branch_id', 'bra.id')
-            ->join('documents AS doc', 'use.document_id', 'doc.id')
-            ->join('roles AS rol', 'use.role_id', 'rol.id')
-            ->select('use.id', 'use.name', 'doc.initial', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
-            ->where('use.status', '=', 'inactivo')
-            ->get();
-
-            return datatables()
-            ->of($users)
-            ->addColumn('btn', 'admin/user/active')
-            ->rawcolumns(['btn'])
-            ->toJson();
-        }
-        return view('admin.user.inactive');
     }
 
     /**
@@ -132,20 +110,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         return view('admin.user.show', compact('user'));
-    }
-
-    public function status($id)
-    {
-        $user = User::findOrFail($id);
-
-        if ($user->status == 'activo') {
-            $user->status = 'inactivo';
-        } else {
-            $user->status = 'activo';
-        }
-        $user->update();
-
-        return redirect('user');
     }
 
     public function show_code($id)
@@ -210,6 +174,62 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function status($id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->status == 'activo') {
+            $user->status = 'inactivo';
+        } else {
+            $user->status = 'activo';
+        }
+        $user->update();
+
+        return redirect('user');
+    }
+
+    public function inactive()
+    {
+        if (request()->ajax()) {
+            $users = User::where('status', 'inactivo')->where('id', '!=', 1)->get();
+
+            return DataTables::of($users)
+            ->addIndexColumn()
+            ->addColumn('document', function (User $user) {
+                return $user->document->initial;
+            })
+            ->addColumn('role', function (User $user) {
+                return $user->role->role;
+            })
+            ->addColumn('branch', function (User $user) {
+                return $user->branch->name;
+            })
+            ->addColumn('btn', 'admin/user/active')
+            ->rawcolumns(['btn'])
+            ->make(true);
+        }
+
+        return view('admin.user.inactive');
+        /*
+        if (request()->ajax()) {
+            $users = User::get();
+            $users = User::from('users AS use')
+            ->join('branches AS bra', 'use.branch_id', 'bra.id')
+            ->join('documents AS doc', 'use.document_id', 'doc.id')
+            ->join('roles AS rol', 'use.role_id', 'rol.id')
+            ->select('use.id', 'use.name', 'doc.initial', 'use.number', 'use.address', 'use.phone', 'use.email', 'use.position', 'rol.role', 'bra.name as nameB', 'use.status')
+            ->where('use.status', '=', 'inactivo')
+            ->get();
+
+            return datatables()
+            ->of($users)
+            ->addColumn('btn', 'admin/user/active')
+            ->rawcolumns(['btn'])
+            ->toJson();
+        }
+        return view('admin.user.inactive');*/
     }
 
     public function logout(Request $request)

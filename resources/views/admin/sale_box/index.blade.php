@@ -49,14 +49,26 @@
                 {data: 'user'},
                 {data: 'branch'},
                 {data: 'cash_box'},
-                {data: 'cash'},
+                {data: 'cash',},
                 {data: 'departure'},
                 {data: 'total'},
                 {data: 'status'},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],
-            dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
+            columnDefs:
+            [
+                {"targets": 0},
+                {"targets": 1},
+                {"targets": 2, className: 'dt-body-right', render: $.fn.dataTable.render.number('.', ',', 2)},
+                {"targets": 3, className: 'dt-body-right', render: $.fn.dataTable.render.number('.', ',', 2)},
+                {"targets": 4, className: 'dt-body-right', render: $.fn.dataTable.render.number('.', ',', 2)},
+                {"targets": 5, className: 'dt-body-right', render: $.fn.dataTable.render.number('.', ',', 2)},
+                {"targets": 6},
+                {"targets": 7},
+                {"targets": 8},
+            ],
+            dom: 'Blfrtips',
             buttons:
             [
                 'copy', 'csv', 'excel', 'print',

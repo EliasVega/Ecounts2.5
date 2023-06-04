@@ -49,6 +49,57 @@
         </div>
     </div>
 </div>
+<div class="section-body">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-green order-card">
+                                <div class="card-blok">
+                                    <h5>Sucursales</h5>
+                                    @php
+                                        use App\Models\Branch;
+                                        $cant_branchs = Branch::count();
+                                    @endphp
+                                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{ $cant_branchs }}</span></h2>
+                                        <p class="m-b-0 text-right"><a href="branch" class="text-white">Ver mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-blue order-card">
+                                <div class="card-blok">
+                                    <h5>Compras hoy</h5>
+                                    @php
+                                        use App\Models\Purchase;
+                                        $purchases = Purchase::whereDay('created_at', '=', date('d'))->sum('total_pay');
+                                    @endphp
+                                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>${{ number_format($purchases,2) }}</span></h2>
+                                        <p class="m-b-0 text-right"><a href="purchase" class="text-white">Ver mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-pink order-card">
+                                <div class="card-blok">
+                                    <h5>Ventas hoy</h5>
+                                    @php
+                                        use App\Models\Invoice;
+                                        $invoices = Invoice::whereDay('created_at', '=', date('d'))->sum('total_pay');
+                                    @endphp
+                                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>${{ number_format($invoices,2) }}</span></h2>
+                                        <p class="m-b-0 text-right"><a href="branch" class="text-white">Ver mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
         <div class="form-group">

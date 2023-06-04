@@ -42,21 +42,8 @@ class SaleboxController extends Controller
         if (request()->ajax()) {
             if ($user == 1 || $user == 2) {
                 $sale_boxes = Sale_box::get();
-                /*
-                $sale_boxes = Sale_box::from('sale_boxes AS sal')
-                ->join('users AS use', 'sal.user_id', '=', 'use.id')
-                ->join('branches AS bra', 'sal.branch_id', '=', 'bra.id')
-                ->select('sal.id', 'sal.cash_box', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
-                ->get();*/
             } else {
                 $sale_boxes = Sale_box::where('user_id', Auth::user()->id)->get();
-                /*
-                $sale_boxes = Sale_box::from('sale_boxes AS sal')
-                ->join('users AS use', 'sal.user_id', '=', 'use.id')
-                ->join('branches AS bra', 'sal.branch_id', '=', 'bra.id')
-                ->select('sal.id', 'sal.cash_box', 'sal.cash', 'sal.out', 'sal.total', 'sal.status', 'sal.created_at', 'use.name', 'bra.name as nameB')
-                ->where('sal.user_id', '=', Auth::user()->id)
-                ->get();*/
             }
             return DataTables::of($sale_boxes)
             ->addIndexColumn()
@@ -67,7 +54,7 @@ class SaleboxController extends Controller
                 return $saleBox->branch->name;
             })
             ->addColumn('total', function (Sale_box $saleBox) {
-                return $saleBox->cash - $saleBox->departure;
+                return number_format($saleBox->cash - $saleBox->departure);
             })
             ->editColumn('created_at', function(Sale_box $saleBox){
                 return $saleBox->created_at->format('yy-m-d: h:m');

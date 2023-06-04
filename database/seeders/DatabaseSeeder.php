@@ -16,9 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IndicatorsTableSeeder::class);
         $this->call(DepartmentsTableSeeder::class);
         $this->call(MunicipalitiesTableSeeder::class);
-        $this->call(CoCountriesTableSeeder::class);
-        $this->call(CoDepartmentsTableSeeder::class);
-        $this->call(CoMunicipalitiesTableSeeder::class);
         $this->call(DocumentsTableSeeder::class);
         $this->call(VoucherTypeSeeder::class);
         $this->call(RolesTableSeeder::class);
@@ -45,10 +42,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomersTableSeeder::class);
         $this->call(TypeGenerationsTableSeeder::class);
         //$this->call(TypeDocumentSeeder::class);
-        $this->call(AccountClassesTableSeeder::class);
-        $this->call(AccountGroupsTableSeeder::class);
-        $this->call(AccountsTableSeeder::class);
-        $this->call(SubaccountsTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
     }
 }

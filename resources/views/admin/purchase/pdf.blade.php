@@ -98,10 +98,10 @@
                         <tbody class="detalle">
                             @foreach ($product_purchases as $pp)
                             <tr>
-                                <td id="ccent">{{ number_format($pp->quantity) }}</td>
                                 <td>{{ $pp->product->name }}</td>
-                                <td class="tdder">${{ number_format($pp->price)}}</td>
-                                <td class="tdder">${{number_format($pp->quantity * $pp->price)}}</td>
+                                <td id="ccent">{{ number_format($pp->quantity,2) }}</td>
+                                <td class="tdder">${{ number_format($pp->price,2)}}</td>
+                                <td class="tdder">${{number_format($pp->quantity * $pp->price,2)}}</td>
                             </tr>
                             @endforeach
                         </tbody>

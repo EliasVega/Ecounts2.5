@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/buttons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rdb.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}">

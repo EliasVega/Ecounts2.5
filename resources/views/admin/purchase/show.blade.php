@@ -75,8 +75,8 @@
                         <thead>
                             <tr class="bg-info">
                                 <th>Producto</th>
-                                <th>Precio ($)</th>
                                 <th>Cantidad</th>
+                                <th>Precio ($)</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
@@ -110,9 +110,9 @@
                             @foreach($product_purchases as $PP)
                                 <tr>
                                     <td>{{ $PP->product->name }}</td>
-                                    <td>${{ $PP->price }}</td>
                                     <td>{{ $PP->quantity }}</td>
-                                    <td class="tdder">{{ $PP->subtotal }}</td>
+                                    <td class="tdder">${{ number_format($PP->price,2) }}</td>
+                                    <td class="tdder">{{ number_format($PP->subtotal,2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
