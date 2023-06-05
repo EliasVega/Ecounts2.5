@@ -84,4 +84,8 @@ class Branch extends Model
     public function cashOuts(){
         return $this->hasMany(Cash_out::class);
     }
+
+    public function prePurchase(){
+        return $this->hasMany(PrePurchase::class);
+    }
 }

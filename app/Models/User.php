@@ -142,4 +142,8 @@ class User extends Authenticatable
     public function saleBoxes(){
         return $this->hasMany(Sale_box::class);
     }
+
+    public function prePurchase(){
+        return $this->hasMany(PrePurchase::class);
+    }
 }

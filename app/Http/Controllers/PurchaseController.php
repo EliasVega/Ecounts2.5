@@ -786,7 +786,6 @@ class PurchaseController extends Controller
 
         return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
-
     }
 
     public function getMunicipalities(Request $request, $id)

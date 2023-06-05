@@ -69,4 +69,9 @@ class Supplier extends Model
     public function advances(){
         return $this->morphMany(Advance::class, 'advanceable');
     }
+
+    public function prePurchase(){
+        return $this->hasMany(PrePurchase::class);
+    }
+
 }

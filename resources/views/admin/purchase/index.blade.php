@@ -14,6 +14,7 @@
                 <a href="{{ route('purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
                 <a href="{{ route('pay_purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
                 <a href="{{ route('payment.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Ant a Proveedores</a>
+                <a href="{{ route('prePurchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Pre Compra</a>
         </div>
 
     </div>

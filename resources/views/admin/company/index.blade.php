@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-xl-4">
-                            <div class="card bg-c-pink order-card">
+                            <div class="card bg-c-blue2 order-card">
                                 <div class="card-blok">
                                     <h5>Ventas hoy</h5>
                                     @php
@@ -94,32 +94,48 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-lemon order-card">
+                                <div class="card-blok">
+                                    <h5>Usuarios</h5>
+                                    @php
+                                        use App\Models\User;
+                                        $users = User::count();
+                                    @endphp
+                                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>${{ $users }}</span></h2>
+                                        <p class="m-b-0 text-right"><a href="user" class="text-white">Ver mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-gray order-card">
+                                <div class="card-blok">
+                                    <h5>Autorizaciones</h5>
+                                    @php
+                                        use App\Models\Verification_code;
+                                        $permisos = Verification_code::count();
+                                    @endphp
+                                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{ $permisos }}</span></h2>
+                                        <p class="m-b-0 text-right"><a href="verification_code" class="text-white">Ver mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-orange order-card">
+                                <div class="card-blok">
+                                    <h5>Inventarios</h5>
+                                    @php
+                                        use App\Models\Product;
+                                        $products = Product::count();
+                                    @endphp
+                                    <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{ $products }}</span></h2>
+                                        <p class="m-b-0 text-right"><a href="Products" class="text-white">Ver mas</a></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
-        <div class="form-group">
-            <a href="{{ route('branch.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Entrar Sucursales" style='width:150px; height:100px; font-size: 24px;'>Sucursales </button></a>
-
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
-        <div class="form-group">
-            <a href="{{ route('user.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Entrar Usuarios" style='width:150px; height:100px; font-size: 24px;'>Usuarios </button></a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
-        <div class="form-group">
-            <a href="{{ route('report.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Entrar Reportes" style='width:150px; height:100px; font-size: 24px;'>Reportes </button></a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="addpayment">
-        <div class="form-group">
-            <a href="{{ route('verification_code.index') }}"><button class="btn btn-celeste btn-sm" type="button"  data-toggle="tooltip" data-placement="top" title="Autorizar Usuario" style='width:150px; height:100px; font-size: 24px;'>Permisos</button></a>
         </div>
     </div>
 </div>

@@ -98,3 +98,14 @@
     background-color: #ff5d5d !important;
     border-radius: 30px !important;
 }
+
+.btn-red {
+    color: #fff !important;
+    background-color: #ff0000 !important;
+}
+
+.btn-redR {
+    color: #fff !important;
+    background-color: #ff0000 !important;
+    border-radius: 30px !important;
+}

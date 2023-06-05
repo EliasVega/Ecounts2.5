@@ -39,6 +39,8 @@ use App\Http\Controllers\PaymentFormController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PayorderController;
 use App\Http\Controllers\PayPurchaseController;
+use App\Http\Controllers\PrePurchaseController;
+use App\Http\Controllers\PrePurchaseProductController;
 use App\Http\Controllers\ProductBranchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
@@ -143,6 +145,8 @@ Route::resource('expense', ExpenseController::class);
 Route::resource('pay_expense', PayExpenseController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('cash_in', CashInController::class);
+Route::resource('prePurchase', PrePurchaseController::class);
+Route::resource('prePurchaseProduct', PrePurchaseProductController::class);
 
 Route::get('advance/advancePdf/{id}', [AdvanceController::class, 'advancePdf'])->name('advancePdf');
 Route::get('payment/paymentPdf/{id}', [PaymentController::class, 'paymentPdf'])->name('paymentPdf');
@@ -233,4 +237,8 @@ Route::get('expense/show_pdf_expense/{id}', [ExpenseController::class, 'show_pdf
 Route::get('expense/show_pay_expense/{id}', [ExpenseController::class, 'show_pay_expense'])->name('show_pay_expense');
 Route::get('expense/create/{id}', [InvoiceController::class, 'getMunicipalities']);
 Route::get('expense/post_expense/{id}', [ExpenseController::class, 'post_expense'])->name('post_expense');
+
+Route::get('prePurchase/invoice/{id}', [PrePurchaseController::class, 'invoice'])->name('prePurchaseInvoice');
+Route::get('prePurchase/pdf/{id}', [PrePurchaseController::class, 'prePurchasepdf'])->name('prePurchasePdf');
+Route::get('prePurchase/post/{id}', [PrePurchaseController::class, 'prePurchasepost'])->name('prePurchasePost');
 

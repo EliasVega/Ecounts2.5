@@ -9,15 +9,24 @@
 }
 
 .bg-c-blue {
-    background: linear-gradient(45deg, #73b4ff, #4099ff);
+    background: linear-gradient(45deg, #9cc0e9, #4099ff);
 }
 
 .bg-c-green {
-    background: linear-gradient(45deg, #59e0c5, #2ed8b6);
+    background: linear-gradient(45deg, #a3c5be, #2ed8b6);
+}
+.bg-c-blue2 {
+    background: linear-gradient(45deg, #9d9be2, #4c74f5);
 }
 
-.bg-c-pink {
-    background: linear-gradient(45deg, #ff869a, #ff5370);
+.bg-c-lemon {
+    background: linear-gradient(45deg, #c4f3b4, #3c5534);
+}
+.bg-c-gray {
+    background: linear-gradient(45deg, #b8b8b8, #807c7c);
+}
+.bg-c-orange {
+    background: linear-gradient(45deg, #f5be91, #c16645);
 }
 
 .card {
