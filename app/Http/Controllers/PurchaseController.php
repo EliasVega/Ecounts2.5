@@ -343,7 +343,7 @@ class PurchaseController extends Controller
         //$productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
         $productPurchases = Product_purchase::from('product_purchases as pp')
         ->join('products as pro', 'pp.product_id', 'pro.id')
-        ->select('pro.id', 'pro.name', 'pro.stock', 'pp.quantity', 'pp.price', 'pp.iva', 'pp.subtotal')
+        ->select('pp.id', 'pro.id as idP', 'pro.name', 'pro.stock', 'pp.quantity', 'pp.price', 'pp.iva', 'pp.subtotal')
         ->where('purchase_id', $purchase->id)
         ->get();
 
@@ -391,7 +391,7 @@ class PurchaseController extends Controller
 
             $payOld = Pay_purchase::where('purchase_id', $purchase->id)->sum('pay');
             $payNew = $pay;
-            $payTotal = $payNew - $payOld;
+            $payTotal = $pay + $payOld;
             $invPayTotal = $payOld - $payNew;
             $balanceOld = $purchase->balance;
             $balanceNew = $balanceOld - $pay;
@@ -418,12 +418,12 @@ class PurchaseController extends Controller
             $purchase->status      = 'active';
             if ($payOld > 0 && $pay == 0) {
                 $purchase->pay         = $payOld;
-            } elseif ($pay > 0) {
+            } elseif ($pay > 0 && $payOld == 0) {
                 $purchase->pay         = $pay;
             } else {
-                $purchase->pay         = $pay;
+                $purchase->pay         = $payTotal;
             }
-            $purchase->balance   = $request->total_pay - $balanceNew;
+            $purchase->balance   = $request->total_pay - $payTotal;
             $purchase->retention   = $request->retention;
             $purchase->update();
             //actualizar la caja
@@ -433,14 +433,11 @@ class PurchaseController extends Controller
             $sale_box->update();
 
             //inicio proceso si hay pagos
-            if($payTotal > 0){
+            if($pay > 0){
                 //variable si el pago fue de un pago anticipado
                 $paym = $request->payment;
                 //variable si existe payment method
                 $payPurchase = null;
-
-
-
                 //inicio proceso si hay pago po abono anticipado
                 if ($paym > 0) {
                     //llamado al pago anticipado
@@ -469,7 +466,7 @@ class PurchaseController extends Controller
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
                     $pay_purchase                   = new Pay_purchase();
-                    $pay_purchase->pay              = $payTotal;
+                    $pay_purchase->pay              = $pay;
                     $pay_purchase->balance_purchase = $purchase->balance;
                     $pay_purchase->user_id          = $purchase->user_id;
                     $pay_purchase->branch_id        = $purchase->branch_id;
@@ -491,16 +488,17 @@ class PurchaseController extends Controller
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                     $out_purchase_cash = $sale_box->out_purchase_cash;
                     if($mp == 10){
-                        $out_purchase_cash += $payTotal;
-                        $sale_box->departure += $payTotal;
+                        $out_purchase_cash += $pay;
+                        $sale_box->departure += $pay;
                     }
 
                     $sale_box->out_purchase_cash = $out_purchase_cash;
-                    $sale_box->out_purchase += $payTotal;
+                    $sale_box->out_purchase += $pay;
                     $sale_box->update();
                 }
 
-            } elseif($payTotal < 0) {
+            }
+            /* elseif($payTotal < 0) {
 
                 //si no hay pago anticipado se crea un pago a compra
                 $pay_ndpurchase                   = new Pay_ndpurchase();
@@ -530,7 +528,7 @@ class PurchaseController extends Controller
                 $sale_box->out_ncpurchase += $invPayTotal;
                 $sale_box->ncpurchase += $invPayTotal;
                 $sale_box->update();
-            }
+            }*/
 
             $productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
             foreach ($productPurchases as $key => $productPurchase) {

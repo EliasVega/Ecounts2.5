@@ -1,5 +1,5 @@
 <div class="box-body row">
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-3" id="addSupplier">
         <label for="supplier_id">Proveedor</label>
         <div class="select">
             <select id="supplier_id" name="supplier_id" class="form-control selectpicker" data-live-search="true" required>
@@ -14,7 +14,7 @@
             </select>
         </div>
     </div>
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-3" id="addBranch">
         <label for="branch_id">Sucursal de Destino</label>
         <div class="select">
             <select id="branch_id" name="branch_id" class="form-control selectpicker" data-live-search="true" required>
@@ -30,19 +30,19 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" id="addDocument">
         <div class="form-group">
             <label class="form-control-label" for="document">N°Factura</label>
             <input type="text" id="document" name="document" value="{{ $purchase->document }}" class="form-control" placeholder="Numero de la factura" required readonly>
         </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" id="addDueData">
         <div class="form-group">
             <label class="form-control-label" for="due_date">Vencimiento</label>
             <input type="date" name="due_date" value="{{ $purchase->due_date }}" class="form-control" placeholder="Fecha Vencimiento" readonly>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="addRadio">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="percentage" value="1" id="rtfon">
             <label class="form-check-label" for="retefte">
@@ -56,7 +56,7 @@
             </label>
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="percentagey">
+    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="addPercentage">
         <div class="form-group row">
             <label class="form-control-label" for="percentage_id">Porcentaje</label>
             <select name="percentage_id" class="form-control selectpicker" id="percentage_id"
@@ -70,27 +70,27 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="addStock">
         <div class="form-group">
             <label class="form-control-label" for="stock">Stock</label>
             <input type="number" id="stock" name="stock" value="{{ old('stock') }}" class="form-control"
                 placeholder="stock" disabled pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="addIva">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
             <input type="number" id="iva" name="iva" class="form-control" placeholder="Iva" disabled
                 pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-3 col-md-2 col-sm-4 col-xs-12">
+    <div class="col-lg-3 col-md-2 col-sm-4 col-xs-12" id="addVprice">
         <div class="form-group">
             <label for="vprice">V/Actual</label>
             <input type="number" name="vprice" id="vprice"  class="form-control" readonly>
         </div>
     </div>
-    <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12" id="percent">
+    <div class="col-lg-3 col-md-2 col-sm-3 col-xs-12" id="addVpercentage">
         <div class="form-group">
             <label class="form-control-label" for="percentage">% Ret</label>
             <input type="number" id="percentage" name="percentage" value="0" class="form-control"
@@ -99,7 +99,7 @@
     </div>
     <div class="clearfix"></div>
 
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="addProduct">
         <div class="form-group row">
             <label class="form-control-label" for="product_id">Producto</label>
                 <select name="product_id" class="form-control selectpicker" id="product_id" data-live-search="true">
@@ -110,27 +110,27 @@
                 </select>
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12" id="addQuantity">
         <div class="form-group">
             <label class="form-control-label" for="quantity">Cantidad</label>
             <input type="number" id="quantity" name="quantity" value=""
                 class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12" id="addPrice">
         <div class="form-group">
             <label class="form-control-label" for="price">Precio</label>
             <input type="number" id="price" name="price" class="form-control"
                 placeholder="Precio">
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12" id="added">
         <div class="form-group">
             <label class="form-control-label">Add</label><br>
             <button class="btn btn-grisb" type="button" id="add" data-toggle="tooltip" data-placement="top" title="Add"><i class="fas fa-check"></i>&nbsp; </button>
         </div>
     </div>
-    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12" id="addCanc">
         <div class="form-group">
             <label class="form-control-label" >Canc</label><br>
             <a href="{{url('purchase')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
@@ -143,32 +143,34 @@
                 <thead>
                     <tr>
                         <th>Eliminar</th>
+                        <th>Editar</th>
+                        <th>ID</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>precio ($)</th>
-                        <th>iva (%)</th>
+                        <th>Imp. %</th>
                         <th>SubTotal ($)</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th colspan="5" class="footder">TOTAL:</th>
+                        <th colspan="7" class="footder">TOTAL:</th>
                         <td class="footder"><strong id="total_html">$ 0.00</strong>
                             <input type="hidden" name="total" id="total"></td>
                     </tr>
                     <tr>
-                        <th colspan="5" class="footder">TOTAL IVA:</th>
+                        <th colspan="7" class="footder">TOTAL IVA:</th>
                         <td class="footder"><strong id="total_iva_html">$ 0.00</strong>
                             <input type="hidden" name="total_iva" id="total_iva">
                         </td>
                     </tr>
                     <tr id="rtferase">
-                        <th colspan="5" class="footder">RETENCION:</th>
+                        <th colspan="7" class="footder">RETENCION:</th>
                         <td class="footder"><strong id="retention_html">$ 0.00</strong>
                             <input type="hidden" name="retention" id="retention"></td>
                     </tr>
                     <tr>
-                        <th colspan="5" class="footder">TOTAL PAGAR:</th>
+                        <th colspan="7" class="footder">TOTAL PAGAR:</th>
                         <td class="footder"><strong id="total_pay_html">$ 0.00</strong>
                             <input type="hidden" name="total_pay" id="total_pay"></td>
                     </tr>

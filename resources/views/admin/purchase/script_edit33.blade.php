@@ -186,6 +186,71 @@
             })
         }
     }
+/*
+    $(document).ready(function(){
+        $("#discrepancy_id").change(function(){
+            var discrepancy = $("#discrepancy_id").val();
+            if(discrepancy == 1){
+                $("#discrepancy").hide();
+                $('#priceModal').prop("readonly", true);
+                cont=0;
+                total=0;
+                subtotal=[];
+                total_iva = 0;
+
+                $("#addproduct").hide();
+                $("#addquantity").hide();
+                $("#addprice").hide();
+                $("#addiva").hide();
+                $("#addstock").hide();
+                $("#added").hide();
+                editing();
+            } else if (discrepancy == 2) {
+                $("#discrepancy").hide();
+                cont = 0;
+                total = 0;
+                subtotal = [];
+                total_iva = 0;
+                $("#addproduct").hide();
+                $("#addquantity").hide();
+                $("#addprice").hide();
+                $("#added").hide();
+                $("#cancelled").hide();
+                $("#updatePurchase").hide();
+                editing();
+            } else if (discrepancy == 3) {
+                $("#discrepancy").hide();
+                $('#quantityModal').prop("readonly", true);
+                cont=0;
+                total=0;
+                subtotal=[];
+                total_iva = 0;
+
+                $("#addproduct").hide();
+                $("#addquantity").hide();
+                $("#addprice").hide();
+                $("#addiva").hide();
+                $("#addstock").hide();
+                $("#added").hide();
+                editing();
+            } else if (discrepancy == 4) {
+                $("#discrepancy").hide();
+                $('#quantityModal').prop("readonly", true);
+                cont=0;
+                total=0;
+                subtotal=[];
+                total_iva = 0;
+
+                $("#addproduct").hide();
+                $("#addquantity").hide();
+                $("#addprice").hide();
+                $("#addiva").hide();
+                $("#addstock").hide();
+                $("#added").hide();
+                editing();
+            }
+        });
+    });*/
     //function editing(){
 
         //discrep = $("#discrepancy_id").val();
@@ -216,6 +281,22 @@
 
                     $('#product_id option:selected').remove();
                     clean();
+                    /*
+                    if (discrep == 1) {
+                        $('.btnedit').prop("disabled", false);
+                        $('.btndelete').prop("disabled", true);
+                    } else if (discrep == 2){
+                        $('.btnedit').prop("disabled", true);
+                        $('.btndelete').prop("disabled", true);
+                    } else if (discrep == 3){
+                        $('.btnedit').prop("disabled", false);
+                        $('.btndelete').prop("disabled", true);
+                    } else if (discrep == 4){
+                        $('.btnedit').prop("disabled", false);
+                        $('.btndelete').prop("disabled", true);
+                    }*/
+
+
                 }else{
                     //alert("Rellene todos los campos del detalle para esta compra");
                     Swal.fire({

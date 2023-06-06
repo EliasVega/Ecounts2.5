@@ -32,6 +32,7 @@
         </div>
     </div>
     {!!Form::close()!!}
+    @include('admin/pre_purchase.editmodal')
 @endsection
 @section('scripts')
     @include('admin/purchase.script_edit')

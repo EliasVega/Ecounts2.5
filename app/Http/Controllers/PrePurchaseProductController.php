@@ -66,6 +66,7 @@ class PrePurchaseProductController extends Controller
             $price      = $request->price;
             $iva        = $request->iva;
             $pay        = $request->pay;
+            $totalpay = $request->totalpay;
             $branch = $prePurchase->branch_id;
             $supplier = $prePurchase->supplier_id;
             //Crea un registro de compras
@@ -74,7 +75,7 @@ class PrePurchaseProductController extends Controller
             $purchase->branch_id   = $branch;
             $purchase->supplier_id = $supplier;
             $purchase->payment_form_id = $request->payment_form_id;
-            $purchase->payment_method_id = $request->payment_method_id;
+            $purchase->payment_method_id = $request->payment_method_id[0];
             $purchase->percentage_id = $request->percentage_id;
             $purchase->voucher_type_id = 7;
             $purchase->document    = $request->document;
@@ -84,8 +85,8 @@ class PrePurchaseProductController extends Controller
             $purchase->total_iva    = $request->total_iva;
             $purchase->total_pay    = $request->total_pay;
             $purchase->status      = 'active';
-            $purchase->pay         = $pay;
-            $purchase->balance     = $request->total_pay - $pay;
+            $purchase->pay         = $totalpay;
+            $purchase->balance     = $request->total_pay - $totalpay;
             $purchase->retention   = $request->retention;
             $purchase->save();
 
@@ -95,70 +96,77 @@ class PrePurchaseProductController extends Controller
             $sale_box->out_total += $purchase->total_pay;
             $sale_box->update();
             //inicio proceso si hay pagos
-            if($pay > 0){
-                //variable si el pago fue de un pago anticipado
-                $paym = $request->payment;
-                //variable si existe payment method
-                $payPurchase = null;
-                //inicio proceso si hay pago po abono anticipado
-                if ($paym > 0) {
-                    //llamado al pago anticipado
-                    $payment = Payment::findOrFail( $request->payment_id);
-                    //si el pago es utilizado en su totalidad agregar el destino aplicado
-                    if ($payment->pay > $payment->balance) {
-                        $payment->destination = $payment->destination . '<->' . $purchase->document;
+            $contp = 0;
+            if ($totalpay > 0) {
+                # code...
+
+            while($contp < count($pay)){
+                if($totalpay > 0){
+                    //variable si el pago fue de un pago anticipado
+                    $paym = $request->payment;
+                    //variable si existe payment method
+                    $payPurchase = null;
+                    //inicio proceso si hay pago po abono anticipado
+                    if ($paym > 0) {
+                        //llamado al pago anticipado
+                        $payment = Payment::findOrFail( $request->payment_id);
+                        //si el pago es utilizado en su totalidad agregar el destino aplicado
+                        if ($payment->pay > $payment->balance) {
+                            $payment->destination = $payment->destination . '<->' . $purchase->document;
+                        } else {
+                            $payment->destination = $purchase->document;
+                        }
+                        //variable si hay saldo en el pago anticipado
+                        $paym_total = $payment->balance - $paym;
+                        //cambiar el status del pago anticipado
+                        if ($paym_total == 0) {
+                            $payment->status      = 'aplicado';
+                        } else {
+                            $payment->status      = 'parcial';
+                        }
+                        //actualizar el saldo del pago anticipado
+                        $payment->balance = $paym_total;
+                        $payment->update();
+                        $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                        $sale_box->out_payment += $pay[$contp];
+                        $sale_box->update();
+
                     } else {
-                        $payment->destination = $purchase->document;
+                        //si no hay pago anticipado se crea un pago a compra
+                        $pay_purchase                   = new Pay_purchase();
+                        $pay_purchase->pay              = $pay[$contp];
+                        $pay_purchase->balance_purchase = $purchase->balance;
+                        $pay_purchase->user_id          = $purchase->user_id;
+                        $pay_purchase->branch_id        = $purchase->branch_id;
+                        $pay_purchase->purchase_id      = $purchase->id;
+                        $pay_purchase->save();
+                        //metodo que registra el pago a compra y el methodo de pago
+                        $pay_purchase_Payment_method = new Pay_purchase_payment_method();
+                        $pay_purchase_Payment_method->pay_purchase_id    = $pay_purchase->id;
+                        $pay_purchase_Payment_method->payment_method_id  = $request->payment_method_id[$contp];
+                        $pay_purchase_Payment_method->bank_id            = $request->bank_id[$contp];
+                        $pay_purchase_Payment_method->card_id            = $request->card_id[$contp];
+                        $pay_purchase_Payment_method->payment_id         = $request->payment_id;
+                        $pay_purchase_Payment_method->payment            = $pay[$contp];
+                        $pay_purchase_Payment_method->transaction        = $request->transaction[$contp];
+                        $pay_purchase_Payment_method->save();
+
+                        $mp = $request->payment_method_id[$contp];
+
+                        $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                        $out_purchase_cash = $sale_box->out_purchase_cash;
+                        if($mp == 10){
+                            $out_purchase_cash += $pay[$contp];
+                            $sale_box->departure  += $pay[$contp];
+                        }
+                        $sale_box->out_purchase_cash = $out_purchase_cash;
+                        $sale_box->out_purchase += $pay[$contp];
+                        $sale_box->update();
                     }
-                    //variable si hay saldo en el pago anticipado
-                    $paym_total = $payment->balance - $paym;
-                    //cambiar el status del pago anticipado
-                    if ($paym_total == 0) {
-                        $payment->status      = 'aplicado';
-                    } else {
-                        $payment->status      = 'parcial';
-                    }
-                    //actualizar el saldo del pago anticipado
-                    $payment->balance = $paym_total;
-                    $payment->update();
-                    $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->out_payment += $pay;
-                    $sale_box->update();
-
-                } else {
-                    //si no hay pago anticipado se crea un pago a compra
-                    $pay_purchase                   = new Pay_purchase();
-                    $pay_purchase->pay              = $pay;
-                    $pay_purchase->balance_purchase = $purchase->balance;
-                    $pay_purchase->user_id          = $purchase->user_id;
-                    $pay_purchase->branch_id        = $purchase->branch_id;
-                    $pay_purchase->purchase_id      = $purchase->id;
-                    $pay_purchase->save();
-                    //metodo que registra el pago a compra y el methodo de pago
-                    $pay_purchase_Payment_method = new Pay_purchase_payment_method();
-                    $pay_purchase_Payment_method->pay_purchase_id    = $pay_purchase->id;
-                    $pay_purchase_Payment_method->payment_method_id  = $request->payment_method_id;
-                    $pay_purchase_Payment_method->bank_id            = $request->bank_id;
-                    $pay_purchase_Payment_method->card_id            = $request->card_id;
-                    $pay_purchase_Payment_method->payment_id         = $request->payment_id;
-                    $pay_purchase_Payment_method->payment            = $pay;
-                    $pay_purchase_Payment_method->transaction        = $request->transaction;
-                    $pay_purchase_Payment_method->save();
-
-                    $mp = $request->payment_method_id;
-
-                    $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                    $out_purchase_cash = $sale_box->out_purchase_cash;
-                    if($mp == 10){
-                        $out_purchase_cash += $pay;
-                        $sale_box->departure  += $pay;
-                    }
-
-                    $sale_box->out_purchase_cash = $out_purchase_cash;
-                    $sale_box->out_purchase += $pay;
-                    $sale_box->update();
                 }
+                $contp++;
             }
+        }
 
             //Toma el Request del array
 

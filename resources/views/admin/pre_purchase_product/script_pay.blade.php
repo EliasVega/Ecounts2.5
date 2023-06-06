@@ -69,6 +69,7 @@
             $("#card1").hide();
             $("#card2").hide();
             $("#payment_method_id").val(1);
+            $("#totalpay").val(0);
         }
         });
     });
