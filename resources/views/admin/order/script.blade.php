@@ -57,10 +57,13 @@
     subtotal=[];
     total_iva=0;
     ret = 0;
+    percentage_id = 1;
     //form invoice
-    $("#idPro").hide();
-    $("#percentagey").hide();
-    $("#percent").hide();
+    $("#addProductId").hide();
+    $("#addIdPercentage").hide();
+    $("#addVpercentage").hide();
+    $("#addPercentage").hide();
+    /*
     $("#save").hide();
     //form pay
     $("#cash").hide();
@@ -71,45 +74,46 @@
     $("#noDefined").hide();
     $("#advanceCus").hide();
     $("#transvenped").hide();
-    $("#addpayment").hide();
-
+    $("#addpayment").hide();*/
+    /*
     $("#payi").hide();
     $("#abadvancey").hide();
     $("#abvto").hide();
     $("#transactiony").hide();
     $("#banky").hide();
     $("#cardy").hide();
-    $("#advancey").hide();
-    $("#rtferase").hide();
+    $("#advancey").hide();*/
+    //$("#rtferase").hide();
     /*
     $("#advances").hide();
     $("#percentage").val(0);*/
 
     $(document).ready(function(){
         $("#rtfon").click(function(){
-            $("#percentagey").show();
-            $("#rtferase").show();
-            $("#percent").show();
+            $("#addPercentage").show();
+            //$("#rtferase").show();
+            $("#addVpercentage").show();
         });
     });
     $(document).ready(function(){
         $("#rtfoff").click(function(){
-            $("#percentagey").hide();
-            $("#rtferase").hide();
-            $("#percent").hide();
+            $("#addPercentage").hide();
+            //$("#rtferase").hide();
+            $("#addVpercentage").hide();
         });
     });
     $("#percentage_id").change(percentageVer);
 
     function percentageVer(){
         datapercentage = document.getElementById('percentage_id').value.split('_');
-        $("#percentage_id").val(datapercentage[0]);
+        percentage_id= datapercentage[0];
         $("#percentage").val(datapercentage[1]);
+        //idpercentage = $("#idpercentage").val();
         percentages();
     }
 
     function percentages(){
-        $("#percentagey").hide();
+        $("#addPercentage").hide();
     }
 
     $("#product_id").change(productValue);
@@ -137,12 +141,9 @@
         iva= $("#iva").val();
         idp= $("#idP").val();
         idps= idp.toString();
-        percentage = $("#percentage").val();
-        retention = $("#retention").val();
 
-        datapercentage = document.getElementById('percentage_id').value.split('_');
-        percentage_id= datapercentage[0];
-        percentage = $("#percentage").val();
+        //datapercentage = document.getElementById('percentage_id').value.split('_');
+        //percentage_id= datapercentage[0];
         pay = $("#pay").val();
         if(product_id !="" && quantity!="" && quantity>0  && price!="" && stock!="" && iva!=""){
 
@@ -159,7 +160,7 @@
                 ivita= subtotal[cont]*iva/100;
                 total_iva=total_iva+ivita;
 
-                var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="idP[]" value="'+idp+'">'+idp+'</td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td> <td><input type="hidden" id="quantity" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" id="price" name="price[]" value="'+parseFloat(price).toFixed(2)+'">'+price+'</td> td> <td><input type="hidden" name="iva[]" value="'+iva+'">'+iva+'</td>  <td> $'+parseFloat(subtotal[cont]).toFixed(2)+'</td></tr>';
+                var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times"></i></button></td><td><input type="hidden" name="percentage_id[]" value="'+percentage_id+'">'+percentage_id+'</td> <td><input type="hidden" name="idP[]" value="'+idp+'">'+idp+'</td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td> <td><input type="hidden" id="quantity" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" id="price" name="price[]" value="'+parseFloat(price).toFixed(2)+'">'+price+'</td> td> <td><input type="hidden" name="iva[]" value="'+iva+'">'+iva+'</td>  <td> $'+parseFloat(subtotal[cont]).toFixed(2)+'</td></tr>';
                 cont++;
 
                 totals();
@@ -236,6 +237,7 @@
         $("#fila" + index).remove();
         assess();
     }
+    /*
     $(document).ready(function(){
         $("#payment_form_id").change(function(){
         form = $("#payment_form_id").val();
@@ -510,5 +512,5 @@
             $("#advance").val(0)
             prepaid();
         }
-    }
+    }*/
 </script>

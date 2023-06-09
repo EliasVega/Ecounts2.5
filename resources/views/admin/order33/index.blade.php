@@ -5,28 +5,24 @@
 @section('content')
 <main class="main">
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2">
-            <h5>Listado de Compras</h5>
-                <a href="purchase/create" class="btn btn-celeste btn-sm"><i class="fa fa-plus mr-2"></i> Agregar Compra</a>
-                <a href="{{ route('branch.index') }}" class="btn btn-celeste btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
-                <a href="{{ route('supplier.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Proveedores</a>
-                <a href="{{ route('purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.C.</a>
-                <a href="{{ route('purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
-                <a href="{{ route('pay_purchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
-                <a href="{{ route('payment.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Ant a Proveedores</a>
-                <a href="{{ route('prePurchase.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Orden de Compra</a>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5>Listado de Ventas
+                <a href="order/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Pedido</a>
+                <a href="{{ route('branch.index') }}" class="btn btn-celeste"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                <a href="{{ route('customer.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Clientes</a>
+                <a href="{{ route('pay_order.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
+            </h5>
         </div>
-
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="purchases">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="orders">
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
-                            <th>Proveedor</th>
-                            <th>#Fac_Compra</th>
+                            <th>Sede</th>
+                            <th>Cliente</th>
                             <th>Valor</th>
                             <th>Saldo</th>
                             <th>Fecha</th>
@@ -42,21 +38,21 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#purchases').DataTable(
+        $('#orders').DataTable(
         {
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
-            ajax: '{{ route('purchase.index') }}',
-            order: [[ 0, "desc" ]],
+            ajax: '{{ route('order.index') }}',
+            order: [[0, "desc"]],
             columns:
             [
                 {data: 'id'},
-                {data: 'supplier'},
-                {data: 'document'},
-                {data: 'total_pay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
-                {data: 'balance', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'branch'},
+                {data: 'customer'},
+                {data: 'total_pay'},
+                {data: 'balance'},
                 {data: 'created_at'},
                 {data: 'status'},
                 {data: 'btn'},

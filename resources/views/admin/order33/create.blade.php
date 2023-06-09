@@ -21,7 +21,6 @@
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         @include('admin/order.form_order')
                     </div>
-
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         @include('admin/order.form_pay')
                     </div>
@@ -36,5 +35,4 @@
 @endsection
 @section('scripts')
     @include('admin/order.script')
-    @include('admin/order.script_pay')
 @endsection

@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Order_product;
 use App\Http\Requests\StoreOrderProductRequest;
 use App\Http\Requests\UpdateOrderProductRequest;
+use App\Models\Advance;
+use App\Models\Bank;
 use App\Models\Branch_product;
+use App\Models\Card;
+use App\Models\Customer;
 use App\Models\Indicator;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
 use App\Models\Kardex;
 use App\Models\Order;
+use App\Models\Pay_invoice;
+use App\Models\Pay_invoice_payment_method;
+use App\Models\Payment_form;
+use App\Models\Payment_method;
+use App\Models\Percentage;
 use App\Models\Product;
+use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +45,9 @@ class OrderProductController extends Controller
      */
     public function create(Request $request)
     {
+
+        $order = Order::where('id', $request->session()->get('order'))->first();
+        /*
         $orders = Order::from('orders AS ord')
         ->join('users AS use', 'ord.user_id', 'use.id')
         ->join('branches AS bra', 'ord.branch_id', 'bra.id')
@@ -43,24 +56,34 @@ class OrderProductController extends Controller
         ->join('payment_methods AS pm', 'ord.payment_method_id', 'pm.id')
         ->select('ord.id', 'ord.due_date', 'ord.items', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'ord.pay', 'ord.balance', 'ord.retention', 'ord.status', 'ord.created_at', 'use.name', 'bra.name AS nameB', 'cus.name AS nameC', 'pf.id as idPF', 'pf.name AS namePF', 'pm.name AS namePM')
         ->where('ord.id', '=', $request->session()->get('order'))
-        ->first();
+        ->first();*/
+        $orderProducts = Order_product::where('order_id', $order->id)->get();
+        /*
         $order_products = Order_product::from('order_products AS op')
         ->join('products AS pro', 'op.product_id', '=', 'pro.id')
         ->join('orders AS ord', 'op.order_id', '=', 'ord.id')
         ->select('op.product_id', 'op.quantity', 'op.price', 'op.subtotal', 'ord.id', 'ord.total', 'ord.total_iva', 'ord.total_pay', 'pro.id', 'pro.name')
         ->where('op.order_id', '=', $orders->id)
-        ->get();
+        ->get();*/
+        $products = Product::get();
+        /*
         $products = Product::from('products AS pro')
         ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
         ->select('pro.id', 'pro.name', 'pro.sale_price', 'pro.stock', 'cat.iva')
         ->where('pro.status', '=', 'ACTIVO')
-        ->get();
+        ->get();*/
+        $customers = Customer::get();
+        $percentages = Percentage::get();
+        $paymentForms = Payment_form::get();
+        $paymentMethods = Payment_method::get();
+        $banks = Bank::get();
+        $cards = Card::get();
+        $advances = Advance::where('status', '!=', 'aplicado')->get();
 
         $cont = 0;
-
-        foreach($order_products as $op){
-            $prod = Product::select('stock')->where('id', '=', $op->product_id)->first();
-            if($op->quantity >= $prod->stock){
+        foreach($orderProducts as $orderProduct){
+            $product = Product::select('stock')->where('id', '=', $orderProduct->product_id)->first();
+            if($orderProduct->quantity >= $product->stock){
                 $cont ++;
             }
         }
@@ -68,7 +91,19 @@ class OrderProductController extends Controller
         if ($cont > 0) {
             return redirect('order')->with('warning', 'La venta de algunos productos supera el stock');
         } else {
-            return view('admin.order_product.create', compact('orders', 'products', 'order_products', 'ordersis'));
+            return view('admin.order_product.create', compact(
+                'order',
+                'products',
+                'orderProducts',
+                'order',
+                'customers',
+                'percentages',
+                'paymentForms',
+                'paymentMethods',
+                'banks',
+                'cards',
+                'advances'
+            ));
         }
     }
 
@@ -82,123 +117,146 @@ class OrderProductController extends Controller
     {
         try{
             DB::beginTransaction();
-
+            $order = Order::findOrFail($request->order);
+            $orderProducts = Order_product::where('order_id', $order->id)->get();
             $indicator   = Indicator::where('id', '=', 1)->first();
             $number      = $indicator->from;
             $inv      = count(Invoice::get());
-            $nunfact  = $number + $inv;
-            $nunfact  ++;
+            $invoicey  = $number + $inv;
+            $invoicey  ++;
 
-            /*$productoinvoices = count(Productoinvoice::where('invoice_id', '=', 30)->get());
-         dd($productoinvoices);*/
+            $pay        = $request->pay;
 
-            $branch = $request->session()->get('branch');
-            $order_product = Order_product::where('order_id', '=', $request->session()->get('order'))->get();
+            $invoice                    = new Invoice();
+            $invoice->user_id           = Auth::user()->id;
+            $invoice->branch_id         = $order->branch_id;
+            $invoice->customer_id       = $order->customer_id;
+            $invoice->payment_form_id   = $request->payment_form_id;
+            $invoice->payment_method_id = $request->payment_method_id;
+            $invoice->percentage_id     = $order->percentage_id;
+            $invoice->voucher_type_id   = 1;
+            $invoice->document          = $invoicey; //Cuadrar esto para ccolocarle prefix y numero
+            $invoice->type_document     = '01';
+            $invoice->type_operation    = '10';
+            $invoice->due_date          = $request->due_date;
+            $invoice->items             = $order->items;
+            $invoice->total             = $order->total;
+            $invoice->total_iva         = $order->total_iva;
+            $invoice->total_pay         = $order->total_pay;
+            $invoice->pay               = $order->pay + $pay;
+            $invoice->balance           = $order->balance - $pay;
+            $invoice->retention         = $order->retention;
+            $invoice->save();
 
-            foreach($order_product AS $op){
-                $producty = Branch_product::select('stock')
-                ->where('product_id', '=', $op->product_id)
-                ->where('Branch_id', '=', $branch)
-                ->first();
-                if($op->quantity > $producty->stock){
-                    return redirect("branch")->with('warning', 'Cantidad supera el stock');
+            $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+            $sale_box->invoice += $invoice->total_pay;
+            $sale_box->in_total += $invoice->total_pay;
+            $sale_box->update();
+            if($pay > 0){
+                $adv = $request->advance;
+
+                if ($adv != 0) {
+                    //llamado al pago anticipado
+                    $advance = Advance::findOrFail( $request->advance_id);
+                    //si el Anticipo es utilizado en su totalidad agregar el destino aplicado
+                    if ($advance->pay > $advance->balance) {
+                        $advance->destination = $advance->destination . '<->' . $invoice->document;
+                    } else {
+                        $advance->destination = $invoice->document;
+                    }
+                    //variable si hay saldo en el Anticipado
+                    $adv_total = $advance->balance - $adv;
+                    //cambiar el status del Anticipado
+                    if ($adv_total == 0) {
+                        $advance->status = 'aplicado';
+                    } else {
+                        $advance->status = 'parcial';
+                    }
+                    $advance->balance = $adv_total;
+                    $advance->update();
+                    /*
+                    $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->in_advance += $pay;
+                    $sale_box->update();*/
+                } else {
+                    $pay_invoice                  = new Pay_invoice();
+                    $pay_invoice->pay             = $pay;
+                    $pay_invoice->balance_invoice = $invoice->balance - $pay;
+                    $pay_invoice->user_id         = $invoice->user_id;
+                    $pay_invoice->branch_id       = $invoice->branch_id;
+                    $pay_invoice->invoice_id      = $invoice->id;
+                    $pay_invoice->save();
+
+                    $pay_invoice_Payment_method  = new Pay_invoice_payment_method();
+                    $pay_invoice_Payment_method->pay_invoice_id     = $pay_invoice->id;
+                    $pay_invoice_Payment_method->payment_method_id  = $request->payment_method_id;
+                    $pay_invoice_Payment_method->bank_id            = $request->bank_id;
+                    $pay_invoice_Payment_method->card_id            = $request->card_id;
+                    $pay_invoice_Payment_method->advance_id         = $request->advance_id;
+                    $pay_invoice_Payment_method->payment            = $request->pay;
+                    $pay_invoice_Payment_method->transaction        = $request->transaction;
+                    $pay_invoice_Payment_method->save();
+
+                    $mp = $request->payment_method_id;
+                    //metodo para actualizar la caja
+                    $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                    $in_invoice_cash = $sale_box->in_invoice_cash;
+                    $cash            = $sale_box->cash;
+                    if($mp == 10){
+                        $in_invoice_cash += $pay;
+                        $cash            += $pay;
+                    }
+                    $sale_box->in_invoice_cash = $in_invoice_cash;
+                    $sale_box->in_invoice      += $pay;
+                    $sale_box->cash            = $cash;
+                    $sale_box->update();
                 }
             }
 
-            $orders = Order::where('id', '=', $request->session()->get('order'))->first();
+            foreach ($orderProducts as $key => $orderProduct) {
 
-            $invoice                    = new Invoice();
-            $invoice->invoice           = $nunfact;
-            $invoice->type_document     = '01';
-            $invoice->type_operation    = '10';
-            $invoice->due_date          = $orders->due_date;
-            $invoice->items             = $orders->items;
-            $invoice->total             = $orders->total;
-            $invoice->total_iva         = $orders->total_iva;
-            $invoice->total_pay         = $orders->total_pay;
-            $invoice->pay               = $orders->pay;
-            $invoice->balance           = $orders->total_pay;
-            $invoice->retention         = $orders->retention;
-            $invoice->user_id           = $orders->user_id;
-            $invoice->branch_id         = $orders->branch_id;
-            $invoice->customer_id       = $orders->customer_id;
-            $invoice->payment_form_id   = $orders->payment_form_id;
-            $invoice->payment_method_id = $orders->payment_method_id;
-            $invoice->retention_id      = $orders->retention_id;
-            $invoice->save();
-
-
-
-            $cont = 0;
-            foreach ($order_product as $orp) {
-
-                $subtotal = $orp->quantity * $orp->price;
-                $ivasub = $subtotal * $orp->iva/100;
-                $item = $cont + 1;
+                $subtotal = $orderProduct->quantity * $orderProduct->price;
+                $ivasub   = $subtotal * $orderProduct->iva/100;
+                $product_id   = $orderProduct->product_id;
+                $quantity = $orderProduct->quantity;
+                $price = $orderProduct->price;
 
                 $invoice_product = new Invoice_product();
                 $invoice_product->invoice_id = $invoice->id;
-                $invoice_product->product_id = $orp->product_id;
-                $invoice_product->quantity   = $orp->quantity;
-                $invoice_product->price      = $orp->price;
-                $invoice_product->iva        = $orp->iva;
+                $invoice_product->product_id = $product_id;
+                $invoice_product->quantity   = $quantity;
+                $invoice_product->price      = $price;
+                $invoice_product->iva        = $orderProduct->iva;
                 $invoice_product->subtotal   = $subtotal;
                 $invoice_product->ivasubt    = $ivasub;
-                $invoice_product->item       = $item;
+                $invoice_product->item       = $key + 1;
                 $invoice_product->save();
 
-                $idp = $invoice_product->product_id;
-                $branch_products = Branch_product::where('product_id', $idp)
-                    ->where('branch_id', $branch)->first();
-                    /*
-                $branch_products = Branch_product::from('branch_products AS bp')
-                ->join('products AS pro', 'bp.product_id', '=', 'pro.id')
-                ->join('branches AS bra', 'bp.branch_id', '=', 'bra.id')
-                ->select('bp.id', 'bp.stock', 'pro.id AS idP', 'bra.id as idB')
-                ->where('bp.product_id', '=', $invoice_product->product_id)
-                ->where('bp.branch_id', '=', $branch)
-                ->first();*/
-
-                $id = $branch_products->id;
-                $prestock = $branch_products->stock;
-                $stock = $prestock - $invoice_product->quantity;
-
-                $branch_product = Branch_product::findOrFail($id);
-                $branch_product->stock = $stock;
+                $branch_product = Branch_product::where('product_id', $product_id)->first();
+                $branch_product->stock -= $quantity;
                 $branch_product->update();
 
-                $products = Product::findOrFail($idp);
-                /*
-                $products = Product::from('products AS pro')
-                ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
-                ->select('pro.id', 'cat.utility', 'pro.price', 'pro.stock')
-                ->where('pro.id', '=', $invoice_product->product_id)
-                ->first();*/
-
-                //$id = $products->id;
-                $stockardex = $products->stock;
+                //reeplazando trigger
+                $product = Product::findOrFail($product_id);
+                $product->stock -= $quantity;
+                $product->update();
 
                 $kardex = new Kardex();
-                $kardex->product_id = $idp;
+                $kardex->product_id = $product->id;
                 $kardex->branch_id = $invoice->branch_id;
-                $kardex->operation = 'VENTA';
-                $kardex->number = $invoice->invoice;
-                $kardex->quantity = $orp->quantity;
-                $kardex->stock = $stockardex;
+                $kardex->operation = 'venta';
+                $kardex->number = $invoice->document;
+                $kardex->quantity = $quantity;
+                $kardex->stock = $product->stock;
                 $kardex->save();
-
-                $cont++;
             }
-
-            $order = order::findOrFail($orders->id);
-                $order->status = 'FACTURADO';
-                $order->update();
-
             DB::commit();
         }
         catch(Exception $e){
             DB::rollback();
         }
+
+        //return redirect()->route('post', $invoice->id);
         return redirect('invoice');
     }
 

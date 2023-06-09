@@ -80,45 +80,44 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        $departments    = Department::get();
+        $departments = Department::get();
         $municipalities = Municipality::get();
-        $documents      = Document::get();
-        $customers      = Customer::get();
-        $liabilities    = Liability::get();
-        $organizations  = Organization::get();
-        $regimes        = Regime::get();
-        $taxes          = Tax::get();
-        $payment_forms   = Payment_form::get();
+        $documents = Document::get();
+        $customers = Customer::get();
+        $liabilities = Liability::get();
+        $organizations = Organization::get();
+        $regimes = Regime::get();
+        $payment_forms = Payment_form::get();
         $payment_methods = Payment_method::get();
-        $banks          = Bank::get();
-        $cards          = Card::get();
-        $branch         = $request->session()->get('branch');
-        $percentages     = Percentage::get();
-        $pay_events      = Pay_event::where('status', '=', 'pendiente')->get();
-
-        $branch_products = Branch_product::from('branch_products as bp')
+        $percentages = Percentage::get();
+        $banks = Bank::get();
+        $cards = Card::get();
+        $advances   = Advance::where('status', '!=', 'aplicado')->get();
+        $branchProducts = Branch_product::from('branch_products as bp')
         ->join('products as pro', 'bp.product_id', 'pro.id')
         ->join('categories as cat', 'pro.category_id', 'cat.id')
         ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
-        ->where('bp.branch_id', '=', $request->session()->get('branch'))
+        ->where('bp.branch_id', Auth::user()->branch_id)
         ->where('bp.stock', '>', 0)
         ->where('pro.status', '=', 'activo')
         ->get();
-        return view('admin.order.create', compact('customers',
-        'branch_products',
-        'departments',
-        'municipalities',
-        'documents',
-        'liabilities',
-        'organizations',
-        'taxes',
-        'regimes',
-        'payment_forms',
-        'payment_methods',
-        'percentages',
-        'banks',
-        'cards',
-        'pay_events'));
+        return view('admin.order.create', compact(
+            'departments',
+            'municipalities',
+            'documents',
+            'customers',
+            'liabilities',
+            'organizations',
+            'regimes',
+            'payment_forms',
+            'payment_methods',
+            'percentages',
+            'banks',
+            'cards',
+            'advances',
+            'branchProducts'
+        ));
+
     }
 
     /**
@@ -146,7 +145,7 @@ class OrderController extends Controller
             $order->customer_id       = $request->customer_id;
             $order->payment_form_id   = $request->payment_form_id;
             $order->payment_method_id = $request->payment_method_id;
-            $order->retention_id      = $request->retention_id;
+            $order->percentage_id      = $request->percentage_id[0];
             $order->voucher_type_id   = 18;
             $order->due_date          = $request->due_date;
             $order->items             = count($product_id);
@@ -157,71 +156,74 @@ class OrderController extends Controller
             $order->balance           = $request->total_pay - $pay;
             $order->retention         = $request->retention;
             $order->save();
+
+            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+            $sale_box->order += $order->total_pay;
+            $sale_box->in_total += $order->total_pay;
+            $sale_box->update();
+
             //si hay Abono registra abono
             if($pay > 0){
                 $adv = $request->advance;
-                if ($adv != 0) {
-                    $advance              = Advance::findOrFail( $request->advance_id);
-                    $adv_total = $advance->balance - $adv;
 
-                    $advance->destination = $order->id;
-                    if ($adv_total == 0) {
-                        $advance->status      = 'aplicado';
+                if ($adv != 0) {
+                    //llamado al pago anticipado
+                    $advance = Advance::findOrFail( $request->advance_id);
+                    //si el Anticipo es utilizado en su totalidad agregar el destino aplicado
+                    if ($advance->pay > $advance->balance) {
+                        $advance->destination = $advance->destination . '<->' . $order->id;
                     } else {
-                        $advance->status      = 'parcial';
+                        $advance->destination = $order->id;
+                    }
+                    //variable si hay saldo en el Anticipado
+                    $adv_total = $advance->balance - $adv;
+                    //cambiar el status del Anticipado
+                    if ($adv_total == 0) {
+                        $advance->status = 'aplicado';
+                    } else {
+                        $advance->status = 'parcial';
                     }
                     $advance->balance = $adv_total;
                     $advance->update();
-
                     $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
                     $sale_box->in_advance += $pay;
                     $sale_box->update();
                 } else {
                     //si es un abono nuevo aplica abono pedido
                     $pay_order = new Pay_order();
-                    $pay_order->pay           = $pay;
-                    $pay_order->balance_order = $order->balance - $pay;
-                    $pay_order->user_id       = $order->user_id;
-                    $pay_order->branch_id     = $order->branch_id;
-                    $pay_order->order_id      = $order->id;
+                    $pay_order->pay = $pay;
+                    $pay_order->balance_order = $order->balance;
+                    $pay_order->user_id = $order->user_id;
+                    $pay_order->branch_id = $order->branch_id;
+                    $pay_order->order_id = $order->id;
                     $pay_order->save();
                     //Registrando la tabla de metodos de pago abono pedido
-                    $pay_order_payment_method = new Pay_order_payment_method();
-                    $pay_order_payment_method->pay_order_id        = $pay_order->id;
-                    $pay_order_payment_method->payment_method_id  = $request->payment_method_id;
-                    $pay_order_payment_method->bank_id            = $request->bank_id;
-                    $pay_order_payment_method->card_id            = $request->card_id;
-                    $pay_order_payment_method->advance_id         = $request->advance_id;
-                    $pay_order_payment_method->payment            = $request->pay;
-                    $pay_order_payment_method->transaction        = $request->transaction;
-                    $pay_order_payment_method->save();
+                    $pay_order_Payment_method  = new Pay_order_payment_method();
+                    $pay_order_Payment_method->pay_order_id = $pay_order->id;
+                    $pay_order_Payment_method->payment_method_id  = $request->payment_method_id;
+                    $pay_order_Payment_method->bank_id = $request->bank_id;
+                    $pay_order_Payment_method->card_id = $request->card_id;
+                    $pay_order_Payment_method->advance_id = $request->advance_id;
+                    $pay_order_Payment_method->payment = $request->pay;
+                    $pay_order_Payment_method->transaction = $request->transaction;
+                    $pay_order_Payment_method->save();
+
+                    $mp = $request->payment_method_id;
+                    //metodo para actualizar la caja
+                    $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                    $in_order_cash = $sale_box->in_order_cash;
+                    $cash = $sale_box->cash;
+                    if($mp == 10){
+                        $in_order_cash += $pay;
+                        $cash += $pay;
+                    }
+                    $sale_box->in_order_cash = $in_order_cash;
+                    $sale_box->in_order += $pay;
+                    $sale_box->cash = $cash;
+                    $sale_box->update();
                 }
-                //extrayendo variables
-                $mp            = $request->payment_method_id;
-                $boxy          = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-                $in_order      = $boxy->in_order + $request->total_pay;
-                $in_order_cash = $boxy->in_order_cash;
-                $in_pay_cash   = $boxy->in_pay_cash;
-                $in_pay        = $boxy->in_pay + $pay;
-                $out           = $boxy->out_cash;
-                $cash          = $boxy->cash;
-                //si hay medio de pago
-                if($mp == 10){
-                    $in_order_cash += $pay;
-                    $in_pay_cash   += $pay;
-                    $cash          += $pay;
-                }
-                $totale = $cash - $out;
-                //Actualizando la caja
-                $sale_box = Sale_box::findOrFail($boxy->id);
-                $sale_box->in_order_cash = $in_order_cash;
-                $sale_box->in_order      = $in_order;
-                $sale_box->in_pay_cash   = $in_pay_cash;
-                $sale_box->in_pay        = $in_pay;
-                $sale_box->cash          = $cash;
-                $sale_box->total         = $totale;
-                $sale_box->update();
             }
+
             $cont = 0;
 
             while($cont < count($product_id)){
@@ -253,12 +255,6 @@ class OrderController extends Controller
                 $cont++;
             }
 
-            //obteniendo datos de la caja
-            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-            //Actualizando caja
-            $sale_box->order += $request->total_pay;
-            $sale_box->update();
-
             DB::commit();
         }
         catch(Exception $e){
@@ -277,9 +273,271 @@ class OrderController extends Controller
     {
 
         /*mostrar detalles*/
-        $order_products = Order_product::where('order_id', $order->id)->get();
+        $orderProducts = Order_product::where('order_id', $order->id)->get();
 
-        return view('admin.order.show', compact('order', 'order_products'));
+        return view('admin.order.show', compact('order', 'orderProducts'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Order $order)
+    {
+        $departments = Department::get();
+        $municipalities = Municipality::get();
+        $documents = Document::get();
+        $customers = Customer::get();
+        $liabilities = Liability::get();
+        $organizations = Organization::get();
+        $regimes = Regime::get();
+        $payment_forms = Payment_form::get();
+        $payment_methods = Payment_method::get();
+        $percentages = Percentage::get();
+        $banks = Bank::get();
+        $cards = Card::get();
+        $advances   = Advance::where('status', '!=', 'aplicado')->get();
+
+        $branchProducts = Branch_product::from('branch_products as bp')
+        ->join('products as pro', 'bp.product_id', 'pro.id')
+        ->join('categories as cat', 'pro.category_id', 'cat.id')
+        ->select('bp.id', 'bp.branch_id', 'bp.stock', 'pro.id as idP', 'pro.sale_price', 'pro.name', 'cat.iva')
+        ->where('bp.branch_id', Auth::user()->branch_id)
+        ->where('bp.stock', '>', 0)
+        ->where('pro.status', '=', 'activo')
+        ->get();
+        $orderProducts = Order_product::from('order_products as op')
+        ->join('products as pro', 'op.product_id', 'pro.id')
+        ->join('orders as ord', 'op.order_id', 'ord.id')
+        ->join('percentages as per', 'ord.percentage_id', 'per.id')
+        ->select('op.id', 'pro.id as idP', 'pro.name', 'pro.stock', 'op.quantity', 'op.price', 'op.iva', 'op.subtotal', 'per.percentage')
+        ->where('order_id', $order->id)
+        ->get();
+        return view('admin.order.edit', compact(
+            'order',
+            'departments',
+            'municipalities',
+            'documents',
+            'customers',
+            'liabilities',
+            'organizations',
+            'regimes',
+            'payment_forms',
+            'payment_methods',
+            'percentages',
+            'banks',
+            'cards',
+            'advances',
+            'branchProducts',
+            'orderProducts'
+        ));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateOrderRequest  $request
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateOrderRequest $request, Order $order)
+    {
+        try{
+            DB::beginTransaction();
+            //llamado a variables
+            $idP          = $request->idP;
+
+            $product_id = $request->product_id;
+            $quantity   = $request->quantity;
+            $price      = $request->price;
+            $iva        = $request->iva;
+            $pay        = $request->pay;
+            $branch     = $order->branch_id;
+            //llamado de todos los pagos y pago nuevo para la diferencia
+
+            $payOld = Pay_order::where('order_id', $order->id)->sum('pay');
+            $payNew = $pay;
+            $payTotal = $pay + $payOld;
+            $invPayTotal = $payOld - $payNew;
+            $balanceOld = $order->balance;
+            $balanceNew = $balanceOld - $pay;
+            //actualizar la caja
+            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+            $sale_box->order -= $order->total_pay;
+            $sale_box->out_total -= $order->total_pay;
+            $sale_box->update();
+
+            //registro en la tabla Order
+            $order->user_id           = Auth::user()->id;
+            $order->customer_id       = $request->customer_id;
+            $order->due_date          = $request->due_date;
+            $order->items             = count($product_id);
+            $order->total             = $request->total;
+            $order->total_iva         = $request->total_iva;
+            $order->total_pay         = $request->total_pay;
+            if ($payOld > 0 && $pay == 0) {
+                $order->pay         = $payOld;
+            } elseif ($pay > 0 && $payOld == 0) {
+                $order->pay         = $pay;
+            } else {
+                $order->pay         = $payTotal;
+            }
+            $order->balance           = $request->total_pay - $payTotal;
+            $order->retention         = $request->retention;
+            $order->update();
+
+            //actualizar la caja
+            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+            $sale_box->order += $order->total_pay;
+            $sale_box->out_total += $order->total_pay;
+            $sale_box->update();
+
+            //inicio proceso si hay pagos
+            if($pay > 0){
+                //variable si el pago fue de un pago anticipado
+                $paym = $request->payment;
+                //variable si existe payment method
+                $payPurchase = null;
+                //inicio proceso si hay pago po abono anticipado
+                if ($paym > 0) {
+                    //llamado al pago anticipado
+                    $advance = Advance::findOrFail( $request->advance_id);
+                    //si el pago es utilizado en su totalidad agregar el destino aplicado
+                    if ($advance->pay > $advance->balance) {
+                        $advance->destination = $advance->destination . '<->' . 'OP' . $order->id;
+                    } else {
+                        $advance->destination = 'OP' . $order->id;
+                    }
+                    //variable si hay saldo en el pago anticipado
+                    $paym_total = $advance->balance - $paym;
+                    //cambiar el status del pago anticipado
+                    if ($paym_total == 0) {
+                        $advance->status      = 'aplicado';
+                    } else {
+                        $advance->status      = 'parcial';
+                    }
+                    //actualizar el saldo del pago anticipado
+                    $advance->balance = $paym_total;
+                    $advance->update();
+                    /*
+                    //Actualizando la caja
+                    $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->out_payment += $pay;
+                    $sale_box->update();*/
+                } else {
+                    //si es un abono nuevo aplica abono pedido
+                    $pay_order = new Pay_order();
+                    $pay_order->pay = $pay;
+                    $pay_order->balance_order = $order->balance;
+                    $pay_order->user_id = $order->user_id;
+                    $pay_order->branch_id = $order->branch_id;
+                    $pay_order->order_id = $order->id;
+                    $pay_order->save();
+                    //Registrando la tabla de metodos de pago abono pedido
+                    $pay_order_Payment_method  = new Pay_order_payment_method();
+                    $pay_order_Payment_method->pay_order_id = $pay_order->id;
+                    $pay_order_Payment_method->payment_method_id  = $request->payment_method_id;
+                    $pay_order_Payment_method->bank_id = $request->bank_id;
+                    $pay_order_Payment_method->card_id = $request->card_id;
+                    $pay_order_Payment_method->advance_id = $request->advance_id;
+                    $pay_order_Payment_method->payment = $request->pay;
+                    $pay_order_Payment_method->transaction = $request->transaction;
+                    $pay_order_Payment_method->save();
+
+                    $mp = $request->payment_method_id;
+                    //metodo para actualizar la caja
+                    $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                    $in_order_cash = $sale_box->in_order_cash;
+                    if($mp == 10){
+                        $in_order_cash += $pay;
+                        $sale_box->cash += $pay;
+                    }
+
+                    $sale_box->in_order_cash = $in_order_cash;
+                    $sale_box->in_order += $pay;
+                    $sale_box->update();
+                }
+
+            }
+
+            $orderProducts = Order_product::where('order_id', $order->id)->get();
+            foreach ($orderProducts as $key => $orderProduct) {
+
+                $orderProduct->quantity    = 0;
+                $orderProduct->price       = 0;
+                $orderProduct->iva         = 0;
+                $orderProduct->subtotal    = 0;
+                $orderProduct->ivasubt     = 0;
+                $orderProduct->update();
+
+            }
+
+            //Toma el Request del array
+
+            $cont = 0;
+            //Ingresa los productos que vienen en el array
+            while($cont < count($product_id)){
+
+                $orderProduct = Order_product::where('order_id', $order->id)
+                ->where('product_id', $product_id[$cont])->first();
+                //Inicia proceso actualizacio order product si no existe
+                if (is_null($orderProduct)) {
+                    $subtotal = $quantity[$cont] * $price[$cont];
+                    $ivasub = $subtotal * $iva[$cont]/100;
+                    $order_product = new Order_product();
+                    $order_product->order_id = $order->id;
+                    $order_product->product_id  = $product_id[$cont];
+                    $order_product->quantity    = $quantity[$cont];
+                    $order_product->price       = $price[$cont];
+                    $order_product->iva         = $iva[$cont];
+                    $order_product->subtotal    = $subtotal;
+                    $order_product->ivasubt     = $ivasub;
+                    $order_product->save();
+                } else {
+                    if ($quantity[$cont] > 0) {
+
+                        $subtotal = $quantity[$cont] * $price[$cont];
+                        $ivasub = $subtotal * $iva[$cont]/100;
+
+                        if ($orderProduct->quantity > 0) {
+                            $orderProduct->quantity    += $quantity[$cont];
+                            $orderProduct->price       = $price[$cont];
+                            $orderProduct->iva         = $iva[$cont];
+                            $orderProduct->subtotal    += $subtotal;
+                            $orderProduct->ivasubt     += $ivasub;
+                            $orderProduct->update();
+                        } else {
+                            $orderProduct->quantity    = $quantity[$cont];
+                            $orderProduct->price       = $price[$cont];
+                            $orderProduct->iva         = $iva[$cont];
+                            $orderProduct->subtotal    = $subtotal;
+                            $orderProduct->ivasubt     = $ivasub;
+                            $orderProduct->update();
+                        }
+                    }
+                }
+
+                $cont++;
+            }
+            DB::commit();
+        }
+        catch(Exception $e){
+            DB::rollback();
+        }
+        return redirect('order');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Order $order)
+    {
+        //
     }
 
     public function show_invoicy($id)
@@ -314,13 +572,13 @@ class OrderController extends Controller
     public function show_pdf_order(Request $request,$id)
     {
         $order = Order::where('id', $id)->first();
-        $order_product = Order_product::where('order_id', $id)->get();
+        $orderProducts = Order_product::where('order_id', $id)->get();
         $company = Company::where('id', 1)->first();
 
         $days = $order->created_at->diffInDays($order->due_date);
         $orderpdf = "PEDIDO-". $order->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.order.pdf', compact('order', 'days', 'order_product', 'company', 'logo'))->render();
+        $view = \view('admin.order.pdf', compact('order', 'days', 'orderProducts', 'company', 'logo'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
@@ -361,40 +619,6 @@ class OrderController extends Controller
         $order->save();
 
         return redirect("order")->with('success', 'Pedido Anulado Satisfactoriamente');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateOrderRequest $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
     }
 
     public function getMunicipalities(Request $request, $id)

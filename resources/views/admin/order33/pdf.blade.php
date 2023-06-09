@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ 'css/pdfs.css' }}">
-        <title>Factura de venta</title>
-
+        <title>Orden de Pedido</title>
     </head>
     <header id="header">
         <!-- LOGGO -->
@@ -18,12 +17,12 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->liability->name }} -- <br> R. fiscal. {{ $company->regime->name }}  <br> {{ $company->organization->name }}  {{ $company->address }} <br> {{ $company->municipality->name }} -- {{ $company->department->name }} <br> Email: {{ $company->email }}
+                <p id="datos">Nit: {{ $company->nit }} -- {{ $company->dv }} --  {{ $company->liability->name }} -- <br> R. fiscal. {{ $company->regime->name }} <br> {{ $company->description }} -- {{ $company->organization->name }} <br> {{ $company->address }} {{ $company->municipality->name }} -- {{ $company->department->name }} <br> Email: {{ $order->email }} - Sucursal - {{ $order->branch->name }} -- {{ $order->branch->address }}
                     </p>
             </div>
-            <!--DATOS FACTURA -->
+            <!--DATOS PEDIDO -->
             <div id="factura">
-                <p> <h4>COMPRA <br> <strong id="numfact">N°.{{ $order->id }}</strong>  </h4>
+                <p> <h4> PEDIDO <br> <strong id="numfact">N°. {{ $order->id }}</strong>  </h4>
 
                 </p>
                 <p> <h4>FECHA DE EMISION <br> <strong id="detosfact">{{ date('d-m-Y', strtotime($order->created_at)) }}</strong>  </h4>
@@ -36,7 +35,7 @@
         <div class="content">
             <div class="center">
                 <div id="tcliente">
-                    <span id="titulo"><strong>DATOS DEL PROVEEDOR</strong></span>
+                    <span id="titulo"><strong>DATOS DEL CLIENTE</strong></span>
                 </div>
             </div>
             <div class="center">
@@ -89,19 +88,19 @@
                         <!--DETALLE DE VENTA -->
                         <thead>
                             <tr>
-                                <th id="dos">Descripcion del producto</th>
                                 <th id="uno">Cant.</th>
+                                <th id="dos">Descripcion del producto</th>
                                 <th>Valor</th>
                                 <th>SubTotal ($)</th>
                             </tr>
                         </thead>
                         <tbody class="detalle">
-                            @foreach ($orderProducts as $orderProduct)
+                            @foreach ($order_product as $op)
                             <tr>
-                                <td>{{ $orderProduct->product->name }}</td>
-                                <td id="ccent">{{ number_format($orderProduct->quantity,2) }}</td>
-                                <td class="tdder">${{ number_format($orderProduct->price,2)}}</td>
-                                <td class="tdder">${{number_format($orderProduct->quantity * $orderProduct->price,2)}}</td>
+                                <td id="ccent">{{ number_format($op->quantity) }}</td>
+                                <td>{{ $op->product->name }}</td>
+                                <td class="tdder">${{ number_format($op->price)}}</td>
+                                <td class="tdder">${{number_format($op->quantity * $op->price)}}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -109,17 +108,17 @@
                             <!--DATOS FTOTALES -->
                             <tr>
                                <th colspan="3" class="footder">TOTAL:</th>
-                               <td class="footder"><strong>${{number_format($order->total,2)}}</strong></td>
+                               <td class="footder"><strong>${{number_format($order->total, 2)}}</strong></td>
                             </tr>
 
                             <tr>
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
-                                <td class="footder"><strong>${{number_format($order->total_iva,2)}}</strong> </td>
+                                <td class="footder"><strong>${{number_format($order->total_iva, 2)}}</strong> </td>
                             </tr>
 
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
-                                <td class="footder"><strong id="total">${{number_format($order->total_pay,2)}}</strong></td>
+                                <td class="footder"><strong id="total">${{number_format($order->total_pay, 2)}}</strong></td>
                             </tr>
                         </tfoot>
                     </table>

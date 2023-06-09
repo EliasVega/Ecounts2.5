@@ -37,7 +37,7 @@ class StoreOrderRequest extends FormRequest
             'customer_id'       => 'required|integer',
             'payment_form_id'   => 'required|integer',
             'payment_method_id' => 'required|integer',
-            'percentage_id'      => 'nullable|integer',
+            'percentage_id'      => 'nullable',
             'voucher_type_id' => 'integer'
         ];
     }

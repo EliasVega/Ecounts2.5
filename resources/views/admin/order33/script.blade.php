@@ -2,9 +2,27 @@
     /*$(document).ready(function(){
             alert('estoy funcionando correctamanete empresa');
         });*/
+    $("#department_id").change(function(event){
+        $.get("create/" + event.target.value + "", function(response){
+            $("#municipality_id").empty();
+            $("#municipality_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
+            for(i = 0; i < response.length; i++){
+                $("#municipality_id").append("<option value = '" + response[i].id +"'>" + response[i].name + "</option>");
+            }
+            $("#municipality_id").selectpicker('refresh');
+        });
+    });
     jQuery(document).ready(function($){
         $(document).ready(function() {
             $('#percentage_id').select2({
+                theme: "classic",
+                width: "100%",
+            });
+        });
+    });
+    jQuery(document).ready(function($){
+        $(document).ready(function() {
+            $('#customer_id').select2({
                 theme: "classic",
                 width: "100%",
             });
@@ -34,16 +52,15 @@
             });
         });
     });
-
     var cont=0;
     total=0;
     subtotal=[];
     total_iva=0;
     ret = 0;
-    //form purchase
+    //form invoice
     $("#idPro").hide();
-    $("#addPercentage").hide();
-    $("#addVpercentage").hide();
+    $("#percentagey").hide();
+    $("#percent").hide();
     $("#save").hide();
     //form pay
     $("#cash").hide();
@@ -52,18 +69,21 @@
     $("#card1").hide();
     $("#card2").hide();
     $("#noDefined").hide();
+    $("#advanceCus").hide();
     $("#transvenped").hide();
     $("#addpayment").hide();
 
     $("#payi").hide();
-    $("#abpaymenty").hide();
+    $("#abadvancey").hide();
     $("#abvto").hide();
     $("#transactiony").hide();
     $("#banky").hide();
     $("#cardy").hide();
-    $("#paymenty").hide();
+    $("#advancey").hide();
     $("#rtferase").hide();
-    $("#advance").hide();
+    /*
+    $("#advances").hide();
+    $("#percentage").val(0);*/
 
     $(document).ready(function(){
         $("#rtfon").click(function(){
@@ -72,24 +92,22 @@
             $("#percent").show();
         });
     });
-
     $(document).ready(function(){
         $("#rtfoff").click(function(){
             $("#percentagey").hide();
             $("#rtferase").hide();
-            $("#porcent").hide();
+            $("#percent").hide();
         });
     });
-
     $("#percentage_id").change(percentageVer);
 
     function percentageVer(){
         datapercentage = document.getElementById('percentage_id').value.split('_');
-
         $("#percentage_id").val(datapercentage[0]);
         $("#percentage").val(datapercentage[1]);
         percentages();
     }
+
     function percentages(){
         $("#percentagey").hide();
     }
@@ -99,10 +117,10 @@
     function productValue(){
         dataProduct = document.getElementById('product_id').value.split('_');
         $("#stock").val(dataProduct[1]);
-        $("#vprice").val(dataProduct[2]);
+        $("#sale_price").val(dataProduct[2]);
         $("#iva").val(dataProduct[3]);
-        //$("#idP").val(dataProduct[4]);
-        $("#price").val(dataProduct[2]);
+        $("#idP").val(dataProduct[4]);
+        $("#suggested_price").val(dataProduct[2]);
     }
     $(document).ready(function(){
         $("#add").click(function(){
@@ -110,49 +128,61 @@
         });
     });
     function add(){
-
         dataProduct = document.getElementById('product_id').value.split('_');
         product_id= dataProduct[0];
         product= $("#product_id option:selected").text();
         quantity= $("#quantity").val();
-        price= $("#price").val();
+        price= $("#sale_price").val();
         stock= $("#stock").val();
         iva= $("#iva").val();
+        idp= $("#idP").val();
+        idps= idp.toString();
+        percentage = $("#percentage").val();
+        retention = $("#retention").val();
 
         datapercentage = document.getElementById('percentage_id').value.split('_');
         percentage_id= datapercentage[0];
         percentage = $("#percentage").val();
-        if(product_id !="" && quantity!="" && quantity>0  && price!=""){
-            subtotal[cont]= parseFloat(quantity) * parseFloat(price);
-            total= total+subtotal[cont];
-            ivita= subtotal[cont]*iva/100;
-            total_iva=total_iva+ivita;
+        pay = $("#pay").val();
+        if(product_id !="" && quantity!="" && quantity>0  && price!="" && stock!="" && iva!=""){
 
-            var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="id[]"  value="'+product_id+'">'+product_id+'</td><td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>   <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" name="price[]"  value="'+price+'">'+price+'</td> <td><input type="hidden" name="iva[]"  value="'+iva+'">'+iva+'</td><td>$'+subtotal[cont]+' </td></tr>';
+            if (parseFloat(quantity) > parseFloat(stock) ) {
+                //alert("Rellene todos los campos del detalle de la venta");
+                Swal.fire({
+                type: 'error',
+                //title: 'Oops...',
+                text: 'La cantidad a vender supera el stock',
+            })
+            } else {
+                subtotal[cont]= parseFloat(quantity) * parseFloat(price);
+                total= total+subtotal[cont];
+                ivita= subtotal[cont]*iva/100;
+                total_iva=total_iva+ivita;
 
-            cont++;
+                var fila= '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="idP[]" value="'+idp+'">'+idp+'</td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td> <td><input type="hidden" id="quantity" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" id="price" name="price[]" value="'+parseFloat(price).toFixed(2)+'">'+price+'</td> td> <td><input type="hidden" name="iva[]" value="'+iva+'">'+iva+'</td>  <td> $'+parseFloat(subtotal[cont]).toFixed(2)+'</td></tr>';
+                cont++;
 
-            totals();
-            assess();
-            $('#details').append(row);
-            $('#product_id option:selected').remove();
-            clean();
-
+                totals();
+                assess();
+                $('#details').append(fila);
+                $('#product_id option:selected').remove();
+                clean();
+            }
 
         }else{
-            //alert("Rellene todos los campos del detalle para esta compra");
+            //alert("Rellene todos los campos del detalle de la venta");
             Swal.fire({
             type: 'error',
             //title: 'Oops...',
-            text: 'Rellene todos los campos del detalle para esta compra',
+            text: 'Rellene todos los campos del detalle de la venta',
             })
         }
     }
-
     function clean(){
         $("#product_id").val("");
         $("#quantity").val("");
         $("#sale_price").val("");
+        $("#idP").val("");
     }
     function totals(){
         rte = parseFloat($("#percentage").val());
@@ -162,7 +192,6 @@
         $("#total").val(total.toFixed(2));
 
         total_pay=total+total_iva;
-
         $("#total_iva_html").html("$ " + total_iva.toFixed(2));
         $("#total_iva").val(total_iva.toFixed(2));
 
@@ -173,10 +202,22 @@
         $("#total_pay_html").html("$ " + total_pay.toFixed(2));
         $("#total_pay").val(total_pay.toFixed(2));
 
-        $("#balance").val(total_pay);
+        $("#balance").val(total_pay.toFixed(2));
     }
+    function assess(){
 
-    function deleterow(index){
+        if(total>0){
+
+        $("#save").show();
+        $("#percentagey").hide();
+        $("#rtfon").attr('disabled','disabled');
+        $("#rtfoff").attr('disabled','disabled');
+
+        } else{
+            $("#save").hide();
+        }
+    }
+    function eliminar(index){
 
         total = total-subtotal[index];
         total_iva= total*iva/100;
@@ -192,173 +233,35 @@
         $("#total_pay_html").html("$ " + total_pay.toFixed(2));
         $("#total_pay").val(total_pay.toFixed(2));
 
-        $("#balance").val(total_pay);
         $("#fila" + index).remove();
         assess();
     }
-    function assess(){
-
-        if(total>0){
-
-            $("#save").show();
-            $("#addPercentage").hide();
-            $("#rtfon").attr('disabled','disabled');
-            $("#rtfoff").attr('disabled','disabled');
-
-        } else{
-            $("#save").hide();
-        }
-    }
-
-
-    jQuery(document).on("click", "#editrow", function () {
-        editrow();
-    });
-
-    function editrow(index) {
-
-        $("#contMod").hide();
-        $("#subtotalMod").hide();
-        $("#idMod").hide();
-
-        // Obtener la fila
-        var row = $("#row" + index);
-        // Solo si la fila existe
-        if(row) {
-
-            // Buscar datos en la fila y asignar a campos del formulario:
-            // Primera columna (0) tiene ID, segunda (1) tiene nombre, tercera (2) capacidad
-            $("#contModal").val(index);
-            $("#product_idModal").val(row.find("td:eq(2)").text());
-            $("#productModal").val(row.find("td:eq(3)").text());
-            $("#quantityModal").val(row.find("td:eq(4)").text());
-            $("#priceModal").val(row.find("td:eq(5)").text());
-            $("#ivaModal").val(row.find("td:eq(6)").text());
-            $("#subtotalModal").val(row.find("td:eq(7)").text());
-
-            // Mostrar modal
-            $('#editModal').modal('show');
-        }
-    }
-
-    jQuery(document).on("click", "#updatePurchase", function () {
-        updaterow();
-    });
-
-    function updaterow() {
-
-        // Buscar datos en la fila y asignar a campos del formulario:
-        // Primera columna (0) tiene ID, segunda (1) tiene nombre, tercera (2) capacidad
-        contedit = $("#contModal").val();
-        //id = $("#idModal").val();
-        product_id = $("#product_idModal").val();
-        product = $("#productModal").val();
-        quantity = $("#quantityModal").val();
-        price = $("#priceModal").val();
-        iva = $("#ivaModal").val();
-
-        $('#priceModal').prop("readonly", true)
-
-        if(product_id !="" && quantity!="" && quantity>0 && price!="" && price>0){
-            subtotal[cont]= parseFloat(quantity) * parseFloat(price);
-            total= total+subtotal[cont];
-            ivita= subtotal[cont]*iva/100;
-            total_iva=total_iva+ivita;
-
-            var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="id[]"  value="'+product_id+'">'+product_id+'</td><td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>   <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" name="price[]"  value="'+price+'">'+price+'</td> <td><input type="hidden" name="iva[]"  value="'+iva+'">'+iva+'</td><td>$'+subtotal[cont]+' </td></tr>';
-            cont++;
-            deleterow(contedit);
-            totals();
-            assess();
-            $('#details').append(row);
-            $('#editModal').modal('hide');
-            //$('#product_id option:selected').remove();
-        }else{
-            // alert("Rellene todos los campos del detalle de la compra, revise los datos del producto");
-            Swal.fire({
-                type: 'error',
-                //title: 'Oops...',
-                text: 'Rellene todos los campos del detalle de la compra',
-            })
-        }
-    }
-
-    //function editing(){
-        purchase = {!! json_encode($productPurchases) !!};
-        purchase.forEach((value, i) => {
-            if (value['quantity'] > 0) {
-
-                id = value['id'];
-                product_id= value['idP'];
-                product= value['name'];
-                quantity= value['quantity'];
-                price= value['price'];
-                stock= value['stock'];
-                iva= value['iva'];
-
-                if(product_id !="" && quantity!="" && quantity>0  && price!="" && price>0){
-                    subtotal[cont]= parseFloat(quantity) * parseFloat(price);
-                    total= total+subtotal[cont];
-                    ivita= subtotal[cont]*iva/100;
-                    total_iva=total_iva+ivita;
-
-                    var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="id[]"  value="'+product_id+'">'+product_id+'</td><td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>   <td><input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity+'</td> <td><input type="hidden" name="price[]"  value="'+price+'">'+price+'</td> <td><input type="hidden" name="iva[]"  value="'+iva+'">'+iva+'</td><td>$'+subtotal[cont]+' </td></tr>';
-                    cont++;
-
-                    totals();
-                    assess();
-                    $('#details').append(row);
-
-                    $('#product_id option:selected').remove();
-                    clean();
-                }else{
-                    //alert("Rellene todos los campos del detalle para esta compra");
-                    Swal.fire({
-                    type: 'error',
-                    //title: 'Oops...',
-                    text: 'Rellene todos los campos del detalle para esta compra',
-                    })
-                }
-            }
-        });
-    //}
-
-    function detailclear(){
-        purchase = {!! json_encode($productPurchases) !!};
-        purchase.forEach((value, i) => {
-            if (value['quantity'] > 0) {
-                deleterow(i);
-            }
-        });
-    }
-
     $(document).ready(function(){
         $("#payment_form_id").change(function(){
         form = $("#payment_form_id").val();
         if(form == 1){
             $("#noDefined").show();
             $("#cash").show();
-            $("#advance").show();
+            $("#advanceCus").show();
             $("#transfer").show();
             $("#nequi").show();
             $("#card1").show();
             $("#card2").show();
-            //$("#mpay").hide();
+            $("#mpay").hide();
             $("#addpayment").hide();
         }else{
             $("#addpayment").show();
             $("#noDefined").hide();
             $("#cash").hide();
-            $("#advance").hide();
+            $("#advanceCus").hide();
             $("#transfer").hide();
             $("#nequi").hide();
             $("#card1").hide();
             $("#card2").hide();
-            $("#payment_method_id").val(1);
+            $("#mpay").show();
         }
         });
     });
-
     $(document).ready(function(){
         $("#addpay").click(function(){
             see();
@@ -367,16 +270,14 @@
     function see(){
         $("#noDefined").show();
         $("#cash").show();
-        $("#advance").show();
+        $("#advanceCus").show();
         $("#transfer").show();
         $("#nequi").show();
         $("#card1").show();
         $("#card2").show();
         $("#mpay").hide();
         $("#addpayment").hide();
-
     }
-
     $(document).ready(function(){
         $("#cash").click(function(){
             tpay = $("#balance").val();
@@ -384,7 +285,6 @@
             payCash();
         });
     });
-
     function payCash(){
         $("#pay").val();
         $("#returned").val(0);
@@ -392,15 +292,15 @@
         $("#transaction").val("N/A");
         $("#bank_id").val(1);
         $("#card_id").val(1);
-        $("#transactiony").hide();
         $("#banky").hide();
         $("#cardy").hide();
+        $("#transactiony").hide();
         $("#payi").show();
         $("#abpaymenty").hide();
-        $("#paymenty").hide();
-        $("#payment").val(0);
+        $("#advancey").hide();
+        $("#advance").val(0);
+        $("#eventy").hide();
     }
-
     $(document).ready(function(){
         $("#transfer").click(function(){
             tpay = $("#balance").val();
@@ -408,7 +308,6 @@
             payTransaction();
         });
     });
-
     function payTransaction(){
         $("#pay").val();
         $("#returned").val(0);
@@ -420,10 +319,9 @@
         $("#banky").show();
         $("#cardy").hide();
         $("#mpay").hide();
-        $("#paymenty").hide();
-        $("#payment").val(0);
+        $("#eventy").hide();
+        $("#advancey").hide();
     }
-
     $(document).ready(function(){
         $("#nequi").click(function(){
             tpay = $("#balance").val();
@@ -431,7 +329,6 @@
             payNequi();
         });
     });
-
     function payNequi(){
         $("#pay").val();
         $("#returned").val(0);
@@ -444,10 +341,9 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#banky").hide();
-        $("#paymenty").hide();
-        $("#payment").val(0);
+        $("#eventy").hide();
+        $("#advancey").hide();
     }
-
     $(document).ready(function(){
         $("#card1").click(function(){
             tpay = $("#balance").val();
@@ -455,21 +351,19 @@
             payCard1();
         });
     });
-
     function payCard1(){
         $("#pay").val();
         $("#returned").val(0);
         $("#payment_method_id").val(48);
         $("#abpaymenty").hide();
         $("#mpay").hide();
-        $("#paymenty").hide();
+        $("#eventy").hide();
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
+        $("#advancey").hide();
         $("#transactiony").show();
-        $("#payment").val(0);
     }
-
     $(document).ready(function(){
         $("#card2").click(function(){
             tpay = $("#balance").val();
@@ -477,21 +371,19 @@
             payCard2();
         });
     });
-
     function payCard2(){
         $("#pay").val();
         $("#returned").val(0);
         $("#payment_method_id").val(49);
         $("#abpaymenty").hide();
         $("#mpay").hide();
-        $("#paymenty").hide();
+        $("#eventy").hide();
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
+        $("#advancey").hide();
         $("#transactiony").show();
-        $("#payment").val(0);
     }
-
     $(document).ready(function(){
         $("#noDefined").click(function(){
             tpay = $("#balance").val();
@@ -499,7 +391,6 @@
             noDefined();
         });
     });
-
     function noDefined(){
         $("#pay").val();
         $("#returned").val(0);
@@ -511,19 +402,19 @@
         $("#banky").hide();
         $("#cardy").hide();
         $("#payi").show();
-        $("#abpaymenty").hide();//valor del anticipo
-        $("#paymenty").hide();//modelo
-        $("#payment").val(0);
+        $("#abpaymenty").hide();
+        $("#advancey").hide();
+        $("#eventy").hide();
+        $("#advance").val(0);
     }
-
     $(document).ready(function(){
-        $("#advance").click(function(){
-            $("#pay").val("");
-            advance();
+        $("#advanceCus").click(function(){
+            tpay = $("#balance").val();
+            $("#pay").val(tpay);
+            advanceCus();
         });
     });
-
-    function advance(){
+    function advanceCus(){
         $("#pay").val();
         $("#returned").val(0);
         $("#payment_method_id").val(1);
@@ -536,17 +427,17 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#banky").hide();
-        $("#paymenty").show();
+        $("#advancey").show();
+        $("#eventy").hide();
     }
     $(document).ready(function(){
         $("#pay").keyup(function(){
             $("#pay").val();
             $("#returned").val();
-            paymentor();
+            payment();
         });
     });
-
-    function paymentor(){
+    function payment(){
         ttp = parseFloat($("#total_pay").val())
         abn = parseFloat($("#pay").val())
         balancey = ttp - abn;
@@ -557,45 +448,34 @@
             Swal.fire({
             type: 'error',
             //title: 'Oops...',
-            text: 'El abono supera el valor de la compra',
+            text: 'El abono supera el valor de la venta',
             })
             $("#pay").val(0)
-            paymentor();
+            payment();
         }
     }
-
     prueba = [];
-    $("#supplier_id").change(function(event){
-        $.get("getPayment/" + event.target.value + "", function(response){
-            $("#payment_id").empty();
-            $("#payment_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
+    $("#customer_id").change(function(event){
+        $.get("getAdvance/" + event.target.value + "", function(response){
+            $("#advance_id").empty();
+            $("#advance_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
             for(i = 0; i < response.length; i++){
-                $("#payment_id").append("<option value = '" + response[i].id + "'>" + response[i].origin + response[i].balance + "</option>");
+                $("#advance_id").append("<option value = '" + response[i].id + "'>" + response[i].origin + '  ' + response[i].balance + "</option>");
                 prueba = response[i].balance;
             }
-            $("#payment_id").selectpicker('refresh');
+            $("#advance_id").selectpicker('refresh');
         });
     });
-
     $(document).ready(function(){
-        $("#payment_id").change(function(){
+        $("#advance_id").change(function(){
             parseFloat($("#abpayment").val(prueba))
-            $("#abpaymenty").show();
+            $("#abadvancey").show();
             prepaidnew();
         });
     });
-
-    $(document).ready(function(){
-        $("#payment").keyup(function(){
-            $("#payment").val();
-            prepaid();
-        });
-    });
-
     function prepaidnew(){
         ttp = parseFloat($("#total_pay").val())
         abn = parseFloat($("#abpayment").val())
-
         balancey = ttp - abn;
         if (ttp >= abn) {
             $("#returned").val(balancey);
@@ -606,14 +486,19 @@
             //prepaid()
         }
     }
-
+    $(document).ready(function(){
+        $("#advance").keyup(function(){
+            $("#advance").val();
+            prepaid();
+        });
+    });
     function prepaid(){
         ttpnew = parseFloat($("#total_pay").val())
-        abnnew = parseFloat($("#payment").val())
+        abnnew = parseFloat($("#advance").val())
         balanceynew = ttpnew - abnnew;
         if (ttpnew >= abnnew) {
             $("#returned").val(balanceynew);
-            $("#payment").val(abnnew);
+            $("#advance").val(abnnew);
             $("#pay").val(abnnew);
         } else {
             //alert("Rellene todos los campos del detalle de la venta");
@@ -622,7 +507,7 @@
             //title: 'Oops...',
             text: 'El abono supera el valor de la compra',
             })
-            $("#payment").val(0)
+            $("#advance").val(0)
             prepaid();
         }
     }

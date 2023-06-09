@@ -459,10 +459,11 @@ class PurchaseController extends Controller
                     //actualizar el saldo del pago anticipado
                     $payment->balance = $paym_total;
                     $payment->update();
+                    /*
                     //Actualizando la caja
                     $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                     $sale_box->out_payment += $pay;
-                    $sale_box->update();
+                    $sale_box->update();*/
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
                     $pay_purchase                   = new Pay_purchase();

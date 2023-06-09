@@ -71,14 +71,16 @@
     $("#percent").hide();
     $("#save").hide();
     //form pay
+    $("#addPays").hide();
+    $("#noDefined").hide();
     $("#cash").hide();
+    $("#advance").hide();
     $("#transfer").hide();
     $("#nequi").hide();
     $("#card1").hide();
     $("#card2").hide();
-    $("#noDefined").hide();
+
     $("#transvenped").hide();
-    $("#addpayment").hide();
 
     $("#payi").hide();
     $("#abpaymenty").hide();
@@ -86,9 +88,9 @@
     $("#transactiony").hide();
     $("#banky").hide();
     $("#cardy").hide();
-    $("#paymenty").hide();
+    //$("#paymenty").hide();
     $("#rtferase").hide();
-    $("#advance").hide();
+    $("#addAdvance").hide();
     /*
     $("#percentage").val(0);
     */
@@ -245,9 +247,9 @@
             $("#nequi").show();
             $("#card1").show();
             $("#card2").show();
-            $("#addpayment").hide();
+            $("#addPays").hide();
         }else{
-            $("#addpayment").show();
+            $("#addPays").show();
             $("#noDefined").hide();
             $("#cash").hide();
             $("#advance").hide();
@@ -274,7 +276,7 @@
         $("#card1").show();
         $("#card2").show();
         $("#mpay").hide();
-        $("#addpayment").hide();
+        $("#addpays").hide();
 
     }
 
@@ -298,7 +300,7 @@
         $("#cardy").hide();
         $("#payi").show();
         $("#abpaymenty").hide();
-        $("#paymenty").hide();
+        $("#addAdvance").hide();
         $("#payment").val(0);
     }
 
@@ -321,7 +323,7 @@
         $("#banky").show();
         $("#cardy").hide();
         $("#mpay").hide();
-        $("#paymenty").hide();
+        $("#addAdvance").hide();
         $("#payment").val(0);
     }
 
@@ -345,7 +347,7 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#banky").hide();
-        $("#paymenty").hide();
+        $("#addAdvance").hide();
         $("#payment").val(0);
     }
 
@@ -363,7 +365,7 @@
         $("#payment_method_id").val(48);
         $("#abpaymenty").hide();
         $("#mpay").hide();
-        $("#paymenty").hide();
+        $("#addAdvance").hide();
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
@@ -385,7 +387,7 @@
         $("#payment_method_id").val(49);
         $("#abpaymenty").hide();
         $("#mpay").hide();
-        $("#paymenty").hide();
+        $("#addAdvance").hide();
         $("#payi").show();
         $("#banky").show();
         $("#cardy").show();
@@ -413,7 +415,7 @@
         $("#cardy").hide();
         $("#payi").show();
         $("#abpaymenty").hide();//valor del anticipo
-        $("#paymenty").hide();//modelo
+        $("#addAdvance").hide();//modelo
         $("#payment").val(0);
     }
 
@@ -437,7 +439,7 @@
         $("#cardy").hide();
         $("#mpay").hide();
         $("#banky").hide();
-        $("#paymenty").show();
+        $("#addAdvance").show();
     }
     $(document).ready(function(){
         $("#pay").keyup(function(){

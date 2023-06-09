@@ -20,7 +20,6 @@ use App\Models\Kardex;
 use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
-use App\Models\Pay_event;
 use App\Models\Pay_invoice;
 use App\Models\Pay_invoice_payment_method;
 use App\Models\pay_ncinvoice;
@@ -281,7 +280,7 @@ class InvoiceController extends Controller
             DB::rollback();
         }
 
-        return redirect()->route('post', $invoice->id);
+        //return redirect()->route('post', $invoice->id);
         return redirect('invoice');
     }
 
@@ -684,7 +683,7 @@ class InvoiceController extends Controller
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
-        return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
+        return $pdf->stream('vista-pdf', "$invoicepdf.pdf", ['Attachment' => false]);
         //return $pdf->download("$invoicepdf.pdf");
     }
 

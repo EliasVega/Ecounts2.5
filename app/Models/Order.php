@@ -22,7 +22,7 @@ class Order extends Model
         'customer_id',
         'payment_form_id',
         'payment_method_id',
-        'retention_id',
+        'percentage_id',
         'voucher_type_id'
     ];
 

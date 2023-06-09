@@ -6,10 +6,11 @@
 <a href="{{ route('order.show', $id) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Pedido" >
         <i class="far fa-eye"></i>
 </a>
+
 <a href="{{ route('show_pay_order', $id) }}" class="btn btn-lila" data-toggle="tooltip" data-placement="top" title="Agregar Abono" >
         <i class="fas fa-file-invoice-dollar"></i>
 </a>
-<a href="{{ route('show_pdf_order', $id) }}" class="btn btn-red" target="blanck" data-toggle="tooltip" data-placement="top" title="pdf Pedido" >
+<a href="{{ route('show_pdf_order', $id) }}" class="btn btn-red" data-toggle="tooltip" data-placement="top" title="pdf Pedido" >
         <i class="fas fa-file-pdf"></i>
 </a>
 <a href="{{ route('eliminar', $id) }}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar Pedido" >

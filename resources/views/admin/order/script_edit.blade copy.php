@@ -40,7 +40,7 @@
     subtotal=[];
     total_iva=0;
     ret = 0;
-    //form purchase
+    //form order
     $("#idPro").hide();
     $("#addPercentage").hide();
     $("#addVpercentage").hide();
@@ -176,7 +176,7 @@
         $("#balance").val(total_pay);
     }
 
-    function deleterow(index){
+    function eliminar(index){
 
         total = total-subtotal[index];
         total_iva= total*iva/100;
@@ -201,7 +201,7 @@
         if(total>0){
 
             $("#save").show();
-            $("#addPercentage").hide();
+            $("#percentagey").hide();
             $("#rtfon").attr('disabled','disabled');
             $("#rtfoff").attr('disabled','disabled');
 
@@ -241,9 +241,9 @@
         }
     }
 
-    jQuery(document).on("click", "#updatePurchase", function () {
+    jQuery(document).on("click", "#updateorder", function () {
         updaterow();
-    });
+    })
 
     function updaterow() {
 
@@ -283,9 +283,30 @@
         }
     }
 
+    function deleterow(index){
+        total = total-subtotal[index];
+        total_iva= total*iva/100;
+        total_pay = total + total_iva;
+
+        $("#total_html").html("$ " + total.toFixed(2));
+        $("#total").val(total.toFixed(2));
+
+        total_pay=total+total_iva;
+        $("#total_iva_html").html("$ " + total_iva.toFixed(2));
+        $("#total_iva").val(total_iva.toFixed(2));
+
+        $("#total_pay_html").html("$ " + total_pay.toFixed(2));
+        $("#total_pay").val(total_pay.toFixed(2));
+
+        $("#row" + index).remove();
+        assess();
+    }
+
+
+
     //function editing(){
-        purchase = {!! json_encode($productPurchases) !!};
-        purchase.forEach((value, i) => {
+        order = {!! json_encode($productorders) !!};
+        order.forEach((value, i) => {
             if (value['quantity'] > 0) {
 
                 id = value['id'];
@@ -324,8 +345,8 @@
     //}
 
     function detailclear(){
-        purchase = {!! json_encode($productPurchases) !!};
-        purchase.forEach((value, i) => {
+        order = {!! json_encode($productorders) !!};
+        order.forEach((value, i) => {
             if (value['quantity'] > 0) {
                 deleterow(i);
             }
@@ -565,7 +586,7 @@
     }
 
     prueba = [];
-    $("#supplier_id").change(function(event){
+    $("#customer_id").change(function(event){
         $.get("getPayment/" + event.target.value + "", function(response){
             $("#payment_id").empty();
             $("#payment_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");

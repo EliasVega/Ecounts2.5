@@ -39,8 +39,8 @@ return new class extends Migration
             $table->decimal('out_expense_cash',20,2);//salida efectivo compras gastos
             $table->decimal('out_expense',20,2);//salida total compras gastos
             $table->decimal('expense',20,2);//total de gastos
-            $table->decimal('out_payment_cash',20,2);//total pagos anticipos
-            $table->decimal('out_payment',20,2);//total pagos anticipos
+            $table->decimal('out_payment_cash',20,2);//total pagos anticipos salida
+            $table->decimal('out_payment',20,2);//total pagos anticipos salida
             $table->decimal('out_ndpurchase_cash',20,2);//salida nota debito compras efectivo
             $table->decimal('out_ndpurchase',20,2);//salida nota debito compras efectivo
             $table->decimal('ndpurchase',20,2);//total de notas debito compras
