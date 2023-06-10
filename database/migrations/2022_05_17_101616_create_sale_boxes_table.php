@@ -31,7 +31,7 @@ return new class extends Migration
             $table->decimal('ndinvoice',20,2);//total notas debito ventas
             $table->decimal('in_ncpurchase_cash',20,2); //ingreso total notas credito compras efectivo
             $table->decimal('in_ncpurchase',20,2); //ingreso total notas debito compras
-            $table->decimal('ncpurchase',20,2);//total de noras credito compras
+            $table->decimal('ncpurchase',20,2);//total de notas credito compras
             $table->decimal('in_total',20,2);//total ingresos
             $table->decimal('out_purchase_cash',20,2);//salida efectivo compras
             $table->decimal('out_purchase',20,2);//salida total compras

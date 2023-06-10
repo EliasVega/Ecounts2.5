@@ -452,96 +452,132 @@ class SaleboxController extends Controller
         $sale_box = Sale_box::findOrFail($id);
         $from     = $sale_box->created_at;
         $to       = $sale_box->updated_at;
-        $produc = [];
-        $cont = 0;
-        $products = Product::all();
+        //seccion de detalle de productos en compra
+        $productPurchases = [];//informacion de totales
+        $products = Product::get();
+        //obteniendo totales por productos de product purchases
         foreach ($products as $key => $product ) {
+            //total de productos
+            $product_purchase = Product_purchase::from('product_purchases as pp')
+            ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+            ->join('products as pro', 'pp.product_id', 'pro.id')
+            ->whereBetween('pp.created_at', [$from, $to])
+            ->where('pur.user_id', $sale_box->user_id)
+            ->where('pp.product_id', $product->id)
+            ->sum('quantity');
+
+            //total  de iva por producto
+            $ivaProduct = Product_purchase::from('product_purchases as pp')
+            ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+            ->join('products as pro', 'pp.product_id', 'pro.id')
+            ->whereBetween('pp.created_at', [$from, $to])
+            ->where('pur.user_id', $sale_box->user_id)
+            ->where('pp.product_id', $product->id)
+            ->sum('ivasubt');
+            //subtotal por producto
+            $subtotalProduct = Product_purchase::from('product_purchases as pp')
+            ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+            ->join('products as pro', 'pp.product_id', 'pro.id')
+            ->whereBetween('pp.created_at', [$from, $to])
+            ->where('pur.user_id', $sale_box->user_id)
+            ->where('pp.product_id', $product->id)
+            ->sum('subtotal');
+            //envienado informacion de totales a travez de este array
+            if ($product_purchase) {
+                $productPurchases[$key] = Product::findOrFail($product->id);
+                $productPurchases[$key]->stock = $product_purchase;
+                $productPurchases[$key]->price = $ivaProduct;
+                $productPurchases[$key]->salePrice = $subtotalProduct;
+            }
+        }
+        //suma subtotales de todas las compras
+        $sumSubtotalPurchases = Product_purchase::from('product_purchases as pp')
+        ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+        ->where('pur.user_id', $sale_box->user_id)
+        ->whereBetween('pp.created_at', [$from, $to])
+        ->sum('subtotal');
+
+        //suma de total de iva de toda las compras
+        $ivaTotalPurchases = Product_purchase::from('product_purchases as pp')
+        ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+        ->where('pur.user_id', $sale_box->user_id)
+        ->whereBetween('pp.created_at', [$from, $to])
+        ->sum('ivasubt');
+
+        //seccion de detalle de productos Vendidos
+        $invoiceProducts = [];//informacion de totales
+        //obteniendo totales por productos de product purchases
+        foreach ($products as $key => $product ) {
+            //total de productos
             $invoice_products = Invoice_product::from('invoice_products as ip')
             ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
             ->join('products as pro', 'ip.product_id', 'pro.id')
-            ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
             ->whereBetween('ip.created_at', [$from, $to])
             ->where('inv.user_id', $sale_box->user_id)
             ->where('ip.product_id', $product->id)
             ->sum('quantity');
 
-            $iva = Invoice_product::from('invoice_products as ip')
+            //total  de iva por producto
+            $ivaProduct = Invoice_product::from('invoice_products as ip')
             ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
             ->join('products as pro', 'ip.product_id', 'pro.id')
-            ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
             ->whereBetween('ip.created_at', [$from, $to])
             ->where('inv.user_id', $sale_box->user_id)
             ->where('ip.product_id', $product->id)
             ->sum('ivasubt');
-
+            //subtotal por producto
+            $subtotalProduct = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->join('products as pro', 'ip.product_id', 'pro.id')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->where('ip.product_id', $product->id)
+            ->sum('subtotal');
+            //envienado informacion de totales a travez de este array
             if ($invoice_products) {
-                $produc[$cont] = Product::findOrFail($product->id);
-                $produc[$cont]->stock = $invoice_products;
-                $produc[$cont]->price = $iva;
-                $cont++;
+                $invoiceProducts[$key] = Product::findOrFail($product->id);
+                $invoiceProducts[$key]->stock = $invoice_products;
+                $invoiceProducts[$key]->price = $ivaProduct;
+                $invoiceProducts[$key]->salePrice = $subtotalProduct;
             }
         }
-
-        $productpurc = [];
-        $cont = 0;
-        $products = Product::all();
-        foreach ($products as $key => $product ) {
-            $product_purchases = Product_purchase::from('product_purchases as pp')
-            ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
-            ->join('products as pro', 'pp.product_id', 'pro.id')
-            ->select('pro.id', 'pro.name', 'pp.quantity', 'pp.ivasubt', 'pp.subtotal', 'pp.created_at')
-            ->whereBetween('pp.created_at', [$from, $to])
-            ->where('pur.user_id', $sale_box->user_id)
-            ->where('pp.product_id', $product->id)
-            ->sum('quantity');
-
-            $ivap = Product_purchase::from('product_purchases as pp')
-            ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
-            ->join('products as pro', 'pp.product_id', 'pro.id')
-            ->select('pro.id', 'pro.name', 'pp.quantity', 'pp.ivasubt', 'pp.subtotal', 'pp.created_at')
-            ->whereBetween('pp.created_at', [$from, $to])
-            ->where('pur.user_id', $sale_box->user_id)
-            ->where('pp.product_id', $product->id)
-            ->sum('ivasubt');
-
-            if ($product_purchases) {
-                $productpurc[$cont] = Product::findOrFail($product->id);
-                $productpurc[$cont]->stock = $product_purchases;
-                $productpurc[$cont]->price = $ivap;
-                $cont++;
-            }
-        }
-        $sumtotal = Invoice_product::from('invoice_products as ip')
+        //suma subtotales de todas las compras
+        $sumSubtotalInvoices = Invoice_product::from('invoice_products as ip')
         ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-        ->select('ip.subtotal', 'ip.created_at')
-        ->where('inv.user_id', $sale_box->user_id)
         ->whereBetween('ip.created_at', [$from, $to])
+        ->where('inv.user_id', $sale_box->user_id)
         ->sum('subtotal');
 
-        $ivasubt = Invoice_product::from('invoice_products as ip')
+        //suma de total de iva de toda las compras
+        $ivaTotalInvoices = Invoice_product::from('invoice_products as ip')
         ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-        ->select('ip.subtotal', 'ip.created_at')
-        ->where('inv.user_id', $sale_box->user_id)
         ->whereBetween('ip.created_at', [$from, $to])
+        ->where('inv.user_id', $sale_box->user_id)
         ->sum('ivasubt');
 
         $invoices = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
-        $invbalance = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
-        $invpay = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+        $invoice_balance = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
+        $invoice_pay = Invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
         $pay_invoices = Pay_invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_pay_invoices = Pay_invoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
         $orders = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
-        $ordbalance = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
-        $ordpay = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+        $order_balance = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
+        $order_pay = Order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
         $pay_orders = Pay_order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_pay_orders = Pay_order::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
         $purchases = Purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
-        $purbalance = Purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
-        $purpay = Purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+        $purchase_balance = Purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
+        $purchase_pay = Purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
         $pay_purchases = Pay_purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_pay_purchases = Pay_purchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
+        $expenses = Expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $expense_balance = Expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('balance');
+        $expense_pay = Expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+        $pay_expenses = Pay_expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $sum_pay_expenses = Pay_expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
         $ncinvoices = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $totalnc = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
@@ -554,41 +590,58 @@ class SaleboxController extends Controller
 
         $payments = Payment::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_payments = Payment::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
+
         $advances = Advance::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_advances = Advance::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
 
 
         return view('admin.sale_box.show_close', compact(
-            'sale_box',
+            'productPurchases',
+            'ivaTotalPurchases',
+            'sumSubtotalPurchases',
+            'invoiceProducts',
+            'ivaTotalInvoices',
+            'sumSubtotalInvoices',
+
             'invoices',
-            'invbalance',
-            'invpay',
+            'invoice_balance',
+            'invoice_pay',
             'pay_invoices',
             'sum_pay_invoices',
+
             'orders',
             'pay_orders',
             'sum_pay_orders',
-            'ordbalance',
-            'ordpay',
+            'order_balance',
+            'order_pay',
+
             'purchases',
-            'purbalance',
-            'purpay',
+            'purchase_balance',
+            'purchase_pay',
             'pay_purchases',
             'sum_pay_purchases',
+
+            'expenses',
+            'expense_balance',
+            'expense_pay',
+            'pay_expenses',
+            'sum_pay_expenses',
+
+
+            'sale_box',
+
             'ncinvoices',
             'totalnc',
             'ndinvoices',
             'totalnd',
             'cash_outs',
             'products',
-            'sumtotal',
-            'ivasubt',
-            'produc',
-            'productpurc',
+
             'sum_pay_cashs',
             'payments',
             'sum_payments',
+
             'advances',
             'sum_advances'
         ));

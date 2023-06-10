@@ -66,12 +66,17 @@
     order.forEach((value, i) => {
         if (value['quantity'] > 0) {
 
-            product_id= value['id'];
+            product_id= value['idP'];
             product= value['name'];
             quantity= value['quantity'];
             price= value['price'];
             stock= value['stock'];
             iva= value['iva'];
+            retention = value['percentage'];
+            orderBalance = value['balance'];
+            $('#percentage').val(retention);
+            $("#pendient").val(orderBalance);
+
             if(product_id !="" && quantity!="" && quantity>0  && price!=""){
                 subtotal[cont]= parseFloat(quantity) * parseFloat(price);
                 total= total+subtotal[cont];
@@ -118,7 +123,7 @@
         $("#total_pay").val(total_pay.toFixed(2));
 
         $("#balance").val(total_pay.toFixed(2));
-        $("#pendient").val(total_pay.toFixed(2));
+
     }
     function assess(){
 

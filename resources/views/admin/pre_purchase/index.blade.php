@@ -7,7 +7,7 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h5>Productos <a href="prePurchase/create" class="btn btn-celeste"><i class="fa fa-plus"></i> Agregar Pre compra</a>
+            <h5>Productos <a href="prePurchase/create" class="btn btn-celeste"><i class="fa fa-plus"></i> Agregar Orden de compra</a>
                 <a href="{{ route('purchase.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h5>
         </div>
     </div>

@@ -59,4 +59,8 @@ class Expense extends Model
     public function paymentMethod(){
         return $this->belongsTo(Payment_method::class);
     }
+
+    public function payExpenses(){
+        return $this->hasMany(Pay_expense::class);
+    }
 }

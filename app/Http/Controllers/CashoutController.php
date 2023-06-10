@@ -22,20 +22,40 @@ class CashoutController extends Controller
      */
     public function index(Request $request)
     {
+        if (request()->ajax()) {
+            $cash_outs = Cash_out::from('cash_outs AS cas')
+            ->join('users AS use', 'cas.user_id', 'use.id')
+            ->join('users AS usa', 'cas.admin_id', 'usa.id')
+            ->join('branches as bra', 'cas.branch_id', 'bra.id')
+            ->select('cas.id', 'cas.payment', 'cas.created_at', 'use.name as user', 'usa.name AS admin', 'bra.name as branch')
+            ->where('use.id', '=', Auth::user()->id)
+            ->get();
+
+            return DataTables::of($cash_outs)
+            ->editColumn('created_at', function(Cash_out $cash_out){
+                return $cash_out->created_at->format('yy-m-d');
+            })
+            ->make(true);
+        }
+        return view('admin.cash_out.index');
+
         /*
         if ($request->ajax()) {
             $cash_outs = Cash_out::get();
 
             return DataTables::of($cash_outs)
                 ->addIndexColumn()
+                ->addColumn('branch', function (Cash_out $cash_out) {
+                    return $cash_out->branch->name;
+                })
                 ->addColumn('user', function (Cash_out $cash_out) {
                     return $cash_out->user->name;
                 })
-                ->addColumn('adminId', function (Cash_out $cash_out) {
-                    return $cash_out->adminId->name;
+                ->addColumn('admin', function (Cash_out $cash_out) {
+                    return $cash_out->admin->name;
                 })
-                ->addColumn('branch', function (Cash_out $cash_out) {
-                    return $cash_out->branch->name;
+                ->addColumn('payment', function (Cash_out $cash_out) {
+                    return number_format($cash_out->payment, 2);
                 })
                 ->editColumn('created_at', function(Cash_out $cash_out){
                     return $cash_out->created_at->format('yy-m-d');
@@ -45,25 +65,7 @@ class CashoutController extends Controller
 
         return view('admin.cash_out.index');*/
 
-        if (request()->ajax()) {
-            $cash_outs = Cash_out::from('cash_outs AS cas')
-            ->join('sale_boxes AS sal', 'cas.sale_box_id', 'sal.id')
-            ->join('users AS use', 'cas.user_id', 'use.id')
-            ->join('users AS usa', 'cas.admin_id', 'usa.id')
-            ->join('branches as bra', 'cas.branch_id', 'bra.id')
-            ->select('cas.id', 'cas.payment', 'cas.created_at', 'use.name', 'usa.name AS nameA', 'bra.name as nameB')
-            ->where('use.id', '=', Auth::user()->id)
-            ->get();
 
-            return DataTables::of($cash_outs)
-            ->editColumn('created_at', function(Cash_out $cash_out){
-                return $cash_out->created_at->format('yy-m-d');
-            })
-            ->addColumn('btn', 'admin/order/actions')
-            ->rawColumns(['btn'])
-            ->make(true);
-        }
-        return view('admin.cash_out.index');
     }
 
     /**

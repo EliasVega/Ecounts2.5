@@ -14,6 +14,7 @@
                 <a href="{{ route('invoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>N.D.</a>
                 <a href="{{ route('pay_invoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
                 <a href="{{ route('advance.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Anticipos</a>
+                <a href="{{ route('order.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Ordenes Pedidos</a>
         </div>
 
     </div>
@@ -54,8 +55,8 @@
                 {data: 'id'},
                 {data: 'branch'},
                 {data: 'customer'},
-                {data: 'total_pay'},
-                {data: 'balance'},
+                {data: 'total_pay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'balance', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'created_at'},
                 {data: 'status'},
                 {data: 'btn'},

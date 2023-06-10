@@ -14,149 +14,267 @@
                 <p>{{ $sale_box->id }}</p>
             </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="cash_open">Efectivo Inicial</label>
-                <p>{{ $sale_box->cash_box }}</p>
+        @if ($sale_box->cash_box > 0)
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="cash_open">Efectivo Inicial</label>
+                    <p>${{ number_format($sale_box->cash_box,2) }}</p>
+                </div>
             </div>
-        </div>
+        @endif
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="open">Abierta</label>
                 <p>{{ $sale_box->created_at }}</p>
             </div>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="close">Cerrada</label>
-                <p>{{ $sale_box->updated_at }}</p>
+        @if ($sale_box->status == 'close')
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="close">Cerrada</label>
+                    <p>{{ $sale_box->updated_at }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_order_cash">Pedidos Efectivo</label>
-                <p>{{ $sale_box->in_order_cash }}</p>
+        @endif
+        @if ($sale_box->in_order_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_order_cash">Pedidos Efectivo</label>
+                    <p>${{ number_format($sale_box->in_order_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="pay">T/Ingresos Pedidos</label>
-                <p>{{ $sale_box->in_order }}</p>
+        @endif
+        @if ($sale_box->in_order > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="pay">T/Ingresos Pedidos</label>
+                    <p>${{ number_format($sale_box->in_order,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Ventas Efectivo</label>
-                <p>{{ $sale_box->in_invoice_cash }}</p>
+        @endif
+        @if ($sale_box->in_invoice_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">Ventas Efectivo</label>
+                    <p>${{ number_format($sale_box->in_invoice_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Ingresos ventas</label>
-                <p>{{ $sale_box->in_invoice }}</p>
+        @endif
+        @if ($sale_box->in_invoice > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ingresos ventas</label>
+                    <p>${{ number_format($sale_box->in_invoice,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Compras Efectivo</label>
-                <p>{{ $sale_box->out_purchase_cash }}</p>
+        @endif
+        @if ($sale_box->out_purchase_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">Compras/Efectivo</label>
+                    <p>${{ number_format($sale_box->out_purchase_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Compras</label>
-                <p>{{ $sale_box->out_purchase }}</p>
+        @endif
+        @if ($sale_box->out_purchase > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Egreso/Compras</label>
+                    <p>${{ number_format($sale_box->out_purchase,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Gastos Efectivo</label>
-                <p>{{ $sale_box->out_expense_cash }}</p>
+        @endif
+        @if ($sale_box->out_expense_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">Gastos Efectivo</label>
+                    <p>${{ number_format($sale_box->out_expense_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Gastos</label>
-                <p>{{ $sale_box->out_expense }}</p>
+        @endif
+        @if ($sale_box->out_expense > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Gastos</label>
+                    <p>${{ number_format($sale_box->out_expense,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Notas Debito ventas Efectivo</label>
-                <p>{{ $sale_box->in_ndinvoice_cash }}</p>
+        @endif
+        @if ($sale_box->in_ndinvoice_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">NC ventas Efectivo</label>
+                    <p>${{ number_format($sale_box->in_ndinvoice_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Ingresos Nota Debito ventas</label>
-                <p>{{ $sale_box->in_ndinvoice }}</p>
+        @endif
+        @if ($sale_box->in_ndinvoice > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ingresos NC ventas</label>
+                    <p>${{ number_format($sale_box->in_ndinvoice,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Notas Credito ventas Efectivo</label>
-                <p>{{ $sale_box->out_ncinvoice_cash }}</p>
+        @endif
+        @if ($sale_box->out_ncinvoice_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">NC ventas Efectivo</label>
+                    <p>${{ number_format($sale_box->out_ncinvoice_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Ingresos Nota Credito ventas</label>
-                <p>{{ $sale_box->out_ncinvoice }}</p>
+        @endif
+        @if ($sale_box->out_ncinvoice > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ingresos NC ventas</label>
+                    <p>${{ number_format($sale_box->out_ncinvoice,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Notas Debito compras Efectivo</label>
-                <p>{{ $sale_box->out_ndpurchase_cash }}</p>
+        @endif
+        @if ($sale_box->out_ndpurchase_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">ND compras Efectivo</label>
+                    <p>${{ number_format($sale_box->out_ndpurchase_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Ingresos Nota Debito compras</label>
-                <p>{{ $sale_box->out_ndpurchase }}</p>
+        @endif
+        @if ($sale_box->out_purchase > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ingresos ND compras</label>
+                    <p>${{ number_format($sale_box->out_ndpurchase,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_invoice_cash">Notas Credito compras Efectivo</label>
-                <p>{{ $sale_box->in_ncpurchase_cash }}</p>
+        @endif
+        @if ($sale_box->in_ncpurchase_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">NC compras Efectivo</label>
+                    <p>${{ number_format($sale_box->in_ncpurchase_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="abono">T/Ingresos Nota Credito compras</label>
-                <p>{{ $sale_box->in_ncpurchase }}</p>
+        @endif
+        @if ($sale_box->in_ncpurchase > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ingresos NC compras</label>
+                    <p>${{ number_format($sale_box->in_ncpurchase,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="pay">T/Ingresos</label>
-                <p>{{ $sale_box->in_total }}</p>
+        @endif
+        @if ($sale_box->out_payment_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">Ant Proveedores efectivo</label>
+                    <p>${{ number_format($sale_box->out_payment_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="in_pay_cash">Total Ingresos Efectivo</label>
-                <p>{{ $sale_box->cash }}</p>
+        @endif
+        @if ($sale_box->out_payment > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ant Proveedores</label>
+                    <p>${{ number_format($sale_box->out_payment,2) }}</p>
+                </div>
             </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="cash_out">Salida Efectivo</label>
-                <p>{{ $sale_box->departure }}</p>
+        @endif
+        @if ($sale_box->in_advance_cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">Ant Clientes efectivo</label>
+                    <p>${{ number_format($sale_box->in_advance_cash,2) }}</p>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label class="form-control-label" for="balance">Total Efectivo</label>
-                <p>{{ $sale_box->cash - $sale_box->departure }}</p>
+        @endif
+        @if ($sale_box->in_advance > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">T/Ant Clientes</label>
+                    <p>${{ number_format($sale_box->in_advance,2) }}</p>
+                </div>
             </div>
-        </div>
-
+        @endif
+        @if ($sale_box->in_total > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="pay">T/Ingresos</label>
+                    <p>${{ number_format($sale_box->in_total,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->cash > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_pay_cash">Total Ingresos Efectivo</label>
+                    <p>${{ number_format($sale_box->cash,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->departure > 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="cash_out">Salida Efectivo</label>
+                    <p>${{ number_format($sale_box->departure,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->cash - $sale_box->departure != 0)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="balance">Total Efectivo</label>
+                    <p>${{ number_format($sale_box->cash - $sale_box->departure,2) }}</p>
+                </div>
+            </div>
+        @endif
     </div>
     <div class="box-body row">
+        @if ($sale_box->purchase > 0)
+            <div class="box-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <strong class="tpdf">Articulos Comprados</strong>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr class="bg-info">
+                                    <th>id</th>
+                                    <th>Producto</th>
+                                    <th>cantidad</th>
+                                    <th>iva</th>
+                                    <th>subtotal</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th  colspan="3"><p align="right">TOTALES:</p></th>
+                                    <th><p align="right">${{ number_format($ivaTotalPurchases,2) }}</p></th>
+                                    <th><p align="right">${{ number_format($sumSubtotalPurchases,2) }}</p></th>
+                                    <th><p align="right">${{ number_format($ivaTotalPurchases + $sumSubtotalPurchases,2) }}</p></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach($productPurchases as $produtPurchase)
+                                    <tr>
+                                        <td>{{ $produtPurchase->id }}</td>
+                                        <td>{{ $produtPurchase->name }}</td>
+                                        <td>{{ $produtPurchase->stock }}</td>
+                                        <td class="tdder">$ {{ number_format($produtPurchase->price,2) }}</td>
+                                        <td class="tdder">$ {{ number_format($produtPurchase->salePrice,2) }}</td>
+                                        <td class="tdder">$ {{ number_format($produtPurchase->price + $produtPurchase->salePrice,2) }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        @endif
         @if ($sale_box->invoice > 0)
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -170,28 +288,29 @@
                             <tr class="bg-info">
                                 <th>id</th>
                                 <th>Producto</th>
-                                <th>cantidad</th>
-                                <th>iva</th>
-                                <th>total</th>
+                                <th>Cantidad</th>
+                                <th>Iva</th>
+                                <th>Subtotal</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th  colspan="3"><p align="right">TOTALES:</p></th>
-                                <th><p align="right">${{ $ivasubt }}</p></th>
-                                <th><p align="right">${{ $sumtotal }}</p></th>
+                                <th><p align="right">${{ number_format($ivaTotalInvoices,2) }}</p></th>
+                                <th><p align="right">${{ number_format($sumSubtotalInvoices,2) }}</p></th>
+                                <th><p align="right">${{ number_format($ivaTotalInvoices + $sumSubtotalInvoices,2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($produc as $pro)
+                            @foreach($invoiceProducts as $invoiceProduct)
                                 <tr>
-                                    <td>{{ $pro->id }}</td>
-                                    <td>{{ $pro->name }}</td>
-                                    <td>{{ $pro->stock }}</td>
-                                    <td class="tdder">$ {{ $pro->price }}</td>
-                                    <td class="tdder">$ {{ $pro->stock * $pro->sale_price }}</td>
-
-
+                                    <td>{{ $invoiceProduct->id }}</td>
+                                    <td>{{ $invoiceProduct->name }}</td>
+                                    <td>{{ $invoiceProduct->stock }}</td>
+                                    <td class="tdder">$ {{ number_format($invoiceProduct->price,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($invoiceProduct->salePrice,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($invoiceProduct->price + $invoiceProduct->salePrice,2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -204,7 +323,7 @@
         <div class="box-body row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <strong class="tpdf">Articulos Comprados</strong>
+                    <strong class="tpdf">Detalle de Compras</strong>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -212,28 +331,80 @@
                     <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                             <tr class="bg-info">
-                                <th>id</th>
-                                <th>Producto</th>
-                                <th>cantidad</th>
-                                <th>iva</th>
-                                <th>total</th>
+                                <th>Fecha</th>
+                                <th>N°.F</th>
+                                <th>Proveedor</th>
+                                <th>Estado</th>
+                                <th>Abonos</th>
+                                <th>Saldo</th>
+                                <th>Compras</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th  colspan="3"><p align="right">TOTALES:</p></th>
-                                <th><p align="right">${{ $ivasubt }}</p></th>
-                                <th><p align="right">${{ $sumtotal }}</p></th>
+                                <th  colspan="4"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($purchase_pay,2) }}</p></th>
+                                <th><p align="right">${{ number_format($purchase_balance,2) }}</p></th>
+                                <th><p align="right">${{ number_format($sale_box->purchase,2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($productpurc as $pro)
+                            @foreach($purchases as $purchase)
                                 <tr>
-                                    <td>{{ $pro->id }}</td>
-                                    <td>{{ $pro->name }}</td>
-                                    <td>{{ $pro->stock }}</td>
-                                    <td class="tdder">$ {{ $pro->price }}</td>
-                                    <td class="tdder">$ {{ $pro->stock * $pro->price }}</td>
+                                    <td>{{ $purchase->created_at }}</td>
+                                    <td>{{ $purchase->document }}</td>
+                                    <td>{{ $purchase->supplier->name }}</td>
+                                    <td>{{ $purchase->status }}</td>
+                                    <td class="tdder">$ {{ number_format($purchase->pay,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($purchase->balance,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($purchase->total_pay,2) }}</td>
+
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if ($sale_box->expense > 0)
+        <div class="box-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <strong class="tpdf">Detalle de Gastos</strong>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-condensed table-hover">
+                        <thead>
+                            <tr class="bg-info">
+                                <th>Fecha</th>
+                                <th>N°.F</th>
+                                <th>Proveedor</th>
+                                <th>Abonos</th>
+                                <th>Saldo</th>
+                                <th>Compras</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th  colspan="3"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($expense_pay,2) }}</p></th>
+                                <th><p align="right">${{ number_format($expense_balance,2) }}</p></th>
+                                <th><p align="right">${{ number_format($sale_box->expense,2) }}</p></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach($expenses as $expense)
+                                <tr>
+                                    <td>{{ $expense->created_at }}</td>
+                                    <td>{{ $expense->document }}</td>
+                                    <td>{{ $expense->supplier->name }}</td>
+                                    <td class="tdder">$ {{ number_format($expense->pay,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($expense->balance,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($expense->total_pay,2) }}</td>
 
 
                                 </tr>
@@ -248,7 +419,7 @@
         <div class="box-body row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <strong class="tpdf">Detalle Facturas</strong>
+                    <strong class="tpdf">Detalle de Ventas</strong>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -268,70 +439,21 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $invpay }}</p></th>
-                                <th><p align="right">${{ $invbalance }}</p></th>
-                                <th><p align="right">${{ $sale_box->sale }}</p></th>
+                                <th><p align="right">${{ number_format($invoice_pay,2) }}</p></th>
+                                <th><p align="right">${{ number_format($invoice_balance,2) }}</p></th>
+                                <th><p align="right">${{ number_format($sale_box->invoice,2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($invoices as $inv)
+                            @foreach($invoices as $invoice)
                                 <tr>
-                                    <td>{{ $inv->created_at }}</td>
-                                    <td>{{ $inv->invoice }}</td>
-                                    <td>{{ $inv->customer->name }}</td>
-                                    <td>{{ $inv->status }}</td>
-                                    <td class="tdder">$ {{ $inv->pay }}</td>
-                                    <td class="tdder">$ {{ $inv->balance }}</td>
-                                    <td class="tdder">$ {{ $inv->total_pay }}</td>
-
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    @endif
-    @if ($sale_box->purchase > 0)
-        <div class="box-body row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <strong class="tpdf">Detalle Compras</strong>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-condensed table-hover">
-                        <thead>
-                            <tr class="bg-info">
-                                <th>Fecha</th>
-                                <th>N°.F</th>
-                                <th>Proveedor</th>
-                                <th>Estado</th>
-                                <th>Abonos</th>
-                                <th>Saldo</th>
-                                <th>Ventas</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $purpay }}</p></th>
-                                <th><p align="right">${{ $purbalance }}</p></th>
-                                <th><p align="right">${{ $sale_box->purchase }}</p></th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach($purchases as $pur)
-                                <tr>
-                                    <td>{{ $pur->created_at }}</td>
-                                    <td>{{ $pur->invoice }}</td>
-                                    <td>{{ $pur->supplier->name }}</td>
-                                    <td>{{ $pur->status }}</td>
-                                    <td class="tdder">$ {{ $pur->pay }}</td>
-                                    <td class="tdder">$ {{ $pur->balance }}</td>
-                                    <td class="tdder">$ {{ $pur->total_pay }}</td>
+                                    <td>{{ $invoice->created_at }}</td>
+                                    <td>{{ $invoice->document }}</td>
+                                    <td>{{ $invoice->customer->name }}</td>
+                                    <td>{{ $invoice->status }}</td>
+                                    <td class="tdder">$ {{ number_format($invoice->pay,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($invoice->balance,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($invoice->total_pay,2) }}</td>
 
 
                                 </tr>
@@ -367,9 +489,9 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $ordpay }}</p></th>
-                                <th><p align="right">${{ $ordbalance }}</p></th>
-                                <th><p align="right">${{ $sale_box->order }}</p></th>
+                                <th><p align="right">${{ number_format($order_pay,2) }}</p></th>
+                                <th><p align="right">${{ number_format($order_balance,2) }}</p></th>
+                                <th><p align="right">${{ number_format($sale_box->order,2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -379,9 +501,9 @@
                                     <td>{{ $order->id }}</td>
                                     <td>{{ $order->customer->name }}</td>
                                     <td>{{ $order->status }}</td>
-                                    <td class="tdder">$ {{ $order->pay }}</td>
-                                    <td class="tdder">$ {{ $order->balance }}</td>
-                                    <td class="tdder">$ {{ $order->total_pay }}</td>
+                                    <td class="tdder">$ {{ number_format($order->pay,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($order->balance,2) }}</td>
+                                    <td class="tdder">$ {{ number_format($order->total_pay,2) }}</td>
 
                                 </tr>
                             @endforeach
@@ -587,17 +709,17 @@
                     <tfoot>
                         <tr>
                             <th  colspan="4"><p align="right">TOTAL:</p></th>
-                            <th><p align="right">${{ $sum_pay_orders }}</p></th>
+                            <th><p align="right">${{ number_format($sum_pay_orders,2) }}</p></th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($pay_orders as $pay)
+                        @foreach($pay_orders as $pay_order)
                             <tr>
-                                <td>{{ $pay->created_at }}</td>
-                                <td>{{ $pay->id }}</td>
-                                <td>{{ $pay->order->id }}</td>
-                                <td>{{ $pay->order->customer->name }}</td>
-                                <td class="tdder">$ {{ $pay->pay }}</td>
+                                <td>{{ $pay_order->created_at }}</td>
+                                <td>{{ $pay_order->id }}</td>
+                                <td>{{ $pay_order->order->id }}</td>
+                                <td>{{ $pay_order->order->customer->name }}</td>
+                                <td class="tdder">$ {{ number_format($pay_order->pay,2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -630,17 +752,17 @@
                     <tfoot>
                         <tr>
                             <th  colspan="4"><p align="right">TOTAL:</p></th>
-                            <th><p align="right">${{ $sum_pay_invoices }}</p></th>
+                            <th><p align="right">${{ number_format($sum_pay_invoices,2) }}</p></th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($pay_invoices as $pi)
+                        @foreach($pay_invoices as $pay_invoice)
                             <tr>
-                                <td>{{ $pi->created_at }}</td>
-                                <td>{{ $pi->id }}</td>
-                                <td>{{ $pi->invoice->document }}</td>
-                                <td>{{ $pi->invoice->customer->name }}</td>
-                                <td class="tdder">$ {{ $pi->pay }}</td>
+                                <td>{{ $pay_invoice->created_at }}</td>
+                                <td>{{ $pay_invoice->id }}</td>
+                                <td>{{ $pay_invoice->invoice->document }}</td>
+                                <td>{{ $pay_invoice->invoice->customer->name }}</td>
+                                <td class="tdder">$ {{ number_format($pay_invoice->pay,2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -673,17 +795,60 @@
                     <tfoot>
                         <tr>
                             <th  colspan="4"><p align="right">TOTAL:</p></th>
-                            <th><p align="right">${{ $sum_pay_purchases }}</p></th>
+                            <th><p align="right">${{ number_format($sum_pay_purchases,2) }}</p></th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($pay_purchases as $pp)
+                        @foreach($pay_purchases as $pay_purchase)
                             <tr>
-                                <td>{{ $pp->created_at }}</td>
-                                <td>{{ $pp->id }}</td>
-                                <td>{{ $pp->purchase->document }}</td>
-                                <td>{{ $pp->purchase->supplier->name }}</td>
-                                <td class="tdder">$ {{ $pp->pay }}</td>
+                                <td>{{ $pay_purchase->created_at }}</td>
+                                <td>{{ $pay_purchase->id }}</td>
+                                <td>{{ $pay_purchase->purchase->document }}</td>
+                                <td>{{ $pay_purchase->purchase->supplier->name }}</td>
+                                <td class="tdder">$ {{ number_format($pay_purchase->pay,2) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    @endif
+    @if ($sale_box->out_purchase > 0)
+    <div class="box-body row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <strong class="tpdf">Detalle Pagos por Gastos</strong>
+
+            </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr class="bg-info">
+                            <th>Fecha</th>
+                            <th>ID</th>
+                            <th>N° Factura</th>
+                            <th>Proveedor</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th  colspan="4"><p align="right">TOTAL:</p></th>
+                            <th><p align="right">${{ number_format($sum_pay_expenses,2) }}</p></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach($pay_expenses as $pay_expense)
+                            <tr>
+                                <td>{{ $pay_expense->created_at }}</td>
+                                <td>{{ $pay_expense->id }}</td>
+                                <td>{{ $pay_expense->expense->document }}</td>
+                                <td>{{ $pay_expense->expense->supplier->name }}</td>
+                                <td class="tdder">$ {{ number_format($pay_expense->pay,2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -697,7 +862,7 @@
     <div class="box-body row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <strong class="tpdf">Detalle Pagos Anticipados</strong>
+                <strong class="tpdf">Detalle Anticipos a proveedores</strong>
 
             </div>
 
@@ -715,16 +880,57 @@
                     <tfoot>
                         <tr>
                             <th  colspan="3"><p align="right">TOTAL:</p></th>
-                            <th><p align="right">${{ $sum_payments }}</p></th>
+                            <th><p align="right">${{ number_format($sum_payments,2) }}</p></th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($payments as $pay)
+                        @foreach($payments as $payment)
                             <tr>
-                                <td>{{ $pay->created_at }}</td>
-                                <td>{{ $pay->id }}</td>
-                                <td>{{ $pay->supplier->name }}</td>
-                                <td class="tdder">$ {{ $pay->pay }}</td>
+                                <td>{{ $payment->created_at }}</td>
+                                <td>{{ $payment->id }}</td>
+                                <td>{{ $payment->supplier->name }}</td>
+                                <td class="tdder">$ {{ number_format($payment->pay,2) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    @endif
+    @if ($sale_box->in_advance > 0)
+    <div class="box-body row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <strong class="tpdf">Detalle Anticipos de Clientes</strong>
+
+            </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr class="bg-info">
+                            <th>Fecha</th>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th  colspan="3"><p align="right">TOTAL:</p></th>
+                            <th><p align="right">${{ number_format($sum_advances,2) }}</p></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach($advances as $advance)
+                            <tr>
+                                <td>{{ $advance->created_at }}</td>
+                                <td>{{ $advance->id }}</td>
+                                <td>{{ $advance->customer->name }}</td>
+                                <td class="tdder">$ {{ number_format($advance->pay,2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -74,4 +74,7 @@ class Supplier extends Model
         return $this->hasMany(PrePurchase::class);
     }
 
+    public function expenses(){
+        return $this->hasMany(Expense::class);
+    }
 }

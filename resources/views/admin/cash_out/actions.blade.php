@@ -1,4 +1,4 @@
-<a href="{{ route('sale_box.edit', $id) }}">
+<a href="{{ route('cash_out.edit', $id) }}">
     <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Cerrar Caja" ><i class="fas fa-user-lock"></i></button>
 </a>
 <a href="{{ route('show_out', $id) }}"

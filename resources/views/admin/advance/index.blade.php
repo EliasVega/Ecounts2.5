@@ -7,8 +7,8 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <strong>Listado de Anticipos</strong>
-                <a href="advance/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Anticipo</a>
-                <a href="{{ route('branch.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                <a href="advance/create" class="btn btn-celeste btn-sm mb-2"><i class="fa fa-plus mr-2"></i> Agregar Anticipo</a>
+                <a href="{{ route('branch.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
         </div>
     </div>
     <div class="row">

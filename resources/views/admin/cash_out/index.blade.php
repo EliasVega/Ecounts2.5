@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="outs">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="cashouts">
                     <thead>
                         <tr class="bg-info">
                             <th>ID</th>
@@ -34,7 +34,7 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#outs').DataTable(
+        $('#cashouts').DataTable(
         {
             responsive: true,
             autoWidth: false,
@@ -44,10 +44,10 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'nameB'},
-                {data: 'name'},
-                {data: 'nameA'},
-                {data: 'payment'},
+                {data: 'branch'},
+                {data: 'user'},
+                {data: 'admin'},
+                {data: 'payment', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'created_at'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',

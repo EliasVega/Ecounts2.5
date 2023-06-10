@@ -12,7 +12,6 @@ use App\Models\Company;
 use App\Models\Department;
 use App\Models\Document;
 use App\Models\Expense_service;
-use App\Models\Kardex;
 use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
@@ -25,9 +24,7 @@ use App\Models\Regime;
 use App\Models\Sale_box;
 use App\Models\Service;
 use App\Models\Supplier;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -163,9 +160,10 @@ class ExpenseController extends Controller
                     //actualizar el saldo del pago anticipado
                     $payment->balance = $paym_total;
                     $payment->update();
+                    /*
                     $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
                     $sale_box->out_payment += $pay;
-                    $sale_box->update();
+                    $sale_box->update();*/
 
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
@@ -198,7 +196,6 @@ class ExpenseController extends Controller
 
                     $sale_box->out_expense_cash = $out_expense_cash;
                     $sale_box->out_expense += $pay;
-                    $sale_box->out_payment += $pay;
                     $sale_box->update();
                 }
             }
