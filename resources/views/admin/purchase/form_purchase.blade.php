@@ -11,7 +11,7 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-3">
         <div class="form-group">
             <label class="form-control-label" for="branch_id">Sucursal Destino</label>
                 <select name="branch_id" class="form-control selectpicker" id="branch_id" data-live-search="true" required>
@@ -22,20 +22,20 @@
                 </select>
         </div>
     </div>
-
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
             <label class="form-control-label" for="document">N°Factura</label>
-            <input type="text" id="document" name="document" value="{{ old('document') }}" class="form-control" placeholder="Numero de la factura" required>
+            <input type="text" id="document" name="document" value="{{ old('document') }}" class="form-control" placeholder="# factura" required>
         </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
-            <label class="form-control-label" for="due_date">Vencimiento</label>
-            <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
+            <label class="form-control-label" for="due_date">F/Vecimiento</label>
+            <input type="date" name="due_date" class="form-control" placeholder="Vence">
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-3" >
         <div class="form-check">
             <input class="form-check-input" type="radio" name="percentage" value="1" id="rtfon">
             <label class="form-check-label" for="retefte">
@@ -49,7 +49,7 @@
             </label>
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="percentagey">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="percentagey">
         <div class="form-group row">
             <label class="form-control-label" for="percentage_id">Porcentaje</label>
             <select name="percentage_id" class="form-control selectpicker" id="percentage_id"
@@ -136,6 +136,7 @@
                 <thead>
                     <tr>
                         <th>Eliminar</th>
+                        <th>Rtf</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>precio ($)</th>
@@ -145,23 +146,28 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th colspan="5" class="footder">TOTAL:</th>
+                        <th colspan="6" class="footder">TOTAL:</th>
                         <td class="footder"><strong id="total_html">$ 0.00</strong>
                             <input type="hidden" name="total" id="total"></td>
                     </tr>
                     <tr>
-                        <th colspan="5" class="footder">TOTAL IVA:</th>
+                        <th colspan="6" class="footder">TOTAL IVA:</th>
                         <td class="footder"><strong id="total_iva_html">$ 0.00</strong>
                             <input type="hidden" name="total_iva" id="total_iva">
                         </td>
                     </tr>
                     <tr id="rtferase">
-                        <th colspan="5" class="footder">RETENCION:</th>
+                        <th colspan="6" class="footder">RETENCION:</th>
                         <td class="footder"><strong id="retention_html">$ 0.00</strong>
                             <input type="hidden" name="retention" id="retention"></td>
                     </tr>
+                    <tr id="rtftotal">
+                        <th colspan="6" class="footder">TOTAL - DESC:</th>
+                        <td class="footder"><strong id="total_desc_html">$ 0.00</strong>
+                            <input type="hidden" name="total_desc" id="total_desc"></td>
+                    </tr>
                     <tr>
-                        <th colspan="5" class="footder">TOTAL PAGAR:</th>
+                        <th colspan="6" class="footder">TOTAL PAGAR:</th>
                         <td class="footder"><strong id="total_pay_html">$ 0.00</strong>
                             <input type="hidden" name="total_pay" id="total_pay"></td>
                     </tr>

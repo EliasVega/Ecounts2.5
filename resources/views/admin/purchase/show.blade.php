@@ -81,7 +81,6 @@
                             </tr>
                         </thead>
                         <tfoot>
-
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL:</p></th>
                                 <th><p align="right">${{ number_format($purchase->total, 2) }}</p></th>
@@ -96,15 +95,16 @@
                                     <th colspan="3"><p align="right">RETENCION:</p></th>
                                     <th><p align="right">${{ number_format($purchase->retention, 2) }}</p></th>
                                 </tr>
+                                <tr>
+                                    <th colspan="3"><p align="right">TOTAL - DESC:</p></th>
+                                    <th><p align="right">${{ number_format($purchase->total_pay - $purchase->retention, 2) }}</p></th>
+                                </tr>
 
                             @endif
-
-
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
                                 <th><p align="right">${{ number_format($purchase->total_pay, 2) }}</p></th>
                             </tr>
-
                         </tfoot>
                         <tbody>
                             @foreach($product_purchases as $PP)

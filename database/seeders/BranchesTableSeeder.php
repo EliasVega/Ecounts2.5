@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BranchesTableSeeder extends Seeder
 {
@@ -16,9 +17,9 @@ class BranchesTableSeeder extends Seeder
     {
 
 
-        \DB::table('branches')->delete();
+        DB::table('branches')->delete();
 
-        \DB::table('branches')->insert(array (
+        DB::table('branches')->insert(array (
             0 =>
             array (
                 'id' => 1,

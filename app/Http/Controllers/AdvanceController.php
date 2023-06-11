@@ -125,7 +125,6 @@ class AdvanceController extends Controller
                 ->where('status', '=', 'open')
                 ->first();
                 $inAdvanceCash = $sale_box->in_advance_cash;
-
                 $cash = $sale_box->cash;
                 if($mp == 10){
                     $inAdvanceCash += $paymentLine;
@@ -139,8 +138,6 @@ class AdvanceController extends Controller
 
                 $cont++;
             }
-
-
             $advances = Advance::findOrFail($advance->id);
             $advances->pay = $payu;
             $advances->balance = $payu;

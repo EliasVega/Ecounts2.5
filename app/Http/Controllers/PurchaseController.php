@@ -34,6 +34,7 @@ use App\Models\Retention;
 use App\Models\Sale_box;
 use App\Models\Supplier;
 use App\Models\Tax;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -133,6 +134,7 @@ class PurchaseController extends Controller
             $iva        = $request->iva;
             $pay        = $request->pay;
             $branch     = $request->branch_id[0];
+
             //Crea un registro de compras
             $purchase = new Purchase();
             $purchase->user_id     = Auth::user()->id;
@@ -140,7 +142,7 @@ class PurchaseController extends Controller
             $purchase->supplier_id = $request->supplier_id;
             $purchase->payment_form_id = $request->payment_form_id;
             $purchase->payment_method_id = $request->payment_method_id;
-            $purchase->percentage_id = $request->percentage_id;
+            $purchase->percentage_id = $request->percentage_id[0];
             $purchase->voucher_type_id = 7;
             $purchase->document    = $request->document;
             $purchase->due_date    = $request->due_date;
@@ -343,10 +345,10 @@ class PurchaseController extends Controller
         //$productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
         $productPurchases = Product_purchase::from('product_purchases as pp')
         ->join('products as pro', 'pp.product_id', 'pro.id')
-        ->select('pp.id', 'pro.id as idP', 'pro.name', 'pro.stock', 'pp.quantity', 'pp.price', 'pp.iva', 'pp.subtotal')
+        ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+        ->select('pp.id', 'pro.id as idP', 'pro.name', 'pro.stock', 'pp.quantity', 'pp.price', 'pp.iva', 'pp.subtotal', 'pur.retention')
         ->where('purchase_id', $purchase->id)
         ->get();
-
         return view('admin.purchase.edit',
         compact(
             'purchase',
@@ -387,6 +389,8 @@ class PurchaseController extends Controller
             $iva        = $request->iva;
             $pay        = $request->pay;
             $branch     = $request->branch_id[0];
+            $date1 = Carbon::now()->toDateString();
+            $date2 = Purchase::find($purchase->id)->created_at->toDateString();
             //llamado de todos los pagos y pago nuevo para la diferencia
 
             $payOld = Pay_purchase::where('purchase_id', $purchase->id)->sum('pay');
@@ -396,19 +400,18 @@ class PurchaseController extends Controller
             $balanceOld = $purchase->balance;
             $balanceNew = $balanceOld - $pay;
             //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-            $sale_box->purchase -= $purchase->total_pay;
-            $sale_box->out_total -= $purchase->total_pay;
-            $sale_box->update();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                $sale_box->purchase -= $purchase->total_pay;
+                $sale_box->out_total -= $purchase->total_pay;
+                $sale_box->update();
+            }
 
             //Actualizando un registro de compras
             $purchase->user_id     = Auth::user()->id;
-            $purchase->branch_id   = $branch;
-            $purchase->supplier_id = $request->supplier_id;
             $purchase->payment_form_id = $request->payment_form_id;
             $purchase->payment_method_id = $request->payment_method_id;
             $purchase->percentage_id = $request->percentage_id;
-            $purchase->voucher_type_id = 7;
             $purchase->document    = $request->document;
             $purchase->due_date    = $request->due_date;
             $purchase->items       = count($product_id);
@@ -417,20 +420,23 @@ class PurchaseController extends Controller
             $purchase->total_pay    = $request->total_pay;
             $purchase->status      = 'active';
             if ($payOld > 0 && $pay == 0) {
-                $purchase->pay         = $payOld;
+                $purchase->pay = $payOld;
             } elseif ($pay > 0 && $payOld == 0) {
-                $purchase->pay         = $pay;
+                $purchase->pay = $pay;
             } else {
-                $purchase->pay         = $payTotal;
+                $purchase->pay = $payTotal;
             }
             $purchase->balance   = $request->total_pay - $payTotal;
             $purchase->retention   = $request->retention;
             $purchase->update();
             //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-            $sale_box->purchase += $purchase->total_pay;
-            $sale_box->out_total += $purchase->total_pay;
-            $sale_box->update();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                $sale_box->purchase += $purchase->total_pay;
+                $sale_box->out_total += $purchase->total_pay;
+                $sale_box->update();
+            }
+
 
             //inicio proceso si hay pagos
             if($pay > 0){

@@ -39,7 +39,7 @@ class UpdatepurchaseRequest extends FormRequest
             'supplier_id'       => 'required|integer',
             'payment_form_id'   => 'required|integer',
             'payment_method_id' => 'required|integer',
-            'percentage_id'     => 'integer',
+            'percentage_id'     => '',
             'type_generation_id' => 'integer',
             'voucher_type_id' => 'integer'
         ];

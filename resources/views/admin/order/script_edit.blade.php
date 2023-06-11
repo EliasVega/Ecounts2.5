@@ -303,9 +303,6 @@
             })
         }
     }
-
-
-
     function detailclear(){
         order = {!! json_encode($orderProducts) !!};
         order.forEach((value, i) => {

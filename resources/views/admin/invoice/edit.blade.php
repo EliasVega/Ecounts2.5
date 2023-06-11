@@ -7,7 +7,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Editar Venta:{{ $invoice->id }}</h3>
+                    <h5 class="box-title">Editar Venta N°:{{ $invoice->id }}</h5>
                 </div>
                 @if (count($errors)>0)
                     <div class="alert alert-danger">
@@ -28,11 +28,13 @@
             @include('admin/invoice.form_edit')
         </div>
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            @include('admin/invoice.form_pay')
+            @include('admin/invoice.form_pay_edit')
         </div>
     </div>
     {!!Form::close()!!}
+    @include('admin/invoice.editmodal')
 @endsection
 @section('scripts')
     @include('admin/invoice.script_edit')
+    @include('admin/invoice.script_pay_edit')
 @endsection

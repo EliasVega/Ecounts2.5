@@ -1,5 +1,5 @@
 <div class="box-body row">
-    <div class="col-12 col-md-3" id="addSupplier">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="addSupplier">
         <label for="supplier_id">Proveedor</label>
         <div class="select">
             <select id="supplier_id" name="supplier_id" class="form-control selectpicker" data-live-search="true" required>
@@ -14,7 +14,7 @@
             </select>
         </div>
     </div>
-    <div class="col-12 col-md-3" id="addBranch">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="addBranch">
         <label for="branch_id">Sucursal de Destino</label>
         <div class="select">
             <select id="branch_id" name="branch_id" class="form-control selectpicker" data-live-search="true" required>
@@ -30,19 +30,19 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" id="addDocument">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="addDocument">
         <div class="form-group">
             <label class="form-control-label" for="document">N°Factura</label>
-            <input type="text" id="document" name="document" value="{{ $purchase->document }}" class="form-control" placeholder="Numero de la factura" required readonly>
+            <input type="text" id="document" name="document" value="{{ $purchase->document }}" class="form-control" placeholder="Numero de la factura" required>
         </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" id="addDueData">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="addDueData">
         <div class="form-group">
             <label class="form-control-label" for="due_date">Vencimiento</label>
-            <input type="date" name="due_date" value="{{ $purchase->due_date }}" class="form-control" placeholder="Fecha Vencimiento" readonly>
+            <input type="date" name="due_date" value="{{ $purchase->due_date }}" class="form-control" placeholder="Fecha Vencimiento" >
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="addRadio">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-3" id="addRadio">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="percentage" value="1" id="rtfon">
             <label class="form-check-label" for="retefte">
@@ -56,7 +56,7 @@
             </label>
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" id="addPercentage">
+    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12" id="addPercentage">
         <div class="form-group row">
             <label class="form-control-label" for="percentage_id">Porcentaje</label>
             <select name="percentage_id" class="form-control selectpicker" id="percentage_id"
@@ -169,6 +169,11 @@
                         <td class="footder"><strong id="retention_html">$ 0.00</strong>
                             <input type="hidden" name="retention" id="retention"></td>
                     </tr>
+                    <tr id="rtftotal">
+                        <th colspan="7" class="footder">TOTAL - DESC:</th>
+                        <td class="footder"><strong id="total_desc_html">$ 0.00</strong>
+                            <input type="hidden" name="total_desc" id="total_desc"></td>
+                    </tr>
                     <tr>
                         <th colspan="7" class="footder">TOTAL PAGAR:</th>
                         <td class="footder"><strong id="total_pay_html">$ 0.00</strong>
@@ -178,6 +183,15 @@
                 <tbody>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="modal-footer" id="save">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <button class="btn btn-celeste" type="submit"><i class="fa fa-save"></i>&nbsp;
+                    Registrar</button>
+            </div>
         </div>
     </div>
 </div>

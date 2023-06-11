@@ -116,7 +116,16 @@
                                 <th colspan="3" class="footder">TOTAL IVA:</th>
                                 <td class="footder"><strong>${{number_format($purchase->total_iva,2)}}</strong> </td>
                             </tr>
-
+                            @if ($purchase->retention > 0)
+                                <tr>
+                                    <th colspan="3" class="footder">RETERENTA:</th>
+                                    <td class="footder"><strong>${{number_format($purchase->retention,2)}}</strong> </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="footder">TOTAL - DESC:</th>
+                                    <td class="footder"><strong>${{number_format($purchase->total_pay - $purchase->retention,2)}}</strong> </td>
+                                </tr>
+                            @endif
                             <tr>
                                 <th  colspan="3" class="footder">TOTAL PAGAR:</th>
                                 <td class="footder"><strong id="total">${{number_format($purchase->total_pay,2)}}</strong></td>

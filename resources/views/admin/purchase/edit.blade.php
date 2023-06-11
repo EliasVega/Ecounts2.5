@@ -7,7 +7,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Editar Compra:{{ $purchase->id }}</h3>
+                    <h5 class="box-title">Editar Compra:{{ $purchase->id }}</h5>
                 </div>
                 @if (count($errors)>0)
                     <div class="alert alert-danger">
@@ -23,17 +23,18 @@
     </div>
     {!!Form::model($purchase, ['method'=>'PATCH','route'=>['purchase.update', $purchase->id]])!!}
     {!!Form::token()!!}
-    <div class="row m-1">
-        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-            @include('admin/purchase.form_edit')
+        <div class="row m-1">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                @include('admin/purchase.form_edit')
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                @include('admin/purchase.form_pay')
+            </div>
         </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            @include('admin/purchase.form_pay')
-        </div>
-    </div>
     {!!Form::close()!!}
-    @include('admin/pre_purchase.editmodal')
+    @include('admin/purchase.editmodal')
 @endsection
 @section('scripts')
     @include('admin/purchase.script_edit')
+    @include('admin/purchase.script_pay')
 @endsection

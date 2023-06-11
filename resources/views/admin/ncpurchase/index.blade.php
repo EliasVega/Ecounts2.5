@@ -10,7 +10,6 @@
             <a href="{{ route('purchase.index') }}" class="btn btn-celeste"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h5>
         </div>
     </div>
-    @dd($ncpurchases);
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">

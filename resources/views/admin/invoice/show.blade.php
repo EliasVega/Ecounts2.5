@@ -92,10 +92,17 @@
                                 <th><p align="right">${{ number_format($invoice->total_iva, 2) }}</p></th>
                             </tr>
 
-                            <tr>
-                                <th colspan="3"><p align="right">RETENCION:</p></th>
-                                <th><p align="right">${{ number_format($invoice->retention, 2) }}</p></th>
-                            </tr>
+                            @if ($invoice->retention > 0)
+                                <tr>
+                                    <th colspan="3"><p align="right">RETENCION:</p></th>
+                                    <th><p align="right">${{ number_format($invoice->retention, 2) }}</p></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3"><p align="right">TOTAL - DESC:</p></th>
+                                    <th><p align="right">${{ number_format($invoice->total_pay - $invoice->retention, 2) }}</p></th>
+                                </tr>
+
+                            @endif
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>

@@ -40,7 +40,7 @@ class StorepurchaseRequest extends FormRequest
             'supplier_id'       => 'required|integer',
             'payment_form_id'   => 'required|integer',
             'payment_method_id' => 'integer',
-            'percentage_id'     => 'integer',
+            'percentage_id'     => 'required',
             'type_generation_id' => 'integer',
             'voucher_type_id' => 'integer'
         ];
