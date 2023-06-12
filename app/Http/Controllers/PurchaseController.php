@@ -407,7 +407,7 @@ class PurchaseController extends Controller
                 $payment->user_id = Auth::user()->id;
                 $payment->branch_id = Auth::user()->branch_id;
                 $payment->supplier_id = $request->supplier_id;
-                $payment->origin = 'Factura de Compra' . '-'. $purchase->document;
+                $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
                 $payment->destination = null;
                 $payment->pay = $payOld - $total_pay;
                 $payment->balance = $payOld - $total_pay;
@@ -624,7 +624,15 @@ class PurchaseController extends Controller
 
                         $subtotal = $quantity[$cont] * $price[$cont];
                         $ivasub = $subtotal * $iva[$cont]/100;
-
+                        $productPurchase->quantity = $quantity[$cont];
+                        $productPurchase->price = $price[$cont];
+                        $productPurchase->iva = $iva[$cont];
+                        $productPurchase->subtotal = $subtotal;
+                        $productPurchase->ivasubt = $ivasub;
+                        $productPurchase->item = $item;
+                        $productPurchase->update();
+                        $item ++;
+                        /*
                         if ($productPurchase->quantity > 0) {
                             $productPurchase->quantity += $quantity[$cont];
                             $productPurchase->price = $price[$cont];
@@ -641,7 +649,7 @@ class PurchaseController extends Controller
                             $productPurchase->item = $item;
                             $productPurchase->update();
                             $item ++;
-                        }
+                        }*/
                     }
                     //selecciona el producto de la sucursal que sea el mismo del array
                     $branch_products = Branch_product::where('product_id', '=', $productPurchase->product_id)

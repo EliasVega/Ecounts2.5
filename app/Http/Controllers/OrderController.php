@@ -28,9 +28,11 @@ use App\Models\Regime;
 use App\Models\Retention;
 use App\Models\Sale_box;
 use App\Models\Tax;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
@@ -315,6 +317,7 @@ class OrderController extends Controller
         ->select('op.id', 'pro.id as idP', 'pro.name', 'pro.stock', 'op.quantity', 'op.price', 'op.iva', 'op.subtotal', 'per.percentage')
         ->where('order_id', $order->id)
         ->get();
+        $payOrders = Pay_order::where('order_id', $order->id)->sum('pay');
         return view('admin.order.edit', compact(
             'order',
             'departments',
@@ -331,7 +334,8 @@ class OrderController extends Controller
             'cards',
             'advances',
             'branchProducts',
-            'orderProducts'
+            'orderProducts',
+            'payOrders'
         ));
     }
 
@@ -354,20 +358,36 @@ class OrderController extends Controller
             $price      = $request->price;
             $iva        = $request->iva;
             $pay        = $request->pay;
-            $branch     = $order->branch_id;
+            $total_pay = $request->total_pay;
             //llamado de todos los pagos y pago nuevo para la diferencia
 
             $payOld = Pay_order::where('order_id', $order->id)->sum('pay');
             $payNew = $pay;
-            $payTotal = $pay + $payOld;
-            $invPayTotal = $payOld - $payNew;
-            $balanceOld = $order->balance;
-            $balanceNew = $balanceOld - $pay;
+            $payTotal = $payNew + $payOld;
+            $date1 = Carbon::now()->toDateString();
+            $date2 = Order::find($order->id)->created_at->toDateString();
+
+            if ($payOld > $total_pay) {
+
+                $advance = new Advance();
+                $advance->user_id    = Auth::user()->id;
+                $advance->branch_id  = Auth::user()->branch_id;
+                $advance->customer_id = $request->customer_id;
+                $advance->origin = 'Orden de Pedido' . '-' . $order->id;
+                $advance->destination = null;
+                $advance->pay = $payOld - $total_pay;
+                $advance->balance = $payOld - $total_pay;
+                $advance->note = 'diferencia de edicion de Orden de pedido';
+                $advance->save();
+            }
+
             //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-            $sale_box->order -= $order->total_pay;
-            $sale_box->out_total -= $order->total_pay;
-            $sale_box->update();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                $sale_box->order -= $order->total_pay;
+                $sale_box->out_total -= $order->total_pay;
+                $sale_box->update();
+            }
 
             //registro en la tabla Order
             $order->user_id           = Auth::user()->id;
@@ -384,15 +404,21 @@ class OrderController extends Controller
             } else {
                 $order->pay         = $payTotal;
             }
-            $order->balance           = $request->total_pay - $payTotal;
+            if ($payOld > $total_pay) {
+                $order->balance = 0;
+            } else {
+                $order->balance = $total_pay - $payTotal;
+            }
             $order->retention         = $request->retention;
             $order->update();
 
             //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-            $sale_box->order += $order->total_pay;
-            $sale_box->out_total += $order->total_pay;
-            $sale_box->update();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                $sale_box->order += $order->total_pay;
+                $sale_box->out_total += $order->total_pay;
+                $sale_box->update();
+            }
 
             //inicio proceso si hay pagos
             if($pay > 0){
@@ -449,13 +475,10 @@ class OrderController extends Controller
                     $mp = $request->payment_method_id;
                     //metodo para actualizar la caja
                     $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-                    $in_order_cash = $sale_box->in_order_cash;
                     if($mp == 10){
-                        $in_order_cash += $pay;
+                        $sale_box->in_order_cash += $pay;
                         $sale_box->cash += $pay;
                     }
-
-                    $sale_box->in_order_cash = $in_order_cash;
                     $sale_box->in_order += $pay;
                     $sale_box->update();
                 }
@@ -497,25 +520,30 @@ class OrderController extends Controller
                     $order_product->save();
                 } else {
                     if ($quantity[$cont] > 0) {
-
                         $subtotal = $quantity[$cont] * $price[$cont];
                         $ivasub = $subtotal * $iva[$cont]/100;
-
+                        $orderProduct->quantity = $quantity[$cont];
+                        $orderProduct->price = $price[$cont];
+                        $orderProduct->iva = $iva[$cont];
+                        $orderProduct->subtotal = $subtotal;
+                        $orderProduct->ivasubt = $ivasub;
+                        $orderProduct->update();
+                        /*
                         if ($orderProduct->quantity > 0) {
-                            $orderProduct->quantity    += $quantity[$cont];
-                            $orderProduct->price       = $price[$cont];
-                            $orderProduct->iva         = $iva[$cont];
-                            $orderProduct->subtotal    += $subtotal;
-                            $orderProduct->ivasubt     += $ivasub;
+                            $orderProduct->quantity += $quantity[$cont];
+                            $orderProduct->price += $price[$cont];
+                            $orderProduct->iva += $iva[$cont];
+                            $orderProduct->subtotal += $subtotal;
+                            $orderProduct->ivasubt += $ivasub;
                             $orderProduct->update();
                         } else {
-                            $orderProduct->quantity    = $quantity[$cont];
-                            $orderProduct->price       = $price[$cont];
-                            $orderProduct->iva         = $iva[$cont];
-                            $orderProduct->subtotal    = $subtotal;
-                            $orderProduct->ivasubt     = $ivasub;
+                            $orderProduct->quantity = $quantity[$cont];
+                            $orderProduct->price = $price[$cont];
+                            $orderProduct->iva = $iva[$cont];
+                            $orderProduct->subtotal = $subtotal;
+                            $orderProduct->ivasubt = $ivasub;
                             $orderProduct->update();
-                        }
+                        }*/
                     }
                 }
 
@@ -526,7 +554,13 @@ class OrderController extends Controller
         catch(Exception $e){
             DB::rollback();
         }
-        return redirect('order');
+        if ($payOld > $total_pay) {
+            Alert::success('Orden de Pedido','Editado Satisfactoriamente. Con creacion de anticipo de cliente');
+            return redirect('order');
+
+        } else {
+            return redirect("order")->with('success', 'Orden de Pedido Editado Satisfactoriamente');
+        }
     }
 
     /**

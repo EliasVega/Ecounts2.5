@@ -470,10 +470,11 @@ class InvoiceController extends Controller
                     }
                     $advance->balance = $adv_total;
                     $advance->update();
+                    /*
                     //Actualizando la caja
                     $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
                     $sale_box->in_advance += $pay;
-                    $sale_box->update();
+                    $sale_box->update();*/
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
                     $pay_invoice = new Pay_invoice();
@@ -580,10 +581,17 @@ class InvoiceController extends Controller
                     $subtotal = $quantity[$cont] * $price[$cont];
                     $ivasub   = $subtotal * $iva[$cont]/100;
                     $item     = $cont + 1;
-                    $prodid   = $product_id[$cont];
+                    $invoiceProduct->quantity = $quantity[$cont];
+                    $invoiceProduct->price = $price[$cont];
+                    $invoiceProduct->iva = $iva[$cont];
+                    $invoiceProduct->subtotal = $subtotal;
+                    $invoiceProduct->ivasubt = $ivasub;
+                    $invoiceProduct->item = $item;
+                    $invoiceProduct->update();
+                    $item ++;
+                    /*
                     if ($quantity[$cont] > 0) {
                         if ($invoiceProduct->quantity > 0) {
-
                             $invoiceProduct->quantity += $quantity[$cont];
                             $invoiceProduct->price += $price[$cont];
                             $invoiceProduct->iva += $iva[$cont];
@@ -601,7 +609,7 @@ class InvoiceController extends Controller
                             $invoiceProduct->update();
                             $item ++;
                         }
-                    }
+                    }*/
                     $branch_products = Branch_product::where('product_id', '=', $product_id[$cont])
                     ->where('branch_id', '=', $invoice->branch_id)
                     ->first();

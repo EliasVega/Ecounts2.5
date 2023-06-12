@@ -18,74 +18,84 @@
             });
         });
     });
+    //form invoice
     //$("#save").hide();
-    //form pay button
-    $("#payPayment").hide();
-    $("#noDefined").hide();
+    //form pay
     $("#cash").hide();
-    $("#prepay").hide();
     $("#transfer").hide();
     $("#nequi").hide();
     $("#card1").hide();
     $("#card2").hide();
+    $("#noDefined").hide();
+    $("#advance").hide();
+    $("#transvenped").hide();
+    $("#payPayment").hide();
+    //$("#payOrder").hide();
 
-    //$("#transvenped").hide();
-    //form pay
-    //$("#payBalance").hide();
-    //$("#payReturned").hide();
     $("#payPay").hide();
+    $("#payPaymentAdvance").hide();
     $("#payAdvance").hide();
-    $("#payVadvance").hide();
     $("#payTransaction").hide();
     $("#payBank").hide();
     $("#payCard").hide();
     $("#payAdvanceId").hide();
 
+
     $(document).ready(function(){
         $("#payment_form_id").change(function(){
-        form = $("#payment_form_id").val();
-        if(form == 1){
-            $("#noDefined").show();
-            $("#cash").show();
-            $("#prepay").show();
-            $("#transfer").show();
-            $("#nequi").show();
-            $("#card1").show();
-            $("#card2").show();
-            $("#mpay").hide();
-            $("#payPayment").hide();
-        }else{
-            $("#payPayment").show();
-            $("#noDefined").hide();
-            $("#cash").hide();
-            $("#prepay").hide();
-            $("#transfer").hide();
-            $("#nequi").hide();
-            $("#card1").hide();
-            $("#card2").hide();
-            $("#mpay").show();
-        }
+            form = $("#payment_form_id").val();
+            if(form == 1){
+                $("#noDefined").show();
+                $("#cash").show();
+                $("#advance").show();
+                $("#transfer").show();
+                $("#nequi").show();
+                $("#card1").show();
+                $("#card2").show();
+                $("#mpay").hide();
+                $("#payPayment").hide();
+            }else{
+                $("#payPayment").show();
+                $("#noDefined").hide();
+                $("#cash").hide();
+                $("#advance").hide();
+                $("#transfer").hide();
+                $("#nequi").hide();
+                $("#card1").hide();
+                $("#card2").hide();
+                $("#mpay").hide();
+                $("#payment_method_id").val(1);
+
+                $("#pay").val();
+                $("#returned").val(0);
+                $("#transaction").val("N/A");
+                $("#bank_id").val(1);
+                $("#card_id").val(1);
+                $("#advance").val(0);
+            }
         });
     });
     $(document).ready(function(){
-        $("#addpay").click(function(){
+        $("#payPays").click(function(){
             see();
         });
     });
     function see(){
         $("#noDefined").show();
         $("#cash").show();
-        $("#prepay").show();
+        $("#advance").show();
         $("#transfer").show();
         $("#nequi").show();
         $("#card1").show();
         $("#card2").show();
         $("#mpay").hide();
-        $("#paypayment").hide();
+        $("#payPayment").hide();
     }
     $(document).ready(function(){
         $("#cash").click(function(){
-            tpay = $("#balance").val();
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
             payCash();
         });
@@ -98,17 +108,18 @@
         $("#bank_id").val(1);
         $("#card_id").val(1);
         $("#payBank").hide();
-        $("#payCardy").hide();
+        $("#payCard").hide();
         $("#payTransaction").hide();
         $("#payPay").show();
-        $("#payAdvance").hide();
-        $("#advancey").hide();
+        $("#payPaymentAdvance").hide();
+        $("#payAdvanceId").hide();
         $("#advance").val(0);
-        $("#eventy").hide();
     }
     $(document).ready(function(){
         $("#transfer").click(function(){
-            tpay = $("#balance").val();
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
             payTransaction();
         });
@@ -119,17 +130,18 @@
         $("#payment_method_id").val(47);
         $("#card_id").val(1);
         $("#payPay").show();
-        $("#payAdvance").hide();
+        $("#payPaymentAdvance").hide();
         $("#payTransaction").show();
         $("#payBank").show();
-        $("#payCardy").hide();
+        $("#payCard").hide();
         $("#mpay").hide();
-        $("#eventy").hide();
-        $("#advancey").hide();
+        $("#payAdvanceId").hide();
     }
     $(document).ready(function(){
         $("#nequi").click(function(){
-            tpay = $("#balance").val();
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
             payNequi();
         });
@@ -141,17 +153,18 @@
         $("#bank_id").val(2);
         $("#card_id").val(1);
         $("#payPay").show();
-        $("#payAdvance").hide();
+        $("#payPaymentAdvance").hide();
         $("#payTransaction").show();
-        $("#payCardy").hide();
+        $("#payCard").hide();
         $("#mpay").hide();
         $("#payBank").hide();
-        $("#eventy").hide();
-        $("#advancey").hide();
+        $("#payAdvanceId").hide();
     }
     $(document).ready(function(){
         $("#card1").click(function(){
-            tpay = $("#balance").val();
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
             payCard1();
         });
@@ -160,18 +173,19 @@
         $("#pay").val();
         $("#returned").val(0);
         $("#payment_method_id").val(48);
-        $("#payAdvance").hide();
+        $("#payPaymentAdvance").hide();
         $("#mpay").hide();
-        $("#eventy").hide();
         $("#payPay").show();
         $("#payBank").show();
-        $("#payCardy").show();
-        $("#advancey").hide();
+        $("#payCard").show();
+        $("#payAdvanceId").hide();
         $("#payTransaction").show();
     }
     $(document).ready(function(){
         $("#card2").click(function(){
-            tpay = $("#balance").val();
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
             payCard2();
         });
@@ -180,18 +194,19 @@
         $("#pay").val();
         $("#returned").val(0);
         $("#payment_method_id").val(49);
-        $("#payAdvance").hide();
+        $("#payPaymentAdvance").hide();
         $("#mpay").hide();
-        $("#eventy").hide();
         $("#payPay").show();
         $("#payBank").show();
-        $("#payCardy").show();
-        $("#advancey").hide();
+        $("#payCard").show();
+        $("#payAdvanceId").hide();
         $("#payTransaction").show();
     }
     $(document).ready(function(){
         $("#noDefined").click(function(){
-            tpay = $("#balance").val();
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
             noDefined();
         });
@@ -205,21 +220,22 @@
         $("#card_id").val(1);
         $("#payTransaction").show();
         $("#payBank").hide();
-        $("#payCardy").hide();
+        $("#payCard").hide();
         $("#payPay").show();
-        $("#payAdvance").hide();
-        $("#advancey").hide();
-        $("#eventy").hide();
+        $("#payPaymentAdvance").hide();
+        $("#payAdvanceId").hide();
         $("#advance").val(0);
     }
     $(document).ready(function(){
-        $("#advanceCus").click(function(){
-            tpay = $("#balance").val();
+        $("#advance").click(function(){
+            totalInvoice = $("#balance").val();
+            totalPay = $("#pay_order").val();
+            tpay = totalInvoice - totalPay;
             $("#pay").val(tpay);
-            advanceCus();
+            advance();
         });
     });
-    function advanceCus(){
+    function advance(){
         $("#pay").val();
         $("#returned").val(0);
         $("#payment_method_id").val(1);
@@ -227,13 +243,12 @@
         $("#bank_id").val(1);
         $("#card_id").val(1);
         $("#payPay").hide();
-        $("#payAdvance").show();
+        $("#payPaymentAdvance").show();
         $("#payTransaction").hide();
-        $("#payCardy").hide();
+        $("#payCard").hide();
         $("#mpay").hide();
         $("#payBank").hide();
-        $("#advancey").show();
-        $("#eventy").hide();
+        $("#payAdvanceId").show();
     }
     $(document).ready(function(){
         $("#pay").keyup(function(){
@@ -244,9 +259,11 @@
     });
     function payment(){
         ttp = parseFloat($("#total_pay").val())
+        tpi = parseFloat($("#pay_order").val())
         abn = parseFloat($("#pay").val())
-        balancey = ttp - abn;
-        if (ttp >= abn) {
+        tpiabn = tpi + abn;
+        balancey = ttp - (tpi + abn);
+        if (ttp >= tpiabn) {
             $("#returned").val(balancey);
         } else {
             //alert("Rellene todos los campos del detalle de la venta");
@@ -273,21 +290,23 @@
     });
     $(document).ready(function(){
         $("#advance_id").change(function(){
-            parseFloat($("#advance").val(prueba))
-            $("#abadvancey").show();
+            parseFloat($("#abpayment").val(prueba))
+            $("#payPaymentAdvance").show();
             prepaidnew();
         });
     });
     function prepaidnew(){
         ttp = parseFloat($("#total_pay").val())
-        abn = parseFloat($("#advance").val())
-        balancey = ttp - abn;
-        if (ttp >= abn) {
+        tpp = parseFloat($("#pay_order").val())
+        abn = parseFloat($("#abpayment").val())
+        tpp_abn = tpp + abn;
+        balancey = ttp - (tpp + abn);
+        if (ttp >= tpp_abn) {
             $("#returned").val(balancey);
             $("#pay").val(abn);
             $("#payment").val(abn);
         } else {
-            $("#payVadvance").show();
+            $("#payAdvance").show();
             //prepaid()
         }
     }
@@ -299,9 +318,11 @@
     });
     function prepaid(){
         ttpnew = parseFloat($("#total_pay").val())
+        tppnew = parseFloat($("#pay_order").val())
         abnnew = parseFloat($("#advance").val())
-        balanceynew = ttpnew - abnnew;
-        if (ttpnew >= abnnew) {
+        tppnew_abnnew = tppnew + abn;
+        balanceynew = ttpnew - (tppnew + abnnew);
+        if (ttpnew >= tppnew_abnnew) {
             $("#returned").val(balanceynew);
             $("#advance").val(abnnew);
             $("#pay").val(abnnew);

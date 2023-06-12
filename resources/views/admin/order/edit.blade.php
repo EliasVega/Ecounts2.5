@@ -28,7 +28,7 @@
             @include('admin/order.form_edit')
         </div>
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            @include('admin/order.form_pay')
+            @include('admin/order.form_pay_edit')
         </div>
     </div>
     {!!Form::close()!!}
@@ -36,5 +36,5 @@
 @endsection
 @section('scripts')
     @include('admin/order.script_edit')
-    @include('admin/order.script_pay')
+    @include('admin/order.script_pay_edit')
 @endsection
