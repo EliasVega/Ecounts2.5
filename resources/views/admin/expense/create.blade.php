@@ -36,4 +36,5 @@
 @endsection
 @section('scripts')
     @include('admin/expense.script')
+    @include('admin/expense.script_pay')
 @endsection

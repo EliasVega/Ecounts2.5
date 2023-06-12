@@ -23,8 +23,6 @@
                             <th>Sucursal</th>
                             <th>Pago Anticipado</th>
                             <th>Saldo</th>
-                            <th>Estado</th>
-                            <th>Aplicado a</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
@@ -53,8 +51,6 @@
                 {data: 'branch'},
                 {data: 'pay'},
                 {data: 'balance'},
-                {data: 'status'},
-                {data: 'destination'},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

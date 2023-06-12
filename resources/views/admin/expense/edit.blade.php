@@ -28,11 +28,13 @@
             @include('admin/expense.form_edit')
         </div>
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            @include('admin/expense.form_pay')
+            @include('admin/expense.form_pay_edit')
         </div>
     </div>
     {!!Form::close()!!}
+    @include('admin/expense.editmodal')
 @endsection
 @section('scripts')
     @include('admin/expense.script_edit')
+    @include('admin/expense.script_pay_edit')
 @endsection

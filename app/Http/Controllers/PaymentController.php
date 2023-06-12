@@ -139,8 +139,6 @@ class PaymentController extends Controller
 
                 $cont++;
             }
-
-
             $payments = Payment::findOrFail($payment->id);
             $payments->pay = $payu;
             $payments->balance = $payu;
@@ -170,30 +168,6 @@ class PaymentController extends Controller
         return view('admin.payment.show', compact('payments', 'paymentPaymentMethods'));
     }
 
-    public function paymentPdf(Request $request, $id)
-    {
-        $payment = Payment::where('id', $id)->first();
-        $company = Company::where('id', 1)->first();
-        $user = auth::user();
-        $paymentPaymentMethods = Payment_payment_method::where('payment_id', $id)->get();
-        /*
-        $paymentPaymentMethods = payment_payment_method::from('payment_payment_methods as ap')
-        ->join('payment_methods as pm', 'pp.payment_method_id', 'pm.id')
-        ->join('payments as adv', 'ap.payment_id', 'adv.id')
-        ->select('pm.name', 'ap.transaction', 'ap.payment')
-        ->where('ap.payment_id', $id)
-        ->get();*/
-        $paymentpdf = "ADV-". $payment->id;
-        $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.payment.pdf', compact('paymentPaymentMethods', 'company', 'logo', 'payment', 'user'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
-
-        return $pdf->stream('vista-pdf', "$paymentpdf.pdf");
-        //return $pdf->download("$invoicepdf.pdf");
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -202,7 +176,25 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        //
+        $sale_box = Sale_box::where('user_id', Auth::user()->id)->first();
+        if(is_null($sale_box)){
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar esta operacion');
+        }
+        $banks = Bank::get();
+        $paymentMethods = Payment_method::get();
+        $cards = Card::get();
+        $suppliers = Supplier::get();
+
+        $paymentPaymentMethods = Payment_payment_method::from('payment_payment_methods AS pp')
+        ->join('payments AS pay', 'pp.payment_id', '=', 'pay.id')
+        ->join('payment_methods AS pm', 'pp.payment_method_id', '=', 'pm.id')
+        ->join('banks AS ban', 'pp.bank_id', '=', 'ban.id')
+        ->join('cards AS car', 'pp.card_id', '=', 'car.id')
+        ->select('pay.id', 'pm.id as idM', 'pm.name AS nameM', 'ban.id as idB', 'ban.name AS nameB', 'car.id as idC', 'car.name AS nameC', 'pp.transaction', 'pp.payment')
+        ->where('pay.id', '=', $payment->id)
+        ->get();
+
+        return view('admin.payment.edit', compact('payment', 'paymentPaymentMethods', 'suppliers', 'banks', 'paymentMethods', 'cards'));
     }
 
     /**
@@ -226,5 +218,28 @@ class PaymentController extends Controller
     public function destroy(Payment $payment)
     {
         //
+    }
+    public function paymentPdf(Request $request, $id)
+    {
+        $payment = Payment::where('id', $id)->first();
+        $company = Company::where('id', 1)->first();
+        $user = auth::user();
+        $paymentPaymentMethods = Payment_payment_method::where('payment_id', $id)->get();
+        /*
+        $paymentPaymentMethods = payment_payment_method::from('payment_payment_methods as ap')
+        ->join('payment_methods as pm', 'pp.payment_method_id', 'pm.id')
+        ->join('payments as adv', 'ap.payment_id', 'adv.id')
+        ->select('pm.name', 'ap.transaction', 'ap.payment')
+        ->where('ap.payment_id', $id)
+        ->get();*/
+        $paymentpdf = "ADV-". $payment->id;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.payment.pdf', compact('paymentPaymentMethods', 'company', 'logo', 'payment', 'user'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$paymentpdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
     }
 }

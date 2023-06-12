@@ -380,7 +380,7 @@
                             <thead>
                                 <tr class="bg-info">
                                     <th>Fecha</th>
-                                    <th>N°.F</th>
+                                    <th>N°.G</th>
                                     <th>Proveedor</th>
                                     <th>Abonos</th>
                                     <th>Saldo</th>

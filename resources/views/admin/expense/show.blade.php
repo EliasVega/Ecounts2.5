@@ -8,50 +8,50 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="id">COMPRA #</label>
-                <h6>{{ $expenses->id }}</h6>
+                <h6>{{ $expense->id }}</h6>
             </div>
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="company">SUCURSAL</label>
-                <h6>{{ $expenses->branch->name }}</h6>
+                <h6>{{ $expense->branch->name }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="payment_form">FORMA DE PAGO</label>
-                <h6>{{ $expenses->paymentForm->name }}</h6>
+                <h6>{{ $expense->paymentForm->name }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="balance">SALDO A PAGAR</label>
-                <h6>{{ number_format($expenses->balance, 2) }}</h6>
+                <h6>{{ number_format($expense->balance, 2) }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="nombre">PROVEEDOR</label>
-                <h6>{{ $expenses->supplier->name }}</h6>
+                <h6>{{ $expense->supplier->name }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="document">DOCUMENTO No.</label>
-                <h6>{{ $expenses->document }}</h6>
+                <h6>{{ $expense->document }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="Fecha">FECHA EMISION</label>
-                <h6>{{ date('d-m-Y', strtotime($expenses->created_at)) }}</h6>
+                <h6>{{ date('d-m-Y', strtotime($expense->created_at)) }}</h6>
             </div>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="due_date">VENCE</label>
-                <h6>{{ $expenses->due_date }}</h6>
+                <h6>{{ $expense->due_date }}</h6>
             </div>
         </div>
     </div><br>
@@ -69,8 +69,8 @@
                         <thead>
                             <tr class="bg-info">
                                 <th>Producto</th>
-                                <th>Precio ($)</th>
                                 <th>Cantidad</th>
+                                <th>Precio ($)</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
@@ -78,32 +78,26 @@
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ number_format($expenses->total, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($expense->total, 2) }}</p></th>
                             </tr>
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ number_format($expenses->total_iva, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($expense->total_iva, 2) }}</p></th>
                             </tr>
-
-                            <tr>
-                                <th colspan="3"><p align="right">RETENCION:</p></th>
-                                <th><p align="right">${{ number_format($expenses->retention, 2) }}</p></th>
-                            </tr>
-
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ number_format($expenses->total_pay, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($expense->total_pay, 2) }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($expense_services as $es)
+                            @foreach($expenseServices as $espenseService)
                                 <tr>
-                                    <td>{{ $es->service->name }}</td>
-                                    <td class="tdder">${{ number_format($es->price, 2) }}</td>
-                                    <td class="tdder">{{ $es->quantity }}</td>
-                                    <td class="tdder">${{ number_format($es->subtotal, 2) }}</td>
+                                    <td>{{ $espenseService->service->name }}</td>
+                                    <td class="tdder">{{ $espenseService->quantity }}</td>
+                                    <td class="tdder">${{ number_format($espenseService->price, 2) }}</td>
+                                    <td class="tdder">${{ number_format($espenseService->subtotal, 2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

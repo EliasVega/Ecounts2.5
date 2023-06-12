@@ -3,7 +3,7 @@
         <label for="supplier_id">Proveedor</label>
         <div class="select">
             <select id="supplier_id" name="supplier_id" class="form-control selectpicker" data-live-search="true" required>
-                <option {{ old('supplier_id', $purchase->supplier_id ?? '') == '' ? "selected" : "" }} disabled>Seleccionar tipo de persona</option>
+                <option {{ old('supplier_id', $purchase->supplier_id ?? '') == '' ? "selected" : "" }} disabled>Seleccionar Proveedor</option>
                 @foreach($suppliers as $supplier)
                     @if(old('supplier_id', $purchase->supplier_id ?? '') == $supplier->id)
                         <option value="{{ $supplier->id }}" selected>{{ $supplier->name }}</option>

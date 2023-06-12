@@ -24,26 +24,26 @@
             <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
         </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label" for="note">Nota</label>
+            <input type="text" id="note" name="note" class="form-control" placeholder="Describe una nota">
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" id="addIva">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
             <input type="number" id="iva" name="iva" class="form-control" placeholder="Iva" disabled
                 pattern="[0-9]{0,15}">
         </div>
     </div>
-    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="note">Nota</label>
-            <input type="text" id="note" name="note" class="form-control" placeholder="Describe una nota">
-        </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group row">
             <label class="form-control-label" for="service_id">Servicio</label>
                 <select name="service_id" class="form-control selectpicker" id="service_id" data-live-search="true">
                     <option value="0" disabled selected>Seleccionar el Servicio</option>
-                    @foreach($services as $ser)
-                        <option value="{{ $ser->id }}_{{ $ser->category->iva }}">{{ $ser->name }}</option>
+                    @foreach($services as $service)
+                        <option value="{{ $service->id }}_{{ $service->category->iva }}">{{ $service->name }}</option>
                     @endforeach
                 </select>
         </div>

@@ -447,11 +447,6 @@ class OrderController extends Controller
                     //actualizar el saldo del pago anticipado
                     $advance->balance = $paym_total;
                     $advance->update();
-                    /*
-                    //Actualizando la caja
-                    $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->out_payment += $pay;
-                    $sale_box->update();*/
                 } else {
                     //si es un abono nuevo aplica abono pedido
                     $pay_order = new Pay_order();

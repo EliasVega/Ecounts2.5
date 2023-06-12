@@ -24,9 +24,11 @@ use App\Models\Regime;
 use App\Models\Sale_box;
 use App\Models\Service;
 use App\Models\Supplier;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class ExpenseController extends Controller
@@ -239,10 +241,291 @@ class ExpenseController extends Controller
      */
     public function show(Expense $expense)
     {
-        $expenses = Expense::where('id', $expense->id)->first();
-        $expense_services = Expense_service::where('expense_id', $expense->id)->get();
+        $expenseServices = Expense_service::where('expense_id', $expense->id)->get();
 
-        return view('admin.expense.show', compact('expenses', 'expense_services'));
+        return view('admin.expense.show', compact('expense', 'expenseServices'));
+    }
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Expense $expense)
+    {
+        $suppliers = Supplier::get();
+        $payment_forms = Payment_form::get();
+        $payment_methods = Payment_method::get();
+        $banks = Bank::get();
+        $cards = Card::get();
+        $branches = Branch::get();
+        $payments = Payment::where('status', '!=', 'aplicado')->get();
+        $services = Service::where('status', 'activo')->get();
+        $expenseServices = Expense_service::from('expense_services as es')
+        ->join('services as ser', 'es.service_id', 'ser.id')
+        ->join('expenses as exp', 'es.expense_id', 'exp.id')
+        ->select('ser.id', 'ser.name', 'es.quantity', 'es.price', 'es.iva', 'es.subtotal', 'exp.balance')
+        ->where('exp.id', $expense->id)
+        ->get();
+
+        $payExpenses = Pay_expense::where('expense_id', $expense->id)->sum('pay');
+
+        return view('admin.expense.edit',
+        compact(
+            'expense',
+            'suppliers',
+            'payment_forms',
+            'payment_methods',
+            'banks',
+            'cards',
+            'branches',
+            'payments',
+            'services',
+            'expenseServices',
+            'payExpenses'
+        ));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateExpenseRequest $request, Expense $expense)
+    {
+        try{
+            DB::beginTransaction();
+            //llamado a variables
+            $service_id = $request->service_id;
+            $quantity   = $request->quantity;
+            $price      = $request->price;
+            $iva        = $request->iva;
+            $pay        = $request->pay;
+            $total_pay = $request->total_pay;
+            //llamado de todos los pagos y pago nuevo para la diferencia
+            $payOld = Pay_expense::where('expense_id', $expense->id)->sum('pay');
+            $payNew = $pay;
+            $payTotal = $payNew + $payOld;
+            $date1 = Carbon::now()->toDateString();
+            $date2 = Expense::find($expense->id)->created_at->toDateString();
+
+            if ($date1 == $date2) {
+                //actualizar la caja
+                $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
+                $sale_box->expense -= $expense->total_pay;
+                $sale_box->out_total -= $expense->total_pay;
+                $sale_box->update();
+            }
+
+            //Actualizando un registro de compras
+            $expense->user_id     = Auth::user()->id;
+            $expense->branch_id   = Auth::user()->branch_id;
+            $expense->supplier_id = $request->supplier_id;
+            $expense->payment_form_id = $request->payment_form_id;
+            $expense->payment_method_id = $request->payment_method_id;
+            $expense->voucher_type_id = 19;
+            $expense->document    = $request->document;
+            $expense->due_date    = $request->due_date;
+            $expense->items       = count($service_id);
+            $expense->total       = $request->total;
+            $expense->total_iva    = $request->total_iva;
+            $expense->total_pay    = $request->total_pay;
+
+            if ($payOld > 0 && $pay == 0) {
+                $expense->pay = $payOld;
+            } elseif ($payOld > 0 && $pay > 0) {
+                $expense->pay = $pay + $payOld;
+            } elseif ($payOld == 0 && $pay > 0) {
+                $expense->pay = $pay;
+            } else {
+                $expense->pay = $pay;
+            }
+
+            if ($payOld > $total_pay) {
+                $expense->balance = 0;
+            } else {
+                $expense->balance = $total_pay - $payTotal;
+            }
+            $expense->update();
+
+            if ($date1 == $date2) {
+                //actualizar la caja
+                $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
+                $sale_box->expense += $expense->total_pay;
+                $sale_box->out_total += $expense->total_pay;
+                $sale_box->update();
+            }
+            //inicio proceso si hay pagos
+            if($payTotal > 0){
+                //variable si el pago fue de un pago anticipado
+                $paym = $request->payment;
+                //variable si existe payment method
+                $payexpense = null;
+                //inicio proceso si hay pago po abono anticipado
+                if ($paym > 0) {
+                    //llamado al pago anticipado
+                    $payment = Payment::findOrFail( $request->payment_id);
+                    //si el pago es utilizado en su totalidad agregar el destino aplicado
+                    if ($payment->pay > $payment->balance) {
+                        $payment->destination = $payment->destination . '<->' . $expense->document;
+                    } else {
+                        $payment->destination = $expense->document;
+                    }
+                    //variable si hay saldo en el pago anticipado
+                    $paym_total = $payment->balance - $paym;
+                    //cambiar el status del pago anticipado
+                    if ($paym_total == 0) {
+                        $payment->status      = 'aplicado';
+                    } else {
+                        $payment->status      = 'parcial';
+                    }
+                    //actualizar el saldo del pago anticipado
+                    $payment->balance = $paym_total;
+                    $payment->update();
+                } else {
+                    //si no hay pago anticipado se crea un pago a compra
+                    $pay_expense                   = new Pay_expense();
+                    $pay_expense->pay              = $pay;
+                    $pay_expense->balance_expense = $expense->balance;
+                    $pay_expense->user_id          = $expense->user_id;
+                    $pay_expense->branch_id        = $expense->branch_id;
+                    $pay_expense->expense_id      = $expense->id;
+                    $pay_expense->save();
+                    //metodo que registra el pago a compra y el methodo de pago
+                    $pay_expense_Payment_method                     = new Pay_expense_payment_method();
+                    $pay_expense_Payment_method->pay_expense_id    = $pay_expense->id;
+                    $pay_expense_Payment_method->payment_method_id  = $request->payment_method_id;
+                    $pay_expense_Payment_method->bank_id            = $request->bank_id;
+                    $pay_expense_Payment_method->card_id            = $request->card_id;
+                    $pay_expense_Payment_method->payment_id         = $request->payment_id;
+                    $pay_expense_Payment_method->payment            = $pay;
+                    $pay_expense_Payment_method->transaction        = $request->transaction;
+                    $pay_expense_Payment_method->save();
+
+                    $mp = $request->payment_method_id;
+                    //metodo para actualizar la caja
+                    $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
+                    if($mp == 10){
+                        $sale_box->out_expense_cash += $pay;
+                        $sale_box->departure += $pay;
+                    }
+                    $sale_box->out_expense += $pay;
+                    $sale_box->update();
+                }
+
+            }
+
+            $expenseServices = Expense_service::where('expense_id', $expense->id)->get();
+            foreach ($expenseServices as $key => $expenseService) {
+
+                $expenseService->quantity    = 0;
+                $expenseService->price       = 0;
+                $expenseService->iva         = 0;
+                $expenseService->subtotal    = 0;
+                $expenseService->ivasubt     = 0;
+                $expenseService->item        = 0;
+                $expenseService->update();
+
+            }
+
+            //Toma el Request del array
+
+            $cont = 0;
+            $item = 1;
+            //Ingresa los productos que vienen en el array
+            while($cont < count($service_id)){
+
+                $expenseService = Expense_service::where('expense_id', $expense->id)
+                ->where('service_id', $service_id[$cont])->first();
+                //Inicia proceso actualizacio product expense si no existe
+                if (is_null($expenseService)) {
+                    $subtotal = $quantity[$cont] * $price[$cont];
+                    $ivasub = $subtotal * $iva[$cont]/100;
+                    $item = $cont + 1;
+                    $expense_service = new Expense_service();
+                    $expense_service->expense_id = $expense->id;
+                    $expense_service->service_id  = $service_id[$cont];
+                    $expense_service->quantity    = $quantity[$cont];
+                    $expense_service->price       = $price[$cont];
+                    $expense_service->iva         = $iva[$cont];
+                    $expense_service->subtotal    = $subtotal;
+                    $expense_service->ivasubt     = $ivasub;
+                    $expense_service->item        = $item;
+                    $expense_service->save();
+                    $item ++;
+                } else {
+                    if ($quantity[$cont] > 0) {
+
+                        $subtotal = $quantity[$cont] * $price[$cont];
+                        $ivasub = $subtotal * $iva[$cont]/100;
+
+                        if ($expenseService->quantity > 0) {
+                            $expenseService->quantity    += $quantity[$cont];
+                            $expenseService->price       = $price[$cont];
+                            $expenseService->iva         = $iva[$cont];
+                            $expenseService->subtotal    += $subtotal;
+                            $expenseService->ivasubt     += $ivasub;
+                            $expenseService->update();
+                        } else {
+                            $expenseService->quantity    = $quantity[$cont];
+                            $expenseService->price       = $price[$cont];
+                            $expenseService->iva         = $iva[$cont];
+                            $expenseService->subtotal    = $subtotal;
+                            $expenseService->ivasubt     = $ivasub;
+                            $expenseService->item        = $item;
+                            $expenseService->update();
+                            $item ++;
+                        }
+                    }
+                }
+
+                $cont++;
+            }
+            DB::commit();
+        }
+        catch(Exception $e){
+            DB::rollback();
+        }
+        if ($payOld > $total_pay) {
+            Alert::success('Compra','Editada Satisfactoriamente. Con creacion de anticipo de Proveedor');
+            return redirect('expense');
+
+        } else {
+            return redirect("expense")->with('success', 'Compra Editada Satisfactoriamente');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Expense $expense)
+    {
+        //
+    }
+
+    public function getMunicipalities(Request $request, $id)
+    {
+        if($request)
+        {
+            $municipalities = Municipality::where('department_id', '=', $id)->get();
+
+            return response()->json($municipalities);
+        }
+    }
+
+    public function pdf_payexpense(Request $request, $id)
+    {
+        $expense = Expense::where('id', $id)->first();
+        $company = Company::where('id', 1)->first();
+        $user = auth::user();
+        $expense_services = Expense_service::where('pay_expense_id', $id)->get();
+        $expensepdf = "FACT-". $expense->id;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.pay_expense.pdf', compact('expense', 'company', 'logo', 'user'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$expensepdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
     }
 
     public function show_pay_expense($id)
@@ -330,257 +613,5 @@ class ExpenseController extends Controller
 
         return $pdf->stream('vista-pdf', "$expensepdf.pdf");
         //return $pdf->download("$expensepdf.pdf");
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Expense $expense)
-    {
-        $suppliers = Supplier::get();
-        $payment_forms = Payment_form::get();
-        $payment_methods = Payment_method::get();
-        $banks = Bank::get();
-        $cards = Card::get();
-        $branches = Branch::get();
-        $payments = Payment::where('status', '!=', 'aplicado')->get();
-        $services = Service::where('status', 'activo')->get();
-        $expenseServices = Expense_service::from('expense_services as es')
-        ->join('services as ser', 'es.service_id', 'ser.id')
-        ->select('ser.id', 'ser.name', 'es.quantity', 'es.price', 'es.iva', 'es.subtotal')
-        ->where('expense_id', $expense->id)
-        ->get();
-
-        return view('admin.expense.edit',
-        compact(
-            'expense',
-            'suppliers',
-            'payment_forms',
-            'payment_methods',
-            'banks',
-            'cards',
-            'branches',
-            'payments',
-            'services',
-            'expenseServices'
-        ));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateExpenseRequest $request, Expense $expense)
-    {
-        try{
-            DB::beginTransaction();
-            //llamado a variables
-            $service_id = $request->service_id;
-            $quantity   = $request->quantity;
-            $price      = $request->price;
-            $iva        = $request->iva;
-            $pay        = $request->pay;
-            //llamado de todos los pagos y pago nuevo para la diferencia
-            $payOld = Pay_expense::where('expense_id', $expense->id)->sum('pay');
-            $payNew = $pay;
-            $payTotal = $payNew - $payOld;
-            $invPayTotal = $payOld - $payNew;
-            $balanceOld = $expense->balance;
-            $balanceNew = $balanceOld - $pay;
-
-            //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-            $sale_box->expense -= $expense->total_pay;
-            $sale_box->out_total -= $expense->total_pay;
-            $sale_box->update();
-
-            //Actualizando un registro de compras
-            $expense->user_id     = Auth::user()->id;
-            $expense->branch_id   = Auth::user()->branch_id;
-            $expense->supplier_id = $request->supplier_id;
-            $expense->payment_form_id = $request->payment_form_id;
-            $expense->payment_method_id = $request->payment_method_id;
-            $expense->voucher_type_id = 19;
-            $expense->document    = $request->document;
-            $expense->due_date    = $request->due_date;
-            $expense->items       = count($service_id);
-            $expense->total       = $request->total;
-            $expense->total_iva    = $request->total_iva;
-            $expense->total_pay    = $request->total_pay;
-            if ($payOld > 0 && $pay == 0) {
-                $expense->pay         = $payOld;
-            } elseif ($pay > 0) {
-                $expense->pay         = $pay;
-            } else {
-                $expense->pay         = $pay;
-            }
-            $expense->balance           = $request->total_pay - $balanceNew;
-            $expense->update();
-            //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-            $sale_box->expense += $expense->total_pay;
-            $sale_box->out_total += $expense->total_pay;
-            $sale_box->update();
-
-            //inicio proceso si hay pagos
-            if($payTotal > 0){
-                //variable si el pago fue de un pago anticipado
-                $paym = $request->payment;
-                //variable si existe payment method
-                $payexpense = null;
-                //inicio proceso si hay pago po abono anticipado
-                if ($paym > 0) {
-                    //llamado al pago anticipado
-                    $payment = Payment::findOrFail( $request->payment_id);
-                    //si el pago es utilizado en su totalidad agregar el destino aplicado
-                    if ($payment->pay > $payment->balance) {
-                        $payment->destination = $payment->destination . '<->' . $expense->document;
-                    } else {
-                        $payment->destination = $expense->document;
-                    }
-                    //variable si hay saldo en el pago anticipado
-                    $paym_total = $payment->balance - $paym;
-                    //cambiar el status del pago anticipado
-                    if ($paym_total == 0) {
-                        $payment->status      = 'aplicado';
-                    } else {
-                        $payment->status      = 'parcial';
-                    }
-                    //actualizar el saldo del pago anticipado
-                    $payment->balance = $paym_total;
-                    $payment->update();
-                    //Actualizando la caja
-                    $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->out_payment += $pay;
-                    $sale_box->out_total += $pay;
-                    $sale_box->update();
-                } else {
-                    //si no hay pago anticipado se crea un pago a compra
-                    $pay_expense                   = new Pay_expense();
-                    $pay_expense->pay              = $payTotal;
-                    $pay_expense->balance_expense = $expense->balance;
-                    $pay_expense->user_id          = $expense->user_id;
-                    $pay_expense->branch_id        = $expense->branch_id;
-                    $pay_expense->expense_id      = $expense->id;
-                    $pay_expense->save();
-                    //metodo que registra el pago a compra y el methodo de pago
-                    $pay_expense_Payment_method                     = new Pay_expense_payment_method();
-                    $pay_expense_Payment_method->pay_expense_id    = $pay_expense->id;
-                    $pay_expense_Payment_method->payment_method_id  = $request->payment_method_id;
-                    $pay_expense_Payment_method->bank_id            = $request->bank_id;
-                    $pay_expense_Payment_method->card_id            = $request->card_id;
-                    $pay_expense_Payment_method->payment_id         = $request->payment_id;
-                    $pay_expense_Payment_method->payment            = $pay;
-                    $pay_expense_Payment_method->transaction        = $request->transaction;
-                    $pay_expense_Payment_method->save();
-
-                    $mp = $request->payment_method_id;
-                    //metodo para actualizar la caja
-                    $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-                    $out_expense_cash = $sale_box->out_expense_cash;
-                    if($mp == 10){
-                        $out_expense_cash += $payTotal;
-                        $sale_box->departure += $payTotal;
-                    }
-                    $sale_box->out_expense += $payTotal;
-                    $sale_box->out_payment += $payTotal;
-                    $sale_box->update();
-                }
-
-            }
-
-            //Toma el Request del array
-
-            $cont = 0;
-            $item = 1;
-            //Ingresa los productos que vienen en el array
-            while($cont < count($service_id)){
-
-                $expenseService = Expense_service::where('expense_id', $expense->id)
-                ->where('service_id', $service_id[$cont])->first();
-                //Inicia proceso actualizacio product expense si no existe
-                if (is_null($expenseService)) {
-                    $subtotal = $quantity[$cont] * $price[$cont];
-                    $ivasub = $subtotal * $iva[$cont]/100;
-                    $item = $cont + 1;
-                    $expense_service = new Expense_service();
-                    $expense_service->expense_id = $expense->id;
-                    $expense_service->service_id  = $service_id[$cont];
-                    $expense_service->quantity    = $quantity[$cont];
-                    $expense_service->price       = $price[$cont];
-                    $expense_service->iva         = $iva[$cont];
-                    $expense_service->subtotal    = $subtotal;
-                    $expense_service->ivasubt     = $ivasub;
-                    $expense_service->item        = $item;
-                    $expense_service->save();
-                    $item ++;
-                } else {
-                    if ($quantity[$cont] > 0) {
-
-                        $subtotal = $quantity[$cont] * $price[$cont];
-                        $ivasub = $subtotal * $iva[$cont]/100;
-
-                        if ($expenseService->quantity > 0) {
-                            $expenseService->quantity    += $quantity[$cont];
-                            $expenseService->price       = $price[$cont];
-                            $expenseService->iva         = $iva[$cont];
-                            $expenseService->subtotal    += $subtotal;
-                            $expenseService->ivasubt     += $ivasub;
-                            $expenseService->update();
-                        } else {
-                            $expenseService->quantity    = $quantity[$cont];
-                            $expenseService->price       = $price[$cont];
-                            $expenseService->iva         = $iva[$cont];
-                            $expenseService->subtotal    = $subtotal;
-                            $expenseService->ivasubt     = $ivasub;
-                            $expenseService->item        = $item;
-                            $expenseService->update();
-                            $item ++;
-                        }
-                    }
-                }
-
-                $cont++;
-            }
-            DB::commit();
-        }
-        catch(Exception $e){
-            DB::rollback();
-        }
-        return redirect('expense');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Expense $expense)
-    {
-        //
-    }
-
-    public function getMunicipalities(Request $request, $id)
-    {
-        if($request)
-        {
-            $municipalities = Municipality::where('department_id', '=', $id)->get();
-
-            return response()->json($municipalities);
-        }
-    }
-
-    public function pdf_payexpense(Request $request, $id)
-    {
-        $expense = Expense::where('id', $id)->first();
-        $company = Company::where('id', 1)->first();
-        $user = auth::user();
-        $expense_services = Expense_service::where('pay_expense_id', $id)->get();
-        $expensepdf = "FACT-". $expense->id;
-        $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.pay_expense.pdf', compact('expense', 'company', 'logo', 'user'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
-
-        return $pdf->stream('vista-pdf', "$expensepdf.pdf");
-        //return $pdf->download("$invoicepdf.pdf");
     }
 }

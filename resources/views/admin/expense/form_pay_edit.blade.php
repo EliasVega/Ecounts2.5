@@ -23,7 +23,7 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="payPayment">
         <div class="form-group">
             <button class="btn btn-celeste btn-sm" type="button" id="payPays" data-toggle="tooltip" data-placement="top" title="Desea Agregar Abono">Agregar abono </button>
         </div>
@@ -82,6 +82,18 @@
         <div class="form-group">
             <label class="form-control-label" for="balance">Total Factura</label>
             <input type="number" id="balance" name="balance" value="0" class="form-control gris" disabled pattern="[0-9]{0,15}">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="payBalanceOld">
+        <div class="form-group">
+            <label for="balance_old">Saldo Factura</label>
+            <input type="text" name="balance_old" id="balance_old" value="{{ old('balance_old', $expense->balance ?? '') }}" class="form-control" placeholder="Codigo del product" readonly>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="payInvoice">
+        <div class="form-group">
+            <label for="pay_expense">Pagos Factura</label>
+            <input type="text" name="pay_expense" id="pay_expense" value="{{ old('pay_expense', $payExpenses ?? '') }}" class="form-control" placeholder="Codigo del product" readonly>
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="payReturned">

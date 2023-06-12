@@ -470,11 +470,6 @@ class InvoiceController extends Controller
                     }
                     $advance->balance = $adv_total;
                     $advance->update();
-                    /*
-                    //Actualizando la caja
-                    $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->in_advance += $pay;
-                    $sale_box->update();*/
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
                     $pay_invoice = new Pay_invoice();
