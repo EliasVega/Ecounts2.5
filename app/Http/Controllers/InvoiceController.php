@@ -33,6 +33,7 @@ use App\Models\Regime;
 use App\Models\Retention;
 use App\Models\Sale_box;
 use App\Models\Tax;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -379,7 +380,8 @@ class InvoiceController extends Controller
             $payOld = Pay_invoice::where('invoice_id', $invoice->id)->sum('pay');
             $payNew = $pay;
             $payTotal = $payNew + $payOld;
-            $balanceOld = $invoice->balance;
+            $date1 = Carbon::now()->toDateString();
+            $date2 = Invoice::find($invoice->id)->created_at->toDateString();
 
             if ($payOld > $total_pay) {
 
@@ -395,10 +397,13 @@ class InvoiceController extends Controller
                 $advance->save();
             }
             //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-            $sale_box->invoice -= $invoice->total_pay;
-            $sale_box->in_total -= $invoice->total_pay;
-            $sale_box->update();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                $sale_box->invoice -= $invoice->total_pay;
+                $sale_box->in_total -= $invoice->total_pay;
+                $sale_box->update();
+            }
+
             //Actualizando un registro de ventas
             $invoice->user_id           = Auth::user()->id;
             $invoice->branch_id         = Auth::user()->branch_id;
@@ -431,13 +436,17 @@ class InvoiceController extends Controller
             }
             $invoice->retention = $request->retention;
             $invoice->update();
+
             //actualizar la caja
-            $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-            $sale_box->invoice += $invoice->total_pay;
-            $sale_box->in_total += $invoice->total_pay;
-            $sale_box->update();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                $sale_box->invoice += $invoice->total_pay;
+                $sale_box->in_total += $invoice->total_pay;
+                $sale_box->update();
+            }
+
             //inicio proceso si hay pagos
-            if($payTotal > 0){
+            if($pay > 0){
                 //variable si el pago se hace de un Anticipo
                 $adv = $request->advance;
 
@@ -467,22 +476,23 @@ class InvoiceController extends Controller
                     $sale_box->update();
                 } else {
                     //si no hay pago anticipado se crea un pago a compra
-                    $pay_invoice                  = new Pay_invoice();
-                    $pay_invoice->pay             = $pay;
+                    $pay_invoice = new Pay_invoice();
+                    $pay_invoice->pay = $pay;
                     $pay_invoice->balance_invoice = $invoice->balance - $pay;
-                    $pay_invoice->user_id         = $invoice->user_id;
-                    $pay_invoice->branch_id       = $invoice->branch_id;
-                    $pay_invoice->invoice_id      = $invoice->id;
+                    $pay_invoice->user_id = $invoice->user_id;
+                    $pay_invoice->branch_id = $invoice->branch_id;
+                    $pay_invoice->invoice_id = $invoice->id;
                     $pay_invoice->save();
+
                     //metodo que registra el pago a compra y el methodo de pago
-                    $pay_invoice_Payment_method  = new Pay_invoice_payment_method();
-                    $pay_invoice_Payment_method->pay_invoice_id     = $pay_invoice->id;
-                    $pay_invoice_Payment_method->payment_method_id  = $request->payment_method_id;
-                    $pay_invoice_Payment_method->bank_id            = $request->bank_id;
-                    $pay_invoice_Payment_method->card_id            = $request->card_id;
-                    $pay_invoice_Payment_method->advance_id         = $request->advance_id;
-                    $pay_invoice_Payment_method->payment            = $request->pay;
-                    $pay_invoice_Payment_method->transaction        = $request->transaction;
+                    $pay_invoice_Payment_method = new Pay_invoice_payment_method();
+                    $pay_invoice_Payment_method->pay_invoice_id = $pay_invoice->id;
+                    $pay_invoice_Payment_method->payment_method_id = $request->payment_method_id;
+                    $pay_invoice_Payment_method->bank_id = $request->bank_id;
+                    $pay_invoice_Payment_method->card_id = $request->card_id;
+                    $pay_invoice_Payment_method->advance_id = $request->advance_id;
+                    $pay_invoice_Payment_method->payment = $pay;
+                    $pay_invoice_Payment_method->transaction = $request->transaction;
                     $pay_invoice_Payment_method->save();
 
                     $mp = $request->payment_method_id;
@@ -538,12 +548,12 @@ class InvoiceController extends Controller
                     $invoice_product = new Invoice_product();
                     $invoice_product->invoice_id = $invoice->id;
                     $invoice_product->product_id = $product_id[$cont];
-                    $invoice_product->quantity   = $quantity[$cont];
-                    $invoice_product->price      = $price[$cont];
-                    $invoice_product->iva        = $iva[$cont];
-                    $invoice_product->subtotal   = $subtotal;
-                    $invoice_product->ivasubt    = $ivasub;
-                    $invoice_product->item       = $item;
+                    $invoice_product->quantity = $quantity[$cont];
+                    $invoice_product->price = $price[$cont];
+                    $invoice_product->iva = $iva[$cont];
+                    $invoice_product->subtotal = $subtotal;
+                    $invoice_product->ivasubt = $ivasub;
+                    $invoice_product->item = $item;
                     $invoice_product->save();
 
                     $item ++;
@@ -574,20 +584,20 @@ class InvoiceController extends Controller
                     if ($quantity[$cont] > 0) {
                         if ($invoiceProduct->quantity > 0) {
 
-                            $invoiceProduct->quantity   += $quantity[$cont];
-                            $invoiceProduct->price      += $price[$cont];
-                            $invoiceProduct->iva        += $iva[$cont];
-                            $invoiceProduct->subtotal   += $subtotal;
-                            $invoiceProduct->ivasubt    += $ivasub;
+                            $invoiceProduct->quantity += $quantity[$cont];
+                            $invoiceProduct->price += $price[$cont];
+                            $invoiceProduct->iva += $iva[$cont];
+                            $invoiceProduct->subtotal += $subtotal;
+                            $invoiceProduct->ivasubt += $ivasub;
                             $invoiceProduct->update();
                         } else {
 
-                            $invoiceProduct->quantity   = $quantity[$cont];
-                            $invoiceProduct->price      = $price[$cont];
-                            $invoiceProduct->iva        = $iva[$cont];
-                            $invoiceProduct->subtotal   = $subtotal;
-                            $invoiceProduct->ivasubt    = $ivasub;
-                            $invoiceProduct->item       = $item;
+                            $invoiceProduct->quantity = $quantity[$cont];
+                            $invoiceProduct->price = $price[$cont];
+                            $invoiceProduct->iva = $iva[$cont];
+                            $invoiceProduct->subtotal = $subtotal;
+                            $invoiceProduct->ivasubt = $ivasub;
+                            $invoiceProduct->item = $item;
                             $invoiceProduct->update();
                             $item ++;
                         }

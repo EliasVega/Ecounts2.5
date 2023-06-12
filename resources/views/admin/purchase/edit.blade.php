@@ -28,7 +28,7 @@
                 @include('admin/purchase.form_edit')
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                @include('admin/purchase.form_pay')
+                @include('admin/purchase.form_pay_edit')
             </div>
         </div>
     {!!Form::close()!!}
@@ -36,5 +36,5 @@
 @endsection
 @section('scripts')
     @include('admin/purchase.script_edit')
-    @include('admin/purchase.script_pay')
+    @include('admin/purchase.script_pay_edit')
 @endsection
