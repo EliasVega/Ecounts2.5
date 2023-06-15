@@ -94,8 +94,8 @@
 }
 
 .btn-redeco {
-    color: #000 !important;
-    background-color: #ff5d5d !important;
+    color: #fff !important;
+    background: linear-gradient(45deg, #3e5a8d, #010149) !important;
     border-radius: 30px !important;
 }
 
@@ -107,5 +107,16 @@
 .btn-redR {
     color: #fff !important;
     background-color: #ff0000 !important;
+    border-radius: 30px !important;
+}
+
+.btn-lemonR {
+    color: #fff !important;
+    background: linear-gradient(45deg, #c4f3b4, #3c5534) !important;
+    border-radius: 30px !important;
+}
+.btn-bluR {
+    color: #fff !important;
+    background: linear-gradient(45deg, #82b2f5, #083080) !important;
     border-radius: 30px !important;
 }

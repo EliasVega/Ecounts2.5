@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Listado de Abonos
-                    <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+                    <a href="{{ route('purchase.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
             </div>
         </div>
     </div>
@@ -50,14 +51,14 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'pay_purchase'},
+                {data: 'document'},
                 {data: 'purchase'},
                 {data: 'supplier'},
                 {data: 'branch'},
                 {data: 'user'},
-                {data: 'total_pay'},
-                {data: 'pay'},
-                {data: 'balance_purchase'},
+                {data: 'totalPay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'pay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'balance_purchase', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

@@ -7,8 +7,10 @@
     <div class="row">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>Listado Entrega Efectivo Cajas <a href="cash_out/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Salida Efectivo</a>
-                    <a href="{{ route('sale_box.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+                <h4>Listado Entrega Efectivo Cajas
+                    <a href="cash_out/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Salida Efectivo</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-bluR btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                </h4>
             </div>
         </div>
     </div>

@@ -7,7 +7,10 @@
     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Recargando Caja</h3>
+                <h4>Recargando Caja
+                    <a href="{{ route('sale_box.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                </h4>
             </div>
             @if (count($errors)>0)
             <div class="alert alert-danger">
@@ -21,9 +24,6 @@
             <form action="{{route('cash_in.store')}}" method="POST">
                 {{csrf_field()}}
                 <div class="box-body row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <a href="{{ route('sale_box.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
-                    </div>
                     <div class="col-12 col-md-12">
                         <div class="form-group">
                             <label class="form-control-label" for="reason">Razon</label>

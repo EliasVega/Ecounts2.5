@@ -65,8 +65,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <h3>Detalle de la Compra
-                        <a href="{{ route('order.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+                    <h4>Detalle de la Orden
+                        <a href="{{ route('order.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                        <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                    </h4>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

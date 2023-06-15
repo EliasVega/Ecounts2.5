@@ -160,7 +160,7 @@ Route::get('branch/show_expense/{id}', [BranchController::class, 'show_expense']
 Route::get('show_invoice/{id}', [BranchController::class, 'show_invoice'])->name('show_invoice');
 Route::get('show_order/{id}', [BranchController::class, 'show_order'])->name('show_order');
 Route::get('show_product/{id}', [BranchController::class, 'show_product'])->name('show_product');
-Route::get('show_product_branch/{id}', [BranchController::class, 'show_product_branch'])->name('show_product_branch');
+Route::get('show_transfer/{id}', [BranchController::class, 'show_transfer'])->name('show_transfer');
 Route::get('show_sale_box/{id}', [BranchController::class, 'show_sale_box'])->name('show_sale_box');
 Route::post('branch/logout', [BranchController::class, 'logout'])->name('logout_branch');
 
@@ -229,6 +229,7 @@ Route::get('auxiliary_account/AuxAccount/{id}', [AuxiliaryAccountController::cla
 Route::get('pdf_pay_invoice/{id}', [PayinvoiceController::class, 'pdf_pay_invoice'])->name('pdf_pay_invoice');
 Route::get('pdf_pay_purchase/{id}', [PayPurchaseController::class, 'pdf_pay_purchase'])->name('pdf_pay_purchase');
 Route::get('pdfPayOrder/{id}', [PayorderController::class, 'pdfPayOrder'])->name('pdfPayOrder');
+Route::get('pdfPayExpense/{id}', [PayExpenseController::class, 'pdfPayExpense'])->name('pdfPayExpense');
 
 Route::get('co_municipality/co_department/{id}', [CoMunicipalityController::class, 'getCoDepartment'])->name('co_department');
 Route::resource('cash_receipt', CashReceiptController::class);

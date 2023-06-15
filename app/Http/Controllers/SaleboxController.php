@@ -9,6 +9,7 @@ use App\Models\Advance;
 use App\Models\Branch;
 use App\Models\Cash_in;
 use App\Models\Cash_out;
+use App\Models\Company;
 use App\Models\Expense;
 use App\Models\Verification_code;
 use App\Models\Invoice;
@@ -88,6 +89,12 @@ class SaleboxController extends Controller
      */
     public function store(StoreSaleboxRequest $request)
     {
+        $comprobation = $request->cash_box;
+
+        if($comprobation < 0){
+            toast( 'La cantidad debe ser mayo a 0','warning');
+            return redirect("sale_box");//->with('warning', 'Usuario No autorizado para ejercer como administrador');
+        }
         $user = Auth::user()->id;
         $branch = $request->session()->get('branch');
         $open = $request->user_open_id;
@@ -97,15 +104,15 @@ class SaleboxController extends Controller
 
         if($verification_code == null){
             toast( 'Usuario No autorizado para ejercer como administrador','warning');
-            return redirect("sale_box")->with('warning', 'Usuario No autorizado para ejercer como administrador');
+            return redirect("sale_box");
         }
 
         if ($verification_code->code != $verify) {
             toast( 'Error en codigo de verificacion','warning');
-            return redirect("sale_box")->with('warning', 'Error en codigo de verificacion');
+            return redirect("sale_box");
         } elseif($open_box) {
             toast( 'Usuario ya tiene una Caja Abierta','warning');
-            return redirect("sale_box")->with('warning', 'Usuario ya tiene una Caja Abierta');
+            return redirect("sale_box");
         } else {
             $sale_box = new Sale_box();
             $sale_box->cash_box            = $request->cash_box;
@@ -650,12 +657,13 @@ class SaleboxController extends Controller
 
     public function show_pos($id)
     {
+        /*
         $user = Auth::user()->id;
         $users = User::findOrFail($user);
         $cause = Auth::user()->name;
         $sale_box = Sale_box::findOrFail($id);
         $from = $sale_box->created_at;
-        $to = $sale_box->updated_at;
+        $to = $sale_box->updated_at;*/
 
         /*if ($users->role_id == 1 || $users->role_id == 2) {
             $produc = [];
@@ -767,46 +775,103 @@ class SaleboxController extends Controller
             ->whereBetween('cas.created_at', [$from, $to])
             ->get();
         } else {*/
-
-            $produc = [];
-            $cont = 0;
-            $products = Product::all();
+            $company = Company::findOrFail(1);
+            $users    = Auth::user()->role_id;
+            $user     = Auth::user()->id;
+            $cause    = Auth::user()->name;
+            $sale_box = Sale_box::findOrFail($id);
+            $from     = $sale_box->created_at;
+            $to       = $sale_box->updated_at;
+            //seccion de detalle de productos en compra
+            $productPurchases = [];//informacion de totales
+            $products = Product::get();
+            //obteniendo totales por productos de product purchases
             foreach ($products as $key => $product ) {
-                $invoice_products = Invoice_product::from('invoice_products as ip')
-                ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-                ->join('products as pro', 'ip.product_id', 'pro.id')
-                ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
-                ->whereBetween('ip.created_at', [$from, $to])
-                ->where('inv.user_id', $sale_box->user_id)
-                ->where('ip.product_id', $product->id)
+                //total de productos
+                $product_purchase = Product_purchase::from('product_purchases as pp')
+                ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+                ->join('products as pro', 'pp.product_id', 'pro.id')
+                ->whereBetween('pp.created_at', [$from, $to])
+                ->where('pur.user_id', $sale_box->user_id)
+                ->where('pp.product_id', $product->id)
                 ->sum('quantity');
 
-                $ivai = Invoice_product::from('invoice_products as ip')
-                ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-                ->join('products as pro', 'ip.product_id', 'pro.id')
-                ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
-                ->whereBetween('ip.created_at', [$from, $to])
-                ->where('inv.user_id', $sale_box->user_id)
-                ->where('ip.product_id', $product->id)
+                //total  de iva por producto
+                $ivaProduct = Product_purchase::from('product_purchases as pp')
+                ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+                ->join('products as pro', 'pp.product_id', 'pro.id')
+                ->whereBetween('pp.created_at', [$from, $to])
+                ->where('pur.user_id', $sale_box->user_id)
+                ->where('pp.product_id', $product->id)
                 ->sum('ivasubt');
-
-                $total = Invoice_product::from('invoice_products as ip')
-                ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-                ->join('products as pro', 'ip.product_id', 'pro.id')
-                ->select('pro.id', 'pro.name', 'ip.quantity', 'ip.ivasubt', 'ip.subtotal', 'ip.created_at')
-                ->whereBetween('ip.created_at', [$from, $to])
-                ->where('inv.user_id', $sale_box->user_id)
-                ->where('ip.product_id', $product->id)
+                //subtotal por producto
+                $subtotalProduct = Product_purchase::from('product_purchases as pp')
+                ->join('purchases as pur', 'pp.purchase_id', 'pur.id')
+                ->join('products as pro', 'pp.product_id', 'pro.id')
+                ->whereBetween('pp.created_at', [$from, $to])
+                ->where('pur.user_id', $sale_box->user_id)
+                ->where('pp.product_id', $product->id)
                 ->sum('subtotal');
-
-                if ($invoice_products) {
-                    $produc[$cont] = Product::findOrFail($product->id);
-                    $produc[$cont]->stock = $invoice_products;
-                    $produc[$cont]->price = $ivai;
-                    $produc[$cont]->sale_price = $total;
-                    $cont++;
+                //envienado informacion de totales a travez de este array
+                if ($product_purchase) {
+                    $productPurchases[$key] = Product::findOrFail($product->id);
+                    $productPurchases[$key]->stock = $product_purchase;
+                    $productPurchases[$key]->price = $ivaProduct;
+                    $productPurchases[$key]->salePrice = $subtotalProduct;
                 }
             }
+
+            //seccion de detalle de productos Vendidos
+        $invoiceProducts = [];//informacion de totales
+        $products = Product::get();
+        //obteniendo totales por productos de product purchases
+        foreach ($products as $key => $product ) {
+            //total de productos
+            $invoice_products = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->join('products as pro', 'ip.product_id', 'pro.id')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->where('ip.product_id', $product->id)
+            ->sum('quantity');
+
+            //total  de iva por producto
+            $ivaProduct = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->join('products as pro', 'ip.product_id', 'pro.id')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->where('ip.product_id', $product->id)
+            ->sum('ivasubt');
+            //subtotal por producto
+            $subtotalProduct = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->join('products as pro', 'ip.product_id', 'pro.id')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->where('ip.product_id', $product->id)
+            ->sum('subtotal');
+            //envienado informacion de totales a travez de este array
+            if ($invoice_products) {
+                $invoiceProducts[$key] = Product::findOrFail($product->id);
+                $invoiceProducts[$key]->stock = $invoice_products;
+                $invoiceProducts[$key]->price = $ivaProduct;
+                $invoiceProducts[$key]->salePrice = $subtotalProduct;
+            }
+        }
+        //suma subtotales de todas las compras
+        $sumSubtotalInvoices = Invoice_product::from('invoice_products as ip')
+        ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+        ->whereBetween('ip.created_at', [$from, $to])
+        ->where('inv.user_id', $sale_box->user_id)
+        ->sum('subtotal');
+
+        //suma de total de iva de toda las compras
+        $ivaTotalInvoices = Invoice_product::from('invoice_products as ip')
+        ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+        ->whereBetween('ip.created_at', [$from, $to])
+        ->where('inv.user_id', $sale_box->user_id)
+        ->sum('ivasubt');
 
             $productpurc = [];
             $cont = 0;
@@ -914,6 +979,9 @@ class SaleboxController extends Controller
         //}
 
         $view = \view('admin.sale_box.showpos', compact(
+            'company',
+            'invoiceProducts',
+            'productPurchases',
             'sale_box',
             'invoices',
             'invTotalPay',
@@ -944,16 +1012,15 @@ class SaleboxController extends Controller
             'cashOuts',
             'sum_cash_outs',
             'invoice_products',
-            'ivai',
             'product_purchases',
             'ivap',
-            'produc',
             'productpurc'
             ))->render();
 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64));
+        //$pdf->setPaper (array(0,0,226.76,497.64));
+        $pdf->setPaper('b7', 'portrait');
 
         return $pdf->stream('reporte_caja.pdf');
         /*

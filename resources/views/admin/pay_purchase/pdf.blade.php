@@ -23,7 +23,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="voucher">
-                <p>COMPROBANTE <br> DE EGRESO <br> <strong id="numbervoucher">N°. {{ $dischargeReceipt->id }}</strong></p>
+                <p>COMPROBANTE <br> DE EGRESO <br> <strong id="numbervoucher">N°. {{ $payPurchase->id }}</strong></p>
 
             </div>
         </div>
@@ -40,10 +40,10 @@
                 <p>Fecha</p>
             </div>
             <div class="description2">
-                <p>{{ date('d-m-Y', strtotime($dischargeReceipt->created_at)) }}</p>
+                <p>{{ date('d-m-Y', strtotime($payPurchase->created_at)) }}</p>
             </div>
             <div class="description3">
-                <p>$ {{ number_format($dischargeReceipt->paymentable->pay, 2) }}</p>
+                <p>$ {{ number_format($payPurchase->pay, 2) }}</p>
             </div>
 
             <div class="clearfix"></div>
@@ -51,33 +51,33 @@
                 <p>DIRECCION:</p>
             </div>
             <div class="description4">
-                <p>{{  $dischargeReceipt->paymentable->purchase->supplier->address  }}</p>
+                <p>{{  $payPurchase->purchase->supplier->address  }}</p>
             </div>
             <div class="title">
                 <p>TELEFONO:</p>
             </div>
             <div class="description2">
-                <p>{{  $dischargeReceipt->paymentable->purchase->supplier->phone  }}</p>
+                <p>{{  $payPurchase->purchase->supplier->phone  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>RECIBO DE:</p>
             </div>
             <div class="description5">
-                <p>{{  $dischargeReceipt->paymentable->purchase->supplier->name  }}</p>
+                <p>{{  $payPurchase->purchase->supplier->name  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>CONCEPTO DE::</p>
             </div>
             <div class="description4">
-                <p>Abono a Compra # {{ $dischargeReceipt->paymentable->purchase->id }} </p>
+                <p>Abono a Compra # {{ $payPurchase->purchase->id }} </p>
             </div>
             <div class="title">
                 <p>Comprobante</p>
             </div>
             <div class="description2">
-                <p>{{ $dischargeReceipt->paymentable->id }}</p>
+                <p>{{ $payPurchase->id }}</p>
             </div>
         </div>
         <div class="content">

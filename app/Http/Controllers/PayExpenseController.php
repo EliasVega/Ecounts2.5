@@ -7,12 +7,16 @@ use App\Http\Requests\StorePay_expenseRequest;
 use App\Http\Requests\UpdatePay_expenseRequest;
 use App\Models\Bank;
 use App\Models\Card;
-use App\Models\Discharge_receipt;
+use App\Models\Company;
 use App\Models\Expense;
-use App\Models\Expense_service;
+use App\Models\Pay_expense_payment_method;
+use App\Models\Payment;
 use App\Models\Payment_method;
+use App\Models\Sale_box;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class PayExpenseController extends Controller
@@ -22,40 +26,41 @@ class PayExpenseController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
         if ($request->ajax()) {
-            $dischargeReceipts = Discharge_receipt::where('type', 'expense')->get();
+            //Muestra todas las Pagos a gastos de la empresa
+            if ($user->role_id == 1 || $user->role_id == 2) {
 
-            return DataTables::of($dischargeReceipts)
+                //Consulta para mostrar pagos a gastos a administradores y superadmin
+                $payExpenses = Pay_expense::get();
+            } else {
+                //Consulta para mostrar Pagos a gastos a roles 3 -4 -5
+                $payExpenses = Pay_expense::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
+
+            return DataTables::of($payExpenses)
 
             ->addIndexColumn()
-            ->addColumn('pay_expense', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->id;
+            ->addColumn('document', function (Pay_expense $payExpense) {
+                return $payExpense->expense->document;
             })
-            ->addColumn('pay', function (Discharge_receipt $dischargeReceipt) {
-                return number_format($dischargeReceipt->paymentable->pay,2);
+            ->addColumn('expense', function (Pay_expense $payExpense) {
+                return $payExpense->expense->id;
             })
-            ->addColumn('balance_expense', function (Discharge_receipt $dischargeReceipt) {
-                return number_format($dischargeReceipt->paymentable->balance_expense,2);
+            ->addColumn('supplier', function (Pay_expense $payExpense) {
+                return $payExpense->expense->supplier->name;
             })
-            ->addColumn('branch', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->branch->name;
+            ->addColumn('branch', function (Pay_expense $payExpense) {
+                return $payExpense->branch->name;
             })
-            ->addColumn('user', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->user->name;
+            ->addColumn('user', function (Pay_expense $payExpense) {
+                return $payExpense->user->name;
             })
-            ->addColumn('expense', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->expense->id;
+            ->addColumn('totalPay', function (Pay_expense $payExpense) {
+                return $payExpense->expense->total_pay;
             })
-
-            ->addColumn('total_pay', function (Discharge_receipt $dischargeReceipt) {
-                return number_format($dischargeReceipt->paymentable->expense->total_pay,2);
-            })
-            ->addColumn('supplier', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->expense->supplier->name;
-            })
-
-            ->editColumn('created_at', function(Discharge_receipt $dischargeReceipt){
-                return $dischargeReceipt->created_at->format('yy-m-d: h:m');
+            ->editColumn('created_at', function(Pay_expense $payExpense){
+                return $payExpense->created_at->format('yy-m-d: h:m');
             })
             ->addColumn('btn', 'admin/pay_expense/actions')
             ->rawColumns(['btn'])
@@ -67,13 +72,13 @@ class PayExpenseController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $banks = Bank::get();
         $payment_methods = Payment_method::get();
         $cards = Card::get();
         $expense = Expense::where('id', '=', $request->session()->get('expense'))->first();
-        $payments = Payment::where('status', '!=', 'aplicado')->where('supplier_id', $expense->supplier->id;)->get();
+        $payments = Payment::where('status', '!=', 'aplicado')->where('supplier_id', $expense->supplier->id)->get();
 
         return view('admin.pay_expense.create', compact('expense', 'banks', 'payment_methods', 'cards', 'payments'));
     }
@@ -85,21 +90,18 @@ class PayExpenseController extends Controller
     {
         try{
             DB::beginTransaction();
+            $user = Auth::user();
             $expense = Expense::where('id', '=', $request->session()->get('expense'))->first();
             $balance = $expense->balance;
             $total = $request->total;
 
             $pay_expense = new Pay_expense();
-            $pay_expense->user_id    = Auth::user()->id;
-            $pay_expense->branch_id  = Auth::user()->branch_id;
+            $pay_expense->user_id = $user->id;
+            $pay_expense->branch_id = $user->branch_id;
             $pay_expense->expense_id = $expense->id;
-            $pay_expense->pay        = $total;
+            $pay_expense->pay = $total;
             $pay_expense->balance_expense = $balance - $total;
             $pay_expense->save();
-
-            $discharge_receipt = new Discharge_receipt();
-            $discharge_receipt->type = 'expense';
-            $pay_expense->dischargeReceipt()->save($discharge_receipt);
 
             $cont = 0;
             $payment_method = $request->payment_method_id;
@@ -115,33 +117,31 @@ class PayExpenseController extends Controller
 
                 $payment->destination = $expense->id;
                 if ($payu_total == 0) {
-                    $payment->status      = 'aplicado';
+                    $payment->status = 'aplicado';
                 } else {
-                    $payment->status      = 'parcial';
+                    $payment->status = 'parcial';
                 }
                 $payment->balance = $payu_total;
                 $payment->update();
-                $sale_box = Sale_box::where('user_id', '=', $pay_expense->user_id)->where('status', '=', 'open')->first();
-                $sale_box->out_payment += $adv;
-                $sale_box->update();
             }
 
             while($cont < count($payment_method)){
                 $paymentLine = $request->pay[$cont];
                 $pay_expense_payment_method = new Pay_expense_payment_method();
-                $pay_expense_payment_method->pay_expense_id      = $pay_expense->id;
-                $pay_expense_payment_method->payment_method_id  = $payment_method[$cont];
-                $pay_expense_payment_method->bank_id            = $bank[$cont];
-                $pay_expense_payment_method->card_id            = $card[$cont];
+                $pay_expense_payment_method->pay_expense_id = $pay_expense->id;
+                $pay_expense_payment_method->payment_method_id = $payment_method[$cont];
+                $pay_expense_payment_method->bank_id = $bank[$cont];
+                $pay_expense_payment_method->card_id = $card[$cont];
                 if (isset($payment_id[$cont])){
                     $pay_expense_payment_method->payment_id = $payment_id[$cont];
                 }
-                $pay_expense_payment_method->payment                = $pay[$cont];
-                $pay_expense_payment_method->transaction        = $transaction[$cont];
+                $pay_expense_payment_method->payment = $pay[$cont];
+                $pay_expense_payment_method->transaction = $transaction[$cont];
                 $pay_expense_payment_method->save();
+
                 $mp = $request->payment_method_id;
 
-                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
+                $sale_box = Sale_box::where('user_id', '=', $user->id)
                 ->where('status', '=', 'open')
                 ->first();
                 if (isset($sale_box)) {
@@ -180,22 +180,22 @@ class PayExpenseController extends Controller
      */
     public function show(Pay_expense $pay_expense)
     {
-        $dischargeReceipt = Discharge_receipt::where('id', $pay_expense->id)->first();
-        $payExpense_paymentMethods = Pay_purchase_payment_method::where('pay_purchase_id', $dischargeReceipt->paymentable->id)->get();
+        $payExpense = pay_expense::where('id', $pay_expense->id)->first();
+        $payExpense_paymentMethods = Pay_expense_payment_method::where('pay_expense_id', $payExpense->id)->get();
 
-        return view('admin.pay_purchase.show', compact('dischargeReceipt', 'payExpense_paymentMethods'));
+        return view('admin.pay_expense.show', compact('payExpense', 'payExpense_paymentMethods'));
     }
 
-    public function pdf_pay_expense(Request $request, $id)
+    public function pdfPayExpense(Request $request, $id)
     {
-        $dischargeReceipt = Discharge_receipt::findOrFail($id);
+        $payExpense = pay_expense::findOrFail($id);
         $company = Company::where('id', 1)->first();
         $user = auth::user();
-        $payExpense_PaymentMethods = Pay_expense_payment_method::where('pay_expense_id', $dischargeReceipt->paymentable->id)->get();
+        $payExpense_PaymentMethods = Pay_expense_payment_method::where('pay_expense_id', $payExpense->id)->get();
 
-        $pdfPayExpense = "ABONO-". $dischargeReceipt->id;
+        $pdfPayExpense = "ABONO-". $payExpense->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.pay_expense.pdf', compact('payExpense_PaymentMethods', 'company', 'logo', 'user', 'dischargeReceipt'));
+        $view = \view('admin.pay_expense.pdf', compact('payExpense_PaymentMethods', 'company', 'logo', 'user', 'payExpense'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );

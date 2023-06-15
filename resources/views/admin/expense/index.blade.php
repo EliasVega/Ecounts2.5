@@ -8,7 +8,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h5>Listado de Gastos</h5>
                  <a href="expense/create" class="btn btn-celeste btn-sm mb-2"><i class="fa fa-plus mr-2"></i> Agregar Gasto</a>
-                <a href="{{ route('branch.index') }}" class="btn btn-celeste btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                 <a href="{{ route('branch.index') }}" class="btn btn-bluR btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                 <a href="{{ route('supplier.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Proveedores</a>
                 <a href="{{ route('pay_expense.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
         </div>
@@ -50,8 +50,8 @@
                 {data: 'id'},
                 {data: 'supplier'},
                 {data: 'document'},
-                {data: 'total_pay'},
-                {data: 'balance'},
+                {data: 'total_pay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'balance', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

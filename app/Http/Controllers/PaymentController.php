@@ -90,41 +90,42 @@ class PaymentController extends Controller
      */
     public function store(StorePaymentRequest $request)
     {
+        $user = Auth::user();
             $payment = new Payment();
-            $payment->user_id    = Auth::user()->id;
-            $payment->branch_id  = Auth::user()->branch_id;
+            $payment->user_id = $user->id;
+            $payment->branch_id = $user->branch_id;
             $payment->supplier_id = $request->supplier_id;
             $payment->origin = 'Abonos con medios de pago';
             $payment->destination = null;
-            $payment->pay        = 0;
+            $payment->pay = 0;
             $payment->balance = 0;
             $payment->note = $request->note;
             $payment->save();
 
             $cont = 0;
             $payment_method = $request->payment_method_id;
-            $bank           = $request->bank_id;
-            $card           = $request->card_id;
-            $pay            = $request->pay;
-            $transaction    = $request->transaction;
-            $payu           = 0;
+            $bank = $request->bank_id;
+            $card = $request->card_id;
+            $pay = $request->pay;
+            $transaction = $request->transaction;
+            $payu = 0;
 
             while($cont < count($pay)){
                 $paymentLine = $pay[$cont];
 
                 $payment_payment_method = new Payment_payment_method();
-                $payment_payment_method->payment_id      = $payment->id;
-                $payment_payment_method->payment_method_id  = $payment_method[$cont];
-                $payment_payment_method->bank_id            = $bank[$cont];
-                $payment_payment_method->card_id            = $card[$cont];
-                $payment_payment_method->payment            = $paymentLine;
-                $payment_payment_method->transaction        = $transaction[$cont];
+                $payment_payment_method->payment_id = $payment->id;
+                $payment_payment_method->payment_method_id = $payment_method[$cont];
+                $payment_payment_method->bank_id = $bank[$cont];
+                $payment_payment_method->card_id = $card[$cont];
+                $payment_payment_method->payment = $paymentLine;
+                $payment_payment_method->transaction = $transaction[$cont];
                 $payment_payment_method->save();
 
                 $payu = $payu + $paymentLine;
 
                 $mp = $payment_method[$cont];
-                $sale_box = Sale_box::where('user_id', Auth::user()->id)
+                $sale_box = Sale_box::where('user_id', $user->id)
                 ->where('status', '=', 'open')
                 ->first();
                 if($mp == 10){

@@ -77,7 +77,7 @@
                                         $purchases = Purchase::whereDay('created_at', '=', date('d'))->sum('total_pay');
                                     @endphp
                                     <h2 class="text-right"><i class="fa fa-users f-left"></i><span>${{ number_format($purchases,2) }}</span></h2>
-                                        <p class="m-b-0 text-right"><a href="purchase" class="text-white">Ver mas</a></p>
+                                        <p class="m-b-0 text-right"><a href="branch" class="text-white">Ver mas</a></p>
                                 </div>
                             </div>
                         </div>

@@ -1,12 +1,12 @@
 <div class="box-body row">
     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12" id="addOrder">
         <div class="form-group">
-            <label for="prePurchase">Orden de Pedido </label>
+            <label for="order">Orden de Pedido </label>
             <input type="number" name="order" id="order" value="{{ $order->id }}" class="form-control">
         </div>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <label for="customer_id">Cliente <a href="{{ route('order.index') }}" class="btn btn-celeste btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></label>
+        <label for="customer_id">Cliente </label>
         <div class="select">
             <select id="customer_id" name="customer_id" class="form-control selectpicker" data-live-search="true" disabled>
                 <option {{ old('customer_id', $order->customer_id ?? '') == '' ? "selected" : "" }} disabled>Seleccionar Cliente</option>

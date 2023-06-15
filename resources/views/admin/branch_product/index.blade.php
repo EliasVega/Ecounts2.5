@@ -6,8 +6,9 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Productos sede
-                <a href="{{ route('branch.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+            <h4>Listado de Productos sede
+                <a href="{{ route('branch.index') }}" class="btn btn-redeco"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+            </h4>
         </div>
     </div>
     <div class="row">

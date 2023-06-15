@@ -6,6 +6,12 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
+            <div class="box-header with-border">
+                <h4 class="box-title">Agregando Traslado
+                    <a href="{{ route('trnsfer.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                </h4>
+            </div>
             @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
@@ -15,7 +21,7 @@
                 </ul>
             </div>
             @endif
-            <form action="{{route('product_branch.store')}}" method="POST">
+            <form action="{{route('transfer.store')}}" method="POST">
                 {{csrf_field()}}
                 <div class="box-body row">
                     @include('admin/transfer.form')
@@ -31,15 +37,6 @@
 <script>
     /*$(document).ready(function(){
             alert('estoy funcionando correctamanete empresa');
-        });*/
-        /*
-        jQuery(document).ready(function($){
-            $(document).ready(function() {
-                $('#sede_id').select2({
-                    theme: "classic",
-                    width: "100%",
-                });
-            });
         });*/
 
         jQuery(document).ready(function($){

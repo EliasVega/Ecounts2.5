@@ -7,19 +7,20 @@
     <div class="row">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>Listado de Abonos
-                    <a href="{{ route('order.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+                <h4>Listado de Abonos
+                    <a href="{{ route('order.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                </h4>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="cash_receipts">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="payOrders">
                     <thead>
                         <tr class="bg-info">
                             <th>ID</th>
-                            <th>Comp #</th>
                             <th>Pedido</th>
                             <th>Cliente</th>
                             <th>Sede</th>
@@ -39,7 +40,7 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#cash_receipts').DataTable(
+        $('#payOrders').DataTable(
         {
             responsive: true,
             autoWidth: false,
@@ -50,14 +51,13 @@
             columns:
             [
                 {data: 'id'},
-                {data: 'pay_order'},
                 {data: 'order'},
                 {data: 'customer'},
                 {data: 'branch'},
                 {data: 'user'},
-                {data: 'total_pay'},
-                {data: 'pay'},
-                {data: 'balance_order'},
+                {data: 'totalPay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'pay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'balance_order', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

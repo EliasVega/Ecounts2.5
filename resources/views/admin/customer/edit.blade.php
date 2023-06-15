@@ -7,7 +7,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Editar Cliente: {{ $customer->name }}</h3>
+                <h4>Editar Cliente: {{ $customer->name }}
+                    <a href="{{ route('customer.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                </h4>
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">
@@ -21,7 +24,39 @@
             {!!Form::model($customer, ['method'=>'PATCH','route'=>['customer.update', $customer->id]])!!}
             {!!Form::token()!!}
                 <div class="box-body row">
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="document_id">Tipo Identificacion</label>
+                            <select name="document_id" class="form-control" id="document_id">
+                                @foreach($documents as $doc)
+                                    @if($doc->id == $customer->document_id)
+                                        <option value="{{ $doc->id }}" selected>{{ $doc->name }}</option>
+                                    @else
+                                        <option value="{{ $doc->id }}">{{ $doc->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label for="number">Identificacion</label>
+                            <input type="text" name="number" value="{{ $customer->number }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <div class="form-group">
+                            <label for="dv">DV</label>
+                            <input type="text" name="dv" value="{{ $customer->dv }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="name">Cliente</label>
+                            <input type="text" name="name" class="form-control" value="{{ $customer->name }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="department_id">Departamentos</label>
                             <select name="department_id" class="form-control" id="department_id">
@@ -35,7 +70,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="municipality_id">Municipio</label>
                             <select name="municipality_id" class="form-control" id="municipality_id" required>
@@ -51,26 +86,6 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
-                            <label for="name">Cliente</label>
-                            <input type="text" name="name" class="form-control" value="{{ $customer->name }}">
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                            <label for="document_id">Tipo Identificacion</label>
-                            <select name="document_id" class="form-control" id="document_id">
-                                @foreach($documents as $doc)
-                                    @if($doc->id == $customer->document_id)
-                                        <option value="{{ $doc->id }}" selected>{{ $doc->name }}</option>
-                                    @else
-                                        <option value="{{ $doc->id }}">{{ $doc->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
                             <label for="liability_id">Responsabilidad fiscal</label>
                                 <select name="liability_id" class="form-control" id="liability_id">
                                     @foreach($liabilities as $fis)
@@ -83,7 +98,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="organization_id">Tipo organizacion</label>
                                 <select name="organization_id" class="form-control" id="organization_id">
@@ -97,7 +112,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="regime_id">Regimen</label>
                                 <select name="regime_id" class="form-control" id="fiscal_id">
@@ -111,18 +126,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                            <label for="number">Identificacion</label>
-                            <input type="text" name="number" value="{{ $customer->number }}" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="form-group">
-                            <label for="dv">DV</label>
-                            <input type="text" name="dv" value="{{ $customer->dv }}" class="form-control">
-                        </div>
-                    </div>
+
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label for="direccion">Direccion</label>

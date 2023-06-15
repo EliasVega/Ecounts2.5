@@ -15,7 +15,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+            @if (Auth::user()->role_id == 1)
                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -174,6 +174,8 @@
                         </li>
                     </ul>
                 </li>
+            @endif
+            @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -193,12 +195,14 @@
                             </p>
                             </a>
                             <ul class="nav nav-treeview">
+                            @if (Auth::user()->role_id == 1)
                                 <li class="nav-item">
                                     <a href="{{ url('company') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Empresas</p>
                                     </a>
                                 </li>
+                            @endif
                                 <li class="nav-item">
                                     <a href="{{ url('branch') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
@@ -235,12 +239,6 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('permission') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Permisos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="{{ url('cod_verif') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Autorizaciones</p>
@@ -271,6 +269,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @if (Auth::user()->role_id == 1)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
@@ -295,8 +294,10 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
                     </ul>
                 </li>
+            @endif
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -315,12 +316,7 @@
                             </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('advance') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Anticipos</p>
-                                    </a>
-                                </li>
+                            @if (Auth::user()->role_id != 5)
                                 <li class="nav-item">
                                     <a href="{{ url('payment') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
@@ -328,21 +324,17 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ url('pay_purchase') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Abonos a compras</p>
+                                    </a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->role_id != 4)
+                                <li class="nav-item">
                                     <a href="{{ url('advance') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Anticipo de clientes</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('pay_order') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Abonos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('cash_receipt') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Recibos de caja</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -357,8 +349,10 @@
                                         <p>Abonos Facturas</p>
                                     </a>
                                 </li>
+                            @endif
                             </ul>
                         </li>
+                        @if (Auth::user()->role_id != 5)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
@@ -399,9 +393,22 @@
                                         <p>ND Compra</p>
                                     </a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a href="{{ url('cash_receipt') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Recibos de caja</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('cash_box') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>caja</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
+                        @endif
+                        @if (Auth::user()->role_id != 4)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
@@ -445,12 +452,20 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('sale_box') }}" class="nav-link">
-                                        <i class="far -dot-circle nav-icon"></i>
+                                        <i class="far -fa-dot-circle nav-icon"></i>
                                         <p>Caja</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('cash_receipt') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Recibos de caja</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+                        @endif
+                        @if (Auth::user()->role_id != 5)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
@@ -478,14 +493,9 @@
                                         <p>Traslados</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('product_branch') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Traslados</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
+                        @endif
                     </ul>
                 </li>
             </ul>

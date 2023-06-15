@@ -38,9 +38,15 @@ class ExpenseController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         if (request()->ajax()) {
+            if ($user->role_id == 1 || $user->role_id == 2) {
+                $expenses = Expense::get();
+            } else {
+                $expenses = Expense::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
             //Muestra todas las compras de la empresa
-            $expenses = Expense::get();
+            //$expenses = Expense::get();
 
             return DataTables::of($expenses)
             ->addIndexColumn()

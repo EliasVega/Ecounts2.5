@@ -5,8 +5,9 @@
 @section('content')
 <main class="main">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 offset-lg-4">
-            <a href="{{ route('sale_box.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="{{ route('sale_box.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+            <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
         </div>
         <div class="col-12 col-md-4 col-sm-6">
             <div class="form-group">
@@ -14,22 +15,25 @@
                 <p>{{ $sale_box->id }}</p>
             </div>
         </div>
-        <div class="col-12 col-md-4 col-sm-6">
-            <div class="form-group">
-                <label class="form-control-label" for="cash_open">Efectivo apertura</label>
-                <p>{{ number_format($sale_box->cash_box,2) }}</p>
-            </div>
-        </div>
+
         <div class="col-12 col-md-4 col-sm-6">
             <div class="form-group">
                 <label class="form-control-label" for="open">fecha de apertura</label>
                 <p>{{ $sale_box->created_at }}</p>
             </div>
         </div>
+        @if ($sale_box->status == 'close')
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="close">Cerrada</label>
+                    <p>{{ $sale_box->updated_at }}</p>
+                </div>
+            </div>
+        @endif
         <div class="col-12 col-md-4 col-sm-6">
             <div class="form-group">
-                <label class="form-control-label" for="close"> fecha de Cierre</label>
-                <p>{{ $sale_box->updated_at }}</p>
+                <label class="form-control-label" for="cash_open">Efectivo apertura</label>
+                <p>{{ number_format($sale_box->cash_box,2) }}</p>
             </div>
         </div>
         <div class="col-12 col-md-4 col-sm-6">
@@ -119,7 +123,6 @@
                     <strong class="tpdf">Detalle Compras</strong>
                 </div>
             </div>
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -166,7 +169,6 @@
                     <strong class="tpdf">Detalle Gastos</strong>
                 </div>
             </div>
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -207,7 +209,6 @@
                     <strong class="tpdf">Detalle Pedidos</strong>
                 </div>
             </div>
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -252,9 +253,8 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <strong class="tpdf">Detalle Notas Debito Ventas</strong>
-
                 </div>
-
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -294,9 +294,8 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <strong class="tpdf">Detalle Notas Credito Venta</strong>
-
                 </div>
-
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -336,9 +335,8 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <strong class="tpdf">Detalle Notas Debito Compras</strong>
-
                 </div>
-
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -378,9 +376,8 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <strong class="tpdf">Detalle Notas Credito Compras</strong>
-
                 </div>
-
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -421,6 +418,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <strong class="tpdf">Detalle Entregas de efectivo</strong>
                 </div>
+            </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -453,12 +451,13 @@
             </div>
         </div>
     @endif
-    @if ($sale_box->in_cash > 0)
+    @if ($sale_box->sum_cash_in > 0)
     <div class="box-body row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <strong class="tpdf">Detalle Recarga de efectivo</strong>
             </div>
+        </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-condensed table-hover">

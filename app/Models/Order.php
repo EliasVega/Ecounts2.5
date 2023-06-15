@@ -52,7 +52,7 @@ class Order extends Model
         return $this->hasOne(Invoice::class);
     }
 
-    public function pay_orders(){
+    public function payOrders(){
         return $this->hasMany(Pay_order::class);
     }
 

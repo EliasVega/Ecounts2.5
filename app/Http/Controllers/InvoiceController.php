@@ -51,12 +51,12 @@ class InvoiceController extends Controller
     {
         $branch = Branch::where('id', '=', $request->session()->get('branch'))->first();
 
-        $rol = Auth::user()->role_id;
+        $user = Auth::user();
         if (request()->ajax()) {
-            if ($rol == 1 || $rol == 2) {
+            if ($user->role_id == 1 || $user->role_id == 2) {
                 $invoices = Invoice::get();
             } else {
-                $invoices = Invoice::where('branch_id', $request->session()->get('branch'))->where('user_id', Auth::user()->id)->get();
+                $invoices = Invoice::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
             }
             return DataTables::of($invoices)
             ->addIndexColumn()

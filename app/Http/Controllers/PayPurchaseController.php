@@ -28,40 +28,41 @@ class PayPurchaseController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
         if ($request->ajax()) {
-            $dischargeReceipts = Discharge_receipt::where('type', 'purchase')->get();
+            //Muestra todas las Pagos a gastos de la empresa
+            if ($user->role_id == 1 || $user->role_id == 2) {
 
-            return DataTables::of($dischargeReceipts)
+                //Consulta para mostrar pagos a gastos a administradores y superadmin
+                $payPurchases = Pay_purchase::get();
+            } else {
+                //Consulta para mostrar Pagos a gastos a roles 3 -4 -5
+                $payPurchases = Pay_purchase::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
+
+            return DataTables::of($payPurchases)
 
             ->addIndexColumn()
-            ->addColumn('pay_purchase', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->id;
+            ->addColumn('document', function (Pay_purchase $payPurchase) {
+                return $payPurchase->purchase->document;
             })
-            ->addColumn('pay', function (Discharge_receipt $dischargeReceipt) {
-                return number_format($dischargeReceipt->paymentable->pay,2);
+            ->addColumn('purchase', function (Pay_purchase $payPurchase) {
+                return $payPurchase->purchase->id;
             })
-            ->addColumn('balance_purchase', function (Discharge_receipt $dischargeReceipt) {
-                return number_format($dischargeReceipt->paymentable->balance_purchase,2);
+            ->addColumn('supplier', function (Pay_purchase $payPurchase) {
+                return $payPurchase->purchase->supplier->name;
             })
-            ->addColumn('branch', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->branch->name;
+            ->addColumn('branch', function (Pay_purchase $payPurchase) {
+                return $payPurchase->branch->name;
             })
-            ->addColumn('user', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->user->name;
+            ->addColumn('user', function (Pay_purchase $payPurchase) {
+                return $payPurchase->user->name;
             })
-            ->addColumn('purchase', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->purchase->id;
+            ->addColumn('totalPay', function (Pay_purchase $payPurchase) {
+                return $payPurchase->purchase->total_pay;
             })
-
-            ->addColumn('total_pay', function (Discharge_receipt $dischargeReceipt) {
-                return number_format($dischargeReceipt->paymentable->purchase->total_pay,2);
-            })
-            ->addColumn('supplier', function (Discharge_receipt $dischargeReceipt) {
-                return $dischargeReceipt->paymentable->purchase->supplier->name;
-            })
-
-            ->editColumn('created_at', function(Discharge_receipt $dischargeReceipt){
-                return $dischargeReceipt->created_at->format('yy-m-d: h:m');
+            ->editColumn('created_at', function(Pay_purchase $payPurchase){
+                return $payPurchase->created_at->format('yy-m-d: h:m');
             })
             ->addColumn('btn', 'admin/pay_purchase/actions')
             ->rawColumns(['btn'])
@@ -97,76 +98,69 @@ class PayPurchaseController extends Controller
     {
         try{
             DB::beginTransaction();
+            $user = Auth::user();
             $purchase = purchase::where('id', '=', $request->session()->get('purchase'))->first();
             $balance = $purchase->balance;
             $total = $request->total;
 
             $pay_purchase = new Pay_purchase();
-            $pay_purchase->user_id    = Auth::user()->id;
-            $pay_purchase->branch_id  = Auth::user()->branch_id;
+            $pay_purchase->user_id = $user->id;
+            $pay_purchase->branch_id = $user->branch_id;
             $pay_purchase->purchase_id = $purchase->id;
-            $pay_purchase->pay        = $total;
+            $pay_purchase->pay = $total;
             $pay_purchase->balance_purchase = $balance - $total;
             $pay_purchase->save();
 
-            $discharge_receipt = new Discharge_receipt();
-            $discharge_receipt->type = 'purchase';
-            $pay_purchase->dischargeReceipt()->save($discharge_receipt);
-
             $cont = 0;
             $payment_method = $request->payment_method_id;
-            $bank           = $request->bank_id;
-            $card           = $request->card_id;
-            $payment_id     = $request->payment_id;
-            $pay            = $request->pay;
-            $transaction    = $request->transaction;
-            $payu           = $request->payment;
+            $bank = $request->bank_id;
+            $card = $request->card_id;
+            $payment_id = $request->payment_id;
+            $pay = $request->pay;
+            $transaction = $request->transaction;
+            $payu = $request->payment;
             if ($payu != 0) {
                 $payment = Payment::findOrFail( $request->payment_id);
                 $payu_total = $payment->balance - $payu;
 
                 $payment->destination = $purchase->id;
                 if ($payu_total == 0) {
-                    $payment->status      = 'aplicado';
+                    $payment->status = 'aplicado';
                 } else {
-                    $payment->status      = 'parcial';
+                    $payment->status = 'parcial';
                 }
                 $payment->balance = $payu_total;
                 $payment->update();
-                $sale_box = Sale_box::where('user_id', '=', $pay_expense->user_id)->where('status', '=', 'open')->first();
-                $sale_box->out_payment += $payu;
-                $sale_box->update();
             }
 
             while($cont < count($payment_method)){
                 $paymentLine = $request->pay[$cont];
                 $pay_purchase_payment_method = new Pay_purchase_payment_method();
-                $pay_purchase_payment_method->pay_purchase_id      = $pay_purchase->id;
-                $pay_purchase_payment_method->payment_method_id  = $payment_method[$cont];
-                $pay_purchase_payment_method->bank_id            = $bank[$cont];
-                $pay_purchase_payment_method->card_id            = $card[$cont];
+                $pay_purchase_payment_method->pay_purchase_id = $pay_purchase->id;
+                $pay_purchase_payment_method->payment_method_id = $payment_method[$cont];
+                $pay_purchase_payment_method->bank_id = $bank[$cont];
+                $pay_purchase_payment_method->card_id = $card[$cont];
                 if (isset($payment_id[$cont])){
                     $pay_purchase_payment_method->payment_id = $payment_id[$cont];
                 }
-                $pay_purchase_payment_method->payment                = $pay[$cont];
-                $pay_purchase_payment_method->transaction        = $transaction[$cont];
+                $pay_purchase_payment_method->payment = $pay[$cont];
+                $pay_purchase_payment_method->transaction = $transaction[$cont];
                 $pay_purchase_payment_method->save();
+
                 $mp = $payment_method[$cont];
 
-                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
+                $sale_box = Sale_box::where('user_id', '=', $user->id)
                 ->where('status', '=', 'open')
                 ->first();
-                if (isset($sale_box)) {
-                    if($mp == 10){
-                        $sale_box->out_purchase_cash += $paymentLine;
-                        $sale_box->out += $paymentLine;
-                    }
-
-                    //$sale_box = Sale_box::findOrFail($boxy->id);
-                    $sale_box->out_expense += $paymentLine;
-                    $sale_box->out_total += $paymentLine;
-                    $sale_box->update();
+                if($mp == 10){
+                    $sale_box->out_purchase_cash += $paymentLine;
+                    $sale_box->departure += $paymentLine;
                 }
+
+                //$sale_box = Sale_box::findOrFail($boxy->id);
+                $sale_box->out_purchase += $paymentLine;
+                $sale_box->out_total += $paymentLine;
+                $sale_box->update();
 
                 $cont++;
             }
@@ -195,22 +189,22 @@ class PayPurchaseController extends Controller
      */
     public function show(Pay_purchase $pay_purchase)
     {
-        $dischargeReceipt = Discharge_receipt::where('id', $pay_purchase->id)->first();
-        $payPurchase_paymentMethods = Pay_purchase_payment_method::where('pay_purchase_id', $dischargeReceipt->paymentable->id)->get();
+        $payPurchase = Pay_purchase::where('id', $pay_purchase->id)->first();
+        $payPurchase_paymentMethods = Pay_purchase_payment_method::where('pay_purchase_id', $payPurchase->id)->get();
 
-        return view('admin.pay_purchase.show', compact('dischargeReceipt', 'payPurchase_paymentMethods'));
+        return view('admin.pay_purchase.show', compact('payPurchase', 'payPurchase_paymentMethods'));
     }
 
     public function pdf_pay_purchase(Request $request, $id)
     {
-        $dischargeReceipt = Discharge_receipt::findOrFail($id);
+        $payPurchase = Pay_purchase::findOrFail($id);
         $company = Company::where('id', 1)->first();
         $user = auth::user();
-        $payPurchase_PaymentMethods = Pay_purchase_payment_method::where('pay_purchase_id', $dischargeReceipt->paymentable->id)->get();
+        $payPurchase_PaymentMethods = Pay_purchase_payment_method::where('pay_purchase_id', $payPurchase->id)->get();
 
-        $pdfPayPurchase = "ABONO-". $dischargeReceipt->id;
+        $pdfPayPurchase = "ABONO-". $payPurchase->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.pay_purchase.pdf', compact('payPurchase_PaymentMethods', 'company', 'logo', 'user', 'dischargeReceipt'));
+        $view = \view('admin.pay_purchase.pdf', compact('payPurchase_PaymentMethods', 'company', 'logo', 'user', 'payPurchase'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );

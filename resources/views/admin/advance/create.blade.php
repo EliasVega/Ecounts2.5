@@ -7,7 +7,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <strong>Agregar Anticipo</strong>
+                <h4>Agregar Anticipo
+                    <a href="{{ route('advance.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                </h4>
             </div>
             @if (count($errors)>0)
             <div class="alert alert-danger">

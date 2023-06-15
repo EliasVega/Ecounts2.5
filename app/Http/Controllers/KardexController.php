@@ -36,12 +36,22 @@ class KardexController extends Controller
                 ->get();*/
             }
             return DataTables::of($kardexes)
-                /*->editColumn('created_at', function(Kardex $kardex){
-                    return $kardex->created_at->format('yy-m-d');
-                })*/
-                ->addColumn('edit', 'admin/kardex/actions')
-                ->rawcolumns(['edit'])
-                ->toJson();
+            ->addIndexColumn()
+            ->addColumn('idP', function (Kardex $kardex) {
+                return $kardex->product->id;
+            })
+            ->addColumn('product', function (Kardex $kardex) {
+                return $kardex->product->name;
+            })
+            ->addColumn('branch', function (Kardex $kardex) {
+                return $kardex->branch->name;
+            })
+            ->editColumn('created_at', function(Kardex $kardex){
+                return $kardex->created_at->format('yy-m-d: h:m');
+            })
+            ->addColumn('btn', 'admin/jardex/actions')
+            ->rawColumns(['btn'])
+            ->make(true);
         }
         return view('admin.kardex.index');
     }

@@ -71,11 +71,11 @@
                     },
                     columns:[
                         {data: 'idP'},
-                        {data: 'nameB'},
+                        {data: 'branch'},
                         {data: 'operation'},
                         {data: 'created_at'},
                         {data: 'number'},
-                        {data: 'name'},
+                        {data: 'product'},
                         {data: 'quantity'},
                         {data: 'stock'},
                     ],

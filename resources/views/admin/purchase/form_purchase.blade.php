@@ -1,7 +1,12 @@
 <div class="box-body row">
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group">
-            <label for="supplier_id">Proveedor  <button class="btn btn-celeste btn-sm mb-2" type="button" data-toggle="modal" data-target="#supplier"><i class="fa fa-plus"></i>&nbsp;&nbsp;Agregar</button></label>
+            <label for="supplier_id">Proveedor
+                <button class="btn btn-celeste btn-sm mb-2 ml-3" type="button" data-toggle="modal" data-target="#supplier">
+                    <i class="fa fa-plus"></i>Agregar</button>
+                <a href="{{ route('purchase.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+            </label>
             <select name="supplier_id" class="form-control selectpicker" id="supplier_id"
                 data-live-search="true" required>
                 <option value="" disabled selected>Seleccionar el Proveedor</option>

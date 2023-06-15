@@ -7,10 +7,10 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h5>Listado de Ventas
-                <a href="order/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Pedido</a>
-                <a href="{{ route('branch.index') }}" class="btn btn-celeste"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
-                <a href="{{ route('customer.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Clientes</a>
-                <a href="{{ route('pay_order.index') }}" class="btn btn-gris"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
+                <a href="order/create" class="btn btn-celeste btn-sm"><i class="fa fa-plus mr-2"></i> Agregar Pedido</a>
+                <a href="{{ route('branch.index') }}" class="btn btn-bluR btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                <a href="{{ route('customer.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Clientes</a>
+                <a href="{{ route('pay_order.index') }}" class="btn btn-gris btn-sm"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
             </h5>
         </div>
     </div>

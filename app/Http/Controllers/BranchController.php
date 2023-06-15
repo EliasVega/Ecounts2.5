@@ -105,6 +105,76 @@ class BranchController extends Controller
         return view('admin.branch.show', compact('branch'));
     }
     //funcion para redirigir a compras
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($branch)
+    {
+        $branch = Branch::findOrFail($branch);
+        $departments = Department::get();
+        $municipalities = Municipality::get();
+        $companies = Company::get();
+        return view('admin.branch.edit', compact('branch', 'departments', 'municipalities', 'companies'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateBranchRequest  $request
+     * @param  \App\Models\Branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateBranchRequest $request, $branch)
+    {
+        $company = Company::where('id', '=', 1)->first();
+        $branch = Branch::findOrFail($branch);
+        $branch->department_id = $request->department_id;
+        $branch->municipality_id = $request->municipality_id;
+        $branch->company_id = $company->id;
+        $branch->name = $request->name;
+        $branch->address = $request->address;
+        $branch->phone = $request->phone;
+        $branch->mobile = $request->mobile;
+        $branch->email = $request->email;
+        $branch->manager = $request->manager;
+        $branch->update();
+        return redirect('branch');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Branch $branch)
+    {
+        //
+    }
+    //funcion para llevar los municipios al create
+    public function getMunicipalities(Request $request, $id)
+    {
+        if($request)
+        {
+            $municipalities = Municipality::where('department_id', '=', $id)->get();
+
+            return response()->json($municipalities);
+        }
+    }
+
+    public function logout()
+    {
+        session()->forget('branch');
+
+        return redirect('branch');
+    }
+
     public function show_purchase($id)
     {
         $sale_box = Sale_box::select('id')
@@ -190,14 +260,13 @@ class BranchController extends Controller
         return redirect('branch_product');
     }
     //funcion para redirigir a
-    public function show_product_branch($id)
+    public function show_transfer($id)
     {
-        //
         $branch = Branch::findOrFail($id);
         Session::put('branch', $branch->id, 60 * 24 * 365);
         Session::put('name', $branch->name, 60 * 24 * 365);
 
-        return redirect('product_branch');
+        return redirect('transfer');
     }
     //funcion para redirigir a caja
     public function show_sale_box($id)
@@ -219,73 +288,5 @@ class BranchController extends Controller
         } else {
             return redirect("branch")->with('warning', 'Usuario no autorizado en esta sucursal');
         }
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Branch  $branch
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($branch)
-    {
-        $branch = Branch::findOrFail($branch);
-        $departments = Department::get();
-        $municipalities = Municipality::get();
-        $companies = Company::get();
-        return view('admin.branch.edit', compact('branch', 'departments', 'municipalities', 'companies'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBranchRequest  $request
-     * @param  \App\Models\Branch  $branch
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBranchRequest $request, $branch)
-    {
-        $company = Company::where('id', '=', 1)->first();
-        $branch = Branch::findOrFail($branch);
-        $branch->department_id = $request->department_id;
-        $branch->municipality_id = $request->municipality_id;
-        $branch->company_id = $company->id;
-        $branch->name = $request->name;
-        $branch->address = $request->address;
-        $branch->phone = $request->phone;
-        $branch->mobile = $request->mobile;
-        $branch->email = $request->email;
-        $branch->manager = $request->manager;
-        $branch->update();
-        return redirect('branch');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Branch  $branch
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Branch $branch)
-    {
-        //
-    }
-    //funcion para llevar los municipios al create
-    public function getMunicipalities(Request $request, $id)
-    {
-        if($request)
-        {
-            $municipalities = Municipality::where('department_id', '=', $id)->get();
-
-            return response()->json($municipalities);
-        }
-    }
-
-    public function logout()
-    {
-        session()->forget('branch');
-
-        return redirect('branch');
     }
 }

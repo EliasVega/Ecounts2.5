@@ -23,7 +23,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="voucher">
-                <p>RECIBO <br> DE CAJA <br> <strong id="numbervoucher">N°. {{ $cashReceipt->id }}</strong></p>
+                <p>RECIBO <br> DE CAJA <br> <strong id="numbervoucher">N°. {{ $payInvoice->id }}</strong></p>
 
             </div>
         </div>
@@ -40,10 +40,10 @@
                 <p>Fecha</p>
             </div>
             <div class="description2">
-                <p>{{ date('d-m-Y', strtotime($cashReceipt->created_at)) }}</p>
+                <p>{{ date('d-m-Y', strtotime($payInvoice->created_at)) }}</p>
             </div>
             <div class="description3">
-                <p>$ {{ number_format($cashReceipt->payable->pay, 2) }}</p>
+                <p>$ {{ number_format($payInvoice->pay, 2) }}</p>
             </div>
 
             <div class="clearfix"></div>
@@ -51,33 +51,33 @@
                 <p>DIRECCION:</p>
             </div>
             <div class="description4">
-                <p>{{  $cashReceipt->payable->invoice->customer->address  }}</p>
+                <p>{{  $payInvoice->invoice->customer->address  }}</p>
             </div>
             <div class="title">
                 <p>TELEFONO:</p>
             </div>
             <div class="description2">
-                <p>{{  $cashReceipt->payable->invoice->customer->phone  }}</p>
+                <p>{{  $payInvoice->invoice->customer->phone  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>RECIBO DE:</p>
             </div>
             <div class="description5">
-                <p>{{  $cashReceipt->payable->invoice->customer->name  }}</p>
+                <p>{{  $payInvoice->invoice->customer->name  }}</p>
             </div>
             <div class="clearfix"></div>
             <div class="title">
                 <p>CONCEPTO DE::</p>
             </div>
             <div class="description4">
-                <p>Abono a Factura # {{ $cashReceipt->payable->invoice->id }} </p>
+                <p>Abono a Factura # {{ $payInvoice->invoice->id }} </p>
             </div>
             <div class="title">
                 <p>Comprobante</p>
             </div>
             <div class="description2">
-                <p>{{ $cashReceipt->payable->id }}</p>
+                <p>{{ $payInvoice->id }}</p>
             </div>
         </div>
         <div class="content">

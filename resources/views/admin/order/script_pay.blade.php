@@ -63,7 +63,8 @@
             $("#nequi").hide();
             $("#card1").hide();
             $("#card2").hide();
-            $("#mpay").show();
+            $("#mpay").hide();
+            $("#payment_method_id").val(1);
         }
         });
     });

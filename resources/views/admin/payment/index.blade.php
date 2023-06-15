@@ -6,10 +6,10 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Abonos
+            <h4>Listado de Abonos
                 <a href="payment/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Pago Anticipado</a>
-                <a href="{{ route('branch.index') }}" class="btn btn-celeste"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
-            </h3>
+                <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+            </h4>
         </div>
     </div>
     <div class="row">

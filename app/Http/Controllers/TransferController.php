@@ -19,15 +19,28 @@ class TransferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (request()->ajax()) {
-            $transfers = Transfer::from('transfers AS tra')
-            ->join('users AS use', 'tra.user_id', '=', 'use.id')
-            ->join('branches AS bra', 'tra.branch_id', '=', 'bra.id')
-            ->join('branches AS branch', 'tra.origin_branch_id', '=', 'branch.id')
-            ->select('tra.id', 'branch.name AS origin_branch', 'bra.name AS branch', 'tra.created_at', 'use.name')
-            ->get();
+        if ($request->ajax()) {
+            $user = Auth::user();
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+                //Consulta para mostrar Transfers a administradores y superadmin
+                $transfers = Transfer::from('transfers AS tra')
+                ->join('users AS use', 'tra.user_id', '=', 'use.id')
+                ->join('branches AS bra', 'tra.branch_id', '=', 'bra.id')
+                ->join('branches AS branch', 'tra.origin_branch_id', '=', 'branch.id')
+                ->select('tra.id', 'branch.name AS origin_branch', 'bra.name AS branch', 'tra.created_at', 'use.name')
+                ->get();
+            } else {
+                //Consulta para mostrar transfer a roles 3 -4 -5
+                $transfers = Transfer::from('transfers AS tra')
+                ->join('users AS use', 'tra.user_id', '=', 'use.id')
+                ->join('branches AS bra', 'tra.branch_id', '=', 'bra.id')
+                ->join('branches AS branch', 'tra.origin_branch_id', '=', 'branch.id')
+                ->select('tra.id', 'branch.name AS origin_branch', 'bra.name AS branch', 'tra.created_at', 'use.name')
+                ->where('tra.user_id', Auth::user()->id)
+                ->get();
+            }
 
             return datatables()
             ->of($transfers)
@@ -58,7 +71,7 @@ class TransferController extends Controller
         ->where('bp.stock', '>', 0)
         ->get();
 
-        return view("admin.product_branch.create", compact('branches', 'branch_products', 'branch'));
+        return view("admin.transfer.create", compact('branches', 'branch_products', 'branch'));
     }
 
     /**

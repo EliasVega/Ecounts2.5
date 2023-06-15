@@ -20,6 +20,7 @@
                                             this.closest('form').submit();">
                     {{ __('Cerrar Sesion') }}
                 </a>
+
             </form>
             @elseif(Session()->has('empresa') && !Session()->has('sede'))
                 <form method="POST" action="{{ route('logoutEmpresa') }}">

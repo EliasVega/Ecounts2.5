@@ -88,4 +88,8 @@ class Branch extends Model
     public function prePurchase(){
         return $this->hasMany(PrePurchase::class);
     }
+
+    public function kardexes(){
+        return $this->hasMany(Kardex::class);
+    }
 }

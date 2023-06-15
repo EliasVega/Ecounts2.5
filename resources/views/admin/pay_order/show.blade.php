@@ -9,25 +9,25 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="name">CLIENTE</label>
-                <p>{{ $cashReceipt->payable->order->customer->name }}</p>
+                <p>{{ $payOrder->order->customer->name }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="order">Pedido #</label>
-                <p><strong>{{ $cashReceipt->payable->order->id }}</strong></p>
+                <p><strong>{{ $payOrder->id }}</strong></p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="abono">ABONO</label>
-                <p>{{ number_format($cashReceipt->payable->pay, 2) }}</p>
+                <p>{{ number_format($payOrder->pay, 2) }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="vece">VENCE</label>
-                <p>{{ $cashReceipt->payable->order->due_date }}</p>
+                <p>{{ $payOrder->due_date }}</p>
             </div>
         </div>
     </div>
@@ -35,11 +35,11 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <strong class="tpdf">Detalle de Abonos</strong>
-
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-2">
-                <a href="{{ route('pay_order.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
-
+                <a href="{{ route('pay_order.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+            </div>
         </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
@@ -56,11 +56,11 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ number_format($cashReceipt->payable->pay, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($payOrder->pay, 2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($pay_order_payment_methods as $pp)
+                            @foreach($payOrder_paymentMethods as $pp)
                                 <tr>
                                     <td>{{ $pp->paymentMethod->name }}</td>
                                     <td>{{ $pp->bank->name }}</td>

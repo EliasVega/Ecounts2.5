@@ -7,7 +7,6 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Advance;
 use App\Models\Bank;
-use App\Models\Branch;
 use App\Models\Branch_product;
 use App\Models\Card;
 use App\Models\Company;
@@ -18,16 +17,13 @@ use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Order_product;
 use App\Models\Organization;
-use App\Models\Pay_event;
 use App\Models\Payment_form;
 use App\Models\Payment_method;
 use App\Models\Pay_order;
 use App\Models\Pay_order_payment_method;
 use App\Models\Percentage;
 use App\Models\Regime;
-use App\Models\Retention;
 use App\Models\Sale_box;
-use App\Models\Tax;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,14 +40,13 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $branch = Branch::where('id', '=', $request->session()->get('branch'))->first();
 
-        $rol = Auth::user()->role_id;
+        $user = Auth::user();
         if (request()->ajax()) {
-            if ($rol == 1 || $rol == 2) {
+            if ($user->role_id == 1 || $user->role_id == 2) {
                 $orders = Order::get();
             } else {
-                $orders = Order::where('branch_id', $request->session()->get('branch'))->where('user_id', Auth::user()->id)->get();
+                $orders = Order::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
             }
             return DataTables::of($orders)
             ->addIndexColumn()

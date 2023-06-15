@@ -5,40 +5,40 @@
 @section('content')
 <main class="main">
     <div class="row">
-
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="name">CLIENTE</label>
-                <p>{{ $dischargeReceipt->paymentable->purchase->supplier->name }}</p>
+                <p>{{ $payPurchase->purchase->supplier->name }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="order">Compra #</label>
-                <p><strong>{{ $dischargeReceipt->paymentable->purchase->id }}</strong></p>
+                <p><strong>{{ $payPurchase->purchase->id }}</strong></p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="abono">ABONO</label>
-                <p>{{ number_format($dischargeReceipt->paymentable->pay, 2) }}</p>
+                <p>{{ number_format($payPurchase->pay, 2) }}</p>
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="vece">VENCE</label>
-                <p>{{ $dischargeReceipt->paymentable->purchase->due_date }}</p>
+                <p>{{ $payPurchase->purchase->due_date }}</p>
             </div>
         </div>
     </div>
     <div class="box-body row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <strong class="tpdf">Detalle de Abonos</strong>
+                <h4>Detalle de Abonos</h4>
 
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-2">
-                <a href="{{ route('pay_purchase.index') }}" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i>Regresar</a>
+                <a href="{{ route('pay_purchase.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
 
         </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -56,7 +56,7 @@
                         <tfoot>
                             <tr>
                                 <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ number_format($dischargeReceipt->paymentable->pay, 2) }}</p></th>
+                                <th><p align="right">${{ number_format($payPurchase->pay, 2) }}</p></th>
                             </tr>
                         </tfoot>
                         <tbody>

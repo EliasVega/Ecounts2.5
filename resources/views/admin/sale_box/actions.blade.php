@@ -4,15 +4,15 @@
 <a href="{{ route('show_cashIn', $id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Recargar Caja">
     <i class="fas fa-dollar-sign"></i>
 </a>
-<a href="{{ route('show_out', $id) }}" class="btn btn-sm btn-dark" data-toggle="tooltip" data-placement="top" title="Salida Efectivo">
+<a href="{{ route('show_out', $id) }}" class="btn btn-sm btn-ver" data-toggle="tooltip" data-placement="top" title="Salida Efectivo">
     <i class="fas fa-dollar-sign"></i>
 </a>
-<a href="{{ route('sale_box.show', $id) }}" class="btn btn-sm btn-dark" data-toggle="tooltip" data-placement="top" title="ver caja">
+<a href="{{ route('sale_box.show', $id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="ver caja">
     <i class="fas fa-eye"></i>
 </a>
 <a href="{{ route('show_pos', $id) }}" class="btn btn-sm btn-dark" target="_blank" data-toggle="tooltip" data-placement="top" title="Reporte Post">
     <i class="fas fa-newspaper"></i>
 </a>
-<a href="{{ route('show_close', $id) }}" class="btn btn-sm btn-gris" data-toggle="tooltip" data-placement="top" title="Cierre de caja">
+<a href="{{ route('show_close', $id) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Cierre de caja">
     <i class="fas fa-newspaper"></i>
 </a>

@@ -8,7 +8,6 @@ use App\Http\Requests\UpdatePayinvoiceRequest;
 use App\Models\Advance;
 use App\Models\Bank;
 use App\Models\Card;
-use App\Models\Cash_receipt;
 use App\Models\Company;
 use App\Models\Invoice;
 use App\Models\Pay_invoice_payment_method;
@@ -28,40 +27,42 @@ class PayinvoiceController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
         if ($request->ajax()) {
-            $cashReceipts = Cash_receipt::where('type', 'invoice')->get();
+            //Muestra todas las Pagos a gastos de la empresa
+            if ($user->role_id == 1 || $user->role_id == 2) {
 
-            return DataTables::of($cashReceipts)
+                //Consulta para mostrar pagos a gastos a administradores y superadmin
+                $payInvoices = Pay_invoice::get();
+            } else {
+                //Consulta para mostrar Pagos a gastos a roles 3 -4 -5
+                $payInvoices = Pay_invoice::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
+
+            return DataTables::of($payInvoices)
 
             ->addIndexColumn()
-            ->addColumn('pay_invoice', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->id;
+            ->addColumn('document', function (Pay_invoice $pay_invoice) {
+                return $pay_invoice->invoice->document;
             })
-            ->addColumn('pay', function (Cash_receipt $cashReceipt) {
-                return number_format($cashReceipt->payable->pay,2);
+            ->addColumn('invoice', function (Pay_invoice $pay_invoice) {
+                return $pay_invoice->invoice->id;
             })
-            ->addColumn('balance_invoice', function (Cash_receipt $cashReceipt) {
-                return number_format($cashReceipt->payable->balance_invoice,2);
+            ->addColumn('customer', function (Pay_invoice $pay_invoice) {
+                return $pay_invoice->invoice->customer->name;
             })
-            ->addColumn('branch', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->branch->name;
+            ->addColumn('branch', function (Pay_invoice $pay_invoice) {
+                return $pay_invoice->branch->name;
             })
-            ->addColumn('user', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->user->name;
+            ->addColumn('user', function (Pay_invoice $pay_invoice) {
+                return $pay_invoice->user->name;
             })
-            ->addColumn('invoice', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->invoice->id;
-            })
-
-            ->addColumn('total_pay', function (Cash_receipt $cashReceipt) {
-                return number_format($cashReceipt->payable->invoice->total_pay,2);
-            })
-            ->addColumn('customer', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->invoice->customer->name;
+            ->addColumn('totalPay', function (Pay_invoice $pay_invoice) {
+                return $pay_invoice->invoice->total_pay;
             })
 
-            ->editColumn('created_at', function(Cash_receipt $cashReceipt){
-                return $cashReceipt->created_at->format('yy-m-d: h:m');
+            ->editColumn('created_at', function(Pay_invoice $pay_invoice){
+                return $pay_invoice->created_at->format('yy-m-d: h:m');
             })
             ->addColumn('btn', 'admin/pay_invoice/actions')
             ->rawColumns(['btn'])
@@ -97,30 +98,26 @@ class PayinvoiceController extends Controller
     {
         try{
             DB::beginTransaction();
-
+            $user = Auth::user();
             $invoice = Invoice::where('id', '=', $request->session()->get('invoice'))->first();
             $balance = $invoice->balance;
             $total = $request->total;
 
             $pay_invoice = new Pay_invoice();
-            $pay_invoice->user_id    = Auth::user()->id;
-            $pay_invoice->branch_id  = Auth::user()->branch_id;
+            $pay_invoice->user_id = $user->id;
+            $pay_invoice->branch_id = $user->branch_id;
             $pay_invoice->invoice_id = $invoice->id;
-            $pay_invoice->pay        = $total;
+            $pay_invoice->pay = $total;
             $pay_invoice->balance_invoice = $balance - $total;
             $pay_invoice->save();
 
-            $cash_receipt = new Cash_receipt();
-            $cash_receipt->type = 'invoice';
-            $pay_invoice->cashReceipt()->save($cash_receipt);
-
             $cont = 0;
             $payment_method = $request->payment_method_id;
-            $bank           = $request->bank_id;
-            $card           = $request->card_id;
-            $advance_id       = $request->advance_id;
-            $pay            = $request->pay;
-            $transaction    = $request->transaction;
+            $bank = $request->bank_id;
+            $card = $request->card_id;
+            $advance_id = $request->advance_id;
+            $pay = $request->pay;
+            $transaction = $request->transaction;
             $adv = $request->advance;
 
             if ($adv != 0) {
@@ -130,16 +127,12 @@ class PayinvoiceController extends Controller
 
                 $advance->destination = $invoice->id;
                 if ($adv_total == 0) {
-                    $advance->status      = 'aplicado';
+                    $advance->status = 'aplicado';
                 } else {
-                    $advance->status      = 'parcial';
+                    $advance->status = 'parcial';
                 }
                 $advance->balance = $adv_total;
                 $advance->update();
-
-                $sale_box = Sale_box::where('user_id', '=', $pay_invoice->user_id)->where('status', '=', 'open')->first();
-                $sale_box->in_advance += $adv;
-                $sale_box->update();
             }
 
             while($cont < count($payment_method)){
@@ -157,12 +150,12 @@ class PayinvoiceController extends Controller
                 $pay_invoice_payment_method->save();
 
                 $mp = $payment_method[$cont];
-                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
+                $sale_box = Sale_box::where('user_id', '=', $user->id)
                 ->where('status', '=', 'open')
                 ->first();
                 if($mp == 10){
-                    $sale_box->cash += $pay;
                     $sale_box->in_invoice_cash += $pay;
+                    $sale_box->cash += $pay;
                 }
                 $sale_box->in_invoice += $pay;
                 $sale_box->in_total += $pay;
@@ -194,22 +187,22 @@ class PayinvoiceController extends Controller
      */
     public function show($id)
     {
-        $cashReceipt = Cash_receipt::where('id', $id)->first();
-        $pay_invoice_payment_methods = Pay_invoice_payment_method::where('pay_invoice_id', $cashReceipt->payable->id)->get();
+        $payInvoice = Pay_invoice::where('id', $id)->first();
+        $pay_invoice_payment_methods = Pay_invoice_payment_method::where('pay_invoice_id', $payInvoice->id)->get();
 
-        return view('admin.pay_invoice.show', compact('cashReceipt', 'pay_invoice_payment_methods'));
+        return view('admin.pay_invoice.show', compact('payInvoice', 'pay_invoice_payment_methods'));
     }
 
     public function pdf_pay_invoice(Request $request, $id)
     {
-        $cashReceipt = Cash_receipt::findOrFail($id);
+        $payInvoice = Pay_invoice::findOrFail($id);
         $company = Company::where('id', 1)->first();
         $user = auth::user();
-        $payInvoice_PaymentMethods = Pay_invoice_payment_method::where('pay_invoice_id', $cashReceipt->payable->id)->get();
+        $payInvoice_PaymentMethods = Pay_invoice_payment_method::where('pay_invoice_id', $payInvoice->id)->get();
 
-        $pdfPayInvoice = "ABONO-". $cashReceipt->id;
+        $pdfPayInvoice = "ABONO-". $payInvoice->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.pay_invoice.pdf', compact('payInvoice_PaymentMethods', 'company', 'logo', 'user', 'cashReceipt'));
+        $view = \view('admin.pay_invoice.pdf', compact('payInvoice_PaymentMethods', 'company', 'logo', 'user', 'payInvoice'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
@@ -254,12 +247,12 @@ class PayinvoiceController extends Controller
 
     public function pdf_payinvoice(Request $request, $id)
     {
-        $cashReceipt = Cash_receipt::findOrFail($id);
+        $payInvoice = Pay_invoice::findOrFail($id);
         $company = Company::where('id', 1)->first();
         $user = auth::user();
-        $pay_invoice_payment_methods = Pay_invoice_payment_method::where('pay_invoice_id', $cashReceipt->payable->id)->get();
+        $pay_invoice_payment_methods = Pay_invoice_payment_method::where('pay_invoice_id', $payInvoice->id)->get();
 
-        $pdfPayInvoice = "FACT-". $cashReceipt->id;
+        $pdfPayInvoice = "FACT-". $payInvoice->id;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.pay_invoice.pdf', compact('payInvoice_paymentMethods', 'company', 'logo', 'cashReceipt', 'user'));
         $pdf = \App::make('dompdf.wrapper');

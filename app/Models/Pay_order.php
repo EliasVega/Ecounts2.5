@@ -30,9 +30,4 @@ class Pay_order extends Model
     public function paymentMethod(){
         return $this->hasMany(Payment_method::class);
     }
-
-    public function cashReceipt()
-    {
-        return $this->morphMany(Cash_receipt::class, 'payable');
-    }
 }

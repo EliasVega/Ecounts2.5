@@ -17,6 +17,7 @@ use App\Models\Sale_box;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 use Yajra\DataTables\DataTables;
 
 class PayorderController extends Controller
@@ -26,40 +27,42 @@ class PayorderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (request()->ajax()) {
-            $cashReceipts = Cash_receipt::where('type', 'order')->get();
-            return DataTables::of($cashReceipts)
+        $user = Auth::user();
+        if ($request->ajax()) {
+            //Muestra todas las Pagos a gastos de la empresa
+            if ($user->role_id == 1 || $user->role_id == 2) {
+
+                //Consulta para mostrar pagos a gastos a administradores y superadmin
+                $payOrders = Pay_order::get();
+            } else {
+                //Consulta para mostrar Pagos a gastos a roles 3 -4 -5
+                $payOrders = Pay_order::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
+
+            return DataTables::of($payOrders)
             ->addIndexColumn()
-            ->addColumn('order', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->order->id;
+            ->addColumn('order', function (Pay_order $payOrder) {
+                return $payOrder->order->id;
             })
-            ->addColumn('pay_order', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->id;
+            ->addColumn('customer', function (Pay_order $payOrder) {
+                return $payOrder->order->customer->name;
             })
-            ->addColumn('pay', function (Cash_receipt $cashReceipt) {
-                return number_format($cashReceipt->payable->pay,2);
+            ->addColumn('branch', function (Pay_order $payOrder) {
+                return $payOrder->branch->name;
             })
-            ->addColumn('balance_order', function (Cash_receipt $cashReceipt) {
-                return number_format($cashReceipt->payable->balance_order,2);
+            ->addColumn('user', function (Pay_order $payOrder) {
+                return $payOrder->user->name;
             })
-            ->addColumn('total_pay', function (Cash_receipt $cashReceipt) {
-                return number_format($cashReceipt->payable->order->total_pay,2);
+            ->addColumn('totalPay', function (Pay_order $payOrder) {
+                return $payOrder->order->total_pay;
             })
-            ->addColumn('customer', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->order->customer->name;
+
+            ->editColumn('created_at', function(Pay_order $payOrder){
+                return $payOrder->created_at->format('yy-m-d: h:m');
             })
-            ->addColumn('branch', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->branch->name;
-            })
-            ->addColumn('user', function (Cash_receipt $cashReceipt) {
-                return $cashReceipt->payable->user->name;
-            })
-            ->editColumn('created_at', function(Cash_receipt $cashReceipt){
-                return $cashReceipt->created_at->format('yy-m-d: h:m');
-            })
-            ->addColumn('btn', 'admin/Pay_order/actions')
+            ->addColumn('btn', 'admin/pay_order/actions')
             ->rawColumns(['btn'])
             ->make(true);
         }
@@ -93,21 +96,18 @@ class PayorderController extends Controller
 
         try{
             DB::beginTransaction();
+            $user = Auth::user();
             $order = Order::where('id', $request->session()->get('order'))->first();
             $balance = $order->balance;
             $total = $request->total;
 
             $pay_order = new Pay_order();
-            $pay_order->user_id = Auth::user()->id;
-            $pay_order->branch_id = $request->session()->get('branch');
+            $pay_order->user_id = $user->id;
+            $pay_order->branch_id = $user->branch_id;
             $pay_order->order_id = $order->id;
             $pay_order->pay = $total;
             $pay_order->balance_order = 0;
             $pay_order->save();
-
-            $cash_receipt = new Cash_receipt();
-            $cash_receipt->type = 'order';
-            $pay_order->cashReceipt()->save($cash_receipt);
 
             $cont = 0;
             $payment_method = $request->payment_method_id;
@@ -123,16 +123,12 @@ class PayorderController extends Controller
 
                 $advance->destination = $order->id;
                 if ($adv_total == 0) {
-                    $advance->status      = 'aplicado';
+                    $advance->status = 'aplicado';
                 } else {
-                    $advance->status      = 'parcial';
+                    $advance->status = 'parcial';
                 }
                 $advance->balance = $adv_total;
                 $advance->update();
-
-                $sale_box = Sale_box::where('user_id', '=', $pay_order->user_id)->where('status', '=', 'open')->first();
-                $sale_box->in_advance = $sale_box->in_advance + $pay;
-                $sale_box->update();
             }
 
 
@@ -153,21 +149,16 @@ class PayorderController extends Controller
                 $pay_order_payment_method->save();
 
                 $mp = $request->payment_method_id[$cont];
-                $boxy = Sale_box::where('user_id', '=', Auth::user()->id)
+
+                $sale_box = Sale_box::where('user_id', '=', $user->id)
                 ->where('status', '=', 'open')
                 ->first();
-                $in_pay = $boxy->in_pay + $pay;
-                $in_pay_cash = $boxy->in_pay_cash;
-                $cash = $boxy->cash;
                 if($mp == 10){
-                    $in_pay_cash += $pay;
-                    $cash += $pay;
+                    $sale_box->in_order_cash += $pay;
+                    $sale_box->cash += $pay;
                 }
-
-                $sale_box = Sale_box::findOrFail($boxy->id);
-                $sale_box->in_pay_cash = $in_pay_cash;
-                $sale_box->in_pay = $in_pay;
-                $sale_box->cash = $cash;
+                $sale_box->in_order += $pay;
+                $sale_box->in_total = $pay;
                 $sale_box->update();
 
                 $cont++;
@@ -196,23 +187,22 @@ class PayorderController extends Controller
      */
     public function show($id)
     {
-        $cashReceipt = Cash_receipt::where('id', $id)->first();
-        //$pay_orders = Pay_order::where('id', $id)->first();
-        $pay_order_payment_methods = Pay_order_payment_method::where('pay_order_id', $cashReceipt->payable->id)->get();
+        $payOrder = Pay_order::where('id', $id)->first();
+        $payOrder_paymentMethods = Pay_order_payment_method::where('pay_order_id', $id)->get();
 
-        return view('admin.pay_order.show', compact( 'pay_order_payment_methods', 'cashReceipt'));
+        return view('admin.pay_order.show', compact('payOrder', 'payOrder_paymentMethods'));
     }
 
     public function pdfPayOrder(Request $request, $id)
     {
-        $cashReceipt = Cash_receipt::findOrFail($id);
+        $payOrder = Pay_order::findOrFail($id);
         $company = Company::where('id', 1)->first();
         $user = auth::user();
-        $payOrder_PaymentMethods = Pay_order_payment_method::where('pay_order_id', $cashReceipt->payable->id)->get();
+        $payOrder_PaymentMethods = Pay_order_payment_method::where('pay_order_id', $payOrder->id)->get();
 
-        $pdfPayOrder = "ABONO-". $cashReceipt->id;
+        $pdfPayOrder = "ABONO-". $payOrder->id;
         $logo = './imagenes/logos'.$company->logo;
-        $view = \view('admin.pay_order.pdf', compact('payOrder_PaymentMethods', 'company', 'logo', 'user', 'cashReceipt'));
+        $view = \view('admin.pay_order.pdf', compact('payOrder_PaymentMethods', 'company', 'logo', 'user', 'payOrder'));
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );

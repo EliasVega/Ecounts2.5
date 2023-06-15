@@ -7,7 +7,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Agregar Proveedor</h3>
+                <h4 class="box-title">Agregar Proveedor
+                    <a href="{{ route('supplier.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                </h4>
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">
@@ -21,6 +24,29 @@
             {!!Form::open(array('url'=>'supplier', 'method'=>'POST', 'autocomplete'=>'off'))!!}
             {!!Form::token()!!}
             <div class="box-body row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label for="document_id">Tipo Identificacion</label>
+                        <select name="document_id" class="form-control selectpicker" data-live-search="true" id="document_id" required>
+                            <option value="{{ old('document_id') }}" disabled selected>Seleccionar.</option>
+                            @foreach($documents as $doc)
+                                <option value="{{ $doc->id }}">{{ $doc->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label for="number">Numero</label>
+                        <input type="text" name="number" value="{{ old('number') }}" class="form-control" placeholder="Ingrese el Numero de identificacion ">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <div class="form-group">
+                        <label for="dv">DV</label>
+                        <input type="text" name="dv" value="{{ old('dv') }}" class="form-control" placeholder="DV">
+                    </div>
+                </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="name">Nombre del Proveedor</label>
@@ -52,30 +78,8 @@
                         <input type="text" name="address" value="{{ old('address') }}" class="form-control" placeholder="Ingrese la direccion">
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label for="document_id">Tipo Identificacion</label>
-                        <select name="document_id" class="form-control selectpicker" data-live-search="true" id="document_id" required>
-                            <option value="{{ old('document_id') }}" disabled selected>Seleccionar.</option>
-                            @foreach($documents as $doc)
-                                <option value="{{ $doc->id }}">{{ $doc->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label for="number">Numero</label>
-                        <input type="text" name="number" value="{{ old('number') }}" class="form-control" placeholder="Ingrese el Numero de identificacion ">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label for="dv">DV</label>
-                        <input type="text" name="dv" value="{{ old('dv') }}" class="form-control" placeholder="DV">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
                         <label for="phone">Telefono</label>
                         <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Numero de telefono">

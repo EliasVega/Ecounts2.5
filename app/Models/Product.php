@@ -63,7 +63,7 @@ class Product extends Model
     }
 
     public function kardex(){
-        return $this->belongsTo(Kardex::class);
+        return $this->hasOne(Kardex::class);
     }
 
     public function productPurchases(){

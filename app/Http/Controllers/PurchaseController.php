@@ -9,7 +9,6 @@ use App\Models\Bank;
 use App\Models\Branch;
 use App\Models\Branch_product;
 use App\Models\Card;
-use App\Models\Cash_in;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Document;
@@ -18,8 +17,6 @@ use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Nd_discrepancy;
 use App\Models\Organization;
-use App\Models\Pay_ndpurchase;
-use App\Models\Pay_ndpurchase_payment_method;
 use App\Models\Pay_purchase;
 use App\Models\Pay_purchase_payment_method;
 use App\Models\Payment;
@@ -27,10 +24,8 @@ use App\Models\Payment_form;
 use App\Models\Payment_method;
 use App\Models\Percentage;
 use App\Models\Product;
-use App\Models\Product_branch;
 use App\Models\Product_purchase;
 use App\Models\Regime;
-use App\Models\Retention;
 use App\Models\Sale_box;
 use App\Models\Supplier;
 use App\Models\Tax;
@@ -50,9 +45,17 @@ class PurchaseController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         if (request()->ajax()) {
             //Muestra todas las compras de la empresa
-            $purchases = Purchase::get();
+            if ($user->role_id == 1 || $user->role_id == 2) {
+
+                //Consulta para mostrar Purchase a administradores y superadmin
+                $purchases = Purchase::get();
+            } else {
+                //Consulta para mostrar Purchase a roles 3 -4 -5
+                $purchases = Purchase::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
 
             return DataTables::of($purchases)
             ->addIndexColumn()
@@ -292,7 +295,7 @@ class PurchaseController extends Controller
                 $kardex->operation = 'compra';
                 $kardex->number = $purchase->id;
                 $kardex->quantity = $quantity[$cont];
-                $kardex->stock = $stockardex;
+                $kardex->stock = $products->stock;
                 $kardex->save();
 
 
