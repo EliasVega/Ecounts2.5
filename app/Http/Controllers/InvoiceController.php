@@ -703,10 +703,52 @@ class InvoiceController extends Controller
         //return $pdf->download("$invoicepdf.pdf");
     }
 
+    public function invoicePdf(Request $request)
+    {
+        sleep(2);
+        $inv      = count(Invoice::get());
+        $invoice = Invoice::where('id', $inv)->first();
+        $invoice_products = Invoice_product::where('invoice_id', $invoice->id)->where('quantity', '>', 0)->get();
+        $company = Company::findOrFail(1);
+        $indicators = Indicator::findOrFail(1);
+
+        $days = $invoice->created_at->diffInDays($invoice->fecven);
+        $invoicepdf = "FACT-". $invoice->document;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.invoice.pdf', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'indicators'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$invoicepdf.pdf", ['Attachment' => false]);
+        //return $pdf->download("$invoicepdf.pdf");
+    }
+
     public function post(Request $request, $id)
     {
-        $invoice = Invoice::where('id', $id)->first();
+        $invoice = Invoice::findOrFail($id);
         $invoice_products = Invoice_product::where('invoice_id', $id)->where('quantity', '>', 0)->get();
+        $company = Company::where('id', 1)->first();
+        $indicators = Indicator::where('id', 1)->first();
+
+        $days = $invoice->created_at->diffInDays($invoice->fecven);
+        $invoicepdf = "FACT-". $invoice->document;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'indicators'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+
+        return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
+        //return $pdf->download("$invoicepdf.pdf");
+    }
+
+    public function InvoicePost(Request $request)
+    {
+        sleep(2);
+        $inv      = count(Invoice::get());
+        $invoice = Invoice::where('id', $inv)->first();
+        $invoice_products = Invoice_product::where('invoice_id', $invoice->id)->where('quantity', '>', 0)->get();
         $company = Company::where('id', 1)->first();
         $indicators = Indicator::where('id', 1)->first();
 

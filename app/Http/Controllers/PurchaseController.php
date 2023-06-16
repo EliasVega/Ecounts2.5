@@ -768,6 +768,27 @@ class PurchaseController extends Controller
         //return $pdf->download("$purchasepdf.pdf");
     }
 
+    public function purchasePdf(Request $request)
+    {
+        sleep(2);
+        $pur      = count(Purchase::get());
+        $purchase = Purchase::where('id', $pur)->first();
+        $product_purchases = Product_purchase::where('purchase_id', $purchase->id)->where('quantity', '>', 0)->get();
+        $company = Company::findOrFail(1);
+
+        $days = $purchase->created_at->diffInDays($purchase->fecven);
+        $purchasepdf = "COMP-". $purchase->purchase;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.purchase.pdf', compact('purchase', 'days', 'product_purchases', 'company', 'logo'));
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream("$purchasepdf.pdf");
+        //return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
+        //return $pdf->download("$purchasepdf.pdf");
+    }
+
     public function post_purchase($id)
     {
         $purchase = Purchase::where('id', $id)->first();
@@ -783,6 +804,26 @@ class PurchaseController extends Controller
         $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
+        //return $pdf->download("$purchasepdf.pdf");
+    }
+
+    public function purchasePost()
+    {
+        sleep(2);
+        $pur      = count(Purchase::get());
+        $purchase = Purchase::where('id', $pur)->first();
+        $product_purchases = Product_purchase::where('purchase_id', $purchase->id)->where('quantity', '>', 0)->get();
+        $company = Company::where('id', 1)->first();
+
+        $days = $purchase->created_at->diffInDays($purchase->due_date);
+        $purchasepdf = "FACT-". $purchase->document;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.purchase.post_purchase', compact('purchase', 'days', 'product_purchases', 'company', 'logo'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+
+        return $pdf->stream("$purchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
     }
 

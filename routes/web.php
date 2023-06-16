@@ -170,6 +170,8 @@ Route::get('create/{id}', [PurchaseController::class, 'getMunicipalities']);
 Route::get('show_pdf_purchase/{id}', [PurchaseController::class, 'show_pdf_purchase'])->name('show_pdf_purchase');
 Route::get('show_pay_purchase/{id}', [PurchaseController::class, 'show_pay_purchase'])->name('show_pay_purchase');
 Route::get('post_purchase/{id}', [PurchaseController::class, 'post_purchase'])->name('post_purchase');
+Route::get('purchasePdf', [PurchaseController::class, 'purchasePdf'])->name('purchasePdf');
+Route::get('purchasePost', [PurchaseController::class, 'purchasePost'])->name('purchasePost');
 
 Route::get('prosuc/crate/{id}', [ProductBranchController::class, 'getProducts']);
 
@@ -194,6 +196,8 @@ Route::get('invoice/show_pay_invoice/{id}', [InvoiceController::class, 'show_pay
 Route::get('invoice/create/{id}', [InvoiceController::class, 'getMunicipalities']);
 Route::get('invoice/post/{id}', [InvoiceController::class, 'post'])->name('post');
 Route::get('invoice/getAdvance/{id}', [InvoiceController::class, 'getAdvances'])->name('getAdvance');
+Route::get('invoicePdf', [InvoiceController::class, 'invoicePdf'])->name('invoicePdf');
+Route::get('invoicePost', [InvoiceController::class, 'invoicePost'])->name('invoicePost');
 
 Route::get('purchase/create/{id}', [PurchaseController::class, 'getMunicipalities']);
 Route::get('purchase/getPayment/{id}', [PurchaseController::class, 'getPayments'])->name('getPayment');
