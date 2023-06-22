@@ -272,7 +272,7 @@ class SaleboxController extends Controller
             ->get();
         } else {*/
 
-            $produc = [];
+            $invoice_product = [];
             $cont = 0;
             $products = Product::all();
             foreach ($products as $key => $product ) {
@@ -295,14 +295,13 @@ class SaleboxController extends Controller
                 ->sum('ivasubt');
 
                 if ($invoice_products) {
-                    $produc[$cont] = Product::findOrFail($product->id);
-                    $produc[$cont]->stock = $invoice_products;
-                    $produc[$cont]->price = $ivai;
-                    $cont++;
+                    $invoice_product[$cont] = Product::findOrFail($product->id);
+                    $invoice_product[$cont]->stock = $invoice_products;
+                    $invoice_product[$cont]->price = $ivai;
                 }
             }
 
-            $productpurc = [];
+            $product_purchase = [];
             $cont = 0;
             //$products = Product::all();
             foreach ($products as $key => $product ) {
@@ -325,9 +324,9 @@ class SaleboxController extends Controller
                 ->sum('ivasubt');
 
                 if ($product_purchases) {
-                    $productpurc[$cont] = Product::findOrFail($product->id);
-                    $productpurc[$cont]->stock = $product_purchases;
-                    $productpurc[$cont]->price = $ivap;
+                    $product_purchase[$cont] = Product::findOrFail($product->id);
+                    $product_purchase[$cont]->stock = $product_purchases;
+                    $product_purchase[$cont]->price = $ivap;
                     $cont++;
                 }
             }
@@ -438,10 +437,8 @@ class SaleboxController extends Controller
             'sum_cash_ins',
             'cashIns',
             'sum_cash_outs',
-            'invoice_products',
-            'ivai',
-            'product_purchases',
-            'ivap'
+            'invoice_product',
+            'product_purchase',
         ));
     }
 
