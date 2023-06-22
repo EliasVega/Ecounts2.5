@@ -129,7 +129,7 @@
                                         $products = Product::count();
                                     @endphp
                                     <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{ $products }}</span></h2>
-                                        <p class="m-b-0 text-right"><a href="Products" class="text-white">Ver mas</a></p>
+                                        <p class="m-b-0 text-right"><a href="product" class="text-white">Ver mas</a></p>
                                 </div>
                             </div>
                         </div>
