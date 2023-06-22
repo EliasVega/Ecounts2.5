@@ -27,7 +27,7 @@ class CompaniesTableSeeder extends Seeder
                 'dv' => '3',
                 'email' => 'ecounts@gmail.com',
                 'emailfe' => 'ecountsfe@gmail.com',
-                'logo' => '1643994183.jpg',
+                'logo' => '1687435626.jpg',
                 'department_id' => 21,
                 'municipality_id' => 846,
                 'liability_id' => 1,
