@@ -55,7 +55,7 @@ class SaleboxController extends Controller
                 return $saleBox->branch->name;
             })
             ->addColumn('total', function (Sale_box $saleBox) {
-                return number_format($saleBox->cash - $saleBox->departure);
+                return $saleBox->cash - $saleBox->departure;
             })
             ->editColumn('created_at', function(Sale_box $saleBox){
                 return $saleBox->created_at->format('yy-m-d: h:m');
@@ -96,7 +96,7 @@ class SaleboxController extends Controller
             return redirect("sale_box");//->with('warning', 'Usuario No autorizado para ejercer como administrador');
         }
         $user = Auth::user()->id;
-        $branch = $request->session()->get('branch');
+        $branch = Auth::user()->branch_id;
         $open = $request->user_open_id;
         $verify = $request->verification_code_open;
         $verification_code = Verification_code::select('id', 'code')->where('user_id', '=', $open)->first();
