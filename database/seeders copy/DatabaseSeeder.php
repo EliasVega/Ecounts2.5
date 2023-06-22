@@ -30,18 +30,18 @@ class DatabaseSeeder extends Seeder
         $this->call(CompaniesTableSeeder::class);
         $this->call(PaymentFormsTableSeeder::class);
         $this->call(PaymentMethodsTableSeeder::class);
-        $this->call(BranchsTableSeeder::class);
+        $this->call(BranchesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(VerificationCodeTableSeeder::class);
-        //$this->call(CategoriesTableSeeder::class);
-        //$this->call(SuppliersTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(SuppliersTableSeeder::class);
         $this->call(UnitMeasuresTableSeeder::class);
-        //$this->call(ProductsTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
         $this->call(PercentagesTableSeeder::class);
-        //$this->call(BranchProductsTableSeeder::class);
-        //$this->call(CustomersTableSeeder::class);
+        $this->call(BranchProductsTableSeeder::class);
+        $this->call(CustomersTableSeeder::class);
         $this->call(TypeGenerationsTableSeeder::class);
         //$this->call(TypeDocumentSeeder::class);
-        //$this->call(ServiceTableSeeder::class);
+        $this->call(ServiceTableSeeder::class);
     }
 }

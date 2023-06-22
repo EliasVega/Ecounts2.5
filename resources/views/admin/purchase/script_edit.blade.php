@@ -67,7 +67,7 @@
     }
     function percentages(){
         $("#percentagey").hide();
-        $("#addPercentage").hide();
+        //$("#addPercentage").hide();
         $("#rtfon").attr('disabled','disabled');
         $("#rtfoff").attr('disabled','disabled');
     }

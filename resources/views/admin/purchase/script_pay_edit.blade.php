@@ -276,8 +276,9 @@
             payment();
         }
     }
+
     prueba = [];
-    $("#customer_id").change(function(event){
+    $("#provider_id").change(function(event){
         $.get("getAdvance/" + event.target.value + "", function(response){
             $("#advance_id").empty();
             $("#advance_id").append("<option value = '#' disabled selected>Seleccionar ...</option>");
