@@ -97,10 +97,10 @@
                         <tbody class="detalle">
                             @foreach ($invoice_products as $ip)
                             <tr>
-                                <td id="ccent">{{ number_format($ip->quantity) }}</td>
+                                <td id="ccent">{{ number_format($ip->quantity,2) }}</td>
                                 <td>{{ $ip->product->name }}</td>
-                                <td class="tdder">${{ number_format($ip->price)}}</td>
-                                <td class="tdder">${{number_format($ip->quantity * $ip->price)}}</td>
+                                <td class="tdder">${{ number_format($ip->price,2)}}</td>
+                                <td class="tdder">${{number_format($ip->quantity * $ip->price,2)}}</td>
                             </tr>
                             @endforeach
                         </tbody>

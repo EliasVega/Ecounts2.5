@@ -75,9 +75,9 @@
                     @foreach ($prePurchaseProducts as $prePurchaseProduct)
                     <tr>
                         <td>{{ $prePurchaseProduct->product->name }}</td>
-                        <td id="ccent">{{ number_format($prePurchaseProduct->quantity) }}</td>
-                        <td class="tdder">${{ number_format($prePurchaseProduct->price)}}</td>
-                        <td class="tdder">${{number_format($prePurchaseProduct->quantity * $prePurchaseProduct->price)}}</td>
+                        <td id="ccent">{{ number_format($prePurchaseProduct->quantity,2) }}</td>
+                        <td class="tdder">${{ number_format($prePurchaseProduct->price,2)}}</td>
+                        <td class="tdder">${{number_format($prePurchaseProduct->quantity * $prePurchaseProduct->price,2)}}</td>
                     </tr>
                     @endforeach
                 </tbody>

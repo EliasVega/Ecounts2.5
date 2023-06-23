@@ -12,6 +12,7 @@ use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Regime;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class SupplierController extends Controller
@@ -73,6 +74,19 @@ class SupplierController extends Controller
     public function store(StoreSupplierRequest $request)
     {
         $branch = $request->session()->get('branch');
+        $nitS = 0;
+        $emailS = 0;
+        $nitSupplier = Supplier::get();
+        foreach ($nitSupplier as $key => $nitSup) {
+            if ($nitSup->number == $request->number) {
+                Alert::success('Ya existe','Proveedor con esta identificacion.');
+                return redirect('back');
+            }
+            if ($nitSup->number == $request->number) {
+                Alert::success('Ya existe','Proveedor con este Correo electronico.');
+                return redirect('back');
+            }
+        }
 
         $supplier = new Supplier();
         $supplier->department_id = $request->department_id;
