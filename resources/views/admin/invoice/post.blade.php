@@ -23,12 +23,12 @@
             <div class="empresa">
                 <p><strong id="nombre">{{  $company->name  }}</strong></p>
 
-                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} - {{ $company->regime->name }} - {{ $company->organization->name }} - {{ $invoice->branch->address }} - {{ $company->municipality->name }} - {{ $company->department->name }} <br> Email: {{ $invoice->branch->email }}
+                <p id="datos">Nit: {{ $company->nit }} - {{ $company->dv }} - {{ $company->regime->name }} - {{ $company->organization->name }} - {{ $invoice->branch->address }}- {{ $invoice->branch->phone }} - {{ $company->municipality->name }} - {{ $company->department->name }} <br> Email: {{ $invoice->branch->email }}
                     </p>
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> POST: <strong id="numfact">N°.{{ $invoice->document }}</strong> <br>
+                <p> O.P: <strong id="numfact">N°.{{ $invoice->document }}</strong> <br>
                     FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($invoice->created_at)) }}</strong>
                 </p>
             </div>
