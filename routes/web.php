@@ -243,6 +243,7 @@ Route::get('expense/show_pay_expense/{id}', [ExpenseController::class, 'show_pay
 Route::get('expense/create/{id}', [InvoiceController::class, 'getMunicipalities']);
 Route::get('expense/post_expense/{id}', [ExpenseController::class, 'post_expense'])->name('post_expense');
 
+Route::get('prePurchase/create/{id}', [PrePurchaseController::class, 'getMunicipalities']);
 Route::get('prePurchase/invoice/{id}', [PrePurchaseController::class, 'invoice'])->name('prePurchaseInvoice');
 Route::get('prePurchase/pdf/{id}', [PrePurchaseController::class, 'prePurchasepdf'])->name('prePurchasePdf');
 Route::get('prePurchase/post/{id}', [PrePurchaseController::class, 'prePurchasepost'])->name('prePurchasePost');
