@@ -12,6 +12,7 @@ use App\Models\Organization;
 use App\Models\Regime;
 use App\Models\Tax;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -64,21 +65,12 @@ class CompanyController extends Controller
         $company->dv              = $request->dv;
         $company->email           = $request->email;
         $company->emailfe         = $request->emailfe;
-        //Handle File Upload
         if($request->hasFile('logo')){
-            //Get filename with the extension
-            $filenamewithExt = $request->file('logo')->getClientOriginalName();
-            //Get just filename
-            $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
-            //Get just ext
-            $extension = $request->file('logo')->guessClientExtension();
-            //FileName to store
-            $fileNameToStore = time().'.'.$extension;
-            //Upload Image
-            $path = $request->file('logo')->move('images/logos',$fileNameToStore);
-            } else{
-                $fileNameToStore="noimage.jpg";
-            }
+            $path = $request->file('logo')->store('public/images/logos');
+            $fileNameToStore = Storage::url($path);
+        } else{
+            $fileNameToStore="/storage/images/logos/noimagen.jpg";
+        }
         $company->logo=$fileNameToStore;
         $company->save();
 
@@ -136,19 +128,11 @@ class CompanyController extends Controller
         $company->emailfe         = $request->emailfe;
         //Handle File Upload
         if($request->hasFile('logo')){
-            //Get filename with the extension
-            $filenamewithExt = $request->file('logo')->getClientOriginalName();
-            //Get just filename
-            $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
-            //Get just ext
-            $extension = $request->file('logo')->guessClientExtension();
-            //FileName to store
-            $fileNameToStore = time().'.'.$extension;
-            //Upload Image
-            $path = $request->file('logo')->move('images/logos',$fileNameToStore);
-            } else{
-                $fileNameToStore="noimage.jpg";
-            }
+            $path = $request->file('logo')->store('public/images/logos');
+            $fileNameToStore = Storage::url($path);
+        } else{
+            $fileNameToStore="/storage/images/logos/noimagen.jpg";
+        }
         $company->logo=$fileNameToStore;
         $company->update();
 

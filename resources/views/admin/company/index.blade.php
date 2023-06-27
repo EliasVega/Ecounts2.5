@@ -32,7 +32,7 @@
                             <td>{{ $com->nit }}</td>
                             <td>{{ $com->dv }}</td>
                             <td>
-                                <img src="{{ asset('images/logos/'.$com->logo) }}" alt="{{ $com->name }}" style="height:60px; width:80px;" class="img-thumbnail">
+                                <img src="{{ $com->logo }}" alt="{{ $com->name }}" style="height:60px; width:80px;" class="img-thumbnail">
                             </td>
                             @if (Auth::user()->role_id == 1)
                             <td>
