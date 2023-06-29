@@ -332,7 +332,7 @@ class PrePurchaseController extends Controller
     public function invoice($id)
     {
         $prePurchase = PrePurchase::findOrFail($id);
-        \Session()->put('prePurchase', $prePurchase->id, 60 * 24 * 365);
+        //Session()->put('prePurchase', $prePurchase->id, 60 * 24 * 365);
         $suppliers = Supplier::get();
         $paymentForms = Payment_form::get();
         $paymentMethods = Payment_method::get();
@@ -348,7 +348,6 @@ class PrePurchaseController extends Controller
         ->select('pro.id', 'pro.name', 'pro.stock', 'pp.quantity', 'pp.price', 'pp.iva', 'pp.subtotal')
         ->where('pre_purchase_id', $prePurchase->id)
         ->get();
-
         return view('admin.pre_purchase_product.create', compact(
             'prePurchase',
             'suppliers',

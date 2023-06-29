@@ -12,7 +12,7 @@
             <select id="supplier_id" name="supplier_id" class="form-control selectpicker" data-live-search="true" disabled>
                 <option {{ old('supplier_id', $prePurchase->supplier_id ?? '') == '' ? "selected" : "" }} disabled>Seleccionar Proveedor</option>
                 @foreach($suppliers as $supplier)
-                    @if(old('supplier_id', $prePurchase->supplier->supplier_id ?? '') == $supplier->id)
+                    @if(old('supplier_id', $prePurchase->supplier_id ?? '') == $supplier->id)
                         <option value="{{ $supplier->id }}" selected>{{ $supplier->name }}</option>
                     @else
                         <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
