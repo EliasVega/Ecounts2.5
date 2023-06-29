@@ -12,7 +12,7 @@
                 <a href="{{ route('customer.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Clientes</a>
                 <a href="{{ route('pay_invoice.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Abonos</a>
                 <a href="{{ route('advance.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Anticipos</a>
-                <a href="{{ route('order.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Ordenes Pedidos</a>
+                <a href="{{ route('order.index') }}" class="btn btn-gris btn-sm mb-2"><i class="fas fa-undo-alt mr-2"></i>Pre Venta</a>
         </div>
 
     </div>

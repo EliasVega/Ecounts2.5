@@ -39,9 +39,10 @@
     $("#payBank").hide();
     $("#payCard").hide();
     $("#payAdvanceId").hide();
+    $("#payment_form_id").val(1);
+    $("#payment_method_id").val(1);
 
-
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         $("#payment_form_id").change(function(){
             form = $("#payment_form_id").val();
             if(form == 1){
@@ -74,7 +75,7 @@
                 $("#advance").val(0);
             }
         });
-    });
+    });*/
     $(document).ready(function(){
         $("#payPays").click(function(){
             see();

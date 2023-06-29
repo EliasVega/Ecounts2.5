@@ -96,7 +96,7 @@
         @if ($sale_box->out_expense > 0)
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Gastos</label>
+                    <label class="form-control-label" for="abono">T/Salida Gastos</label>
                     <p>${{ number_format($sale_box->out_expense,2) }}</p>
                 </div>
             </div>

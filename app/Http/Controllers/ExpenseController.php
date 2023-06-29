@@ -196,13 +196,10 @@ class ExpenseController extends Controller
                     $mp = $request->payment_method_id;
 
                     $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
-                    $out_expense_cash = $sale_box->out_expense_cash;
                     if($mp == 10){
-                        $out_expense_cash += $pay;
+                        $sale_box->out_expense_cash += $pay;
                         $sale_box->departure += $pay;
                     }
-
-                    $sale_box->out_expense_cash = $out_expense_cash;
                     $sale_box->out_expense += $pay;
                     $sale_box->update();
                 }
