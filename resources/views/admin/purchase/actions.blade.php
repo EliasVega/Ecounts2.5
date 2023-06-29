@@ -1,6 +1,4 @@
-<a href="{{ route('purchase.edit', $id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
-    <i class="far fa-edit"></i>
-</a>
+
 <a href="{{ route('purchase.show', $id) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Compra">
     <i class="far fa-eye"></i>
 </a>
