@@ -22,17 +22,12 @@ use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Pay_invoice;
 use App\Models\Pay_invoice_payment_method;
-use App\Models\pay_ncinvoice;
-use App\Models\Pay_ncinvoice_payment_method;
 use App\Models\Payment_form;
 use App\Models\Payment_method;
 use App\Models\Percentage;
 use App\Models\Product;
-use App\Models\Product_branch;
 use App\Models\Regime;
-use App\Models\Retention;
 use App\Models\Sale_box;
-use App\Models\Tax;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -169,7 +164,7 @@ class InvoiceController extends Controller
 
             $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
             $sale_box->invoice += $invoice->total_pay;
-            $sale_box->in_total += $invoice->total_pay;
+            $sale_box->in_total += $invoice->pay;
             $sale_box->update();
             if($pay > 0){
                 $adv = $request->advance;
@@ -193,9 +188,10 @@ class InvoiceController extends Controller
                     }
                     $advance->balance = $adv_total;
                     $advance->update();
+                    /*
                     $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
                     $sale_box->in_advance += $pay;
-                    $sale_box->update();
+                    $sale_box->update();*/
                 } else {
                     $pay_invoice                  = new Pay_invoice();
                     $pay_invoice->pay             = $pay;
@@ -218,15 +214,11 @@ class InvoiceController extends Controller
                     $mp = $request->payment_method_id;
                     //metodo para actualizar la caja
                     $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-                    $in_invoice_cash = $sale_box->in_invoice_cash;
-                    $cash            = $sale_box->cash;
                     if($mp == 10){
-                        $in_invoice_cash += $pay;
-                        $cash            += $pay;
+                        $sale_box->in_invoice_cash += $pay;
+                        $sale_box->cash += $pay;
                     }
-                    $sale_box->in_invoice_cash = $in_invoice_cash;
-                    $sale_box->in_invoice      += $pay;
-                    $sale_box->cash            = $cash;
+                    $sale_box->in_invoice += $pay;
                     $sale_box->update();
                 }
             }
@@ -400,7 +392,6 @@ class InvoiceController extends Controller
             if ($date1 == $date2) {
                 $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
                 $sale_box->invoice -= $invoice->total_pay;
-                $sale_box->in_total -= $invoice->total_pay;
                 $sale_box->update();
             }
 
@@ -441,7 +432,7 @@ class InvoiceController extends Controller
             if ($date1 == $date2) {
                 $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
                 $sale_box->invoice += $invoice->total_pay;
-                $sale_box->in_total += $invoice->total_pay;
+                $sale_box->in_total += $pay;
                 $sale_box->update();
             }
 
@@ -640,19 +631,34 @@ class InvoiceController extends Controller
 
     public function show_ndinvoice($id)
      {
-        $invoices = Invoice::findOrFail($id);
-        \session()->put('invoice', $invoices->id, 60 * 24 * 365);
-        \session()->put('customer_id', $invoices->customer_id, 60 * 24 *365);
-        \session()->put('iva', $invoices->iva, 60 * 24 *365);
-        \session()->put('total', $invoices->total, 60 * 24 *365);
-        \session()->put('status', $invoices->status, 60 * 24 *365);
+        $invoice = Invoice::findOrFail($id);
+        \session()->put('invoice', $invoice->id, 60 * 24 * 365);
+        \session()->put('customer_id', $invoice->customer_id, 60 * 24 *365);
+        \session()->put('iva', $invoice->iva, 60 * 24 *365);
+        \session()->put('total', $invoice->total, 60 * 24 *365);
+        \session()->put('status', $invoice->status, 60 * 24 *365);
 
-        return redirect('ndinvoice/create');
-     }
+
+        if ($invoice->status == 'credit_note') {
+            return redirect("invoice")->with('warning', 'Esta Venta ya tiene una Nota Credito');
+        }
+        //$productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
+
+        $invoiceProducts = Invoice_product::from('invoice_products AS ip')
+        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
+        ->where('ip.invoice_id', '=', $invoice->id)->get();
+        $products = Product::get();
+        return view('admin.ncinvoice.create', compact(
+            'invoice',
+            'invoiceProducts',
+            'products',
+        ));
+    }
 
     public function show_invoice($id)
      {
-
         $invoices = Invoice::findOrFail($id);
         \session()->put('invoice', $invoices->id, 60 * 24 * 365);
         \session()->put('company_id', $invoices->company_id, 60 * 24 *365);
@@ -661,13 +667,30 @@ class InvoiceController extends Controller
 
      public function show_ncinvoice($id)
      {
-        $invoices = Invoice::findOrFail($id);
-        \session()->put('invoice', $invoices->id, 60 * 24 * 365);
-        \session()->put('customer_id', $invoices->customer_id, 60 * 24 *365);
-        \session()->put('iva', $invoices->iva, 60 * 24 *365);
-        \session()->put('total', $invoices->total, 60 * 24 *365);
-        \session()->put('status', $invoices->status, 60 * 24 *365);
-        return redirect('ncinvoice/create');
+        $invoice = Invoice::findOrFail($id);
+        \session()->put('invoice', $invoice->id, 60 * 24 * 365);
+        \session()->put('customer_id', $invoice->customer_id, 60 * 24 *365);
+        \session()->put('iva', $invoice->iva, 60 * 24 *365);
+        \session()->put('total', $invoice->total, 60 * 24 *365);
+        \session()->put('status', $invoice->status, 60 * 24 *365);
+
+
+        if ($invoice->status == 'credit_note') {
+            return redirect("invoice")->with('warning', 'Esta Venta ya tiene una Nota Credito');
+        }
+        //$productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
+
+        $invoiceProducts = Invoice_product::from('invoice_products AS ip')
+        ->join('products AS pro', 'ip.product_id', '=', 'pro.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('ip.quantity', 'ip.price', 'pro.name', 'cat.iva')
+        ->where('ip.invoice_id', '=', $invoice->id)->get();
+        //$products = Product::get();
+        return view('admin.ncinvoice.create', compact(
+            'invoice',
+            'invoiceProducts',
+            //'products',
+        ));
      }
 
      public function show_pay_invoice($id)
@@ -745,7 +768,7 @@ class InvoiceController extends Controller
 
     public function InvoicePost(Request $request)
     {
-        sleep(2);
+        sleep(3);
         $inv      = count(Invoice::get());
         $invoice = Invoice::where('id', $inv)->first();
         $invoice_products = Invoice_product::where('invoice_id', $invoice->id)->where('quantity', '>', 0)->get();

@@ -8,7 +8,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Listado de Notas Credito
 
-                    <a href="{{ route('invoice.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('invoice.index') }}" class="btn btn-redeco"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a>
 
             </h3>
         </div>
@@ -16,15 +16,16 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="ncinvoices">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="ndpurchases">
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
+                            <th>Venta #</th>
+                            <th>Sucursal</th>
                             <th>Cliente</th>
-                            <th>Venta</th>
                             <th>V/Total</th>
-                            <th>Fecha_ND</th>
-                            <th>editar</th>
+                            <th>Fecha_NC</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                 </table>
@@ -35,7 +36,7 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#ncinvoices').DataTable(
+        $('#ndpurchases').DataTable(
         {
             responsive: true,
             autoWidth: false,
@@ -46,11 +47,12 @@
             [
 
                 {data: 'id'},
+                {data: 'invoice'},
+                {data: 'branch'},
                 {data: 'customer'},
-                {data: 'invoice_id'},
-                {data: 'total'},
+                {data: 'total_pay'},
                 {data: 'created_at'},
-                {data: 'edit'},
+                {data: 'btn'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
             buttons:

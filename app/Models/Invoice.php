@@ -20,6 +20,7 @@ class Invoice extends Model
         'balance',
         'retention',
         'status',
+        'note',
         'user_id',
         'branch_id',
         'customer_id',
@@ -61,7 +62,7 @@ class Invoice extends Model
 
     public function ncinvoice()
     {
-        return $this->hasOne(Ncinvoice::class);
+        return $this->belongsTo(Ncinvoice::class);
     }
 
     public function pay_invoices()

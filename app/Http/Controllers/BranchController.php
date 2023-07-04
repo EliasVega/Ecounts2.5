@@ -49,9 +49,18 @@ class BranchController extends Controller
                     return $branch->company->nit;
                 })
 
-                ->addColumn('btn', 'admin/branch/actions')
-                ->addColumn('accesos', 'admin/branch/accesos')
-                ->rawcolumns(['btn', 'accesos'])
+
+                ->addColumn('order', 'admin/branch/btn/order')
+                ->addColumn('invoice', 'admin/branch/btn/invoice')
+                ->addColumn('box', 'admin/branch/btn/box')
+                ->addColumn('prePurchase', 'admin/branch/btn/prePurchase')
+                ->addColumn('purchase', 'admin/branch/btn/purchase')
+                ->addColumn('expense', 'admin/branch/btn/expense')
+                ->addColumn('product', 'admin/branch/btn/product')
+                ->addColumn('transfer', 'admin/branch/btn/transfer')
+                ->addColumn('edit', 'admin/branch/btn/edit')
+                ->addColumn('show', 'admin/branch/btn/show')
+                ->rawcolumns(['order', 'invoice', 'box', 'prePurchase', 'purchase', 'expense', 'product', 'transfer', 'edit', 'show'])
                 ->make(true);
         }
         return view('admin.branch.index');
@@ -173,6 +182,31 @@ class BranchController extends Controller
         session()->forget('branch');
 
         return redirect('branch');
+    }
+
+    public function show_prePurchase($id)
+    {
+        $sale_box = Sale_box::select('id')
+        ->where('user_id', Auth::user()->id)
+        ->where('status', 'open')
+        ->first();
+        if(is_null($sale_box)){
+            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
+        }
+        $branch = Branch::findOrFail($id);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
+
+        /*
+        $branch = Branch::findOrFail($id);
+        Session::put('branch', $branch->id, 60 * 24 * 365);
+        Session::put('name', $branch->name, 60 * 24 * 365);
+
+        if($branch->id != 1){
+            return redirect("admin/branch")->with('warning', 'Esta branch no esta autorizada para hacer compras');
+        }*/
+
+        return redirect('prePurchase');
     }
 
     public function show_purchase($id)

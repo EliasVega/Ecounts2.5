@@ -8,7 +8,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Listado de Notas Credito
 
-                    <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('purchase.index') }}" class="btn btn-redeco"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a>
 
             </h3>
         </div>
@@ -20,11 +20,12 @@
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
-                            <th>Cliente</th>
-                            <th>Venta</th>
+                            <th>Compra #</th>
+                            <th>Sucursal</th>
+                            <th>Proveedor</th>
                             <th>V/Total</th>
                             <th>Fecha_ND</th>
-                            <th>editar</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                 </table>
@@ -46,11 +47,12 @@
             [
 
                 {data: 'id'},
-                {data: 'name'},
-                {data: 'idI'},
-                {data: 'total'},
+                {data: 'purchase'},
+                {data: 'branch'},
+                {data: 'customer'},
+                {data: 'total_pay'},
                 {data: 'created_at'},
-                {data: 'edit'},
+                {data: 'btn'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
             buttons:

@@ -139,7 +139,7 @@ class ExpenseController extends Controller
 
             $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
             $sale_box->expense += $expense->total_pay;
-            $sale_box->out_total += $expense->total_pay;
+            $sale_box->out_total += $expense->pay;
             $sale_box->update();
 
             if($pay > 0){
@@ -314,7 +314,6 @@ class ExpenseController extends Controller
                 //actualizar la caja
                 $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
                 $sale_box->expense -= $expense->total_pay;
-                $sale_box->out_total -= $expense->total_pay;
                 $sale_box->update();
             }
 
@@ -351,9 +350,9 @@ class ExpenseController extends Controller
 
             if ($date1 == $date2) {
                 //actualizar la caja
-                $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', '=', 'open')->first();
+                $sale_box = Sale_box::where('user_id', '=', $expense->user_id)->where('status', 'open')->first();
                 $sale_box->expense += $expense->total_pay;
-                $sale_box->out_total += $expense->total_pay;
+                $sale_box->out_total += $expense->pay;
                 $sale_box->update();
             }
             //inicio proceso si hay pagos

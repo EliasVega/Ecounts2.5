@@ -71,7 +71,7 @@ class Customer extends Model
         return $this->hasMany(Ndinvoice::class);
     }
 
-    public function ncinvoice()
+    public function ncinvoices()
     {
         return $this->hasMany(Ncinvoice::class);
     }

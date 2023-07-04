@@ -26,6 +26,7 @@ use App\Models\Regime;
 use App\Models\Sale_box;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -156,7 +157,7 @@ class OrderController extends Controller
 
             $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
             $sale_box->order += $order->total_pay;
-            $sale_box->in_total += $order->total_pay;
+            $sale_box->in_total += $order->pay;
             $sale_box->update();
 
             //si hay Abono registra abono
@@ -182,9 +183,10 @@ class OrderController extends Controller
                     }
                     $advance->balance = $adv_total;
                     $advance->update();
+                    /*
                     $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
                     $sale_box->in_advance += $pay;
-                    $sale_box->update();
+                    $sale_box->update();*/
                 } else {
                     //si es un abono nuevo aplica abono pedido
                     $pay_order = new Pay_order();
@@ -208,15 +210,11 @@ class OrderController extends Controller
                     $mp = $request->payment_method_id;
                     //metodo para actualizar la caja
                     $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
-                    $in_order_cash = $sale_box->in_order_cash;
-                    $cash = $sale_box->cash;
                     if($mp == 10){
-                        $in_order_cash += $pay;
-                        $cash += $pay;
+                        $sale_box->in_order_cash += $pay;
+                        $sale_box->cash += $pay;
                     }
-                    $sale_box->in_order_cash = $in_order_cash;
                     $sale_box->in_order += $pay;
-                    $sale_box->cash = $cash;
                     $sale_box->update();
                 }
             }
@@ -378,7 +376,7 @@ class OrderController extends Controller
 
             //actualizar la caja
             if ($date1 == $date2) {
-                $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', 'open')->first();
                 $sale_box->order -= $order->total_pay;
                 $sale_box->out_total -= $order->total_pay;
                 $sale_box->update();
@@ -409,9 +407,9 @@ class OrderController extends Controller
 
             //actualizar la caja
             if ($date1 == $date2) {
-                $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', '=', 'open')->first();
+                $sale_box = Sale_box::where('user_id', '=', $order->user_id)->where('status', 'open')->first();
                 $sale_box->order += $order->total_pay;
-                $sale_box->out_total += $order->total_pay;
+                $sale_box->out_total += $order->pay;
                 $sale_box->update();
             }
 
@@ -603,7 +601,7 @@ class OrderController extends Controller
         $orderpdf = "PEDIDO-". $order->id;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.order.pdf', compact('order', 'days', 'orderProducts', 'company', 'logo'))->render();
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 

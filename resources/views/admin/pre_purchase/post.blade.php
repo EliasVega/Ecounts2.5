@@ -28,7 +28,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> POST: <strong id="numfact">N°.{{ $prePurchase->id }}</strong> <br>
+                <p> O.C.: <strong id="numfact">N°.{{ $prePurchase->id }}</strong> <br>
                     FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($prePurchase->created_at)) }}</strong>
                 </p>
             </div>

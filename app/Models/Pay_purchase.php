@@ -9,6 +9,7 @@ class Pay_purchase extends Model
     protected $fillable = [
         'pay',
         'balance_purchase',
+        'status',
         'user_id',
         'branch_id',
         'purchase_id',

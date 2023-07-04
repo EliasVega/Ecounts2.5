@@ -26,6 +26,7 @@ class UpdatePay_purchaseRequest extends FormRequest
         return [
             'pay'              => '',
             'balance_purchase' => '',
+            'status' => 'in:purchase,payment',
             'user_id'          => '',
             'branch_id'        => '',
             'purchase_id'      => '',

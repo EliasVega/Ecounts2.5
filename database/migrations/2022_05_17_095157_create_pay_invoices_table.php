@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->decimal('pay',10,2);
             $table->decimal('balance_invoice',10,2);
+            $table->enum('status',['invoice', 'advance'])->default('invoice');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

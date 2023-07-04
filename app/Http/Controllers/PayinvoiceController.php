@@ -150,9 +150,7 @@ class PayinvoiceController extends Controller
                 $pay_invoice_payment_method->save();
 
                 $mp = $payment_method[$cont];
-                $sale_box = Sale_box::where('user_id', '=', $user->id)
-                ->where('status', '=', 'open')
-                ->first();
+                $sale_box = Sale_box::where('user_id', $user->id)->where('status', 'open')->first();
                 if($mp == 10){
                     $sale_box->in_invoice_cash += $pay;
                     $sale_box->cash += $pay;
@@ -164,7 +162,8 @@ class PayinvoiceController extends Controller
                 $cont++;
             }
             $invoic = Invoice::findOrFail($invoice->id);
-            $invoic->balance = $balance-$total;
+            $invoic->pay += $total;
+            $invoic->balance -= $total;
             $invoic->update();
 
             $pay_invoices = Pay_invoice::findOrFail($pay_invoice->id);

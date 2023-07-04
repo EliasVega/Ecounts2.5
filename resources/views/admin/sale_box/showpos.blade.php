@@ -24,6 +24,39 @@
                         Nombre: {{ $sale_box->user->name }}:</p>
                 </div>
             </div>
+            @if ($sale_box->purchase > 0)
+                <div class="unicos">
+                    <p>REPORTE DE ARTICULOS COMPRAS</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Articulo</th>
+                                <th>Cant</th>
+                                <th>Precio</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fact">
+                            @foreach ($productPurchases as $produtPurchase)
+                            <tr>
+                                <td class="id">{{ $produtPurchase->id }}</td>
+                                <td class="name">{{ $produtPurchase->name }}</td>
+                                <td class="quantity">{{ $produtPurchase->stock }}</td>
+                                <td class="price" align="right">${{ number_format($produtPurchase->price) }}</td>
+                                <td class="subtotal" align="right">${{ number_format($produtPurchase->sale_price) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" ><p align="right" >TOTAL:</p></th>
+                                <td><p align="right" >${{number_format($sale_box->purchase)}}</p></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
             @if ($sale_box->invoice > 0)
                 <div class="unicos">
                     <p>REPORTE DE ARTICULOS VENTAS</p>
@@ -60,31 +93,27 @@
             @endif
             @if ($sale_box->purchase > 0)
                 <div class="unicos">
-                    <p>REPORTE DE ARTICULOS COMPRAS</p>
+                    <p>REPORTE DE COMPRAS</p>
                     <table>
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>Articulo</th>
-                                <th>Cant</th>
+                                <th>N°.Compra</th>
+                                <th>Proveedor</th>
                                 <th>Precio</th>
-                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($productPurchases as $produtPurchase)
+                            @foreach ($purchases as $pur)
                             <tr>
-                                <td class="id">{{ $produtPurchase->id }}</td>
-                                <td class="name">{{ $produtPurchase->name }}</td>
-                                <td class="quantity">{{ $produtPurchase->stock }}</td>
-                                <td class="price" align="right">${{ number_format($produtPurchase->price) }}</td>
-                                <td class="subtotal" align="right">${{ number_format($produtPurchase->sale_price) }}</td>
+                                <td class="document">{{ $pur->document }}</td>
+                                <td class="third">{{ $pur->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ number_format($pur->total_pay) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="4" ><p align="right" >TOTAL:</p></th>
+                                <th colspan="2" ><p align="right" >TOTAL:</p></th>
                                 <td><p align="right" >${{number_format($sale_box->purchase)}}</p></td>
                             </tr>
                         </tfoot>
@@ -120,35 +149,7 @@
                     </table>
                 </div>
             @endif
-            @if ($sale_box->purchase > 0)
-                <div class="unicos">
-                    <p>REPORTE DE COMPRAS</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>N°.Compra</th>
-                                <th>Proveedor</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody class="fact">
-                            @foreach ($purchases as $pur)
-                            <tr>
-                                <td class="document">{{ $pur->document }}</td>
-                                <td class="third">{{ $pur->supplier->name }}</td>
-                                <td class="totals" align="right">$ {{ number_format($pur->total_pay) }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th colspan="2" ><p align="right" >TOTAL:</p></th>
-                                <td><p align="right" >${{number_format($sale_box->purchase)}}</p></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            @endif
+
             @if ($sale_box->expense > 0)
                 <div class="unicos">
                     <p>REPORTE DE GASTOS</p>
@@ -501,18 +502,6 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @if ($sale_box->invoice > 0)
-                            <tr>
-                                <th colspan="4" ><p align="left" >TOTAL VENTAS:</p></th>
-                                <td align="right"><h2>${{number_format($sale_box->invoice,2)}}</h2></td>
-                            </tr>
-                        @endif
-                        @if ($sale_box->order > 0)
-                            <tr>
-                                <th colspan="4"><p align="left" >TOTAL PEDIDOS:</p></th>
-                                <td><strong>${{number_format($sale_box->order,2)}}</strong></p></td>
-                            </tr>
-                        @endif
                         @if ($sale_box->purchase > 0)
                             <tr>
                                 <th colspan="4" ><p align="left" >TOTAL COMPRAS:</p></th>
@@ -523,6 +512,18 @@
                             <tr>
                                 <th colspan="4" ><p align="left" >TOTAL GASTOS:</p></th>
                                 <td align="right"><h2>${{number_format($sum_pay_expenses,2)}}</h2></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->invoice > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >TOTAL VENTAS:</p></th>
+                                <td align="right"><h2>${{number_format($sale_box->invoice,2)}}</h2></td>
+                            </tr>
+                        @endif
+                        @if ($sale_box->order > 0)
+                            <tr>
+                                <th colspan="4"><p align="left" >TOTAL PEDIDOS:</p></th>
+                                <td align="right"><h2>${{number_format($sale_box->order,2)}}</h2></td>
                             </tr>
                         @endif
                         @if ($sale_box->ncinvoice > 0)
@@ -549,9 +550,21 @@
                                 <td align="right"><h2>${{number_format($sale_box->ndpurchase,2)}}</h2></td>
                             </tr>
                         @endif
+                        @if ($sale_box->out_purchase > 0)
+                        <tr>
+                            <th colspan="4" ><p align="left" >EGRESOS COMPRAS:</p></th>
+                            <td align="right"><h2>${{number_format($sale_box->out_purchase,2)}}</h2></td>
+                        </tr>
+                        @endif
+                        @if ($sale_box->out_expense > 0)
+                        <tr>
+                            <th colspan="4" ><p align="left" >EGRESOS GASTOS:</p></th>
+                            <td align="right"><h2>${{number_format($sale_box->out_expense,2)}}</h2></td>
+                        </tr>
+                        @endif
                         @if ($sale_box->in_invoice > 0)
                         <tr>
-                            <th colspan="4" ><p align="left" >INGRESOS FACTURAS:</p></th>
+                            <th colspan="4" ><p align="left" >INGRESOS VENTAS:</p></th>
                             <td align="right"><h2>${{number_format($sale_box->in_invoice,2)}}</h2></td>
                         </tr>
                         @endif
@@ -561,29 +574,39 @@
                             <td align="right"><h2>${{number_format($sale_box->in_order,2)}}</h2></td>
                         </tr>
                         @endif
-                        @if ($sale_box->out_purchase > 0)
-                        <tr>
-                            <th colspan="4" ><p align="left" >EGRESOS COMPRAS:</p></th>
-                            <td align="right"><h2>${{number_format($sale_box->out_purchase,2)}}</h2></td>
-                        </tr>
+                        @if ($sale_box->out_total > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >TOTAL EGRESOS:</p></th>
+                                <td align="right"><h2>${{number_format($sale_box->out_total,2)}}</h2></td>
+                            </tr>
                         @endif
-                        <tr>
-                            <th colspan="4" ><p align="left" >TOTAL INGRESOS:</p></th>
-                            <td align="right"><h2>${{number_format($sale_box->in_total,2)}}</h2></td>
-                        </tr>
-                        <tr>
-                            <th colspan="4" ><p align="left" >TOTAL EGRESOS:</p></th>
-                            <td align="right"><h2>${{number_format($sale_box->out_total,2)}}</h2></td>
-                        </tr>
+                        @if ($sale_box->in_total > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >TOTAL INGRESOS:</p></th>
+                                <td align="right"><h2>${{number_format($sale_box->in_total,2)}}</h2></td>
+                            </tr>
+                        @endif
                         @if ($sale_box->cash_box > 0)
                         <tr>
                             <th colspan="4" ><p align="left" >EFECTIVO INICIAL:</p></th>
                             <td align="right"><h2>${{number_format($sale_box->cash_box,2)}}</h2></td>
                         </tr>
                         @endif
+                        @if ($sale_box->out_purchase_cash > 0)
+                        <tr>
+                            <th colspan="4" ><p align="left" >EFECTIVO COMPRAS:</p></th>
+                            <td align="right"><h2>${{number_format($sale_box->out_purchase_cash,2)}}</h2></td>
+                        </tr>
+                        @endif
+                        @if ($sale_box->out_expense_cash > 0)
+                        <tr>
+                            <th colspan="4" ><p align="left" >EFECTIVO GASTOS:</p></th>
+                            <td align="right"><h2>${{number_format($sale_box->out_expense_cash,2)}}</h2></td>
+                        </tr>
+                        @endif
                         @if ($sale_box->in_invoice_cash > 0)
                         <tr>
-                            <th colspan="4" ><p align="left" >EFECTIVO FACTURAS:</p></th>
+                            <th colspan="4" ><p align="left" >EFECTIVO VENTAS:</p></th>
                             <td align="right"><h2>${{number_format($sale_box->in_invoice_cash,2)}}</h2></td>
                         </tr>
                         @endif
@@ -593,20 +616,19 @@
                             <td align="right"><h2>${{number_format($sale_box->in_order_cash,2)}}</h2></td>
                         </tr>
                         @endif
-                        @if ($sale_box->out_purchase_cash > 0)
-                        <tr>
-                            <th colspan="4" ><p align="left" >EFECTIVO COMPRAS:</p></th>
-                            <td align="right"><h2>${{number_format($sale_box->out_purchase_cash,2)}}</h2></td>
-                        </tr>
+
+                        @if ($sale_box->cash > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >TOTAL EFECTIVO:</p></th>
+                                <td><h2>${{number_format($sale_box->cash,2)}}</h2></td>
+                            </tr>
                         @endif
-                        <tr>
-                            <th colspan="4" ><p align="left" >TOTAL EFECTIVO:</p></th>
-                            <td><h2>${{number_format($sale_box->cash,2)}}</h2></td>
-                        </tr>
-                        <tr>
-                            <th colspan="4" ><p align="left" >SALIDA EFECTIVO:</p></th>
-                            <td align="right"><h2>${{number_format($sale_box->departure,2)}}</h2></td>
-                        </tr>
+                        @if ($sale_box->departure > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >SALIDA EFECTIVO:</p></th>
+                                <td align="right"><h2>${{number_format($sale_box->departure,2)}}</h2></td>
+                            </tr>
+                        @endif
                         <tr>
                             <th colspan="4" ><p align="left" >SALDO EN CAJA:</p></th>
                             <td align="right"><h2>${{number_format($sale_box->cash - $sale_box->departure ,2)}}</h2></td>

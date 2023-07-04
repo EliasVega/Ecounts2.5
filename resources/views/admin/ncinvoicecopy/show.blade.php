@@ -8,38 +8,38 @@
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="company">RESPONSABLE</label>
-                <h4>{{ $ncinvoice->user->name }}</h4>
+                <h4>{{ $ncinvoices->name }}</h4>
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="company">SUCURSAL</label>
-                <h4>{{ $ncinvoice->branch->name }}</h4>
+                <h4>{{ $ncinvoices->nameB }}</h4>
             </div>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="nombre">PROVEEDOR</label>
-                <h4>{{ $ncinvoice->supplier->name }}</h4>
+                <label class="form-control-label" for="nombre">CLIENTE</label>
+                <h4>{{ $ncinvoices->nameC }}</h4>
             </div>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="nc#">NOTA DEBITO N°.</label>
-                <h4>{{ $ncinvoice->id }}</h4>
+                <label class="form-control-label" for="nc#">NOTA CREDITO N°.</label>
+                <h4>{{ $ncinvoices->id }}</h4>
             </div>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
-                <label class="form-control-label" for="purchase">APLICA COMPRAQ No.</label>
-                <h4>{{ $ncinvoice->purchase }}</h4>
+                <label class="form-control-label" for="invoice">APLICA FACTURA No.</label>
+                <h4>{{ $ncinvoices->nf }}</h4>
             </div>
         </div>
 
         <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="Fecha">FECHA EMISION</label>
-                <h4>{{ $ncinvoice->created_at }}</h4>
+                <h4>{{ $ncinvoices->created_at }}</h4>
             </div>
         </div>
 
@@ -48,8 +48,8 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <h3>Detalle de la Nota DEBITO
-                        <a href="{{ route('ncinvoice.index') }}" class="btn btn-redeco"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+                    <h3>Detalle de la Nota Credito
+                        <a href="{{ route('ncinvoice.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -67,27 +67,27 @@
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL:</p></th>
-                                <th><p align="right">${{ $ncinvoice->total }}</p></th>
+                                <th><p align="right">${{ $ncinvoices->total }}</p></th>
                             </tr>
 
                             <tr>
                                 <th colspan="3"><p align="right">TOTAL IVA:</p></th>
-                                <th><p align="right">${{ $ncinvoice->total_iva }}</p></th>
+                                <th><p align="right">${{ $ncinvoices->total_iva }}</p></th>
                             </tr>
 
                             <tr>
                                 <th  colspan="3"><p align="right">TOTAL PAGAR:</p></th>
-                                <th><p align="right">${{ $ncinvoice->total_pay }}</p></th>
+                                <th><p align="right">${{ $ncinvoices->total_pay }}</p></th>
                             </tr>
 
                         </tfoot>
                         <tbody>
-                            @foreach($invoiceProducts as $invoiceProduct)
+                            @foreach($ncinvoice_products as $nc)
                                 <tr>
-                                    <td>{{ $invoiceProduct->product->name }}</td>
-                                    <td>${{ $invoiceProduct->price }}</td>
-                                    <td>{{ $invoiceProduct->quantity }}</td>
-                                    <td>${{ number_format($invoiceProduct->quantity * $invoiceProduct->price,2) }}</td>
+                                    <td>{{ $nc->name }}</td>
+                                    <td>${{ $nc->price }}</td>
+                                    <td>{{ $nc->quantity }}</td>
+                                    <td>${{ number_format($nc->quantity*$nc->price,2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

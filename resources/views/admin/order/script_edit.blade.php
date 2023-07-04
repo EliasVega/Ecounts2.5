@@ -278,7 +278,7 @@
         price = $("#priceModal").val();
         iva = $("#ivaModal").val();
 
-        $('#priceModal').prop("readonly", true)
+        $('#priceModal').prop("readonly", false)
 
         if(product_id !="" && quantity!="" && quantity>0 && price!="" && price>0){
             subtotal[cont]= parseFloat(quantity) * parseFloat(price);

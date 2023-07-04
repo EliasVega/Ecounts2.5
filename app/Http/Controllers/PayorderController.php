@@ -164,6 +164,7 @@ class PayorderController extends Controller
                 $cont++;
             }
             $order = Order::findOrFail($order->id);
+            $order->pay += $total;
             $order->balance = $balance-$total;
             $order->update();
 

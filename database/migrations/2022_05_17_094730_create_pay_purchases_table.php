@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->decimal('pay',20,2);
             $table->decimal('balance_purchase',20,2);
+            $table->enum('status',['purchase', 'payment'])->default('purchase');
 
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

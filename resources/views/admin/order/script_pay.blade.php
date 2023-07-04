@@ -103,7 +103,7 @@
         $("#payTransaction").hide();
         $("#payPay").show();
         $("#payAdvance").hide();
-        $("#advancey").hide();
+        $("#payVadvance").hide();
         $("#advance").val(0);
         $("#eventy").hide();
     }
@@ -126,7 +126,7 @@
         $("#payCardy").hide();
         $("#mpay").hide();
         $("#eventy").hide();
-        $("#advancey").hide();
+        $("#payVadvance").hide();
     }
     $(document).ready(function(){
         $("#nequi").click(function(){
@@ -148,7 +148,7 @@
         $("#mpay").hide();
         $("#payBank").hide();
         $("#eventy").hide();
-        $("#advancey").hide();
+        $("#payVadvance").hide();
     }
     $(document).ready(function(){
         $("#card1").click(function(){
@@ -167,7 +167,7 @@
         $("#payPay").show();
         $("#payBank").show();
         $("#payCardy").show();
-        $("#advancey").hide();
+        $("#payVadvance").hide();
         $("#payTransaction").show();
     }
     $(document).ready(function(){
@@ -187,7 +187,7 @@
         $("#payPay").show();
         $("#payBank").show();
         $("#payCardy").show();
-        $("#advancey").hide();
+        $("#payVadvance").hide();
         $("#payTransaction").show();
     }
     $(document).ready(function(){
@@ -209,12 +209,12 @@
         $("#payCardy").hide();
         $("#payPay").show();
         $("#payAdvance").hide();
-        $("#advancey").hide();
+        $("#payVadvance").hide();
         $("#eventy").hide();
         $("#advance").val(0);
     }
     $(document).ready(function(){
-        $("#advanceCus").click(function(){
+        $("#prepay").click(function(){
             tpay = $("#balance").val();
             $("#pay").val(tpay);
             advanceCus();
@@ -228,12 +228,12 @@
         $("#bank_id").val(1);
         $("#card_id").val(1);
         $("#payPay").hide();
-        $("#payAdvance").show();
+        $("#payAdvanceId").show();
         $("#payTransaction").hide();
         $("#payCardy").hide();
         $("#mpay").hide();
         $("#payBank").hide();
-        $("#advancey").show();
+        $("#payVadvance").show();
         $("#eventy").hide();
     }
     $(document).ready(function(){
@@ -275,7 +275,7 @@
     $(document).ready(function(){
         $("#advance_id").change(function(){
             parseFloat($("#advance").val(prueba))
-            $("#abadvancey").show();
+            $("#payAdvance").show();
             prepaidnew();
         });
     });

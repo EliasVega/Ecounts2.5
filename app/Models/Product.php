@@ -76,4 +76,7 @@ class Product extends Model
     public function branchProducts(){
         return $this->hasMany(Branch_product::class);
     }
+    public function ndpurchaseProduct(){
+        return $this->belongsTo(Ndpurchase_product::class);
+    }
 }

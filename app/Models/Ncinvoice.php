@@ -47,4 +47,8 @@ class Ncinvoice extends Model
     public function Nd_discrepancy(){
         return $this->HasMany(Nd_discrepancy::class);
     }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
+    }
 }

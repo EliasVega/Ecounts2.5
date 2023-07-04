@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ncinvoice;
 use App\Http\Requests\StoreNcinvoiceRequest;
 use App\Http\Requests\UpdateNcinvoiceRequest;
+use App\Models\Advance;
 use App\Models\Branch_product;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
@@ -12,10 +13,15 @@ use App\Models\Kardex;
 use App\Models\Nc_discrepancy;
 use App\Models\Ncinvoice_product;
 use App\Models\Pay_event;
+use App\Models\Pay_invoice;
 use App\Models\Product;
+use App\Models\Sale_box;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\DataTables;
 
 class NcinvoiceController extends Controller
 {
@@ -26,21 +32,31 @@ class NcinvoiceController extends Controller
      */
     public function index(Request $request)
     {
-
-        if ($request->ajax()) {
-            $ncinvoices = Ncinvoice::with('customer')->get();
-
-            return datatables()
-            ->of($ncinvoices)
+        $user = Auth::user();
+        if (request()->ajax()) {
+            if ($user->role_id == 1 || $user->role_id == 2) {
+                $ncinvoices = Ncinvoice::get();
+            } else {
+                $ncinvoices = Ncinvoice::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
+            return DataTables::of($ncinvoices)
             ->addIndexColumn()
-            ->addColumn('customer', function ($ncinvoices) {
-                return $ncinvoices->customer->name;
+
+            ->addColumn('invoice', function (Ncinvoice $ncinvoice) {
+                return $ncinvoice->invoice->document;
             })
-            ->editColumn('created_at', function($ncinvoices){
-                return $ncinvoices->created_at->format('yy-m-d');
+            ->addColumn('branch', function (Ncinvoice $ncinvoice) {
+                return $ncinvoice->branch->name;
             })
-            ->addColumn('edit', 'admin/ncinvoice/actions')
-            ->rawcolumns(['edit'])
+            ->addColumn('customer', function (Ncinvoice $ncinvoice) {
+                return $ncinvoice->customer->name;
+            })
+
+            ->editColumn('created_at', function(Ncinvoice $ncinvoice){
+                return $ncinvoice->created_at->format('yy-m-d: h:m');
+            })
+            ->addColumn('btn', 'admin/ncinvoice/actions')
+            ->rawColumns(['btn'])
             ->make(true);
         }
         return view('admin.ncinvoice.index');
@@ -88,6 +104,113 @@ class NcinvoiceController extends Controller
      */
     public function store(StoreNcinvoiceRequest $request)
     {
+        try{
+            DB::beginTransaction();
+
+            $inv = $request->invoice_id;
+            $invoice = Invoice::findOrFail($inv);
+            $branch = $invoice->branch_id;
+            $pay = $invoice->pay;
+
+            $date1 = Carbon::now()->toDateString();
+            $date2 = Invoice::find($invoice->id)->created_at->toDateString();
+            if ($date1 == $date2) {
+                $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                $sale_box->invoice -= $invoice->total_pay;
+                $sale_box->update();
+            }
+
+            if ($pay > 0) {
+
+                $advance = new Advance();
+                $advance->user_id    = Auth::user()->id;
+                $advance->branch_id  = $branch;
+                $advance->customer_id = $invoice->customer_id;
+                $advance->origin = 'Anticipo devolucion de venta';
+                $advance->destination = null;
+                $advance->pay        = $pay;
+                $advance->balance = $pay;
+                $advance->note = 'por eliminacion de factura de venta';
+                $advance->save();
+            }
+            $payInvoice = Pay_invoice::where('invoice_id', $invoice->id)->get();
+            foreach ($payInvoice as $key => $value) {
+                $value->status = 'advance';
+            }
+            //Registrar tabla Nota Credito
+            $ncinvoice = new Ncinvoice();
+            $ncinvoice->user_id = Auth::user()->id;
+            $ncinvoice->branch_id = $branch;
+            $ncinvoice->invoice_id = $invoice->id;
+            $ncinvoice->customer_id = $invoice->customer_id;
+            $ncinvoice->nc_discrepancy_id = 2;
+            $ncinvoice->voucher_type_id = 5;
+            $ncinvoice->total = $invoice->total;
+            $ncinvoice->total_iva = $invoice->total_iva;
+            $ncinvoice->total_pay = $invoice->total_pay;
+            $ncinvoice->save();
+
+            //Seleccionar los productos de la compra
+            $invoiceProducts = Invoice_product::where('invoice_id', $invoice->id)->get();
+            foreach ($invoiceProducts as $ip) {
+                $id = $ip->product_id;
+                $quantity = $ip->quantity;
+                $price = $ip->price;
+                $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
+                $branch_product->stock += $quantity;
+                $branch_product->update();
+
+                $ncinvoiceProducts = new Ncinvoice_product();
+                $ncinvoiceProducts->ncinvoice_id = $ncinvoice->id;
+                $ncinvoiceProducts->product_id = $id;
+                $ncinvoiceProducts->quantity = $quantity;
+                $ncinvoiceProducts->price = $ip->price;
+                $ncinvoiceProducts->save();
+
+                $product = Product::findOrFail($id);
+                //actualizando la tabla products
+                $product->stock += $quantity;
+                $product->update();
+
+                //Actualizar Kardex
+                $kardex = new Kardex();
+                $kardex->product_id = $id;
+                $kardex->branch_id = $branch;
+                $kardex->operation = 'nc_venta';
+                $kardex->number = $ncinvoice->id;
+                $kardex->quantity = $quantity;
+                $kardex->stock = $product->stock;
+                $kardex->save();
+            }
+
+            //actualizando campo status de la factura
+            $invoice->total = 0;
+            $invoice->total_iva = 0;
+            $invoice->total_pay = 0;
+            $invoice->pay = 0;
+            $invoice->balance = 0;
+            $invoice->status = 'credit_note';
+            $invoice->note = 'Factura eliminada con nota Credito #' . '-' . $ncinvoice->id;
+            $invoice->update();
+
+            DB::commit();
+        }
+        catch(Exception $e){
+            DB::rollback();
+        }
+        if ($pay > 0) {
+            Alert::success('Venta','Eliminada Satisfactoriamente. Con creacion de anticipo de Cliente');
+            return redirect('ncinvoice');
+
+        } else {
+            return redirect("ncinvoice")->with('success', 'Venta Eliminada Satisfactoriamente');
+        }
+
+
+
+
+
+
         $invoice = $request->session()->get('invoice');
         $inv = Invoice::findOrFail($invoice);
         $branch = $request->session()->get('branch');

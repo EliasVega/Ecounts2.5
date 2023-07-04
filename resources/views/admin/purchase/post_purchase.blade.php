@@ -28,7 +28,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> REM: <strong id="numfact">N°.{{ $purchase->id }}</strong> <br>
+                <p> COMPRA: <strong id="numfact">N°.{{ $purchase->id }}</strong> <br>
                     FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($purchase->created_at)) }}</strong>
                 </p>
             </div>
@@ -61,6 +61,11 @@
                 </div>
             </div>
             <div class="clearfix"></div>
+            @if ($purchase->note != null)
+                <div class="form-group">
+                    <p id="factura">Nota: {{ $purchase->note }}</p>
+                </div>
+            @endif
             <table class="tabla">
                 <!--DETALLE DE VENTA -->
                 <thead>
@@ -97,6 +102,16 @@
                         <th  colspan="2" class="footder">TOTAL PAGAR:</th>
                         <td colspan="2" class="footder"><strong>${{number_format($purchase->total_pay,2)}}</strong></td>
                     </tr>
+                    @if ($purchase->pay > 0)
+                        <tr>
+                            <th  colspan="2" class="footder">ABONOS:</th>
+                            <td colspan="2" class="footder"><strong>${{number_format($purchase->pay,2)}}</strong></td>
+                        </tr>
+                        <tr>
+                            <th  colspan="2" class="footder">SALDO:</th>
+                            <td colspan="2" class="footder"><strong>${{number_format($purchase->balance,2)}}</strong></td>
+                        </tr>
+                    @endif
                 </tfoot>
             </table>
         </div>

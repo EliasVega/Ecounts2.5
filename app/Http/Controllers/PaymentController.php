@@ -132,8 +132,6 @@ class PaymentController extends Controller
                     $sale_box->out_payment_cash += $paymentLine;
                     $sale_box->departure += $paymentLine;
                 }
-
-                //$sale_box = Sale_box::findOrFail($boxy->id);
                 $sale_box->out_payment += $paymentLine;
                 $sale_box->out_total += $paymentLine;
                 $sale_box->update();

@@ -5,104 +5,150 @@
 @section('content')
 <main class="main">
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <a href="{{ route('sale_box.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
             <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <p> <Strong>Responsable:</Strong>  {{ $sale_box->user->name }}</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="nombre">Caja #</label>
                 <p>{{ $sale_box->id }}</p>
             </div>
         </div>
         @if ($sale_box->cash_box > 0)
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="cash_open">Efectivo Inicial</label>
                     <p>${{ number_format($sale_box->cash_box,2) }}</p>
                 </div>
             </div>
         @endif
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="form-group">
                 <label class="form-control-label" for="open">Abierta</label>
                 <p>{{ $sale_box->created_at }}</p>
             </div>
         </div>
         @if ($sale_box->status == 'close')
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="close">Cerrada</label>
                     <p>{{ $sale_box->updated_at }}</p>
                 </div>
             </div>
-        @endif
-        @if ($sale_box->in_order_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        @else
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="in_order_cash">Pedidos Efectivo</label>
-                    <p>${{ number_format($sale_box->in_order_cash,2) }}</p>
+                    <label class="form-control-label" for="close"><strong>Caja Activa</strong></label>
                 </div>
             </div>
         @endif
-        @if ($sale_box->in_order > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        @if ($sale_box->purchase > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="pay">T/Ingresos Pedidos</label>
-                    <p>${{ number_format($sale_box->in_order,2) }}</p>
-                </div>
-            </div>
-        @endif
-        @if ($sale_box->in_invoice_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label class="form-control-label" for="in_invoice_cash">Ventas Efectivo</label>
-                    <p>${{ number_format($sale_box->in_invoice_cash,2) }}</p>
-                </div>
-            </div>
-        @endif
-        @if ($sale_box->in_invoice > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Ingresos ventas</label>
-                    <p>${{ number_format($sale_box->in_invoice,2) }}</p>
-                </div>
-            </div>
-        @endif
-        @if ($sale_box->out_purchase_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label class="form-control-label" for="in_invoice_cash">Compras/Efectivo</label>
-                    <p>${{ number_format($sale_box->out_purchase_cash,2) }}</p>
+                    <label class="form-control-label" for="abono">Total Compras</label>
+                    <p>${{ number_format($sale_box->purchase,2) }}</p>
                 </div>
             </div>
         @endif
         @if ($sale_box->out_purchase > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Egreso/Compras</label>
+                    <label class="form-control-label" for="abono">Egreso X Compras</label>
                     <p>${{ number_format($sale_box->out_purchase,2) }}</p>
                 </div>
             </div>
         @endif
+        @if ($sale_box->out_purchase_cash > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_purchase_cash">Compras En Efectivo</label>
+                    <p>${{ number_format($sale_box->out_purchase_cash,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->expense > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">Total Gastos</label>
+                    <p>${{ number_format($sale_box->expense,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->out_expense > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">Salida X Gastos</label>
+                    <p>${{ number_format($sale_box->out_expense,2) }}</p>
+                </div>
+            </div>
+        @endif
+
         @if ($sale_box->out_expense_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="in_invoice_cash">Gastos Efectivo</label>
                     <p>${{ number_format($sale_box->out_expense_cash,2) }}</p>
                 </div>
             </div>
         @endif
-        @if ($sale_box->out_expense > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        @if ($sale_box->invoice > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Salida Gastos</label>
-                    <p>${{ number_format($sale_box->out_expense,2) }}</p>
+                    <label class="form-control-label" for="abono">Total ventas</label>
+                    <p>${{ number_format($sale_box->invoice,2) }}</p>
                 </div>
             </div>
         @endif
+        @if ($sale_box->in_invoice > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="abono">Ingresos X ventas</label>
+                    <p>${{ number_format($sale_box->in_invoice,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->in_invoice_cash > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_invoice_cash">Ventas Efectivo</label>
+                    <p>${{ number_format($sale_box->in_invoice_cash,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->order > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_order_cash">Total Pedidos</label>
+                    <p>${{ number_format($sale_box->order,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->in_order > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="pay">Ingresos X Pedidos</label>
+                    <p>${{ number_format($sale_box->in_order,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->in_order_cash > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="in_order_cash">Pedidos Efectivo</label>
+                    <p>${{ number_format($sale_box->in_order_cash,2) }}</p>
+                </div>
+            </div>
+        @endif
+
+
         @if ($sale_box->in_ndinvoice_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="in_invoice_cash">NC ventas Efectivo</label>
                     <p>${{ number_format($sale_box->in_ndinvoice_cash,2) }}</p>
@@ -110,7 +156,7 @@
             </div>
         @endif
         @if ($sale_box->in_ndinvoice > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="abono">T/Ingresos NC ventas</label>
                     <p>${{ number_format($sale_box->in_ndinvoice,2) }}</p>
@@ -118,7 +164,7 @@
             </div>
         @endif
         @if ($sale_box->out_ncinvoice_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="in_invoice_cash">NC ventas Efectivo</label>
                     <p>${{ number_format($sale_box->out_ncinvoice_cash,2) }}</p>
@@ -126,7 +172,7 @@
             </div>
         @endif
         @if ($sale_box->out_ncinvoice > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="abono">T/Ingresos NC ventas</label>
                     <p>${{ number_format($sale_box->out_ncinvoice,2) }}</p>
@@ -134,7 +180,7 @@
             </div>
         @endif
         @if ($sale_box->out_ndpurchase_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="in_invoice_cash">ND compras Efectivo</label>
                     <p>${{ number_format($sale_box->out_ndpurchase_cash,2) }}</p>
@@ -142,7 +188,7 @@
             </div>
         @endif
         @if ($sale_box->out_ndpurchase > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="abono">T/Ingresos ND compras</label>
                     <p>${{ number_format($sale_box->out_ndpurchase,2) }}</p>
@@ -150,7 +196,7 @@
             </div>
         @endif
         @if ($sale_box->in_ncpurchase_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="in_invoice_cash">NC compras Efectivo</label>
                     <p>${{ number_format($sale_box->in_ncpurchase_cash,2) }}</p>
@@ -158,7 +204,7 @@
             </div>
         @endif
         @if ($sale_box->in_ncpurchase > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label class="form-control-label" for="abono">T/Ingresos NC compras</label>
                     <p>${{ number_format($sale_box->in_ncpurchase,2) }}</p>
@@ -166,66 +212,67 @@
             </div>
         @endif
         @if ($sale_box->out_payment_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">Ant Proveedores efectivo</label>
+                    <label class="form-control-label" for="abono">ANT. PROVEEDORES EFECTIVO</label>
                     <p>${{ number_format($sale_box->out_payment_cash,2) }}</p>
                 </div>
             </div>
         @endif
         @if ($sale_box->out_payment > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Ant Proveedores</label>
+                    <label class="form-control-label" for="abono">ANTICIPO PROVEEDORES</label>
                     <p>${{ number_format($sale_box->out_payment,2) }}</p>
                 </div>
             </div>
         @endif
         @if ($sale_box->in_advance_cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">Ant Clientes efectivo</label>
+                    <label class="form-control-label" for="abono">ANT. CLIENTES EFECTIVO</label>
                     <p>${{ number_format($sale_box->in_advance_cash,2) }}</p>
                 </div>
             </div>
         @endif
         @if ($sale_box->in_advance > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Ant Clientes</label>
+                    <label class="form-control-label" for="abono">ANTICIPOS CLIENTES</label>
                     <p>${{ number_format($sale_box->in_advance,2) }}</p>
                 </div>
             </div>
         @endif
-        @if ($sale_box->in_total > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label class="form-control-label" for="pay">T/Ingresos</label>
-                    <p>${{ number_format($sale_box->in_total,2) }}</p>
-                </div>
-            </div>
-        @endif
+
         @if ($sale_box->cash > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="in_pay_cash">Total Ingresos Efectivo</label>
+                    <label class="form-control-label" for="in_pay_cash">INGRESOS EFECTIVO</label>
                     <p>${{ number_format($sale_box->cash,2) }}</p>
                 </div>
             </div>
         @endif
         @if ($sale_box->departure > 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="cash_out">Salida Efectivo</label>
+                    <label class="form-control-label" for="cash_out">SALIDA EFECTIVO</label>
                     <p>${{ number_format($sale_box->departure,2) }}</p>
                 </div>
             </div>
         @endif
         @if ($sale_box->cash - $sale_box->departure != 0)
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="balance">Total Efectivo</label>
+                    <label class="form-control-label" for="balance">EFECTIVO EN CAJA</label>
                     <p>${{ number_format($sale_box->cash - $sale_box->departure,2) }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($sale_box->in_total > 0)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="pay">TOTAL INGRESOS</label>
+                    <p>${{ number_format($sale_box->in_total,2) }}</p>
                 </div>
             </div>
         @endif

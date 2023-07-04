@@ -21,13 +21,21 @@
                 <table class="table table-striped table-bordered table-condensed table-hover" id="branches">
                     <thead>
                         <tr class="bg-info">
-                            <th>Acciones</th>
+                            <th>O.P</th>
+                            <th>F.V</th>
+                            <th>BOX</th>
+                            <th>O.C</th>
+                            <th>F.C</th>
+                            <th>F.G</th>
+                            <th>PRO</th>
+                            <th>TRF</th>
                             <th>Id</th>
                             <th>Departamento</th>
                             <th>Municipio</th>
                             <th>Sucursal</th>
                             <th>Nit</th>
-                            <th>Accesos</th>
+                            <th>Edit</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                 </table>
@@ -49,13 +57,21 @@
             ajax: '{{ route('branch.index') }}',
             columns:
             [
-                {data: 'btn'},
+                {data: 'order'},
+                {data: 'invoice'},
+                {data: 'box'},
+                {data: 'prePurchase'},
+                {data: 'purchase'},
+                {data: 'expense'},
+                {data: 'product'},
+                {data: 'transfer'},
                 {data: 'id'},
                 {data: 'department'},
                 {data: 'municipality'},
                 {data: 'name'},
                 {data: 'company'},
-                {data: 'accesos'},
+                {data: 'edit'},
+                {data: 'show'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
             buttons:

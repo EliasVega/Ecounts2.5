@@ -6,26 +6,25 @@
 <main class="main">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de Notas Debito Compras
-                <a href="{{ route('purchase.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a></h3>
+            <h3>Listado de Notas Credito
+
+                    <a href="{{ route('invoice.index') }}" class="btn btn-limon"><i class="fas fa-trash-restore-alt mr-2"></i>Regresar</a>
 
             </h3>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="ndpurchases">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="ncinvoices">
                     <thead>
                         <tr class="bg-info">
                             <th>Id</th>
-                            <th>Proveedor</th>
-                            <th>N°_Compra</th>
-                            <th>N°_Factura</th>
+                            <th>Cliente</th>
+                            <th>Venta</th>
                             <th>V/Total</th>
-                            <th>Fecha_NC</th>
-                            <th>Ver</th>
+                            <th>Fecha_ND</th>
+                            <th>editar</th>
                         </tr>
                     </thead>
                 </table>
@@ -36,20 +35,20 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#ndpurchases').DataTable(
+        $('#ncinvoices').DataTable(
         {
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
-            ajax: '{{ route('ndpurchase.index') }}',
+            ajax: '{{ route('ncinvoice.index') }}',
             columns:
             [
+
                 {data: 'id'},
-                {data: 'name'},
-                {data: 'idP'},
-                {data: 'purchase'},
-                {data: 'total_pay'},
+                {data: 'customer'},
+                {data: 'invoice_id'},
+                {data: 'total'},
                 {data: 'created_at'},
                 {data: 'edit'},
             ],

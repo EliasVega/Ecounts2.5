@@ -26,6 +26,7 @@ class StorePayinvoiceRequest extends FormRequest
         return [
             'pay'             => '',
             'balance_invoice' => '',
+            'status' => 'in:invoice,advance',
             'user_id'         => '',
             'branch_id'       => '',
             'invoice_id'      => ''

@@ -28,7 +28,7 @@
             </div>
             <!--DATOS FACTURA -->
             <div id="factura">
-                <p> O.P: <strong id="numfact">N°.{{ $invoice->document }}</strong> <br>
+                <p> VENTA: <strong id="numfact">N°.{{ $invoice->document }}</strong> <br>
                     FECHA DE EMISION: <strong id="datfact">{{ date('d-m-Y', strtotime($invoice->created_at)) }}</strong>
                 </p>
             </div>
@@ -97,6 +97,16 @@
                         <th  colspan="2" class="footder">TOTAL PAGAR:</th>
                         <td colspan="2" class="footder"><strong>${{number_format($invoice->total_pay,2)}}</strong></td>
                     </tr>
+                    @if ($invoice->pay > 0)
+                        <tr>
+                            <th  colspan="2" class="footder">ABONOS:</th>
+                            <td colspan="2" class="footder"><strong>${{number_format($invoice->pay,2)}}</strong></td>
+                        </tr>
+                        <tr>
+                            <th  colspan="2" class="footder">SALDO:</th>
+                            <td colspan="2" class="footder"><strong>${{number_format($invoice->balance,2)}}</strong></td>
+                        </tr>
+                    @endif
                 </tfoot>
             </table>
         </div>

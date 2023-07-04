@@ -16,10 +16,10 @@ class Ndpurchase_product extends Model
     ];
 
     public function Ndpurchase(){
-        return $this->hasOne(Ntdcompra::class);
+        return $this->belongsTo(Ndpurchase::class);
     }
 
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 }

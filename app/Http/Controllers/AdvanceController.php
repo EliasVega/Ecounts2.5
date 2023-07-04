@@ -121,18 +121,12 @@ class AdvanceController extends Controller
 
                 $mp = $payment_method[$cont];
 
-                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)
-                ->where('status', '=', 'open')
-                ->first();
-                $inAdvanceCash = $sale_box->in_advance_cash;
-                $cash = $sale_box->cash;
+                $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'open')->first();
                 if($mp == 10){
-                    $inAdvanceCash += $paymentLine;
-                    $cash += $paymentLine;
+                    $sale_box->in_advance_cash += $paymentLine;
+                    $sale_box->cash += $paymentLine;
                 }
-                $sale_box->in_advance_cash = $inAdvanceCash;
                 $sale_box->in_advance += $paymentLine;
-                $sale_box->cash = $cash;
                 $sale_box->in_total += $paymentLine;
                 $sale_box->update();
 

@@ -166,7 +166,8 @@ class PayPurchaseController extends Controller
             }
 
             $purchas = purchase::findOrFail($purchase->id);
-            $purchas->balance = $balance-$total;
+            $purchas->pay += $total;
+            $purchas->balance -= $total;
             $purchas->update();
 
             $pay_purchases = Pay_purchase::findOrFail($pay_purchase->id);

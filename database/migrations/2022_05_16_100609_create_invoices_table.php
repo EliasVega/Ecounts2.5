@@ -28,6 +28,7 @@ return new class extends Migration
             $table->decimal('balance',20,2);
             $table->decimal('retention',10,2)->nullable();
             $table->enum('status',['active', 'credit_note', 'debit_note'])->default('active');
+            $table->string('note', 255)->nullable();
 
             $table->foreignId('user_id')->constrained();
             $table->foreignId('branch_id')->constrained()->onUpdate('cascade');

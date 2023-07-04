@@ -155,6 +155,7 @@ Route::get('company/create/{id}', [CompanyController::class, 'getMunicipalities'
 Route::post('company/logout', [CompanyController::class, 'logout'])->name('logout_company');
 
 Route::get('branch/create/{id}', [BranchController::class, 'getMunicipalities']);
+Route::get('show_prePurchase/{id}', [BranchController::class, 'show_prePurchase'])->name('show_prePurchase');
 Route::get('show_purchase/{id}', [BranchController::class, 'show_purchase'])->name('show_purchase');
 Route::get('branch/show_expense/{id}', [BranchController::class, 'show_expense'])->name('show_expense');
 Route::get('show_invoice/{id}', [BranchController::class, 'show_invoice'])->name('show_invoice');

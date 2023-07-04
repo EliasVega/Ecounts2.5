@@ -15,6 +15,7 @@ use App\Models\Document;
 use App\Models\Kardex;
 use App\Models\Liability;
 use App\Models\Municipality;
+use App\Models\Nc_discrepancy;
 use App\Models\Nd_discrepancy;
 use App\Models\Organization;
 use App\Models\Pay_purchase;
@@ -31,6 +32,7 @@ use App\Models\Supplier;
 use App\Models\Tax;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -131,7 +133,6 @@ class PurchaseController extends Controller
         try{
             DB::beginTransaction();
             //llamado a variables
-            $inventory = $request->inventory;
             $product_id = $request->product_id;
             $quantity   = $request->quantity;
             $price      = $request->price;
@@ -163,7 +164,7 @@ class PurchaseController extends Controller
             $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
 
             $sale_box->purchase += $purchase->total_pay;
-            $sale_box->out_total += $purchase->total_pay;
+            $sale_box->out_total += $purchase->pay;
             $sale_box->update();
             //inicio proceso si hay pagos
             if($pay > 0){
@@ -218,14 +219,11 @@ class PurchaseController extends Controller
 
                     $mp = $request->payment_method_id;
 
-                    $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                    $out_purchase_cash = $sale_box->out_purchase_cash;
+                    $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', 'open')->first();
                     if($mp == 10){
-                        $out_purchase_cash += $pay;
+                        $sale_box->out_purchase_cash += $pay;
                         $sale_box->departure  += $pay;
                     }
-
-                    $sale_box->out_purchase_cash = $out_purchase_cash;
                     $sale_box->out_purchase += $pay;
                     $sale_box->update();
                 }
@@ -414,7 +412,7 @@ class PurchaseController extends Controller
                 $payment->destination = null;
                 $payment->pay = $payOld - $total_pay;
                 $payment->balance = $payOld - $total_pay;
-                $payment->note = $request->note;
+                $payment->note = 'Edicion dela compra';
                 $payment->save();
             }
 
@@ -422,7 +420,6 @@ class PurchaseController extends Controller
             if ($date1 == $date2) {
                 $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                 $sale_box->purchase -= $purchase->total_pay;
-                $sale_box->out_total -= $purchase->total_pay;
                 $sale_box->update();
             }
 
@@ -457,7 +454,7 @@ class PurchaseController extends Controller
             if ($date1 == $date2) {
                 $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                 $sale_box->purchase += $purchase->total_pay;
-                $sale_box->out_total += $purchase->total_pay;
+                //$sale_box->out_total += $purchase->total_pay;
                 $sale_box->update();
             }
 
@@ -518,6 +515,7 @@ class PurchaseController extends Controller
                         $sale_box->departure += $pay;
                     }
                     $sale_box->out_purchase += $pay;
+                    $sale_box->out_total += $pay;
                     $sale_box->update();
                 }
 
@@ -729,11 +727,23 @@ class PurchaseController extends Controller
         \session()->put('total', $purchase->total, 60 * 24 *365);
         \session()->put('status', $purchase->status, 60 * 24 *365);
 
-        if ($purchase->status != 'ACTIVE') {
-            return redirect("purchase")->with('warning', 'Esta Compra ya tiene una Nota Debito o Credito');
-        } else {
-            return redirect('ndpurchase/create');
+        if ($purchase->status == 'debit_note') {
+            return redirect("purchase")->with('warning', 'Esta Compra ya tiene una Nota Debito');
         }
+        //$productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
+
+        $productPurchases = Product_purchase::from('product_purchases AS pp')
+        ->join('purchases AS pur', 'pp.purchase_id', '=', 'pur.id')
+        ->join('products AS pro', 'pp.product_id', '=', 'pro.id')
+        ->join('categories AS cat', 'pro.category_id', '=', 'cat.id')
+        ->select('pp.quantity', 'pp.price', 'pro.name', 'cat.iva')
+        ->where('pp.purchase_id', '=', $purchase->id)->get();
+        $products = Product::get();
+        return view('admin.ndpurchase.create', compact(
+            'purchase',
+            'productPurchases',
+            'products',
+        ));
      }
 
      public function show_pay_purchase($id)
@@ -809,7 +819,7 @@ class PurchaseController extends Controller
 
     public function purchasePost()
     {
-        sleep(2);
+        sleep(3);
         $pur      = count(Purchase::get());
         $purchase = Purchase::where('id', $pur)->first();
         $product_purchases = Product_purchase::where('purchase_id', $purchase->id)->where('quantity', '>', 0)->get();
@@ -819,7 +829,7 @@ class PurchaseController extends Controller
         $purchasepdf = "FACT-". $purchase->document;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.purchase.post_purchase', compact('purchase', 'days', 'product_purchases', 'company', 'logo'))->render();
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
 

@@ -78,10 +78,13 @@
                         <span id="td">{{ $purchase->due_date }}</span><br>
                     </div>
                 </div>
-
             </div>
-
         </div>
+        @if ($purchase->note != null)
+            <div>
+                <p>Nota: {{ $purchase->note }}</p>
+            </div>
+        @endif
         <div class="contenido">
             <div class="center">
                 <div id="ttabla">
