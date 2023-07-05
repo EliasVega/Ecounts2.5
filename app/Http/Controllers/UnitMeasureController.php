@@ -70,7 +70,6 @@ class UnitMeasureController extends Controller
      */
     public function edit(Unit_measure $unit_measure)
     {
-        $unit_measure = Unit_measure::findOrFail($unit_measure);
         return view("admin.unit_measure.edit", compact('unit_measure'));
     }
 
@@ -98,5 +97,19 @@ class UnitMeasureController extends Controller
     public function destroy(Unit_measure $unit_measure)
     {
         //
+    }
+
+    public function status($id)
+    {
+
+        $unitMeasure = Unit_measure::findOrFail($id);
+        if ($unitMeasure->status == 'activo') {
+            $unitMeasure->status = 'inactivo';
+        } else {
+            $unitMeasure->status = 'activo';
+        }
+        $unitMeasure->update();
+
+        return redirect('unit_measure');
     }
 }

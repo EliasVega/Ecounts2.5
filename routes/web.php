@@ -249,3 +249,5 @@ Route::get('prePurchase/invoice/{id}', [PrePurchaseController::class, 'invoice']
 Route::get('prePurchase/pdf/{id}', [PrePurchaseController::class, 'prePurchasepdf'])->name('prePurchasePdf');
 Route::get('prePurchase/post/{id}', [PrePurchaseController::class, 'prePurchasepost'])->name('prePurchasePost');
 
+Route::get('unitMeasure/status/{id}', [UnitMeasureController::class, 'status'])->name('unitStatus');
+

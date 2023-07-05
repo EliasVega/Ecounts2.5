@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TypeGenerationsTableSeeder extends Seeder
 {
@@ -14,23 +15,23 @@ class TypeGenerationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('type_generations')->delete();
-        
-        \DB::table('type_generations')->insert(array (
-            0 => 
+
+        DB::table('type_generations')->delete();
+
+        DB::table('type_generations')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'description' => 'Por operación',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'description' => 'Acumulado semanal',
             ),
         ));
-        
-        
+
+
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PaymentFormsTableSeeder extends Seeder
 {
@@ -14,23 +15,23 @@ class PaymentFormsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('payment_forms')->delete();
-        
-        \DB::table('payment_forms')->insert(array (
-            0 => 
+
+        DB::table('payment_forms')->delete();
+
+        DB::table('payment_forms')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'contado',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'Credito',
             ),
         ));
-        
-        
+
+
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TypeDocumentsTableSeeder extends Seeder
 {
@@ -14,12 +15,12 @@ class TypeDocumentsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('type_documents')->delete();
-        
-        \DB::table('type_documents')->insert(array (
-            0 => 
+
+        DB::table('type_documents')->delete();
+
+        DB::table('type_documents')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'code' => '01',
@@ -29,7 +30,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'code' => '02',
@@ -39,7 +40,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'code' => '03',
@@ -49,7 +50,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'code' => '91',
@@ -59,7 +60,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'code' => '92',
@@ -69,7 +70,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'code' => '',
@@ -79,7 +80,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'code' => '89',
@@ -89,7 +90,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'code' => '88',
@@ -99,7 +100,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'code' => '1',
@@ -109,7 +110,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'code' => '2',
@@ -119,7 +120,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'code' => '05',
@@ -129,7 +130,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'code' => '04',
@@ -139,7 +140,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:44',
                 'updated_at' => '2023-01-12 21:07:44',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'code' => '95',
@@ -150,7 +151,7 @@ class TypeDocumentsTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 21:07:44',
             ),
         ));
-        
-        
+
+
     }
 }

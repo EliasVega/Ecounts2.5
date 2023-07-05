@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TaxesTableSeeder extends Seeder
 {
@@ -16,9 +17,9 @@ class TaxesTableSeeder extends Seeder
     {
 
 
-        \DB::table('taxes')->delete();
+        DB::table('taxes')->delete();
 
-        \DB::table('taxes')->insert(array (
+        DB::table('taxes')->insert(array (
             0 =>
             array (
                 'id' => 1,

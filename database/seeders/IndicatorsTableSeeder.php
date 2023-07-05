@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class IndicatorsTableSeeder extends Seeder
 {
@@ -14,12 +15,12 @@ class IndicatorsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('indicators')->delete();
-        
-        \DB::table('indicators')->insert(array (
-            0 => 
+
+        DB::table('indicators')->delete();
+
+        DB::table('indicators')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'DIAN',
@@ -46,7 +47,7 @@ class IndicatorsTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 21:07:40',
             ),
         ));
-        
-        
+
+
     }
 }
