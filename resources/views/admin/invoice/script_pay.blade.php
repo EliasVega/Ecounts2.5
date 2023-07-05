@@ -27,7 +27,7 @@
     $("#card1").hide();
     $("#card2").hide();
     $("#noDefined").hide();
-    $("#advance").hide();
+    $("#advanceB").hide();
     $("#transvenped").hide();
     $("#payPayment").hide();
 
@@ -46,7 +46,7 @@
             if(form == 1){
                 $("#noDefined").show();
                 $("#cash").show();
-                $("#advance").show();
+                $("#advanceB").show();
                 $("#transfer").show();
                 $("#nequi").show();
                 $("#card1").show();
@@ -57,7 +57,7 @@
                 $("#payPayment").show();
                 $("#noDefined").hide();
                 $("#cash").hide();
-                $("#advance").hide();
+                $("#advanceB").hide();
                 $("#transfer").hide();
                 $("#nequi").hide();
                 $("#card1").hide();
@@ -82,7 +82,7 @@
     function see(){
         $("#noDefined").show();
         $("#cash").show();
-        $("#advance").show();
+        $("#advanceB").show();
         $("#transfer").show();
         $("#nequi").show();
         $("#card1").show();
@@ -131,6 +131,7 @@
         $("#payCard").hide();
         $("#mpay").hide();
         $("#payAdvanceId").hide();
+        $("#advance").val(0);
     }
     $(document).ready(function(){
         $("#nequi").click(function(){
@@ -152,6 +153,7 @@
         $("#mpay").hide();
         $("#payBank").hide();
         $("#payAdvanceId").hide();
+        $("#advance").val(0);
     }
     $(document).ready(function(){
         $("#card1").click(function(){
@@ -171,6 +173,7 @@
         $("#payCard").show();
         $("#payAdvanceId").hide();
         $("#payTransaction").show();
+        $("#advance").val(0);
     }
     $(document).ready(function(){
         $("#card2").click(function(){
@@ -190,6 +193,7 @@
         $("#payCard").show();
         $("#payAdvanceId").hide();
         $("#payTransaction").show();
+        $("#advance").val(0);
     }
     $(document).ready(function(){
         $("#noDefined").click(function(){
@@ -214,7 +218,7 @@
         $("#advance").val(0);
     }
     $(document).ready(function(){
-        $("#advance").click(function(){
+        $("#advanceB").click(function(){
             tpay = $("#balance").val();
             $("#pay").val(tpay);
             advance();
@@ -272,6 +276,7 @@
         });
     });
     $(document).ready(function(){
+
         $("#advance_id").change(function(){
             parseFloat($("#abpayment").val(prueba))
             $("#payPaymentAdvance").show();
@@ -285,8 +290,9 @@
         if (ttp >= abn) {
             $("#returned").val(balancey);
             $("#pay").val(abn);
-            $("#payment").val(abn);
+            $("#advance").val(abn);
         } else {
+            $("#advance").val(ttp);
             $("#payAdvance").show();
             //prepaid()
         }
@@ -295,6 +301,13 @@
         $("#advance").keyup(function(){
             $("#advance").val();
             prepaid();
+        });
+    });
+    $(document).ready(function(){
+        $("#pay").keyup(function(){
+            $("#pay").val();
+            $("#returned").val();
+            payment();
         });
     });
     function prepaid(){

@@ -89,6 +89,7 @@ class NdpurchaseController extends Controller
             if ($date1 == $date2) {
                 $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                 $sale_box->purchase -= $purchase->total_pay;
+                $sale_box->out_purchase -= $pay;
                 $sale_box->update();
             }
             if ($pay > 0) {

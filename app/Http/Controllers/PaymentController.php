@@ -36,10 +36,10 @@ class PaymentController extends Controller
             return DataTables::of($payments)
             ->addIndexColumn()
             ->addColumn('pay', function (Payment $payment) {
-                return number_format($payment->pay, 2);
+                return $payment->pay;
             })
             ->addColumn('balance', function (Payment $payment) {
-                return number_format($payment->balance, 2);
+                return $payment->balance;
             })
             ->addColumn('supplier', function (Payment $payment) {
                 return $payment->supplier->name;

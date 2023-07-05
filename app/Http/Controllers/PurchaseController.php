@@ -67,6 +67,15 @@ class PurchaseController extends Controller
             ->addColumn('branch', function (Purchase $purchase) {
                 return $purchase->branch->name;
             })
+            ->addColumn('status', function (Purchase $purchase) {
+                if ($purchase->status == 'active') {
+                    return $purchase->status == 'active' ? 'Activa' : 'Compra';
+                } elseif ($purchase->status == 'debit_note') {
+                    return $purchase->status == 'debit_note' ? 'Nota Debito' : 'Anulada';
+                } else {
+                    return $purchase->status == 'credit_note' ? 'Nota Credito' : 'Editada';
+                }
+            })
             ->editColumn('created_at', function(Purchase $purchase){
                 return $purchase->created_at->format('yy-m-d: h:m');
             })

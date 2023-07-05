@@ -61,6 +61,15 @@ class InvoiceController extends Controller
             ->addColumn('branch', function (Invoice $invoice) {
                 return $invoice->branch->name;
             })
+            ->addColumn('status', function (Invoice $invoice) {
+                if ($invoice->status == 'active') {
+                    return $invoice->status == 'active' ? 'Activa' : 'Venta';
+                } elseif ($invoice->status == 'credit_note') {
+                    return $invoice->status == 'credit_note' ? 'Nota Credito' : 'Anulada';
+                } else {
+                    return $invoice->status == 'debit_note' ? 'Nota Debito' : 'Editada';
+                }
+            })
             ->editColumn('created_at', function(Invoice $invoice){
                 return $invoice->created_at->format('yy-m-d: h:m');
             })
@@ -140,6 +149,7 @@ class InvoiceController extends Controller
             $iva        = $request->iva;
             $idP        = $request->idP;
             $pay        = $request->pay;
+            $advance = $request->advance;
 
             $invoice                    = new Invoice();
             $invoice->user_id           = Auth::user()->id;
