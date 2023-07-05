@@ -18,6 +18,7 @@
                         <th>Id</th>
                         <th>Codigo</th>
                         <th>Nombre</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -40,6 +41,7 @@
         {data: 'id'},
         {data: 'code'},
         {data: 'name'},
+        {data: 'status'},
         {data: 'edit'},
         ],
         dom: 'Bfrtilp',
