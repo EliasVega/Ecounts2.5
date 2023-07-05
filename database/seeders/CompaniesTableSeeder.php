@@ -23,12 +23,12 @@ class CompaniesTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'name' => 'RECICLADORA MINAS S.A.S.',
-                'nit' => '901243098',
+                'name' => 'Ecounts',
+                'nit' => '123456789',
                 'dv' => '3',
-                'email' => 'chatarreriaminas@hotmail.com',
-                'emailfe' => 'chatarreriaminas@hotmail.com',
-                'logo' => 'noimagen.jpg',
+                'email' => 'ecounts@gmail.com',
+                'emailfe' => 'ecountsfe@gmail.com',
+                'logo' => '1687435626.jpg',
                 'department_id' => 21,
                 'municipality_id' => 846,
                 'liability_id' => 1,
