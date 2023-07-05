@@ -26,6 +26,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'spray pequeño',
                 'code' => '04',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             1 =>
             array (
@@ -33,6 +35,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'levantar',
                 'code' => '05',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             2 =>
             array (
@@ -40,6 +44,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Lote calor',
                 'code' => '08',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             3 =>
             array (
@@ -47,6 +53,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'grupo',
                 'code' => '10',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             4 =>
             array (
@@ -54,6 +62,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'equipar',
                 'code' => '11',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             5 =>
             array (
@@ -61,6 +71,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ración',
                 'code' => '13',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             6 =>
             array (
@@ -68,6 +80,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Disparo',
                 'code' => '14',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             7 =>
             array (
@@ -75,6 +89,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'palo',
                 'code' => '15',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             8 =>
             array (
@@ -82,6 +98,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tambor de ciento quince kg',
                 'code' => '16',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             9 =>
             array (
@@ -89,6 +107,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tambor de cien libras',
                 'code' => '17',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             10 =>
             array (
@@ -96,6 +116,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'tambor de cincuenta y cinco galones (US)',
                 'code' => '18',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             11 =>
             array (
@@ -103,6 +125,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'camión cisterna',
                 'code' => '19',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             12 =>
             array (
@@ -110,6 +134,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'contenedor de veinte pies',
                 'code' => '20',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             13 =>
             array (
@@ -117,6 +143,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'contenedor de cuarenta pies',
                 'code' => '21',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             14 =>
             array (
@@ -124,6 +152,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decilitro por gramo',
                 'code' => '22',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             15 =>
             array (
@@ -131,6 +161,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por centímetro cúbico',
                 'code' => '23',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             16 =>
             array (
@@ -138,6 +170,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra teórica',
                 'code' => '24',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             17 =>
             array (
@@ -145,6 +179,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por centímetro cuadrado',
                 'code' => '25',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             18 =>
             array (
@@ -152,6 +188,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada real',
                 'code' => '26',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             19 =>
             array (
@@ -159,6 +197,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada teórica',
                 'code' => '27',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             20 =>
             array (
@@ -166,6 +206,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por metro cuadrado',
                 'code' => '28',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             21 =>
             array (
@@ -173,6 +215,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por mil pies cuadrados',
                 'code' => '29',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             22 =>
             array (
@@ -180,6 +224,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Día de potencia del caballo por tonelada métrica seca al aire.',
                 'code' => '30',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             23 =>
             array (
@@ -187,6 +233,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'coger peso',
                 'code' => '31',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             24 =>
             array (
@@ -194,6 +242,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por aire seco tonelada métrica',
                 'code' => '32',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             25 =>
             array (
@@ -201,6 +251,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilopascales metros cuadrados por gramo',
                 'code' => '33',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             26 =>
             array (
@@ -208,6 +260,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilopascales por milímetro',
                 'code' => '34',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             27 =>
             array (
@@ -215,6 +269,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mililitros por centímetro cuadrado segundo',
                 'code' => '35',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             28 =>
             array (
@@ -222,6 +278,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pies cúbicos por minuto por pie cuadrado',
                 'code' => '36',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             29 =>
             array (
@@ -229,6 +287,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onza por pie cuadrado',
                 'code' => '37',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             30 =>
             array (
@@ -236,6 +296,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onzas por pie cuadrado por 0,01 pulgadas',
                 'code' => '38',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             31 =>
             array (
@@ -243,6 +305,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mililitro por segundo',
                 'code' => '40',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             32 =>
             array (
@@ -250,6 +314,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mililitro por minuto',
                 'code' => '41',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             33 =>
             array (
@@ -257,6 +323,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolsa súper a granel',
                 'code' => '43',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             34 =>
             array (
@@ -264,6 +332,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolsa a granel de quinientos kg',
                 'code' => '44',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             35 =>
             array (
@@ -271,6 +341,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolsa a granel de trescientos kg',
                 'code' => '45',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             36 =>
             array (
@@ -278,6 +350,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolsa a granel de cincuenta libras',
                 'code' => '46',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             37 =>
             array (
@@ -285,6 +359,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolsa de cincuenta libras',
                 'code' => '47',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             38 =>
             array (
@@ -292,6 +368,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'carga de automóviles a granel',
                 'code' => '48',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             39 =>
             array (
@@ -299,6 +377,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramos teóricos',
                 'code' => '53',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             40 =>
             array (
@@ -306,6 +386,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada teórica',
                 'code' => '54',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             41 =>
             array (
@@ -313,6 +395,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sitas',
                 'code' => '56',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             42 =>
             array (
@@ -320,6 +404,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'malla',
                 'code' => '57',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             43 =>
             array (
@@ -327,6 +413,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo neto',
                 'code' => '58',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             44 =>
             array (
@@ -334,6 +422,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'parte por millón',
                 'code' => '59',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             45 =>
             array (
@@ -341,6 +431,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'porcentaje de peso',
                 'code' => '60',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             46 =>
             array (
@@ -348,6 +440,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'parte por billón (US)',
                 'code' => '61',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             47 =>
             array (
@@ -355,6 +449,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'porcentaje por 1000 horas',
                 'code' => '62',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             48 =>
             array (
@@ -362,6 +458,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tasa de fracaso en el tiempo',
                 'code' => '63',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             49 =>
             array (
@@ -369,6 +467,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pulgada cuadrada calibre',
                 'code' => '64',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             50 =>
             array (
@@ -376,6 +476,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Oersted',
                 'code' => '66',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             51 =>
             array (
@@ -383,6 +485,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'prueba de escala específica',
                 'code' => '69',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             52 =>
             array (
@@ -390,6 +494,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltio amperio por libra',
                 'code' => '71',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             53 =>
             array (
@@ -397,6 +503,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatio por libra',
                 'code' => '72',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             54 =>
             array (
@@ -404,6 +512,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio tum por centímetro',
                 'code' => '73',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             55 =>
             array (
@@ -411,6 +521,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milipascal',
                 'code' => '74',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             56 =>
             array (
@@ -418,6 +530,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gauss',
                 'code' => '76',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             57 =>
             array (
@@ -425,6 +539,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mili pulgadas',
                 'code' => '77',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             58 =>
             array (
@@ -432,6 +548,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogauss',
                 'code' => '78',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             59 =>
             array (
@@ -439,6 +557,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libras por pulgada cuadrada absoluta',
                 'code' => '80',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             60 =>
             array (
@@ -446,6 +566,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Enrique',
                 'code' => '81',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             61 =>
             array (
@@ -453,6 +575,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilopound por pulgada cuadrada',
                 'code' => '84',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             62 =>
             array (
@@ -460,6 +584,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'fuerza libra pie',
                 'code' => '85',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             63 =>
             array (
@@ -467,6 +593,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pie cúbico',
                 'code' => '87',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             64 =>
             array (
@@ -474,6 +602,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'equilibrio',
                 'code' => '89',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             65 =>
             array (
@@ -481,6 +611,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Saybold segundo universal',
                 'code' => '90',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             66 =>
             array (
@@ -488,6 +620,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'alimenta',
                 'code' => '91',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             67 =>
             array (
@@ -495,6 +629,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'calorías por centímetro cúbico',
                 'code' => '92',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             68 =>
             array (
@@ -502,6 +638,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'calorías por gramo',
                 'code' => '93',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             69 =>
             array (
@@ -509,6 +647,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad',
                 'code' => '94',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             70 =>
             array (
@@ -516,6 +656,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'veinte mil galones (US) de carros',
                 'code' => '95',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             71 =>
             array (
@@ -523,6 +665,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'diez mil galones (US) de carros',
                 'code' => '96',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             72 =>
             array (
@@ -530,6 +674,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tambor de diez kg',
                 'code' => '97',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             73 =>
             array (
@@ -537,6 +683,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tambor de quince kg',
                 'code' => '98',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             74 =>
             array (
@@ -544,6 +692,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla de coche',
                 'code' => '1ª',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             75 =>
             array (
@@ -551,6 +701,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'recuento de coches',
                 'code' => '1B',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             76 =>
             array (
@@ -558,6 +710,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'recuento de locomotoras',
                 'code' => '1C',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             77 =>
             array (
@@ -565,6 +719,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'recuento de cabos',
                 'code' => '1D',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             78 =>
             array (
@@ -572,6 +728,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'carro vacio',
                 'code' => '1E',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             79 =>
             array (
@@ -579,6 +737,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millas de tren',
                 'code' => '1F',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             80 =>
             array (
@@ -586,6 +746,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'uso de combustible galón (US)',
                 'code' => '1G',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             81 =>
             array (
@@ -593,6 +755,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla del caboose',
                 'code' => '1H',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             82 =>
             array (
@@ -600,6 +764,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tipo de interés fijo',
                 'code' => '1I',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             83 =>
             array (
@@ -607,6 +773,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada milla',
                 'code' => '1J',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             84 =>
             array (
@@ -614,6 +782,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla locomotora',
                 'code' => '1K',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             85 =>
             array (
@@ -621,6 +791,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'recuento total de coches',
                 'code' => '1L',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             86 =>
             array (
@@ -628,6 +800,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla de coche total',
                 'code' => '1M',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             87 =>
             array (
@@ -635,6 +809,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cuarto de milla',
                 'code' => '1X',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             88 =>
             array (
@@ -642,6 +818,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'radianes por segundo',
                 'code' => '2ª',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             89 =>
             array (
@@ -649,6 +827,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'radianes por segundo al cuadrado',
                 'code' => '2B',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             90 =>
             array (
@@ -656,6 +836,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Röntgen',
                 'code' => '2C',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             91 =>
             array (
@@ -663,6 +845,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad térmica británica por hora.',
                 'code' => '2I',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             92 =>
             array (
@@ -670,6 +854,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro cúbico por segundo',
                 'code' => '2J',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             93 =>
             array (
@@ -677,6 +863,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie cúbico por hora',
                 'code' => '2K',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             94 =>
             array (
@@ -684,6 +872,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie cúbico por minuto',
                 'code' => '2L',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             95 =>
             array (
@@ -691,6 +881,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro por segundo',
                 'code' => '2M',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             96 =>
             array (
@@ -698,6 +890,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decibel',
                 'code' => '2N',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             97 =>
             array (
@@ -705,6 +899,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilobyte',
                 'code' => '2P',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             98 =>
             array (
@@ -712,6 +908,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilobecquerel',
                 'code' => '2Q',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             99 =>
             array (
@@ -719,6 +917,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilocurie',
                 'code' => '2R',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             100 =>
             array (
@@ -726,6 +926,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megagramo',
                 'code' => '2U',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             101 =>
             array (
@@ -733,6 +935,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megagramo por hora',
                 'code' => '2V',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             102 =>
             array (
@@ -740,6 +944,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'compartimiento',
                 'code' => '2W',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             103 =>
             array (
@@ -747,6 +953,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro por minuto',
                 'code' => '2X',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             104 =>
             array (
@@ -754,6 +962,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milliröntgen',
                 'code' => '2Y',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             105 =>
             array (
@@ -761,6 +971,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milivoltios',
                 'code' => '2Z',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             106 =>
             array (
@@ -768,6 +980,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megajulio',
                 'code' => '3B',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             107 =>
             array (
@@ -775,6 +989,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'manmonth',
                 'code' => '3C',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             108 =>
             array (
@@ -782,6 +998,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por libra de producto',
                 'code' => '3E',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             109 =>
             array (
@@ -789,6 +1007,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pieza de producto',
                 'code' => '3G',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             110 =>
             array (
@@ -796,6 +1016,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por kilogramo de producto',
                 'code' => '3H',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             111 =>
             array (
@@ -803,6 +1025,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por pieza de producto',
                 'code' => '3I',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             112 =>
             array (
@@ -810,6 +1034,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bobina',
                 'code' => '4ª',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             113 =>
             array (
@@ -817,6 +1043,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gorra',
                 'code' => '4B',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             114 =>
             array (
@@ -824,6 +1052,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centistokes',
                 'code' => '4C',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             115 =>
             array (
@@ -831,6 +1061,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de veinte',
                 'code' => '4E',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             116 =>
             array (
@@ -838,6 +1070,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microlitro',
                 'code' => '4G',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             117 =>
             array (
@@ -845,6 +1079,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'micrometro',
                 'code' => '4H',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             118 =>
             array (
@@ -852,6 +1088,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miliamperio',
                 'code' => '4K',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             119 =>
             array (
@@ -859,6 +1097,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megabyte',
                 'code' => '4L',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             120 =>
             array (
@@ -866,6 +1106,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo por hora',
                 'code' => '4M',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             121 =>
             array (
@@ -873,6 +1115,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megabecquerel',
                 'code' => '4N',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             122 =>
             array (
@@ -880,6 +1124,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microfarad',
                 'code' => '4º',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             123 =>
             array (
@@ -887,6 +1133,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton por metro',
                 'code' => '4P',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             124 =>
             array (
@@ -894,6 +1142,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onza pulgada',
                 'code' => '4Q',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             125 =>
             array (
@@ -901,6 +1151,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie onza',
                 'code' => '4R',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             126 =>
             array (
@@ -908,6 +1160,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picofarad',
                 'code' => '4T',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             127 =>
             array (
@@ -915,6 +1169,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por hora',
                 'code' => '4U',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             128 =>
             array (
@@ -922,6 +1178,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'tonelada (US) por hora',
                 'code' => '4W',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             129 =>
             array (
@@ -929,6 +1187,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilolitro por hora',
                 'code' => '4X',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             130 =>
             array (
@@ -936,6 +1196,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barril por minuto',
                 'code' => '5ª',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             131 =>
             array (
@@ -943,6 +1205,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lote',
                 'code' => '5B',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             132 =>
             array (
@@ -950,6 +1214,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'galón (US) por mil',
                 'code' => '5C',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             133 =>
             array (
@@ -957,6 +1223,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'MMSCF / día',
                 'code' => '5E',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             134 =>
             array (
@@ -964,6 +1232,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libras por mil',
                 'code' => '5F',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             135 =>
             array (
@@ -971,6 +1241,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bomba',
                 'code' => '5G',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             136 =>
             array (
@@ -978,6 +1250,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'escenario',
                 'code' => '5H',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             137 =>
             array (
@@ -985,6 +1259,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie cúbico estándar',
                 'code' => '5I',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             138 =>
             array (
@@ -992,6 +1268,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'potencia hidráulica de caballos',
                 'code' => '5J',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             139 =>
             array (
@@ -999,6 +1277,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'contar por minuto',
                 'code' => '5K',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             140 =>
             array (
@@ -1006,6 +1286,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nivel sismico',
                 'code' => '5P',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             141 =>
             array (
@@ -1013,6 +1295,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nfor sismica',
                 'code' => '5Q',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             142 =>
             array (
@@ -1020,6 +1304,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => '15 calorías C',
                 'code' => 'A1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             143 =>
             array (
@@ -1027,6 +1313,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio metro cuadrado por joule segundo',
                 'code' => 'A10',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             144 =>
             array (
@@ -1034,6 +1322,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Ã ¥ ngström',
                 'code' => 'A11',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             145 =>
             array (
@@ -1041,6 +1331,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'unidad astronómica',
                 'code' => 'A12',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             146 =>
             array (
@@ -1048,6 +1340,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'attojoule',
                 'code' => 'A13',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             147 =>
             array (
@@ -1055,6 +1349,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'granero',
                 'code' => 'A14',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             148 =>
             array (
@@ -1062,6 +1358,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'granero por electrón voltio',
                 'code' => 'A15',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             149 =>
             array (
@@ -1069,6 +1367,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'granero por voltio de electrones esteradiano',
                 'code' => 'A16',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             150 =>
             array (
@@ -1076,6 +1376,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'granero por sterdian',
                 'code' => 'A17',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             151 =>
             array (
@@ -1083,6 +1385,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'becquerel por kilogramo',
                 'code' => 'A18',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             152 =>
             array (
@@ -1090,6 +1394,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'becquerel por metro cúbico',
                 'code' => 'A19',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             153 =>
             array (
@@ -1097,6 +1403,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por centímetro',
                 'code' => 'A2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             154 =>
             array (
@@ -1104,6 +1412,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad térmica británica por segundo pie cuadrado grado Rankin',
                 'code' => 'A20',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             155 =>
             array (
@@ -1111,6 +1421,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad térmica británica por libra grado Rankin',
                 'code' => 'A21',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             156 =>
             array (
@@ -1118,6 +1430,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad térmica británica por segundo pie grado Rankin',
                 'code' => 'A22',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             157 =>
             array (
@@ -1125,6 +1439,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad térmica británica por hora pie cuadrado grado Rankin',
                 'code' => 'A23',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             158 =>
             array (
@@ -1132,6 +1448,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'candela por metro cuadrado',
                 'code' => 'A24',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             159 =>
             array (
@@ -1139,6 +1457,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cheval vapeur',
                 'code' => 'A25',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             160 =>
             array (
@@ -1146,6 +1466,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de culombio',
                 'code' => 'A26',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             161 =>
             array (
@@ -1153,6 +1475,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de culombio al cuadrado por voltio',
                 'code' => 'A27',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             162 =>
             array (
@@ -1160,6 +1484,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por centímetro cúbico',
                 'code' => 'A28',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             163 =>
             array (
@@ -1167,6 +1493,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por metro cúbico',
                 'code' => 'A29',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             164 =>
             array (
@@ -1174,6 +1502,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por milímetro',
                 'code' => 'A3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             165 =>
             array (
@@ -1181,6 +1511,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por milímetro cúbico',
                 'code' => 'A30',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             166 =>
             array (
@@ -1188,6 +1520,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por kilogramo segundo',
                 'code' => 'A31',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             167 =>
             array (
@@ -1195,6 +1529,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por mol',
                 'code' => 'A32',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             168 =>
             array (
@@ -1202,6 +1538,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por centímetro cuadrado',
                 'code' => 'A33',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             169 =>
             array (
@@ -1209,6 +1547,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por metro cuadrado',
                 'code' => 'A34',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             170 =>
             array (
@@ -1216,6 +1556,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por milímetro cuadrado',
                 'code' => 'A35',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             171 =>
             array (
@@ -1223,6 +1565,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro cúbico por mol',
                 'code' => 'A36',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             172 =>
             array (
@@ -1230,6 +1574,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nformaci cúbico por mol',
                 'code' => 'A37',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             173 =>
             array (
@@ -1237,6 +1583,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico por coulomb',
                 'code' => 'A38',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             174 =>
             array (
@@ -1244,6 +1592,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico por kilogramo',
                 'code' => 'A39',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             175 =>
             array (
@@ -1251,6 +1601,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por centímetro cuadrado',
                 'code' => 'A4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             176 =>
             array (
@@ -1258,6 +1610,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico por mol',
                 'code' => 'A40',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             177 =>
             array (
@@ -1265,6 +1619,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por metro cuadrado',
                 'code' => 'A41',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             178 =>
             array (
@@ -1272,6 +1628,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'curie por kilogramo',
                 'code' => 'A42',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             179 =>
             array (
@@ -1279,6 +1637,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelaje de peso muerto',
                 'code' => 'A43',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             180 =>
             array (
@@ -1286,6 +1646,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decalitro',
                 'code' => 'A44',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             181 =>
             array (
@@ -1293,6 +1655,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decámetro',
                 'code' => 'A45',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             182 =>
             array (
@@ -1300,6 +1664,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decitex',
                 'code' => 'A47',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             183 =>
             array (
@@ -1307,6 +1673,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'grado Rankin',
                 'code' => 'A48',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             184 =>
             array (
@@ -1314,6 +1682,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'negador',
                 'code' => 'A49',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             185 =>
             array (
@@ -1321,6 +1691,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio metro cuadrado',
                 'code' => 'A5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             186 =>
             array (
@@ -1328,6 +1700,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dyn segundo por centímetro cúbico',
                 'code' => 'A50',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             187 =>
             array (
@@ -1335,6 +1709,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dina segundo por centímetro',
                 'code' => 'A51',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             188 =>
             array (
@@ -1342,6 +1718,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dina segundo por centímetro al quinto',
                 'code' => 'A52',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             189 =>
             array (
@@ -1349,6 +1727,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'electronvolt',
                 'code' => 'A53',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             190 =>
             array (
@@ -1356,6 +1736,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'electronvoltio por metro',
                 'code' => 'A54',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             191 =>
             array (
@@ -1363,6 +1745,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro electronvolt cuadrado',
                 'code' => 'A55',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             192 =>
             array (
@@ -1370,6 +1754,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'electronvoltio de metro cuadrado por kilogramo',
                 'code' => 'A56',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             193 =>
             array (
@@ -1377,6 +1763,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ergio',
                 'code' => 'A57',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             194 =>
             array (
@@ -1384,6 +1772,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por centímetro',
                 'code' => 'A58',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             195 =>
             array (
@@ -1391,6 +1781,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por metro cuadrado kelvin al cuadrado',
                 'code' => 'A6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             196 =>
             array (
@@ -1398,6 +1790,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por centímetro cúbico',
                 'code' => 'A60',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             197 =>
             array (
@@ -1405,6 +1799,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por gramo',
                 'code' => 'A61',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             198 =>
             array (
@@ -1412,6 +1808,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por gramo de segundo',
                 'code' => 'A62',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             199 =>
             array (
@@ -1419,6 +1817,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por segundo',
                 'code' => 'A63',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             200 =>
             array (
@@ -1426,6 +1826,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por segundo centímetro cuadrado',
                 'code' => 'A64',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             201 =>
             array (
@@ -1433,6 +1835,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg por centímetro cuadrado segundo',
                 'code' => 'A65',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             202 =>
             array (
@@ -1440,6 +1844,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'erg centímetro cuadrado',
                 'code' => 'A66',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             203 =>
             array (
@@ -1447,6 +1853,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ergímetro cuadrado por gramo',
                 'code' => 'A67',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             204 =>
             array (
@@ -1454,6 +1862,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'exajulio',
                 'code' => 'A68',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             205 =>
             array (
@@ -1461,6 +1871,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'faradio por metro',
                 'code' => 'A69',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             206 =>
             array (
@@ -1468,6 +1880,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por milímetro cuadrado',
                 'code' => 'A7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             207 =>
             array (
@@ -1475,6 +1889,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'femtojoule',
                 'code' => 'A70',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             208 =>
             array (
@@ -1482,6 +1898,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'femtometro',
                 'code' => 'A71',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             209 =>
             array (
@@ -1489,6 +1907,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie por segundo al cuadrado',
                 'code' => 'A73',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             210 =>
             array (
@@ -1496,6 +1916,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie-fuerza de la libra por segundo',
                 'code' => 'A74',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             211 =>
             array (
@@ -1503,6 +1925,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada de carga',
                 'code' => 'A75',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             212 =>
             array (
@@ -1510,6 +1934,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón',
                 'code' => 'A76',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             213 =>
             array (
@@ -1517,6 +1943,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad de desplazamiento CGS gaussiana',
                 'code' => 'A77',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             214 =>
             array (
@@ -1524,6 +1952,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad gaussiana CGS de corriente eléctrica.',
                 'code' => 'A78',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             215 =>
             array (
@@ -1531,6 +1961,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad Gaussian CGS de carga eléctrica.',
                 'code' => 'A79',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             216 =>
             array (
@@ -1538,6 +1970,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio segundo',
                 'code' => 'A8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             217 =>
             array (
@@ -1545,6 +1979,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad Gaussian CGS de intensidad de campo eléctrico.',
                 'code' => 'A80',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             218 =>
             array (
@@ -1552,6 +1988,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad Gaussian CGS de polarización eléctrica.',
                 'code' => 'A81',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             219 =>
             array (
@@ -1559,6 +1997,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad Gaussian CGS de potencial eléctrico.',
                 'code' => 'A82',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             220 =>
             array (
@@ -1566,6 +2006,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad Gaussiana CGS de magnetización.',
                 'code' => 'A83',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             221 =>
             array (
@@ -1573,6 +2015,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigacoulomb por metro cúbico',
                 'code' => 'A84',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             222 =>
             array (
@@ -1580,6 +2024,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Gigaelectronvolt',
                 'code' => 'A85',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             223 =>
             array (
@@ -1587,6 +2033,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigahercios',
                 'code' => 'A86',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             224 =>
             array (
@@ -1594,6 +2042,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigaohm',
                 'code' => 'A87',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             225 =>
             array (
@@ -1601,6 +2051,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de gigaohm',
                 'code' => 'A88',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             226 =>
             array (
@@ -1608,6 +2060,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigapascal',
                 'code' => 'A89',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             227 =>
             array (
@@ -1615,6 +2069,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tarifa',
                 'code' => 'A9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             228 =>
             array (
@@ -1622,6 +2078,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigavatios',
                 'code' => 'A90',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             229 =>
             array (
@@ -1629,6 +2087,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gon',
                 'code' => 'A91',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             230 =>
             array (
@@ -1636,6 +2096,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por metro cúbico',
                 'code' => 'A93',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             231 =>
             array (
@@ -1643,6 +2105,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por mol',
                 'code' => 'A94',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             232 =>
             array (
@@ -1650,6 +2114,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gris',
                 'code' => 'A95',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             233 =>
             array (
@@ -1657,6 +2123,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gris por segundo',
                 'code' => 'A96',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             234 =>
             array (
@@ -1664,6 +2132,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectopascal',
                 'code' => 'A97',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             235 =>
             array (
@@ -1671,6 +2141,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Henry por metro',
                 'code' => 'A98',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             236 =>
             array (
@@ -1678,6 +2150,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bola',
                 'code' => 'AA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             237 =>
             array (
@@ -1685,6 +2159,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete a granel',
                 'code' => 'AB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             238 =>
             array (
@@ -1692,6 +2168,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'acre',
                 'code' => 'ACR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             239 =>
             array (
@@ -1699,6 +2177,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'byte',
                 'code' => 'AD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             240 =>
             array (
@@ -1706,6 +2186,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio por metro',
                 'code' => 'AE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             241 =>
             array (
@@ -1713,6 +2195,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'minuto adicional',
                 'code' => 'AH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             242 =>
             array (
@@ -1720,6 +2204,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'minuto promedio por llamada',
                 'code' => 'AI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             243 =>
             array (
@@ -1727,6 +2213,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'policía',
                 'code' => 'AJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             244 =>
             array (
@@ -1734,6 +2222,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'braza',
                 'code' => 'AK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             245 =>
             array (
@@ -1741,6 +2231,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nfor de acceso',
                 'code' => 'AL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             246 =>
             array (
@@ -1748,6 +2240,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ampolla',
                 'code' => 'AM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             247 =>
             array (
@@ -1755,6 +2249,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora amperio',
                 'code' => 'AMH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             248 =>
             array (
@@ -1762,6 +2258,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'amperio',
                 'code' => 'AMP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             249 =>
             array (
@@ -1769,6 +2267,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'año',
                 'code' => 'ANA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             250 =>
             array (
@@ -1776,6 +2276,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'solo libra de aluminio',
                 'code' => 'AP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             251 =>
             array (
@@ -1783,6 +2285,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onza troy o onza de boticarios',
                 'code' => 'APZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             252 =>
             array (
@@ -1790,6 +2294,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Unidad de factor antihemofílico (AHF)',
                 'code' => 'AQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             253 =>
             array (
@@ -1797,6 +2303,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'supositorio',
                 'code' => 'AR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             254 =>
             array (
@@ -1804,6 +2312,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'son',
                 'code' => 'SON',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             255 =>
             array (
@@ -1811,6 +2321,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'surtido',
                 'code' => 'COMO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             256 =>
             array (
@@ -1818,6 +2330,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'fuerza alcohólica en masa',
                 'code' => 'ASM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             257 =>
             array (
@@ -1825,6 +2339,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'fuerza alcohólica por volumen',
                 'code' => 'ASU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             258 =>
             array (
@@ -1832,6 +2348,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ambiente estándar',
                 'code' => 'ATM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             259 =>
             array (
@@ -1839,6 +2357,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ambiente técnico',
                 'code' => 'ATT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             260 =>
             array (
@@ -1846,6 +2366,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cápsula',
                 'code' => 'AV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             261 =>
             array (
@@ -1853,6 +2375,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vial lleno de polvo',
                 'code' => 'AW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             262 =>
             array (
@@ -1860,6 +2384,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'montaje',
                 'code' => 'SÍ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             263 =>
             array (
@@ -1867,6 +2393,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad térmica británica por libra',
                 'code' => 'AZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             264 =>
             array (
@@ -1874,6 +2402,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Btu por pie cúbico',
                 'code' => 'B0',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             265 =>
             array (
@@ -1881,6 +2411,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'barril (US) por día',
                 'code' => 'B1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             266 =>
             array (
@@ -1888,6 +2420,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por kilogramo kelvin',
                 'code' => 'B11',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             267 =>
             array (
@@ -1895,6 +2429,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por metro',
                 'code' => 'B12',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             268 =>
             array (
@@ -1902,6 +2438,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por metro cuadrado',
                 'code' => 'B13',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             269 =>
             array (
@@ -1909,6 +2447,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por metro a la cuarta potencia',
                 'code' => 'B14',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             270 =>
             array (
@@ -1916,6 +2456,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por mol',
                 'code' => 'B15',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             271 =>
             array (
@@ -1923,6 +2465,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por mol kelvin',
                 'code' => 'B16',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             272 =>
             array (
@@ -1930,6 +2474,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'joule segundo',
                 'code' => 'B18',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             273 =>
             array (
@@ -1937,6 +2483,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litera',
                 'code' => 'B2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             274 =>
             array (
@@ -1944,6 +2492,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'joule metro cuadrado por kilogramo',
                 'code' => 'B20',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             275 =>
             array (
@@ -1951,6 +2501,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kelvin por vatio',
                 'code' => 'B21',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             276 =>
             array (
@@ -1958,6 +2510,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Kiloampere',
                 'code' => 'B22',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             277 =>
             array (
@@ -1965,6 +2519,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kiloampere por metro cuadrado',
                 'code' => 'B23',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             278 =>
             array (
@@ -1972,6 +2528,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kiloampere por metro',
                 'code' => 'B24',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             279 =>
             array (
@@ -1979,6 +2537,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilobecquerel por kilogramo',
                 'code' => 'B25',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             280 =>
             array (
@@ -1986,6 +2546,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilocoulomb',
                 'code' => 'B26',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             281 =>
             array (
@@ -1993,6 +2555,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilocoulomb por metro cúbico',
                 'code' => 'B27',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             282 =>
             array (
@@ -2000,6 +2564,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilocoulomb por metro cuadrado',
                 'code' => 'B28',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             283 =>
             array (
@@ -2007,6 +2573,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kiloelectronvolt',
                 'code' => 'B29',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             284 =>
             array (
@@ -2014,6 +2582,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra de bateo',
                 'code' => 'B3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             285 =>
             array (
@@ -2021,6 +2591,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo metro por segundo',
                 'code' => 'B31',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             286 =>
             array (
@@ -2028,6 +2600,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo metro cuadrado',
                 'code' => 'B32',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             287 =>
             array (
@@ -2035,6 +2609,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo metro cuadrado por segundo',
                 'code' => 'B33',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             288 =>
             array (
@@ -2042,6 +2618,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por decímetro cúbico',
                 'code' => 'B34',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             289 =>
             array (
@@ -2049,6 +2627,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por litro',
                 'code' => 'B35',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             290 =>
             array (
@@ -2056,6 +2636,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caloría termoquímica por gramo',
                 'code' => 'B36',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             291 =>
             array (
@@ -2063,6 +2645,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de fuerza',
                 'code' => 'B37',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             292 =>
             array (
@@ -2070,6 +2654,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro de fuerza de kilogramo',
                 'code' => 'B38',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             293 =>
             array (
@@ -2077,6 +2663,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro de fuerza de kilogramo por segundo',
                 'code' => 'B39',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             294 =>
             array (
@@ -2084,6 +2672,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barril imperial',
                 'code' => 'B4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             295 =>
             array (
@@ -2091,6 +2681,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de fuerza por metro cuadrado',
                 'code' => 'B40',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             296 =>
             array (
@@ -2098,6 +2690,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilojoule per kelvin',
                 'code' => 'B41',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             297 =>
             array (
@@ -2105,6 +2699,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilojoule por kilogramo',
                 'code' => 'B42',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             298 =>
             array (
@@ -2112,6 +2708,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilojoule por kilogramo kelvin',
                 'code' => 'B43',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             299 =>
             array (
@@ -2119,6 +2717,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilojoule por mol',
                 'code' => 'B44',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             300 =>
             array (
@@ -2126,6 +2726,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilomol',
                 'code' => 'B45',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             301 =>
             array (
@@ -2133,6 +2735,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilomol por metro cúbico',
                 'code' => 'B46',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             302 =>
             array (
@@ -2140,6 +2744,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Kilonewton',
                 'code' => 'B47',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             303 =>
             array (
@@ -2147,6 +2753,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de kilonewton',
                 'code' => 'B48',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             304 =>
             array (
@@ -2154,6 +2762,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kiloohm',
                 'code' => 'B49',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             305 =>
             array (
@@ -2161,6 +2771,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'palanquilla',
                 'code' => 'B5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             306 =>
             array (
@@ -2168,6 +2780,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de kiloohm',
                 'code' => 'B50',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             307 =>
             array (
@@ -2175,6 +2789,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilopond',
                 'code' => 'B51',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             308 =>
             array (
@@ -2182,6 +2798,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilosegundo',
                 'code' => 'B52',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             309 =>
             array (
@@ -2189,6 +2807,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilosiemens',
                 'code' => 'B53',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             310 =>
             array (
@@ -2196,6 +2816,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilosiemens por metro',
                 'code' => 'B54',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             311 =>
             array (
@@ -2203,6 +2825,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovoltios por metro',
                 'code' => 'B55',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             312 =>
             array (
@@ -2210,6 +2834,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kiloveber por metro',
                 'code' => 'B56',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             313 =>
             array (
@@ -2217,6 +2843,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'año luz',
                 'code' => 'B57',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             314 =>
             array (
@@ -2224,6 +2852,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litro por mol',
                 'code' => 'B58',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             315 =>
             array (
@@ -2231,6 +2861,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora lumen',
                 'code' => 'B59',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             316 =>
             array (
@@ -2238,6 +2870,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bollo',
                 'code' => 'B6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             317 =>
             array (
@@ -2245,6 +2879,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lumen por metro cuadrado',
                 'code' => 'B60',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             318 =>
             array (
@@ -2252,6 +2888,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lumen por vatio',
                 'code' => 'B61',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             319 =>
             array (
@@ -2259,6 +2897,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lumen segundo',
                 'code' => 'B62',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             320 =>
             array (
@@ -2266,6 +2906,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora de lux',
                 'code' => 'B63',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             321 =>
             array (
@@ -2273,6 +2915,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lux segundo',
                 'code' => 'B64',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             322 =>
             array (
@@ -2280,6 +2924,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Maxwell',
                 'code' => 'B65',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             323 =>
             array (
@@ -2287,6 +2933,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megaamperios por metro cuadrado',
                 'code' => 'B66',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             324 =>
             array (
@@ -2294,6 +2942,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megabecquerel por kilogramo',
                 'code' => 'B67',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             325 =>
             array (
@@ -2301,6 +2951,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megacoulomb por metro cúbico',
                 'code' => 'B69',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             326 =>
             array (
@@ -2308,6 +2960,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ciclo',
                 'code' => 'B7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             327 =>
             array (
@@ -2315,6 +2969,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megacoulomb por metro cuadrado',
                 'code' => 'B70',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             328 =>
             array (
@@ -2322,6 +2978,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megaelectronvolt',
                 'code' => 'B71',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             329 =>
             array (
@@ -2329,6 +2987,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megagramo por metro cúbico',
                 'code' => 'B72',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             330 =>
             array (
@@ -2336,6 +2996,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'meganewton',
                 'code' => 'B73',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             331 =>
             array (
@@ -2343,6 +3005,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de meganewton',
                 'code' => 'B74',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             332 =>
             array (
@@ -2350,6 +3014,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megaohm',
                 'code' => 'B75',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             333 =>
             array (
@@ -2357,6 +3023,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro megaohm',
                 'code' => 'B76',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             334 =>
             array (
@@ -2364,6 +3032,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megasiemens por metro',
                 'code' => 'B77',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             335 =>
             array (
@@ -2371,6 +3041,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megavoltio',
                 'code' => 'B78',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             336 =>
             array (
@@ -2378,6 +3050,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megavolt por metro',
                 'code' => 'B79',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             337 =>
             array (
@@ -2385,6 +3059,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por metro cúbico',
                 'code' => 'B8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             338 =>
             array (
@@ -2392,6 +3068,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro recíproco cuadrado recíproco segundo',
                 'code' => 'B81',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             339 =>
             array (
@@ -2399,6 +3077,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro a la cuarta potencia',
                 'code' => 'B83',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             340 =>
             array (
@@ -2406,6 +3086,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microamperios',
                 'code' => 'B84',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             341 =>
             array (
@@ -2413,6 +3095,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microbar',
                 'code' => 'B85',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             342 =>
             array (
@@ -2420,6 +3104,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microcoulomb',
                 'code' => 'B86',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             343 =>
             array (
@@ -2427,6 +3113,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microcoulomb por metro cúbico',
                 'code' => 'B87',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             344 =>
             array (
@@ -2434,6 +3122,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microcoulomb por metro cuadrado',
                 'code' => 'B88',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             345 =>
             array (
@@ -2441,6 +3131,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microfarada por metro',
                 'code' => 'B89',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             346 =>
             array (
@@ -2448,6 +3140,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'batt',
                 'code' => 'B9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             347 =>
             array (
@@ -2455,6 +3149,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microhenry',
                 'code' => 'B90',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             348 =>
             array (
@@ -2462,6 +3158,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microhenry por metro',
                 'code' => 'B91',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             349 =>
             array (
@@ -2469,6 +3167,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'micronewton',
                 'code' => 'B92',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             350 =>
             array (
@@ -2476,6 +3176,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de micronewton',
                 'code' => 'B93',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             351 =>
             array (
@@ -2483,6 +3185,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microohm',
                 'code' => 'B94',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             352 =>
             array (
@@ -2490,6 +3194,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de microohmios',
                 'code' => 'B95',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             353 =>
             array (
@@ -2497,6 +3203,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'micropascal',
                 'code' => 'B96',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             354 =>
             array (
@@ -2504,6 +3212,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microradiano',
                 'code' => 'B97',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             355 =>
             array (
@@ -2511,6 +3221,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microsegundo',
                 'code' => 'B98',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             356 =>
             array (
@@ -2518,6 +3230,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microsiemens',
                 'code' => 'B99',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             357 =>
             array (
@@ -2525,6 +3239,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bar',
                 'code' => 'BAR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             358 =>
             array (
@@ -2532,6 +3248,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caja base',
                 'code' => 'BB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             359 =>
             array (
@@ -2539,6 +3257,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tablero',
                 'code' => 'BD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             360 =>
             array (
@@ -2546,6 +3266,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'haz',
                 'code' => 'SER',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             361 =>
             array (
@@ -2553,6 +3275,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie de tabla',
                 'code' => 'BFT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             362 =>
             array (
@@ -2560,6 +3284,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolso',
                 'code' => 'BG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             363 =>
             array (
@@ -2567,6 +3293,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cepillo',
                 'code' => 'BH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             364 =>
             array (
@@ -2574,6 +3302,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'potencia al freno',
                 'code' => 'BHP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             365 =>
             array (
@@ -2581,6 +3311,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'trillón de dólares',
                 'code' => 'BIL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             366 =>
             array (
@@ -2588,6 +3320,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cangilón',
                 'code' => 'BJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             367 =>
             array (
@@ -2595,6 +3329,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cesta',
                 'code' => 'BK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             368 =>
             array (
@@ -2602,6 +3338,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bala',
                 'code' => 'BL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             369 =>
             array (
@@ -2609,6 +3347,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barril seco',
                 'code' => 'BLD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             370 =>
             array (
@@ -2616,6 +3356,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'barril (EE. UU.) (petróleo etc.)',
                 'code' => 'BLL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             371 =>
             array (
@@ -2623,6 +3365,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'botella',
                 'code' => 'BO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             372 =>
             array (
@@ -2630,6 +3374,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien pies de tabla',
                 'code' => 'BP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             373 =>
             array (
@@ -2637,6 +3383,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'becquerel',
                 'code' => 'BQL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             374 =>
             array (
@@ -2644,6 +3392,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bar',
                 'code' => 'BR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             375 =>
             array (
@@ -2651,6 +3401,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tornillo',
                 'code' => 'BT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             376 =>
             array (
@@ -2658,6 +3410,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Unidad Térmica Británica',
                 'code' => 'BTU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             377 =>
             array (
@@ -2665,6 +3419,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'bushel (EE. UU.)',
                 'code' => 'BUA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             378 =>
             array (
@@ -2672,6 +3428,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'bushel (Reino Unido)',
                 'code' => 'BUI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             379 =>
             array (
@@ -2679,6 +3437,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'peso base',
                 'code' => 'BW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             380 =>
             array (
@@ -2686,6 +3446,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caja',
                 'code' => 'BX',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             381 =>
             array (
@@ -2693,6 +3455,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millones de BTUs',
                 'code' => 'BZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             382 =>
             array (
@@ -2700,6 +3464,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'llamada',
                 'code' => 'C0',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             383 =>
             array (
@@ -2707,6 +3473,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'producto compuesto libra (peso total)',
                 'code' => 'C1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             384 =>
             array (
@@ -2714,6 +3482,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millifarad',
                 'code' => 'C10',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             385 =>
             array (
@@ -2721,6 +3491,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligal',
                 'code' => 'C11',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             386 =>
             array (
@@ -2728,6 +3500,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo por metro',
                 'code' => 'C12',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             387 =>
             array (
@@ -2735,6 +3509,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligray',
                 'code' => 'C13',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             388 =>
             array (
@@ -2742,6 +3518,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milihenry',
                 'code' => 'C14',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             389 =>
             array (
@@ -2749,6 +3527,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milijoule',
                 'code' => 'C15',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             390 =>
             array (
@@ -2756,6 +3536,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro por segundo',
                 'code' => 'C16',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             391 =>
             array (
@@ -2763,6 +3545,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro cuadrado por segundo',
                 'code' => 'C17',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             392 =>
             array (
@@ -2770,6 +3554,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milimol',
                 'code' => 'C18',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             393 =>
             array (
@@ -2777,6 +3563,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mol por kilogramo',
                 'code' => 'C19',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             394 =>
             array (
@@ -2784,6 +3572,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'carset',
                 'code' => 'C2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             395 =>
             array (
@@ -2791,6 +3581,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millinewton',
                 'code' => 'C20',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             396 =>
             array (
@@ -2798,6 +3590,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millinewton por metro',
                 'code' => 'C22',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             397 =>
             array (
@@ -2805,6 +3599,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de miliohm',
                 'code' => 'C23',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             398 =>
             array (
@@ -2812,6 +3608,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo milipascal',
                 'code' => 'C24',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             399 =>
             array (
@@ -2819,6 +3617,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miliradian',
                 'code' => 'C25',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             400 =>
             array (
@@ -2826,6 +3626,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milisegundo',
                 'code' => 'C26',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             401 =>
             array (
@@ -2833,6 +3635,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milisiemens',
                 'code' => 'C27',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             402 =>
             array (
@@ -2840,6 +3644,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milisievert',
                 'code' => 'C28',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             403 =>
             array (
@@ -2847,6 +3653,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millitesla',
                 'code' => 'C29',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             404 =>
             array (
@@ -2854,6 +3662,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microvoltios por metro',
                 'code' => 'C3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             405 =>
             array (
@@ -2861,6 +3671,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milivoltios por metro',
                 'code' => 'C30',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             406 =>
             array (
@@ -2868,6 +3680,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milivatios',
                 'code' => 'C31',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             407 =>
             array (
@@ -2875,6 +3689,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milivatios por metro cuadrado',
                 'code' => 'C32',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             408 =>
             array (
@@ -2882,6 +3698,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milliweber',
                 'code' => 'C33',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             409 =>
             array (
@@ -2889,6 +3707,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Topo',
                 'code' => 'C34',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             410 =>
             array (
@@ -2896,6 +3716,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mol por decímetro cúbico',
                 'code' => 'C35',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             411 =>
             array (
@@ -2903,6 +3725,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mol por metro cúbico',
                 'code' => 'C36',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             412 =>
             array (
@@ -2910,6 +3734,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mol por litro',
                 'code' => 'C38',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             413 =>
             array (
@@ -2917,6 +3743,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Nanoampere',
                 'code' => 'C39',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             414 =>
             array (
@@ -2924,6 +3752,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'partido de carga',
                 'code' => 'C4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             415 =>
             array (
@@ -2931,6 +3761,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanocoulomb',
                 'code' => 'C40',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             416 =>
             array (
@@ -2938,6 +3770,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanofarad',
                 'code' => 'C41',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             417 =>
             array (
@@ -2945,6 +3779,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanofarad por metro',
                 'code' => 'C42',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             418 =>
             array (
@@ -2952,6 +3788,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanohenry',
                 'code' => 'C43',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             419 =>
             array (
@@ -2959,6 +3797,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanohenry por metro',
                 'code' => 'C44',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             420 =>
             array (
@@ -2966,6 +3806,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanometro',
                 'code' => 'C45',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             421 =>
             array (
@@ -2973,6 +3815,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de nanoohm',
                 'code' => 'C46',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             422 =>
             array (
@@ -2980,6 +3824,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanosegundo',
                 'code' => 'C47',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             423 =>
             array (
@@ -2987,6 +3833,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanotesla',
                 'code' => 'C48',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             424 =>
             array (
@@ -2994,6 +3842,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nanovatio',
                 'code' => 'C49',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             425 =>
             array (
@@ -3001,6 +3851,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'costo',
                 'code' => 'C5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             426 =>
             array (
@@ -3008,6 +3860,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'neper',
                 'code' => 'C50',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             427 =>
             array (
@@ -3015,6 +3869,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'neper por segundo',
                 'code' => 'C51',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             428 =>
             array (
@@ -3022,6 +3878,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picometro',
                 'code' => 'C52',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             429 =>
             array (
@@ -3029,6 +3887,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro de newton segundo',
                 'code' => 'C53',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             430 =>
             array (
@@ -3036,6 +3896,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton metro cuadrado kilogramo cuadrado',
                 'code' => 'C54',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             431 =>
             array (
@@ -3043,6 +3905,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton por metro cuadrado',
                 'code' => 'C55',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             432 =>
             array (
@@ -3050,6 +3914,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton por milímetro cuadrado',
                 'code' => 'C56',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             433 =>
             array (
@@ -3057,6 +3923,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton segundo',
                 'code' => 'C57',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             434 =>
             array (
@@ -3064,6 +3932,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton segundo por metro',
                 'code' => 'C58',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             435 =>
             array (
@@ -3071,6 +3941,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'octava',
                 'code' => 'C59',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             436 =>
             array (
@@ -3078,6 +3950,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'célula',
                 'code' => 'C6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             437 =>
             array (
@@ -3085,6 +3959,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ohm centímetro',
                 'code' => 'C60',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             438 =>
             array (
@@ -3092,6 +3968,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ohm metro',
                 'code' => 'C61',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             439 =>
             array (
@@ -3099,6 +3977,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'uno',
                 'code' => 'C62',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             440 =>
             array (
@@ -3106,6 +3986,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'parsec',
                 'code' => 'C63',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             441 =>
             array (
@@ -3113,6 +3995,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pascal por kelvin',
                 'code' => 'C64',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             442 =>
             array (
@@ -3120,6 +4004,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo pascal',
                 'code' => 'C65',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             443 =>
             array (
@@ -3127,6 +4013,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo pascal por metro cúbico',
                 'code' => 'C66',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             444 =>
             array (
@@ -3134,6 +4022,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo pascal por metro',
                 'code' => 'C67',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             445 =>
             array (
@@ -3141,6 +4031,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'petajoule',
                 'code' => 'C68',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             446 =>
             array (
@@ -3148,6 +4040,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'telefono',
                 'code' => 'C69',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             447 =>
             array (
@@ -3155,6 +4049,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centipoise',
                 'code' => 'C7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             448 =>
             array (
@@ -3162,6 +4058,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picoampere',
                 'code' => 'C70',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             449 =>
             array (
@@ -3169,6 +4067,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picocoulomb',
                 'code' => 'C71',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             450 =>
             array (
@@ -3176,6 +4076,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picofarad por metro',
                 'code' => 'C72',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             451 =>
             array (
@@ -3183,6 +4085,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picohenry',
                 'code' => 'C73',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             452 =>
             array (
@@ -3190,6 +4094,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picowatt',
                 'code' => 'C75',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             453 =>
             array (
@@ -3197,6 +4103,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'picowatt por metro cuadrado',
                 'code' => 'C76',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             454 =>
             array (
@@ -3204,6 +4112,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de libras',
                 'code' => 'C77',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             455 =>
             array (
@@ -3211,6 +4121,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'fuerza de libra',
                 'code' => 'C78',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             456 =>
             array (
@@ -3218,6 +4130,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Millicoulomb por kilogramo',
                 'code' => 'C8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             457 =>
             array (
@@ -3225,6 +4139,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'rad',
                 'code' => 'C80',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             458 =>
             array (
@@ -3232,6 +4148,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'radián',
                 'code' => 'C81',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             459 =>
             array (
@@ -3239,6 +4157,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de radianes al cuadrado por mol',
                 'code' => 'C82',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             460 =>
             array (
@@ -3246,6 +4166,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de radianes al cuadrado por kilogramo',
                 'code' => 'C83',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             461 =>
             array (
@@ -3253,6 +4175,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'radian por metro',
                 'code' => 'C84',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             462 =>
             array (
@@ -3260,6 +4184,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'â € ngstr recíproco “m',
                 'code' => 'C85',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             463 =>
             array (
@@ -3267,6 +4193,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico recíproco',
                 'code' => 'C86',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             464 =>
             array (
@@ -3274,6 +4202,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico recíproco por segundo',
                 'code' => 'C87',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             465 =>
             array (
@@ -3281,6 +4211,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltios de electrones recíprocos por metro cúbico',
                 'code' => 'C88',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             466 =>
             array (
@@ -3288,6 +4220,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Henry Recíproco',
                 'code' => 'C89',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             467 =>
             array (
@@ -3295,6 +4229,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'grupo de bobina',
                 'code' => 'C9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             468 =>
             array (
@@ -3302,6 +4238,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Joule recíproco por metro cúbico',
                 'code' => 'C90',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             469 =>
             array (
@@ -3309,6 +4247,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kelvin recíproco o kelvin al poder menos uno',
                 'code' => 'C91',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             470 =>
             array (
@@ -3316,6 +4256,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor recíproco',
                 'code' => 'C92',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             471 =>
             array (
@@ -3323,6 +4265,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado recíproco',
                 'code' => 'C93',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             472 =>
             array (
@@ -3330,6 +4274,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'minuto recíproco',
                 'code' => 'C94',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             473 =>
             array (
@@ -3337,6 +4283,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mole recíproco',
                 'code' => 'C95',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             474 =>
             array (
@@ -3344,6 +4292,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Pascal recíproco o pascal a la potencia menos uno.',
                 'code' => 'C96',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             475 =>
             array (
@@ -3351,6 +4301,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo recíproco',
                 'code' => 'C97',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             476 =>
             array (
@@ -3358,6 +4310,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo recíproco por metro cúbico',
                 'code' => 'C98',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             477 =>
             array (
@@ -3365,6 +4319,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo recíproco por metro cuadrado',
                 'code' => 'C99',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             478 =>
             array (
@@ -3372,6 +4328,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Caja',
                 'code' => 'CA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             479 =>
             array (
@@ -3379,6 +4337,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Capacidad de carga en toneladas métricas.',
                 'code' => 'CCT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             480 =>
             array (
@@ -3386,6 +4346,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'candela',
                 'code' => 'CDL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             481 =>
             array (
@@ -3393,6 +4355,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'grado Celsius',
                 'code' => 'CEL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             482 =>
             array (
@@ -3400,6 +4364,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien',
                 'code' => 'CEN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             483 =>
             array (
@@ -3407,6 +4373,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tarjeta',
                 'code' => 'CG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             484 =>
             array (
@@ -3414,6 +4382,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centigramo',
                 'code' => 'CGM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             485 =>
             array (
@@ -3421,6 +4391,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'envase',
                 'code' => 'CH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             486 =>
             array (
@@ -3428,6 +4400,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cono',
                 'code' => 'CJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             487 =>
             array (
@@ -3435,6 +4409,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'conector',
                 'code' => 'CK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             488 =>
             array (
@@ -3442,6 +4418,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Coulomb por kilogramo',
                 'code' => 'CKG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             489 =>
             array (
@@ -3449,6 +4427,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bobina',
                 'code' => 'CL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             490 =>
             array (
@@ -3456,6 +4436,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cientos de licencia',
                 'code' => 'CLF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             491 =>
             array (
@@ -3463,6 +4445,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centilitro',
                 'code' => 'CLT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             492 =>
             array (
@@ -3470,6 +4454,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro cuadrado',
                 'code' => 'CMK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             493 =>
             array (
@@ -3477,6 +4463,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro cúbico',
                 'code' => 'CMQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             494 =>
             array (
@@ -3484,6 +4472,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro',
                 'code' => 'CMT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             495 =>
             array (
@@ -3491,6 +4481,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de cien',
                 'code' => 'CNP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             496 =>
             array (
@@ -3498,6 +4490,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Cental (Reino Unido)',
                 'code' => 'CNT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             497 =>
             array (
@@ -3505,6 +4499,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'garrafón',
                 'code' => 'CO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             498 =>
             array (
@@ -3512,6 +4508,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'culombio',
                 'code' => 'COU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             499 =>
             array (
@@ -3519,15 +4517,19 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cartucho',
                 'code' => 'CQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
         ));
-        \DB::table('measure_units')->insert(array (
+        DB::table('measure_units')->insert(array (
             0 =>
             array (
                 'id' => 501,
                 'name' => 'caja',
                 'code' => 'CR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             1 =>
             array (
@@ -3535,6 +4537,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caso',
                 'code' => 'CS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             2 =>
             array (
@@ -3542,6 +4546,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caja de cartón',
                 'code' => 'CT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             3 =>
             array (
@@ -3549,6 +4555,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'quilate métrico',
                 'code' => 'CTM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             4 =>
             array (
@@ -3556,6 +4564,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vaso',
                 'code' => 'CU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             5 =>
             array (
@@ -3563,6 +4573,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'curie',
                 'code' => 'CUR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             6 =>
             array (
@@ -3570,6 +4582,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cubrir',
                 'code' => 'CV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             7 =>
             array (
@@ -3577,6 +4591,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cien libras (quintales) / cien pesos (US)',
                 'code' => 'CWA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             8 =>
             array (
@@ -3584,6 +4600,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cien pesos (Reino Unido)',
                 'code' => 'CWI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             9 =>
             array (
@@ -3591,6 +4609,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cilindro',
                 'code' => 'CY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             10 =>
             array (
@@ -3598,6 +4618,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'combo',
                 'code' => 'CZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             11 =>
             array (
@@ -3605,6 +4627,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo recíproco por esteradiano',
                 'code' => 'D1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             12 =>
             array (
@@ -3612,6 +4636,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'siemens por metro',
                 'code' => 'D10',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             13 =>
             array (
@@ -3619,6 +4645,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'siemens metro cuadrado por mol',
                 'code' => 'D12',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             14 =>
             array (
@@ -3626,6 +4654,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sievert',
                 'code' => 'D13',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             15 =>
             array (
@@ -3633,6 +4663,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil yardas lineales',
                 'code' => 'D14',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             16 =>
             array (
@@ -3640,6 +4672,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sone',
                 'code' => 'D15',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             17 =>
             array (
@@ -3647,6 +4681,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro cuadrado por ergio',
                 'code' => 'D16',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             18 =>
             array (
@@ -3654,6 +4690,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro cuadrado por erg esterlina',
                 'code' => 'D17',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             19 =>
             array (
@@ -3661,6 +4699,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro kelvin',
                 'code' => 'D18',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             20 =>
             array (
@@ -3668,6 +4708,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kelvin metro cuadrado por vatio',
                 'code' => 'D19',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             21 =>
             array (
@@ -3675,6 +4717,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo recíproco por metros cuadrados esteradianos',
                 'code' => 'D2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             22 =>
             array (
@@ -3682,6 +4726,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por julio',
                 'code' => 'D20',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             23 =>
             array (
@@ -3689,6 +4735,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por kilogramo',
                 'code' => 'D21',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             24 =>
             array (
@@ -3696,6 +4744,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por mol',
                 'code' => 'D22',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             25 =>
             array (
@@ -3703,6 +4753,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'pluma gramo (proteína)',
                 'code' => 'D23',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             26 =>
             array (
@@ -3710,6 +4762,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por esterilizador',
                 'code' => 'D24',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             27 =>
             array (
@@ -3717,6 +4771,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por julios esteradianos',
                 'code' => 'D25',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             28 =>
             array (
@@ -3724,6 +4780,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por voltio segundo',
                 'code' => 'D26',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             29 =>
             array (
@@ -3731,6 +4789,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'esteradiano',
                 'code' => 'D27',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             30 =>
             array (
@@ -3738,6 +4798,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sifón',
                 'code' => 'D28',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             31 =>
             array (
@@ -3745,6 +4807,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'terahercios',
                 'code' => 'D29',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             32 =>
             array (
@@ -3752,6 +4816,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'terajulio',
                 'code' => 'D30',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             33 =>
             array (
@@ -3759,6 +4825,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'teravatio',
                 'code' => 'D31',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             34 =>
             array (
@@ -3766,6 +4834,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora de teravatio',
                 'code' => 'D32',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             35 =>
             array (
@@ -3773,6 +4843,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tesla',
                 'code' => 'D33',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             36 =>
             array (
@@ -3780,6 +4852,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Texas',
                 'code' => 'D34',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             37 =>
             array (
@@ -3787,6 +4861,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caloría termoquímica',
                 'code' => 'D35',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             38 =>
             array (
@@ -3794,6 +4870,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caloría termoquímica por gramo kelvin',
                 'code' => 'D37',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             39 =>
             array (
@@ -3801,6 +4879,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'calorías termoquímicas por segundo centímetro kelvin',
                 'code' => 'D38',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             40 =>
             array (
@@ -3808,6 +4888,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'calorías termoquímicas por segundo centímetro cuadrado kelvin',
                 'code' => 'D39',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             41 =>
             array (
@@ -3815,6 +4897,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil litros',
                 'code' => 'D40',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             42 =>
             array (
@@ -3822,6 +4906,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada por metro cúbico',
                 'code' => 'D41',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             43 =>
             array (
@@ -3829,6 +4915,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'año tropical',
                 'code' => 'D42',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             44 =>
             array (
@@ -3836,6 +4924,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'unidad de masa atómica unificada',
                 'code' => 'D43',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             45 =>
             array (
@@ -3843,6 +4933,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'var',
                 'code' => 'D44',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             46 =>
             array (
@@ -3850,6 +4942,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltios al cuadrado por kelvin al cuadrado',
                 'code' => 'D45',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             47 =>
             array (
@@ -3857,6 +4951,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltio – amperio',
                 'code' => 'D46',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             48 =>
             array (
@@ -3864,6 +4960,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltio por centímetro',
                 'code' => 'D47',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             49 =>
             array (
@@ -3871,6 +4969,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltio por kelvin',
                 'code' => 'D48',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             50 =>
             array (
@@ -3878,6 +4978,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milivoltios por kelvin',
                 'code' => 'D49',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             51 =>
             array (
@@ -3885,6 +4987,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por centímetro cuadrado',
                 'code' => 'D5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             52 =>
             array (
@@ -3892,6 +4996,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltios por metro',
                 'code' => 'D50',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             53 =>
             array (
@@ -3899,6 +5005,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltios por milímetro',
                 'code' => 'D51',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             54 =>
             array (
@@ -3906,6 +5014,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por kelvin',
                 'code' => 'D52',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             55 =>
             array (
@@ -3913,6 +5023,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por metro kelvin',
                 'code' => 'D53',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             56 =>
             array (
@@ -3920,6 +5032,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por metro cuadrado',
                 'code' => 'D54',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             57 =>
             array (
@@ -3927,6 +5041,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por metro cuadrado kelvin',
                 'code' => 'D55',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             58 =>
             array (
@@ -3934,6 +5050,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por metro cuadrado de kelvin a la cuarta potencia',
                 'code' => 'D56',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             59 =>
             array (
@@ -3941,6 +5059,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por steradian',
                 'code' => 'D57',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             60 =>
             array (
@@ -3948,6 +5068,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios por metro cuadrado esterlino',
                 'code' => 'D58',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             61 =>
             array (
@@ -3955,6 +5077,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'weber por metro',
                 'code' => 'D59',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             62 =>
             array (
@@ -3962,6 +5086,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'röntgen por segundo',
                 'code' => 'D6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             63 =>
             array (
@@ -3969,6 +5095,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'weber por milímetro',
                 'code' => 'D60',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             64 =>
             array (
@@ -3976,6 +5104,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'minuto',
                 'code' => 'D61',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             65 =>
             array (
@@ -3983,6 +5113,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo',
                 'code' => 'D62',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             66 =>
             array (
@@ -3990,6 +5122,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libro',
                 'code' => 'D63',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             67 =>
             array (
@@ -3997,6 +5131,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bloquear',
                 'code' => 'D64',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             68 =>
             array (
@@ -4004,6 +5140,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'redondo',
                 'code' => 'D65',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             69 =>
             array (
@@ -4011,6 +5149,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'casete',
                 'code' => 'D66',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             70 =>
             array (
@@ -4018,6 +5158,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dólar por hora',
                 'code' => 'D67',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             71 =>
             array (
@@ -4025,6 +5167,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada a la cuarta potencia',
                 'code' => 'D69',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             72 =>
             array (
@@ -4032,6 +5176,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Sandwich',
                 'code' => 'D7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             73 =>
             array (
@@ -4039,6 +5185,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Tabla Internacional (IT) caloría',
                 'code' => 'D70',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             74 =>
             array (
@@ -4046,6 +5194,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Tabla Internacional (IT) calorías por segundo centímetro kelvin',
                 'code' => 'D71',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             75 =>
             array (
@@ -4053,6 +5203,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Tabla Internacional (IT) calorías por segundo centímetro cuadrado kelvin',
                 'code' => 'D72',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             76 =>
             array (
@@ -4060,6 +5212,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'joule metro cuadrado',
                 'code' => 'D73',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             77 =>
             array (
@@ -4067,6 +5221,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por mol',
                 'code' => 'D74',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             78 =>
             array (
@@ -4074,6 +5230,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Tabla Internacional (IT) calorías por gramo',
                 'code' => 'D75',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             79 =>
             array (
@@ -4081,6 +5239,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Tabla Internacional (IT) calorías por gramo kelvin',
                 'code' => 'D76',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             80 =>
             array (
@@ -4088,6 +5248,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megacoulomb',
                 'code' => 'D77',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             81 =>
             array (
@@ -4095,6 +5257,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'haz',
                 'code' => 'D79',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             82 =>
             array (
@@ -4102,6 +5266,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'puntaje de drenaje',
                 'code' => 'D8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             83 =>
             array (
@@ -4109,6 +5275,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microwatt',
                 'code' => 'D80',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             84 =>
             array (
@@ -4116,6 +5284,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microtesla',
                 'code' => 'D81',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             85 =>
             array (
@@ -4123,6 +5293,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microvoltio',
                 'code' => 'D82',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             86 =>
             array (
@@ -4130,6 +5302,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de millinewton',
                 'code' => 'D83',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             87 =>
             array (
@@ -4137,6 +5311,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microwatt por metro cuadrado',
                 'code' => 'D85',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             88 =>
             array (
@@ -4144,6 +5320,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Millicoulomb',
                 'code' => 'D86',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             89 =>
             array (
@@ -4151,6 +5329,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milimol por kilogramo',
                 'code' => 'D87',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             90 =>
             array (
@@ -4158,6 +5338,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millicoulomb por metro cúbico',
                 'code' => 'D88',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             91 =>
             array (
@@ -4165,6 +5347,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millicoulomb por metro cuadrado',
                 'code' => 'D89',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             92 =>
             array (
@@ -4172,6 +5356,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dina por centímetro cuadrado',
                 'code' => 'D9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             93 =>
             array (
@@ -4179,6 +5365,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'metro cúbico (neto)',
                 'code' => 'D90',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             94 =>
             array (
@@ -4186,6 +5374,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'movimiento rápido del ojo',
                 'code' => 'D91',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             95 =>
             array (
@@ -4193,6 +5383,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'banda',
                 'code' => 'D92',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             96 =>
             array (
@@ -4200,6 +5392,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo por metro cúbico',
                 'code' => 'D93',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             97 =>
             array (
@@ -4207,6 +5401,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo por metro cúbico radianes',
                 'code' => 'D94',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             98 =>
             array (
@@ -4214,6 +5410,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por gramo',
                 'code' => 'D95',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             99 =>
             array (
@@ -4221,6 +5419,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra bruta',
                 'code' => 'D96',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             100 =>
             array (
@@ -4228,6 +5428,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'carga de palet / unidad',
                 'code' => 'D97',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             101 =>
             array (
@@ -4235,6 +5437,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra de masa',
                 'code' => 'D98',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             102 =>
             array (
@@ -4242,6 +5446,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'manga',
                 'code' => 'D99',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             103 =>
             array (
@@ -4249,6 +5455,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'despreciar',
                 'code' => 'DAA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             104 =>
             array (
@@ -4256,6 +5464,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'diez dias',
                 'code' => 'DAD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             105 =>
             array (
@@ -4263,6 +5473,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'día',
                 'code' => 'DAY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             106 =>
             array (
@@ -4270,6 +5482,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra seca',
                 'code' => 'DB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             107 =>
             array (
@@ -4277,6 +5491,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'disco',
                 'code' => 'DC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             108 =>
             array (
@@ -4284,6 +5500,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'la licenciatura',
                 'code' => 'DD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             109 =>
             array (
@@ -4291,6 +5509,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'acuerdo',
                 'code' => 'DE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             110 =>
             array (
@@ -4298,6 +5518,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'década',
                 'code' => 'DEC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             111 =>
             array (
@@ -4305,6 +5527,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decigramo',
                 'code' => 'DG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             112 =>
             array (
@@ -4312,6 +5536,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dispensador',
                 'code' => 'DI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             113 =>
             array (
@@ -4319,6 +5545,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decagramo',
                 'code' => 'DJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             114 =>
             array (
@@ -4326,6 +5554,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decilitro',
                 'code' => 'DLT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             115 =>
             array (
@@ -4333,6 +5563,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nformaci cuadrado',
                 'code' => 'DMK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             116 =>
             array (
@@ -4340,6 +5572,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decímetro cúbico',
                 'code' => 'DMQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             117 =>
             array (
@@ -4347,6 +5581,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'decímetro',
                 'code' => 'DMT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             118 =>
             array (
@@ -4354,6 +5590,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de decinewton',
                 'code' => 'DN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             119 =>
             array (
@@ -4361,6 +5599,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'docena pieza',
                 'code' => 'DPC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             120 =>
             array (
@@ -4368,6 +5608,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'docena par',
                 'code' => 'DPR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             121 =>
             array (
@@ -4375,6 +5617,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelaje de desplazamiento',
                 'code' => 'DPT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             122 =>
             array (
@@ -4382,6 +5626,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'registro de datos',
                 'code' => 'DQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             123 =>
             array (
@@ -4389,6 +5635,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tambor',
                 'code' => 'DR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             124 =>
             array (
@@ -4396,6 +5644,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'dram (US)',
                 'code' => 'DRA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             125 =>
             array (
@@ -4403,6 +5653,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'dram (Reino Unido)',
                 'code' => 'DRI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             126 =>
             array (
@@ -4410,6 +5662,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'docena rollo',
                 'code' => 'DRL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             127 =>
             array (
@@ -4417,6 +5671,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'dracma (Reino Unido)',
                 'code' => 'DRM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             128 =>
             array (
@@ -4424,6 +5680,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'monitor',
                 'code' => 'DS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             129 =>
             array (
@@ -4431,6 +5689,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada seca',
                 'code' => 'DT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             130 =>
             array (
@@ -4438,6 +5698,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Decitonne',
                 'code' => 'DTN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             131 =>
             array (
@@ -4445,6 +5707,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dina',
                 'code' => 'DU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             132 =>
             array (
@@ -4452,6 +5716,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pennyweight',
                 'code' => 'DWT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             133 =>
             array (
@@ -4459,6 +5725,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dina por centímetro',
                 'code' => 'DX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             134 =>
             array (
@@ -4466,6 +5734,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libro de directorio',
                 'code' => 'DY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             135 =>
             array (
@@ -4473,6 +5743,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'docena',
                 'code' => 'DZN',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             136 =>
             array (
@@ -4480,6 +5752,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de doce',
                 'code' => 'DZP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             137 =>
             array (
@@ -4487,6 +5761,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cinturón',
                 'code' => 'E2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             138 =>
             array (
@@ -4494,6 +5770,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'remolque',
                 'code' => 'E3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             139 =>
             array (
@@ -4501,6 +5779,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo bruto',
                 'code' => 'E4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             140 =>
             array (
@@ -4508,6 +5788,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada métrica larga',
                 'code' => 'E5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             141 =>
             array (
@@ -4515,6 +5797,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cada',
                 'code' => 'EA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             142 =>
             array (
@@ -4522,6 +5806,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'casilla de correo electrónico',
                 'code' => 'EB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             143 =>
             array (
@@ -4529,6 +5815,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cada uno por mes',
                 'code' => 'CE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             144 =>
             array (
@@ -4536,6 +5824,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de once',
                 'code' => 'EP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             145 =>
             array (
@@ -4543,6 +5833,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón equivalente',
                 'code' => 'EQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             146 =>
             array (
@@ -4550,6 +5842,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sobre',
                 'code' => 'EV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             147 =>
             array (
@@ -4557,6 +5851,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pies cúbicos por día',
                 'code' => 'F1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             148 =>
             array (
@@ -4564,6 +5860,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Fibra por centímetro cúbico de aire',
                 'code' => 'F9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             149 =>
             array (
@@ -4571,6 +5869,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'grado Fahrenheit',
                 'code' => 'FAH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             150 =>
             array (
@@ -4578,6 +5878,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'faradio',
                 'code' => 'FAR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             151 =>
             array (
@@ -4585,6 +5887,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'campo',
                 'code' => 'FB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             152 =>
             array (
@@ -4592,6 +5896,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pies cúbicos',
                 'code' => 'FC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             153 =>
             array (
@@ -4599,6 +5905,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millón de partículas por pie cúbico',
                 'code' => 'FD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             154 =>
             array (
@@ -4606,6 +5914,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie de pista',
                 'code' => 'FE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             155 =>
             array (
@@ -4613,6 +5923,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien metros cúbicos',
                 'code' => 'FF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             156 =>
             array (
@@ -4620,6 +5932,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'parche transdérmico',
                 'code' => 'FG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             157 =>
             array (
@@ -4627,6 +5941,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'micromol',
                 'code' => 'FH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             158 =>
             array (
@@ -4634,6 +5950,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada en escamas',
                 'code' => 'FL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             159 =>
             array (
@@ -4641,6 +5959,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millones de pies cúbicos',
                 'code' => 'FM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             160 =>
             array (
@@ -4648,6 +5968,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie',
                 'code' => 'FOT',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             161 =>
             array (
@@ -4655,6 +5977,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pie cuadrado',
                 'code' => 'FP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             162 =>
             array (
@@ -4662,6 +5986,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie por minuto',
                 'code' => 'FR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             163 =>
             array (
@@ -4669,6 +5995,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie por segundo',
                 'code' => 'FS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             164 =>
             array (
@@ -4676,6 +6004,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie cuadrado',
                 'code' => 'FTK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             165 =>
             array (
@@ -4683,6 +6013,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie cubico',
                 'code' => 'FTQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             166 =>
             array (
@@ -4690,6 +6022,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'US galones por minuto',
                 'code' => 'G2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             167 =>
             array (
@@ -4697,6 +6031,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Galon imperial por minuto',
                 'code' => 'G3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             168 =>
             array (
@@ -4704,6 +6040,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hoja de microficha',
                 'code' => 'G7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             169 =>
             array (
@@ -4711,6 +6049,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'galón (US) por día',
                 'code' => 'GB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             170 =>
             array (
@@ -4718,6 +6058,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigabecquerel',
                 'code' => 'GBQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             171 =>
             array (
@@ -4725,6 +6067,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por 100 gramo',
                 'code' => 'GC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             172 =>
             array (
@@ -4732,6 +6076,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barril bruto',
                 'code' => 'GD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             173 =>
             array (
@@ -4739,6 +6085,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'libra por galón (US)',
                 'code' => 'GE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             174 =>
             array (
@@ -4746,6 +6094,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'gramo por metro (gramo por 100 centímetros)',
                 'code' => 'GF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             175 =>
             array (
@@ -4753,6 +6103,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo de isótopo fisionable',
                 'code' => 'GFI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             176 =>
             array (
@@ -4760,6 +6112,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo',
                 'code' => 'GGR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             177 =>
             array (
@@ -4767,6 +6121,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'medio galón (EE. UU.)',
                 'code' => 'GH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             178 =>
             array (
@@ -4774,6 +6130,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'branquias',
                 'code' => 'GIA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             179 =>
             array (
@@ -4781,6 +6139,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Gill (Reino Unido)',
                 'code' => 'GII',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             180 =>
             array (
@@ -4788,6 +6148,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por mililitro',
                 'code' => 'GJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             181 =>
             array (
@@ -4795,6 +6157,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por kilogramo',
                 'code' => 'G K',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             182 =>
             array (
@@ -4802,6 +6166,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por litro',
                 'code' => 'GL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             183 =>
             array (
@@ -4809,6 +6175,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'galón seco (EE. UU.)',
                 'code' => 'GLD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             184 =>
             array (
@@ -4816,6 +6184,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'galón (Reino Unido)',
                 'code' => 'GLI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             185 =>
             array (
@@ -4823,6 +6193,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón',
                 'code' => 'GLL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             186 =>
             array (
@@ -4830,6 +6202,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo por metro cuadrado',
                 'code' => 'GM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             187 =>
             array (
@@ -4837,6 +6211,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón bruto',
                 'code' => 'GN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             188 =>
             array (
@@ -4844,6 +6220,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramos por metro cuadrado',
                 'code' => 'GO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             189 =>
             array (
@@ -4851,6 +6229,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo por metro cúbico',
                 'code' => 'GP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             190 =>
             array (
@@ -4858,6 +6238,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microgramos por metro cúbico',
                 'code' => 'GQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             191 =>
             array (
@@ -4865,6 +6247,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gramo',
                 'code' => 'GRM',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             192 =>
             array (
@@ -4872,6 +6256,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'grano',
                 'code' => 'GRN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             193 =>
             array (
@@ -4879,6 +6265,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bruto',
                 'code' => 'GRO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             194 =>
             array (
@@ -4886,6 +6274,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada de registro bruto',
                 'code' => 'GRT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             195 =>
             array (
@@ -4893,6 +6283,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada bruta',
                 'code' => 'GT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             196 =>
             array (
@@ -4900,6 +6292,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'gigajoule',
                 'code' => 'GV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             197 =>
             array (
@@ -4907,6 +6301,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón por mil pies cúbicos',
                 'code' => 'GW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             198 =>
             array (
@@ -4914,6 +6310,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora de gigavatios',
                 'code' => 'GWH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             199 =>
             array (
@@ -4921,6 +6319,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'patio bruto',
                 'code' => 'GY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             200 =>
             array (
@@ -4928,6 +6328,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sistema de medición',
                 'code' => 'GZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             201 =>
             array (
@@ -4935,6 +6337,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'media página – electrónica',
                 'code' => 'H1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             202 =>
             array (
@@ -4942,6 +6346,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medio litro',
                 'code' => 'H2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             203 =>
             array (
@@ -4949,6 +6355,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'madeja',
                 'code' => 'HA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             204 =>
             array (
@@ -4956,6 +6364,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectárea',
                 'code' => 'HAR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             205 =>
             array (
@@ -4963,6 +6373,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectobar',
                 'code' => 'HBA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             206 =>
             array (
@@ -4970,6 +6382,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien cajas',
                 'code' => 'HBX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             207 =>
             array (
@@ -4977,6 +6391,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien cuentas',
                 'code' => 'HC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             208 =>
             array (
@@ -4984,6 +6400,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'media docena',
                 'code' => 'HD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             209 =>
             array (
@@ -4991,6 +6409,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centésima de quilate',
                 'code' => 'ÉL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             210 =>
             array (
@@ -4998,6 +6418,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien pies',
                 'code' => 'HF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             211 =>
             array (
@@ -5005,6 +6427,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectogramo',
                 'code' => 'HGM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             212 =>
             array (
@@ -5012,6 +6436,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien pies cúbicos',
                 'code' => 'HH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             213 =>
             array (
@@ -5019,6 +6445,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien hojas',
                 'code' => 'HI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             214 =>
             array (
@@ -5026,6 +6454,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien unidades internacionales',
                 'code' => 'HIU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             215 =>
             array (
@@ -5033,6 +6463,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caballo métrico',
                 'code' => 'HJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             216 =>
             array (
@@ -5040,6 +6472,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien kilogramos',
                 'code' => 'HK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             217 =>
             array (
@@ -5047,6 +6481,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cien pies (lineales)',
                 'code' => 'HL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             218 =>
             array (
@@ -5054,6 +6490,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectolitro',
                 'code' => 'HLT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             219 =>
             array (
@@ -5061,6 +6499,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla por hora',
                 'code' => 'HM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             220 =>
             array (
@@ -5068,6 +6508,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millones de metros cúbicos',
                 'code' => 'HMQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             221 =>
             array (
@@ -5075,6 +6517,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectómetro',
                 'code' => 'HMT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             222 =>
             array (
@@ -5082,6 +6526,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro convencional de mercurio',
                 'code' => 'HN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             223 =>
             array (
@@ -5089,6 +6535,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien onzas troy',
                 'code' => 'HO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             224 =>
             array (
@@ -5096,6 +6544,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro convencional de agua',
                 'code' => 'HP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             225 =>
             array (
@@ -5103,6 +6553,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hectolitro de alcohol puro',
                 'code' => 'HPA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             226 =>
             array (
@@ -5110,6 +6562,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien pies cuadrados',
                 'code' => 'HS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             227 =>
             array (
@@ -5117,6 +6571,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'media hora',
                 'code' => 'HT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             228 =>
             array (
@@ -5124,6 +6580,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hertz',
                 'code' => 'HTZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             229 =>
             array (
@@ -5131,6 +6589,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora',
                 'code' => 'HUR',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             230 =>
             array (
@@ -5138,6 +6598,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien yardas',
                 'code' => 'HY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             231 =>
             array (
@@ -5145,6 +6607,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada libra',
                 'code' => 'IA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             232 =>
             array (
@@ -5152,6 +6616,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'contar por pulgada',
                 'code' => 'IC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             233 =>
             array (
@@ -5159,6 +6625,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'persona',
                 'code' => 'IE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             234 =>
             array (
@@ -5166,6 +6634,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgadas de agua',
                 'code' => 'IF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             235 =>
             array (
@@ -5173,6 +6643,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'columna pulgada',
                 'code' => 'II',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             236 =>
             array (
@@ -5180,6 +6652,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada por minuto',
                 'code' => 'IL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             237 =>
             array (
@@ -5187,6 +6661,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'impresión',
                 'code' => 'IM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             238 =>
             array (
@@ -5194,6 +6670,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada',
                 'code' => 'INH',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             239 =>
             array (
@@ -5201,6 +6679,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada cuadrada',
                 'code' => 'INK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             240 =>
             array (
@@ -5208,6 +6688,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada en cubos',
                 'code' => 'INQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             241 =>
             array (
@@ -5215,6 +6697,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'póliza de seguros',
                 'code' => 'IP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             242 =>
             array (
@@ -5222,6 +6706,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'conteo por centímetro',
                 'code' => 'IT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             243 =>
             array (
@@ -5229,6 +6715,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'pulgada por segundo (velocidad lineal)',
                 'code' => 'IU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             244 =>
             array (
@@ -5236,6 +6724,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'pulgada por segundo al cuadrado (aceleración)',
                 'code' => 'IV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             245 =>
             array (
@@ -5243,6 +6733,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'julios por kilogramo',
                 'code' => 'J2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             246 =>
             array (
@@ -5250,6 +6742,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'jumbo',
                 'code' => 'JB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             247 =>
             array (
@@ -5257,6 +6751,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'joule por kelvin',
                 'code' => 'JE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             248 =>
             array (
@@ -5264,6 +6760,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'jarra',
                 'code' => 'JG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             249 =>
             array (
@@ -5271,6 +6769,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megajulio por kilogramo',
                 'code' => 'JK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             250 =>
             array (
@@ -5278,6 +6778,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megajulio por metro cúbico',
                 'code' => 'JM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             251 =>
             array (
@@ -5285,6 +6787,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'articulación',
                 'code' => 'JO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             252 =>
             array (
@@ -5292,6 +6796,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'joule',
                 'code' => 'JOU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             253 =>
             array (
@@ -5299,6 +6805,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tarro',
                 'code' => 'JR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             254 =>
             array (
@@ -5306,6 +6814,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'demanda de kilovatios',
                 'code' => 'K1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             255 =>
             array (
@@ -5313,6 +6823,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovoltios amperios reactivos de demanda',
                 'code' => 'K2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             256 =>
             array (
@@ -5320,6 +6832,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovoltio amperio hora reactiva',
                 'code' => 'K3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             257 =>
             array (
@@ -5327,6 +6841,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'amperios kilovoltios (reactivos)',
                 'code' => 'K5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             258 =>
             array (
@@ -5334,6 +6850,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilolitro',
                 'code' => 'K6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             259 =>
             array (
@@ -5341,6 +6859,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pastel',
                 'code' => 'KA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             260 =>
             array (
@@ -5348,6 +6868,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilocharacter',
                 'code' => 'KB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             261 =>
             array (
@@ -5355,6 +6877,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilobar',
                 'code' => 'KBA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             262 =>
             array (
@@ -5362,6 +6886,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo decimal',
                 'code' => 'KD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             263 =>
             array (
@@ -5369,6 +6895,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kelvin',
                 'code' => 'KEL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             264 =>
             array (
@@ -5376,6 +6904,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilopacket',
                 'code' => 'KF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             265 =>
             array (
@@ -5383,6 +6913,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barrilete',
                 'code' => 'KG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             266 =>
             array (
@@ -5390,6 +6922,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo',
                 'code' => 'KGM',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             267 =>
             array (
@@ -5397,6 +6931,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por segundo',
                 'code' => 'KGS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             268 =>
             array (
@@ -5404,6 +6940,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilohercio',
                 'code' => 'KHZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             269 =>
             array (
@@ -5411,6 +6949,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Kilogramo por milímetro de ancho',
                 'code' => 'KI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             270 =>
             array (
@@ -5418,6 +6958,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilosegmento',
                 'code' => 'KJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             271 =>
             array (
@@ -5425,6 +6967,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilojoule',
                 'code' => 'KJO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             272 =>
             array (
@@ -5432,6 +6976,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por metro',
                 'code' => 'KL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             273 =>
             array (
@@ -5439,6 +6985,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilómetro por hora',
                 'code' => 'KMH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             274 =>
             array (
@@ -5446,6 +6994,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilometro cuadrado',
                 'code' => 'KMK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             275 =>
             array (
@@ -5453,6 +7003,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo por metro cúbico',
                 'code' => 'KMQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             276 =>
             array (
@@ -5460,6 +7012,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de nitrógeno',
                 'code' => 'KNI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             277 =>
             array (
@@ -5467,6 +7021,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de sustancia nombrada',
                 'code' => 'KNS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             278 =>
             array (
@@ -5474,6 +7030,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'nudo',
                 'code' => 'KNT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             279 =>
             array (
@@ -5481,6 +7039,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Milliequivalencia de potasa cáustica por gramo de producto.',
                 'code' => 'KO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             280 =>
             array (
@@ -5488,6 +7048,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilopascal',
                 'code' => 'KPA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             281 =>
             array (
@@ -5495,6 +7057,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'kilogramo de hidróxido de potasio (potasa cáustica)',
                 'code' => 'KPH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             282 =>
             array (
@@ -5502,6 +7066,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de óxido de potasio',
                 'code' => 'KPO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             283 =>
             array (
@@ -5509,6 +7075,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'kilogramo de pentóxido de fósforo (anhídrido fosfórico)',
                 'code' => 'KPP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             284 =>
             array (
@@ -5516,6 +7084,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'KilorÃ¶ntgen',
                 'code' => 'KR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             285 =>
             array (
@@ -5523,6 +7093,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil libras por pulgada cuadrada',
                 'code' => 'KS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             286 =>
             array (
@@ -5530,6 +7102,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de sustancia 90% seca',
                 'code' => 'KSD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             287 =>
             array (
@@ -5537,6 +7111,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'kilogramo de hidróxido de sodio (soda cáustica)',
                 'code' => 'KSH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             288 =>
             array (
@@ -5544,6 +7120,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'equipo',
                 'code' => 'KT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             289 =>
             array (
@@ -5551,6 +7129,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilómetro',
                 'code' => 'KTM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             290 =>
             array (
@@ -5558,6 +7138,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilotonne',
                 'code' => 'KTN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             291 =>
             array (
@@ -5565,6 +7147,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramo de uranio',
                 'code' => 'KUR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             292 =>
             array (
@@ -5572,6 +7156,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovoltio – ampere',
                 'code' => 'KVA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             293 =>
             array (
@@ -5579,6 +7165,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovar',
                 'code' => 'KVR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             294 =>
             array (
@@ -5586,6 +7174,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovoltio',
                 'code' => 'KVT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             295 =>
             array (
@@ -5593,6 +7183,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilogramos por milímetro',
                 'code' => 'KW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             296 =>
             array (
@@ -5600,6 +7192,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovatios hora',
                 'code' => 'KWH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             297 =>
             array (
@@ -5607,6 +7201,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilovatio',
                 'code' => 'KWT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             298 =>
             array (
@@ -5614,6 +7210,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mililitro por kilogramo',
                 'code' => 'KX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             299 =>
             array (
@@ -5621,6 +7219,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litro por minuto',
                 'code' => 'L2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             300 =>
             array (
@@ -5628,6 +7228,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pulgada cúbica',
                 'code' => 'LA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             301 =>
             array (
@@ -5635,6 +7237,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra',
                 'code' => 'LBR',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             302 =>
             array (
@@ -5642,6 +7246,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra troy',
                 'code' => 'LBT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             303 =>
             array (
@@ -5649,6 +7255,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'centímetro lineal',
                 'code' => 'LC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             304 =>
             array (
@@ -5656,6 +7264,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litro por día',
                 'code' => 'LD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             305 =>
             array (
@@ -5663,6 +7273,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lite',
                 'code' => 'LE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             306 =>
             array (
@@ -5670,6 +7282,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hoja',
                 'code' => 'LEF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             307 =>
             array (
@@ -5677,6 +7291,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie lineal',
                 'code' => 'LF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             308 =>
             array (
@@ -5684,6 +7300,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora de trabajo',
                 'code' => 'LH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             309 =>
             array (
@@ -5691,6 +7309,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pulgada lineal',
                 'code' => 'LI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             310 =>
             array (
@@ -5698,6 +7318,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'spray grande',
                 'code' => 'LJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             311 =>
             array (
@@ -5705,6 +7327,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'enlazar',
                 'code' => 'LK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             312 =>
             array (
@@ -5712,6 +7336,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro lineal',
                 'code' => 'LM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             313 =>
             array (
@@ -5719,6 +7345,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'longitud',
                 'code' => 'LN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             314 =>
             array (
@@ -5726,6 +7354,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mucho',
                 'code' => 'LO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             315 =>
             array (
@@ -5733,6 +7363,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra liquida',
                 'code' => 'LP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             316 =>
             array (
@@ -5740,6 +7372,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litro de alcohol puro',
                 'code' => 'LPA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             317 =>
             array (
@@ -5747,6 +7381,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'capa',
                 'code' => 'LR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             318 =>
             array (
@@ -5754,6 +7390,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Suma global',
                 'code' => 'LS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             319 =>
             array (
@@ -5761,6 +7399,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'ton (Reino Unido) o longton (EE. UU.)',
                 'code' => 'LTN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             320 =>
             array (
@@ -5768,6 +7408,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litro',
                 'code' => 'LTR',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             321 =>
             array (
@@ -5775,6 +7417,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lumen',
                 'code' => 'LUM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             322 =>
             array (
@@ -5782,6 +7426,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'lux',
                 'code' => 'LUX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             323 =>
             array (
@@ -5789,6 +7435,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'yarda lineal por libra',
                 'code' => 'LX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             324 =>
             array (
@@ -5796,6 +7444,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'yarda lineal',
                 'code' => 'LY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             325 =>
             array (
@@ -5803,6 +7453,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cinta magnética',
                 'code' => 'M0',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             326 =>
             array (
@@ -5810,6 +7462,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramos por litro',
                 'code' => 'M1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             327 =>
             array (
@@ -5817,6 +7471,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'valor monetario',
                 'code' => 'M4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             328 =>
             array (
@@ -5824,6 +7480,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microcurie',
                 'code' => 'M5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             329 =>
             array (
@@ -5831,6 +7489,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'micropulgada',
                 'code' => 'M7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             330 =>
             array (
@@ -5838,6 +7498,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millones de Btu por 1000 pies cúbicos',
                 'code' => 'M9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             331 =>
             array (
@@ -5845,6 +7507,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'máquina por unidad',
                 'code' => 'MA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             332 =>
             array (
@@ -5852,6 +7516,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mega litro',
                 'code' => 'MAL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             333 =>
             array (
@@ -5859,6 +7525,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megametro',
                 'code' => 'MAM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             334 =>
             array (
@@ -5866,6 +7534,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megavatio',
                 'code' => 'MAW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             335 =>
             array (
@@ -5873,6 +7543,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil equivalentes de ladrillo estándar',
                 'code' => 'MBE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             336 =>
             array (
@@ -5880,6 +7552,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pies de tabla',
                 'code' => 'MBF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             337 =>
             array (
@@ -5887,6 +7561,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milibar',
                 'code' => 'MBR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             338 =>
             array (
@@ -5894,6 +7570,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'microgramo',
                 'code' => 'MC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             339 =>
             array (
@@ -5901,6 +7579,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milicurie',
                 'code' => 'MCU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             340 =>
             array (
@@ -5908,6 +7588,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'aire seco tonelada métrica',
                 'code' => 'MD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             341 =>
             array (
@@ -5915,6 +7597,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo por pie cuadrado por lado',
                 'code' => 'MF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             342 =>
             array (
@@ -5922,6 +7606,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo',
                 'code' => 'MGM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             343 =>
             array (
@@ -5929,6 +7615,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megahercio',
                 'code' => 'MGM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             344 =>
             array (
@@ -5936,6 +7624,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla cuadrada',
                 'code' => 'MIK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             345 =>
             array (
@@ -5943,6 +7633,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil',
                 'code' => 'MIL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             346 =>
             array (
@@ -5950,6 +7642,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'minuto',
                 'code' => 'MIN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             347 =>
             array (
@@ -5957,6 +7651,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millón',
                 'code' => 'MIO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             348 =>
             array (
@@ -5964,6 +7660,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millones de unidades internacionales',
                 'code' => 'MIU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             349 =>
             array (
@@ -5971,6 +7669,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo por pulgada cuadrada',
                 'code' => 'MK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             350 =>
             array (
@@ -5978,6 +7678,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil millones',
                 'code' => 'MLD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             351 =>
             array (
@@ -5985,6 +7687,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mililitro',
                 'code' => 'MLT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             352 =>
             array (
@@ -5992,6 +7696,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro cuadrado',
                 'code' => 'MMK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             353 =>
             array (
@@ -5999,6 +7705,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro cúbico',
                 'code' => 'MMQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             354 =>
             array (
@@ -6006,6 +7714,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milímetro',
                 'code' => 'MMT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             355 =>
             array (
@@ -6013,6 +7723,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mes',
                 'code' => 'LUN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             356 =>
             array (
@@ -6020,6 +7732,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megapascal',
                 'code' => 'MPA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             357 =>
             array (
@@ -6027,6 +7741,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil metros',
                 'code' => 'MQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             358 =>
             array (
@@ -6034,6 +7750,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico por hora',
                 'code' => 'MQH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             359 =>
             array (
@@ -6041,6 +7759,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cúbico por segundo',
                 'code' => 'MQS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             360 =>
             array (
@@ -6048,6 +7768,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro por segundo al cuadrado',
                 'code' => 'MSK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             361 =>
             array (
@@ -6055,6 +7777,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'estera',
                 'code' => 'MT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             362 =>
             array (
@@ -6062,6 +7786,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado',
                 'code' => 'MTK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             363 =>
             array (
@@ -6069,6 +7795,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Metro cúbico',
                 'code' => 'MTQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             364 =>
             array (
@@ -6076,6 +7804,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro',
                 'code' => 'MTR',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             365 =>
             array (
@@ -6083,6 +7813,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro por segundo',
                 'code' => 'MTS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             366 =>
             array (
@@ -6090,6 +7822,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'numero de mults',
                 'code' => 'MV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             367 =>
             array (
@@ -6097,6 +7831,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'megavolt – ampere',
                 'code' => 'MVA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             368 =>
             array (
@@ -6104,6 +7840,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'megavatios hora (1000 kW.h)',
                 'code' => 'MWH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             369 =>
             array (
@@ -6111,6 +7849,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'calorías de la pluma',
                 'code' => 'N1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             370 =>
             array (
@@ -6118,6 +7858,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de líneas',
                 'code' => 'N2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             371 =>
             array (
@@ -6125,6 +7867,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'punto de impresión',
                 'code' => 'N3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             372 =>
             array (
@@ -6132,6 +7876,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'miligramo por kilogramo',
                 'code' => 'NA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             373 =>
             array (
@@ -6139,6 +7885,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de artículos',
                 'code' => 'NAR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             374 =>
             array (
@@ -6146,6 +7894,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barcaza',
                 'code' => 'NB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             375 =>
             array (
@@ -6153,6 +7903,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de bobinas',
                 'code' => 'NBB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             376 =>
             array (
@@ -6160,6 +7912,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'coche',
                 'code' => 'NC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             377 =>
             array (
@@ -6167,6 +7921,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de celdas',
                 'code' => 'NCL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             378 =>
             array (
@@ -6174,6 +7930,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barril neto',
                 'code' => 'ND',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             379 =>
             array (
@@ -6181,6 +7939,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'litro neto',
                 'code' => 'NE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             380 =>
             array (
@@ -6188,6 +7948,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'newton',
                 'code' => 'NEW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             381 =>
             array (
@@ -6195,6 +7957,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mensaje',
                 'code' => 'NF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             382 =>
             array (
@@ -6202,6 +7966,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'galón neto (nosotros)',
                 'code' => 'NG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             383 =>
             array (
@@ -6209,6 +7975,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora del mensaje',
                 'code' => 'NH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             384 =>
             array (
@@ -6216,6 +7984,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón imperial neto',
                 'code' => 'NI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             385 =>
             array (
@@ -6223,6 +7993,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de unidades internacionales',
                 'code' => 'NIU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             386 =>
             array (
@@ -6230,6 +8002,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de pantallas',
                 'code' => 'NJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             387 =>
             array (
@@ -6237,6 +8011,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'carga',
                 'code' => 'NL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             388 =>
             array (
@@ -6244,6 +8020,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'milla nautica',
                 'code' => 'MNI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             389 =>
             array (
@@ -6251,6 +8029,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de paquetes',
                 'code' => 'NMP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             390 =>
             array (
@@ -6258,6 +8038,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'entrenar',
                 'code' => 'NN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             391 =>
             array (
@@ -6265,6 +8047,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de parcelas',
                 'code' => 'NPL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             392 =>
             array (
@@ -6272,6 +8056,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'numero de pares',
                 'code' => 'NPR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             393 =>
             array (
@@ -6279,6 +8065,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'numero de partes',
                 'code' => 'TNP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             394 =>
             array (
@@ -6286,6 +8074,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mho',
                 'code' => 'NQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             395 =>
             array (
@@ -6293,6 +8083,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'micromho',
                 'code' => 'NR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             396 =>
             array (
@@ -6300,6 +8092,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'número de rollos',
                 'code' => 'NRL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             397 =>
             array (
@@ -6307,6 +8101,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada neta',
                 'code' => 'NT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             398 =>
             array (
@@ -6314,6 +8110,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'registro neto de toneladas',
                 'code' => 'NTT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             399 =>
             array (
@@ -6321,6 +8119,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medidor de newton',
                 'code' => 'NU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             400 =>
             array (
@@ -6328,6 +8128,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vehículo',
                 'code' => 'NV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             401 =>
             array (
@@ -6335,6 +8137,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'parte por mil',
                 'code' => 'NX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             402 =>
             array (
@@ -6342,6 +8146,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por aire seco tonelada métrica',
                 'code' => 'NY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             403 =>
             array (
@@ -6349,6 +8155,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'panel',
                 'code' => 'OA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             404 =>
             array (
@@ -6356,6 +8164,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ohm',
                 'code' => 'OHM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             405 =>
             array (
@@ -6363,6 +8173,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onza por yarda cuadrada',
                 'code' => 'EN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             406 =>
             array (
@@ -6370,6 +8182,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onza',
                 'code' => 'ONZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             407 =>
             array (
@@ -6377,6 +8191,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Dos paquetes',
                 'code' => 'OP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             408 =>
             array (
@@ -6384,6 +8200,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora extra',
                 'code' => 'OT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             409 =>
             array (
@@ -6391,6 +8209,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'onza av',
                 'code' => 'ONZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             410 =>
             array (
@@ -6398,6 +8218,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'onza líquida (US)',
                 'code' => 'OZA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             411 =>
             array (
@@ -6405,6 +8227,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'onza líquida (Reino Unido)',
                 'code' => 'OZI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             412 =>
             array (
@@ -6412,6 +8236,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pagina – electronica',
                 'code' => 'P0',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             413 =>
             array (
@@ -6419,6 +8245,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'por ciento',
                 'code' => 'P1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             414 =>
             array (
@@ -6426,6 +8254,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pie',
                 'code' => 'P2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             415 =>
             array (
@@ -6433,6 +8263,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de tres',
                 'code' => 'P3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             416 =>
             array (
@@ -6440,6 +8272,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de cuatro',
                 'code' => 'P4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             417 =>
             array (
@@ -6447,6 +8281,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de cinco',
                 'code' => 'P5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             418 =>
             array (
@@ -6454,6 +8290,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de seis',
                 'code' => 'P6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             419 =>
             array (
@@ -6461,6 +8299,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de siete',
                 'code' => 'P7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             420 =>
             array (
@@ -6468,6 +8308,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de ocho',
                 'code' => 'P8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             421 =>
             array (
@@ -6475,6 +8317,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de nueve',
                 'code' => 'P9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             422 =>
             array (
@@ -6482,6 +8326,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete',
                 'code' => 'PA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             423 =>
             array (
@@ -6489,6 +8335,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pascal',
                 'code' => 'PAL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             424 =>
             array (
@@ -6496,6 +8344,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'par de pulgadas',
                 'code' => 'PB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             425 =>
             array (
@@ -6503,6 +8353,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'almohadilla',
                 'code' => 'PD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             426 =>
             array (
@@ -6510,6 +8362,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'equivalente en libras',
                 'code' => 'PE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             427 =>
             array (
@@ -6517,6 +8371,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'palet (ascensor)',
                 'code' => 'PF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             428 =>
             array (
@@ -6524,6 +8380,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'plato',
                 'code' => 'PG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             429 =>
             array (
@@ -6531,6 +8389,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galón de prueba',
                 'code' => 'PGL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             430 =>
             array (
@@ -6538,6 +8398,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tono',
                 'code' => 'PI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             431 =>
             array (
@@ -6545,6 +8407,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete',
                 'code' => 'PK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             432 =>
             array (
@@ -6552,6 +8416,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cubo',
                 'code' => 'PL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             433 =>
             array (
@@ -6559,6 +8425,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'porcentaje de libra',
                 'code' => 'PM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             434 =>
             array (
@@ -6566,6 +8434,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra neta',
                 'code' => 'PN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             435 =>
             array (
@@ -6573,6 +8443,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pulgada de longitud',
                 'code' => 'PO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             436 =>
             array (
@@ -6580,6 +8452,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'página por pulgada',
                 'code' => 'PQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             437 =>
             array (
@@ -6587,6 +8461,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'par',
                 'code' => 'PR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             438 =>
             array (
@@ -6594,6 +8470,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'fuerza de libra por pulgada cuadrada',
                 'code' => 'PD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             439 =>
             array (
@@ -6601,6 +8479,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pinta',
                 'code' => 'PT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             440 =>
             array (
@@ -6608,6 +8488,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pinta seca',
                 'code' => 'PTD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             441 =>
             array (
@@ -6615,6 +8497,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'pinta (Reino Unido)',
                 'code' => 'PTI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             442 =>
             array (
@@ -6622,6 +8506,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'pinta liquida (US)',
                 'code' => 'PTL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             443 =>
             array (
@@ -6629,6 +8515,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bandeja / paquete de bandeja',
                 'code' => 'PU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             444 =>
             array (
@@ -6636,6 +8524,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'media pinta (US)',
                 'code' => 'PV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             445 =>
             array (
@@ -6643,6 +8533,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por pulgada de ancho',
                 'code' => 'PW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             446 =>
             array (
@@ -6650,6 +8542,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Peck Dry (US)',
                 'code' => 'PY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             447 =>
             array (
@@ -6657,6 +8551,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Peck Dry (Reino Unido)',
                 'code' => 'PZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             448 =>
             array (
@@ -6664,6 +8560,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'comida',
                 'code' => 'Q3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             449 =>
             array (
@@ -6671,6 +8569,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'página – facsímil',
                 'code' => 'QA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             450 =>
             array (
@@ -6678,6 +8578,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cuarto (de un año)',
                 'code' => 'QAN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             451 =>
             array (
@@ -6685,6 +8587,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'página – copia impresa',
                 'code' => 'QB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             452 =>
             array (
@@ -6692,6 +8596,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cuarto de docena',
                 'code' => 'QD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             453 =>
             array (
@@ -6699,6 +8605,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'un cuarto de hora',
                 'code' => 'QH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             454 =>
             array (
@@ -6706,6 +8614,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cuarto de kilogramo',
                 'code' => 'QK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             455 =>
             array (
@@ -6713,6 +8623,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mano de papel',
                 'code' => 'QR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             456 =>
             array (
@@ -6720,6 +8632,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cuarto de galón (US)',
                 'code' => 'QT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             457 =>
             array (
@@ -6727,6 +8641,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cuarto seco (EE. UU.)',
                 'code' => 'QTD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             458 =>
             array (
@@ -6734,6 +8650,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cuarto de galón (Reino Unido)',
                 'code' => 'QTI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             459 =>
             array (
@@ -6741,6 +8659,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cuarto líquido (US)',
                 'code' => 'QTL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             460 =>
             array (
@@ -6748,6 +8668,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'cuarto (UK)',
                 'code' => 'QTR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             461 =>
             array (
@@ -6755,6 +8677,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pica',
                 'code' => 'R1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             462 =>
             array (
@@ -6762,6 +8686,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caloría',
                 'code' => 'R4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             463 =>
             array (
@@ -6769,6 +8695,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil metros cúbicos',
                 'code' => 'R9',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             464 =>
             array (
@@ -6776,6 +8704,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'estante',
                 'code' => 'RA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             465 =>
             array (
@@ -6783,6 +8713,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barra',
                 'code' => 'RD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             466 =>
             array (
@@ -6790,6 +8722,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'anillo',
                 'code' => 'RG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             467 =>
             array (
@@ -6797,6 +8731,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hora de funcionamiento o de funcionamiento',
                 'code' => 'RH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             468 =>
             array (
@@ -6804,6 +8740,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medida métrica rollo',
                 'code' => 'RK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             469 =>
             array (
@@ -6811,6 +8749,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'carrete',
                 'code' => 'RL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             470 =>
             array (
@@ -6818,6 +8758,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'resma',
                 'code' => 'RM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             471 =>
             array (
@@ -6825,6 +8767,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'medida métrica de resma',
                 'code' => 'RN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             472 =>
             array (
@@ -6832,6 +8776,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'rodar',
                 'code' => 'RO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             473 =>
             array (
@@ -6839,6 +8785,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra por resma',
                 'code' => 'RP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             474 =>
             array (
@@ -6846,6 +8794,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'revoluciones por minuto',
                 'code' => 'RPM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             475 =>
             array (
@@ -6853,6 +8803,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'revoluciones por segundo',
                 'code' => 'RPS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             476 =>
             array (
@@ -6860,6 +8812,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Reiniciar',
                 'code' => 'RS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             477 =>
             array (
@@ -6867,6 +8821,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'ingreso tonelada milla',
                 'code' => 'RT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             478 =>
             array (
@@ -6874,6 +8830,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'correr',
                 'code' => 'RU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             479 =>
             array (
@@ -6881,6 +8839,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pie cuadrado por segundo',
                 'code' => 'S3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             480 =>
             array (
@@ -6888,6 +8848,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'metro cuadrado por segundo',
                 'code' => 'S4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             481 =>
             array (
@@ -6895,6 +8857,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sesenta cuartos de pulgada',
                 'code' => 'S5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             482 =>
             array (
@@ -6902,6 +8866,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sesión',
                 'code' => 'S6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             483 =>
             array (
@@ -6909,6 +8875,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'unidad de almacenamiento',
                 'code' => 'S7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             484 =>
             array (
@@ -6916,6 +8884,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'unidad de publicidad estándar',
                 'code' => 'S8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             485 =>
             array (
@@ -6923,6 +8893,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'saco',
                 'code' => 'SA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             486 =>
             array (
@@ -6930,6 +8902,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'medio año (6 meses)',
                 'code' => 'SAN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             487 =>
             array (
@@ -6937,6 +8911,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Puntuación',
                 'code' => 'OCS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             488 =>
             array (
@@ -6944,6 +8920,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'escrúpulo',
                 'code' => 'SCR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             489 =>
             array (
@@ -6951,6 +8929,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra solida',
                 'code' => 'SD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             490 =>
             array (
@@ -6958,6 +8938,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'sección',
                 'code' => 'SE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             491 =>
             array (
@@ -6965,6 +8947,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segundo',
                 'code' => 'SEC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             492 =>
             array (
@@ -6972,6 +8956,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'conjunto',
                 'code' => 'SET',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             493 =>
             array (
@@ -6979,6 +8965,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'segmento',
                 'code' => 'SG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             494 =>
             array (
@@ -6986,6 +8974,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada de envío',
                 'code' => 'SHT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             495 =>
             array (
@@ -6993,6 +8983,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'siemens',
                 'code' => 'SIE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             496 =>
             array (
@@ -7000,6 +8992,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'camión cisterna dividido',
                 'code' => 'SK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             497 =>
             array (
@@ -7007,6 +9001,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hoja de deslizamiento',
                 'code' => 'SL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             498 =>
             array (
@@ -7014,6 +9010,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'milla (milla estatutaria)',
                 'code' => 'SMI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             499 =>
             array (
@@ -7021,15 +9019,19 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'varilla cuadrada',
                 'code' => 'SN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
         ));
-        \DB::table('measure_units')->insert(array (
+        DB::table('measure_units')->insert(array (
             0 =>
             array (
                 'id' => 1001,
                 'name' => 'carrete',
                 'code' => 'SO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             1 =>
             array (
@@ -7037,6 +9039,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de estante',
                 'code' => 'SP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             2 =>
             array (
@@ -7044,6 +9048,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cuadrado',
                 'code' => 'SQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             3 =>
             array (
@@ -7051,6 +9057,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tira',
                 'code' => 'SR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             4 =>
             array (
@@ -7058,6 +9066,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hoja métrica medida',
                 'code' => 'SS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             5 =>
             array (
@@ -7065,6 +9075,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'corto estándar (7200 partidos)',
                 'code' => 'SST',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             6 =>
             array (
@@ -7072,6 +9084,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'hoja',
                 'code' => 'ST',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             7 =>
             array (
@@ -7079,6 +9093,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'piedra (Reino Unido)',
                 'code' => 'ITS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             8 =>
             array (
@@ -7086,6 +9102,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'tonelada (US) o tonelada corta (UK / US)',
                 'code' => 'STN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             9 =>
             array (
@@ -7093,6 +9111,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'patinar',
                 'code' => 'SV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             10 =>
             array (
@@ -7100,6 +9120,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'madeja',
                 'code' => 'SO',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             11 =>
             array (
@@ -7107,6 +9129,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'envío',
                 'code' => 'SX',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             12 =>
             array (
@@ -7114,6 +9138,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Línea de telecomunicaciones en servicio.',
                 'code' => 'T0',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             13 =>
             array (
@@ -7121,6 +9147,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil libras brutas',
                 'code' => 'T1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             14 =>
             array (
@@ -7128,6 +9156,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil piezas',
                 'code' => 'T3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             15 =>
             array (
@@ -7135,6 +9165,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'bolsa de mil',
                 'code' => 'T4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             16 =>
             array (
@@ -7142,6 +9174,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'caja de mil',
                 'code' => 'T5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             17 =>
             array (
@@ -7149,6 +9183,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'mil galones (US)',
                 'code' => 'T6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             18 =>
             array (
@@ -7156,6 +9192,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil impresiones',
                 'code' => 'T7',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             19 =>
             array (
@@ -7163,6 +9201,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pulgadas lineales',
                 'code' => 'T8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             20 =>
             array (
@@ -7170,6 +9210,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'décimo pie cúbico',
                 'code' => 'TA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             21 =>
             array (
@@ -7177,6 +9219,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'Kiloampere hora (mil amperios hora)',
                 'code' => 'TAH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             22 =>
             array (
@@ -7184,6 +9228,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'camion',
                 'code' => 'TC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             23 =>
             array (
@@ -7191,6 +9237,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'termia',
                 'code' => 'TD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             24 =>
             array (
@@ -7198,6 +9246,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'totalizador',
                 'code' => 'TE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             25 =>
             array (
@@ -7205,6 +9255,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'diez metros cuadrados',
                 'code' => 'TF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             26 =>
             array (
@@ -7212,6 +9264,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pulgadas cuadradas',
                 'code' => 'TI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             27 =>
             array (
@@ -7219,6 +9273,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil centímetros cuadrados',
                 'code' => 'TJ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             28 =>
             array (
@@ -7226,6 +9282,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tanque rectangular',
                 'code' => 'TK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             29 =>
             array (
@@ -7233,6 +9291,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'mil pies (lineales)',
                 'code' => 'TL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             30 =>
             array (
@@ -7240,6 +9300,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'estaño',
                 'code' => 'TN',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             31 =>
             array (
@@ -7247,6 +9309,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'tonelada (tonelada métrica)',
                 'code' => 'TNE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             32 =>
             array (
@@ -7254,6 +9318,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'paquete de diez',
                 'code' => 'TP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             33 =>
             array (
@@ -7261,6 +9327,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'diez pares',
                 'code' => 'TPR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             34 =>
             array (
@@ -7268,6 +9336,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pies',
                 'code' => 'TQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             35 =>
             array (
@@ -7275,6 +9345,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil metros cúbicos por día',
                 'code' => 'TQD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             36 =>
             array (
@@ -7282,6 +9354,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'diez pies cuadrados',
                 'code' => 'TR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             37 =>
             array (
@@ -7289,6 +9363,8 @@ class UnitMeasuresTableSeeder extends Seeder
             'name' => 'trillón (EUR)',
                 'code' => 'TRL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             38 =>
             array (
@@ -7296,6 +9372,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil pies cuadrados',
                 'code' => 'TS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             39 =>
             array (
@@ -7303,6 +9381,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada de sustancia 90% seca',
                 'code' => 'TSD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             40 =>
             array (
@@ -7310,6 +9390,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada de vapor por hora',
                 'code' => 'TSH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             41 =>
             array (
@@ -7317,6 +9399,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil metros lineales',
                 'code' => 'TT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             42 =>
             array (
@@ -7324,6 +9408,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tubo',
                 'code' => 'TU',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             43 =>
             array (
@@ -7331,6 +9417,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil kilogramos',
                 'code' => 'TV',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             44 =>
             array (
@@ -7338,6 +9426,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mil hojas',
                 'code' => 'TW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             45 =>
             array (
@@ -7345,6 +9435,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tanque cilíndrico',
                 'code' => 'TY',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             46 =>
             array (
@@ -7352,6 +9444,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tratamiento',
                 'code' => 'U1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             47 =>
             array (
@@ -7359,6 +9453,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tableta',
                 'code' => 'U2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             48 =>
             array (
@@ -7366,6 +9462,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'torr',
                 'code' => 'UA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             49 =>
             array (
@@ -7373,6 +9471,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Línea de telecomunicaciones en servicio promedio.',
                 'code' => 'UB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             50 =>
             array (
@@ -7380,6 +9480,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'puerto de telecomunicaciones',
                 'code' => 'UC',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             51 =>
             array (
@@ -7387,6 +9489,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'décimo minuto',
                 'code' => 'UD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             52 =>
             array (
@@ -7394,6 +9498,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'décima hora',
                 'code' => 'UE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             53 =>
             array (
@@ -7401,6 +9507,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'uso por línea de telecomunicación promedio',
                 'code' => 'UF',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             54 =>
             array (
@@ -7408,6 +9516,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'diez mil yardas',
                 'code' => 'UH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             55 =>
             array (
@@ -7415,6 +9525,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'millones de unidades',
                 'code' => 'UM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             56 =>
             array (
@@ -7422,6 +9534,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltio amperio por kilogramo',
                 'code' => 'VA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             57 =>
             array (
@@ -7429,6 +9543,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'frasco',
                 'code' => 'VI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             58 =>
             array (
@@ -7436,6 +9552,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'voltio',
                 'code' => 'VLT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             59 =>
             array (
@@ -7443,6 +9561,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'abultar',
                 'code' => 'VQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             60 =>
             array (
@@ -7450,6 +9570,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'visitar',
                 'code' => 'VS',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             61 =>
             array (
@@ -7457,6 +9579,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'kilo mojado',
                 'code' => 'W2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             62 =>
             array (
@@ -7464,6 +9588,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'dos semanas',
                 'code' => 'W4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             63 =>
             array (
@@ -7471,6 +9597,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatio por kilogramo',
                 'code' => 'WA',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             64 =>
             array (
@@ -7478,6 +9606,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'libra mojada',
                 'code' => 'WB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             65 =>
             array (
@@ -7485,6 +9615,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cable',
                 'code' => 'WCD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             66 =>
             array (
@@ -7492,6 +9624,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'tonelada mojada',
                 'code' => 'WE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             67 =>
             array (
@@ -7499,6 +9633,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'weber',
                 'code' => 'WEB',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             68 =>
             array (
@@ -7506,6 +9642,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'semana',
                 'code' => 'WEE',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             69 =>
             array (
@@ -7513,6 +9651,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'galon de vino',
                 'code' => 'WG',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             70 =>
             array (
@@ -7520,6 +9660,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'rueda',
                 'code' => 'WH',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             71 =>
             array (
@@ -7527,6 +9669,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatios hora',
                 'code' => 'WHR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             72 =>
             array (
@@ -7534,6 +9678,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'peso por pulgada cuadrada',
                 'code' => 'WI',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             73 =>
             array (
@@ -7541,6 +9687,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mes de trabajo',
                 'code' => 'WM',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             74 =>
             array (
@@ -7548,6 +9696,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'envolver',
                 'code' => 'WR',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             75 =>
             array (
@@ -7555,6 +9705,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'estándar',
                 'code' => 'WSD',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             76 =>
             array (
@@ -7562,6 +9714,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'vatio',
                 'code' => 'WTT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             77 =>
             array (
@@ -7569,6 +9723,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mililitro de agua',
                 'code' => 'WW',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             78 =>
             array (
@@ -7576,6 +9732,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cadena',
                 'code' => 'X1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             79 =>
             array (
@@ -7583,6 +9741,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'yarda cuadrada',
                 'code' => 'YDK',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             80 =>
             array (
@@ -7590,6 +9750,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'Yarda cúbica',
                 'code' => 'YDQ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             81 =>
             array (
@@ -7597,6 +9759,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'cien yardas lineales',
                 'code' => 'YL',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             82 =>
             array (
@@ -7604,6 +9768,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'yarda',
                 'code' => 'YRD',
                 'status' => 'activo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             83 =>
             array (
@@ -7611,6 +9777,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'diez yardas',
                 'code' => 'YT',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             84 =>
             array (
@@ -7618,6 +9786,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'van de elevación',
                 'code' => 'Z1',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             85 =>
             array (
@@ -7625,6 +9795,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pecho',
                 'code' => 'Z2',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             86 =>
             array (
@@ -7632,6 +9804,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'barril',
                 'code' => 'Z3',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             87 =>
             array (
@@ -7639,6 +9813,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'pipa',
                 'code' => 'Z4',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             88 =>
             array (
@@ -7646,6 +9822,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'arrastrar',
                 'code' => 'Z5',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             89 =>
             array (
@@ -7653,6 +9831,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'punto de conferencia',
                 'code' => 'Z6',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             90 =>
             array (
@@ -7660,6 +9840,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'línea de noticias de ágata',
                 'code' => 'Z8',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             91 =>
             array (
@@ -7667,6 +9849,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'página',
                 'code' => 'ZP',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
             92 =>
             array (
@@ -7674,6 +9858,8 @@ class UnitMeasuresTableSeeder extends Seeder
                 'name' => 'mutuamente definido',
                 'code' => 'ZZ',
                 'status' => 'inactivo',
+                'created_at' => '2023-01-12 10:57:35',
+                'updated_at' => '2023-01-12 10:57:35',
             ),
         ));
 
