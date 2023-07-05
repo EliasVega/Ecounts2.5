@@ -4521,7 +4521,7 @@ class UnitMeasuresTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 10:57:35',
             ),
         ));
-        DB::table('measure_units')->insert(array (
+        DB::table('unit_measures')->insert(array (
             0 =>
             array (
                 'id' => 501,
@@ -9023,7 +9023,7 @@ class UnitMeasuresTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 10:57:35',
             ),
         ));
-        DB::table('measure_units')->insert(array (
+        DB::table('unit_measures')->insert(array (
             0 =>
             array (
                 'id' => 1001,
