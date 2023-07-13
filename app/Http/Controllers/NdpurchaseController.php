@@ -11,6 +11,7 @@ use App\Models\Nc_discrepancy;
 use App\Models\Ncpurchase_product;
 use App\Models\Ndpurchase_product;
 use App\Models\Pay_purchase;
+use App\Models\Pay_purchase_payment_method;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Product_purchase;
@@ -83,6 +84,13 @@ class NdpurchaseController extends Controller
             $purchase = Purchase::findOrFail($pur);
             $branch = $purchase->branch_id;
             $pay = $purchase->pay;
+            $payCash = 0;
+            $payPurchase = Pay_purchase::where('purchase_id', $purchase->id)->get();
+            foreach ($payPurchase as $key => $value) {
+                $payCash += Pay_purchase_payment_method::where('pay_purchase_id', $value->id)->where('payment_method_id', 10)->sum('payment');
+            }
+            $reverse = $request->reverse;
+            $reversePay = $pay - $payCash;
 
             $date1 = Carbon::now()->toDateString();
             $date2 = Purchase::find($purchase->id)->created_at->toDateString();
@@ -90,10 +98,53 @@ class NdpurchaseController extends Controller
                 $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
                 $sale_box->purchase -= $purchase->total_pay;
                 $sale_box->out_purchase -= $pay;
+                $sale_box->out_purchase_cash -= $payCash;
+                $sale_box->out_total -= $purchase->total_pay;
                 $sale_box->update();
-            }
-            if ($pay > 0) {
 
+                if ($pay > 0 && $reverse == 0) {
+
+                    $payment = new Payment();
+                    $payment->user_id = Auth::user()->id;
+                    $payment->branch_id = $branch;
+                    $payment->supplier_id = $purchase->supplier_id;
+                    $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
+                    $payment->destination = null;
+                    $payment->pay = $pay;
+                    $payment->balance = $pay;
+                    $payment->note = 'por eliminacion de compra';
+                    $payment->save();
+
+                    $sale_box = Sale_box::where('user_id', '=', $payment->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->out_payment += $payment->pay;
+                    $sale_box->update();
+
+                } elseif ($pay > 0 && $reverse == 1) {
+
+                    if ($reversePay > 0) {
+                        $payment = new Payment();
+                        $payment->user_id = Auth::user()->id;
+                        $payment->branch_id = $branch;
+                        $payment->supplier_id = $purchase->supplier_id;
+                        $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
+                        $payment->destination = null;
+                        $payment->pay = $reversePay;
+                        $payment->balance = $reversePay;
+                        $payment->note = 'por eliminacion de compra' . '-' . $payCash . 'Ingresado a caja';
+                        $payment->save();
+
+                        $sale_box = Sale_box::where('user_id', '=', $payment->user_id)->where('status', '=', 'open')->first();
+                        $sale_box->out_payment += $payment->pay;
+                        $sale_box->departure -= $payCash;
+                        $sale_box->update();
+                    } else {
+                        $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                        $sale_box->departure -= $payCash;
+                        $sale_box->update();
+                    }
+                }
+
+            } else {
                 $payment = new Payment();
                 $payment->user_id = Auth::user()->id;
                 $payment->branch_id = $branch;
@@ -104,6 +155,12 @@ class NdpurchaseController extends Controller
                 $payment->balance = $pay;
                 $payment->note = 'por eliminacion de compra';
                 $payment->save();
+
+                $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                if ($reverse == 1) {
+                    $sale_box->out_payment += $pay;
+                }
+                $sale_box->update();
             }
 
 
@@ -124,6 +181,10 @@ class NdpurchaseController extends Controller
             $ndpurchase->total_iva = $purchase->total_iva;
             $ndpurchase->total_pay = $purchase->total_pay;
             $ndpurchase->save();
+
+            $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+            $sale_box->ndpurchase += $ndpurchase->total_pay;
+            $sale_box->update();
 
             //Seleccionar los productos de la compra
             $productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
@@ -173,12 +234,15 @@ class NdpurchaseController extends Controller
         catch(Exception $e){
             DB::rollback();
         }
-        if ($pay > 0) {
+        if ($pay > 0 && $reverse == 0) {
             Alert::success('Compra','Eliminada Satisfactoriamente. Con creacion de anticipo de Proveedor');
             return redirect('purchase');
 
-        } else {
-            return redirect("purchase")->with('success', 'Compra Eliminada Satisfactoriamente');
+        } elseif ($pay > 0 && $reverse == 1) {
+            Alert::success('Compra','Eliminada Satisfactoriamente. Con creacion de anticipo de Proveedor');
+            return redirect('purchase');
+        }else {
+            return redirect("purchase")->with('success', 'Compra Eliminada Satisfactoriamente, ingreso efectivo a caja');
         }
     }
 

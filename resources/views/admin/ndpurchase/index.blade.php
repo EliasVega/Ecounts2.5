@@ -50,7 +50,7 @@
                 {data: 'purchase'},
                 {data: 'branch'},
                 {data: 'customer'},
-                {data: 'total_pay'},
+                {data: 'total_pay', className: 'dt-body-right', render: $.fn.dataTable.render.number('.', ',', 2)},
                 {data: 'created_at'},
                 {data: 'btn'},
             ],

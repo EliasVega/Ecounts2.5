@@ -190,7 +190,7 @@
         @if ($sale_box->out_ndpurchase > 0)
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label class="form-control-label" for="abono">T/Ingresos ND compras</label>
+                    <label class="form-control-label" for="abono">T/Egresos ND compras</label>
                     <p>${{ number_format($sale_box->out_ndpurchase,2) }}</p>
                 </div>
             </div>
@@ -658,17 +658,17 @@
                             <tfoot>
                                 <tr>
                                     <th  colspan="4"><p align="right">TOTAL:</p></th>
-                                    <th><p align="right">${{ $totalnd }}</p></th>
+                                    <th><p align="right">${{ number_format($ndpurchaseTotal,2) }}</p></th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach($ndinvoices as $nd)
+                                @foreach($ndpurchases as $ndpurchase)
                                     <tr>
-                                        <td>{{ $nd->created_at }}</td>
-                                        <td>{{ $nd->id }}</td>
-                                        <td>{{ $nd->invoice->id }}</td>
-                                        <td>{{ $nd->customer->name }}</td>
-                                        <td>$ {{ $nd->total_pay }}</td>
+                                        <td>{{ $ndpurchase->created_at }}</td>
+                                        <td>{{ $ndpurchase->id }}</td>
+                                        <td>{{ $ndpurchase->purchase_id }}</td>
+                                        <td>{{ $ndpurchase->supplier->name }}</td>
+                                        <td class="tdder">$ {{ number_format($ndpurchase->total_pay,2) }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -677,7 +677,7 @@
                 </div>
             </div>
         @endif
-        @if ($sale_box->ndpurchase > 0)
+        @if ($sale_box->ncpurchase > 0)
             <div class="box-body row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

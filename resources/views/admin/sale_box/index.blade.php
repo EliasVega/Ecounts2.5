@@ -45,6 +45,7 @@
             processing: true,
             serverSide: true,
             ajax: '{{ route('sale_box.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 {data: 'user'},

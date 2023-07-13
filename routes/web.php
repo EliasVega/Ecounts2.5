@@ -151,8 +151,10 @@ Route::resource('prePurchaseProduct', PrePurchaseProductController::class);
 Route::get('advance/advancePdf/{id}', [AdvanceController::class, 'advancePdf'])->name('advancePdf');
 Route::get('payment/paymentPdf/{id}', [PaymentController::class, 'paymentPdf'])->name('paymentPdf');
 
-Route::get('company/create/{id}', [CompanyController::class, 'getMunicipalities']);
-Route::post('company/logout', [CompanyController::class, 'logout'])->name('logout_company');
+Route::get('auxiliary_account/AccountGroup/{id}', [AuxiliaryAccountController::class, 'AccountGroups'])->name('AccountGroups');
+Route::get('auxiliary_account/Account/{id}', [AuxiliaryAccountController::class, 'Accounts'])->name('Accounts');
+Route::get('auxiliary_account/Subaccount/{id}', [AuxiliaryAccountController::class, 'Subaccounts'])->name('Subaccount');
+Route::get('auxiliary_account/AuxAccount/{id}', [AuxiliaryAccountController::class, 'AuxAccounts'])->name('AuxAccount');
 
 Route::get('branch/create/{id}', [BranchController::class, 'getMunicipalities']);
 Route::get('show_prePurchase/{id}', [BranchController::class, 'show_prePurchase'])->name('show_prePurchase');
@@ -165,30 +167,20 @@ Route::get('show_transfer/{id}', [BranchController::class, 'show_transfer'])->na
 Route::get('show_sale_box/{id}', [BranchController::class, 'show_sale_box'])->name('show_sale_box');
 Route::post('branch/logout', [BranchController::class, 'logout'])->name('logout_branch');
 
-Route::get('show_ndpurchase/{id}', [PurchaseController::class, 'show_ndpurchase'])->name('show_ndpurchase');
-Route::get('show_ncpurchase/{id}', [PurchaseController::class, 'show_ncpurchase'])->name('show_ncpurchase');
-Route::get('create/{id}', [PurchaseController::class, 'getMunicipalities']);
-Route::get('show_pdf_purchase/{id}', [PurchaseController::class, 'show_pdf_purchase'])->name('show_pdf_purchase');
-Route::get('show_pay_purchase/{id}', [PurchaseController::class, 'show_pay_purchase'])->name('show_pay_purchase');
-Route::get('post_purchase/{id}', [PurchaseController::class, 'post_purchase'])->name('post_purchase');
-Route::get('purchasePdf', [PurchaseController::class, 'purchasePdf'])->name('purchasePdf');
-Route::get('purchasePost', [PurchaseController::class, 'purchasePost'])->name('purchasePost');
+Route::resource('cash_receipt', CashReceiptController::class);
 
-Route::get('prosuc/crate/{id}', [ProductBranchController::class, 'getProducts']);
+Route::get('company/create/{id}', [CompanyController::class, 'getMunicipalities']);
+Route::post('company/logout', [CompanyController::class, 'logout'])->name('logout_company');
 
-Route::get('supplier/create/{id]', [SupplierController::class, 'getMunicipios']);
+Route::get('co_municipality/co_department/{id}', [CoMunicipalityController::class, 'getCoDepartment'])->name('co_department');
 
 Route::get('customer/create/{id}', [CustomerController::class, 'getProducts']);
 Route::get('customer/create/{id}', [CustomerController::class, 'getMunicipalities']);
 
-Route::get('status/{id}', [UserController::class, 'status'])->name('status');
-Route::get('inactive', [UserController::class, 'inactive'])->name('inactive');
-
-Route::get('supplier/create/{id}', [SupplierController::class, 'getMunicipalities']);
-
-Route::post('user/logout', [UserController::class, 'logout'])->name('logout_user');
-Route::get('user/show_code/{id}', [UserController::class, 'show_code'])->name('show_code');
-Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('delete');
+Route::get('expense/show_pdf_expense/{id}', [ExpenseController::class, 'show_pdf_expense'])->name('show_pdf_expense');
+Route::get('expense/show_pay_expense/{id}', [ExpenseController::class, 'show_pay_expense'])->name('show_pay_expense');
+Route::get('expense/create/{id}', [InvoiceController::class, 'getMunicipalities']);
+Route::get('expense/post_expense/{id}', [ExpenseController::class, 'post_expense'])->name('post_expense');
 
 Route::get('invoice/show_ncinvoice/{id}', [InvoiceController::class, 'show_ncinvoice'])->name('show_ncinvoice');
 Route::get('invoice/show_ndinvoice/{id}', [InvoiceController::class, 'show_ndinvoice'])->name('show_ndinvoice');
@@ -200,8 +192,7 @@ Route::get('invoice/getAdvance/{id}', [InvoiceController::class, 'getAdvances'])
 Route::get('invoicePdf', [InvoiceController::class, 'invoicePdf'])->name('invoicePdf');
 Route::get('invoicePost', [InvoiceController::class, 'invoicePost'])->name('invoicePost');
 
-Route::get('purchase/create/{id}', [PurchaseController::class, 'getMunicipalities']);
-Route::get('purchase/getPayment/{id}', [PurchaseController::class, 'getPayments'])->name('getPayment');
+Route::get('show_pay_ncinvoice/{id}', [NcinvoiceController::class, 'show_pay_ncinvoice'])->name('show_pay_ncinvoice');
 
 Route::get('order/show_invoicy/{id}', [orderController::class, 'show_invoicy'])->name('show_invoicy');
 Route::get('order/show_pay_order/{id}', [orderController::class, 'show_pay_order'])->name('show_pay_order');
@@ -209,10 +200,27 @@ Route::get('order/show_pdf_order/{id}', [orderController::class, 'show_pdf_order
 Route::get('order/eliminar/{id}', [orderController::class, 'eliminar'])->name('eliminar');
 Route::get('order/create/{id}', [OrderController::class, 'getMunicipalities']);
 
-Route::get('show_out/{id}', [saleboxController::class, 'show_out'])->name('show_out');
-Route::get('show_pos/{id}', [saleboxController::class, 'show_pos'])->name('show_pos');
-Route::get('show_close/{id}', [SaleboxController::class, 'show_close'])->name('show_close');
-Route::get('show_cashIn/{id}', [SaleboxController::class, 'show_cashIn'])->name('show_cashIn');
+Route::get('pdf_pay_invoice/{id}', [PayinvoiceController::class, 'pdf_pay_invoice'])->name('pdf_pay_invoice');
+Route::get('pdf_pay_purchase/{id}', [PayPurchaseController::class, 'pdf_pay_purchase'])->name('pdf_pay_purchase');
+Route::get('pdfPayOrder/{id}', [PayorderController::class, 'pdfPayOrder'])->name('pdfPayOrder');
+Route::get('pdfPayExpense/{id}', [PayExpenseController::class, 'pdfPayExpense'])->name('pdfPayExpense');
+
+Route::get('prePurchase/create/{id}', [PrePurchaseController::class, 'getMunicipalities']);
+Route::get('prePurchase/invoice/{id}', [PrePurchaseController::class, 'invoice'])->name('prePurchaseInvoice');
+Route::get('prePurchase/pdf/{id}', [PrePurchaseController::class, 'prePurchasepdf'])->name('prePurchasePdf');
+Route::get('prePurchase/post/{id}', [PrePurchaseController::class, 'prePurchasepost'])->name('prePurchasePost');
+
+Route::get('prosuc/crate/{id}', [ProductBranchController::class, 'getProducts']);
+
+Route::get('show_ndpurchase/{id}', [PurchaseController::class, 'show_ndpurchase'])->name('show_ndpurchase');
+Route::get('show_ncpurchase/{id}', [PurchaseController::class, 'show_ncpurchase'])->name('show_ncpurchase');
+Route::get('show_pdf_purchase/{id}', [PurchaseController::class, 'show_pdf_purchase'])->name('show_pdf_purchase');
+Route::get('show_pay_purchase/{id}', [PurchaseController::class, 'show_pay_purchase'])->name('show_pay_purchase');
+Route::get('post_purchase/{id}', [PurchaseController::class, 'post_purchase'])->name('post_purchase');
+Route::get('purchasePdf', [PurchaseController::class, 'purchasePdf'])->name('purchasePdf');
+Route::get('purchasePost', [PurchaseController::class, 'purchasePost'])->name('purchasePost');
+Route::get('purchase/create/{id}', [PurchaseController::class, 'getMunicipalities']);
+Route::get('purchase/getPayment/{id}', [PurchaseController::class, 'getPayments'])->name('getPayment');
 
 Route::get('portfolio', [ReportController::class, 'portfolio'])->name('portfolio');
 Route::get('past_due_portfolio', [ReportController::class, 'past_due_portfolio'])->name('past_due_portfolio');
@@ -220,34 +228,22 @@ Route::get('portfolio_thirty', [ReportController::class, 'portfolio_thirty'])->n
 Route::get('portfolio_sixty', [ReportController::class, 'portfolio_sixty'])->name('portfolio_sixty');
 Route::get('daily_report', [ReportController::class, 'daily_report'])->name('daily_report');
 
-Route::get('show_pay_ncinvoice/{id}', [NcinvoiceController::class, 'show_pay_ncinvoice'])->name('show_pay_ncinvoice');
+Route::get('show_out/{id}', [saleboxController::class, 'show_out'])->name('show_out');
+Route::get('show_pos/{id}', [saleboxController::class, 'show_pos'])->name('show_pos');
+Route::get('show_close/{id}', [SaleboxController::class, 'show_close'])->name('show_close');
+Route::get('show_cashIn/{id}', [SaleboxController::class, 'show_cashIn'])->name('show_cashIn');
 
 Route::get('subaccount/getAccountGroup/{id}', [SubaccountController::class, 'getAccountGroups'])->name('getAccountGroup');
 Route::get('subaccount/getAccount/{id}', [ SubaccountController::class, 'getAccounts'])->name('getAccount');
 Route::get('subaccount/getSubaccount/{id}', [SubaccountController::class, 'getSubaccounts'])->name('getSubaccount');
 
-Route::get('auxiliary_account/AccountGroup/{id}', [AuxiliaryAccountController::class, 'AccountGroups'])->name('AccountGroups');
-Route::get('auxiliary_account/Account/{id}', [AuxiliaryAccountController::class, 'Accounts'])->name('Accounts');
-Route::get('auxiliary_account/Subaccount/{id}', [AuxiliaryAccountController::class, 'Subaccounts'])->name('Subaccount');
-Route::get('auxiliary_account/AuxAccount/{id}', [AuxiliaryAccountController::class, 'AuxAccounts'])->name('AuxAccount');
-
-Route::get('pdf_pay_invoice/{id}', [PayinvoiceController::class, 'pdf_pay_invoice'])->name('pdf_pay_invoice');
-Route::get('pdf_pay_purchase/{id}', [PayPurchaseController::class, 'pdf_pay_purchase'])->name('pdf_pay_purchase');
-Route::get('pdfPayOrder/{id}', [PayorderController::class, 'pdfPayOrder'])->name('pdfPayOrder');
-Route::get('pdfPayExpense/{id}', [PayExpenseController::class, 'pdfPayExpense'])->name('pdfPayExpense');
-
-Route::get('co_municipality/co_department/{id}', [CoMunicipalityController::class, 'getCoDepartment'])->name('co_department');
-Route::resource('cash_receipt', CashReceiptController::class);
-
-Route::get('expense/show_pdf_expense/{id}', [ExpenseController::class, 'show_pdf_expense'])->name('show_pdf_expense');
-Route::get('expense/show_pay_expense/{id}', [ExpenseController::class, 'show_pay_expense'])->name('show_pay_expense');
-Route::get('expense/create/{id}', [InvoiceController::class, 'getMunicipalities']);
-Route::get('expense/post_expense/{id}', [ExpenseController::class, 'post_expense'])->name('post_expense');
-
-Route::get('prePurchase/create/{id}', [PrePurchaseController::class, 'getMunicipalities']);
-Route::get('prePurchase/invoice/{id}', [PrePurchaseController::class, 'invoice'])->name('prePurchaseInvoice');
-Route::get('prePurchase/pdf/{id}', [PrePurchaseController::class, 'prePurchasepdf'])->name('prePurchasePdf');
-Route::get('prePurchase/post/{id}', [PrePurchaseController::class, 'prePurchasepost'])->name('prePurchasePost');
+Route::get('supplier/create/{id}', [SupplierController::class, 'getMunicipalities']);
 
 Route::get('unitMeasure/status/{id}', [UnitMeasureController::class, 'status'])->name('unitStatus');
+
+Route::get('status/{id}', [UserController::class, 'status'])->name('status');
+Route::get('inactive', [UserController::class, 'inactive'])->name('inactive');
+Route::post('user/logout', [UserController::class, 'logout'])->name('logout_user');
+Route::get('user/show_code/{id}', [UserController::class, 'show_code'])->name('show_code');
+Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('delete');
 

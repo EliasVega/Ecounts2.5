@@ -103,11 +103,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($purchases as $pur)
+                            @foreach ($purchases as $purchase)
                             <tr>
-                                <td class="document">{{ $pur->document }}</td>
-                                <td class="third">{{ $pur->supplier->name }}</td>
-                                <td class="totals" align="right">$ {{ number_format($pur->total_pay) }}</td>
+                                <td class="document">{{ $purchase->document }}</td>
+                                <td class="third">{{ $purchase->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ number_format($purchase->total_pay) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -132,11 +132,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($invoices as $inv)
+                            @foreach ($invoices as $invoice)
                             <tr>
-                                <td class="document">{{ $inv->document }}</td>
-                                <td class="third">{{ $inv->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ number_format($inv->total_pay) }}</td>
+                                <td class="document">{{ $invoice->document }}</td>
+                                <td class="third">{{ $invoice->customer->name }}</td>
+                                <td class="totals" align="right">$ {{ number_format($invoice->total_pay) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -162,11 +162,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($expenses as $exp)
+                            @foreach ($expenses as $expense)
                             <tr>
-                                <td class="document">{{ $exp->document }}</td>
-                                <td class="third">{{ $exp->supplier->name }}</td>
-                                <td class="totals" align="right">$ {{ number_format($exp->total_pay, 2) }}</td>
+                                <td class="document">{{ $expense->document }}</td>
+                                <td class="third">{{ $expense->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ number_format($expense->total_pay, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -191,11 +191,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($orders as $ord)
+                            @foreach ($orders as $order)
                             <tr>
-                                <td class="document">{{ $ord->id }}</td>
-                                <td class="third">{{ $ord->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ number_format($ord->total_pay, 2) }}</td>
+                                <td class="document">{{ $order->id }}</td>
+                                <td class="third">{{ $order->customer->name }}</td>
+                                <td class="totals" align="right">$ {{ number_format($order->total_pay, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -220,11 +220,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($ncinvoices as $nc)
+                            @foreach ($ncinvoices as $ncinvoice)
                             <tr>
-                                <td class="document">{{ $nc->id }}</td>
-                                <td class="third">{{ $nc->invoice->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ $nc->total_pay }}</td>
+                                <td class="document">{{ $ncinvoice->id }}</td>
+                                <td class="third">{{ $ncinvoice->customer->name }}</td>
+                                <td class="totals" align="right">$ {{ $ncinvoice->total_pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -249,11 +249,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($ndinvoices as $nd)
+                            @foreach ($ndinvoices as $ndinvoice)
                             <tr>
-                                <td class="document">{{ $nd->id }}</td>
-                                <td class="third">{{ $nd->invoice->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ $nd->total_pay }}</td>
+                                <td class="document">{{ $ndinvoice->id }}</td>
+                                <td class="third">{{ $ndinvoice->customer->name }}</td>
+                                <td class="totals" align="right">$ {{ $ndinvoice->total_pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -278,11 +278,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($ncinvoices as $nc)
+                            @foreach ($ncpurchases as $ncpurchase)
                             <tr>
-                                <td class="document">{{ $nc->id }}</td>
-                                <td class="third">{{ $nc->invoice->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ $nc->total_pay }}</td>
+                                <td class="document">{{ $ncpurchase->id }}</td>
+                                <td class="third">{{ $ncpurchase->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ $ncpurchase->total_pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -307,11 +307,11 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($ndinvoices as $nd)
+                            @foreach ($ndpurchases as $ndpurchase)
                             <tr>
-                                <td class="document">{{ $nd->id }}</td>
-                                <td class="third">{{ $nd->invoice->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ $nd->total_pay }}</td>
+                                <td class="document">{{ $ndpurchase->id }}</td>
+                                <td class="third">{{ $ndpurchase->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ $ndpurchase->total_pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -324,7 +324,7 @@
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_pay_orders > 0)
+            @if ($sum_pay_orders > 0)
                 <div class="unicos">
                     <p>REPORTE DE ABONOS A PEDIDOS</p>
                     <table>
@@ -336,24 +336,24 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($pay_orders as $po)
+                            @foreach ($pay_orders as $payOrder)
                             <tr>
-                                <td class="document">{{ $po->order_id }}</td>
-                                <td class="third">{{ $po->order->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ $po->pay }}</td>
+                                <td class="document">{{ $payOrder->order_id }}</td>
+                                <td class="third">{{ $payOrder->order->customer->name }}</td>
+                                <td class="totals" align="right">$ {{ $payOrder->pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="2" ><p align="right" >TOTAL:</p></th>
-                                <td><p align="right" >${{number_format($sum_pay->orders)}}</p></td>
+                                <td><p align="right" >${{number_format($sum_pay_orders)}}</p></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_pay_invoices > 0)
+            @if ($sum_pay_invoices > 0)
                 <div class="unicos">
                     <p>REPORTE DE ABONOS A FACTURAS</p>
                     <table>
@@ -365,24 +365,24 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($pay_invoices as $pi)
+                            @foreach ($pay_invoices as $payInvoice)
                             <tr>
-                                <td class="document">{{ $pi->invoice->document }}</td>
-                                <td class="third">{{ $pi->invoice->customer->name }}</td>
-                                <td class="totals" align="right">$ {{ $pi->pay }}</td>
+                                <td class="document">{{ $payInvoice->invoice->document }}</td>
+                                <td class="third">{{ $payInvoice->invoice->customer->name }}</td>
+                                <td class="totals" align="right">$ {{ $payInvoice->pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="2" ><p align="right" >TOTAL:</p></th>
-                                <td><p align="right" >${{number_format($sum_pay->invoices)}}</p></td>
+                                <td><p align="right" >${{number_format($sum_pay_invoices)}}</p></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_pay_purchases > 0)
+            @if ($sum_pay_purchases > 0)
                 <div class="unicos">
                     <p>REPORTE DE PAGOS A COMPRAS</p>
                     <table>
@@ -394,24 +394,24 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($pay_purchases as $pp)
+                            @foreach ($pay_purchases as $payPurchase)
                             <tr>
-                                <td class="document">{{ $pp->purchase->id }}</td>
-                                <td class="third">{{ $pp->purchase->supplier->name }}</td>
-                                <td class="totals" align="right">$ {{ $pp->pay }}</td>
+                                <td class="document">{{ $payPurchase->purchase->id }}</td>
+                                <td class="third">{{ $payPurchase->purchase->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ $payPurchase->pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="2" ><p align="right" >TOTAL:</p></th>
-                                <td><p align="right" >${{number_format($sum_pay->purchases)}}</p></td>
+                                <td><p align="right" >${{number_format($sum_pay_purchases)}}</p></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_pay_expenses > 0)
+            @if ($sum_pay_expenses > 0)
                 <div class="unicos">
                     <p>REPORTE DE PAGOS Y GASTOS</p>
                     <table>
@@ -423,24 +423,24 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($pay_expenses as $pe)
+                            @foreach ($pay_expenses as $payExpense)
                             <tr>
-                                <td class="document">{{ $pe->expense->id }}</td>
-                                <td class="third">{{ $pe->expense->supplier->name }}</td>
-                                <td class="totals" align="right">$ {{ $pe->pay }}</td>
+                                <td class="document">{{ $payExpense->expense->id }}</td>
+                                <td class="third">{{ $payExpense->expense->supplier->name }}</td>
+                                <td class="totals" align="right">$ {{ $payExpense->pay }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="2" ><p align="right" >TOTAL:</p></th>
-                                <td><p align="right" >${{number_format($sum_pay->expenses)}}</p></td>
+                                <td><p align="right" >${{number_format($sum_pay_expenses)}}</p></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_cash_ins > 0)
+            @if ($sum_cash_ins > 0)
                 <div class="unicos">
                     <p>REPORTE DE ENTRADAS EFECTIVO</p>
                     <table>
@@ -451,10 +451,10 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($cashIns as $cas)
+                            @foreach ($cashIns as $cashIn)
                             <tr>
-                                <td>{{ $cas->name }}</td>
-                                <td>$ {{ $cas->payment }}</td>
+                                <td>{{ $cashIn->name }}</td>
+                                <td>$ {{ $cashIn->payment }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -467,7 +467,7 @@
                     </table>
                 </div>
             @endif
-            @if ($sale_box->sum_cash_outs > 0)
+            @if ($sum_cash_outs > 0)
                 <div class="unicos">
                     <p>REPORTE DE SALIDAS EFECTIVO</p>
                     <table>
@@ -478,10 +478,10 @@
                             </tr>
                         </thead>
                         <tbody class="fact">
-                            @foreach ($cashOuts as $cas)
+                            @foreach ($cashOuts as $cashOut)
                             <tr>
-                                <td>{{ $cas->name }}</td>
-                                <td>$ {{ $cas->payment }}</td>
+                                <td>{{ $cashOut->name }}</td>
+                                <td>$ {{ $cashOut->payment }}</td>
                             </tr>
                             @endforeach
                         </tbody>

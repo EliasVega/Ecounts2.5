@@ -17,8 +17,9 @@ return new class extends Migration
         Schema::create('cash_receipts', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('type',['order', 'invoice', 'advance', 'cash_in']);
-            $table->morphs('payable');
+            $table->decimal('pay', 10,2);
+            $table->enum('type',['order', 'invoice', 'ndinvoice', 'advance', 'cash_in', 'ndpurchase']);
+            $table->morphs('cash_receiptable');
 
             $table->timestamps();
         });

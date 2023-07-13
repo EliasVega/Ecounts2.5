@@ -15,7 +15,9 @@ use App\Models\Verification_code;
 use App\Models\Invoice;
 use App\Models\Invoice_product;
 use App\Models\Ncinvoice;
+use App\Models\Ncpurchase;
 use App\Models\Ndinvoice;
+use App\Models\Ndpurchase;
 use App\Models\Order;
 use App\Models\Pay_expense;
 use App\Models\Pay_invoice;
@@ -583,11 +585,17 @@ class SaleboxController extends Controller
         $pay_expenses = Pay_expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_pay_expenses = Pay_expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
 
+        $ncpurchases = Ndpurchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $ncpurchaseTotal = Ncpurchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+
+        $ndpurchases = Ndpurchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
+        $ndpurchaseTotal = Ndpurchase::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+        //dd($ndpurchaseTotal);
         $ncinvoices = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
-        $totalnc = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+        $ncinvoiceTotal = Ncinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
 
         $ndinvoices = Ndinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
-        $totalnd = Ndinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+        $ndinvoiceTotal = Ndinvoice::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('total_pay');
 
         $cash_outs = Cash_out::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_pay_cashs = Cash_out::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('payment');
@@ -597,7 +605,6 @@ class SaleboxController extends Controller
 
         $advances = Advance::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
         $sum_advances = Advance::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->sum('pay');
-
 
 
         return view('admin.sale_box.show_close', compact(
@@ -634,11 +641,14 @@ class SaleboxController extends Controller
 
 
             'sale_box',
-
+            'ncpurchases',
+            'ncpurchaseTotal',
+            'ndpurchases',
+            'ndpurchaseTotal',
             'ncinvoices',
-            'totalnc',
+            'ncinvoiceTotal',
             'ndinvoices',
-            'totalnd',
+            'ndinvoiceTotal',
             'cash_outs',
             'products',
 
@@ -911,28 +921,34 @@ class SaleboxController extends Controller
             }
             //dd($productpurc);
             $invoices = Invoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
-            $invTotalPay = Invoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+            //$invTotalPay = Invoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
             //$invbalance = Invoice::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('balance');
             //$invpay = Invoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('pay');
 
             $orders = Order::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
-            $ordTotalPay = Order::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+            //$ordTotalPay = Order::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
             //$ordbalance = Order::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('balance');
             //$ordpay = Order::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('pay');
 
             $purchases = Purchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
-            $purTotalPay = Purchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+            //$purTotalPay = Purchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
             //$purbalance = Purchase::where('user_id', $user->id)->whereBetween('created_at', [$from, $to])->sum('balance');
             //$purpay = Purchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('pay');
 
             $expenses = Expense::where('user_id', $sale_box->user_id)->whereBetween('created_at', [$from, $to])->get();
-            $expTotalPay = Purchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+            //$expTotalPay = Purchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
 
             $ncinvoices = Ncinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
-            $ncipay =  Ncinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+            //$ncipay =  Ncinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
 
             $ndinvoices = Ndinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
-            $ndipay = Ndinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+            //$ndipay = Ndinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+
+            $ncpurchases = Ncpurchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
+            //$ncipay =  Ncinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
+
+            $ndpurchases = Ndpurchase::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
+            //$ndipay = Ndinvoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
 
             $pay_orders = Pay_order::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
             $sum_pay_orders = Pay_order::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('pay');
@@ -981,17 +997,13 @@ class SaleboxController extends Controller
             'productPurchases',
             'sale_box',
             'invoices',
-            'invTotalPay',
             'orders',
-            'ordTotalPay',
             'purchases',
-            'purTotalPay',
             'expenses',
-            'expTotalPay',
             'ncinvoices',
-            'ncipay',
             'ndinvoices',
-            'ndipay',
+            'ncpurchases',
+            'ndpurchases',
             'pay_orders',
             'sum_pay_orders',
             'pay_invoices',

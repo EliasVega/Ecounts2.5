@@ -841,7 +841,7 @@ class PurchaseController extends Controller
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
-
+        $pdf->render();
         return $pdf->stream("$purchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
     }
