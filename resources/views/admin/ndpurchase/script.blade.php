@@ -66,25 +66,4 @@
             $('#product_id option:selected').remove();
         }
     });
-    $(document).ready(function(){
-        $("#Vreverse").keyup(function(){
-            $("#Vreverse").val();
-            payment();
-        });
-    });
-    function payment(){
-        pay = parseFloat($("#Vpay").val())
-        payCash = parseFloat($("#Vreverse").val())
-        abn = pay - payCash;
-        if (abn < 0) {
-            //alert("Rellene todos los campos del detalle de la venta");
-            Swal.fire({
-            type: 'error',
-            //title: 'Oops...',
-            text: 'El abono supera el valor de los pagos a esta factura',
-            })
-            $("#Vreverse").val(0)
-            payment();
-        }
-    }
 </script>

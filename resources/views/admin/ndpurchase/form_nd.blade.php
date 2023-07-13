@@ -6,13 +6,6 @@
                 class="form-control" placeholder="" readonly>
         </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" id="addVpay">
-        <div class="form-group">
-            <label for="Vpay">Compra</label>
-            <input type="text" name="Vpay" value="{{ $purchase->pay }}" id="Vpay"
-                class="form-control" placeholder="" readonly>
-        </div>
-    </div>
     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
         <div class="form-group">
             <label for="purchase_id">Compra</label>
@@ -39,13 +32,6 @@
             <label class="form-check-label" for="reverse">
                 Dejar valor como anticipo
             </label>
-        </div>
-    </div>
-    <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="Vreverse">Abono</label>
-            <input type="number" id="Vreverse" name="Vreverse" value="{{ $purchase->pay }}" class="form-control"
-                placeholder="Valor a Regresar">
         </div>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

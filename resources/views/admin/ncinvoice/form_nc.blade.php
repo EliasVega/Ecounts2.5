@@ -12,6 +12,19 @@
             <input type="text" name="" value="{{ $invoice->customer->name }}"
                 class="form-control" placeholder="" readonly>
         </div>
+    </div><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-3" >
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="reverse" value="1" id="reverse_on">
+            <label class="form-check-label" for="reverse">
+                Regresar efectivo de la Caja
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="reverse" value="0" id="reverse_off" checked>
+            <label class="form-check-label" for="reverse">
+                Dejar valor como anticipo a cliente
+            </label>
+        </div>
     </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

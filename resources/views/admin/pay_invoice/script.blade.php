@@ -11,7 +11,7 @@
         });
     });
     var cont=0;
-    total=0;
+    var total=0;
     //form invoice
     $("#save").hide();
     //form pay
@@ -43,7 +43,7 @@
         card      = $("#card_id option:selected").text();
         pay        = $("#pay").val();
         transaction  = $("#transaction").val();
-        pendient    = $("#pendient").val();
+        pendient    = $("#balance").val();
 
         if(payment_method_id !="" && bank_id!="" && card_id!=""  && pay!="" && pay>0 && transaction!=""){
             total = parseFloat(total) + parseFloat(pay);
@@ -268,8 +268,8 @@
     function payment(){
         ttp = parseFloat($("#balance").val())
         abn = parseFloat($("#pay").val())
-        balancey = ttp - abn;
-        if (ttp >= abn) {
+        balancey = ttp - total - abn;
+        if (balancey >= 0) {
             $("#returned").val(balancey);
         } else {
             //alert("Rellene todos los campos del detalle de la venta");
