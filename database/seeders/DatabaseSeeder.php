@@ -42,6 +42,6 @@ class DatabaseSeeder extends Seeder
         //$this->call(CustomersTableSeeder::class);
         $this->call(TypeGenerationsTableSeeder::class);
         //$this->call(TypeDocumentSeeder::class);
-        $this->call(ServiceTableSeeder::class);
+        //$this->call(ServiceTableSeeder::class);
     }
 }
