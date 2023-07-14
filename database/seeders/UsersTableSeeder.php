@@ -39,12 +39,12 @@ class UsersTableSeeder extends Seeder
                 'position' => 'Administrador Sistema',
                 'transfer' => 1,
                 'status' => 'activo',
-                'created_at' => '2023-01-12 21:07:43',
-                'updated_at' => '2023-01-12 21:07:43',
                 'company_id' => 1,
                 'branch_id' => 1,
                 'document_id' => 3,
                 'role_id' => 1,
+                'created_at' => '2023-01-12 21:07:43',
+                'updated_at' => '2023-01-12 21:07:43',
             ),
             1 =>
             array (
@@ -73,5 +73,7 @@ class UsersTableSeeder extends Seeder
                 'role_id' => 2,
             ),
         ));
+
+
     }
 }

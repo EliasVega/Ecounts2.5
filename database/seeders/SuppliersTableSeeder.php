@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class SuppliersTableSeeder extends Seeder
 {
@@ -15,12 +14,12 @@ class SuppliersTableSeeder extends Seeder
      */
     public function run()
     {
+        
 
-
-        DB::table('suppliers')->delete();
-
-        DB::table('suppliers')->insert(array (
-            0 =>
+        \DB::table('suppliers')->delete();
+        
+        \DB::table('suppliers')->insert(array (
+            0 => 
             array (
                 'id' => 1,
                 'name' => 'NEXANS COLOMBIA',
@@ -40,7 +39,7 @@ class SuppliersTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'name' => 'BLACK&DECKER',
@@ -60,7 +59,7 @@ class SuppliersTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'name' => 'ASUS IMPORTACIONES',
@@ -80,7 +79,7 @@ class SuppliersTableSeeder extends Seeder
                 'created_at' => '2023-01-12 21:07:43',
                 'updated_at' => '2023-01-12 21:07:43',
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 4,
                 'name' => 'LENOVO COLOMBIA',
@@ -101,7 +100,7 @@ class SuppliersTableSeeder extends Seeder
                 'updated_at' => '2023-01-12 21:07:43',
             ),
         ));
-
-
+        
+        
     }
 }
