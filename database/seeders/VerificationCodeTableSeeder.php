@@ -28,7 +28,7 @@ class VerificationCodeTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'user_id' => 2,
-                'code' => '901243098'
+                'code' => '901292970'
             ),
         ));
     }
