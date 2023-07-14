@@ -270,8 +270,8 @@ class PurchaseController extends Controller
                 //Cambia el valor de venta del producto
                 //$product = Product::findOrFail($id);
                 $products->stock += $quantity[$cont]; //reempazando triguer
-                $products->price = $priceProduct;
-                $products->sale_price = $priceSale;
+                //$products->price = $priceProduct;
+                //$products->sale_price = $priceSale;
                 $products->update();
 
                 //selecciona el producto de la sucursal que sea el mismo del array
@@ -588,13 +588,13 @@ class PurchaseController extends Controller
                     $products = Product::where('id', $product_purchase->product_id)->first();
 
                     //$id = $products->id;
-                    $utility = $products->category->utility;
-                    $priceProduct = $products->price;
-                    $stockardex = $products->stock;
-                    $priceSale = $priceProduct + ($priceProduct * $utility / 100);
+                    //$utility = $products->category->utility;
+                    //$priceProduct = $products->price;
+                    //$stockardex = $products->stock;
+                    //$priceSale = $priceProduct + ($priceProduct * $utility / 100);
                     //Cambia el valor de venta del producto
                     //$product = Product::findOrFail($id);
-                    $products->sale_price = $priceSale;
+                    $products->stock += $quantity[$cont];
                     $products->update();
 
                     //selecciona el producto de la sucursal que sea el mismo del array
@@ -667,11 +667,11 @@ class PurchaseController extends Controller
                     $products = Product::findOrFail($product_id[$cont]);
 
                     //$id = $products->id;
-                    $utility = $products->category->utility;
-                    $priceProduct = $products->price;
-                    $priceSale = $priceProduct + ($priceProduct * $utility / 100);
+                    //$utility = $products->category->utility;
+                    //$priceProduct = $products->price;
+                    //$priceSale = $priceProduct + ($priceProduct * $utility / 100);
                     //Cambia el valor de venta del producto
-                    $products->sale_price = $priceSale;
+                    //$products->sale_price = $priceSale;
                     $products->stock += $quantity[$cont];
                     $products->update();
 

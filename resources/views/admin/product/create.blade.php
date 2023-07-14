@@ -62,7 +62,13 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="price">Precio</label>
-                        <input type="text" name="price" value="{{ old('price') }}" class="form-control" placeholder="Precio de Compra">
+                        <input type="number" name="price" value="0" class="form-control" placeholder="Precio de Compra">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="sale_price">Precio de Venta</label>
+                        <input type="number" name="sale_price" value="0" class="form-control" placeholder="Precio de Venta">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

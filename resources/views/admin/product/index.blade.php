@@ -20,6 +20,7 @@
                             <th>Id</th>
                             <th>Codigo</th>
                             <th>Nombre</th>
+                            <th>Precio_compra</th>
                             <th>Precio_Venta</th>
                             <th>stock</th>
                             <th>Estado</th>
@@ -48,7 +49,8 @@
                 {data: 'id'},
                 {data: 'code'},
                 {data: 'name'},
-                {data: 'sale_price'},
+                {data: 'price', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'sale_price', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'stock'},
                 {data: 'status'},
                 {data: 'edit'},

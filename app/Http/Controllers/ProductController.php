@@ -57,9 +57,8 @@ class ProductController extends Controller
         $product->code = $request->code;
         $product->name = $request->name;
         $product->price = $request->price;
-        $product->sale_price = 0;
+        $product->sale_price = $request->sale_price;
         $product->stock = 0;
-        $product->status = 1;
 
         //Handle File Upload
         if($request->hasFile('image')){
