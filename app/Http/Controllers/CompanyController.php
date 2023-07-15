@@ -26,7 +26,6 @@ class CompanyController extends Controller
         \Session::forget('branch');
         \Session::forget('company');
             $companies = company::where('id', '=', 1)->get();
-
         return view('admin.company.index', compact('companies'));
     }
 

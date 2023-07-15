@@ -13,7 +13,7 @@
         <!-- LOGGO -->
         <div class="center">
             <div id="logo">
-                <img src="{{ public_path('images/logos/'.$company->logo) }}" alt="{{ $company->name }}">
+                <img src="{{asset($company->logo) }}" alt="{{ $company->name }}">
             </div>
         </div>
 

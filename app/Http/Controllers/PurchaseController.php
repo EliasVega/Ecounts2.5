@@ -774,12 +774,11 @@ class PurchaseController extends Controller
         $purchase = Purchase::findOrFail($id);
         $product_purchases = Product_purchase::where('purchase_id', $id)->where('quantity', '>', 0)->get();
         $company = Company::findOrFail(1);
-
         $days = $purchase->created_at->diffInDays($purchase->fecven);
         $purchasepdf = "COMP-". $purchase->purchase;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.purchase.pdf', compact('purchase', 'days', 'product_purchases', 'company', 'logo'));
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 

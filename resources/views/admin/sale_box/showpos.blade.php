@@ -11,7 +11,7 @@
         <header>
             <div class="center">
                 <div id="logo">
-                    <img src="{{ public_path('images/logos/'.$company->logo) }}" alt="{{ $company->name }}" width="120px" height="60px" class="app-logo">
+                    <img src="{{asset($company->logo) }}" alt="{{ $company->name }}" width="120px" height="60px" class="app-logo">
                 </div>
             </div>
 
