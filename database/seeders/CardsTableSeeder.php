@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CardsTableSeeder extends Seeder
 {
@@ -14,33 +15,33 @@ class CardsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('cards')->delete();
-        
-        \DB::table('cards')->insert(array (
-            0 => 
+
+        DB::table('cards')->delete();
+
+        DB::table('cards')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'No Aplica',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'VISA',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'MASTER CARD',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'AMERICAN ESPRESS',
             ),
         ));
-        
-        
+
+
     }
 }

@@ -239,7 +239,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('cod_verif') }}" class="nav-link">
+                                    <a href="{{ url('verification_code') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Autorizaciones</p>
                                     </a>
