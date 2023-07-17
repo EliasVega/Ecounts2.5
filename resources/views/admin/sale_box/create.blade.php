@@ -25,7 +25,7 @@
                         <div class="form-group" id="valorcito">
                             <label class="form-control-label" for="cash_box">Efectivo</label>
                             <input type="number" id="cash_box" name="cash_box" value="" class="form-control"
-                                placeholder="Efectivo" pattern="[0-9]{0,15}">
+                                placeholder="Efectivo" pattern="[0-9]{0,15}" required>
                         </div>
                     </div>
 
