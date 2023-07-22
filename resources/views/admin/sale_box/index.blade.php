@@ -19,6 +19,7 @@
                 <table class="table table-striped table-bordered table-condensed table-hover" id="sale_boxes">
                     <thead>
                         <tr class="bg-info">
+                            <th>Id</th>
                             <th>Usuario</th>
                             <th>Sucursal</th>
                             <th>Abre</th>
@@ -48,6 +49,7 @@
             order: [[ 0, "desc" ]],
             columns:
             [
+                {data: 'id'},
                 {data: 'user'},
                 {data: 'branch'},
                 {data: 'cash_box', className: 'dt-body-right', render: $.fn.dataTable.render.number('.', ',', 2)},
