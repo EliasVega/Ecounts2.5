@@ -42,6 +42,7 @@
             info: true,
             stateSave: true,
             ajax: '{{ route('branch_product.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 {data: 'idProduct'},

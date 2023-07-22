@@ -44,6 +44,7 @@
             processing: true,
             serverSide: true,
             ajax: '{{ route('customer.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 {data: 'id'},

@@ -48,7 +48,7 @@
             processing: true,
             serverSide: true,
             ajax: '{{ route('pay_invoice.index') }}',
-            invoice: [[0, "desc"]],
+            order: [[0, "desc"]],
             columns:
             [
                 {data: 'id'},

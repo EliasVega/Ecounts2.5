@@ -43,6 +43,7 @@
             processing: true,
             serverSide: true,
             ajax: '{{ route('cash_out.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 {data: 'id'},

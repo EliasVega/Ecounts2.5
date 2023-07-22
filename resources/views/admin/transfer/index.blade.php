@@ -43,6 +43,7 @@
             info: true,
             stateSave: true,
             ajax: '{{ route('transfer.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 {data: 'id'},

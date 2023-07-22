@@ -48,6 +48,7 @@ $(document).ready(function ()
                 url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
             },
             ajax: '{{ route('prePurchase.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 {data: 'id'},

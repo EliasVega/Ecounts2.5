@@ -47,7 +47,7 @@
             processing: true,
             serverSide: true,
             ajax: '{{ route('pay_expense.index') }}',
-            expense: [[0, "desc"]],
+            order: [[0, "desc"]],
             columns:
             [
                 {data: 'id'},

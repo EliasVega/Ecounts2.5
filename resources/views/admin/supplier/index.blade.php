@@ -43,6 +43,7 @@
             processing: true,
             serverSide: true,
             ajax: '{{ route('supplier.index') }}',
+            order: [[ 0, "desc" ]],
             columns:
             [
                 //
