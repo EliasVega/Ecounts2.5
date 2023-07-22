@@ -134,7 +134,7 @@
             totals();
             assess();
             $('#details').append(row);
-            $('#product_id option:selected').remove();
+            //$('#product_id option:selected').remove();
             clean();
 
 

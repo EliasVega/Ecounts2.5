@@ -99,7 +99,7 @@ class NdpurchaseController extends Controller
                 $sale_box->purchase -= $purchase->total_pay;
                 $sale_box->out_purchase -= $pay;
                 $sale_box->out_purchase_cash -= $payCash;
-                $sale_box->out_total -= $purchase->total_pay;
+                $sale_box->out_total -= $purchase->pay;
                 $sale_box->update();
 
                 if ($pay > 0 && $reverse == 0) {
@@ -167,6 +167,7 @@ class NdpurchaseController extends Controller
             $payPurchase = Pay_purchase::where('purchase_id', $purchase->id)->get();
             foreach ($payPurchase as $key => $value) {
                 $value->status = 'payment';
+                $value->update();
             }
             //Registrar tabla Nota Credito
             $ndpurchase = new Ndpurchase();

@@ -113,7 +113,7 @@
             totals();
             assess();
             $('#details').append(row);
-            $('#product_id option:selected').remove();
+            //$('#product_id option:selected').remove();
             clean();
 
 
@@ -283,7 +283,7 @@
                     assess();
                     $('#details').append(row);
 
-                    $('#product_id option:selected').remove();
+                    //$('#product_id option:selected').remove();
                     clean();
                 }else{
                     //alert("Rellene todos los campos del detalle para esta compra");
