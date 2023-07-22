@@ -186,12 +186,15 @@ class BranchController extends Controller
 
     public function show_prePurchase($id)
     {
+        $user = Auth::user();
         $sale_box = Sale_box::select('id')
-        ->where('user_id', Auth::user()->id)
+        ->where('user_id', $user->id)
         ->where('status', 'open')
         ->first();
-        if(is_null($sale_box)){
-            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
+        if ($user->role_id != 1) {
+            if(is_null($sale_box)){
+                return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
+            }
         }
         $branch = Branch::findOrFail($id);
         Session::put('branch', $branch->id, 60 * 24 * 365);
@@ -210,14 +213,17 @@ class BranchController extends Controller
     }
 
     public function show_purchase($id)
-    {
+{       $user = Auth::user();
         $sale_box = Sale_box::select('id')
-        ->where('user_id', '=', Auth::user()->id)
+        ->where('user_id', '=', $user->id)
         ->where('status', '=', 'open')
         ->first();
-        if(is_null($sale_box)){
-            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
+        if ($user->role_id != 1) {
+            if(is_null($sale_box)){
+                return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Compras');
+            }
         }
+
         $branch = Branch::findOrFail($id);
         Session::put('branch', $branch->id, 60 * 24 * 365);
         Session::put('name', $branch->name, 60 * 24 * 365);
@@ -235,12 +241,15 @@ class BranchController extends Controller
     }
     public function show_expense($id)
     {
+        $user = Auth::user();
         $sale_box = Sale_box::select('id')
-        ->where('user_id', '=', Auth::user()->id)
+        ->where('user_id', '=', $user->id)
         ->where('status', '=', 'open')
         ->first();
-        if(is_null($sale_box)){
-            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Gastos');
+        if ($user->role_id != 1) {
+            if(is_null($sale_box)){
+                return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Gastos');
+            }
         }
         $branch = Branch::findOrFail($id);
         Session::put('branch', $branch->id, 60 * 24 * 365);
@@ -251,12 +260,15 @@ class BranchController extends Controller
     //funcion para redirigir a ventas
     public function show_invoice($id)
     {
+        $user = Auth::user();
         $sale_box = Sale_box::select('id')
-        ->where('user_id', '=', Auth::user()->id)
+        ->where('user_id', '=', $user->id)
         ->where('status', '=', 'open')
         ->first();
-        if(is_null($sale_box)){
-            return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
+        if ($user->role_id != 1) {
+            if(is_null($sale_box)){
+                return redirect("branch")->with('warning', 'Debes tener una caja Abierta para realizar Ventas');
+            }
         }
         $branch = Branch::findOrFail($id);
         Session::put('branch', $branch->id, 60 * 24 * 365);
@@ -267,14 +279,15 @@ class BranchController extends Controller
 
     public function show_order($id)
     {
-        //funcion para redirigir a pedidos
+        $user = Auth::user();
         $sale_box = Sale_box::select('id')
-        ->where('user_id', '=', Auth::user()->id)
+        ->where('user_id', '=', $user->id)
         ->where('status', '=', 'open')
         ->first();
-        if(is_null($sale_box)){
-
-            return redirect("order")->with('warning', 'Debes tener una caja Abierta para realizar Pedidos');
+        if ($user->role_id != 1) {
+            if(is_null($sale_box)){
+                return redirect("order")->with('warning', 'Debes tener una caja Abierta para realizar Pedidos');
+            }
         }
 
         $branch = Branch::findOrFail($id);
