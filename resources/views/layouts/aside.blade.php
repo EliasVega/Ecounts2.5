@@ -349,6 +349,18 @@
                                         <p>Abonos Facturas</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('cash_out') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Salidas Efectivo</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('cash_in') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Entradas efectivo</p>
+                                    </a>
+                                </li>
                             @endif
                             </ul>
                         </li>

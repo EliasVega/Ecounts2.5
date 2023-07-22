@@ -8,8 +8,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>Listado Entrega Efectivo Cajas
-                    <a href="cash_out/create" class="btn btn-celeste"><i class="fa fa-plus mr-2"></i> Agregar Salida Efectivo</a>
-                    <a href="{{ route('branch.index') }}" class="btn btn-bluR btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('sale_box.index') }}" class="btn btn-bluR btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                 </h4>
             </div>
         </div>
@@ -21,11 +20,12 @@
                     <thead>
                         <tr class="bg-info">
                             <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Caja</th>
                             <th>Sede</th>
                             <th>Usuario</th>
                             <th>Administrador</th>
                             <th>Valor</th>
-                            <th>Fecha</th>
                         </tr>
                     </thead>
                 </table>
@@ -47,11 +47,12 @@
             columns:
             [
                 {data: 'id'},
+                {data: 'created_at'},
+                {data: 'sale_box_id'},
                 {data: 'branch'},
                 {data: 'user'},
                 {data: 'admin'},
                 {data: 'payment', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
-                {data: 'created_at'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
             buttons:

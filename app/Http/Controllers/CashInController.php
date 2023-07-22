@@ -39,7 +39,7 @@ class CashInController extends Controller
                     return $cash_in->branch->name;
                 })
                 ->editColumn('created_at', function(Cash_in $cash_in){
-                    return $cash_in->created_at->format('yy-m-d');
+                    return $cash_in->created_at->format('yy-m-d h:i');
                 })
                 ->make(true);
         }

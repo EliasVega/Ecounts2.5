@@ -33,7 +33,7 @@ class Cash_out extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function admin(){
+    public function adminCash(){
         return $this->belongsTo(User::class, 'user_id');
     }
 

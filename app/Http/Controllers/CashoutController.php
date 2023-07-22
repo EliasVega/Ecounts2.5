@@ -23,17 +23,28 @@ class CashoutController extends Controller
     public function index(Request $request)
     {
         if (request()->ajax()) {
-            $cash_outs = Cash_out::from('cash_outs AS cas')
-            ->join('users AS use', 'cas.user_id', 'use.id')
-            ->join('users AS usa', 'cas.admin_id', 'usa.id')
-            ->join('branches as bra', 'cas.branch_id', 'bra.id')
-            ->select('cas.id', 'cas.payment', 'cas.created_at', 'use.name as user', 'usa.name AS admin', 'bra.name as branch')
-            ->where('use.id', '=', Auth::user()->id)
-            ->get();
+            $user = Auth::user();
+            if ($user->role_id == 1 || $user->role_id == 2) {
+                //Consulta para mostrar salidas de efectivo a administradores y superadmin
+                $cash_outs = Cash_out::get();
+            } else {
+                //Consulta para mostrar branch a roles 3 -4 -5
+                $cash_outs = Cash_out::where('user_id', Auth::user()->id)->get();
+            }
 
             return DataTables::of($cash_outs)
+            ->addIndexColumn()
+            ->addColumn('branch', function (Cash_out $cashOut) {
+                return $cashOut->branch->name;
+            })
+            ->addColumn('user', function (Cash_out $cashOut) {
+                return $cashOut->user->name;
+            })
+            ->addColumn('admin', function (Cash_out $cashOut) {
+                return $cashOut->adminCash->name;
+            })
             ->editColumn('created_at', function(Cash_out $cash_out){
-                return $cash_out->created_at->format('yy-m-d');
+                return $cash_out->created_at->format('yy-m-d h:i');
             })
             ->make(true);
         }
