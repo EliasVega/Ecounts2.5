@@ -7,25 +7,27 @@
     <div class="row">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>Listado Recarga de Efectivo Caja
-                    <a href="{{ route('sale_box.index') }}" class="btn btn-bluR btn-sm"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
-                </h4>
+                <h3>Listado de Abonos
+                    <a href="{{ route('purchase.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                    <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover" id="cashIns">
+                <table class="table table-striped table-bordered table-condensed table-hover" id="detailPays">
                     <thead>
                         <tr class="bg-info">
                             <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Caja</th>
-                            <th>Sede</th>
-                            <th>Entrega</th>
-                            <th>Recibe</th>
+                            <th>Pago #</th>
+                            <th>Metodo de pago</th>
+                            <th>Banco</th>
+                            <th>Tarjeta</th>
+                            <th>Anticipo</th>
                             <th>Valor</th>
+                            <th>Transaccion</th>
+                            <th>Fecha</th>
                         </tr>
                     </thead>
                 </table>
@@ -36,23 +38,25 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $('#cashIns').DataTable(
+        $('#detailPays').DataTable(
         {
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
-            ajax: '{{ route('cash_in.index') }}',
-            order: [[ 0, "desc" ]],
+            ajax: '{{ route('detailPayExpense') }}',
+            order: [[0, "desc"]],
             columns:
             [
                 {data: 'id'},
+                {data: 'pay_expense_id'},
+                {data: 'paymentMethod'},
+                {data: 'bank'},
+                {data: 'card'},
+                {data: 'payment_id'},
+                {data: 'payment', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'transaction'},
                 {data: 'created_at'},
-                {data: 'sale_box_id'},
-                {data: 'branch'},
-                {data: 'admin'},
-                {data: 'user'},
-                {data: 'payment'},
             ],
             dom: '<"pull-left"B><"pull-right"f>rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>',
             buttons:

@@ -204,6 +204,9 @@ Route::get('pdf_pay_invoice/{id}', [PayinvoiceController::class, 'pdf_pay_invoic
 Route::get('pdf_pay_purchase/{id}', [PayPurchaseController::class, 'pdf_pay_purchase'])->name('pdf_pay_purchase');
 Route::get('pdfPayOrder/{id}', [PayorderController::class, 'pdfPayOrder'])->name('pdfPayOrder');
 Route::get('pdfPayExpense/{id}', [PayExpenseController::class, 'pdfPayExpense'])->name('pdfPayExpense');
+Route::get('detailPayPurchase', [PayPurchaseController::class, 'detailPay'])->name('detailPayPurchase');
+Route::get('detailPayExpense', [PayExpenseController::class, 'detailPay'])->name('detailPayExpense');
+Route::get('detailPayInvoice', [PayInvoiceController::class, 'detailPay'])->name('detailPayInvoice');
 
 Route::get('prePurchase/create/{id}', [PrePurchaseController::class, 'getMunicipalities']);
 Route::get('prePurchase/invoice/{id}', [PrePurchaseController::class, 'invoice'])->name('prePurchaseInvoice');

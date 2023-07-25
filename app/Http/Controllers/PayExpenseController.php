@@ -68,6 +68,50 @@ class PayExpenseController extends Controller
         }
         return view('admin.pay_expense.index');
     }
+    public function detailPay(Request $request)
+    {
+        $user = Auth::user();
+        if ($request->ajax()) {
+            //Muestra todas las Pagos a gastos de la empresa
+            if ($user->role_id == 1 || $user->role_id == 2) {
+
+                //Consulta para mostrar pagos a gastos a administradores y superadmin
+                $detailPays = Pay_expense_payment_method::get();
+            } else {
+                //Consulta para mostrar Pagos a gastos a roles 3 -4 -5
+                $detailPays = Pay_expense_payment_method::where('branch_id', $user->branch_id)->where('user_id', $user->id)->get();
+            }
+
+            return DataTables::of($detailPays)
+
+            ->addIndexColumn()
+
+            ->addColumn('paymentMethod', function (Pay_expense_payment_method $pppm) {
+                return $pppm->paymentMethod->name;
+            })
+            ->addColumn('bank', function (Pay_expense_payment_method $pppm) {
+                return $pppm->bank->name;
+            })
+            ->addColumn('card', function (Pay_expense_payment_method $pppm) {
+                return $pppm->card->name;
+            })
+            ->addColumn('payment_id', function (Pay_expense_payment_method $pppm) {
+                $paymen = $pppm->payment_id;
+                if ($paymen) {
+                    return $pppm->payment_id;
+                } else {
+                    return 'N/A';
+                }
+
+            })
+            ->editColumn('created_at', function(Pay_expense_payment_method $pppm){
+                return $pppm->created_at->format('yy-m-d: h:m');
+            })
+            ->make(true);
+        }
+        return view('admin.pay_expense.detail_pay');
+
+    }
 
     /**
      * Show the form for creating a new resource.

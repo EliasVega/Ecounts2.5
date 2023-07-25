@@ -24,6 +24,10 @@ class Pay_purchase_payment_method extends Model
         return $this->belongsTo(Card::class);
     }
 
+    public function payment(){
+        return $this->belongsTo(Payment::class);
+    }
+
     public function paymentMethod()
     {
         return $this->belongsTo(Payment_method::class);

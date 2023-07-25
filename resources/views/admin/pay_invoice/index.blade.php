@@ -10,6 +10,7 @@
                 <h4>Listado de Abonos
                     <a href="{{ route('invoice.index') }}" class="btn btn-bluR btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
                     <a href="{{ route('branch.index') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                    <a href="{{ route('detailPayInvoice') }}" class="btn btn-redeco btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Detalle Abonos</a>
                 </h4>
             </div>
         </div>
