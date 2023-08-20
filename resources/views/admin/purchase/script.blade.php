@@ -204,8 +204,4 @@
         $("#row" + index).remove();
         assess();
     }
-
-    function imprimir() {
-        window.open('{{ route('purchasePost') }}', '_blank');
-    };
 </script>

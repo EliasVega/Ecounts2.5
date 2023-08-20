@@ -12,28 +12,20 @@ use App\Models\Card;
 use App\Models\Company;
 use App\Models\Department;
 use App\Models\Document;
-use App\Models\DocumentType;
-use App\Models\GenerationType;
-use App\Models\IdentificationType;
 use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Payment_form;
 use App\Models\Payment_method;
-use App\Models\PaymentForm;
-use App\Models\PaymentMethod;
 use App\Models\Percentage;
 use App\Models\PrePurchaseProduct;
 use App\Models\Product;
-use App\Models\Provider;
 use App\Models\Regime;
-use App\Models\Resolution;
 use App\Models\Supplier;
-use App\Models\Type_document;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class PrePurchaseController extends Controller
@@ -45,6 +37,7 @@ class PrePurchaseController extends Controller
      */
     public function index(Request $request)
     {
+        $prePurchase = session('prePurchase');
         if ($request->ajax()) {
             //Muestra todas las compras de la empresa
             $prePurchases = PrePurchase::get();
@@ -75,7 +68,7 @@ class PrePurchaseController extends Controller
             ->rawColumns(['btn'])
             ->make(true);
         }
-        return view('admin.pre_purchase.index');
+        return view('admin.pre_purchase.index', compact('prePurchase'));
     }
 
     /**
@@ -116,53 +109,49 @@ class PrePurchaseController extends Controller
      */
     public function store(StorePrePurchaseRequest $request)
     {
-        try{
-            DB::beginTransaction();
 
-            //Variables del request
-            $product_id = $request->product_id;
-            $quantity   = $request->quantity;
-            $price      = $request->price;
-            $iva        = $request->iva;
-            $branch     = $request->branch_id[0];
+        //Variables del request
+        $product_id = $request->product_id;
+        $quantity   = $request->quantity;
+        $price      = $request->price;
+        $iva        = $request->iva;
+        $branch     = $request->branch_id[0];
 
-            //Crea un registro de compras
-            $prePurchase = new PrePurchase();
-            $prePurchase->user_id = Auth::user()->id;
-            $prePurchase->branch_id = $branch;
-            $prePurchase->supplier_id = $request->supplier_id;
-            $prePurchase->items       = count($product_id);
-            $prePurchase->total       = $request->total;
-            $prePurchase->total_iva    = $request->total_iva;
-            $prePurchase->total_pay    = $request->total_pay;
-            $prePurchase->status      = 'active';
-            $prePurchase->balance     = $request->total_pay;
-            $prePurchase->save();
+        //Crea un registro de compras
+        $prePurchase = new PrePurchase();
+        $prePurchase->user_id = Auth::user()->id;
+        $prePurchase->branch_id = $branch;
+        $prePurchase->supplier_id = $request->supplier_id;
+        $prePurchase->items       = count($product_id);
+        $prePurchase->total       = $request->total;
+        $prePurchase->total_iva    = $request->total_iva;
+        $prePurchase->total_pay    = $request->total_pay;
+        $prePurchase->status      = 'active';
+        $prePurchase->balance     = $request->total_pay;
+        $prePurchase->save();
 
-            $cont = 0;
-            //Ingresa los productos que vienen en el array
-            while($cont < count($product_id)){
-                $item = $cont + 1;
+        $cont = 0;
+        //Ingresa los productos que vienen en el array
+        while($cont < count($product_id)){
+            $item = $cont + 1;
 
-                //Metodo para registrar la relacion entre producto y compra
-                $prePurchase_product = new PrePurchaseProduct();
-                $prePurchase_product->pre_purchase_id = $prePurchase->id;
-                $prePurchase_product->product_id = $product_id[$cont];
-                $prePurchase_product->quantity = $quantity[$cont];
-                $prePurchase_product->price = $price[$cont];
-                $prePurchase_product->iva = $iva[$cont];
-                $prePurchase_product->subtotal = $quantity[$cont] * $price[$cont];
-                $prePurchase_product->iva_subtotal =($quantity[$cont] * $price[$cont] * $iva[$cont])/100;
-                $prePurchase_product->item = $item;
-                $prePurchase_product->save();
+            //Metodo para registrar la relacion entre producto y compra
+            $prePurchase_product = new PrePurchaseProduct();
+            $prePurchase_product->pre_purchase_id = $prePurchase->id;
+            $prePurchase_product->product_id = $product_id[$cont];
+            $prePurchase_product->quantity = $quantity[$cont];
+            $prePurchase_product->price = $price[$cont];
+            $prePurchase_product->iva = $iva[$cont];
+            $prePurchase_product->subtotal = $quantity[$cont] * $price[$cont];
+            $prePurchase_product->iva_subtotal =($quantity[$cont] * $price[$cont] * $iva[$cont])/100;
+            $prePurchase_product->item = $item;
+            $prePurchase_product->save();
 
-                $cont++;
-            }
-            DB::commit();
+            $cont++;
         }
-        catch(Exception $e){
-            DB::rollback();
-        }
+        session(['prePurchase' => $prePurchase->id]);
+
+        toast('Precompra Registrada satisfactoriamente.','success');
         return redirect('prePurchase');
     }
 
@@ -226,95 +215,91 @@ class PrePurchaseController extends Controller
      */
     public function update(UpdatePrePurchaseRequest $request, PrePurchase $prePurchase)
     {
-        try{
-            DB::beginTransaction();
-            //llamado a variables
-            $product_id = $request->product_id;
-            $quantity   = $request->quantity;
-            $price      = $request->price;
-            $iva        = $request->iva;
-            $branch     = $request->branch_id[0];
+        //llamado a variables
+        $product_id = $request->product_id;
+        $quantity   = $request->quantity;
+        $price      = $request->price;
+        $iva        = $request->iva;
+        $branch     = $request->branch_id[0];
 
-            //Actualizando un registro de compras
-            $prePurchase->user_id = Auth::user()->id;
-            $prePurchase->branch_id = $branch;
-            $prePurchase->supplier_id = $request->supplier_id;
-            $prePurchase->items = count($product_id);
-            $prePurchase->total = $request->total;
-            $prePurchase->total_iva = $request->total_iva;
-            $prePurchase->total_pay = $request->total_pay;
-            $prePurchase->balance = $request->total_pay;
-            $prePurchase->status = 'active';
-            $prePurchase->note = $request->note;
-            $prePurchase->update();
+        //Actualizando un registro de compras
+        $prePurchase->user_id = Auth::user()->id;
+        $prePurchase->branch_id = $branch;
+        $prePurchase->supplier_id = $request->supplier_id;
+        $prePurchase->items = count($product_id);
+        $prePurchase->total = $request->total;
+        $prePurchase->total_iva = $request->total_iva;
+        $prePurchase->total_pay = $request->total_pay;
+        $prePurchase->balance = $request->total_pay;
+        $prePurchase->status = 'active';
+        $prePurchase->note = $request->note;
+        $prePurchase->update();
 
-            $prePurchaseProducts = PrePurchaseProduct::where('pre_purchase_id', $prePurchase->id)->get();
-            foreach ($prePurchaseProducts as $key => $prePurchaseProduct) {
-                $prePurchaseProduct->quantity    = 0;
-                $prePurchaseProduct->price       = 0;
-                $prePurchaseProduct->iva         = 0;
-                $prePurchaseProduct->subtotal    = 0;
-                $prePurchaseProduct->iva_subtotal = 0;
-                $prePurchaseProduct->item        = 0;
-                $prePurchaseProduct->update();
+        $prePurchaseProducts = PrePurchaseProduct::where('pre_purchase_id', $prePurchase->id)->get();
+        foreach ($prePurchaseProducts as $key => $prePurchaseProduct) {
+            $prePurchaseProduct->quantity    = 0;
+            $prePurchaseProduct->price       = 0;
+            $prePurchaseProduct->iva         = 0;
+            $prePurchaseProduct->subtotal    = 0;
+            $prePurchaseProduct->iva_subtotal = 0;
+            $prePurchaseProduct->item        = 0;
+            $prePurchaseProduct->update();
 
-            }
+        }
 
-            //Toma el Request del array
-            $item = 1;
-            for ($i=0; $i < count($product_id); $i++) {
-                $prePurchaseProduct = PrePurchaseProduct::where('pre_purchase_id', $prePurchase->id)
-                ->where('product_id', $product_id[$i])->first();
+        //Toma el Request del array
+        $item = 1;
+        for ($i=0; $i < count($product_id); $i++) {
+            $prePurchaseProduct = PrePurchaseProduct::where('pre_purchase_id', $prePurchase->id)
+            ->where('product_id', $product_id[$i])->first();
 
-                //Inicia proceso actualizacio pre compra producto si no existe
-                if (is_null($prePurchaseProduct)) {
+            //Inicia proceso actualizacio pre compra producto si no existe
+            if (is_null($prePurchaseProduct)) {
+                $subtotal = $quantity[$i] * $price[$i];
+                $iva_subtotal = $subtotal * $iva[$i]/100;
+                $item = $i + 1;
+
+                $prePurchaseProduct = new PrePurchaseProduct();
+                $prePurchaseProduct->pre_purchase_id = $prePurchase->id;
+                $prePurchaseProduct->product_id  = $product_id[$i];
+                $prePurchaseProduct->quantity    = $quantity[$i];
+                $prePurchaseProduct->price       = $price[$i];
+                $prePurchaseProduct->iva         = $iva[$i];
+                $prePurchaseProduct->subtotal    = $subtotal;
+                $prePurchaseProduct->iva_subtotal     = $iva_subtotal;
+                $prePurchaseProduct->item        = $item;
+                $prePurchaseProduct->save();
+                $item ++;
+
+            } else {
+                if ($quantity[$i] > 0) {
+
                     $subtotal = $quantity[$i] * $price[$i];
                     $iva_subtotal = $subtotal * $iva[$i]/100;
-                    $item = $i + 1;
 
-                    $prePurchaseProduct = new PrePurchaseProduct();
-                    $prePurchaseProduct->pre_purchase_id = $prePurchase->id;
-                    $prePurchaseProduct->product_id  = $product_id[$i];
-                    $prePurchaseProduct->quantity    = $quantity[$i];
-                    $prePurchaseProduct->price       = $price[$i];
-                    $prePurchaseProduct->iva         = $iva[$i];
-                    $prePurchaseProduct->subtotal    = $subtotal;
-                    $prePurchaseProduct->iva_subtotal     = $iva_subtotal;
-                    $prePurchaseProduct->item        = $item;
-                    $prePurchaseProduct->save();
-                    $item ++;
-
-                } else {
-                    if ($quantity[$i] > 0) {
-
-                        $subtotal = $quantity[$i] * $price[$i];
-                        $iva_subtotal = $subtotal * $iva[$i]/100;
-
-                        if ($prePurchaseProduct->quantity > 0) {
-                            $prePurchaseProduct->quantity    += $quantity[$i];
-                            $prePurchaseProduct->price       = $price[$i];
-                            $prePurchaseProduct->iva         = $iva[$i];
-                            $prePurchaseProduct->subtotal    += $subtotal;
-                            $prePurchaseProduct->iva_subtotal     += $iva_subtotal;
-                            $prePurchaseProduct->update();
-                        } else {
-                            $prePurchaseProduct->quantity    = $quantity[$i];
-                            $prePurchaseProduct->price       = $price[$i];
-                            $prePurchaseProduct->iva         = $iva[$i];
-                            $prePurchaseProduct->subtotal    = $subtotal;
-                            $prePurchaseProduct->iva_subtotal     = $iva_subtotal;
-                            $prePurchaseProduct->item        = $item;
-                            $prePurchaseProduct->update();
-                            $item ++;
-                        }
+                    if ($prePurchaseProduct->quantity > 0) {
+                        $prePurchaseProduct->quantity    += $quantity[$i];
+                        $prePurchaseProduct->price       = $price[$i];
+                        $prePurchaseProduct->iva         = $iva[$i];
+                        $prePurchaseProduct->subtotal    += $subtotal;
+                        $prePurchaseProduct->iva_subtotal     += $iva_subtotal;
+                        $prePurchaseProduct->update();
+                    } else {
+                        $prePurchaseProduct->quantity    = $quantity[$i];
+                        $prePurchaseProduct->price       = $price[$i];
+                        $prePurchaseProduct->iva         = $iva[$i];
+                        $prePurchaseProduct->subtotal    = $subtotal;
+                        $prePurchaseProduct->iva_subtotal     = $iva_subtotal;
+                        $prePurchaseProduct->item        = $item;
+                        $prePurchaseProduct->update();
+                        $item ++;
                     }
                 }
             }
-            DB::commit();
         }
-        catch(Exception $e){
-            DB::rollback();
-        }
+        session(['prePurchase' => $prePurchase->id]);
+
+        toast('pr Compra Editada satisfactoriamente.','success');
         return redirect('prePurchase');
     }
 
@@ -373,7 +358,26 @@ class PrePurchaseController extends Controller
         $prePurchasepdf = "COMP-". $prePurchase->id;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.pre_purchase.pdf', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$prePurchasepdf.pdf");
+        //return $pdf->download("$purchasepdf.pdf");
+    }
+
+    public function pdfPrePurchase()
+    {
+        $prePurchases = session('prePurchase');
+        $prePurchase = PrePurchase::findOrFail($prePurchases);
+        session()->forget('prePurchase');
+        $prePurchaseProducts = PrePurchaseProduct::where('pre_purchase_id', $prePurchase->id)->where('quantity', '>', 0)->get();
+        $company = Company::findOrFail(1);
+
+        $prePurchasepdf = "COMP-". $prePurchase->id;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.pre_purchase.pdf', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         //$pdf->setPaper ( 'A7' , 'landscape' );
 
@@ -390,7 +394,27 @@ class PrePurchaseController extends Controller
         $prePurchasepost = "COMP-". $prePurchase->id;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.pre_purchase.post', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$prePurchasepost.pdf");
+        //return $pdf->download("$purchasepdf.pdf");
+    }
+
+    public function postPrePurchase()
+    {
+        $prePurchases = session('prePurchase');
+        $prePurchase = PrePurchase::findOrFail($prePurchases);
+        session()->forget('prePurchase');
+        $prePurchaseProducts = PrePurchaseProduct::where('pre_purchase_id', $prePurchase->id)->where('quantity', '>', 0)->get();
+        $company = Company::findOrFail(1);
+
+        $prePurchasepost = "COMP-". $prePurchase->id;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.pre_purchase.post', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
         //$pdf->setPaper ( 'A7' , 'landscape' );

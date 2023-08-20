@@ -43,4 +43,12 @@ class Ndpurchase extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function paymentForm(){
+        return $this->belongsTo(Payment_form::class);
+    }
+
+    public function paymentMethod(){
+        return $this->belongsTo(Payment_method::class);
+    }
 }

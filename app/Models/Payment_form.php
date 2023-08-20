@@ -32,4 +32,8 @@ class Payment_form extends Model
     public function purchases(){
         return $this->hasMany(Purchase::class);
     }
+
+    public function ndpurchases(){
+        return $this->hasMany(Ndpurchase::class);
+    }
 }

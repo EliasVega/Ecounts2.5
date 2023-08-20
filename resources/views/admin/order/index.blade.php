@@ -38,6 +38,14 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
+        window.onload = function() {
+            var order = "{{ $order ?? '' }}";
+            if (order != '') {
+                var imprimir = "{{ route('postOrder', ['order' => ':order']) }}";
+                imprimir = imprimir.replace(':order', order);
+                window.open(imprimir, "_blank");
+            }
+        }
         $('#orders').DataTable(
         {
             responsive: true,

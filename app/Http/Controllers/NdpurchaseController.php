@@ -6,9 +6,8 @@ use App\Models\Ndpurchase;
 use App\Http\Requests\StoreNdpurchaseRequest;
 use App\Http\Requests\UpdateNdpurchaseRequest;
 use App\Models\Branch_product;
+use App\Models\Company;
 use App\Models\Kardex;
-use App\Models\Nc_discrepancy;
-use App\Models\Ncpurchase_product;
 use App\Models\Ndpurchase_product;
 use App\Models\Pay_purchase;
 use App\Models\Pay_purchase_payment_method;
@@ -19,6 +18,7 @@ use App\Models\Purchase;
 use App\Models\Sale_box;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -33,6 +33,7 @@ class NdpurchaseController extends Controller
      */
     public function index()
     {
+        $ndpurchase = session('ndpurchase');
         $user = Auth::user();
         if (request()->ajax()) {
             if ($user->role_id == 1 || $user->role_id == 2) {
@@ -55,7 +56,7 @@ class NdpurchaseController extends Controller
             ->rawColumns(['btn'])
             ->make(true);
         }
-        return view('admin.ndpurchase.index');
+        return view('admin.ndpurchase.index', compact('ndpurchase'));
     }
 
     /**
@@ -77,74 +78,30 @@ class NdpurchaseController extends Controller
     public function store(StoreNdpurchaseRequest $request)
     {
 
-        try{
-            DB::beginTransaction();
+        $pur = $request->purchase_id;
+        $purchase = Purchase::findOrFail($pur);
+        $branch = $purchase->branch_id;
+        $pay = $purchase->pay;
+        $payCash = 0;
+        $payPurchase = Pay_purchase::where('purchase_id', $purchase->id)->get();
+        foreach ($payPurchase as $key => $value) {
+            $payCash += Pay_purchase_payment_method::where('pay_purchase_id', $value->id)->where('payment_method_id', 10)->sum('payment');
+        }
+        $reverse = $request->reverse;
+        $reversePay = $pay - $payCash;
 
-            $pur = $request->purchase_id;
-            $purchase = Purchase::findOrFail($pur);
-            $branch = $purchase->branch_id;
-            $pay = $purchase->pay;
-            $payCash = 0;
-            $payPurchase = Pay_purchase::where('purchase_id', $purchase->id)->get();
-            foreach ($payPurchase as $key => $value) {
-                $payCash += Pay_purchase_payment_method::where('pay_purchase_id', $value->id)->where('payment_method_id', 10)->sum('payment');
-            }
-            $reverse = $request->reverse;
-            $reversePay = $pay - $payCash;
+        $date1 = Carbon::now()->toDateString();
+        $date2 = Purchase::find($purchase->id)->created_at->toDateString();
+        if ($date1 == $date2) {
+            $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+            $sale_box->purchase -= $purchase->total_pay;
+            $sale_box->out_purchase -= $pay;
+            $sale_box->out_purchase_cash -= $payCash;
+            $sale_box->out_total -= $purchase->pay;
+            $sale_box->update();
 
-            $date1 = Carbon::now()->toDateString();
-            $date2 = Purchase::find($purchase->id)->created_at->toDateString();
-            if ($date1 == $date2) {
-                $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                $sale_box->purchase -= $purchase->total_pay;
-                $sale_box->out_purchase -= $pay;
-                $sale_box->out_purchase_cash -= $payCash;
-                $sale_box->out_total -= $purchase->pay;
-                $sale_box->update();
+            if ($pay > 0 && $reverse == 0) {
 
-                if ($pay > 0 && $reverse == 0) {
-
-                    $payment = new Payment();
-                    $payment->user_id = Auth::user()->id;
-                    $payment->branch_id = $branch;
-                    $payment->supplier_id = $purchase->supplier_id;
-                    $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
-                    $payment->destination = null;
-                    $payment->pay = $pay;
-                    $payment->balance = $pay;
-                    $payment->note = 'por eliminacion de compra';
-                    $payment->save();
-
-                    $sale_box = Sale_box::where('user_id', '=', $payment->user_id)->where('status', '=', 'open')->first();
-                    $sale_box->out_payment += $payment->pay;
-                    $sale_box->update();
-
-                } elseif ($pay > 0 && $reverse == 1) {
-
-                    if ($reversePay > 0) {
-                        $payment = new Payment();
-                        $payment->user_id = Auth::user()->id;
-                        $payment->branch_id = $branch;
-                        $payment->supplier_id = $purchase->supplier_id;
-                        $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
-                        $payment->destination = null;
-                        $payment->pay = $reversePay;
-                        $payment->balance = $reversePay;
-                        $payment->note = 'por eliminacion de compra' . '-' . $payCash . 'Ingresado a caja';
-                        $payment->save();
-
-                        $sale_box = Sale_box::where('user_id', '=', $payment->user_id)->where('status', '=', 'open')->first();
-                        $sale_box->out_payment += $payment->pay;
-                        $sale_box->departure -= $payCash;
-                        $sale_box->update();
-                    } else {
-                        $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                        $sale_box->departure -= $payCash;
-                        $sale_box->update();
-                    }
-                }
-
-            } else {
                 $payment = new Payment();
                 $payment->user_id = Auth::user()->id;
                 $payment->branch_id = $branch;
@@ -156,94 +113,132 @@ class NdpurchaseController extends Controller
                 $payment->note = 'por eliminacion de compra';
                 $payment->save();
 
-                $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-                if ($reverse == 1) {
-                    $sale_box->out_payment += $pay;
-                }
+                $sale_box = Sale_box::where('user_id', '=', $payment->user_id)->where('status', '=', 'open')->first();
+                $sale_box->out_payment += $payment->pay;
                 $sale_box->update();
+
+            } elseif ($pay > 0 && $reverse == 1) {
+
+                if ($reversePay > 0) {
+                    $payment = new Payment();
+                    $payment->user_id = Auth::user()->id;
+                    $payment->branch_id = $branch;
+                    $payment->supplier_id = $purchase->supplier_id;
+                    $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
+                    $payment->destination = null;
+                    $payment->pay = $reversePay;
+                    $payment->balance = $reversePay;
+                    $payment->note = 'por eliminacion de compra' . '-' . $payCash . 'Ingresado a caja';
+                    $payment->save();
+
+                    $sale_box = Sale_box::where('user_id', '=', $payment->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->out_payment += $payment->pay;
+                    $sale_box->departure -= $payCash;
+                    $sale_box->update();
+                } else {
+                    $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->departure -= $payCash;
+                    $sale_box->update();
+                }
             }
 
-
-            $payPurchase = Pay_purchase::where('purchase_id', $purchase->id)->get();
-            foreach ($payPurchase as $key => $value) {
-                $value->status = 'payment';
-                $value->update();
-            }
-            //Registrar tabla Nota Credito
-            $ndpurchase = new Ndpurchase();
-            $ndpurchase->purchase = $purchase->document;
-            $ndpurchase->user_id = Auth::user()->id;
-            $ndpurchase->branch_id = $branch;
-            $ndpurchase->purchase_id = $purchase->id;
-            $ndpurchase->supplier_id = $purchase->supplier_id;
-            $ndpurchase->nc_discrepancy_id = 2;
-            $ndpurchase->voucher_type_id = 11;
-            $ndpurchase->total = $purchase->total;
-            $ndpurchase->total_iva = $purchase->total_iva;
-            $ndpurchase->total_pay = $purchase->total_pay;
-            $ndpurchase->save();
+        } else {
+            $payment = new Payment();
+            $payment->user_id = Auth::user()->id;
+            $payment->branch_id = $branch;
+            $payment->supplier_id = $purchase->supplier_id;
+            $payment->origin = 'Factura de Compra' . '-'. $purchase->id;
+            $payment->destination = null;
+            $payment->pay = $pay;
+            $payment->balance = $pay;
+            $payment->note = 'por eliminacion de compra';
+            $payment->save();
 
             $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
-            $sale_box->ndpurchase += $ndpurchase->total_pay;
-            $sale_box->update();
-
-            //Seleccionar los productos de la compra
-            $productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
-            foreach ($productPurchases as $pp) {
-                $id = $pp->product_id;
-                $quantity = $pp->quantity;
-                $price = $pp->price;
-                $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
-                $branch_product->stock -= $quantity;
-                $branch_product->update();
-
-                $ndpurchaseProduct = new Ndpurchase_product();
-                $ndpurchaseProduct->ndpurchase_id = $ndpurchase->id;
-                $ndpurchaseProduct->product_id = $id;
-                $ndpurchaseProduct->quantity = $quantity;
-                $ndpurchaseProduct->price = $pp->price;
-                $ndpurchaseProduct->save();
-
-                $product = Product::findOrFail($id);
-                //actualizando la tabla products
-                $product->stock -= $quantity;
-                $product->update();
-
-                //Actualizar Kardex
-                $kardex = new Kardex();
-                $kardex->product_id = $id;
-                $kardex->branch_id = $branch;
-                $kardex->operation = 'nd_compra';
-                $kardex->number = $ndpurchase->id;
-                $kardex->quantity = $quantity;
-                $kardex->stock = $product->stock;
-                $kardex->save();
+            if ($reverse == 1) {
+                $sale_box->out_payment += $pay;
             }
-
-            //actualizando campo status de la factura
-            $purchase->total = 0;
-            $purchase->total_iva = 0;
-            $purchase->total_pay = 0;
-            $purchase->pay = 0;
-            $purchase->balance = 0;
-            $purchase->status = 'debit_note';
-            $purchase->note = 'Compra eliminada con nota Debito #' . '-' . $ndpurchase->id;
-            $purchase->update();
-
-            DB::commit();
+            $sale_box->update();
         }
-        catch(Exception $e){
-            DB::rollback();
+
+
+        $payPurchase = Pay_purchase::where('purchase_id', $purchase->id)->get();
+        foreach ($payPurchase as $key => $value) {
+            $value->status = 'payment';
+            $value->update();
         }
+        //Registrar tabla Nota Credito
+        $ndpurchase = new Ndpurchase();
+        $ndpurchase->purchase = $purchase->document;
+        $ndpurchase->user_id = Auth::user()->id;
+        $ndpurchase->branch_id = $branch;
+        $ndpurchase->purchase_id = $purchase->id;
+        $ndpurchase->supplier_id = $purchase->supplier_id;
+        $ndpurchase->nc_discrepancy_id = 2;
+        $ndpurchase->voucher_type_id = 11;
+        $ndpurchase->total = $purchase->total;
+        $ndpurchase->total_iva = $purchase->total_iva;
+        $ndpurchase->total_pay = $purchase->total_pay;
+        $ndpurchase->save();
+
+        $sale_box = Sale_box::where('user_id', '=', $purchase->user_id)->where('status', '=', 'open')->first();
+        $sale_box->ndpurchase += $ndpurchase->total_pay;
+        $sale_box->update();
+
+        //Seleccionar los productos de la compra
+        $productPurchases = Product_purchase::where('purchase_id', $purchase->id)->get();
+        foreach ($productPurchases as $pp) {
+            $id = $pp->product_id;
+            $quantity = $pp->quantity;
+            $price = $pp->price;
+            $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
+            $branch_product->stock -= $quantity;
+            $branch_product->update();
+
+            $ndpurchaseProduct = new Ndpurchase_product();
+            $ndpurchaseProduct->ndpurchase_id = $ndpurchase->id;
+            $ndpurchaseProduct->product_id = $id;
+            $ndpurchaseProduct->quantity = $quantity;
+            $ndpurchaseProduct->price = $pp->price;
+            $ndpurchaseProduct->save();
+
+            $product = Product::findOrFail($id);
+            //actualizando la tabla products
+            $product->stock -= $quantity;
+            $product->update();
+
+            //Actualizar Kardex
+            $kardex = new Kardex();
+            $kardex->product_id = $id;
+            $kardex->branch_id = $branch;
+            $kardex->operation = 'nd_compra';
+            $kardex->number = $ndpurchase->id;
+            $kardex->quantity = $quantity;
+            $kardex->stock = $product->stock;
+            $kardex->save();
+        }
+
+        //actualizando campo status de la factura
+        $purchase->total = 0;
+        $purchase->total_iva = 0;
+        $purchase->total_pay = 0;
+        $purchase->pay = 0;
+        $purchase->balance = 0;
+        $purchase->status = 'debit_note';
+        $purchase->note = 'Compra eliminada con nota Debito #' . '-' . $ndpurchase->id;
+        $purchase->update();
+
+        session(['ndpurchase' => $ndpurchase->id]);
+
         if ($pay > 0 && $reverse == 0) {
             Alert::success('Compra','Eliminada Satisfactoriamente. Con creacion de anticipo de Proveedor');
-            return redirect('purchase');
+            return redirect('ndpurchase');
 
         } elseif ($pay > 0 && $reverse == 1) {
             Alert::success('Compra','Eliminada Satisfactoriamente. Con creacion de anticipo de Proveedor');
-            return redirect('purchase');
+            return redirect('ndpurchase');
         }else {
-            return redirect("purchase")->with('success', 'Compra Eliminada Satisfactoriamente, ingreso efectivo a caja');
+            return redirect("ndpurchase")->with('success', 'Compra Eliminada Satisfactoriamente, ingreso efectivo a caja');
         }
     }
 
@@ -291,5 +286,82 @@ class NdpurchaseController extends Controller
     public function destroy(Ndpurchase $ndpurchase)
     {
         //
+    }
+
+    public function ndpurchasePdf(Request $request, $id)
+    {
+        $ndpurchase = Ndpurchase::findOrFail($id);
+        $ndpurchase_products = Ndpurchase_product::where('ndpurchase_id', $id)->where('quantity', '>', 0)->get();
+        $company = Company::findOrFail(1);
+        $days = $ndpurchase->created_at->diffInDays($ndpurchase->fecven);
+        $ndpurchasepdf = "COMP-". $ndpurchase->ndpurchase;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.ndpurchase.pdf', compact('ndpurchase', 'days', 'ndpurchase_products', 'company', 'logo'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream('vista-pdf', "$ndpurchasepdf.pdf");
+        //return $pdf->download("$ndpurchasepdf.pdf");
+    }
+
+    public function pdfNdpurchase()
+    {
+        $ndpurchases = session('ndpurchase');
+        $ndpurchase = Ndpurchase::findOrFail($ndpurchases);
+        session()->forget('ndpurchase');
+        $ndpurchase_products = Ndpurchase_product::where('ndpurchase_id', $ndpurchase->id)->where('quantity', '>', 0)->get();
+        $company = Company::findOrFail(1);
+
+        $days = $ndpurchase->created_at->diffInDays($ndpurchase->fecven);
+        $ndpurchasepdf = "COMP-". $ndpurchase->ndpurchase;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.ndpurchase.pdf', compact('ndpurchase', 'days', 'ndpurchase_products', 'company', 'logo'));
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        //$pdf->setPaper ( 'A7' , 'landscape' );
+
+        return $pdf->stream("$ndpurchasepdf.pdf");
+        //return $pdf->stream('vista-pdf', "$ndpurchasepdf.pdf");
+        //return $pdf->download("$ndpurchasepdf.pdf");
+    }
+
+    public function ndpurchasePost($id)
+    {
+        $ndpurchase = Ndpurchase::where('id', $id)->first();
+        $ndpurchase_products = Ndpurchase_product::where('ndpurchase_id', $id)->where('quantity', '>', 0)->get();
+        $company = Company::where('id', 1)->first();
+
+        $days = $ndpurchase->created_at->diffInDays($ndpurchase->due_date);
+        $ndpurchasepdf = "FACT-". $ndpurchase->document;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.ndpurchase.post', compact('ndpurchase', 'days', 'ndpurchase_products', 'company', 'logo'))->render();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+
+        return $pdf->stream('vista-pdf', "$ndpurchasepdf.pdf");
+        //return $pdf->download("$ndpurchasepdf.pdf");
+    }
+
+    public function postNdpurchase()
+    {
+        $ndpurchases = session('ndpurchase');
+        $ndpurchase = Ndpurchase::findOrFail($ndpurchases);
+        session()->forget('ndpurchase');
+        session()->forget('purchase');
+        $ndpurchase_products = Ndpurchase_product::where('ndpurchase_id', $ndpurchase->id)->where('quantity', '>', 0)->get();
+        $company = Company::where('id', 1)->first();
+
+        $days = $ndpurchase->created_at->diffInDays($ndpurchase->due_date);
+        $ndpurchasepdf = "FACT-". $ndpurchase->document;
+        $logo = './imagenes/logos'.$company->logo;
+        $view = \view('admin.ndpurchase.post', compact('ndpurchase', 'days', 'ndpurchase_products', 'company', 'logo'))->render();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+        $pdf->render();
+        return $pdf->stream("$ndpurchasepdf.pdf");
+        //return $pdf->download("$ndpurchasepdf.pdf");
     }
 }

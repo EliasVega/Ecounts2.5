@@ -34,6 +34,14 @@
 <script type="text/javascript">
 $(document).ready(function ()
     {
+        window.onload = function() {
+            var prePurchase = "{{ $prePurchase ?? '' }}";
+            if (prePurchase != '') {
+                var imprimir = "{{ route('postPrePurchase', ['prePurchase' => ':prePurchase']) }}";
+                imprimir = imprimir.replace(':prePurchase', prePurchase);
+                window.open(imprimir, "_blank");
+            }
+        }
         $('#prePurchases').DataTable(
         {
             info: true,

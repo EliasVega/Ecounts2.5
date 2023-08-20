@@ -36,6 +36,14 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
+        window.onload = function() {
+            var ndpurchase = "{{ $ndpurchase ?? '' }}";
+            if (ndpurchase != '') {
+                var imprimir = "{{ route('postNdpurchase', ['ndpurchase' => ':ndpurchase']) }}";
+                imprimir = imprimir.replace(':ndpurchase', ndpurchase);
+                window.open(imprimir, "_blank");
+            }
+        }
         $('#ndpurchases').DataTable(
         {
             responsive: true,

@@ -33,6 +33,7 @@ class NcinvoiceController extends Controller
      */
     public function index(Request $request)
     {
+        $ncinvoice = session('ncinvoice');
         $user = Auth::user();
         if (request()->ajax()) {
             if ($user->role_id == 1 || $user->role_id == 2) {
@@ -60,7 +61,7 @@ class NcinvoiceController extends Controller
             ->rawColumns(['btn'])
             ->make(true);
         }
-        return view('admin.ncinvoice.index');
+        return view('admin.ncinvoice.index', compact('ncinvoice'));
     }
 
     /**
@@ -105,167 +106,161 @@ class NcinvoiceController extends Controller
      */
     public function store(StoreNcinvoiceRequest $request)
     {
-        try{
-            DB::beginTransaction();
+        $inv = $request->invoice_id;
+        $invoice = Invoice::findOrFail($inv);
+        $branch = $invoice->branch_id;
+        $pay = $invoice->pay;
+        $payCash = 0;
+        $payInvoice = Pay_invoice::where('invoice_id', $invoice->id)->get();
+        foreach ($payInvoice as $key => $value) {
+            $payCash += Pay_invoice_payment_method::where('pay_invoice_id', $value->id)->where('payment_method_id', 10)->sum('payment');
+        }
+        $reverse = $request->reverse;
+        $reversePay = $pay - $payCash;
 
-            $inv = $request->invoice_id;
-            $invoice = Invoice::findOrFail($inv);
-            $branch = $invoice->branch_id;
-            $pay = $invoice->pay;
-            $payCash = 0;
-            $payInvoice = Pay_invoice::where('invoice_id', $invoice->id)->get();
-            foreach ($payInvoice as $key => $value) {
-                $payCash += Pay_invoice_payment_method::where('pay_invoice_id', $value->id)->where('payment_method_id', 10)->sum('payment');
-            }
-            $reverse = $request->reverse;
-            $reversePay = $pay - $payCash;
+        $date1 = Carbon::now()->toDateString();
+        $date2 = Invoice::find($invoice->id)->created_at->toDateString();
+        if ($date1 == $date2) {
+            $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+            $sale_box->invoice -= $invoice->total_pay;
+            $sale_box->in_invoice -= $pay;
+            $sale_box->in_purchase_cash -=$payCash;
+            $sale_box->in_total -= $invoice->total_pay;
+            $sale_box->update();
+        }
 
-            $date1 = Carbon::now()->toDateString();
-            $date2 = Invoice::find($invoice->id)->created_at->toDateString();
-            if ($date1 == $date2) {
-                $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-                $sale_box->invoice -= $invoice->total_pay;
-                $sale_box->in_invoice -= $pay;
-                $sale_box->in_purchase_cash -=$payCash;
-                $sale_box->in_total -= $invoice->total_pay;
+        if ($pay > 0 && $reverse == 0) {
+
+            $advance = new Advance();
+            $advance->user_id    = Auth::user()->id;
+            $advance->branch_id  = $branch;
+            $advance->customer_id = $invoice->customer_id;
+            $advance->origin = 'Factura de venta' . '-' . $invoice->id ;
+            $advance->destination = null;
+            $advance->pay = $pay;
+            $advance->balance = $pay;
+            $advance->note = 'por eliminacion de factura de venta';
+            $advance->save();
+
+            $sale_box = Sale_box::where('user_id', '=', $advance->user_id)->where('status', '=', 'open')->first();
+                $sale_box->in_advance += $advance->pay;
                 $sale_box->update();
-            }
-
-            if ($pay > 0 && $reverse == 0) {
-
+        } elseif ($pay > 0 && $reverse == 1) {
+            if ($reversePay > 0) {
                 $advance = new Advance();
                 $advance->user_id    = Auth::user()->id;
                 $advance->branch_id  = $branch;
                 $advance->customer_id = $invoice->customer_id;
                 $advance->origin = 'Factura de venta' . '-' . $invoice->id ;
                 $advance->destination = null;
-                $advance->pay = $pay;
-                $advance->balance = $pay;
-                $advance->note = 'por eliminacion de factura de venta';
+                $advance->pay = $reversePay;
+                $advance->balance = $reversePay;
+                $advance->note = 'por eliminacion de venta' . '-' . $payCash . 'ingresado a caja';
                 $advance->save();
 
                 $sale_box = Sale_box::where('user_id', '=', $advance->user_id)->where('status', '=', 'open')->first();
                     $sale_box->in_advance += $advance->pay;
+                    $sale_box->cash -= $payCash;
                     $sale_box->update();
-            } elseif ($pay > 0 && $reverse == 1) {
-                if ($reversePay > 0) {
-                    $advance = new Advance();
-                    $advance->user_id    = Auth::user()->id;
-                    $advance->branch_id  = $branch;
-                    $advance->customer_id = $invoice->customer_id;
-                    $advance->origin = 'Factura de venta' . '-' . $invoice->id ;
-                    $advance->destination = null;
-                    $advance->pay = $reversePay;
-                    $advance->balance = $reversePay;
-                    $advance->note = 'por eliminacion de venta' . '-' . $payCash . 'ingresado a caja';
-                    $advance->save();
-
-                    $sale_box = Sale_box::where('user_id', '=', $advance->user_id)->where('status', '=', 'open')->first();
-                        $sale_box->in_advance += $advance->pay;
-                        $sale_box->cash -= $payCash;
-                        $sale_box->update();
-                } else {
-                    $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-                        $sale_box->cash -= $payCash;
-                        $sale_box->update();
-                }
-
             } else {
-                $advance = new Advance();
-                $advance->user_id    = Auth::user()->id;
-                $advance->branch_id  = $branch;
-                $advance->customer_id = $invoice->customer_id;
-                $advance->origin = 'Factura de venta' . '-' . $invoice->id ;
-                $advance->destination = null;
-                $advance->pay = $pay;
-                $advance->balance = $pay;
-                $advance->note = 'por eliminacion de factura de venta';
-                $advance->save();
-
-                $sale_box = Sale_box::where('user_id', '=', $advance->user_id)->where('status', '=', 'open')->first();
-                if ($reverse == 1) {
-                    $sale_box->in_advance += $pay;
-                }
-                $sale_box->update();
+                $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+                    $sale_box->cash -= $payCash;
+                    $sale_box->update();
             }
-            $payInvoice = Pay_invoice::where('invoice_id', $invoice->id)->get();
-            foreach ($payInvoice as $key => $value) {
-                $value->status = 'advance';
-            }
-            //Registrar tabla Nota Credito
-            $ncinvoice = new Ncinvoice();
-            $ncinvoice->user_id = Auth::user()->id;
-            $ncinvoice->branch_id = $branch;
-            $ncinvoice->invoice_id = $invoice->id;
-            $ncinvoice->customer_id = $invoice->customer_id;
-            $ncinvoice->nc_discrepancy_id = 2;
-            $ncinvoice->voucher_type_id = 5;
-            $ncinvoice->total = $invoice->total;
-            $ncinvoice->total_iva = $invoice->total_iva;
-            $ncinvoice->total_pay = $invoice->total_pay;
-            $ncinvoice->save();
 
-            $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
-            $sale_box->ndpurchase += $ncinvoice->total_pay;
+        } else {
+            $advance = new Advance();
+            $advance->user_id    = Auth::user()->id;
+            $advance->branch_id  = $branch;
+            $advance->customer_id = $invoice->customer_id;
+            $advance->origin = 'Factura de venta' . '-' . $invoice->id ;
+            $advance->destination = null;
+            $advance->pay = $pay;
+            $advance->balance = $pay;
+            $advance->note = 'por eliminacion de factura de venta';
+            $advance->save();
+
+            $sale_box = Sale_box::where('user_id', '=', $advance->user_id)->where('status', '=', 'open')->first();
+            if ($reverse == 1) {
+                $sale_box->in_advance += $pay;
+            }
             $sale_box->update();
-
-            //Seleccionar los productos de la compra
-            $invoiceProducts = Invoice_product::where('invoice_id', $invoice->id)->get();
-            foreach ($invoiceProducts as $ip) {
-                $id = $ip->product_id;
-                $quantity = $ip->quantity;
-                $price = $ip->price;
-                $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
-                $branch_product->stock += $quantity;
-                $branch_product->update();
-
-                $ncinvoiceProducts = new Ncinvoice_product();
-                $ncinvoiceProducts->ncinvoice_id = $ncinvoice->id;
-                $ncinvoiceProducts->product_id = $id;
-                $ncinvoiceProducts->quantity = $quantity;
-                $ncinvoiceProducts->price = $ip->price;
-                $ncinvoiceProducts->save();
-
-                $product = Product::findOrFail($id);
-                //actualizando la tabla products
-                $product->stock += $quantity;
-                $product->update();
-
-                //Actualizar Kardex
-                $kardex = new Kardex();
-                $kardex->product_id = $id;
-                $kardex->branch_id = $branch;
-                $kardex->operation = 'nc_venta';
-                $kardex->number = $ncinvoice->id;
-                $kardex->quantity = $quantity;
-                $kardex->stock = $product->stock;
-                $kardex->save();
-            }
-
-            //actualizando campo status de la factura
-            $invoice->total = 0;
-            $invoice->total_iva = 0;
-            $invoice->total_pay = 0;
-            $invoice->pay = 0;
-            $invoice->balance = 0;
-            $invoice->status = 'credit_note';
-            $invoice->note = 'Factura eliminada con nota Credito #' . '-' . $ncinvoice->id;
-            $invoice->update();
-
-            DB::commit();
         }
-        catch(Exception $e){
-            DB::rollback();
+        $payInvoice = Pay_invoice::where('invoice_id', $invoice->id)->get();
+        foreach ($payInvoice as $key => $value) {
+            $value->status = 'advance';
         }
+        //Registrar tabla Nota Credito
+        $ncinvoice = new Ncinvoice();
+        $ncinvoice->user_id = Auth::user()->id;
+        $ncinvoice->branch_id = $branch;
+        $ncinvoice->invoice_id = $invoice->id;
+        $ncinvoice->customer_id = $invoice->customer_id;
+        $ncinvoice->nc_discrepancy_id = 2;
+        $ncinvoice->voucher_type_id = 5;
+        $ncinvoice->total = $invoice->total;
+        $ncinvoice->total_iva = $invoice->total_iva;
+        $ncinvoice->total_pay = $invoice->total_pay;
+        $ncinvoice->save();
+
+        $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
+        $sale_box->ndpurchase += $ncinvoice->total_pay;
+        $sale_box->update();
+
+        //Seleccionar los productos de la compra
+        $invoiceProducts = Invoice_product::where('invoice_id', $invoice->id)->get();
+        foreach ($invoiceProducts as $ip) {
+            $id = $ip->product_id;
+            $quantity = $ip->quantity;
+            $price = $ip->price;
+            $branch_product = Branch_product::where('branch_id', $branch)->where('product_id', $id)->first();
+            $branch_product->stock += $quantity;
+            $branch_product->update();
+
+            $ncinvoiceProducts = new Ncinvoice_product();
+            $ncinvoiceProducts->ncinvoice_id = $ncinvoice->id;
+            $ncinvoiceProducts->product_id = $id;
+            $ncinvoiceProducts->quantity = $quantity;
+            $ncinvoiceProducts->price = $ip->price;
+            $ncinvoiceProducts->save();
+
+            $product = Product::findOrFail($id);
+            //actualizando la tabla products
+            $product->stock += $quantity;
+            $product->update();
+
+            //Actualizar Kardex
+            $kardex = new Kardex();
+            $kardex->product_id = $id;
+            $kardex->branch_id = $branch;
+            $kardex->operation = 'nc_venta';
+            $kardex->number = $ncinvoice->id;
+            $kardex->quantity = $quantity;
+            $kardex->stock = $product->stock;
+            $kardex->save();
+        }
+
+        //actualizando campo status de la factura
+        $invoice->total = 0;
+        $invoice->total_iva = 0;
+        $invoice->total_pay = 0;
+        $invoice->pay = 0;
+        $invoice->balance = 0;
+        $invoice->status = 'credit_note';
+        $invoice->note = 'Factura eliminada con nota Credito #' . '-' . $ncinvoice->id;
+        $invoice->update();
+
+        session(['ncinvoice' => $ncinvoice->id]);
+
         if ($pay > 0 && $reverse == 0) {
             Alert::success('Venta','Eliminada Satisfactoriamente. Con creacion de anticipo a Cliente');
-            return redirect('invoice');
+            return redirect('ncinvoice');
 
         } elseif ($pay > 0 && $reverse == 1) {
             Alert::success('Venta','Eliminada Satisfactoriamente. Con creacion de anticipo a Cliente y devolucion de efectivo a caja');
-            return redirect('invoice');
+            return redirect('ncinvoice');
         }else {
-            return redirect("invoice")->with('success', 'Venta Eliminada Satisfactoriamente, ingreso efectivo a caja');
+            return redirect("ncinvoice")->with('success', 'Venta Eliminada Satisfactoriamente, ingreso efectivo a caja');
         }
     }
 

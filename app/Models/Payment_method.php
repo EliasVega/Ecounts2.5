@@ -45,4 +45,7 @@ class Payment_method extends Model
     public function advance_payment_method(){
         return $this->hasMany(Advance_payment_method::class);
     }
+    public function ndpurchases(){
+        return $this->hasMany(Ndpurchase::class);
+    }
 }

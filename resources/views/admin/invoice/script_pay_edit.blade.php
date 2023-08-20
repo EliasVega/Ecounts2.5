@@ -42,7 +42,7 @@
     $("#payment_form_id").hide();
     $("#payment_method_id").hide();
 
-    /*
+
     $(document).ready(function(){
         $("#payment_form_id").change(function(){
             form = $("#payment_form_id").val();
@@ -76,7 +76,7 @@
                 $("#advance").val(0);
             }
         });
-    });*/
+    });
     $(document).ready(function(){
         $("#payPays").click(function(){
             see();

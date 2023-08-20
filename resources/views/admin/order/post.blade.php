@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="{{ 'css/post.css' }}">
-        <title>Factura de compra</title>
+        <title>Orden de Pedido</title>
 
     </head>
 
@@ -38,7 +38,7 @@
     <body>
         <div class="content">
             <!--DATOS CLIENTE -->
-            <p id="titulo">DATOS DEL PROVEEDOR</p>
+            <p id="titulo">DATOS DEL CLIENTE</p>
             <div class="center">
                 <div id="cliente">
                     <!--DATOS CLIENTE -->
@@ -72,12 +72,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($product_orders as $ip)
+                    @foreach ($orderProducts as $orderProduct)
                     <tr>
-                        <td>{{ $ip->product->name }}</td>
-                        <td id="ccent">{{ number_format($ip->quantity,2) }}</td>
-                        <td class="tdder">${{ number_format($ip->price,2)}}</td>
-                        <td class="tdder">${{number_format($ip->quantity * $ip->price,2)}}</td>
+                        <td>{{ $orderProduct->product->name }}</td>
+                        <td id="ccent">{{ number_format($orderProduct->quantity,2) }}</td>
+                        <td class="tdder">${{ number_format($orderProduct->price,2)}}</td>
+                        <td class="tdder">${{number_format($orderProduct->quantity * $orderProduct->price,2)}}</td>
                     </tr>
                     @endforeach
                 </tbody>
