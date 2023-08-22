@@ -7,7 +7,11 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Listado de categorias <a href="category/create"><button class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar categoria</button></a>
-                <a href="{{ route('branch.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a></h3>
+                <a href="{{ route('branch.index') }}" class="btn btn-limon"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
+                @if (Auth::user()->role_id == 1)
+                    <a href="categoryImport" class="btn btn-success"><i class="fa fa-plus"></i> Importar Categorias</a>
+                @endif
+
         </div>
     </div>
     <div class="row">

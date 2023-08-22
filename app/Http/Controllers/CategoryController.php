@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Imports\CategoryImport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -37,6 +40,11 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
+    public function createImport()
+    {
+        return view('admin.category.import');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,6 +61,18 @@ class CategoryController extends Controller
         $category->status      = '1';
         $category->save();
 
+        return redirect('category');
+    }
+
+    public function import(Request $request)
+    {
+        $category = $request->file('category_file');
+        Excel::import(new CategoryImport, $category);
+
+        $message = 'Importacion de Categorias realizada con exito';
+        //Alert::success('Categoria', $message);
+        toast($message,'success');
+        //Alert::success('Categoria','Creada Satisfactoriamente.');
         return redirect('category');
     }
 
