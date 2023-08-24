@@ -74,14 +74,14 @@ class ProductImport implements
     public function customValidationMessages()
     {
         return [
-            'codigo.in' => 'Custom message for :Codigo.',
-            'nombre.in' => 'Custom message for :Nombre.',
-            'precio.in' => 'Custom message for :Precio.',
+            'codigo.in' => 'Custom message for :codigo.',
+            'nombre.in' => 'Custom message for :nombre.',
+            'precio.in' => 'Custom message for :precio.',
             'precio_venta.in' => 'Custom message for :Precio_venta.',
-            'stock.in' => 'Custom message for :Stock.',
-            'estado.in' => 'Custom message for :Estado.',
-            'categoria.in' => 'Custom message for :Categoria.',
-            'unidad_medida.in' => 'Custom message for :U_medida.',
+            'stock.in' => 'Custom message for :stock.',
+            'estado.in' => 'Custom message for :estado.',
+            'categoria.in' => 'Custom message for :categoria.',
+            'unidad_medida.in' => 'Custom message for :u_medida.',
         ];
     }
 }
