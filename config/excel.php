@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\excel;
+use Maatwebsite\Excel\Excel;
 
 return [
     'exports' => [
@@ -162,7 +162,7 @@ return [
     |
     */
     'extension_detector' => [
-        'xlsx'     => excel::XLSX,
+        'xlsx'     => Excel::XLSX,
         'xlsm'     => Excel::XLSX,
         'xltx'     => Excel::XLSX,
         'xltm'     => Excel::XLSX,

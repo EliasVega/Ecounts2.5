@@ -309,6 +309,10 @@ body {
  .requerido:after{
      content:"*"; color: red;
  }
+
+ .contenedores {
+    display: inline-block;
+ }
 /*
  .celeste{
      background-color: #150080 !important;

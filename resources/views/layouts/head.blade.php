@@ -41,6 +41,8 @@
     <!-- Or for RTL support -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-5/css/bootstrap.rtl.min.css') }}">
 
+    @vite(['resources/css/card.css', 'resources/css/main.css', 'resources/css/button.css', 'resources/css/rdb.css'])
+
     <!-- Scripts -->
     @livewireStyles
   </head>
