@@ -6,16 +6,16 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit_measure;
 use Maatwebsite\Excel\Concerns\ToModel;
-//use Maatwebsite\Excel\Concerns\WithBatchInserts;
-//use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
 class ProductImport implements
     ToModel,
     WithHeadingRow,
-    //WithBatchInserts,
-    //WithChunkReading,
+    WithBatchInserts,
+    WithChunkReading,
     WithValidation
 {
     private $categories;
@@ -45,16 +45,16 @@ class ProductImport implements
             'unit_measure_id' => $this->unidades[$row['unidad_medida']],
         ]);
     }
-    /*
+
     public function batchSize(): int
     {
-        return 100;
+        return 1000;
     }
 
     public function chunkSize(): int
     {
-        return 100;
-    }*/
+        return 1000;
+    }
 
     public function rules(): array
     {
@@ -74,14 +74,14 @@ class ProductImport implements
     public function customValidationMessages()
     {
         return [
-            'codigo.in' => 'Custom message for :codigo.',
-            'nombre.in' => 'Custom message for :nombre.',
-            'precio.in' => 'Custom message for :precio.',
+            'codigo.in' => 'Custom message for :Codigo.',
+            'nombre.in' => 'Custom message for :Nombre.',
+            'precio.in' => 'Custom message for :Precio.',
             'precio_venta.in' => 'Custom message for :Precio_venta.',
-            'stock.in' => 'Custom message for :stock.',
-            'estado.in' => 'Custom message for :estado.',
-            'categoria.in' => 'Custom message for :categoria.',
-            'unidad_medida.in' => 'Custom message for :u_medida.',
+            'stock.in' => 'Custom message for :Stock.',
+            'estado.in' => 'Custom message for :Estado.',
+            'categoria.in' => 'Custom message for :Categoria.',
+            'unidad_medida.in' => 'Custom message for :U_medida.',
         ];
     }
 }
