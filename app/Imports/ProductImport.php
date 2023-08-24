@@ -6,16 +6,16 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit_measure;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithBatchInserts;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
+//use Maatwebsite\Excel\Concerns\WithBatchInserts;
+//use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
 class ProductImport implements
     ToModel,
     WithHeadingRow,
-    WithBatchInserts,
-    WithChunkReading,
+    //WithBatchInserts,
+    //WithChunkReading,
     WithValidation
 {
     private $categories;
@@ -45,7 +45,7 @@ class ProductImport implements
             'unit_measure_id' => $this->unidades[$row['unidad_medida']],
         ]);
     }
-
+    /*
     public function batchSize(): int
     {
         return 100;
@@ -54,7 +54,7 @@ class ProductImport implements
     public function chunkSize(): int
     {
         return 100;
-    }
+    }*/
 
     public function rules(): array
     {
