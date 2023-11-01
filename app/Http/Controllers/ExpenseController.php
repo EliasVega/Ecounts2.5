@@ -110,7 +110,7 @@ class ExpenseController extends Controller
     public function store(StoreExpenseRequest $request)
     {
         //Crea un registro de compras
-
+        //dd($request->all());
         $service_id = $request->service_id;
         $quantity   = $request->quantity;
         $price      = $request->price;

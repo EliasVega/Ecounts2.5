@@ -63,7 +63,6 @@
         quantity= $("#quantity").val();
         price= $("#price").val();
         iva= $("#iva").val();
-
         if(service_id !="" && quantity!="" && quantity>0  && price!="" && price > 0){
             subtotal[cont]= parseFloat(quantity) * parseFloat(price);
             total= total+subtotal[cont];

@@ -24,12 +24,7 @@
             <input type="date" name="due_date" class="form-control" placeholder="Fecha Vencimiento">
         </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="form-group">
-            <label class="form-control-label" for="note">Nota</label>
-            <input type="text" id="note" name="note" class="form-control" placeholder="Describe una nota">
-        </div>
-    </div>
+
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" id="addIva">
         <div class="form-group">
             <label class="form-control-label" for="iva">Iva</label>
@@ -72,6 +67,12 @@
         <div class="form-group">
             <label class="form-control-label" >Canc</label><br>
             <a href="{{url('expense')}}" class="btn btn-grisb" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="fa fa-window-close"></i>&nbsp; </a>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group">
+            <label class="form-control-label" for="note">Nota</label>
+            <input type="text" id="note" name="note" class="form-control" placeholder="Describe una nota">
         </div>
     </div>
 

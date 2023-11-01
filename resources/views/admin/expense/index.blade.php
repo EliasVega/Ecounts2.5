@@ -40,7 +40,7 @@
         function print(){
             var expense = "{{ $expense ?? '' }}";
             if (expense != '') {
-                var imprimir = "{{ route('postexpense', ['expense' => ':expense']) }}";
+                var imprimir = "{{ route('postExpense', ['expense' => ':expense']) }}";
                 imprimir = imprimir.replace(':expense', expense);
                 window.open(imprimir, "_blank");
             }
