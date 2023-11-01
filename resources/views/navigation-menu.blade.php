@@ -29,7 +29,6 @@
                 </div>
             </div>
 
-
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -164,6 +163,7 @@
                 </x-responsive-nav-link>
             @endif
         </div>
+
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">

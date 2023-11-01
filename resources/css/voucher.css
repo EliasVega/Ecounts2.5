@@ -11,7 +11,7 @@ body {
 }
 
 #header {
-    height: 180px;
+    height: 130px;
     width: 100%;
     background: #fff;
     border: 1px solid #c0c0c0;
@@ -52,7 +52,7 @@ body {
 
 .company strong {
     font-weight: 800;
-    font-size: 28px;
+    font-size: 36px;
     margin: 0px auto;
     text-align: center;
 }
@@ -89,7 +89,7 @@ body {
 .information {
     height: 140px;
     width: 100%;
-    margin: 0px;
+    margin: 0px auto;
 }
 .title {
     height: 30px;

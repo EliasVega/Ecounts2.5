@@ -41,7 +41,7 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        window.onload = function() {
+        function print(){
             var purchase = "{{ $purchase ?? '' }}";
             if (purchase != '') {
                 var imprimir = "{{ route('postPurchase', ['purchase' => ':purchase']) }}";
@@ -49,6 +49,9 @@
                 window.open(imprimir, "_blank");
             }
         }
+
+
+        print();
         $('#purchases').DataTable(
         {
             responsive: true,

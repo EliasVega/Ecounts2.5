@@ -10,9 +10,10 @@ use App\Models\Liability;
 use App\Models\Municipality;
 use App\Models\Organization;
 use App\Models\Regime;
-use App\Models\Tax;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class CompanyController extends Controller
 {
@@ -23,8 +24,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        \Session::forget('branch');
-        \Session::forget('company');
+        Session::forget('branch');
+        Session::forget('company');
             $companies = company::where('id', '=', 1)->get();
         return view('admin.company.index', compact('companies'));
     }
@@ -53,6 +54,7 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
+        dd($request->all());
         $company = new company();
         $company->department_id   = $request->department_id;
         $company->municipality_id = $request->municipality_id;
@@ -64,11 +66,28 @@ class CompanyController extends Controller
         $company->dv              = $request->dv;
         $company->email           = $request->email;
         $company->emailfe         = $request->emailfe;
+        //Handle File Upload
         if($request->hasFile('logo')){
-            $path = $request->file('logo')->store('public/images/logos');
-            $fileNameToStore = Storage::url($path);
+            //Get filename with the extension
+            $filenamewithExt = $request->file('logo')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
+            //Get just ext
+            $extension = $request->file('logo')->guessClientExtension();
+
+            $image = Image::make($request->file('logo'))->encode('jpg', 75);
+            $image->resize(512,448,function($constraint) {
+                $constraint->upsize();
+            });
+            //FileName to store
+            $fileNameToStore = time() . '.jpg';
+            $company->imageName = $fileNameToStore;
+            //Upload Image
+            Storage::disk('public')->put("images/logos/$fileNameToStore", $image->stream());
+            $fileNameToStore = Storage::url("images/logos/$fileNameToStore");
         } else{
-            $fileNameToStore="/storage/images/logos/noimagen.jpg";
+            $company->imageName = 'noimage.jpg';
+            $fileNameToStore="/storage/images/logos/noimage.jpg";
         }
         $company->logo=$fileNameToStore;
         $company->save();
@@ -84,8 +103,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        \Session::put('company', $company->id, 60 * 24 * 365);
-        \Session::put('name', $company->name, 60 * 24 * 365);
+        Session::put('company', $company->id, 60 * 24 * 365);
+        Session::put('name', $company->name, 60 * 24 * 365);
 
         return redirect('branch');
     }
@@ -115,6 +134,7 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
+        //dd($request->all());
         $company->department_id   = $request->department_id;
         $company->municipality_id = $request->municipality_id;
         $company->liability_id    = $request->liability_id;
@@ -125,12 +145,32 @@ class CompanyController extends Controller
         $company->dv              = $request->dv;
         $company->email           = $request->email;
         $company->emailfe         = $request->emailfe;
+        $currentImage = $company->imageName;
         //Handle File Upload
         if($request->hasFile('logo')){
-            $path = $request->file('logo')->store('public/images/logos');
-            $fileNameToStore = Storage::url($path);
+            if ($currentImage != 'noimage.jpg') {
+                Storage::disk('public')->delete("images/logos/$currentImage");
+            }
+            //Get filename with the extension
+            $filenamewithExt = $request->file('logo')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
+            //Get just ext
+            $extension = $request->file('logo')->guessClientExtension();
+
+            $image = Image::make($request->file('logo'))->encode('jpg', 75);
+            $image->resize(512,448,function($constraint) {
+                $constraint->upsize();
+            });
+            //FileName to store
+            $fileNameToStore = time() . '.jpg';
+            $company->imageName = $fileNameToStore;
+            //Upload Image
+            Storage::disk('public')->put("images/logos/$fileNameToStore", $image->stream());
+            $fileNameToStore = Storage::url("images/logos/$fileNameToStore");
         } else{
-            $fileNameToStore="/storage/images/logos/noimagen.jpg";
+            $company->imageName = 'noimage.jpg';
+            $fileNameToStore="/storage/images/logos/noimage.jpg";
         }
         $company->logo=$fileNameToStore;
         $company->update();

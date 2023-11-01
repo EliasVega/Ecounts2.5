@@ -31,6 +31,7 @@ class UpdateProductRequest extends FormRequest
             'sale_price'      => '',
             'stock'           => '',
             'status'          => '',
+            'imageName' => '',
             'image'           => '',
             'category_id'     => 'required',
             'unit_measure_id' => 'required'

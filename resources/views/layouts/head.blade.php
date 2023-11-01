@@ -8,6 +8,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-fileinput/css/fileinput.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -27,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap-datepicker/css/bootstrap-datepicker.standalone.css') }}">
 
     <!-- Styles -->
+    @vite(['resources/css/card.css', 'resources/css/main.css', 'resources/css/button.css', 'resources/css/rdb.css'])
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}">
@@ -35,8 +38,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2-develop/dist/css/select2.min.css') }}">
     <!-- Or for RTL support -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-5/css/bootstrap.rtl.min.css') }}">
-
-    @vite(['resources/css/card.css', 'resources/css/main.css', 'resources/css/button.css', 'resources/css/rdb.css'])
 
     <!-- Scripts -->
     @livewireStyles
