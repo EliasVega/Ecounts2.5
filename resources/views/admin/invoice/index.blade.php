@@ -42,7 +42,7 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        window.onload = function() {
+        function print(){
             var invoice = "{{ $invoice ?? '' }}";
             if (invoice != '') {
                 var imprimir = "{{ route('postInvoice', ['invoice' => ':invoice']) }}";
@@ -50,6 +50,8 @@
                 window.open(imprimir, "_blank");
             }
         }
+
+        print();
         $('#invoices').DataTable(
         {
             responsive: true,

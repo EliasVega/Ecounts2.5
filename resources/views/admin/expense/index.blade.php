@@ -37,14 +37,16 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        window.onload = function() {
+        function print(){
             var expense = "{{ $expense ?? '' }}";
             if (expense != '') {
-                var imprimir = "{{ route('postExpense', ['expense' => ':expense']) }}";
+                var imprimir = "{{ route('postexpense', ['expense' => ':expense']) }}";
                 imprimir = imprimir.replace(':expense', expense);
                 window.open(imprimir, "_blank");
             }
         }
+
+        print();
         $('#expenses').DataTable(
         {
             responsive: true,

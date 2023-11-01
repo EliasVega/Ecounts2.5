@@ -38,7 +38,7 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        window.onload = function() {
+        function print(){
             var order = "{{ $order ?? '' }}";
             if (order != '') {
                 var imprimir = "{{ route('postOrder', ['order' => ':order']) }}";
@@ -46,6 +46,8 @@
                 window.open(imprimir, "_blank");
             }
         }
+
+        print();
         $('#orders').DataTable(
         {
             responsive: true,
