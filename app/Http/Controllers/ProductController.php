@@ -159,7 +159,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
-        $product->stock = $product->stock;
+        $product->stock = $request->stock;
         $product->status = 1;
 
         $currentImage = $product->imageName;
