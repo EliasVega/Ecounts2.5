@@ -54,7 +54,7 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $company = new company();
         $company->department_id   = $request->department_id;
         $company->municipality_id = $request->municipality_id;
