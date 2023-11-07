@@ -49,6 +49,32 @@ class UsersTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
+                'name' => 'JAIRO ENRIQUE SUAREZ PEREZ',
+                'number' => '91343991',
+                'address' => 'CaLLE 59 1W 70 APTO 301',
+                'phone' => '3014109204',
+                'email' => 'comercial.ecounts@gmail.com',
+                'email_verified_at' => NULL,
+                'password' => bcrypt('91343991'),
+                'two_factor_secret' => NULL,
+                'two_factor_recovery_codes' => NULL,
+                'two_factor_confirmed_at' => NULL,
+                'remember_token' => NULL,
+                'current_team_id' => NULL,
+                'profile_photo_path' => NULL,
+                'position' => 'Administrador Sistema',
+                'transfer' => 1,
+                'status' => 'activo',
+                'created_at' => '2023-01-12 21:07:43',
+                'updated_at' => '2023-01-12 21:07:43',
+                'company_id' => 1,
+                'branch_id' => 1,
+                'document_id' => 3,
+                'role_id' => 1,
+            ),
+            2 =>
+            array (
+                'id' => 3,
                 'name' => 'Ecounts dos',
                 'number' => '91260183',
                 'address' => 'Carrera 33 # 98-27 Bucaramanga',
@@ -72,9 +98,9 @@ class UsersTableSeeder extends Seeder
                 'document_id' => 3,
                 'role_id' => 2,
             ),
-            2 =>
+            3 =>
             array (
-                'id' => 3,
+                'id' => 4,
                 'name' => 'Ecounts tres',
                 'number' => '91260184',
                 'address' => 'Carrera 45 # 58-47 Bucaramanga',
@@ -98,9 +124,9 @@ class UsersTableSeeder extends Seeder
                 'document_id' => 3,
                 'role_id' => 3,
             ),
-            3 =>
+            4 =>
             array (
-                'id' => 4,
+                'id' => 5,
                 'name' => 'Ecounts cuatro',
                 'number' => '91260185',
                 'address' => 'Carrera 6 # 12-27 Bucaramanga',
@@ -124,9 +150,9 @@ class UsersTableSeeder extends Seeder
                 'document_id' => 3,
                 'role_id' => 4,
             ),
-            4 =>
+            5 =>
             array (
-                'id' => 5,
+                'id' => 6,
                 'name' => 'Ecounts cinco',
                 'number' => '91260186',
                 'address' => 'Carrera 60 # 22-77 Bucaramanga',
