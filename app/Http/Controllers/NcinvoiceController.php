@@ -124,7 +124,7 @@ class NcinvoiceController extends Controller
             $sale_box = Sale_box::where('user_id', '=', $invoice->user_id)->where('status', '=', 'open')->first();
             $sale_box->invoice -= $invoice->total_pay;
             $sale_box->in_invoice -= $pay;
-            $sale_box->in_purchase_cash -=$payCash;
+            $sale_box->in_invoice_cash -=$payCash;
             $sale_box->in_total -= $invoice->total_pay;
             $sale_box->update();
         }
