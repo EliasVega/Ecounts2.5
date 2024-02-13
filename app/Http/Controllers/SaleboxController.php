@@ -28,6 +28,7 @@ use App\Models\Product;
 use App\Models\Product_purchase;
 use App\Models\Purchase;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
@@ -1026,21 +1027,11 @@ class SaleboxController extends Controller
             'productpurc'
             ))->render();
 
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        //$pdf->setPaper (array(0,0,226.76,497.64));
-        $pdf->setPaper('b7', 'portrait');
+        $pdf->setPaper (array(0,0,226.76,1846.64), 'portrait');
 
         return $pdf->stream('reporte_caja.pdf');
-        /*
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64));
-
-        return $pdf->stream('reporte_caja.pdf');
-
-        $data = PDF::loadView('vista-pdf', $data)
-        ->save(storage_path('app/public/') . 'archivo.pdf');*/
     }
 
     public function show_out( $id)

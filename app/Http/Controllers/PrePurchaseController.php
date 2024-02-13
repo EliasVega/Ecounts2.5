@@ -360,7 +360,6 @@ class PrePurchaseController extends Controller
         $view = \view('admin.pre_purchase.pdf', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
 
         return $pdf->stream('vista-pdf', "$prePurchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
@@ -379,7 +378,6 @@ class PrePurchaseController extends Controller
         $view = \view('admin.pre_purchase.pdf', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
 
         return $pdf->stream('vista-pdf', "$prePurchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
@@ -396,8 +394,7 @@ class PrePurchaseController extends Controller
         $view = \view('admin.pre_purchase.post', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
-        //$pdf->setPaper ( 'A7' , 'landscape' );
+        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$prePurchasepost.pdf");
         //return $pdf->download("$purchasepdf.pdf");
@@ -416,8 +413,7 @@ class PrePurchaseController extends Controller
         $view = \view('admin.pre_purchase.post', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
-        //$pdf->setPaper ( 'A7' , 'landscape' );
+        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$prePurchasepost.pdf");
         //return $pdf->download("$purchasepdf.pdf");
