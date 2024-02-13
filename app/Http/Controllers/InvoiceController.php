@@ -757,7 +757,7 @@ class InvoiceController extends Controller
         $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'indicators'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
         //return $pdf->download("$invoicepdf.pdf");
@@ -778,7 +778,7 @@ class InvoiceController extends Controller
         $view = \view('admin.invoice.post', compact('invoice', 'days', 'invoice_products', 'company', 'logo', 'indicators'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$invoicepdf.pdf");
         //return $pdf->download("$invoicepdf.pdf");

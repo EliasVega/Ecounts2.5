@@ -394,7 +394,7 @@ class PrePurchaseController extends Controller
         $view = \view('admin.pre_purchase.post', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$prePurchasepost.pdf");
         //return $pdf->download("$purchasepdf.pdf");
@@ -413,7 +413,7 @@ class PrePurchaseController extends Controller
         $view = \view('admin.pre_purchase.post', compact('prePurchase', 'prePurchaseProducts', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$prePurchasepost.pdf");
         //return $pdf->download("$purchasepdf.pdf");

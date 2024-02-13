@@ -110,11 +110,6 @@
                 </tfoot>
             </table>
         </div>
-        <br>
-        <br>
-        <footer>
-            Impreso por Ecounts S.A.S. derechos reservados
-        </footer>
     </body>
 
 </html>

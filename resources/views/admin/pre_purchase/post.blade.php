@@ -100,11 +100,6 @@
                 </tfoot>
             </table>
         </div>
-        <br>
-        <br>
-        <footer>
-            Impreso por EmdisoftPro S.A.S. derechos reservados
-        </footer>
     </body>
 
 </html>

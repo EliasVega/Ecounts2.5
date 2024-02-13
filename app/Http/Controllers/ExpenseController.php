@@ -517,7 +517,6 @@ class ExpenseController extends Controller
         $view = \view('admin.pay_expense.pdf', compact('expense', 'company', 'logo', 'user'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
 
         return $pdf->stream('vista-pdf', "$expensepdf.pdf");
         //return $pdf->download("$invoicepdf.pdf");
@@ -555,7 +554,6 @@ class ExpenseController extends Controller
         $view = \view('admin.expense.pdf', compact('expense', 'days', 'expense_service', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
 
         return $pdf->stream('vista-pdf', "$expensepdf.pdf");
         //return $pdf->download("$expensepdf.pdf");
@@ -576,7 +574,6 @@ class ExpenseController extends Controller
         $view = \view('admin.expense.pdf', compact('expense', 'days', 'expense_service', 'company', 'logo'));
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        //$pdf->setPaper ( 'A7' , 'landscape' );
 
         return $pdf->stream('vista-pdf', "$expensepdf.pdf");
         //return $pdf->download("$expensepdf.pdf");
@@ -594,7 +591,7 @@ class ExpenseController extends Controller
         $view = \view('admin.expense.post', compact('expense', 'days', 'expense_services', 'company', 'logo'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$expensepdf.pdf");
         //return $pdf->download("$expensepdf.pdf");
@@ -614,7 +611,7 @@ class ExpenseController extends Controller
         $view = \view('admin.expense.post', compact('expense', 'days', 'expense_services', 'company', 'logo'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,497.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$expensepdf.pdf");
         //return $pdf->download("$expensepdf.pdf");

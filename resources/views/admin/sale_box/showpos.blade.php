@@ -641,11 +641,6 @@
                 </table>
             </div>
         </section>
-        <br>
-        <br>
-        <footer>
-            Reporte cierre de Caja
-        </footer>
     </body>
 </html>
 

@@ -807,7 +807,7 @@ class PurchaseController extends Controller
         $view = \view('admin.purchase.post', compact('purchase', 'days', 'product_purchases', 'company', 'logo'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
 
         return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
@@ -827,7 +827,7 @@ class PurchaseController extends Controller
         $view = \view('admin.purchase.post', compact('purchase', 'days', 'product_purchases', 'company', 'logo'))->render();
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1246.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,846.64), 'portrait');
         $pdf->render();
         return $pdf->stream("$purchasepdf.pdf");
         //return $pdf->download("$purchasepdf.pdf");
@@ -858,7 +858,7 @@ class PurchaseController extends Controller
         $purchasepdf = "FACT-". $purchase->id;
         $logo = './imagenes/logos'.$company->logo;
         $view = \view('admin.pay_purchase.pdf', compact('company', 'logo', 'paypurchase', 'user'))->render();
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
 
         return $pdf->stream('vista-pdf', "$purchasepdf.pdf");
