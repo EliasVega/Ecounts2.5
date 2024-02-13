@@ -89,27 +89,27 @@
                 <tfoot>
                     <!--DATOS FTOTALES -->
                     <tr>
-                        <th colspan="2" class="footder">TOTAL:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($purchase->total,2)}}</strong></td>
+                        <th colspan="3" class="footder">TOTAL:</th>
+                        <td colspan="3" class="footder"><strong>${{number_format($purchase->total,2)}}</strong></td>
                     </tr>
 
                     <tr>
-                        <th colspan="2" class="footder">TOTAL IVA:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($purchase->total_iva,2)}}</strong> </td>
+                        <th colspan="3" class="footder">TOTAL IVA:</th>
+                        <td colspan="3" class="footder"><strong>${{number_format($purchase->total_iva,2)}}</strong> </td>
                     </tr>
 
                     <tr>
-                        <th  colspan="2" class="footder">TOTAL PAGAR:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($purchase->total_pay,2)}}</strong></td>
+                        <th  colspan="3" class="footder">TOTAL PAGAR:</th>
+                        <td colspan="3" class="footder"><strong>${{number_format($purchase->total_pay,2)}}</strong></td>
                     </tr>
                     @if ($purchase->pay > 0)
                         <tr>
-                            <th  colspan="2" class="footder">ABONOS:</th>
-                            <td colspan="2" class="footder"><strong>${{number_format($purchase->pay,2)}}</strong></td>
+                            <th  colspan="3" class="footder">ABONOS:</th>
+                            <td colspan="3" class="footder"><strong>${{number_format($purchase->pay,2)}}</strong></td>
                         </tr>
                         <tr>
-                            <th  colspan="2" class="footder">SALDO:</th>
-                            <td colspan="2" class="footder"><strong>${{number_format($purchase->balance,2)}}</strong></td>
+                            <th  colspan="3" class="footder">SALDO:</th>
+                            <td colspan="3" class="footder"><strong>${{number_format($purchase->balance,2)}}</strong></td>
                         </tr>
                     @endif
                 </tfoot>

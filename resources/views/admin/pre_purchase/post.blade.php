@@ -84,18 +84,18 @@
                 <tfoot>
                     <!--DATOS FTOTALES -->
                     <tr>
-                        <th colspan="2" class="footder">TOTAL:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($prePurchase->total,2)}}</strong></td>
+                        <th colspan="3" class="footder">TOTAL:</th>
+                        <td colspan="3" class="footder"><strong>${{number_format($prePurchase->total,2)}}</strong></td>
                     </tr>
 
                     <tr>
-                        <th colspan="2" class="footder">TOTAL IVA:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($prePurchase->total_iva,2)}}</strong> </td>
+                        <th colspan="3" class="footder">TOTAL IVA:</th>
+                        <td colspan="3" class="footder"><strong>${{number_format($prePurchase->total_iva,2)}}</strong> </td>
                     </tr>
 
                     <tr>
-                        <th  colspan="2" class="footder">TOTAL PAGAR:</th>
-                        <td colspan="2" class="footder"><strong>${{number_format($prePurchase->total_pay,2)}}</strong></td>
+                        <th  colspan="3" class="footder">TOTAL PAGAR:</th>
+                        <td colspan="3" class="footder"><strong>${{number_format($prePurchase->total_pay,2)}}</strong></td>
                     </tr>
                 </tfoot>
             </table>
