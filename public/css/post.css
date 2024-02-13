@@ -136,48 +136,6 @@ body {
     font-size: 0.6em;
 }
 
-.footder {
-    text-align: right;
-    padding: 3px;
-}
-/*
-.footder {
-    text-align: right;
-    padding: 3px;
-}
-
-#total {
-    font-size: 0.75em;
-}
-
-.tabla tfoot tr th {
-    background: #feffff;
-    border: 0.7px solid #eff1f1;
-
-}
-.tabla tfoot tr td {
-    background: #f9f9f9;
-    border: 0.7px solid #c0c0c0;
-}
-table tfoot tr th p{
-    margin: 0px;
-}
-*/
-
-footer {
-    position: fixed;
-    bottom: -60px;
-    left: 0px;
-    right: 0px;
-    height: 50px;
-
-    /** Extra personal styles **/
-    background-color: #feffff;
-    border: 1px solid #faf7f7;
-    text-align: center;
-    line-height: 35px;
-}
-
 .clearfix{
     clear:both;
     float:none;
