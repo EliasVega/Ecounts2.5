@@ -4,108 +4,120 @@
 }
 
 body {
-        text-align: center;
-        display: flex;
-        margin: 0px auto;
-        font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-weight: normal;
-        line-height: 1.5;
-        color: #151b1e;
-        min-width: 100%;
-        padding: 0%;
-        }
+    text-align: center;
+    display: flex;
+    margin: 0px auto;
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #151b1e;
+    min-width: 100%;
+    padding: 0%;
+}
 
-        .clearfix {
-            clear: both;
-            float: none;
-        }
+.clearfix {
+    clear: both;
+    float: none;
+}
 
-        .unicos {
-            width: 100%;
-            display: flex;
-            align-items: center;
-        }
+.unicos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 
-        .unicos p {
-            font-size: 10px;
-        }
+.unicos p {
+    font-size: 10px;
+}
 
-        .cliente {
-            margin-top: 0px;
-            width: 100%;
-            font-size: 0.6em;
-            text-align: left;
-        }
+.cliente {
+    margin-top: 0px;
+    width: 100%;
+    font-size: 0.6em;
+    text-align: left;
+}
 
-        thead {
-            width: 100%;
-            margin: 0%;
-            padding: 0%;
-        }
+thead {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
 
-        table thead tr th {
-            text-align: left;
-        }
+.id {
+    width: 20px;
+}
 
-        .id {
-            width: 20px;
-        }
+.name {
+    width: 90px;
+}
 
-        .name {
-            width: 90px;
-        }
+.quantity {
+    width: 35px;
+}
 
-        .quantity {
-            width: 35px;
-        }
+.price {
+    width: 40px;
+}
+.subtotal {
+    width: 60px;
+}
 
-        .price {
-            width: 50px;
-        }
-        .subtotal {
-            width: 40px;
-        }
+.document {
+    width: 40px;
+}
 
-        .document {
-            width: 40px;
-        }
+.third {
+    width: 140px;
+}
 
-        .third {
-            width: 150px;
-        }
+.totals {
+    width: 70px;
+}
 
-        .totals {
-            width: 70px;
-        }
+.totalreportname {
+    width: 150px;
+}
 
-        .totalreportname {
-            width: 180px;
-        }
+.fact {
+    width: 100%;
+    border-bottom: 1px solid #7a7d7e;
+}
 
-        .fact {
-            width: 100%;
-            border-bottom: 1px solid #7a7d7e;
-        }
+.cashin {
+    width: 200px;
+}
 
-        .facturador {
-            font-size: 0.6em;
-            margin: 0px auto;
-            text-align: center;
-        }
-        header {
-            border-top: 2px solid #c6cccf;
-            border-bottom: 2px solid #c6cccf;
-        }
+.cashpay {
+    width: 70px;
+}
+header {
+    border-top: 2px solid #c6cccf;
+    border-bottom: 2px solid #c6cccf;
+}
 
-        tbody {
-            width: 100%;
-            margin: 0%;
-            padding: 0%;
-        }
+tbody {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
 
-        th{
-            font-size: 0.7rem;
-        }
-        td {
-            font-size: 0.6rem;
-        }
+th{
+    font-size: 0.8rem;
+}
+td {
+    font-size: 0.7rem;
+}
+footer {
+    position: fixed;
+    bottom: -60px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    font-size: 0.7em;
+
+    /** Extra personal styles **/
+    background-color: #feffff;
+    border: 1px solid #faf7f7;
+    text-align: center;
+    line-height: 35px;
+}

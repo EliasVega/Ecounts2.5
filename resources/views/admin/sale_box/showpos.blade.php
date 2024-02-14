@@ -42,9 +42,9 @@
                             <tr>
                                 <td class="id">{{ $produtPurchase->id }}</td>
                                 <td class="name">{{ $produtPurchase->name }}</td>
-                                <td class="quantity">{{ $produtPurchase->stock }}</td>
+                                <td class="quantity" align="right">{{ $produtPurchase->stock }}</td>
                                 <td class="price" align="right">${{ number_format($produtPurchase->price) }}</td>
-                                <td class="subtotal" align="right">${{ number_format($produtPurchase->sale_price) }}</td>
+                                <td class="subtotal" align="right">${{ number_format($produtPurchase->salePrice) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -75,9 +75,9 @@
                             <tr>
                                 <td class="id">{{ $invoiceProduct->id }}</td>
                                 <td class="name">{{ $invoiceProduct->name }}</td>
-                                <td class="quantity">{{ $invoiceProduct->stock }}</td>
+                                <td class="quantity" align="right">{{ $invoiceProduct->stock }}</td>
                                 <td class="price" align="right">${{ number_format($invoiceProduct->price) }}</td>
-                                <td class="subtotal" align="right">${{ number_format($invoiceProduct->sale_price) }}</td>
+                                <td class="subtotal" align="right">${{ number_format($invoiceProduct->salePrice) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -97,7 +97,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.Compra</th>
+                                <th>N° Doc.</th>
                                 <th>Proveedor</th>
                                 <th>Precio</th>
                             </tr>
@@ -122,11 +122,11 @@
             @endif
             @if ($sale_box->invoice > 0)
                 <div class="unicos">
-                    <p>REPORTE DE FACTURAS DE VENTA</p>
+                    <p>REPORTE DE VENTAS</p>
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.Venta</th>
+                                <th>N° Doc.</th>
                                 <th>Cliente</th>
                                 <th>Precio</th>
                             </tr>
@@ -156,7 +156,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.Gasto</th>
+                                <th>N° Doc.</th>
                                 <th>Proveedor</th>
                                 <th>Precio</th>
                             </tr>
@@ -185,7 +185,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.pedido</th>
+                                <th>N° Doc.</th>
                                 <th>Cliente</th>
                                 <th>Precio</th>
                             </tr>
@@ -330,7 +330,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.order</th>
+                                <th>N° Ped</th>
                                 <th>Cliente</th>
                                 <th>Valor</th>
                             </tr>
@@ -359,7 +359,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.Factura</th>
+                                <th>N° Fact</th>
                                 <th>Cliente</th>
                                 <th>Valor</th>
                             </tr>
@@ -388,7 +388,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>N°.Compra</th>
+                                <th>N° Comp</th>
                                 <th>Proveedor</th>
                                 <th>Valor</th>
                             </tr>
@@ -453,14 +453,14 @@
                         <tbody class="fact">
                             @foreach ($cashIns as $cashIn)
                             <tr>
-                                <td>{{ $cashIn->name }}</td>
-                                <td>$ {{ $cashIn->payment }}</td>
+                                <td class="cashin">{{ $cashIn->name }}</td>
+                                <td class="cashpay" align="right">$ {{ number_format($cashIn->payment) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="2" ><p align="right" >TOTAL:</p></th>
+                                <th colspan="1" ><p align="right" >TOTAL:</p></th>
                                 <td><p align="right" >${{number_format($sum_cash_ins)}}</p></td>
                             </tr>
                         </tfoot>
@@ -480,14 +480,14 @@
                         <tbody class="fact">
                             @foreach ($cashOuts as $cashOut)
                             <tr>
-                                <td>{{ $cashOut->name }}</td>
-                                <td>$ {{ $cashOut->payment }}</td>
+                                <td class="cashin">{{ $cashOut->name }}</td>
+                                <td class="cashpay" align="right">$ {{ $cashOut->payment }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="2" ><p align="right" >TOTAL:</p></th>
+                                <th colspan="1" ><p align="right" >TOTAL:</p></th>
                                 <td><p align="right" >${{number_format($sum_cash_outs)}}</p></td>
                             </tr>
                         </tfoot>
@@ -640,6 +640,12 @@
                     </tfoot>
                 </table>
             </div>
+            <div class="space">
+                <p></p>
+            </div>
+            <footer>
+                Impreso por Emdisoft S.A.S. derechos reservados
+            </footer>
         </section>
     </body>
 </html>

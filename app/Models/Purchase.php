@@ -42,7 +42,7 @@ class Purchase extends Model
     }
 
     public function productPurchases(){
-        return $this->hasMany(ProductPurchase::class);
+        return $this->hasMany(Product_purchase::class);
     }
 
     public function ncpurchase(){

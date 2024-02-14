@@ -76,8 +76,8 @@
                     <tr>
                         <td>{{ $orderProduct->product->name }}</td>
                         <td id="ccent">{{ number_format($orderProduct->quantity,2) }}</td>
-                        <td class="tdder">${{ number_format($orderProduct->price,2)}}</td>
-                        <td class="tdder">${{number_format($orderProduct->quantity * $orderProduct->price,2)}}</td>
+                        <td class="tdder">{{ number_format($orderProduct->price)}}</td>
+                        <td class="tdder spacetd">{{number_format($orderProduct->quantity * $orderProduct->price,2)}}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -112,7 +112,7 @@ body {
     border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
 }
-.tabla thead tr {
+.tabla thead tr th{
     text-align: left;
     font-size: 0.7em;
     text-align: center;
@@ -125,15 +125,25 @@ body {
 
 .tabla tbody tr td {
     text-align: left;
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 .tabla tbody tr .tdder {
     text-align: right;
     padding-right: 3px;
 }
 
-.tabla tfoot tr {
-    font-size: 0.6em;
+.tabla tbody tr .spacetd {
+    width: 75px;
+}
+
+.tabla tfoot tr th{
+    font-size: 0.7em;
+    text-align: right;
+}
+
+.tabla tfoot tr td{
+    font-size: 0.7em;
+    text-align: right;
 }
 
 .clearfix{

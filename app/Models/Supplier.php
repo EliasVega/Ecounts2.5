@@ -51,7 +51,7 @@ class Supplier extends Model
 
     public function departament()
     {
-        return $this->belongsTo(departament::class);
+        return $this->belongsTo(Department::class);
     }
 
     public function municipality(){

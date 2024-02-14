@@ -790,6 +790,7 @@ class SaleboxController extends Controller
             $sale_box = Sale_box::findOrFail($id);
             $from     = $sale_box->created_at;
             $to       = $sale_box->updated_at;
+
             //seccion de detalle de productos en compra
             $productPurchases = [];//informacion de totales
             $products = Product::get();
@@ -828,58 +829,58 @@ class SaleboxController extends Controller
                     $productPurchases[$key]->salePrice = $subtotalProduct;
                 }
             }
-
+            //dd($productPurchases);
             //seccion de detalle de productos Vendidos
-        $invoiceProducts = [];//informacion de totales
-        $products = Product::get();
-        //obteniendo totales por productos de product purchases
-        foreach ($products as $key => $product ) {
+            $invoiceProducts = [];//informacion de totales
+            $products = Product::get();
+            //obteniendo totales por productos de product purchases
+            foreach ($products as $key => $product ) {
             //total de productos
-            $invoice_products = Invoice_product::from('invoice_products as ip')
-            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-            ->join('products as pro', 'ip.product_id', 'pro.id')
-            ->whereBetween('ip.created_at', [$from, $to])
-            ->where('inv.user_id', $sale_box->user_id)
-            ->where('ip.product_id', $product->id)
-            ->sum('quantity');
+                $invoice_products = Invoice_product::from('invoice_products as ip')
+                ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+                ->join('products as pro', 'ip.product_id', 'pro.id')
+                ->whereBetween('ip.created_at', [$from, $to])
+                ->where('inv.user_id', $sale_box->user_id)
+                ->where('ip.product_id', $product->id)
+                ->sum('quantity');
 
-            //total  de iva por producto
-            $ivaProduct = Invoice_product::from('invoice_products as ip')
+                //total  de iva por producto
+                $ivaProduct = Invoice_product::from('invoice_products as ip')
+                ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+                ->join('products as pro', 'ip.product_id', 'pro.id')
+                ->whereBetween('ip.created_at', [$from, $to])
+                ->where('inv.user_id', $sale_box->user_id)
+                ->where('ip.product_id', $product->id)
+                ->sum('ivasubt');
+                //subtotal por producto
+                $subtotalProduct = Invoice_product::from('invoice_products as ip')
+                ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+                ->join('products as pro', 'ip.product_id', 'pro.id')
+                ->whereBetween('ip.created_at', [$from, $to])
+                ->where('inv.user_id', $sale_box->user_id)
+                ->where('ip.product_id', $product->id)
+                ->sum('subtotal');
+                //envienado informacion de totales a travez de este array
+                if ($invoice_products) {
+                    $invoiceProducts[$key] = Product::findOrFail($product->id);
+                    $invoiceProducts[$key]->stock = $invoice_products;
+                    $invoiceProducts[$key]->price = $ivaProduct;
+                    $invoiceProducts[$key]->salePrice = $subtotalProduct;
+                }
+            }/*
+            //suma subtotales de todas las compras
+            $sumSubtotalInvoices = Invoice_product::from('invoice_products as ip')
             ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-            ->join('products as pro', 'ip.product_id', 'pro.id')
             ->whereBetween('ip.created_at', [$from, $to])
             ->where('inv.user_id', $sale_box->user_id)
-            ->where('ip.product_id', $product->id)
-            ->sum('ivasubt');
-            //subtotal por producto
-            $subtotalProduct = Invoice_product::from('invoice_products as ip')
-            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-            ->join('products as pro', 'ip.product_id', 'pro.id')
-            ->whereBetween('ip.created_at', [$from, $to])
-            ->where('inv.user_id', $sale_box->user_id)
-            ->where('ip.product_id', $product->id)
             ->sum('subtotal');
-            //envienado informacion de totales a travez de este array
-            if ($invoice_products) {
-                $invoiceProducts[$key] = Product::findOrFail($product->id);
-                $invoiceProducts[$key]->stock = $invoice_products;
-                $invoiceProducts[$key]->price = $ivaProduct;
-                $invoiceProducts[$key]->salePrice = $subtotalProduct;
-            }
-        }
-        //suma subtotales de todas las compras
-        $sumSubtotalInvoices = Invoice_product::from('invoice_products as ip')
-        ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-        ->whereBetween('ip.created_at', [$from, $to])
-        ->where('inv.user_id', $sale_box->user_id)
-        ->sum('subtotal');
 
-        //suma de total de iva de toda las compras
-        $ivaTotalInvoices = Invoice_product::from('invoice_products as ip')
-        ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
-        ->whereBetween('ip.created_at', [$from, $to])
-        ->where('inv.user_id', $sale_box->user_id)
-        ->sum('ivasubt');
+            //suma de total de iva de toda las compras
+            $ivaTotalInvoices = Invoice_product::from('invoice_products as ip')
+            ->join('invoices as inv', 'ip.invoice_id', 'inv.id')
+            ->whereBetween('ip.created_at', [$from, $to])
+            ->where('inv.user_id', $sale_box->user_id)
+            ->sum('ivasubt');
 
             $productpurc = [];
             $cont = 0;
@@ -919,7 +920,7 @@ class SaleboxController extends Controller
                     $productpurc[$cont]->sale_price = $totalp;
                     $cont++;
                 }
-            }
+            }*/
             //dd($productpurc);
             $invoices = Invoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->get();
             //$invTotalPay = Invoice::where('user_id', $user)->whereBetween('created_at', [$from, $to])->sum('total_pay');
@@ -994,12 +995,12 @@ class SaleboxController extends Controller
 
         $view = \view('admin.sale_box.showpos', compact(
             'company',
-            'invoiceProducts',
             'productPurchases',
+            'invoiceProducts',
+            'purchases',
             'sale_box',
             'invoices',
             'orders',
-            'purchases',
             'expenses',
             'ncinvoices',
             'ndinvoices',
@@ -1022,14 +1023,11 @@ class SaleboxController extends Controller
             'cashOuts',
             'sum_cash_outs',
             'invoice_products',
-            'product_purchases',
-            'ivap',
-            'productpurc'
             ))->render();
 
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1846.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,1446.64), 'portrait');
 
         return $pdf->stream('reporte_caja.pdf');
     }

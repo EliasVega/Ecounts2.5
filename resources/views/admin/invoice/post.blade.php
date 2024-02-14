@@ -76,8 +76,8 @@
                     <tr>
                         <td>{{ $ip->product->name }}</td>
                         <td id="ccent">{{ number_format($ip->quantity,2) }}</td>
-                        <td class="tdder">${{ number_format($ip->price,2)}}</td>
-                        <td class="tdder">${{number_format($ip->quantity * $ip->price,2)}}</td>
+                        <td class="tdder">{{ number_format($ip->price,2)}}</td>
+                        <td class="tdder spacetd">{{number_format($ip->quantity * $ip->price,2)}}</td>
                     </tr>
                     @endforeach
                 </tbody>
