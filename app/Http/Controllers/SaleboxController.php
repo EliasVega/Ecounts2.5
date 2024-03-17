@@ -30,6 +30,7 @@ use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\DataTables;
 
 class SaleboxController extends Controller
@@ -1027,7 +1028,7 @@ class SaleboxController extends Controller
 
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper (array(0,0,226.76,1446.64), 'portrait');
+        $pdf->setPaper (array(0,0,226.76,3276.64), 'portrait');
 
         return $pdf->stream('reporte_caja.pdf');
     }
@@ -1041,9 +1042,9 @@ class SaleboxController extends Controller
         $users = User::where('id', '!=', 1)->get();
         $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'open')->first();
 
-        \Session::put('sale_box', $sale_box->id, 60 * 24 * 365);
-        \Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
-        \Session::put('user', $sale_box->user_id, 60 * 24 * 365);
+        Session::put('sale_box', $sale_box->id, 60 * 24 * 365);
+        Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
+        Session::put('user', $sale_box->user_id, 60 * 24 * 365);
 
 
 
@@ -1058,9 +1059,9 @@ class SaleboxController extends Controller
         }
         $users = User::where('id', '!=', 1)->get();
         $sale_box = Sale_box::where('user_id', '=', Auth::user()->id)->where('status', '=', 'open')->first();
-        \Session::put('sale_box', $sale_box->id, 60 * 24 * 365);
-        \Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
-        \Session::put('user', $sale_box->user_id, 60 * 24 * 365);
+        Session::put('sale_box', $sale_box->id, 60 * 24 * 365);
+        Session::put('branch', $sale_box->branch_id, 60 * 24 * 365);
+        Session::put('user', $sale_box->user_id, 60 * 24 * 365);
 
 
         return view("admin.cash_in.create", compact('users', 'sale_box'));
