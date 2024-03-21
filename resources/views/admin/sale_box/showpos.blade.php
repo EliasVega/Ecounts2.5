@@ -25,7 +25,7 @@
                 </div>
             </div>
             @if ($sale_box->purchase > 0)
-                <div class="unicos">
+                <div class="unicos saltopagina">
                     <p>REPORTE DE ARTICULOS COMPRAS</p>
                     <table>
                         <thead>
