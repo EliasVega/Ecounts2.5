@@ -152,7 +152,6 @@
                         </table>
                     </div>
                 @endif
-
                 @if ($sale_box->expense > 0)
                     <div class="unicos">
                         <p>REPORTE DE GASTOS</p>
@@ -182,6 +181,8 @@
                         </table>
                     </div>
                 @endif
+            </div>
+            <div class="saltopagina">
                 @if ($sale_box->order > 0)
                     <div class="unicos">
                         <p>REPORTE DE PEDIDOS</p>
@@ -327,6 +328,8 @@
                         </table>
                     </div>
                 @endif
+            </div>
+            <div class="saltopagina">
                 @if ($sum_pay_orders > 0)
                     <div class="unicos">
                         <p>REPORTE DE ABONOS A PEDIDOS</p>
